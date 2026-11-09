@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 // Only the test process and its descendants join this unnamed job. No PID enumeration or taskkill.
-// The caller keeps stdin closed to commands until Attach has succeeded.
+// The caller signals the launcher permit only after Attach has succeeded.
 public sealed class PestoIsolatedSuiteJob : IDisposable
 {
     private IntPtr handle;

@@ -11,27 +11,28 @@ function Invoke-PestoIsolatedSuite {
     $name=[IO.Path]::GetFileNameWithoutExtension($Path)
     $stdoutPath=Join-Path $OutputDirectory ($name+'.stdout.log')
     $stderrPath=Join-Path $OutputDirectory ($name+'.stderr.log')
-    $process=[Diagnostics.Process]::new();$job=$null;$started=$false
+    $process=[Diagnostics.Process]::new();$job=$null;$permit=$null;$started=$false
     $stdout=$null;$stderr=$null;$logsWritten=$false
     $watch=[Diagnostics.Stopwatch]::StartNew()
     try{
         $job=[PestoIsolatedSuiteJob]::new()
+        $permitName='Local\pesto-suite-'+[Guid]::NewGuid().ToString('N')
+        $permit=[Threading.EventWaitHandle]::new($false,[Threading.EventResetMode]::ManualReset,$permitName)
         $info=[Diagnostics.ProcessStartInfo]::new()
         $info.FileName=Join-Path $PSHOME 'powershell.exe'
         $escaped=$Path.Replace("'","''")
-        $command="if([Console]::OpenStandardInput().ReadByte() -ne 1){exit 125}; & (Join-Path `$PSHOME 'powershell.exe') -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File '$escaped'; exit `$LASTEXITCODE"
+        $command="`$ErrorActionPreference='Stop'; `$permit=[Threading.EventWaitHandle]::OpenExisting('$permitName'); try{if(-not `$permit.WaitOne(30000)){exit 125}}finally{`$permit.Dispose()}; & (Join-Path `$PSHOME 'powershell.exe') -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File '$escaped'; exit `$LASTEXITCODE"
         $encoded=[Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($command))
         $info.Arguments='-NoLogo -NoProfile -NonInteractive -STA -ExecutionPolicy RemoteSigned -EncodedCommand '+$encoded
         $info.UseShellExecute=$false;$info.CreateNoWindow=$true
-        $info.RedirectStandardInput=$true;$info.RedirectStandardOutput=$true;$info.RedirectStandardError=$true
+        $info.RedirectStandardOutput=$true;$info.RedirectStandardError=$true
         $process.StartInfo=$info
         if(-not $process.Start()){throw 'Impossible de lancer la suite isolee.'};$started=$true
         $stdout=$process.StandardOutput.ReadToEndAsync();$stderr=$process.StandardError.ReadToEndAsync()
-        # A raw byte permit avoids the UTF-8 BOM of PS 5.1 StandardInput. EOF never admits a suite.
+        # Windows PowerShell consumes redirected stdin before -EncodedCommand. Use a named kernel event.
+        # Only signal it once this exact process belongs to our job; a missing parent expires the wait.
         $job.Attach($process)
-        $process.StandardInput.BaseStream.WriteByte(1)
-        $process.StandardInput.BaseStream.Flush()
-        $process.StandardInput.Close()
+        [void]$permit.Set()
         $timedOut=-not $process.WaitForExit($TimeoutSeconds*1000)
         $exitCode=if($timedOut){-1}else{$process.ExitCode}
         # Closing this exact handle kills only this suite's remaining processes, including on success.
@@ -55,6 +56,7 @@ function Invoke-PestoIsolatedSuite {
                 }
             }catch{Write-Warning 'Les flux du lanceur interrompu n''ont pas pu etre conserves.'}
         }
+        if($permit){$permit.Dispose()}
         $process.Dispose()
     }
 }

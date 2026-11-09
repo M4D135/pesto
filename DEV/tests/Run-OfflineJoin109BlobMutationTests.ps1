@@ -41,6 +41,8 @@ function Replace-Once{
 }
 function Invoke-Scenario{
     param([string]$Label,[scriptblock]$Mutation,[string[]]$ExpectedFailure)
+    $scenarioWatch=[Diagnostics.Stopwatch]::StartNew()
+    Write-Host ('Mutation : '+$Label)
     $temp=Join-Path ([IO.Path]::GetTempPath()) ('PestoMutBlob109-'+[Guid]::NewGuid().ToString('N'))
     [void][IO.Directory]::CreateDirectory($temp)
     try{
@@ -73,7 +75,7 @@ function Invoke-Scenario{
             Check ($code -ne 0) ($Label+': mutated suite unexpectedly passed')
             foreach($needle in $ExpectedFailure){Check ($flat.Contains($needle)) ($Label+': expected failure message missing: '+$needle+' ; got : '+$text)}
         }
-    }finally{Remove-Item -LiteralPath $temp -Recurse -Force}
+    }finally{Remove-Item -LiteralPath $temp -Recurse -Force;Write-Host ('Duree mutation : '+[math]::Round($scenarioWatch.Elapsed.TotalSeconds,3)+'s')}
 }
 function Mutate-Runtime{
     param([string]$Temp,[string[]]$Pairs)

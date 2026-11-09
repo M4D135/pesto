@@ -80,8 +80,10 @@ $writerDepth=[int]$writerMatch.Groups[1].Value
 $parseTokens=$null;$parseErrors=$null
 $script:tree=[System.Management.Automation.Language.Parser]::ParseFile($runtime,[ref]$parseTokens,[ref]$parseErrors)
 if($parseErrors -and $parseErrors.Count){throw ('le moteur scelle ne se parse pas : '+$parseErrors[0].Message)}
+# Arbre immuable par processus : indexer les definitions une fois, sans modifier les controles des noeuds.
+$script:sealedFunctions=@($script:tree.FindAll({param($n)$n -is [System.Management.Automation.Language.FunctionDefinitionAst]},$true))
 function SealedFunction([string]$Name){
-    $found=@(AllNodes $script:tree|Where-Object{$_.GetType().Name -eq 'FunctionDefinitionAst' -and $_.Name -eq $Name})
+    $found=@($script:sealedFunctions|Where-Object{$_.Name -eq $Name})
     if($found.Count -ne 1){throw ('la fonction '+$Name+' nest pas trouvee exactement une fois dans le moteur scelle : '+$found.Count)}
     return $found[0]
 }

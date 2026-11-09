@@ -61,6 +61,8 @@ function New-Tree{
     $tree=@(Get-ChildItem -LiteralPath $install -Recurse -File|ForEach-Object{$_.FullName.Substring($install.Length+1).Replace('\','/')})
     Check (@(Compare-Object -ReferenceObject $blanc -DifferenceObject $tree).Count -eq 0) 'la copie a derive de la liste blanche'
     if($Mutations){foreach($mutation in $Mutations){& $mutation $install}}
+    # Aucun registre de l'hote : la feuille rend une strategie absente, y compris pour le mutant sans garde.
+    [IO.File]::AppendAllText((Join-Path $install 'wad/Pesto-ManagedPolicy.ps1'),"`nfunction Get-PestoManagedPolicy { [pscustomobject]@{Values=[pscustomobject]@{};Configured=`$false} }`n",[Text.UTF8Encoding]::new($false))
     return [pscustomobject]@{Temp=$temp;Install=$install;Entry=(Join-Path $install 'integrations/Test-PestoManagedScenario.ps1')}
 }
 function Invoke-Mutation{
@@ -68,7 +70,14 @@ function Invoke-Mutation{
     $tree=New-Tree -Mutations $Mutations -IntegrityBody $IntegrityBody
     try{
         $arguments=@('-Installation',$tree.Install,'-AsJson')
-        if($FromRegistry){$arguments+=@('-FromRegistry')}
+        if($FromRegistry){
+            # Lier seulement la donnee de plateforme, apres la mutation : la comparaison du produit reste reelle.
+            # La suppression de sa garde doit toujours changer le message ferme, meme sur un runner Windows.
+            $doc=Read-Utf8File -Path $tree.Entry
+            $doc.Text=$doc.Text.Replace('[Environment]::OSVersion.Platform',"'Unix'")
+            Write-Utf8File -Path $tree.Entry -Doc $doc
+            $arguments+=@('-FromRegistry')
+        }
         else{
             $path=Join-Path $tree.Temp ($Candidate+'.json')
             [IO.File]::WriteAllText($path,$candidats[$Candidate],[Text.UTF8Encoding]::new($false))

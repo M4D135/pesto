@@ -32,6 +32,12 @@ function Get-PestoCompiledHelperNativeSurface {
     }
     return $found.ToArray()
 }
+function Get-PestoCompiledHelperSha256 {
+    param([byte[]]$Bytes)
+    $sha=[Security.Cryptography.SHA256]::Create()
+    try{return [BitConverter]::ToString($sha.ComputeHash($Bytes)).Replace('-','').ToLowerInvariant()}
+    finally{$sha.Dispose()}
+}
 function Get-PestoCompiledHelperWorkload {
     # Le meme ouvrage des deux cotes : index compact sur 2 000 noms synthetiques de 15 caracteres, lignes
     # debrayees comprises, puis journal d audit borne. Le rendu est canonise puis empreinte : deux modes qui
@@ -58,9 +64,9 @@ function Get-PestoCompiledHelperWorkload {
         for($i=0;$i -lt 200;$i++){[void]$audit.TryWrite('ligne-'+$i)}
         $flushed=$audit.Flush(3000);$closed=$audit.Close(3000)
         [void]$lines.Add('audit='+$flushed+'/'+$closed+'/'+$audit.Written+'/'+$audit.Dropped+'/'+$audit.Error)
-        [void]$lines.Add('auditSha='+[BitConverter]::ToString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes([IO.File]::ReadAllText($file)))).Replace('-','').ToLowerInvariant())
+        [void]$lines.Add('auditSha='+(Get-PestoCompiledHelperSha256 ([Text.Encoding]::UTF8.GetBytes([IO.File]::ReadAllText($file)))))
     }finally{Remove-Item -LiteralPath $temp -Recurse -Force}
-    return [pscustomobject]@{Rows=$built.Rows.Count;Digest=[BitConverter]::ToString([Security.Cryptography.SHA256]::HashData([Text.Encoding]::UTF8.GetBytes(($lines -join "`n")))).Replace('-','').ToLowerInvariant()}
+    return [pscustomobject]@{Rows=$built.Rows.Count;Digest=(Get-PestoCompiledHelperSha256 ([Text.Encoding]::UTF8.GetBytes(($lines -join "`n"))))}
 }
 if($CompiledHelpersWorker){
     $helperTypes=[Collections.Generic.List[type]]::new()

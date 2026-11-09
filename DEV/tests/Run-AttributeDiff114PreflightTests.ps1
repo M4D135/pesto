@@ -61,7 +61,10 @@ try{
     function Invoke-Candidate {param([string]$RequestJson,[int]$ExpectedExit,[string]$CurrentJson=$currentJson,[string]$ObjectGuid=$guid)
         $current=Write-Doc -Name ('current-'+[Guid]::NewGuid().ToString('N')) -Json $CurrentJson
         $request=Write-Doc -Name ('request-'+[Guid]::NewGuid().ToString('N')) -Json $RequestJson
-        return Invoke-DiffReport -ExpectedExit $ExpectedExit -ChildArguments @('-Installation',$install,'-ObjectGuid',$ObjectGuid,'-CurrentPath',$current,'-RequestPath',$request)}
+        $arguments=@('-Installation',$install,'-CurrentPath',$current,'-RequestPath',$request)
+        # PS 5.1 perd les arguments vides ; l'absence utilise le meme defaut vide du consommateur.
+        if($ObjectGuid){$arguments+=@('-ObjectGuid',$ObjectGuid)}
+        return Invoke-DiffReport -ExpectedExit $ExpectedExit -ChildArguments $arguments}
     Case-Diff 'Accepted diff names the attributes the operator is about to hand over' {
         $r=Invoke-Candidate -RequestJson '{"description":"Atelier","location":""}' -ExpectedExit 0
         Equal-Diff $r.PreviewAccepted $true;Equal-Diff $r.EngineAccepted $true;Equal-Diff $r.DiffMatches $true

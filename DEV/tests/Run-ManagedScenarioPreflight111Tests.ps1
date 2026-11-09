@@ -6,7 +6,7 @@ $ErrorActionPreference='Stop';Set-StrictMode -Off
 # verrouilles) est joue comme un vrai processus enfant. Le validateur integrateur
 # (integrations/Pesto.Optional.psm1) et le closure du moteur (ConvertTo-PestoScenario) sont les fichiers
 # reels ; seule l'integrite du paquet est doublee, sans quoi rien ne serait jouable hors Windows.
-# Aucun appel AD, registre ou VM : la branche -FromRegistry est tenue pour un refus ferme hors Windows.
+# Aucun appel AD, registre ou VM : le lecteur de strategie ordinateur est double par un registre vide.
 $root=Split-Path $PSScriptRoot -Parent
 $hostExe=(Get-Process -Id $PID).Path
 $cases=[Collections.Generic.List[object]]::new()
@@ -38,6 +38,8 @@ try{
         [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($destination))
         Copy-Item -LiteralPath (Join-Path $root $relative) -Destination $destination
     }
+    # Seule la feuille de lecture du registre est doublee, jamais les validateurs ni la garde de plateforme.
+    [IO.File]::AppendAllText((Join-Path $script:wad 'Pesto-ManagedPolicy.ps1'),"`nfunction Get-PestoManagedPolicy { [pscustomobject]@{Values=[pscustomobject]@{};Configured=`$false} }`n",[Text.UTF8Encoding]::new($false))
     $script:entry=Join-Path $integrations 'Test-PestoManagedScenario.ps1'
     function Write-IntegrityStub {param([string]$Body)[IO.File]::WriteAllText((Join-Path $script:wad 'Pesto-Integrity.ps1'),$Body,[Text.UTF8Encoding]::new($false))}
     function Write-Candidate {param([string]$Name,[string]$Json)
@@ -145,10 +147,11 @@ try{
             Require-Preflight (-not ($value|ConvertTo-Json -Depth 6 -Compress).Contains($marker)) 'le detail brut de la dependance fuit'
         }finally{Write-IntegrityStub -Body 'function Test-PestoPackage {param($Root);$true}'}
     }
-    Case-Preflight 'Stratégie ordinateur hors Windows : refus ferme, jamais un faux publiable' {
+    Case-Preflight 'Strategie ordinateur indisponible : refus ferme, jamais un faux publiable' {
         $value=Invoke-PreflightReport -ChildArguments ($installation+@('-FromRegistry')) -ExpectedExit 96
-        Require-Preflight ($value.Message -ceq 'La stratégie ordinateur exige Windows : aucun scénario n''est déduit hors Windows.') ('message ferme attendu : '+$value.Message)
-        Require-Preflight (-not $value.Publishable) 'la branche hors Windows se declare publiable'
+        $expected=if([Environment]::OSVersion.Platform -eq 'Win32NT'){'Aucun scénario administré lisible dans la stratégie ordinateur.'}else{'La stratégie ordinateur exige Windows : aucun scénario n''est déduit hors Windows.'}
+        Require-Preflight ($value.Message -ceq $expected) ('message ferme attendu : '+$value.Message)
+        Require-Preflight (-not $value.Publishable) 'la strategie indisponible se declare publiable'
     }
     Case-Preflight 'Rapport ecrit une seule fois et jamais ecrase' {
         $reportPath=Join-Path $temp 'rapport.json'

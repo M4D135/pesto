@@ -45,8 +45,22 @@ jobs:
         include:
           - os: windows-2022
             culture: en-US
+            shard: 0
+          - os: windows-2022
+            culture: en-US
+            shard: 1
+          - os: windows-2022
+            culture: en-US
+            shard: 2
           - os: windows-2025
             culture: fr-FR
+            shard: 0
+          - os: windows-2025
+            culture: fr-FR
+            shard: 1
+          - os: windows-2025
+            culture: fr-FR
+            shard: 2
     runs-on: ${{ matrix.os }}
     timeout-minutes: 45
     steps:
@@ -62,11 +76,13 @@ jobs:
         shell: powershell
         run: Set-Culture -CultureInfo ${{ matrix.culture }}
       - name: WPF layout gate before extended suites
+        if: matrix.shard == 0
         shell: powershell
         run: |
           & powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File tests/Run-UxTests.ps1
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Filesystem interruption and release tooling on Windows
+        if: matrix.shard == 0
         shell: powershell
         run: |
           New-Item -ItemType Directory -Path out/windows -Force | Out-Null
@@ -75,17 +91,25 @@ jobs:
           cmd /d /c "python -m unittest discover -s tests -p test_microsoft_components.py -v > out\windows\microsoft-components.log 2>&1"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Read-only signatures and environment inventory
+        if: matrix.shard == 0
         shell: powershell
         run: |
           & powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/Test-PestoEnvironment.ps1 -Root . -ReportPath out/windows/environment.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Verify suite timeout and owned process cleanup
+        if: matrix.shard == 0
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -File tests/Test-IsolatedSuiteRunner.ps1
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Windows PowerShell 5.1 isolated suites
         shell: powershell
         run: |
           New-Item -ItemType Directory -Path out/windows -Force | Out-Null
-          cmd /d /c "powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File tests/Run-AllTests.ps1 > out\windows\run-all.log 2>&1"
+          cmd /d /c "powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File tests/Run-AllTests.ps1 -ShardIndex ${{ matrix.shard }} -ShardCount 3 -ReportDirectory out/windows/suites > out\windows\run-all.log 2>&1"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: WPF layout and navigation, no interactive application or AD
+        if: matrix.shard == 0
         shell: powershell
         run: |
           foreach ($suite in @('Zoom','ToolsTabs','Workbench120','BatchNames120')) {
@@ -93,12 +117,14 @@ jobs:
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
       - name: Repeated WPF lifecycle and resource measurement
+        if: matrix.shard == 0
         shell: powershell
         run: |
           Copy-Item tests/windows-ui-results.json out/windows/Ux.json
           & powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File tests/Run-WpfSessionTests.ps1 -MinimumDurationSeconds 120 -ReportPath out/windows/WpfSession.json
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Scan generated synthetic text evidence
+        if: matrix.shard == 0
         shell: powershell
         run: |
           & powershell.exe -NoProfile -File tests/Run-SecretOutputsTests.ps1 -ReportPath out/windows/SecretOutputs.json -EvidenceDirectory out/windows/secret-outputs
@@ -117,6 +143,6 @@ jobs:
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
-          name: windows-isolated-evidence-${{ matrix.os }}-${{ matrix.culture }}
+          name: windows-isolated-evidence-${{ matrix.os }}-${{ matrix.culture }}-${{ matrix.shard }}
           path: out/windows
           if-no-files-found: error

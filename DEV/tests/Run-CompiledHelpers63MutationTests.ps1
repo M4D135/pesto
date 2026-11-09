@@ -224,11 +224,12 @@ $mutationDeliveredPathRecompiles={
     Replace-Once -Doc $doc -Pattern 'if\(\$loaded\.Count -ne 1\)\{throw ''Assembly des helpers precompiles absente\.''\}' -Replacement 'if($loaded.Count -ne 1){throw ''Assembly des helpers precompiles absente.''};foreach($late in $PestoCompiledHelperSources){[void](Add-Type -TypeDefinition ([IO.File]::ReadAllText((Join-Path $root $late))))}'
     Write-Utf8File -Path $path -Doc $doc
 }
+# Un cout relatif fixe franchit le seuil du facteur deux sur toute machine ; x3 pouvait rester sous le seuil.
 $mutationPublishedCostInflated={
     param($temp,$suiteCopy)
     $path=Join-Path $temp 'tests/Measure-Engine120.ps1'
     $doc=Read-Utf8File -Path $path
-    Replace-Once -Doc $doc -Pattern 'CompiledHelpers=\$compiledPair\.Summary' -Replacement 'CompiledHelpers=@($compiledPair.Summary|ForEach-Object{if($_.Mode -ceq ''Precompiled''){[pscustomobject]@{Mode=$_.Mode;Samples=$_.Samples;Rows=$_.Rows;MedianMs=$_.MedianMs*3;P95Ms=$_.P95Ms*3;Assemblies=$_.Assemblies;NativeEntries=$_.NativeEntries;Digest=$_.Digest}}else{$_}})'
+    Replace-Once -Doc $doc -Pattern 'CompiledHelpers=\$compiledPair\.Summary' -Replacement 'CompiledHelpers=@($referenceMedian=[double](@($compiledPair.Summary|Where-Object{$_.Mode -ceq ''AddType''})[0].MedianMs);$compiledPair.Summary|ForEach-Object{if($_.Mode -ceq ''Precompiled''){[pscustomobject]@{Mode=$_.Mode;Samples=$_.Samples;Rows=$_.Rows;MedianMs=$referenceMedian*0.75;P95Ms=[Math]::Max($referenceMedian*0.75,$_.P95Ms);Assemblies=$_.Assemblies;NativeEntries=$_.NativeEntries;Digest=$_.Digest}}else{$_}})'
     Write-Utf8File -Path $path -Doc $doc
 }
 $mutationPublishedSamplesDropped={

@@ -55,7 +55,7 @@ function BodyVariableUses($Node,[string]$Name){
     return @(VariableUses $Node $Name|Where-Object{$_.Extent.StartOffset -ge $limit})
 }
 function SealedFunction([string]$Name){
-    $found=@(AllNodes $script:tree|Where-Object{$_.GetType().Name -eq 'FunctionDefinitionAst' -and $_.Name -eq $Name})
+    $found=@($script:sealedFunctions|Where-Object{$_.Name -eq $Name})
     if($found.Count -ne 1){throw ('la fonction '+$Name+' nest pas trouvee exactement une fois dans le moteur scelle : '+[string]$found.Count)}
     return $found[0]
 }
@@ -79,6 +79,8 @@ function Exec([string]$Text){return & ([ScriptBlock]::Create($Text))}
 $parseTokens=$null;$parseErrors=$null
 $script:tree=[System.Management.Automation.Language.Parser]::ParseFile($runtime,[ref]$parseTokens,[ref]$parseErrors)
 if($parseErrors -and $parseErrors.Count){throw ('le moteur scelle ne se parse pas : '+$parseErrors[0].Message)}
+# Arbre immuable par processus : indexer les definitions une fois, sans modifier les controles des noeuds.
+$script:sealedFunctions=@($script:tree.FindAll({param($n)$n -is [System.Management.Automation.Language.FunctionDefinitionAst]},$true))
 # La disponibilite de DPAPI sur l'hote est mesuree, pas supposee : c'est elle qui decide si les deux derniers cas
 # jouent un aller-retour reel ou un refus reel, et elle est enregistree dans le rapport.
 # PS 5.1 ne charge pas ce type avant le premier usage du produit.

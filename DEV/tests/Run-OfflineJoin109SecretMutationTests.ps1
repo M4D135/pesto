@@ -40,6 +40,7 @@ function Replace-Once{
 }
 function Invoke-Scenario{
     param([string]$Label,[scriptblock]$Mutation,[string[]]$ExpectedFailure)
+    $scenarioWatch=[Diagnostics.Stopwatch]::StartNew()
     Write-Host ('--- '+$Label)
     $temp=Join-Path ([IO.Path]::GetTempPath()) ('PestoMutSecret109-'+[Guid]::NewGuid().ToString('N'))
     [void][IO.Directory]::CreateDirectory($temp)
@@ -72,7 +73,7 @@ function Invoke-Scenario{
             Check ($code -ne 0) ($Label+': mutated suite unexpectedly passed')
             foreach($needle in $ExpectedFailure){Check ($flat.Contains($needle)) ($Label+': expected failure message missing: '+$needle+' ; got : '+$text)}
         }
-    }finally{Remove-Item -LiteralPath $temp -Recurse -Force}
+    }finally{Remove-Item -LiteralPath $temp -Recurse -Force;Write-Host ('Duree mutation : '+[math]::Round($scenarioWatch.Elapsed.TotalSeconds,3)+'s')}
 }
 function Assert-Parsable{
     # Un mutant que l'analyseur ne lit plus n'est pas une garde tuee : c'est le harnais qui est casse.

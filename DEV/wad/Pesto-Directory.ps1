@@ -804,7 +804,7 @@ $script:PestoDirectorySnapshotWorker = {
     [pscustomobject]@{
         Complete=$true;RootReceived=$readRoot;NamesReceived=$readNames;MaxInventoryRows=$limit;SyncState=$(if($incremental){$incremental.State}else{$null})
         DC=$dc; Domain=[string]$d.DNSRoot; Netbios=[string]$d.NetBIOSName
-        Sites=$sites;SiteMetadata=$siteMetadata.ToArray(); Root=$(if($Request.FullInventory){$root}elseif($localComputer){@($localComputer)}else{@()}); Names=$names; LocalComputer=$localComputer
+        Sites=$sites;SiteMetadata=$siteMetadata.ToArray(); Root=@(if($Request.FullInventory){$root}elseif($localComputer){$localComputer}); Names=$names; LocalComputer=$localComputer
         LocalPCType=$localPCType;FullInventory=[bool]$Request.FullInventory;CollectedUtc=[DateTime]::UtcNow.ToString('o')
         Identity=[string][Security.Principal.WindowsIdentity]::GetCurrent().Name
     }

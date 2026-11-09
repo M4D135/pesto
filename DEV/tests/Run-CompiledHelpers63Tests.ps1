@@ -113,7 +113,7 @@ function Invoke-CompiledHelperWorker{
     if(-not (Test-Path -LiteralPath $bench)){throw 'Compiled-helpers bench missing: tests/Measure-Engine120.ps1'}
     $hostExe=(Get-Process -Id $PID).Path
     $previous=$ErrorActionPreference;$ErrorActionPreference='Continue'
-    $output=@(& $hostExe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $bench -OutputPath '' -CompiledHelpersWorker $Mode 2>&1|ForEach-Object{[string]$_})
+    $output=@(& $hostExe -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $bench -CompiledHelpersWorker $Mode 2>&1|ForEach-Object{[string]$_})
     $code=$LASTEXITCODE;$ErrorActionPreference=$previous
     $line=@(@($output|Where-Object{$_ -match '^\{.*\}$'})|Select-Object -Last 1)
     Check ($code -eq 0) ('Compiled-helpers worker '+$Mode+' exited '+$code+' : '+(($output) -join "`n"))

@@ -248,7 +248,9 @@ public sealed partial class ProfileConfigurationService
             var conf = candidate["CONF"] is JsonArray confs && confs[0] is JsonObject existingConf ? (JsonObject)existingConf.DeepClone()
                 : new JsonObject { ["EntraPolicy"] = "Disabled", ["DsregLeaveOnMove"] = false, ["ClearProtectionOnMove"] = false, ["AllowHybridRepair"] = false };
             conf["Domaine"] = domain; conf["Prefixe"] = prefix; conf["DirectProd"] = production;
-            conf["PreprodSite"] = preprodSite; conf["OUScanNoms"] = rootOu;
+            conf["PreprodSite"] = preprodSite;
+            // This legacy search scope is not an editable field of this form.
+            if (current is null) conf["OUScanNoms"] = rootOu;
             if (args.TryGetProperty("entraPolicy", out _))
             {
                 var entraPolicy = Arguments.Text(args, "entraPolicy", true, 16);
@@ -293,7 +295,9 @@ public sealed partial class ProfileConfigurationService
                 }
                 policy["ExcludedGroupGuids"] = values;
             }
-            if (!args.TryGetProperty("sites", out var siteValues) || siteValues.ValueKind != JsonValueKind.Array || siteValues.GetArrayLength() is < 1 or > 100)
+            var previous = current is null ? null : V1Config.ValidateText(current.ToJsonString());
+            var minimumSites = previous is { DeclaredSites.Count: 0, ExplicitSites.Count: 0 } ? 0 : 1;
+            if (!args.TryGetProperty("sites", out var siteValues) || siteValues.ValueKind != JsonValueKind.Array || siteValues.GetArrayLength() < minimumSites || siteValues.GetArrayLength() > 100)
                 throw ConfigurationDocument.Invalid("Définissez de 1 à 100 sites.");
             var explicitSites = new JsonArray();
             var tags = new JsonArray();
@@ -309,14 +313,34 @@ public sealed partial class ProfileConfigurationService
                 explicitSites.Add(new JsonObject { ["Id"] = id, ["Name"] = name, ["Code"] = code, ["OU"] = ou });
                 tags.Add(new JsonObject { ["Site"] = name, ["Tag"] = code });
             }
-            if (allOusEmpty && current is not null && current["V2DirectorySites"] is null)
+            var previousExplicit = previous is null ? new JsonArray() : new JsonArray(previous.ExplicitSites.Select(s =>
+                (JsonNode)new JsonObject { ["Id"] = s.Id, ["Name"] = s.Name, ["Code"] = s.Code, ["OU"] = s.Ou }).ToArray());
+            if (previousExplicit.Count > 0 && JsonNode.DeepEquals(explicitSites, previousExplicit))
+            {
+                // ReadSettings shows explicit sites only. Keep the undisplayed discovery rules and roots exactly.
+                // Changes to another field never mean replacing the complete site model.
+            }
+            else if (allOusEmpty && current is not null && previousExplicit.Count == 0)
             {
                 // A legacy configuration uses discovered child OUs; editing other fields must retain that model.
-                if (ConfigurationDocument.Canonical(tags) != ConfigurationDocument.Canonical(current["TAGS"]!))
+                if (ConfigurationDocument.Canonical(tags) != ConfigurationDocument.Canonical(current["TAGS"] ?? new JsonArray()))
                     throw ConfigurationDocument.Invalid("Pour modifier ces sites historiques, renseignez leur OU complète ou importez un référentiel.");
             }
             else
             {
+                if (previousExplicit.Count > 0)
+                {
+                    var previousTags = new JsonArray(previous!.ExplicitSites.Select(s =>
+                        (JsonNode)new JsonObject { ["Site"] = s.Name, ["Tag"] = s.Code }).ToArray());
+                    if (!previous.Production && !previousTags.Any(t => t!["Site"]!.GetValue<string>().Equals("PREPROD", StringComparison.OrdinalIgnoreCase)))
+                    {
+                        var preprod = previous.ExplicitSites.FirstOrDefault(s => s.Ou.Equals(previous.PreprodOu, StringComparison.OrdinalIgnoreCase));
+                        if (preprod is not null) previousTags.Add(new JsonObject { ["Site"] = "PREPROD", ["Tag"] = preprod.Code });
+                    }
+                    var previousRoots = new JsonArray(new JsonObject { ["Nom"] = "Gestion", ["OU"] = previous.RootOu });
+                    if (!JsonNode.DeepEquals(current!["TAGS"], previousTags) || !JsonNode.DeepEquals(current["OUSite"], previousRoots))
+                        throw ConfigurationDocument.Invalid("Cette configuration combine des sites explicites et des règles de découverte non affichées. Conservez les lignes de sites pour modifier les autres paramètres ; utilisez l’import de configuration pour remplacer les sites.");
+                }
                 candidate["V2DirectorySites"] = explicitSites;
                 candidate["OUSite"] = new JsonArray(new JsonObject { ["Nom"] = "Gestion", ["OU"] = rootOu });
                 if (!production && !tags.Any(t => t!["Site"]!.GetValue<string>().Equals("PREPROD", StringComparison.OrdinalIgnoreCase)))

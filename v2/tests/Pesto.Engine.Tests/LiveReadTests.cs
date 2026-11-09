@@ -224,11 +224,13 @@ internal sealed class LiveReadTests
         gateway.ChildOus[Container] = ["Paris-Nord", "Lyon", "Autre"];
         var (backend, _) = LiveWith(gateway);
         var items = Harness.Arr(Harness.Call(backend, "directory.sites"), "items");
-        Check.Equal(2, items.Count, "Seuls les sites déclarés ET réellement observés sont listés");
+        Check.Equal(3, items.Count, "Les motifs et le repli V1 ne listent que des OU réellement observées");
         Check.Equal("PA", Harness.Str(items[0]!, "code"), "Code du site déclaré");
         Check.Equal("Paris-Nord", Harness.Str(items[0]!, "name"), "Nom réellement observé dans l’annuaire");
         Check.Equal("OU=Paris-Nord," + Container, Harness.Str(items[0]!, "ou"), "OU observé, jamais supposé");
         Check.Equal("LY", Harness.Str(items[1]!, "code"), "Second site observé");
+        Check.Equal("Autre", Harness.Str(items[2]!, "name"), "L’OU sans TAGS est conservée");
+        Check.Equal("RE", Harness.Str(items[2]!, "code"), "Repli V1 sur les dernières lettres du nom observé");
     }
 
     [Test]
@@ -275,7 +277,9 @@ internal sealed class LiveReadTests
             gateway.ChildOus[secondContainer] = Enumerable.Range(0, 30).Select(index => $"Site-{index:D2}-Sud").ToList();
             var backend = Harness.Live(root, gateway);
             var items = Harness.Arr(Harness.Call(backend, "directory.sites"), "items");
-            Check.Equal(60, items.Count, "Les 30 motifs retrouvent leurs deux OU observées");
+            Check.Equal(61, items.Count, "Les 30 motifs et l’OU sans motif restent visibles");
+            Check.Equal("Sans-correspondance", Harness.Str(items[60]!, "name"), "Le repli est ajouté après les motifs déclarés");
+            Check.Equal("CE", Harness.Str(items[60]!, "code"), "Code de repli V1");
             Check.Equal(1, gateway.ChildOuReads[Container], "Un seul appel annuaire pour le premier conteneur, pas 30");
             Check.Equal(1, gateway.ChildOuReads[secondContainer], "Un seul appel annuaire pour le second conteneur, pas 30");
             for (var index = 0; index < 30; index++)
@@ -289,7 +293,7 @@ internal sealed class LiveReadTests
 
             gateway.ChildOus[Container].Remove("Site-00-Nord");
             var refreshed = Harness.Arr(Harness.Call(backend, "directory.sites"), "items");
-            Check.Equal(59, refreshed.Count, "La demande suivante observe la suppression d’une OU");
+            Check.Equal(60, refreshed.Count, "La demande suivante observe la suppression d’une OU");
             Check.Equal(2, gateway.ChildOuReads[Container], "Aucun cache persistant entre deux demandes");
             Check.Equal(2, gateway.ChildOuReads[secondContainer], "Chaque conteneur est relu à la demande suivante");
             Check.Equal("Site-00-Sud", Harness.Str(refreshed[0]!, "name"), "Aucune ancienne OU n’est réutilisée");

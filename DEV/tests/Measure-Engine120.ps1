@@ -1,6 +1,6 @@
 ﻿#requires -Version 5.1
 [CmdletBinding()]
-param([Parameter(Mandatory=$true)][AllowEmptyString()][string]$OutputPath,[ValidateRange(1,20)][int]$Iterations=3,[ValidateSet('','AddType','Precompiled')][string]$CompiledHelpersWorker='',[switch]$CompiledHelpersOnly)
+param([AllowEmptyString()][string]$OutputPath='',[ValidateRange(1,20)][int]$Iterations=3,[ValidateSet('','AddType','Precompiled')][string]$CompiledHelpersWorker='',[switch]$CompiledHelpersOnly)
 $ErrorActionPreference='Stop';$root=Split-Path $PSScriptRoot -Parent
 if(-not $CompiledHelpersWorker -and -not $OutputPath){throw 'OutputPath requis hors mode ouvrier.'}
 $rows=[Collections.Generic.List[object]]::new()
@@ -114,7 +114,7 @@ function Measure-PestoCompiledHelpers {
         for($compiledSample=0;$compiledSample -lt $Samples;$compiledSample++){
             $compiledTemperature=if($compiledSample -eq 0){'Cold'}else{'Warm'}
             $compiledPreference=$ErrorActionPreference;$ErrorActionPreference='Continue'
-            $compiledOutput=@(& $compiledHost -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $PSCommandPath -OutputPath '' -CompiledHelpersWorker $compiledMode 2>&1|ForEach-Object{[string]$_})
+            $compiledOutput=@(& $compiledHost -NoProfile -NonInteractive -ExecutionPolicy Bypass -File $PSCommandPath -CompiledHelpersWorker $compiledMode 2>&1|ForEach-Object{[string]$_})
             $compiledExit=$LASTEXITCODE;$ErrorActionPreference=$compiledPreference
             $compiledLine=@(@($compiledOutput|Where-Object{$_ -match '^\{.*\}$'})|Select-Object -Last 1)
             if($compiledExit -ne 0 -or -not $compiledLine){throw ('Le worker des helpers precompiles a echoue ('+$compiledMode+', code '+$compiledExit+') : '+($compiledOutput -join "`n"))}

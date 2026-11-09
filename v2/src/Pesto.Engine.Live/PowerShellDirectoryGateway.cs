@@ -280,7 +280,7 @@ public sealed partial class PowerShellDirectoryGateway : IDirectoryGateway, IDir
         if (message.Length > 400) message = message[..400];
         var kind = root.TryGetProperty("kind", out var k) && k.ValueKind == JsonValueKind.String ? k.GetString() : "error";
         if (kind == "module")
-            return new PestoException("directory.unavailable", "Le module ActiveDirectory n’est pas disponible sur ce poste : installez les outils d’administration à distance, puis relancez. " + message);
+            return new PestoException("directory.unavailable", "Le module ActiveDirectory livré avec Pesto est absent ou inutilisable : vérifiez l’intégrité du pack courant, puis rétablissez-le depuis son archive complète. " + message);
         int? code = root.TryGetProperty("code", out var c) && c.ValueKind == JsonValueKind.Number && c.TryGetInt32(out var parsed) ? parsed : null;
         var detail = message.Length == 0 ? "Détail non fourni par le lecteur." : message;
         if (code is 5 or 1326 or 1385)
@@ -368,7 +368,7 @@ try{
   $timer=if($j.PSObject.Properties['TraceTiming'] -and $j.TraceTiming -eq $true){ [Diagnostics.Stopwatch]::StartNew() }
   $env:ADPS_LoadDefaultDrive='0' # All reads select the server explicitly; initializing AD: adds an unrelated DC lookup.
   if($j.ModulePath){ Import-Module -Name ([string]$j.ModulePath) -ErrorAction Stop }
-  else{ throw 'Module ActiveDirectory Microsoft connu absent : rétablissez le paquet V1 ou installez RSAT.' }
+  else{ throw 'Module ActiveDirectory Microsoft embarqué absent : vérifiez puis rétablissez le pack Pesto courant depuis son archive complète.' }
   if($timer){ $importMs=$timer.ElapsedMilliseconds }
   $adp=@{ Server=[string]$j.Server }
   if($null -ne $j.Credential){

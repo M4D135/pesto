@@ -547,7 +547,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         var list = new List<ResolvedSite>();
         var seenIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var added = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        var parents = read.DeclaredSites.Count == 0 ? Array.Empty<string>() : read.OrganismOus.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+        var parents = read.OrganismOus.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
         var listing = adapter.ReadSiteOus(read.Domain, DcOrNull(), read.ExplicitSites.Select(site => site.Ou).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(), parents);
         foreach (var site in read.ExplicitSites)
         {
@@ -559,9 +559,11 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         }
         var discovered = parents.SelectMany(parent => listing.Children[parent].Select(child => new
         {
-            Name = child, Ou = "OU=" + EscapeRdn(child) + "," + parent, Tag = MatchSiteTag(read, child)
+            Name = child, Ou = "OU=" + EscapeRdn(child) + "," + parent,
+            Tag = MatchSiteTag(read, child, "OU=" + EscapeRdn(child) + "," + parent)
         })).Where(site => site.Tag is not null).ToLookup(site => site.Tag!);
-        foreach (var declaration in read.DeclaredSites)
+        // Keep declared-site ordering/IDs; append ordinary V1 suffix matches afterwards.
+        foreach (var declaration in read.DeclaredSites.Concat(discovered.Select(group => group.Key).Except(read.DeclaredSites)))
             foreach (var site in discovered[declaration])
             {
                 if (!added.Add(site.Ou)) continue;
@@ -581,7 +583,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
     // An exact site wins over wildcards, then the most specific wildcard (most literal characters), then the first
     // declared TAGS entry. Up to 2.0.9 every matching pattern listed the OU; dropping OUs that a broad pattern also
     // matched emptied real site lists in 2.0.10, so an OU matched by any pattern always keeps one code.
-    private static V1Config.DeclaredSite? MatchSiteTag(V1Config read, string name)
+    private static V1Config.DeclaredSite? MatchSiteTag(V1Config read, string name, string ou)
     {
         var exact = read.DeclaredSites.FirstOrDefault(site => site.Pattern.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (exact is not null) return exact;
@@ -592,7 +594,14 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
             var literals = site.Pattern.Count(c => c is not ('*' or '?'));
             if (literals > best) (match, best) = (site, literals);
         }
-        return match;
+        if (match is not null) return match;
+        // V1 suffix compatibility is only for ordinary sites. Preproduction always needs an explicit tag.
+        if (ou.Equals(read.PreprodOu, StringComparison.OrdinalIgnoreCase)
+            || new[] { "PREPROD", read.PreprodSite, read.PreprodSite + "_PREPROD", read.PreprodSite + "_PROD_A_NOMMER" }
+                .Contains(name, StringComparer.OrdinalIgnoreCase)
+            || name.Length < read.Convention.SiteWidth) return null;
+        var code = name[^read.Convention.SiteWidth..].ToUpperInvariant();
+        return code.All(c => c is >= 'A' and <= 'Z') ? new(name, code) : null;
     }
 
     private (ResolvedSite Site, SelectedSiteOu? Selection) SiteForInventory(V1Config read, IDirectoryGateway adapter, string wanted)
@@ -611,13 +620,13 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
             // actual OU name, DN and GUID in the same worker before reading any computer.
             var rdn = parts[0][3..];
             var name = Regex.Replace(rdn, @"\\(.)", "$1");
-            if (EscapeRdn(name) == rdn && MatchSiteTag(read, name) is { } selectedTag)
+            if (EscapeRdn(name) == rdn && MatchSiteTag(read, name, wanted) is { } selectedTag)
                 return (new(wanted, name, selectedTag.Tag, wanted), new(wanted, name));
 
             // Alternative DN encodings retain the legacy lookup by actual directory name.
             var ou = adapter.FindOrganizationalUnit(read.Domain, DcOrNull(), wanted);
             if (ou is null || !ou.DistinguishedName.Equals(wanted, StringComparison.OrdinalIgnoreCase)) throw Invalid();
-            var tag = ou.Name is null ? null : MatchSiteTag(read, ou.Name);
+            var tag = ou.Name is null ? null : MatchSiteTag(read, ou.Name, ou.DistinguishedName);
             if (tag is null) throw Invalid();
             return (new(ou.DistinguishedName, ou.Name!, tag.Tag, ou.DistinguishedName), null);
         }

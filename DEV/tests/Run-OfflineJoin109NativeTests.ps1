@@ -198,13 +198,15 @@ Case 'Plain blob and executable paths really pass the product guard' {
 }
 # ---------- C. Ce que Spark peut vraiment executer : l'echec du transport reel ----------
 Case 'The real transport fails loudly rather than reporting a joined machine' {
+    # Le guillemet est refuse par le chemin produit avant Process.Start, sur chaque OS.
+    # Une fixture valide ne doit jamais etre remise au vrai djoin du runner Windows.
     $returned=$null;$threw=$false
-    try{$returned=Invoke-PestoOfflineNative -Path $plainBlob}catch{$threw=$true}
-    Assert $threw ('le transport natif a rendu ['+[string]$returned+'] sur une plateforme sans racine Windows : la demande passerait pour une jonction reussie')
+    try{$returned=Invoke-PestoOfflineNative -Path ($plainBlob+'"')}catch{$threw=$true}
+    Assert $threw 'le transport accepte un chemin natif interdit'
     Assert ($null -eq $returned) 'le transport natif a rendu une valeur tout en echouant'
 }
 }finally{try{Remove-Item -LiteralPath $root -Recurse -Force -ErrorAction Stop}catch{}}
 Assert (-not [IO.Directory]::Exists($root)) 'le sac de la suite subsiste : les fixtures claires doivent etre detruites'
 if($ReportPath){[IO.File]::WriteAllText($ReportPath,(@{Suite='OfflineJoin109Native';Passed=$script:passed;Failed=$script:failed}|ConvertTo-Json),[Text.UTF8Encoding]::new($false))}
-Write-Output ('OfflineJoin109Native: '+$script:passed+' passed, '+$script:failed+' failed. Sealed syntax tree of the secret hand-off judged by the real PowerShell parser, product path guards really executed; no djoin, no Windows, no VM.')
+Write-Output ('OfflineJoin109Native: '+$script:passed+' passed, '+$script:failed+' failed. Sealed syntax tree of the secret hand-off judged by the real PowerShell parser, product path guards really executed; no djoin, no AD, no VM.')
 if($script:failed -gt 0){exit 1}

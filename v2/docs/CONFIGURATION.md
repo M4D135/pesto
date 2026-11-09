@@ -31,6 +31,10 @@ La page Paramètres permet de préparer puis confirmer les paramètres du domain
 
 Une configuration V1 peut être choisie explicitement à l’import. Le fichier V1 choisi demeure intact. Les anciennes correspondances `TAGS`/`OUSite` restent utilisables ; un import ne les remplace pas par des OU inventées. Les paramètres V1 inconnus ou propres à une session ne deviennent pas des paramètres diffusables.
 
+Les motifs `TAGS` acceptent `*`, `?`, les ensembles et plages `[ABC]` / `[A-C]`, et l’échappement PowerShell par accent grave. Un motif mal formé est refusé. Sans correspondance, une OU enfant observée reprend le suffixe alphabétique du nom, de la largeur du code de site ; le repli ne s’applique jamais à PREPROD ni à ses alias. Les motifs explicites restent prioritaires.
+
+Si `V2DirectorySites` et la découverte V1 coexistent, Paramètres affiche les lignes explicites. Les enregistrer sans les modifier conserve intégralement `TAGS`, `OUSite` et `V2DirectorySites`. Une modification partielle de ces lignes est refusée lorsque le modèle comporte des règles non affichées : son remplacement passe par l’import de configuration complète. Le périmètre `CONF[0].OUScanNoms`, absent du formulaire, est également conservé. Un référentiel de services peut utiliser les codes des sites explicites aussi bien que ceux de `TAGS`.
+
 La création d’une configuration neuve positionne explicitement `EntraPolicy=Disabled`, `DsregLeaveOnMove=false`, `ClearProtectionOnMove=false` et `AllowHybridRepair=false`. Les politiques déjà configurées dans un import valide sont préservées. Aucun enregistrement ne lance de mutation AD, de retrait Entra ou de redémarrage.
 
 ### Politiques métier et coordination

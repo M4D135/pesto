@@ -6,7 +6,7 @@
   "Files": [
     {
       "Path": "Pesto.exe",
-      "SHA256": "b7a20d3244125df812d3237b44d10590f4881c58da7c1d83ca0a618e4d6ac563"
+      "SHA256": "2d235d7beba4648786493eff9892ab9b6a1b1228cc6c116fd30ac317e95c19eb"
     },
     {
       "Path": "wad/ActiveDirectory.Format.ps1xml",
@@ -102,7 +102,7 @@
     },
     {
       "Path": "wad/Pesto.Engine.build.json",
-      "SHA256": "58407045fb0a159f81b9d8be8cb471255d8b00fa273a8362420b8ba9e9dbac03"
+      "SHA256": "8faad366fff77bf0fce1cffaf8a255fde681cb1eaca45d0a24bbd8438bc9298f"
     },
     {
       "Path": "wad/Invoke-Pesto.ps1",
@@ -206,7 +206,7 @@
     },
     {
       "Path": "wad/Pesto-Directory.ps1",
-      "SHA256": "28374614da674aaff630ac02fe75a956f8e0036eb3fed4130c9af4e98ca4fb45"
+      "SHA256": "877fd72b3cf4a02a7ac1e3ff294ecd2380d42c1ebe22dfc3c774ad14117524f2"
     },
     {
       "Path": "wad/Pesto-Inspection.ps1",

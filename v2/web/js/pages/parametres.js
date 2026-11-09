@@ -45,6 +45,7 @@ function layout() {
       <textarea class="input mono" name="sites" rows="6" spellcheck="false" aria-label="Sites, un par ligne : id;nom;code;OU"></textarea>
       <p class="k-hint">Format par ligne : <span class="mono">paris;Paris;PA;OU=Paris,OU=Postes,DC=example,DC=local</span>.
         L’OU doit finir par le DC du domaine.</p>
+      <p class="k-hint">Si des sites explicites sont configurés, seules leurs lignes apparaissent ici. Les règles de découverte importées sont conservées lorsque ces lignes restent inchangées ; une configuration mixte se remplace par l’import de configuration.</p>
       <p class="k-msg" data-slot="sites-msg" hidden></p>
     </section>
     <p class="muted small reveal">${icon('alert')} Enregistrer invalide tous les aperçus, plans et file en cours : chaque
@@ -168,7 +169,7 @@ export function render(main, ctx) {
       if (!id || !name || !code || (!ou && !(live && loaded?.sites?.length && loaded.sites.every((s) => !s.ou)))) return { error: `Champ vide sur la ligne : ${line.trim()}` };
       items.push({ id, name, code: code.toUpperCase(), ou });
     }
-    if (!items.length) return { error: 'Au moins un site est nécessaire.' };
+    if (!items.length && !(live && loaded?.configured && loaded?.sites?.length === 0)) return { error: 'Au moins un site est nécessaire.' };
     return { items };
   }
 

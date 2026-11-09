@@ -570,13 +570,48 @@ internal sealed class V1Config
         return IsDnsName(dns) ? dns : null;
     }
 
-    /// <summary>Port de WildcardPattern (jokers * et ?, sans distinction de casse), motif traité comme littéral sinon.</summary>
+    /// <summary>PowerShell string wildcards: *, ?, character sets/ranges and backtick escapes, without regex syntax.</summary>
     internal static bool MatchesWildcard(string pattern, string value)
     {
-        var regex = new StringBuilder("^");
-        foreach (var c in pattern)
-            regex.Append(c switch { '*' => ".*", '?' => '.', _ => Regex.Escape(c.ToString()) });
-        regex.Append('$');
-        return Regex.IsMatch(value, regex.ToString(), RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.NonBacktracking);
+        static string Literal(char c) => "\\u" + ((int)c).ToString("X4", System.Globalization.CultureInfo.InvariantCulture);
+        static PestoException InvalidPattern() => new("config.invalid", "Motif de site invalide : vérifiez les crochets et les plages de caractères du TAGS.");
+        var regex = new StringBuilder("\\A");
+        for (var i = 0; i < pattern.Length; i++)
+        {
+            var c = pattern[i];
+            if (c == '`') regex.Append(Literal(i + 1 < pattern.Length ? pattern[++i] : c));
+            else if (c == '*') regex.Append(".*");
+            else if (c == '?') regex.Append('.');
+            else if (c != '[') regex.Append(Literal(c));
+            else
+            {
+                var set = new List<(char Value, bool Escaped)>();
+                var closed = false;
+                while (++i < pattern.Length)
+                {
+                    var member = pattern[i];
+                    if (member == ']' && set.Count > 0) { closed = true; break; }
+                    var escaped = member == '`' && i + 1 < pattern.Length;
+                    if (escaped) member = pattern[++i];
+                    set.Add((member, escaped));
+                }
+                if (!closed) throw InvalidPattern();
+                regex.Append('[');
+                for (var j = 0; j < set.Count; j++)
+                {
+                    regex.Append(Literal(set[j].Value));
+                    if (j + 2 < set.Count && set[j + 1] == ('-', false))
+                    {
+                        if (set[j].Value > set[j + 2].Value) throw InvalidPattern();
+                        regex.Append('-').Append(Literal(set[j + 2].Value));
+                        j += 2;
+                    }
+                }
+                regex.Append(']');
+            }
+        }
+        regex.Append("\\z");
+        return Regex.IsMatch(value, regex.ToString(), RegexOptions.IgnoreCase | RegexOptions.CultureInvariant
+            | RegexOptions.NonBacktracking | RegexOptions.Singleline);
     }
 }

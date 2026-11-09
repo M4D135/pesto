@@ -1,4 +1,14 @@
-# Parité Pesto V2 — état du code courant
+# Parité Pesto V2 — état courant et historique
+
+## État au 9 novembre 2026
+
+La dernière release publiée est [2.0.11](https://github.com/M4D135/pesto/releases/tag/v2.0.11), source `a84c6a4238492532069660d5f210f88f52dc7eac`. Depuis la 2.0.10, la distribution publiée est **LIGHT** : `Pesto.exe` et `wad/`, .NET et module Microsoft ActiveDirectory embarqués, Evergreen installé ou Socle WebView2 externe vérifié. Le code de fabrication DEV et les anciennes preuves PROD/DEV ne décrivent pas une seconde distribution publiée actuellement.
+
+Les corrections de source après cette release ne valent pas publication ou qualification Windows/AD. Les preuves restent attachées à leur SHA et au binaire effectivement essayé ; le domaine réel, le Socle sans Evergreen et les mutations AD restent à qualifier. Voir [le guide courant](../README.md) et [la configuration](CONFIGURATION.md).
+
+## Archives de parité et de qualification
+
+Le relevé suivant conserve les états antérieurs et leurs limites. Les anciens liens GitHub peuvent être indisponibles depuis la recréation du dépôt le 9 novembre. Les mentions de runtime fixe intégré et de packs PROD/DEV concernent ces anciennes versions, pas le pack LIGHT courant.
 
 **Release officielle 2.0.0 : [v2.0.0](https://github.com/M4D135/pesto/releases/tag/v2.0.0), source `84d76fc022eb11172021447672cfde5381a2d4ea`, [campagne 40720801680](https://github.com/M4D135/pesto/actions/runs/40720801680).** Les ZIP PROD/DEV publiés sont les octets testés sous Windows et revérifiés après téléchargement ; une installation DEV de `de527313` passe à 2.0.0 par nouvelle installation. `qualification=unqualified` : AD, UAC réel, UNC et retour depuis les boutons UI non qualifiés. Détails : [rapport de release](RELEASE-v2.0.0.md).
 

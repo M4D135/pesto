@@ -182,7 +182,7 @@ internal static class UpdateTests
             var acceptedArchive = Path.Combine(f.Root, "accepted.zip");
             ZipFile.CreateFromDirectory(f.Next, acceptedArchive, CompressionLevel.NoCompression, includeBaseDirectory: true);
             var accepted = service.InspectLocal(acceptedArchive);
-            var inspectionRoot = Path.Combine(f.Root, "state", "inspections");
+            var inspectionRoot = Path.Combine(Directory.GetDirectories(Path.Combine(f.Root, "state", "workspaces")).Single(), "inspections");
             var previousInspection = Directory.GetDirectories(inspectionRoot).Single();
             var previousFingerprint = accepted["fingerprint"]!.GetValue<string>();
             var installationFingerprint = UpdatePackage.Validate(f.Install).Fingerprint;
@@ -576,6 +576,78 @@ internal static class UpdateTests
             Check.Contains("Fichier manquant", problem, "l’index réel détecte les fichiers absents");
         }
         finally { if (Directory.Exists(tmp)) Directory.Delete(tmp, true); }
+    }
+
+    [Test] private static async Task TemporaryUpdateCopiesExpireAndDisposeWithoutTouchingSourcesOrTransactions()
+    {
+        using var f = new Fixture();
+        var clock = new UpdateClock();
+        var state = Path.Combine(f.Root, "state");
+        using var service = new UpdateService(new(f.Install, state, "PROD", false), clock);
+        var archive = Path.Combine(f.Root, "next.zip"); ZipFile.CreateFromDirectory(f.Next, archive);
+        var original = UpdatePackage.Hash(archive);
+        var candidate = service.InspectLocal(archive)["candidateId"]!.GetValue<string>();
+        var ready = await service.PrepareAsync(candidate);
+        var work = Directory.GetDirectories(Path.Combine(state, "workspaces")).Single();
+        var inspection = Directory.GetDirectories(Path.Combine(work, "inspections")).Single();
+        var preparation = Directory.GetDirectories(Path.Combine(work, "prepared")).Single();
+        clock.Advance(TimeSpan.FromMinutes(31)); service.Status();
+        Check.False(Directory.Exists(inspection), "le candidat ZIP expiré est nettoyé");
+        Check.True(Directory.Exists(preparation), "la préparation indépendante reste utilisable deux heures");
+        await ThrowsAsync(() => service.PrepareAsync(candidate), "update.stale");
+        clock.Advance(TimeSpan.FromHours(2)); service.Status();
+        Check.False(Directory.Exists(preparation), "la préparation expirée est nettoyée");
+        Check.Pesto(() => service.RequestInstall(ready["preparedId"]!.GetValue<string>(), true), "update.stale", "expiration réellement appliquée");
+        candidate = service.InspectLocal(archive)["candidateId"]!.GetValue<string>();
+        ready = await service.PrepareAsync(candidate);
+        var request = service.RequestInstall(ready["preparedId"]!.GetValue<string>(), true);
+        Check.Equal(0, Directory.GetDirectories(Path.Combine(work, "prepared")).Length, "le transfert libère la préparation");
+        service.Dispose(); service.Dispose();
+        Check.False(Directory.Exists(work), "fermeture idempotente : toutes les copies de cette instance sont supprimées");
+        Check.True(File.Exists(request.HelperExecutable), "le helper transactionnel durable reste intact après fermeture");
+        UpdateTransaction.ValidateHelperInvocation(request.TransactionDirectory, request.HelperExecutable);
+        Check.Equal(original, UpdatePackage.Hash(archive), "le ZIP choisi n'est jamais possédé par le service");
+        Check.Equal("2.0.1", UpdatePackage.Validate(f.Next).Version, "le dossier source reste intact");
+        Check.Equal("2.0.0", UpdatePackage.Validate(f.Install).Version, "aucune installation exécutée");
+        Check.Equal("PRIVATE-USER-SETTINGS", File.ReadAllText(f.UserConfiguration), "profil préservé");
+        var refused = false;
+        try { service.Status(); } catch (ObjectDisposedException) { refused = true; }
+        Check.True(refused, "une instance fermée ne peut créer de nouveaux fichiers");
+    }
+
+    [Test] private static void WorkspaceReclaimsOnlyAbandonedMarkedCopiesAndProtectsLiveInstances()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "pesto-workspace-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            using var live = new UpdateWorkspace(root);
+            File.WriteAllText(Path.Combine(live.DirectoryPath, "sentinel"), "live");
+            var parent = Path.Combine(root, "workspaces");
+            var id = Guid.NewGuid().ToString("N"); var abandoned = Path.Combine(parent, id);
+            Directory.CreateDirectory(abandoned); File.WriteAllText(Path.Combine(abandoned, "copy"), "orphan");
+            File.WriteAllText(Path.Combine(parent, id + ".lease"), "pesto.update-workspace.v1\n" + id + "\n", Encoding.ASCII);
+            var unknown = Path.Combine(parent, Guid.NewGuid().ToString("N")); Directory.CreateDirectory(unknown);
+            File.WriteAllText(Path.Combine(unknown, "sentinel"), "unknown");
+            var legacy = Path.Combine(root, "inspections"); Directory.CreateDirectory(legacy);
+            File.WriteAllText(Path.Combine(legacy, "sentinel"), "legacy");
+            using (var next = new UpdateWorkspace(root))
+            {
+                Check.False(Directory.Exists(abandoned), "copie marquée sans détenteur récupérée au prochain usage");
+                Check.False(File.Exists(Path.Combine(parent, id + ".lease")), "marqueur récupéré après nettoyage");
+                Check.Equal("live", File.ReadAllText(Path.Combine(live.DirectoryPath, "sentinel")), "bail actif conservé");
+                Check.Equal("unknown", File.ReadAllText(Path.Combine(unknown, "sentinel")), "répertoire non possédé conservé");
+                Check.Equal("legacy", File.ReadAllText(Path.Combine(legacy, "sentinel")), "anciens fichiers sans preuve de propriété conservés");
+            }
+        }
+        finally { Directory.Delete(root, true); }
+    }
+
+    private sealed class UpdateClock : TimeProvider
+    {
+        private DateTimeOffset now = new(2026, 11, 9, 12, 0, 0, TimeSpan.Zero);
+        public override DateTimeOffset GetUtcNow() => now;
+        public void Advance(TimeSpan amount) => now += amount;
     }
 
     private sealed class Fixture : IDisposable

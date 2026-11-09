@@ -586,10 +586,14 @@ Case 'A plain path replaced by a link never lets the blob material leave the sto
     $hors=Join-Path $root ('fuite-'+[Guid]::NewGuid().ToString('N'))
     [void][IO.Directory]::CreateDirectory($hors)
     $cible=Join-Path $hors 'blob-exfiltre.odj'
+    # PS 5.1 exige une cible existante : sa conservation devient le temoin.
+    $marker=[Text.Encoding]::UTF8.GetBytes('fixture-target-unchanged')
+    [IO.File]::WriteAllBytes($cible,$marker)
     [void](New-Item -ItemType SymbolicLink -Path (PlainPath $import.BlobId) -Target $cible -ErrorAction Stop)
     RejectWith {Apply-Blob -BlobId $import.BlobId} 'Un chemin critique traverse un lien ou une jonction.'
     Equal $script:native 0 'djoin a ete appele sur un chemin transitoire detourne'
-    Assert (-not [IO.File]::Exists($cible)) 'le materiel clair du blob a ete ecrit hors du magasin ACL'
+    Assert ([IO.File]::Exists($cible)) 'la cible externe du lien a ete supprimee'
+    Equal ([BitConverter]::ToString([IO.File]::ReadAllBytes($cible))) ([BitConverter]::ToString($marker)) 'la cible externe du lien a ete modifiee'
     Equal (Read-PestoOfflineRecord $import.BlobId).State 'Uncertain' 'un detournement de chemin laisse un etat rejouable'
 } -Reset
 Case 'Both the plain file and the protected secret are destroyed once djoin answered' {

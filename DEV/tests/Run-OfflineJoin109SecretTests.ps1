@@ -81,6 +81,8 @@ $script:tree=[System.Management.Automation.Language.Parser]::ParseFile($runtime,
 if($parseErrors -and $parseErrors.Count){throw ('le moteur scelle ne se parse pas : '+$parseErrors[0].Message)}
 # La disponibilite de DPAPI sur l'hote est mesuree, pas supposee : c'est elle qui decide si les deux derniers cas
 # jouent un aller-retour reel ou un refus reel, et elle est enregistree dans le rapport.
+# PS 5.1 ne charge pas ce type avant le premier usage du produit.
+Add-Type -AssemblyName System.Security
 $script:dpapiAvailable=$true;$script:dpapiProbe=''
 try{[void]([Security.Cryptography.ProtectedData]::Protect([byte[]]@(1,2,3),$null,[Security.Cryptography.DataProtectionScope]::LocalMachine))}
 catch{$script:dpapiAvailable=$false;$script:dpapiProbe=[string]$_.Exception.Message}

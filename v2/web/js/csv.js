@@ -55,18 +55,26 @@ function splitCells(line, delim) {
   const out = [];
   let cur = '';
   let quoted = false;
+  let closedQuote = false;
   for (let i = 0; i < line.length; i += 1) {
     const ch = line[i];
     if (quoted) {
       if (ch === '"') {
-        if (line[i + 1] === '"') { cur += '"'; i += 1; } else quoted = false;
+        if (line[i + 1] === '"') { cur += '"'; i += 1; }
+        else { quoted = false; closedQuote = true; }
       } else cur += ch;
-    } else if (ch === '"') quoted = true;
-    else if (ch === delim) { out.push(cur); cur = ''; }
+    } else if (ch === delim) { out.push(cur); cur = ''; closedQuote = false; }
+    else if (closedQuote) {
+      if (!/\s/.test(ch)) return { error: 'Caractère inattendu après la fermeture des guillemets.' };
+    } else if (ch === '"') {
+      if (cur.trim() !== '') return { error: 'Un guillemet doit ouvrir une cellule, pas couper sa valeur.' };
+      cur = ''; quoted = true;
+    }
     else cur += ch;
   }
+  if (quoted) return { error: 'Guillemets non fermés sur cette ligne.' };
   out.push(cur);
-  return out;
+  return { cells: out };
 }
 
 /**
@@ -85,10 +93,12 @@ export function parseQueueCsv(text, { limit = MAX_ROWS } = {}) {
   const [firstLine] = nonEmpty[0];
   const delim = (firstLine.split(';').length >= firstLine.split(',').length) ? ';' : ',';
   let start = 0;
-  if (HEADERS.includes(String(splitCells(firstLine, delim)[0] ?? '').trim().toLowerCase())) start = 1;
+  if (HEADERS.includes(String(splitCells(firstLine, delim).cells?.[0] ?? '').trim().toLowerCase())) start = 1;
   for (let k = start; k < nonEmpty.length; k += 1) {
     const [raw, line] = nonEmpty[k];
-    const cells = splitCells(raw, delim).map((c) => c.trim());
+    const parsed = splitCells(raw, delim);
+    if (parsed.error) { issues.push({ line, value: raw, reason: parsed.error }); continue; }
+    const cells = parsed.cells.map((c) => c.trim());
     const [rawName = '', rawType = '', rawSite = '', rawService = '', ...extra] = cells;
     const problems = [];
     if (extra.length) problems.push(`${extra.length} colonne(s) en trop : seules name${delim}type${delim}site${delim}service sont admises`);

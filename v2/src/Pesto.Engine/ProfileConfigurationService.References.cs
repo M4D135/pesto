@@ -43,6 +43,7 @@ public sealed partial class ProfileConfigurationService
                 var pattern = ConfigurationDocument.String(incoming, "pattern");
                 var code = ConfigurationDocument.String(incoming, "code").ToUpperInvariant();
                 if (pattern.Length > 200 || !Regex.IsMatch(code, sitePattern)) throw ConfigurationDocument.Invalid("Motif de site ou largeur de code invalide.");
+                _ = V1Config.MatchesWildcard(pattern, ""); // Validate the complete wildcard before confirmation.
                 var key = "site:" + pattern.ToUpperInvariant();
                 if (!keys.Add(key)) throw ConfigurationDocument.Invalid("Le référentiel contient un site en double.");
                 var existing = tags.OfType<JsonObject>().FirstOrDefault(t => ConfigurationDocument.String(t, "Site").Equals(pattern, StringComparison.OrdinalIgnoreCase));
@@ -51,6 +52,7 @@ public sealed partial class ProfileConfigurationService
                 changes.Add(new(key, "site", candidate, existing is null ? null : (JsonObject)existing.DeepClone(), conflict));
             }
             var knownSites = tags.OfType<JsonObject>().Select(t => ConfigurationDocument.String(t, "Tag").ToUpperInvariant())
+                .Concat(config.ExplicitSites.Select(s => s.Code))
                 .Concat(changes.Where(c => c.Kind == "site").Select(c => ConfigurationDocument.String(c.Incoming, "Tag"))).ToHashSet(StringComparer.OrdinalIgnoreCase);
             foreach (var item in services)
             {
@@ -133,7 +135,9 @@ public sealed partial class ProfileConfigurationService
                     labels.Add(change.Incoming.DeepClone());
                 }
             }
-            var validSites = tags.OfType<JsonObject>().Select(t => ConfigurationDocument.String(t, "Tag")).ToHashSet(StringComparer.OrdinalIgnoreCase);
+            var validSites = tags.OfType<JsonObject>().Select(t => ConfigurationDocument.String(t, "Tag"))
+                .Concat((candidate["V2DirectorySites"] as JsonArray ?? new JsonArray()).OfType<JsonObject>()
+                    .Select(s => ConfigurationDocument.String(s, "Code"))).ToHashSet(StringComparer.OrdinalIgnoreCase);
             if (plan.Changes.Where(c => c.Kind == "service" && (!c.Conflict || resolutions[c.Key] == "incoming"))
                 .Any(c => !validSites.Contains(ConfigurationDocument.String(c.Incoming, "Site"))))
                 throw new PestoException("references.conflicts", "Un service importé dépend d’un changement de site conservé. Résolvez ces deux choix de façon cohérente.");

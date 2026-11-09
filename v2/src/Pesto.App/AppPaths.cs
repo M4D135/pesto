@@ -30,7 +30,9 @@ internal static class AppPaths
             if (!string.IsNullOrWhiteSpace(CoreWebView2Environment.GetAvailableBrowserVersionString(null, new CoreWebView2EnvironmentOptions { ReleaseChannels = CoreWebView2ReleaseChannels.Stable }))) return (null, "evergreen");
         }
         catch (WebView2RuntimeNotFoundException) { }
-        var (state, problem) = SocleRuntime.Inspect(AppDirectory, false);
+        // Every entry point (including an already elevated process and offline join) resolves the runtime here.
+        // Check all file hashes before WebView2 loads DLLs; equal file sizes do not establish integrity.
+        var (state, problem) = SocleRuntime.Inspect(AppDirectory, deep: true);
         if (state == SocleState.Valid) return (Path.Combine(AppDirectory, "wad", "runtime", "webview2"), "socle");
         throw new FileNotFoundException(state == SocleState.Absent ? SocleRuntime.MissingMessage : SocleRuntime.InvalidMessage(problem ?? "état inconnu"));
     }

@@ -176,6 +176,18 @@ assert(csvComma.rows.length === 2 && csvComma.rows[0].name === 'PC-1' && csvComm
   'CSV : virgule et guillemets admis, colonnes optionnelles = null (le moteur tranchera)', JSON.stringify(csvComma));
 const csvEmpty = parseQueueCsv('\n\n');
 assert(csvEmpty.rows.length === 0 && csvEmpty.issues.length === 1, 'CSV vide : refus explicite', JSON.stringify(csvEmpty));
+for (const malformed of ['PC"1";S;PA;INF', '"PC1', '"PC1"suffix;S;PA;INF', 'PC1;"S;PA;INF']) {
+  const result = parseQueueCsv(`name;type;site;service\n${malformed}\nPC2;P;PA;INF`);
+  assert(result.rows.length === 1 && result.rows[0].name === 'PC2' && result.rows[0].line === 3
+    && result.issues.length === 1 && result.issues[0].line === 2 && result.issues[0].value === malformed,
+  `CSV : guillemets malformés refusés sans réinterpréter la cible (${malformed})`, JSON.stringify(result));
+}
+const quotedCells = parseQueueCsv('"name";"type";"site";"service"\n "PC1" ; "P" ; "PA" ; "INF" ');
+assert(quotedCells.rows.length === 1 && quotedCells.rows[0].name === 'PC1' && quotedCells.issues.length === 0,
+  'CSV : cellules citées et espaces extérieurs admis', JSON.stringify(quotedCells));
+const escapedQuote = parseQueueCsv('"PC""1";P;PA;INF');
+assert(escapedQuote.rows.length === 0 && escapedQuote.issues.length === 1 && /nom de poste invalide/.test(escapedQuote.issues[0].reason),
+  'CSV : un guillemet échappé reste dans la valeur et ne devient pas PC1', JSON.stringify(escapedQuote));
 const csvTooMany = parseQueueCsv(Array.from({ length: MAX_ROWS + 5 }, (_, i) => `PC${String(i).padStart(3, '0')}`).join('\n'));
 assert(csvTooMany.rows.length === MAX_ROWS && csvTooMany.truncated === true, `CSV borné à ${MAX_ROWS} lignes`, JSON.stringify({ n: csvTooMany.rows.length }));
 

@@ -1,6 +1,7 @@
 ﻿#requires -Version 5.1
 [CmdletBinding()]
-param()
+param([ValidateRange(0,89)][int]$ShardIndex=0,[ValidateRange(1,90)][int]$ShardCount=1,
+    [ValidateRange(1,3600)][int]$SuiteTimeoutSeconds=600,[string]$ReportDirectory='')
 $ErrorActionPreference='Stop'
 if($env:OS -ne 'Windows_NT' -or $PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5 -or -not [Environment]::Is64BitProcess){throw 'Windows PowerShell 5.1 x64 requis.'}
 # Toutes les suites tournent ici, chacune dans un powershell.exe -STA séparé (y compris les suites WPF).
@@ -21,11 +22,27 @@ $unlisted=@(Get-ChildItem -LiteralPath $PSScriptRoot -Filter 'Run-*.ps1' -File|W
 if($unlisted.Count){throw ('Suites absentes de Run-AllTests.ps1 : '+($unlisted -join ', '))}
 $missing=@($suites|Where-Object{-not [IO.File]::Exists((Join-Path $PSScriptRoot $_))})
 if($missing.Count){throw ('Suites introuvables : '+($missing -join ', '))}
+if($ShardIndex -ge $ShardCount){throw 'ShardIndex doit etre inferieur a ShardCount.'}
+if(-not $ReportDirectory){$ReportDirectory=Join-Path $PSScriptRoot ('results/windows-'+$ShardIndex)}
+$ReportDirectory=[IO.Path]::GetFullPath($ReportDirectory)
+[void][IO.Directory]::CreateDirectory($ReportDirectory)
+. (Join-Path $PSScriptRoot 'helpers/Invoke-IsolatedSuite.ps1')
+$selected=@(for($i=0;$i -lt $suites.Count;$i++){if(($i % $ShardCount) -eq $ShardIndex){$suites[$i]}})
 $failures=[Collections.Generic.List[string]]::new()
-foreach($suite in $suites) {
-    Write-Host "`n=== $suite ==="
-    & (Join-Path $PSHOME 'powershell.exe') -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File (Join-Path $PSScriptRoot $suite)
-    if($LASTEXITCODE -ne 0){$failures.Add($suite)}
+$results=[Collections.Generic.List[object]]::new()
+$report=Join-Path $ReportDirectory 'suites.json'
+function Save-SuiteProgress([string]$Running){
+    $data=[ordered]@{Schema=1;ShardIndex=$ShardIndex;ShardCount=$ShardCount;TotalSuites=$suites.Count;Selected=$selected;Running=$Running;Results=@($results.ToArray())}
+    [IO.File]::WriteAllText($report,($data|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))
 }
-if($failures.Count){throw ('Suites en échec : '+($failures.ToArray() -join ', '))}
-Write-Host ('Les '+$suites.Count+' suites locales sont passées. Le test WPF isolé ne remplace pas une recette de Pesto connecté à AD.')
+Save-SuiteProgress ''
+foreach($suite in $selected) {
+    Write-Host ("`n=== ["+$ShardIndex+'/'+$ShardCount+'] '+$suite+' ===')
+    Save-SuiteProgress $suite
+    $result=Invoke-PestoIsolatedSuite -Path (Join-Path $PSScriptRoot $suite) -OutputDirectory $ReportDirectory -TimeoutSeconds $SuiteTimeoutSeconds
+    $results.Add($result);Save-SuiteProgress ''
+    Write-Host ($suite+': exit='+$result.ExitCode+' timeout='+$result.TimedOut+' duration='+$result.DurationSeconds+'s')
+    if($result.ExitCode -ne 0){$failures.Add($suite)}
+}
+if($failures.Count){throw ('Suites en echec : '+($failures.ToArray() -join ', '))}
+Write-Host ('Les '+$selected.Count+' suites du lot '+$ShardIndex+' sont passees. Ces doubles isoles ne qualifient pas AD.')

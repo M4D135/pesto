@@ -294,6 +294,12 @@ LIGHT dans un nouveau dossier.
   directement ou dans un unique dossier racine.
 
 Le pack choisi est copié dans une préparation isolée, relu et comparé aux empreintes de l’aperçu.
+Les extractions ZIP et préparations appartiennent à un espace temporaire propre à l’instance.
+À la prochaine action de mise à jour, les aperçus expirés après 30 minutes et les préparations expirées
+après deux heures sont nettoyés. La fermeture attend les copies en cours puis libère cet espace.
+Après un arrêt brutal, le prochain usage peut récupérer les espaces marqués dont le bail exclusif est
+libre. Les dossiers anciens sans marqueur, les liens, les sources choisies et les transactions durables
+ne sont pas supprimés par ce nettoyage. Une instance encore active garde son espace.
 La comparaison porte sur le dossier entièrement copié, avant son admission : un remplacement concurrent
 cohérent de la source, même à version identique, est refusé. Seule la nouvelle copie est nettoyée ; la
 source modifiée est préservée. La création d’un pack personnalisé applique le même contrôle avant de

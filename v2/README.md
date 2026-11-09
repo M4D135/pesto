@@ -26,6 +26,12 @@ Les recherches de postes et les listes de file ignorent les réponses anciennes.
 
 ## État et références
 
+**État au 9 novembre 2026 : release publiée [v2.0.11](https://github.com/M4D135/pesto/releases/tag/v2.0.11), source `a84c6a4238492532069660d5f210f88f52dc7eac`, [campagne 42602330297](https://github.com/M4D135/pesto/actions/runs/42602330297).** Le pack publié est LIGHT. La 2.0.11 rétablit les sites reconnus par plusieurs motifs TAGS. Les corrections ultérieures présentes dans `master` sont des changements de source ; elles ne constituent pas une nouvelle release. La liste des sites/services du domaine réel et le démarrage sans Evergreen sur le Socle restent à qualifier sur le binaire exact.
+
+### Archives de livraison antérieures à la recréation du dépôt
+
+Les références ci-dessous conservent leur date, leur SHA et leur portée historique. Le dépôt GitHub a été recréé le 9 novembre : les anciens tags, commits et campagnes distantes peuvent ne plus être accessibles. Les rapports conservés ici ne qualifient pas automatiquement la source courante ni le pack LIGHT.
+
 **Release officielle 2.0.9 : [v2.0.9](https://github.com/M4D135/pesto/releases/tag/v2.0.9), source `ee40af18458ae0bb604f02665a6f4e2df57d7378`, [campagne 41284549253](https://github.com/M4D135/pesto/actions/runs/41284549253)** — détection du poste hors domaine, motifs de refus affichés et journal de mise à jour plus robuste. Les tests Windows V2 et le contrôle après téléchargement sont réussis ; VM/AD restent non qualifiés ([rapport](docs/RELEASE-v2.0.9.md)).
 
 **Release précédente 2.0.8 : [v2.0.8](https://github.com/M4D135/pesto/releases/tag/v2.0.8), source `aeb00259b3ef094e14c584559b788433aea38901`, [campagne 41104439245](https://github.com/M4D135/pesto/actions/runs/41104439245)** — en contraste élevé Windows, les choix cochés et les boutons pleins sont de nouveau visibles ([rapport](docs/RELEASE-v2.0.8.md)).

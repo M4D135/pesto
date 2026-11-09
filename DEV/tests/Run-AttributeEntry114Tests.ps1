@@ -227,6 +227,20 @@ try{
     RejectWith -body {Invoke-Entry -Params @{ObjectGuid=([Guid]$guid);Attributes=([pscustomobject]@{description='new'});OutPlanPath='plan.json'}} -Needle 'Chemin de plan absolu requis.'
     Equal $script:adWrites 0
     } -Reset
+ Case 'DateTime plan dates are normalized before validation' {
+    $path=New-PlanOnDisk
+    $doc=Read-JsonFile $path
+    $seal=$doc.Integrity
+    # PS 5.1 garde les chaines JSON, PS 7 les convertit : presenter la meme donnee DateTime aux deux.
+    foreach($date in @('CreatedUtc','ExpiresUtc')){
+        $doc.$date=if($doc.$date -is [DateTime]){$doc.$date.ToUniversalTime()}else{[DateTimeOffset]::Parse($doc.$date,[Globalization.CultureInfo]::InvariantCulture).UtcDateTime}
+        Assert ($doc.$date -is [DateTime]) 'la fixture doit presenter un instant DateTime'
+    }
+    Assert-PestoAttributePlan $doc
+    foreach($date in @('CreatedUtc','ExpiresUtc')){Assert ($doc.$date -is [string]) 'le validateur doit normaliser l instant avant de verifier le sceau'}
+    Equal $doc.Integrity $seal 'la normalisation ne doit pas refaire le sceau'
+    Equal $script:adWrites 0
+    } -Reset
  Case 'A plan file rewritten by an orchestrator still executes' {
     $path=New-PlanOnDisk
     $doc=Read-JsonFile $path

@@ -207,7 +207,7 @@ jobs:
       - name: Assemble PROD-LIGHT, DEV and update baseline
         run: |
           $ErrorActionPreference = 'Stop'
-          & node ../baseline/v2/tools/pack/make-pack.mjs --source out/baseline-publish --dest out/baseline-PROD-LIGHT --channel PROD --evergreen --source-commit $env:UPDATE_BASELINE_COMMIT
+          & node ../baseline/v2/tools/pack/make-pack.mjs --source out/baseline-publish --dest out/baseline-PROD-LIGHT --channel PROD --source-commit $env:UPDATE_BASELINE_COMMIT
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           & node ../baseline/v2/tools/pack/make-pack.mjs --verify out/baseline-PROD-LIGHT
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

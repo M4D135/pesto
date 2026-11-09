@@ -1,7 +1,9 @@
 ﻿#requires -Version 5.1
 [CmdletBinding()]
-param([ValidateRange(0,89)][int]$ShardIndex=0,[ValidateRange(1,90)][int]$ShardCount=1,
-    [ValidateRange(1,3600)][int]$SuiteTimeoutSeconds=600,[string]$ReportDirectory='')
+param(
+    [ValidateRange(0,89)][int]$ShardIndex=0,[ValidateRange(1,90)][int]$ShardCount=1,
+    [ValidateRange(1,3600)][int]$SuiteTimeoutSeconds=600,[string]$ReportDirectory=''
+)
 $ErrorActionPreference='Stop'
 if($env:OS -ne 'Windows_NT' -or $PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5 -or -not [Environment]::Is64BitProcess){throw 'Windows PowerShell 5.1 x64 requis.'}
 # Toutes les suites tournent ici, chacune dans un powershell.exe -STA séparé (y compris les suites WPF).

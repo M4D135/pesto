@@ -329,7 +329,10 @@ internal static class NativeConfigurationQualification
                     Check(observed.Count("updates.prepare") == 1 && Text(observed.Last("updates.prepare"), "candidateId") == candidateId
                         && Text(Result("updates.prepare"), "fingerprint") == custom.Fingerprint, "maintenancePreparedFromButton");
                     var preparedId = Text(Result("updates.prepare"), "preparedId");
-                    var preparedDirectory = Path.Combine(updateState, "prepared", preparedId, "package");
+                    var workspaces = Path.Combine(updateState, "workspaces");
+                    scope.RequireOwned(workspaces);
+                    var preparedDirectory = Directory.EnumerateDirectories(workspaces)
+                        .Select(work => Path.Combine(work, "prepared", preparedId, "package")).Single(Directory.Exists);
                     scope.RequireOwned(preparedDirectory);
                     Check(UpdatePackage.Validate(preparedDirectory).Fingerprint == custom.Fingerprint
                         && UpdatePackage.Validate(destination).Fingerprint == custom.Fingerprint, "maintenancePreparedCopyExact");

@@ -183,7 +183,10 @@ internal static class NativeUpdateUiQualification
                             && Text(Result("updates.prepare"), "fingerprint") == fixture.TargetFingerprint
                             && Text(preparedUi, "preparedText").Contains(fixture.Channel, StringComparison.Ordinal)
                             && Text(preparedUi, "preparedText").Contains("Source locale — origine à vérifier", StringComparison.Ordinal), "preparedFromButton");
-                        var preparedDirectory = Path.Combine(data, "updates", "prepared", preparedId, "package");
+                        var workspaces = Path.Combine(data, "updates", "workspaces");
+                        scope.RequireOwned(workspaces);
+                        var preparedDirectory = Directory.EnumerateDirectories(workspaces)
+                            .Select(work => Path.Combine(work, "prepared", preparedId, "package")).Single(Directory.Exists);
                         scope.RequireOwned(preparedDirectory);
                         var target = UpdatePackage.Validate(preparedDirectory, fixture.Channel);
                         var targetManifest = ReadObject(Path.Combine(preparedDirectory, "wad", "Pesto.package.json"));

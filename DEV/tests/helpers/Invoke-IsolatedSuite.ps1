@@ -1,8 +1,10 @@
 ﻿# Windows PowerShell 5.1 only. The unnamed job owns the launcher and every descendant.
 function Invoke-PestoIsolatedSuite {
-    param([Parameter(Mandatory=$true)][string]$Path,
+    param(
+        [Parameter(Mandatory=$true)][string]$Path,
         [Parameter(Mandatory=$true)][string]$OutputDirectory,
-        [ValidateRange(1,3600)][int]$TimeoutSeconds=600)
+        [ValidateRange(1,3600)][int]$TimeoutSeconds=600
+    )
     if(-not ('PestoIsolatedSuiteJob' -as [type])){Add-Type -Path (Join-Path $PSScriptRoot 'IsolatedSuiteJob.cs')}
     $Path=[IO.Path]::GetFullPath($Path)
     [void][IO.Directory]::CreateDirectory($OutputDirectory)
@@ -17,7 +19,7 @@ function Invoke-PestoIsolatedSuite {
         $info=[Diagnostics.ProcessStartInfo]::new()
         $info.FileName=Join-Path $PSHOME 'powershell.exe'
         $escaped=$Path.Replace("'","''")
-        $command="if([Console]::ReadLine() -cne 'go'){exit 125}; & (Join-Path `$PSHOME 'powershell.exe') -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File '$escaped'; exit `$LASTEXITCODE"
+        $command="if([Console]::OpenStandardInput().ReadByte() -ne 1){exit 125}; & (Join-Path `$PSHOME 'powershell.exe') -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File '$escaped'; exit `$LASTEXITCODE"
         $encoded=[Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($command))
         $info.Arguments='-NoLogo -NoProfile -NonInteractive -STA -ExecutionPolicy RemoteSigned -EncodedCommand '+$encoded
         $info.UseShellExecute=$false;$info.CreateNoWindow=$true
@@ -25,9 +27,10 @@ function Invoke-PestoIsolatedSuite {
         $process.StartInfo=$info
         if(-not $process.Start()){throw 'Impossible de lancer la suite isolee.'};$started=$true
         $stdout=$process.StandardOutput.ReadToEndAsync();$stderr=$process.StandardError.ReadToEndAsync()
-        # The launcher waits for a one-line permit. EOF or a parent crash never admits the suite.
+        # A raw byte permit avoids the UTF-8 BOM of PS 5.1 StandardInput. EOF never admits a suite.
         $job.Attach($process)
-        $process.StandardInput.WriteLine('go')
+        $process.StandardInput.BaseStream.WriteByte(1)
+        $process.StandardInput.BaseStream.Flush()
         $process.StandardInput.Close()
         $timedOut=-not $process.WaitForExit($TimeoutSeconds*1000)
         $exitCode=if($timedOut){-1}else{$process.ExitCode}

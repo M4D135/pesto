@@ -1,0 +1,45 @@
+test_01_runtime_only_needs_no_demo_or_helpers (test_distribution.DistributionTests.test_01_runtime_only_needs_no_demo_or_helpers) ... ok
+test_02_optional_changes_do_not_modify_runtime_verification (test_distribution.DistributionTests.test_02_optional_changes_do_not_modify_runtime_verification) ... ok
+test_03_each_missing_runtime_file_is_refused (test_distribution.DistributionTests.test_03_each_missing_runtime_file_is_refused) ... ok
+test_04_each_modified_runtime_file_is_refused (test_distribution.DistributionTests.test_04_each_modified_runtime_file_is_refused) ... ok
+test_05_invalid_manifest_is_refused (test_distribution.DistributionTests.test_05_invalid_manifest_is_refused) ... ok
+test_06_linked_runtime_file_is_refused (test_distribution.DistributionTests.test_06_linked_runtime_file_is_refused) ... ok
+test_07_linked_manifest_directory_is_refused (test_distribution.DistributionTests.test_07_linked_manifest_directory_is_refused) ... ok
+test_08_generator_succeeds_without_dev_files (test_distribution.DistributionTests.test_08_generator_succeeds_without_dev_files) ... ok
+test_09_prod_export_is_closed_and_preserves_configuration (test_distribution.DistributionTests.test_09_prod_export_is_closed_and_preserves_configuration) ... ok
+test_10_dev_and_prod_share_the_same_runtime (test_distribution.DistributionTests.test_10_dev_and_prod_share_the_same_runtime) ... ok
+test_11_existing_destination_is_never_overwritten (test_distribution.DistributionTests.test_11_existing_destination_is_never_overwritten) ... ok
+test_12_unknown_and_state_files_not_exported (test_distribution.DistributionTests.test_12_unknown_and_state_files_not_exported) ... ok
+test_13_manifest_ignores_new_optional_components_on_regeneration (test_distribution.DistributionTests.test_13_manifest_ignores_new_optional_components_on_regeneration) ... ok
+test_14_partial_runtime_refuses_export (test_distribution.DistributionTests.test_14_partial_runtime_refuses_export) ... ok
+test_15_old_root_script_is_not_required_or_exported (test_distribution.DistributionTests.test_15_old_root_script_is_not_required_or_exported) ... ok
+test_16_no_production_script_launches_a_root_pesto_ps1 (test_distribution.DistributionTests.test_16_no_production_script_launches_a_root_pesto_ps1) ... ok
+test_17_unblock_is_required_for_shipping_not_for_runtime (test_distribution.DistributionTests.test_17_unblock_is_required_for_shipping_not_for_runtime) ... ok
+test_18_archives_have_distinct_named_roots (test_distribution.DistributionTests.test_18_archives_have_distinct_named_roots) ... ok
+test_19_unblock_recognizes_exe_wad_without_root_ps1 (test_distribution.DistributionTests.test_19_unblock_recognizes_exe_wad_without_root_ps1) ... ok
+test_20_wrong_zip_root_name_is_refused (test_distribution.DistributionTests.test_20_wrong_zip_root_name_is_refused) ... ok
+test_binding_covers_every_immutable_component (test_rc19.RC19.test_binding_covers_every_immutable_component) ... ok
+test_manifest_rehash_cannot_hide_changed_runtime_from_exe (test_rc19.RC19.test_manifest_rehash_cannot_hide_changed_runtime_from_exe) ... ok
+test_nested_dsreg_logic_serialized_with_remote_helper (test_rc19.RC19.test_nested_dsreg_logic_serialized_with_remote_helper) ... ok
+test_neutral_configuration_is_explicit (test_rc19.RC19.test_neutral_configuration_is_explicit) ... ok
+test_no_name_based_ad_imports (test_rc19.RC19.test_no_name_based_ad_imports) ... ok
+test_no_positive_shutdown_delay_on_mutation_paths (test_rc19.RC19.test_no_positive_shutdown_delay_on_mutation_paths) ... ok
+test_preparation_has_closed_nonsecret_fields (test_rc19.RC19.test_preparation_has_closed_nonsecret_fields) ... ok
+test_ps_sources_and_cmd_encodings (test_rc19.RC19.test_ps_sources_and_cmd_encodings) ... ok
+test_runtime_help_does_not_require_optional_files (test_rc19.RC19.test_runtime_help_does_not_require_optional_files) ... ok
+test_runtime_source_naming_and_all_functions_unique (test_rc19.RC19.test_runtime_source_naming_and_all_functions_unique) ... ok
+test_runtime_version_consistency (test_rc19.RC19.test_runtime_version_consistency) ... ok
+test_support_location_only_and_root_policies (test_rc19.RC19.test_support_location_only_and_root_policies) ... ok
+test_existing_update_lock_refused (test_update.UpdateTests.test_existing_update_lock_refused) ... ok
+test_linked_configuration_refused (test_update.UpdateTests.test_linked_configuration_refused) ... ok
+test_preview_changes_nothing (test_update.UpdateTests.test_preview_changes_nothing) ... ok
+test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) ... ok
+test_same_or_nested_source_refused (test_update.UpdateTests.test_same_or_nested_source_refused) ... ok
+test_tampered_installed_file_refused (test_update.UpdateTests.test_tampered_installed_file_refused) ... ok
+test_update_preserves_config_and_preferences (test_update.UpdateTests.test_update_preserves_config_and_preferences) ... ok
+test_wrong_schema_refused (test_update.UpdateTests.test_wrong_schema_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 5.237s
+
+OK

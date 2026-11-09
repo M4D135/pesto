@@ -1,0 +1,36 @@
+﻿{
+    "Date":  "2026-10-04T21:06:33.8977144+02:00",
+    "Volume":  "NTFS VHD 64MiB jetable",
+    "FreeBytes":  0,
+    "FillError":  "System.Management.Automation.MethodInvocationException: Exception calling \"Write\" with \"3\" argument(s): \"There is not enough space on the disk.\r\n\" ---\u003e System.IO.IOException: There is not enough space on the disk.\r\n\r\n   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)\r\n   at System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)\r\n   at CallSite.Target(Closure , CallSite , Object , Object , Int32 , Object )\r\n   --- End of inner exception stack trace ---\r\n   at System.Management.Automation.ExceptionHandlingOps.CheckActionPreference(FunctionContext funcContext, Exception exception)\r\n   at System.Management.Automation.Interpreter.ActionCallInstruction`2.Run(InterpretedFrame frame)\r\n   at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\r\n   at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)",
+    "AtomicWriteError":  "System.IO.IOException: Sauvegarde atomique impossible pour \u0027R:\\Temoin\\avant.json\u0027 : Exception calling \"Write\" with \"3\" argument(s): \"There is not enough space on the disk.\r\n\" ---\u003e System.Management.Automation.MethodInvocationException: Exception calling \"Write\" with \"3\" argument(s): \"There is not enough space on the disk.\r\n\" ---\u003e System.IO.IOException: There is not enough space on the disk.\r\n\r\n   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)\r\n   at System.IO.FileStream.WriteCore(Byte[] buffer, Int32 offset, Int32 count)\r\n   at CallSite.Target(Closure , CallSite , Object , Object , Int32 , Object )\r\n   --- End of inner exception stack trace ---\r\n   at System.Management.Automation.ExceptionHandlingOps.CheckActionPreference(FunctionContext funcContext, Exception exception)\r\n   at System.Management.Automation.Interpreter.ActionCallInstruction`2.Run(InterpretedFrame frame)\r\n   at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\r\n   at System.Management.Automation.Interpreter.EnterTryCatchFinallyInstruction.Run(InterpretedFrame frame)\r\n   --- End of inner exception stack trace ---",
+    "PreviousHash":  "52FF3BBC88A37CF5F37C6483746B29FD795E9E815631FFBAA511DFB110573974",
+    "AfterHash":  "52FF3BBC88A37CF5F37C6483746B29FD795E9E815631FFBAA511DFB110573974",
+    "Result":  {
+                   "Action":  {
+                                  "Schema":  2,
+                                  "ExitCode":  96,
+                                  "ExitMsg":  "Sauvegarde atomique impossible pour \u0027R:\\Interventions\\d5635facd72e48c18781b7cdfb9eae6c.json\u0027 : Exception calling \"Dispose\" with \"0\" argument(s): \"There is not enough space on the disk.\r\n\"",
+                                  "Outcome":  "NotStarted"
+                              },
+                   "Reboot":  null,
+                   "Logs":  [
+
+                            ]
+               },
+    "Before":  {
+                   "Name":  "V999004AAQA1997",
+                   "ObjectGUID":  "8b54de3a-a68c-4662-a8d4-742d29bc5dff",
+                   "DistinguishedName":  "CN=V999004AAQA1997,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                   "ProtectedFromAccidentalDeletion":  true
+               },
+    "After":  {
+                  "Name":  "V999004AAQA1997",
+                  "ObjectGUID":  "8b54de3a-a68c-4662-a8d4-742d29bc5dff",
+                  "DistinguishedName":  "CN=V999004AAQA1997,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                  "ProtectedFromAccidentalDeletion":  true
+              },
+    "ReceiptFiles":  [
+
+                     ]
+}

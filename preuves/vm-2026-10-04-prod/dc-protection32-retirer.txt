@@ -1,0 +1,7 @@
+{
+    "Date":  "2026-10-04T20:59:21.7764246+02:00",
+    "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+    "User":  "S-1-5-21-2348118763-2306653211-1344436245-1158",
+    "Rule":  "Deny WriteDacl retire",
+    "Purpose":  "Recette code32 protection apres deplacement"
+}

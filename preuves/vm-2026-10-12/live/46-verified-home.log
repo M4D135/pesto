@@ -1,0 +1,9 @@
+clic : #StateNext (Consigner la vérification)
+élément inactif : #NavHome (Accueil)
+At C:\PestoRecette20261012\pilot\demo-commun.ps1:23 char:310
++ ... sEnabled) { throw "élément inactif : #$Id ($($e.Current.Name))" }; In ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (élément inactif : #NavHome (Accueil):String) [], RuntimeException
+    + FullyQualifiedErrorId : élément inactif : #NavHome (Accueil)
+ 
+

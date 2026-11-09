@@ -1,0 +1,61 @@
+{
+  "uploaded_zip": "GP(1).zip",
+  "scope": "Exact supplied resources; cfg.original.json intentionally updated to a copy of the supplied active cfg.json.",
+  "assets": [
+    {
+      "path": "wad/ActiveDirectory.Format.ps1xml",
+      "sha256": "ffefd16b151f10ea80b603f3acba3c361055314bb6b54f8f8f3f0b21e2ae3996",
+      "unchanged": true
+    },
+    {
+      "path": "wad/ActiveDirectory.Types.ps1xml",
+      "sha256": "3cb55021534ec67fa81d7981ee4b3364eea3ba79ebe61667ee44e14b7a668b3a",
+      "unchanged": true
+    },
+    {
+      "path": "wad/ActiveDirectory.psd1",
+      "sha256": "96e41708524316cb13a0d71d36a905f5d530e57e1714a12c3e5b30189a4c83eb",
+      "unchanged": true
+    },
+    {
+      "path": "wad/ActiveDirectoryPowerShellResources.dll",
+      "sha256": "e233d92238aa31ea1b3c60145d8811edb2e517e1b9b53f4bc496883ee5d9973b",
+      "unchanged": true
+    },
+    {
+      "path": "wad/Microsoft.ActiveDirectory.Management.dll",
+      "sha256": "1a6af7b8f8bce5b35ff873e2528746480c980526d86e38ca5acd04c2e9037157",
+      "unchanged": true
+    },
+    {
+      "path": "wad/cfg.demo.json",
+      "sha256": "f1b14cba8e4695463779f8a424ea82ced2b9dcc89a5c61c89a8a75cf17fb8564",
+      "unchanged": true
+    },
+    {
+      "path": "wad/cfg.example.json",
+      "sha256": "dbc1927de12736192db1b89b2df9e29d7393dad769c32b0552a6d42b008342de",
+      "unchanged": true
+    },
+    {
+      "path": "wad/cfg.json",
+      "sha256": "b2a5726f826391e637de25804fd22904b19cbdf7039db227f185086c18bb386c",
+      "unchanged": true
+    },
+    {
+      "path": "wad/fr-FR/ActiveDirectoryPowerShellResources.dll.mui",
+      "sha256": "bee3c0b2beeb6d5e5600e840e57c7361ef77aabd44006fd7d82f7fcbbfb8541e",
+      "unchanged": true
+    },
+    {
+      "path": "wad/gp.prefs.json",
+      "sha256": "ae2c8ff33a85efee50a503e6b45d31d000fb4759d3596a07d5395c96833d0e25",
+      "unchanged": true
+    },
+    {
+      "path": "wad/icone.ico",
+      "sha256": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a",
+      "unchanged": true
+    }
+  ]
+}

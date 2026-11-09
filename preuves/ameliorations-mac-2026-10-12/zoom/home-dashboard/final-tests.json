@@ -1,0 +1,82 @@
+{
+  "Utc": "2026-10-12T21:51:27.991875+00:00",
+  "NoAD": true,
+  "NoRuntimeMutationByTests": true,
+  "WindowsSessionId": 0,
+  "IsolatedTransparentWindow": true,
+  "LocalPortable": {
+    "ToolsTabs": {
+      "Passed": 26,
+      "Failed": 0,
+      "Report": "ToolsTabs-UIA.json"
+    }
+  },
+  "WindowsRuns": [
+    {
+      "RuntimeExeSha256": "6e65febf09055c073ad1cdfbbbe2cac37736b86a52997c98cc91179b2f7c081b",
+      "Directory": "C:\\PestoZoom20261012\\preuves-home",
+      "Results": {
+        "Zoom": {
+          "Passed": 39,
+          "Failed": 0
+        },
+        "ToolsTabs": {
+          "Passed": 30,
+          "Failed": 0
+        },
+        "HomeDashboard": {
+          "Passed": 40,
+          "Failed": 0
+        },
+        "Ux": {
+          "Passed": 44,
+          "Failed": 0,
+          "Skipped": 2
+        }
+      }
+    },
+    {
+      "RuntimeExeSha256": "cab4f9c2790cca90022b7c504f2425b3823e78ca5c7a11b71a371458b52cdbc5",
+      "Directory": "C:\\PestoZoom20261012\\preuves-ui-final",
+      "Results": {
+        "ToolsTabs": {
+          "Passed": 31,
+          "Failed": 0
+        },
+        "Ux": {
+          "Passed": 48,
+          "Failed": 0,
+          "Skipped": 2
+        }
+      }
+    }
+  ],
+  "SkipReason": "Session0 viewport below the width required for the two large-layout cases. Root owns interactive visual verification.",
+  "InitialHarnessIssue": "An unescaped typographic apostrophe in a new test title interrupted the first final Ux attempt; corrected in the test only. Original log preserved as windows-Ux-harness-initial.log.",
+  "Sources": [
+    {
+      "Path": "DEV/tests/Run-HomeDashboardTests.ps1",
+      "Sha256": "c3189e3b4174b2f798ffb8f21ab0f1db748547ea2282306d0738d2c692ae6791",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    },
+    {
+      "Path": "DEV/tests/Run-ToolsTabsTests.ps1",
+      "Sha256": "8bc7779aff09bec90764aaa4707c4de213a4df895bb755f8f249bd875ea82bf9",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    },
+    {
+      "Path": "DEV/tests/Run-UxTests.ps1",
+      "Sha256": "dff1614507abfd959457de01521be706b4a1c09296e1babaac9ea6ba845abde3",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    },
+    {
+      "Path": "DEV/tests/Run-AllTests.ps1",
+      "Sha256": "b8db63f2508a9b1db1694c3d85ea7021f1e8238ec3ea53d4dc6a0cfa509a2a0e",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    }
+  ]
+}

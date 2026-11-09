@@ -1,0 +1,16 @@
+OK  Absence de preference : aucune memorisation implicite
+OK  Memoriser un identifiant court apres choix explicite
+OK  Ecriture successive : mise a jour atomique sans chaine null vide
+OK  Liste blanche du fichier : aucun champ de mot de passe
+OK  UPN memorise tel quel
+OK  Preference dun autre domaine ignoree
+OK  Chaine true refusee a la place dun booleen
+OK  Schema inconnu ignore
+OK  Nom vide ou trop long refuse sans remplacer la preference
+OK  Caracteres de controle refuses
+OK  Decocher oublie immediatement sans nouvelle connexion
+OK  Cocher seul necrit pas de preference
+OK  Preference JSON invalide ignoree
+OK  Fichier de preference trop volumineux ignore
+OK  Oubli idempotent et suppression du fichier corrompu
+Preferences : 15 tests reussis. Rapport : C:\Pesto120_Retry_20261013\reports\LoginPreferences.json

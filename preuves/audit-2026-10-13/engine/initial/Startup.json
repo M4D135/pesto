@@ -1,0 +1,186 @@
+﻿{
+    "Version":  "1.0",
+    "Utc":  "2026-10-12T23:10:07.2201698Z",
+    "Runtime":  "5.1.26100.6584",
+    "RealUacExecuted":  false,
+    "RealADExecuted":  false,
+    "Passed":  35,
+    "Failed":  0,
+    "Tests":  [
+                  {
+                      "Name":  "Parseur natif : wad\\Pesto-Startup.ps1",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Parseur natif : wad\\Pesto-Core.ps1",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Parseur natif : tests\\Run-StartupTests.ps1",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Parseur natif : tools\\Verify-StartupUac.ps1",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Mode reel non eleve : UAC avant moteur",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Deja eleve : aucune nouvelle UAC",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Relais eleve : ouverture du moteur autorisee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Relais sans jeton admin : arret, pas de boucle",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Demo sans droits : aucune UAC",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Etat reel du jeton retourne un bool, pas un nom de compte",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Chemin avec espaces et apostrophe : reste un argument -File",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Antislash final protege dans les arguments",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Caracteres de controle et guillemets refuses",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Lanceur EXE : pas de parametre PowerShell -File",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Pas de nom de compte ou mot de passe dans les arguments de relais",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Relais : RunAs explicite, sans Credential, code enfant conserve",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "UAC annulee : code 1223, aucune seconde tentative",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Refus Windows autre que annulation : erreur non masquee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Processus absent : erreur, pas de faux succes",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "API native : erreur fichier absent conserve Win32, sans fausse annulation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Code Win32 1223 imbrique reconnu",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Identifiant de reprise identique au moteur pour le meme cfg.json",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Reprise sous un autre compte : file et verrou copies a l identique",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Une reprise deja importee ne reimporte pas un ancien verrou",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Changement de l ancienne file : conflit signale sans ecrasement",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Deux files Idle vides entre comptes : dates et noms différents, originaux conservés",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Files vides : identités incompatibles, effets, schéma ou champs inconnus restent refusés",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Historiques divergents : archive exacte, aucune fusion ni résolution de verrou",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Historique non reconnu : domaine, schema, types ou champs actifs refusés",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Archive historique déjà présente mais différente : rien écrasé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Fichier deja existant : CreateNew refuse de le remplacer",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Fichier de reprise trop volumineux refuse",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Dossier source absent : aucune creation d une fausse file",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Reprise depuis une jonction refusee sans lecture de la cible",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Chemin de reprise reseau refuse",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

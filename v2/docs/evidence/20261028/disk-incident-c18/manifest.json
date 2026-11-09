@@ -1,0 +1,80 @@
+{
+  "schema": "Pesto.C18.DiskIncidentEvidence.v1",
+  "preparedUtc": "2026-10-28T12:17:50.607595+00:00",
+  "status": "Old VM removed; historical campaign closed without original-name restoration. Installation ISO verified; replacement VM and domain qualification deferred until code, GitHub Windows checks and PROD delivery.",
+  "files": [
+    {
+      "file": "domain-before-repair.json",
+      "sha256": "792a15d82999eddbf425b39615f7af0eef71eab1cef290ccd34e3afba48ba6e7",
+      "kind": "selected-fields-projection",
+      "sources": [
+        {
+          "capture": "c18-disk-domain-fresh.json",
+          "sha256": "03b411d394498fa92330df61806902640ecb7b1de9b6f13b0f8539fe7e549de6"
+        }
+      ],
+      "transformation": "Only dated AD identity/GUID/SID/OU and secure channel; no hardware, account, SSH or public-file inventory."
+    },
+    {
+      "file": "integrity-before-repair.json",
+      "sha256": "747b9453e885b11c2f77aa6ba558271f2d3000c2141a4f2a75b2ae394292989a",
+      "kind": "selected-fields-projection",
+      "sources": [
+        {
+          "capture": "pesto-c18-health-20261028b-integrity.json",
+          "sha256": "ec99c419a9004cefbae7e1a23bf09d292d5f4addd0077e5d1104008e7c967491"
+        }
+      ],
+      "transformation": "Checked all205 payload results and decoded/rehashed four raw GP files; kept digests/phases and marker absences only, never their base64 or old receipt contents."
+    },
+    {
+      "file": "filesystem-scan.json",
+      "sha256": "0994a6d7ffbc81f172196670103a452a558f323682b20849458cb5dc4b7ea04e",
+      "kind": "selected-fields-projection",
+      "sources": [
+        {
+          "capture": "pesto-c18-health-20261028b-chkdsk.json",
+          "sha256": "be018dd3d72e9803dac99b5a524afc3738a14efe8bc4710775ec5733adc26b76"
+        },
+        {
+          "capture": "pesto-c18-health-20261028b-chkdsk.txt",
+          "sha256": "110593ecc2f99471e8bac0adeb8842932e04e3f43b4a164254e685b1e331e586"
+        },
+        {
+          "capture": "pesto-c18-health-20261028b-failure.json",
+          "sha256": "ff25c911de32759d4e98644f13609cd8dab9535bc712e9fa8f1e387036b3a6b1"
+        }
+      ],
+      "transformation": "Summarized exit code and counted three corrupt basic-file-structure/offline-repair entries from the UTF16 log. Raw OS log and individual filenames are not published."
+    },
+    {
+      "file": "replacement-status.json",
+      "sha256": "e6c657d85f3d0a2fa7a5b2672ebd65c7bb537ae7d568c7e2005a9938df223dd9",
+      "kind": "selected-fields-projection",
+      "sources": [
+        {
+          "capture": "rebuild-delete-observed.json",
+          "sha256": "d8483c66ef25b0ef9861fc491420ddc0dc60a3aebc777ec52d09a4b707f17e7e"
+        },
+        {
+          "capture": "rebuild-delete-remainder.json",
+          "sha256": "2b083210c6773d2fb21a26ac44cf5e0c27993eaa058fc77419eb1a0e8d717d93"
+        },
+        {
+          "capture": "rebuild-handoff.json",
+          "sha256": "da309dd87b2087075d4059e5c258f85921837953aa3587cadfcb4cdb9d75da4c"
+        },
+        {
+          "capture": "download-clean-windows-result.json",
+          "sha256": "1f712ce28290c3a6b952d16c82b10c9da4bb70695725e78d4d6c8a957556ef76"
+        }
+      ],
+      "transformation": "Kept dated target unregister/root/media absence, other-VM count, null native exit codes, deferred-rebuild decision and installation-media receipt. Omitted host paths, free-space inventory, other VM identities and raw deletion logs."
+    }
+  ],
+  "rawOsLogsRetainedPrivately": true,
+  "configurationContentsIncluded": false,
+  "hardwareOrSshInventoryIncluded": false,
+  "updatedUtc": "2026-10-28T13:45:22.155124+00:00",
+  "latestEvidenceUtc": "2026-10-28T13:42:20.0051340Z"
+}

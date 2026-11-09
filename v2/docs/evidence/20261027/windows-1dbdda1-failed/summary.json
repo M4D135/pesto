@@ -1,0 +1,732 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "1dbdda1020cf21ea2c65fc69b5572bbfc857095e",
+  "workflow": {
+    "id": 40489970770,
+    "url": "https://github.com/M4D135/pesto/actions/runs/40489970770",
+    "runNumber": 34,
+    "jobId": 122141151557,
+    "status": "completed",
+    "conclusion": "failure",
+    "createdUtc": "2026-10-27T10:37:52Z",
+    "jobCompletedUtc": "2026-10-27T10:49:48Z",
+    "metadataFiles": [
+      "workflow-run.json",
+      "workflow-jobs.json",
+      "github-artifacts.json"
+    ]
+  },
+  "evidenceArchive": {
+    "artifactId": 12728737832,
+    "url": "https://github.com/M4D135/pesto/actions/runs/40489970770/artifacts/12728737832",
+    "sizeBytes": 2150475,
+    "sha256": "7d88e78ba1b8e8c3b2157b951e815c213dee3a90e1d66d63de23d0281e1a2d7d",
+    "downloaded": true,
+    "matchesGithubEnvelopeDigest": true,
+    "copiedArtifactEntriesComparedByteForByte": true,
+    "expiresUtc": "2026-11-26T10:49:41Z",
+    "onlyPublishedArtifactIsEvidence": true,
+    "candidatePackagesPublished": false
+  },
+  "nativeConfigurationFailure": {
+    "file": "native-configuration-PROD.json",
+    "channel": "PROD",
+    "success": false,
+    "stage": "default-positive-folder-ui",
+    "failureCode": "qualification.configuration.dialog",
+    "completedChecks": [
+      "parentReady",
+      "isolatedConfigurationPage",
+      "nativeExportFromButton",
+      "nativeExportExact",
+      "noExportTemporaryFile",
+      "settingsUnchangedBeforeConfirmation",
+      "settingsSavedFromButton",
+      "settingsBackupExact",
+      "importCancelled",
+      "exportCancelled",
+      "invalidEncodingRejected",
+      "importPreviewBeforeWrite",
+      "importConfirmationCancelled",
+      "nativeImportFromButton",
+      "importRoundTrip",
+      "importBackupExact",
+      "customPackWaitsForConfirmation",
+      "customPackConfirmationCancelled",
+      "packDestinationCancelled"
+    ],
+    "completedCheckCount": 19,
+    "expectedCheckCount": 36,
+    "cause": {
+      "observedFolderEditControlId": 1152,
+      "acceptedEditControlIdsInCandidate": [
+        1001,
+        1148
+      ],
+      "excludedAddressBarEditControlId": 41477,
+      "writeAttempts": 0,
+      "stableReads": 0,
+      "clicked": false,
+      "closedAfterClick": false,
+      "description": "The folder picker exposes Edit 1152, while the 1dbdda1 driver only selected Edit 1001 or 1148. No path input attempt occurred for the positive folder selection.",
+      "sourceUrl": "https://github.com/M4D135/pesto/blob/1dbdda1020cf21ea2c65fc69b5572bbfc857095e/v2/src/Pesto.App/NativeConfigurationQualification.cs"
+    },
+    "exportImportEvidence": {
+      "exportSucceeded": true,
+      "importRoundTripSucceeded": true,
+      "nativeSelectedPathsRecordedBeforeIo": true,
+      "selectedFilePathCount": 4,
+      "selectedPathsMatchNormalizedPaths": true,
+      "exportDestinationMatchesBackendResult": true,
+      "exportObservation": {
+        "relativePath": "data/export.json",
+        "sha256": "e104b89382d84ec5bbdd6c600f9c4ecc278be2263cef8cf6f373472133f7e85f",
+        "configurationFingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+        "version": "native-ui-qualification"
+      },
+      "preIoScopeGuardPresent": true,
+      "scope": "Observed native file selections and configuration files in the temporary qualification profile; not a production-profile qualification."
+    },
+    "ordinaryProfileAccessRawReportValue": false,
+    "endAssertions": {
+      "parentClosed": true,
+      "temporaryDataRemoved": true,
+      "sourcePackUnchanged": true
+    },
+    "forbiddenBackendInvocations": 0,
+    "forbiddenHostInvocations": 0,
+    "httpInvocations": 0,
+    "observedExecutableSha256": "f9e2f9d8b8d918b89d4c177605eac09528930ebcefab9e3422c3904dfb4e8046",
+    "adExecuted": false,
+    "realUac": false,
+    "uncQualification": false,
+    "nativeUpdateInstallFromUiQualified": false
+  },
+  "successfulChecksBeforeFailure": {
+    "engine": {
+      "passed": 615,
+      "failed": 0,
+      "file": "logs/Engine-All.log",
+      "isolatedProviders": true
+    },
+    "bridge": {
+      "passed": 15,
+      "failed": 0,
+      "file": "logs/Bridge.log"
+    },
+    "packageMechanics": {
+      "passed": 46,
+      "failed": 0,
+      "file": "logs/Pack-Mechanics.log",
+      "syntheticRuntime": true,
+      "nativeWindowsExecuted": false
+    },
+    "portableUpdateHarness": {
+      "passed": 30,
+      "file": "logs/NativeUpdateHarness-portable.log",
+      "nativeWindowsExecuted": false,
+      "adExecuted": false
+    },
+    "adRestoreGuards": {
+      "passed": 70,
+      "history": 22,
+      "identity": 28,
+      "rawV1Barriers": 20,
+      "file": "logs/AdRestoreGuards.log",
+      "nativeCommandExecuted": false
+    },
+    "powerShell51": {
+      "parsedBusinessScriptVariants": 18,
+      "entrypointParseErrors": 0,
+      "utf8Checks": 2,
+      "businessScriptsExecuted": false,
+      "files": [
+        "logs/PowerShell51-syntax.log",
+        "logs/PowerShell51-utf8.log",
+        "logs/Qualification-entrypoint-PS51.log"
+      ]
+    },
+    "javascript": {
+      "suiteCount": 16,
+      "allSucceeded": true,
+      "declaredFixtures": true,
+      "nativeWindowsQualification": false,
+      "suites": [
+        {
+          "name": "azerty-check",
+          "passed": 21,
+          "publishedNumericCount": true,
+          "file": "logs/azerty-check.log"
+        },
+        {
+          "name": "bridge-lifecycle-check",
+          "passed": 21,
+          "publishedNumericCount": true,
+          "file": "logs/bridge-lifecycle-check.log"
+        },
+        {
+          "name": "demo-check",
+          "passed": 11,
+          "publishedNumericCount": true,
+          "file": "logs/demo-check.log"
+        },
+        {
+          "name": "demo-dom-check",
+          "passed": 9,
+          "publishedNumericCount": true,
+          "file": "logs/demo-dom-check.log"
+        },
+        {
+          "name": "login-dom-check",
+          "passed": 28,
+          "publishedNumericCount": true,
+          "file": "logs/login-dom-check.log"
+        },
+        {
+          "name": "operator-ui-check",
+          "passed": 41,
+          "publishedNumericCount": true,
+          "file": "logs/operator-ui-check.log"
+        },
+        {
+          "name": "parity-ui-check",
+          "passed": 53,
+          "publishedNumericCount": true,
+          "file": "logs/parity-ui-check.log"
+        },
+        {
+          "name": "policy-ui-check",
+          "passed": 17,
+          "publishedNumericCount": true,
+          "file": "logs/policy-ui-check.log"
+        },
+        {
+          "name": "watch-check",
+          "passed": 44,
+          "publishedNumericCount": true,
+          "file": "logs/watch-check.log"
+        },
+        {
+          "name": "watcher-result-check",
+          "passed": null,
+          "publishedNumericCount": false,
+          "file": "logs/watcher-result-check.log"
+        },
+        {
+          "name": "web-business-check",
+          "passed": 48,
+          "publishedNumericCount": true,
+          "file": "logs/web-business-check.log"
+        },
+        {
+          "name": "web-check",
+          "passed": 149,
+          "publishedNumericCount": true,
+          "file": "logs/web-check.log"
+        },
+        {
+          "name": "web-dom-check",
+          "passed": 32,
+          "publishedNumericCount": true,
+          "file": "logs/web-dom-check.log"
+        },
+        {
+          "name": "web-layout-check",
+          "passed": 8,
+          "publishedNumericCount": true,
+          "file": "logs/web-layout-check.log"
+        },
+        {
+          "name": "web-maintenance-check",
+          "passed": 35,
+          "publishedNumericCount": true,
+          "file": "logs/web-maintenance-check.log"
+        },
+        {
+          "name": "web-recovery-check",
+          "passed": 23,
+          "publishedNumericCount": true,
+          "file": "logs/web-recovery-check.log"
+        }
+      ]
+    },
+    "nativeWelcome": {
+      "success": true,
+      "checks": 5,
+      "file": "native-welcome.json",
+      "realUac": false
+    },
+    "nativeLogin": {
+      "success": true,
+      "checks": 16,
+      "file": "native-login.json",
+      "syntheticCredentials": true,
+      "adExecuted": false
+    },
+    "nativeDemo": {
+      "channels": [
+        "PROD",
+        "DEV"
+      ],
+      "success": true,
+      "refusedDirectApisPerChannel": 44,
+      "uiTransitionsPerChannel": 6,
+      "files": [
+        "native-demo-PROD.json",
+        "native-demo-DEV.json"
+      ],
+      "adQualification": false,
+      "binaryUpdateQualification": false
+    },
+    "nativeConfigurationPartial": {
+      "file": "native-configuration-PROD.json",
+      "overallSuccess": false,
+      "completedChecks": 19,
+      "expectedChecks": 36,
+      "nativeExportFromUiQualified": true,
+      "nativeImportFromUiQualified": true,
+      "exportSuccessfulCount": 1,
+      "confirmedSettingsApplications": 1,
+      "confirmedImportApplications": 1,
+      "selectedFilePathsObservedBeforeIo": 4,
+      "settingsAndImportBackupsVerified": true,
+      "importRoundTripVerified": true,
+      "invalidEncodingRefused": true,
+      "defaultConfirmationCancellationVerified": true,
+      "nativeDestinationCancellationVerified": true,
+      "positiveFolderSelectionQualified": false,
+      "customPackQualified": false,
+      "maintenanceInspectionPreparationQualified": false
+    }
+  },
+  "notExecuted": {
+    "positiveNativeFolderSelection": true,
+    "customPackCreation": true,
+    "maintenanceInspectionPreparation": true,
+    "maintenanceInstallConfirmation": true,
+    "nativeConfigurationDev": true,
+    "nativeUpdateTransactionsProd": true,
+    "nativeUpdateTransactionsDev": true,
+    "candidateArchiveAndPublication": true,
+    "basis": "Configuration stopped at its positive folder selection in PROD; workflow steps 15,16,18,19 were skipped and the artifact list contains evidence only."
+  },
+  "runtimeFile": "runtime.json",
+  "copiedSourceFileCount": 33,
+  "logFileCount": 24,
+  "nativeProofFileCount": 5,
+  "files": [
+    {
+      "savedAs": "logs/Engine-All.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "Engine-All.log",
+      "sourceSha256": "a8b26e48bd0165b91d1554b5220844419e1502bd8c0b3e37f40114f6c78221f1",
+      "savedSha256": "9e99c5a43530057c256012285709aee78e70ad8dfa0be56b3e784df60150ac4b",
+      "sourceSizeBytes": 50541,
+      "savedSizeBytes": 49925,
+      "normalizedCrLfCount": 616,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/Bridge.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "Bridge.log",
+      "sourceSha256": "987d8e611555a03f5bc5f80ec20dbd905f4471c7800e41268eaff8cc43158aff",
+      "savedSha256": "3e3d5c23227f061f09a798f93850f7c24ea87478bc2f18cbfd32a22d08fd9f43",
+      "sourceSizeBytes": 1226,
+      "savedSizeBytes": 1210,
+      "normalizedCrLfCount": 16,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/Pack-Mechanics.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "Pack-Mechanics.log",
+      "sourceSha256": "8a8221028defa3cad61787ace6abb0d9011059053bdccf80755a2fe1c49a8f19",
+      "savedSha256": "f2402e70b8dad02a06c22250ba3210e5df937c197a01af9f368f705857a21535",
+      "sourceSizeBytes": 2276,
+      "savedSizeBytes": 2229,
+      "normalizedCrLfCount": 47,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/NativeUpdateHarness-portable.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "NativeUpdateHarness-portable.log",
+      "sourceSha256": "fdf33c352c5478c72fe84114ca7886f130fe12ed27496527c9159285c9d3e188",
+      "savedSha256": "ec56fde274ae1cc6d950e47e3bba87e225ce3e6dfea3bf5374370a81ed3b483f",
+      "sourceSizeBytes": 251,
+      "savedSizeBytes": 238,
+      "normalizedCrLfCount": 13,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/AdRestoreGuards.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "AdRestoreGuards.log",
+      "sourceSha256": "1d98061ee362d766b37f290051b09f3a9e942cbf032949672ec0848a2239d640",
+      "savedSha256": "15b44054ba71a6027f569a504a63920d5727ef3ed0dcccae16e9fd66f19b2f95",
+      "sourceSizeBytes": 1124,
+      "savedSizeBytes": 1094,
+      "normalizedCrLfCount": 30,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/PowerShell51-syntax.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "PowerShell51-syntax.log",
+      "sourceSha256": "5b932ad58e1ed94d562d54d43c13b3bdf77bb8f185472ee8e02eed18e12f193b",
+      "savedSha256": "d0de6c2cd17c3421091ba19e48b9bbbd679e0e58d8252624f43a44ae1645d9df",
+      "sourceSizeBytes": 3230,
+      "savedSizeBytes": 3209,
+      "normalizedCrLfCount": 21,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/PowerShell51-utf8.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "PowerShell51-utf8.log",
+      "sourceSha256": "e31157365e09ddce5bedd060a6ddb08add219e0f33ab1686b70545b905b7a220",
+      "savedSha256": "2dd95922146e0c4574163645c2e962fd38b6ec1a1d0fe0e108a6506f994e11b8",
+      "sourceSizeBytes": 154,
+      "savedSizeBytes": 153,
+      "normalizedCrLfCount": 1,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/Qualification-entrypoint-PS51.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "Qualification-entrypoint-PS51.log",
+      "sourceSha256": "8864c14097aaf614e5560204ab6bcce7ac838d828f6a206d7d7894810f075fa3",
+      "savedSha256": "4450b092804c74b8ee56402810051a5913c3af9b10c24b91336e721b260a704f",
+      "sourceSizeBytes": 218,
+      "savedSizeBytes": 217,
+      "normalizedCrLfCount": 1,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/azerty-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "azerty-check.log",
+      "sourceSha256": "e65059adecf8b4101937364c61ac2aeec4fea328158dcdf000f63b4e46024822",
+      "savedSha256": "2c5d3949a7080e59062ab79c50a2dffec099e4743f0a4a74c90b56a7811e2097",
+      "sourceSizeBytes": 983,
+      "savedSizeBytes": 960,
+      "normalizedCrLfCount": 23,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/bridge-lifecycle-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "bridge-lifecycle-check.log",
+      "sourceSha256": "fce17918c808b5f7a07411933b3fdd548814e73f144d713440d8d744872f136d",
+      "savedSha256": "8387759c29cdaa4d9803afa6713d04954808a1bc5dae68cb3ae474da9e7ad616",
+      "sourceSizeBytes": 2095,
+      "savedSizeBytes": 2072,
+      "normalizedCrLfCount": 23,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/demo-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "demo-check.log",
+      "sourceSha256": "0967f4cca48d8156abad48083b4dbc4642367bc122d4c65ce8b3fed9a753ed26",
+      "savedSha256": "e0debd8e5f0cb2997d80d425b95201fae9e7bdf6c9d01fec7007d4d807f4b5e9",
+      "sourceSizeBytes": 877,
+      "savedSizeBytes": 865,
+      "normalizedCrLfCount": 12,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/demo-dom-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "demo-dom-check.log",
+      "sourceSha256": "cec480dd26e84ccb33623ad518dbd3d8b075e607102ee439bed1204935856edd",
+      "savedSha256": "3b43aa776beefc0c9038c2d7e3b33fba922afb5c4aae2164a4c0a8c42fc7cfbc",
+      "sourceSizeBytes": 750,
+      "savedSizeBytes": 740,
+      "normalizedCrLfCount": 10,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/login-dom-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "login-dom-check.log",
+      "sourceSha256": "7e622cb575118867c969102b6ec04a47767b495f7cc0cb5c5a4ef4c399d00816",
+      "savedSha256": "a49ab6f2275be96bea6a0d2c8d7ef629d159afa0bebeb54def4e7e320437a237",
+      "sourceSizeBytes": 67,
+      "savedSizeBytes": 66,
+      "normalizedCrLfCount": 1,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/operator-ui-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "operator-ui-check.log",
+      "sourceSha256": "620c885602f14708405d38ef19a5229e1c4b39fdf2b86e173e96d33366472373",
+      "savedSha256": "ea51c1df3ffbeae12ef883eb6a6e50ad1a40cf45d5cb8484b67baf7cd606ad4e",
+      "sourceSizeBytes": 3086,
+      "savedSizeBytes": 3044,
+      "normalizedCrLfCount": 42,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/parity-ui-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "parity-ui-check.log",
+      "sourceSha256": "719bac5542ef1c738503c15af0e4d7e92b432c97f334d299535b740d93e82db0",
+      "savedSha256": "4c856880a49ac37f94fb0d53b3acf489022aa0267bbd0ed0bee0975211297e68",
+      "sourceSizeBytes": 4288,
+      "savedSizeBytes": 4226,
+      "normalizedCrLfCount": 62,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/policy-ui-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "policy-ui-check.log",
+      "sourceSha256": "dd2a03f1e466ddb5f549c6965f29ce71bfad69cc237b4cd46bd96f2a48139f0a",
+      "savedSha256": "4b9c4ddbd8f51a43fcbfbd9a94855bd3dc62f9d42f42ba71706902b8a98d8c92",
+      "sourceSizeBytes": 1207,
+      "savedSizeBytes": 1189,
+      "normalizedCrLfCount": 18,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/watch-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "watch-check.log",
+      "sourceSha256": "8e957a17be780b0460983ad4e2abf96cc4e98b08c844c6432312dab74f5fe197",
+      "savedSha256": "7c31732c8c84c4d5f205fee9e1395bb567f1d4cc16269e1d4cff3482ea1121db",
+      "sourceSizeBytes": 36,
+      "savedSizeBytes": 35,
+      "normalizedCrLfCount": 1,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/watcher-result-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "watcher-result-check.log",
+      "sourceSha256": "f7a6df79178e27b99e08d29e311c2a33547c922b7d438f1c1d0264c33112ad86",
+      "savedSha256": "c77eebae0eacd9774d0f9e1164b4b4ee15bd93a39f7681f33d5f5865d995a7d3",
+      "sourceSizeBytes": 113,
+      "savedSizeBytes": 112,
+      "normalizedCrLfCount": 1,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/web-business-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "web-business-check.log",
+      "sourceSha256": "99b570441592b51f3d8b1bb8ce98643e39c43602dfa52ff9d9c0c8a45ca049b7",
+      "savedSha256": "2942607d4615031ce817b878bfe9235be688e15b0705b906f0215d5bc8eab418",
+      "sourceSizeBytes": 4123,
+      "savedSizeBytes": 4073,
+      "normalizedCrLfCount": 50,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/web-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "web-check.log",
+      "sourceSha256": "f4b43cf938109e459241ff6298c355ec5a2db3f1f3f27b82478532c006f39b8c",
+      "savedSha256": "6ebd28928b90bc2ef7db1d354912640ad5c49606b665ad6a2115017895cfa01f",
+      "sourceSizeBytes": 9958,
+      "savedSizeBytes": 9795,
+      "normalizedCrLfCount": 163,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/web-dom-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "web-dom-check.log",
+      "sourceSha256": "6835e84c2b1d04589023dc054f1300b194525ca4fa7b80d1bf9c813b043217ca",
+      "savedSha256": "9b695e985a3c01687faf4c162c3b224c0c8d6c75dff6166776d79ac82022b496",
+      "sourceSizeBytes": 2421,
+      "savedSizeBytes": 2387,
+      "normalizedCrLfCount": 34,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/web-layout-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "web-layout-check.log",
+      "sourceSha256": "b540a6b1430a7f03aa23f5b1b0b02c3870323cd0dfb1a412e9e24fda0e283c3b",
+      "savedSha256": "0244c5e8d561f34c5989a7c2c52dc3c50e033cc56943971c8b9608bd8d187ec6",
+      "sourceSizeBytes": 549,
+      "savedSizeBytes": 540,
+      "normalizedCrLfCount": 9,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/web-maintenance-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "web-maintenance-check.log",
+      "sourceSha256": "02f7b8e685b7ee7a0c37ac615a2b2b953e61bdf5390b99c6775d714353502a5a",
+      "savedSha256": "da4d1f8087d7e33d1d269ad5310f5f5204b836af51b9e990d458452a9b882271",
+      "sourceSizeBytes": 3264,
+      "savedSizeBytes": 3228,
+      "normalizedCrLfCount": 36,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "logs/web-recovery-check.log",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "web-recovery-check.log",
+      "sourceSha256": "0c3ad5328e48a8c89c8b92e689d74c14e948720df6dcd2defdeedf4711aacdf7",
+      "savedSha256": "9bc9a5d18a0a5e9791b351d5119672018ac82c898db178b59ff3c2b7d7859d4b",
+      "sourceSizeBytes": 1599,
+      "savedSizeBytes": 1575,
+      "normalizedCrLfCount": 24,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "native-configuration-PROD.json",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "native-configuration-PROD.json",
+      "sourceSha256": "5b08a7e98d6238a75cf7eb23476a142586e1648bd39d085076ceef30d4654183",
+      "savedSha256": "e05743e45579b8fc049a4dd10d808c6e5703873222b2b0004f6ee3629345167b",
+      "sourceSizeBytes": 20402,
+      "savedSizeBytes": 19667,
+      "normalizedCrLfCount": 735,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "native-welcome.json",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "native-welcome/proof.json",
+      "sourceSha256": "415f0f3ea02b84fa19d7129cd37732babe439c1cff104b0d62ccc22c51e10487",
+      "savedSha256": "ed4868a72170ef63532523f3a05c4736b787cc3550155f5bd89d03e840646ee9",
+      "sourceSizeBytes": 502,
+      "savedSizeBytes": 486,
+      "normalizedCrLfCount": 16,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "native-login.json",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "native-login/proof.json",
+      "sourceSha256": "2ba276d43c1e822e7901714e55823cb020905c01c5c45d26c93136ecbd984f6d",
+      "savedSha256": "3584826ceccb93bba93bd965f41bad700da15548901132a7429c14260ebf3925",
+      "sourceSizeBytes": 934,
+      "savedSizeBytes": 902,
+      "normalizedCrLfCount": 32,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "native-demo-PROD.json",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "native-demo-PROD.json",
+      "sourceSha256": "07e7b4c93b3289d0c57bad698b90216d9be772e3742c6e9266372527d77297be",
+      "savedSha256": "519addad4b5b557f9e87afb0610af5d948926951a0f77b44d010fc666d81b9f5",
+      "sourceSizeBytes": 5462,
+      "savedSizeBytes": 5295,
+      "normalizedCrLfCount": 167,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "native-demo-DEV.json",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "native-demo-DEV.json",
+      "sourceSha256": "64622f82d6444b732fcc5aad4a5bc419be084a6992b5ddcc93756ec377792bad",
+      "savedSha256": "73d83f56f8c9ee8f3966c3a312b48f01e4b3e53b6acc43332396f7126ae121c8",
+      "sourceSizeBytes": 5457,
+      "savedSizeBytes": 5290,
+      "normalizedCrLfCount": 167,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "runtime.json",
+      "sourceKind": "evidence-archive-entry",
+      "sourcePath": "runtime.json",
+      "sourceSha256": "7dbc571fe189a2beba71fc609229d4bd8af98af0c0581b1eb17484bd7663458b",
+      "savedSha256": "07085221c58f6a37f91ce724a8e44747f481d6d74f852b0056fa4ee08506b8ab",
+      "sourceSizeBytes": 399,
+      "savedSizeBytes": 393,
+      "normalizedCrLfCount": 6,
+      "normalization": "CRLF to LF only; every other source byte preserved",
+      "matchedDownloadedArchiveEntry": true
+    },
+    {
+      "savedAs": "workflow-run.json",
+      "sourceKind": "github-api-response",
+      "sourcePath": "run.json",
+      "sourceSha256": "eab278c440b643c7ddbc64b1075031e457d21a03838bf8ea9eecad8724642fec",
+      "savedSha256": "eab278c440b643c7ddbc64b1075031e457d21a03838bf8ea9eecad8724642fec",
+      "sourceSizeBytes": 13145,
+      "savedSizeBytes": 13145,
+      "normalizedCrLfCount": 0,
+      "normalization": "CRLF to LF; exactly one final LF for this GitHub API response; all other source bytes preserved",
+      "matchedDownloadedArchiveEntry": false,
+      "removedTrailingBlankLines": 0,
+      "addedFinalNewline": false
+    },
+    {
+      "savedAs": "workflow-jobs.json",
+      "sourceKind": "github-api-response",
+      "sourcePath": "jobs.json",
+      "sourceSha256": "17008afeac377b0c90381f1f9cbb35ea4c19351f3e17581973808b2603e68271",
+      "savedSha256": "17008afeac377b0c90381f1f9cbb35ea4c19351f3e17581973808b2603e68271",
+      "sourceSizeBytes": 7972,
+      "savedSizeBytes": 7972,
+      "normalizedCrLfCount": 0,
+      "normalization": "CRLF to LF; exactly one final LF for this GitHub API response; all other source bytes preserved",
+      "matchedDownloadedArchiveEntry": false,
+      "removedTrailingBlankLines": 0,
+      "addedFinalNewline": false
+    },
+    {
+      "savedAs": "github-artifacts.json",
+      "sourceKind": "github-api-response",
+      "sourcePath": "artifacts.json",
+      "sourceSha256": "0f1f9f342c213546fe4b23a01b5ffe99fd9f0fc9b7359c9bc6fbb21faf129a34",
+      "savedSha256": "0f1f9f342c213546fe4b23a01b5ffe99fd9f0fc9b7359c9bc6fbb21faf129a34",
+      "sourceSizeBytes": 873,
+      "savedSizeBytes": 873,
+      "normalizedCrLfCount": 0,
+      "normalization": "CRLF to LF; exactly one final LF for this GitHub API response; all other source bytes preserved",
+      "matchedDownloadedArchiveEntry": false,
+      "removedTrailingBlankLines": 0,
+      "addedFinalNewline": false
+    }
+  ],
+  "limitations": [
+    "This campaign failed after 19 of 36 configuration assertions; it does not qualify a published C16 package.",
+    "Native export, settings save and import were observed successfully in PROD; the complete configuration path and DEV configuration were not qualified.",
+    "The folder-control mismatch prevented any positive folder path input or selection; custom pack creation and subsequent maintenance actions were not reached.",
+    "The pre-IO guards and exact file-path observations in this campaign do not retroactively establish the unknown export destination of the earlier d803d72 failed run.",
+    "No real AD, UNC or UAC qualification is supplied by these checks.",
+    "Native update transactions were skipped; portable harness checks are not native transactions.",
+    "Screenshots and additional metadata remain in the complete downloaded evidence archive; they are not duplicated in this subset.",
+    "Local and Windows test totals overlap and are not additive.",
+    "Historical AD and real UAC evidence remains attributed to its original binaries, not 1dbdda1."
+  ]
+}

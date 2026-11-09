@@ -1,0 +1,13 @@
+﻿{
+    "kind":  "pesto.targeted-reader-diagnostic-launch",
+    "diagnosticOnly":  true,
+    "fullSuite":  false,
+    "success":  true,
+    "startedUtc":  "2026-11-01T03:02:16.9512753+00:00",
+    "sessionId":  2,
+    "userInteractive":  true,
+    "runnerSha256":  "588193a0d87016a8aefc54dd6837df1112e54c003006db0766ba2e171c349c0f",
+    "sdkVersion":  "10.0.302",
+    "exitCode":  0,
+    "finishedUtc":  "2026-11-01T03:05:09.6149525+00:00"
+}

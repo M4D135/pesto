@@ -1,0 +1,92 @@
+{
+  "scope": "workflow reliability and preserved local confirmation simplification",
+  "base": "e087bb1",
+  "workingTree": "/Users/david/Documents/Codex/2026-10-26/rep/work/pesto-final-20261028",
+  "changes": [
+    "Integrated all 16 preexisting local patch files onto latest remote code without replacing whole files.",
+    "Individual confirmations send the explicitly confirmed displayed plan name; cancellation, Entra checkbox and acknowledgement reason remain mandatory. Batch typed confirmation remains.",
+    "Single and batch receipt identity validated before success/follow-up; Windows/AD name and OU case differences accepted; pending restart and uncertain code 89 remain non-success.",
+    "Seven engine error texts, browser simulation error and OFFLINE-JOIN guide aligned with no-retyping interaction; backend guards unchanged.",
+    "Simulation C# and JS denied/uncertain receipts now retain planned targetOU like the real backend; observed source computer stays unchanged. Regression covers move and renameMove and visible UI outcomes."
+  ],
+  "nativeQualificationSelectors": "No k-cw-typed selector or recopy dependency found in v2/src/Pesto.App or v2/tools/qualification scripts; backend harness confirmationName/code contract unchanged.",
+  "tests": [
+    {
+      "suite": "web-business",
+      "passed": 57,
+      "total": 57,
+      "log": "web-business-check-final-identity.log"
+    },
+    {
+      "suite": "operator-ui",
+      "passed": 41,
+      "total": 41,
+      "log": "operator-ui-check-final.log"
+    },
+    {
+      "suite": "parity-ui",
+      "passed": 53,
+      "total": 53,
+      "log": "parity-ui-check.log"
+    },
+    {
+      "suite": "policy-ui",
+      "passed": 17,
+      "total": 17,
+      "log": "policy-ui-check.log"
+    },
+    {
+      "suite": "demo-dom",
+      "passed": 11,
+      "total": 11,
+      "log": "demo-dom-final-simulation.log"
+    },
+    {
+      "suite": "web-static",
+      "passed": 149,
+      "total": 149,
+      "log": "web-check-final.log"
+    },
+    {
+      "suite": "browser-simulation-engine",
+      "passed": 11,
+      "total": 11,
+      "log": "demo-engine-js-final.log"
+    },
+    {
+      "suite": "engine-all",
+      "passed": 616,
+      "total": 616,
+      "log": "engine-all-sdk401-final.log",
+      "sdk": "10.0.401",
+      "runtime": "macOS arm64",
+      "buildLog": "engine-build-sdk401-final.log",
+      "warningCount": 0,
+      "errorCount": 0
+    }
+  ],
+  "regressionEvidence": {
+    "log": "single-receipt-before.log",
+    "before": "All five foreign/incomplete receipt cases fail before receipt identity fix.",
+    "after": "All pass within final 57/57 business suite."
+  },
+  "limitations": [
+    "Portable Chromium fixtures only; no real Windows/AD/SMB effects performed by this agent.",
+    "No CSS, animations, layout, commits or pushes by this agent.",
+    "Portable build used SDK10.0.401 from a cwd outside v2; versioned global.json unchanged and still pins CI SDK10.0.302. This is not Windows or pinned-SDK qualification."
+  ],
+  "dtoReview": {
+    "realPipeline": "LiveBackend.BuildPlan -> PlanNode -> ExecutePlan constructs receipt identity from plan; Finalize changes status/code/message/restart only. join/rename/move/renameMove names and destination present, move NewName equals Computer; actual mode live or live · adapter description.",
+    "simulationBugFixed": "Denied/uncertain move receipts used source OU; fixed to planned OU in both producers. No relaxation of the identity guard.",
+    "scope": "Acknowledgement, restart, attributes and ODJ use separate receipt contracts and validators; they are not routed through the generic receipt matcher.",
+    "continuations": "Interventions validates parentReceiptId independently after generic identity check; demo continuation covered by existing DOM partial89 scenario.",
+    "limit": "No planId field in current receipt DTO: frontend checks available target/effect identity, not independent cryptographic binding to plan. Engine durable request/bridge correlation remain authoritative."
+  },
+  "regressionSimulation": {
+    "engineBefore": "engine-simulation-before.log",
+    "engineBeforeResult": "0 passed / 1 failed; targetOU expected Lyon, observed Paris",
+    "uiBefore": "demo-simulation-before.log",
+    "uiBeforeResult": "refused receipt card missing before fix",
+    "after": "616/616 engine and 11/11 demo DOM"
+  }
+}

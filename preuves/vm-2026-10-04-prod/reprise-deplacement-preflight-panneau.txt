@@ -1,0 +1,12 @@
+﻿RÉEL · Déplacer uniquement
+
+Poste : V999004BBQA1003
+Nom final : V999004BBQA1003
+Emplacement : ADCC-Lab › Pesto-20261004 › Computers › BETA-BB
+
+LECTURE : Deplacement seul explicitement demande.
+LECTURE : Source AD unique, périmètre et OU source contrôlés.
+LECTURE : OU de destination effective et son GUID confirmés sur le même contrôleur.
+LECTURE : Droits de mutation, canaux RPC/WMI et redémarrage : non certifiés par ce contrôle en lecture seule.
+
+Aucun redémarrage automatique.

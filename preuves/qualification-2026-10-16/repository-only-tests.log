@@ -1,0 +1,7 @@
+test_windows_checkout_preserves_runtime_and_vendor_bytes (test_checkout_bytes.CheckoutBytesTests.test_windows_checkout_preserves_runtime_and_vendor_bytes) ... ok
+test_repository_parser_keeps_only_ps1_extension (test_ps51_compat.PowerShell51CompatTests.test_repository_parser_keeps_only_ps1_extension) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.055s
+
+OK

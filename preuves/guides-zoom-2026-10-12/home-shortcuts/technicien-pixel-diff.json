@@ -1,0 +1,338 @@
+{
+  "Baseline": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-final",
+  "Current": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final",
+  "BaselinePageCount": 25,
+  "PageCount": 25,
+  "BodyCrop": "x=0..width, y=0..min(1878,height); footer excluded",
+  "Pages": [
+    {
+      "Page": 1,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-1.png",
+      "SHA256": "878f9839a3120165f13468eccee2bea3510bd6714e5951e0125c73967cbdd6b4",
+      "BodySHA256": "5e6109dd3058c3137ea4f80357ced783a0f0f02154b37cbe9077d5f90d5ead51",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": null,
+      "IdenticalBodyToBaseline": null,
+      "NeedsVisualReview": true
+    },
+    {
+      "Page": 2,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-2.png",
+      "SHA256": "c8f42709a97d217097ddc4ab1c383f2e989aab7e5ed48a4355a51b81ebba4436",
+      "BodySHA256": "ab159f195cb89222cd157635bc4614828370f767abd792d491784c2076967282",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 2,
+      "IdenticalBodyToBaseline": 2,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 3,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-3.png",
+      "SHA256": "0560754759ed3246981a5c84554cb513b2fbf9f7a0ce1faece43346d2024044f",
+      "BodySHA256": "499f054a23ccb1978ea6c807bb7c05d9e5ac3da2b0de3487372867c2b0f9327e",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 3,
+      "IdenticalBodyToBaseline": 3,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 4,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-4.png",
+      "SHA256": "71f60383ccecdf5d75a7f00e8d379c36337cb40c77d8bdf173b0a6af04c01ea4",
+      "BodySHA256": "bdb98c49038f7eb2e3712fd22a180540994ba28151c0d5f21e68a52493abdfe7",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 4,
+      "IdenticalBodyToBaseline": 4,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 5,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-5.png",
+      "SHA256": "cd60bfc02aed74126f723cd6854f786b4c22c9856a46397a39aceccfe07deac4",
+      "BodySHA256": "eb3e56592c0559a2a30a7306db48b7bcd62bced3f9f19d05880928fc8c0b0fb9",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 5,
+      "IdenticalBodyToBaseline": 5,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 6,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-6.png",
+      "SHA256": "ba22b98903135f3c32fe0a36612cde187c1fc7e75775d141a2dd41dc50f6810b",
+      "BodySHA256": "4f90f0f7c0ac18a8b1c660d0f42dde807668076e762951c6228f9c38bcb54176",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 6,
+      "IdenticalBodyToBaseline": 6,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 7,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-7.png",
+      "SHA256": "742832dffefd528f59c2b65ad40de6b7427d435129be9b9661076b00587b0da7",
+      "BodySHA256": "f2f766232988e81c1e4497e3d1eefb3506bc77bfc01bc661ffae1fa56fe49000",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 7,
+      "IdenticalBodyToBaseline": 7,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 8,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-8.png",
+      "SHA256": "33149691c0c22d0b5e16fb3b291f3ba974385cae3a7b977c652cb2a5fcbf67bb",
+      "BodySHA256": "8df2c8c6461878dfccaf41852a12679c2f4298f836db7ae6c690551cdadd7826",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 8,
+      "IdenticalBodyToBaseline": 8,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 9,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-9.png",
+      "SHA256": "68bea76ea1bbd3d081d21f71ca16e5c0aaf98b94d796e49e66ed0acc3678e6ea",
+      "BodySHA256": "450fafa128d7c357c8bfdaf6f8971c28b094237d08318a87fb828751fcd34170",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 9,
+      "IdenticalBodyToBaseline": 9,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 10,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-10.png",
+      "SHA256": "22a7371abb83e77a66b632152610c308a83c0e70d931630f0df2abed6a30d7cd",
+      "BodySHA256": "23cdc694127efc3a8dcd132865494b5202e78ca0b1ab2288651a3b8e813ae577",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 10,
+      "IdenticalBodyToBaseline": 10,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 11,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-11.png",
+      "SHA256": "52f4a6eed1c5d1ab3428083a229c87e606f2e7d6ff698ed303d1630a87926bc0",
+      "BodySHA256": "3f2f61bc2c86f00a27e97f393d8bdaef85a625133aae0a6fe2e53a91619923cb",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 11,
+      "IdenticalBodyToBaseline": 11,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 12,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-12.png",
+      "SHA256": "0961013824df6a21123b3e660916840f5fb0df9b4bde007dc04315354536d1a0",
+      "BodySHA256": "a9d75d5461b205c3db5d293ead847e9b6f6291cbcd2301c37f3e9bb9d7a5e4f1",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 12,
+      "IdenticalBodyToBaseline": 12,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 13,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-13.png",
+      "SHA256": "ab097312f0d9258ae1ecb7d43b57331d80056957f8ecdb589bad3f98d2c1817c",
+      "BodySHA256": "7f1de0bbfd79e6b9e6f6be81957093fed1eaad3c40ddd2476d780c0b4ba1b2f1",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 13,
+      "IdenticalBodyToBaseline": 13,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 14,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-14.png",
+      "SHA256": "8d4464db55c80a31104b362f869b20d41ee2fa530f824afe466a6c70c39d8522",
+      "BodySHA256": "24fb1dadd0b3348ea124f52511b1202fa250d4f20bb30069fe29ebd2efe3e4cd",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 14,
+      "IdenticalBodyToBaseline": 14,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 15,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-15.png",
+      "SHA256": "f21aed9b65eba70d8fa8ce270a65757bf779d9e5936c57877d00f3d3ad5f3ba2",
+      "BodySHA256": "e33bebc2e662a86034e6b1f2aa62c864e8221f5e27db002c431426a14ceac437",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 15,
+      "IdenticalBodyToBaseline": 15,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 16,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-16.png",
+      "SHA256": "fca88c9f1d3636108ba1e7b3297df962a4660e2388943d331f15f2fd00879839",
+      "BodySHA256": "1480ec7038529685bd1b55fdc38a207a02769f0f5a427aa90c51f92029ba72c4",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 16,
+      "IdenticalBodyToBaseline": 16,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 17,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-17.png",
+      "SHA256": "692149dc78bda89f374751487f5a3db959ee5304eedcf0c762d7a683e9a4b399",
+      "BodySHA256": "f5929c5df1c690630099a41c707cbe6225d9c7d95c9d5038e548a7f380cdda9a",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 17,
+      "IdenticalBodyToBaseline": 17,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 18,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-18.png",
+      "SHA256": "bfd919c2d901584423672262d6f3da290464a17ef7140dab33191e8f15583c3b",
+      "BodySHA256": "f30df9a374c6ff0d451335ae38b870b3c054b1acdb953ba4042ae89dfa82091f",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 18,
+      "IdenticalBodyToBaseline": 18,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 19,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-19.png",
+      "SHA256": "03e73533bd29f4d42d55ecf7f1c29a48bdabec4dde29835db7e060dbbfaea4ab",
+      "BodySHA256": "97c015cb1d6a6971be9a8731c42431fc77040e9b2a1bca494977c0e070ac06a7",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 19,
+      "IdenticalBodyToBaseline": 19,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 20,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-20.png",
+      "SHA256": "a2290cca70fb109cad16d8cefb3ed14b997bf9bb55f2a2bf8dd2fecc689a8801",
+      "BodySHA256": "63cba3cd0dd4cda9dde390566290ee0ebf5453c3c1ce48bf7114e8c963ea1ca0",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 20,
+      "IdenticalBodyToBaseline": 20,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 21,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-21.png",
+      "SHA256": "5edb6c1ff8bfac0860ddd53693a1236faad271cdb23ecd6c0cecbef24da60b54",
+      "BodySHA256": "3adc578d55f16d38d86799393916fea185295aee9c229a6542642498b2bb73e0",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 21,
+      "IdenticalBodyToBaseline": 21,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 22,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-22.png",
+      "SHA256": "c59f2d96cad005b620c4fe0f2c187ff5238c47b461559057c0c07fdcd2e70cf2",
+      "BodySHA256": "07b9b02f00536dd1c95136228e66dccdce1f997fc4d92c3f2e406c0d5288ad48",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 22,
+      "IdenticalBodyToBaseline": 22,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 23,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-23.png",
+      "SHA256": "61c94117fcd250f255e2544e20ebf527e42f7e4e93e9f191331606ec2dd6f1a6",
+      "BodySHA256": "fe897ee13b5694593935a90765ddc1a1533fac60d1cd2157a1984fc6f5695697",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 23,
+      "IdenticalBodyToBaseline": 23,
+      "NeedsVisualReview": false
+    },
+    {
+      "Page": 24,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-24.png",
+      "SHA256": "6dd2e13cde659382eb6824c3415ae55e8d036f4387e62ae8b554e6d46b54c6a3",
+      "BodySHA256": "9f313e3fe2cc3232039179ade9ac5d8b1365e5aef1d45a59943e8dda0d9c1e05",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": null,
+      "IdenticalBodyToBaseline": null,
+      "NeedsVisualReview": true
+    },
+    {
+      "Page": 25,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/page-25.png",
+      "SHA256": "c7fc2d8bb500ffac61b6f3c810916d3eaebaf7e91e37007bb13091935343dea2",
+      "BodySHA256": "7a744a31d421a20fc7f3383736c6e3c3d0d595245ecba9e2749e26f5d691e66d",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 25,
+      "IdenticalBodyToBaseline": 25,
+      "NeedsVisualReview": false
+    }
+  ],
+  "ChangedBodyPages": [
+    1,
+    24
+  ]
+}

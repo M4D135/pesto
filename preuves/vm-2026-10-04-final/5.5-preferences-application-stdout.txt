@@ -1,0 +1,15 @@
+{
+  "Updated": true,
+  "Backup": "C:\\PestoTest-run\\recette-update-prefs-v2-20261004\\rc23\\DEV-code-backup-im9ng45p",
+  "Version": "1.0",
+  "ConfigPreserved": true,
+  "Note": "Application code only; a crash retains the lock for explicit --recover. No AD rollback.",
+  "UserQueues": {
+    "Scope": "CurrentUser",
+    "LocalAppData": "C:\\PestoTest-run\\recette-update-prefs-v2-20261004\\profil-local",
+    "Status": "NoQueue",
+    "Queues": [],
+    "Warning": null,
+    "Note": "Lecture seule du profil Windows courant : les autres comptes, dont le compte élevé d'un relais UAC, ne sont pas examinés. Classement établi d'après les règles de reprise de Pesto ; le propriétaire de la file (poste, domaine) et ses identifiants d'opération ne sont pas contrôlés. Aperçu informatif : la mise à jour n'est pas bloquée (décision non prise)."
+  }
+}

@@ -1,0 +1,5 @@
+[31;1mException: [0m/Users/david/Projects/pesto/DEV/tests/Run-SharedNameReservationTests.ps1:6[0m
+[31;1m[0m[36;1mLine |[0m
+[31;1m[0m[36;1m[36;1m   6 | [0m … ajor -ne 5){[36;1mthrow 'Windows PowerShell 5.1 requis pour le verrouillage[0m …[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mWindows PowerShell 5.1 requis pour le verrouillage NTFS.[0m

@@ -1,0 +1,33 @@
+TitleBar "Pesto 1.0 · Connexion" #TitleBar
+  MenuBar "System Menu Bar" #SystemMenuBar
+    MenuItem "System" #Item 1
+  Button "Close" #Close
+Pane ""
+  Button "◐" #LoginTheme
+    Text "◐"
+  Text "P"
+  Text "Connexion à Pesto"
+  Text "Compte de domaine requis"
+  Text "Compte Windows"
+  Edit "Compte Windows du domaine" #TxtUser
+    ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+    ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+  Text "Mot de passe"
+  Edit "Mot de passe" #TxtPwd
+    ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+    ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+  Text "Verr. Maj est activé." #LoginCaps [hors-ecran]
+  CheckBox "Mémoriser uniquement l'identifiant" #ChkRememberUser
+    Text "Mémoriser uniquement l'identifiant"
+  Text "" #LblErr [hors-ecran]
+  Text "" #LblStep [hors-ecran]
+  ProgressBar "" #PbLogin [hors-ecran]
+  Button "Annuler" #BtnCancel
+    Text "Annuler"
+  Button "Se connecter" #BtnOk
+    Text "Se connecter"
+  Button "Utiliser mon compte Windows" #BtnWindows
+    Text "Utiliser mon compte Windows"
+  Text "Le mot de passe n'est jamais enregistré."
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]

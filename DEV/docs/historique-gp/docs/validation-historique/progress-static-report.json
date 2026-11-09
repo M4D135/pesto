@@ -1,0 +1,226 @@
+{
+  "version": "17.0-RC9",
+  "utc": "2026-09-30T12:22:31.913343+00:00",
+  "source_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "scope": "STATIC ONLY: textual contracts and lexical checks, not native PowerShell, WPF, UAC or AD execution.",
+  "summary": {
+    "checks": 40,
+    "passed": 40,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Shared monitor uses a synchronized table and concurrent event queue",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker messages are sanitized before enqueue",
+      "status": "PASS"
+    },
+    {
+      "name": "Stage snapshot is assigned atomically, not a partially edited live object",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancellation and admission share the same monitor lock",
+      "status": "PASS"
+    },
+    {
+      "name": "Cancellation tested before mutation admission",
+      "status": "PASS"
+    },
+    {
+      "name": "UI event drain is bounded and uses TryDequeue",
+      "status": "PASS"
+    },
+    {
+      "name": "Queue worker STA, same telemetry object and 300 second watchdog",
+      "status": "PASS"
+    },
+    {
+      "name": "Read workers remain MTA unless explicitly changed",
+      "status": "PASS"
+    },
+    {
+      "name": "Active QueueAction cannot be replaced",
+      "status": "PASS"
+    },
+    {
+      "name": "Live events are drained before waiting for completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Final events are drained before success callback",
+      "status": "PASS"
+    },
+    {
+      "name": "Mutating timeout keeps worker registry until actual completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Mutating timeout never directly invokes BeginStop",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit queue stop fences, suppresses callbacks and keeps monitoring",
+      "status": "PASS"
+    },
+    {
+      "name": "Timeout is labeled uncertain, not a confirmed failure",
+      "status": "PASS"
+    },
+    {
+      "name": "Uncertain summary does not announce Windows completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Late result cannot overwrite the timeout",
+      "status": "PASS"
+    },
+    {
+      "name": "Safety reset blocked while timed-out worker remains live",
+      "status": "PASS"
+    },
+    {
+      "name": "15 second audit heartbeat contains current stage",
+      "status": "PASS"
+    },
+    {
+      "name": "UAC uses STA and announces before shell launch",
+      "status": "PASS"
+    },
+    {
+      "name": "Helper visible, exits detected before credentials, 120 second connection guard",
+      "status": "PASS"
+    },
+    {
+      "name": "Verified PID before credential send",
+      "status": "PASS"
+    },
+    {
+      "name": "Response waiting is polled and never kills the helper",
+      "status": "PASS"
+    },
+    {
+      "name": "Credential transmission follows mutation admission",
+      "status": "PASS"
+    },
+    {
+      "name": "RenameComputer gates admission before native write",
+      "status": "PASS"
+    },
+    {
+      "name": "AddToDomain gates admission before native write",
+      "status": "PASS"
+    },
+    {
+      "name": "MoveComputer gates admission before native write",
+      "status": "PASS"
+    },
+    {
+      "name": "Move finally always attempts original protection restoration",
+      "status": "PASS"
+    },
+    {
+      "name": "Rename completion gated before following AD move",
+      "status": "PASS"
+    },
+    {
+      "name": "Local source avoids a network ping",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker log sink available before module import",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker uses only shared data, no WPF dispatcher access",
+      "status": "PASS"
+    },
+    {
+      "name": "Required telemetry functions included in exported source",
+      "status": "PASS"
+    },
+    {
+      "name": "tests/Run-ProgressTests.ps1 BOM, CRLF, conservative delimiter checks",
+      "status": "PASS",
+      "tokens": 1680,
+      "native_parser_executed": false
+    },
+    {
+      "name": "tools/Diagnostic-Rename.ps1 BOM, CRLF, conservative delimiter checks",
+      "status": "PASS",
+      "tokens": 451,
+      "native_parser_executed": false
+    },
+    {
+      "name": "tools/Build-GP.ps1 BOM, CRLF, conservative delimiter checks",
+      "status": "PASS",
+      "tokens": 395,
+      "native_parser_executed": false
+    },
+    {
+      "name": "Windows tests exercise real timers but never start GP",
+      "status": "PASS",
+      "windows_cases_supplied": 21,
+      "executed": false
+    },
+    {
+      "name": "Master and build runners include the new suite",
+      "status": "PASS"
+    },
+    {
+      "name": "Diagnostic collects no process arguments or mutations",
+      "status": "PASS"
+    },
+    {
+      "name": "Diagnostic explicitly avoids claiming no operation still active",
+      "status": "PASS"
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Remove queue STA",
+      "detected": true,
+      "failed_checks": [
+        "Queue worker STA, same telemetry object and 300 second watchdog"
+      ]
+    },
+    {
+      "name": "Drop queue deadline",
+      "detected": true,
+      "failed_checks": [
+        "Queue worker STA, same telemetry object and 300 second watchdog"
+      ]
+    },
+    {
+      "name": "Permit replacement",
+      "detected": true,
+      "failed_checks": [
+        "Active QueueAction cannot be replaced"
+      ]
+    },
+    {
+      "name": "No callback suppression on stop",
+      "detected": true,
+      "failed_checks": [
+        "Explicit queue stop fences, suppresses callbacks and keeps monitoring"
+      ]
+    },
+    {
+      "name": "Lose log masking",
+      "detected": true,
+      "failed_checks": [
+        "Worker messages are sanitized before enqueue"
+      ]
+    },
+    {
+      "name": "Drop native rename fence",
+      "detected": true,
+      "failed_checks": [
+        "RenameComputer gates admission before native write"
+      ]
+    }
+  ],
+  "native_windows_tests_executed": false
+}

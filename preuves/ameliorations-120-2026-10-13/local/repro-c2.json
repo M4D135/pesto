@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "identical": true,
+  "differentFiles": [],
+  "qualification": "byte comparison of two supplied builds; no Windows execution inferred",
+  "toolchain": {
+    "schema": 1,
+    "profile": "macos-reference",
+    "versions": {
+      "clang": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+      "lld": "Homebrew LLD 23.1.2"
+    },
+    "status": "MATCH",
+    "byteReproducibility": "NOT_INFERRED"
+  }
+}

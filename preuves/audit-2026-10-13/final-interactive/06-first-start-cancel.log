@@ -1,0 +1,11 @@
+clic : #Save (Valider, sauvegarder et continuer)
+clic : #Save (Valider, sauvegarder et continuer)
+clic : #Wizard (Créer avec l’’assistant)
+
+Nom                                Pid Classe        Rect            
+---                                --- ------        ----            
+                                  3796 Shell_TrayWnd 0;1152;1920;48  
+Pesto · Corriger la configuration 7948 Window        435;186;1050;780
+Program Manager                   3796 Progman       0;0;1920;1200   
+
+

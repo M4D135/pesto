@@ -1,0 +1,36 @@
+  ok   Première lecture lente : une commande Enregistrer prématurée ne supprime pas la réponse attendue
+  ok   Saisie avant première lecture : Relire exige aussi un abandon confirmé du brouillon
+  ok   Réponse tardive import : quitter les paramètres interdit tout dialogue ou effet ultérieur
+  ok   Réponse tardive rollback : quitter les paramètres interdit tout dialogue ou effet ultérieur
+  ok   Réponse tardive status : quitter les paramètres interdit tout dialogue ou effet ultérieur
+  ok   Réponse tardive distribution : quitter les paramètres interdit tout dialogue ou effet ultérieur
+  ok   Enregistrement lent : une seule préparation et aucun aperçu ancien après nouvelle saisie
+  ok   Relecture lente : la saisie arrivée pendant la lecture reste intacte
+  ok   Rafraîchissement de configuration : le brouillon existant est conservé
+  ok   Relire un brouillon demande un choix, annuler conserve les champs
+  ok   Brouillon paramètres : navigation annulée conserve les saisies et la route affichée
+  ok   Brouillon paramètres : réponse en cours conservée pendant la confirmation de sortie
+  ok   Deux relectures terminées en ordre inverse : seule la dernière est affichée
+  ok   Enregistrement confirmé lent : une nouvelle saisie reste disponible pour la sauvegarde suivante
+  ok   Enregistrement confirmé puis navigation : aucun retour tardif sur la page quittée
+  ok   Configuration locale : deux pages, bannière et échanges de paramètres sans aucun appel annuaire
+  ok   Configuration invalide : aucun faux réglage actif, remplacement explicite puis reprise des actions locales
+  ok   Profil neuf : formulaire sans V1, aperçu puis application exacte après confirmation
+  ok   Politiques : aperçu typé puis confirmation, sans contact du registre ou écriture AD
+  ok   Groupes exclus : GUID invalide ou doublon refuse avant tout aperçu
+  ok   Exporter transmet la version à la sélection native, sans application de configuration
+  ok   Import : différences visibles, annulation sans écriture puis plan confirmé exact
+  ok   Sélection d’import annulée : aucun dialogue de remplacement ni faux succès
+  ok   Définir par défaut confirme avant sélection native et annonce un pack personnalisé
+  ok   Destination du pack annulée : le texte de préparation est terminé sans faux livrable
+  ok   Référentiels : tous les conflits doivent être résolus avant une application unique
+  ok   Mise à jour GitHub : vérifier, préparer, confirmer et demander l’installation sont distincts
+  ok   Source zip : inspection seule, sélection correctement transmise
+  ok   Source folder : inspection seule, sélection correctement transmise
+  ok   Source source : inspection seule, sélection correctement transmise
+  ok   Configuration distribuée : keep exige le choix explicite avec différences
+  ok   Configuration distribuée : replace exige le choix explicite avec différences
+  ok   Rollback et reprise restent deux actions confirmées séparément
+  ok   Échec d’application : message de refus, aucun faux succès ni relance automatique
+  ok   Aucune erreur de module/console ni requête externe
+35/35 contrôles maintenance Chromium réussis ; 0 échec(s).

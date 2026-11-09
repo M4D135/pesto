@@ -1,0 +1,53 @@
+Bonjour. En tant que cerveau KBZA, j'ai analysé le code source de `Run-UxTests.ps1` et la structure XAML fournie.
+
+### Diagnostic
+L'échec `Arbre XAML non arrangé à la largeur demandée` dans `Arrange-UxDetached` est causé par le comportement de `ScrollViewer` (`PestoZoomViewport`) lorsqu'il est détaché de la fenêtre parente.
+
+1.  **Le problème :** `ScrollViewer` est un `Decorator` qui gère son propre `MeasureOverride`. Quand il est hors d'une fenêtre (`$Win.Content = $null`), il ne reçoit pas de contraintes de taille explicites de la part d'un conteneur parent (comme le `Grid` de la fenêtre). Il tente de se mesurer à sa taille "désirée" (souvent infinie ou très grande) ou reste sur une taille nulle si le layout n'a pas été propagé correctement.
+2.  **La conséquence :** `detachedHost.Measure([Windows.Size]::new($Width,$Height))` passe la taille demandée, mais `ScrollViewer` peut ignorer cette contrainte si `CanContentScroll` est vrai ou si le contenu interne (la grille `SuiteRoot`) force une largeur supérieure à cause de ses colonnes fixes (`MinWidth`).
+3.  **La solution :** Il faut forcer la taille du `ScrollViewer` lui-même avant de mesurer son contenu, ou s'assurer que le `ScrollViewer` ne redimensionne pas arbitrairement l'espace disponible. Dans WPF, `ScrollViewer` doit avoir une taille explicite ou être dans un conteneur qui le contraint.
+
+Le correctif minimal consiste à **assigner explicitement la `Width` et la `Height` au `ScrollViewer` (`PestoZoomViewport`)** avant la boucle de mesure dans `Arrange-UxDetached`. Cela simule le comportement qu'il aurait s'il était dans la fenêtre, en le forçant à respecter les dimensions DIP demandées pour le test.
+
+### Correctif Minimal (Patch C#/PS5.1)
+
+Modifiez la fonction `Arrange-UxDetached` dans `DEV/tests/Run-UxTests.ps1` comme suit :
+
+```powershell
+    function Arrange-UxDetached {param([double]$Width,[double]$Height)
+        # CORRECTIF : Forcer la taille du ScrollViewer racine pour qu'il respecte les contraintes DIP
+        # sans dépendre de la fenêtre parente absente.
+        $script:PestoZoomViewport.Width = $Width
+        $script:PestoZoomViewport.Height = $Height
+        
+        for($pass=0;$pass -lt 6;$pass++){
+            $detachedHost.Measure([Windows.Size]::new($Width,$Height))
+            $detachedHost.Arrange([Windows.Rect]::new(0,0,$Width,$Height))
+            $detachedHost.UpdateLayout();Update-PestoUxLayout
+        }
+        $logical=Get-PestoUiLayoutSize
+        $script:UxLayoutMeasurements.Add([pscustomobject]@{RequestedWidth=$Width;RequestedHeight=$Height;ActualWidth=$detachedHost.ActualWidth;ActualHeight=$detachedHost.ActualHeight;LogicalWidth=$logical.Width;PreviewColumn=[Windows.Controls.Grid]::GetColumn($PreviewPanel);PreviewRow=[Windows.Controls.Grid]::GetRow($PreviewPanel)})
+        Assert-True ([Math]::Abs($detachedHost.ActualWidth-$Width) -lt 0.1) 'Arbre XAML non arrangé à la largeur demandée.'
+        Assert-True ($BodyGrid.ActualWidth -gt 0 -and $BtnRun.ActualHeight -ge 36)
+    }
+```
+
+### Mesures de Diagnostic
+
+Pour confirmer que le correctif fonctionne et diagnostiquer d'éventuels problèmes de `MinWidth` dans les colonnes internes :
+
+1.  **Ajouter un log de diagnostic dans le catch ou juste après l'assertion :**
+    ```powershell
+    # Dans Arrange-UxDetached, avant l'Assert-True :
+    Write-Host "DEBUG: DetachedHost ActualWidth=$($detachedHost.ActualWidth) Requested=$Width"
+    Write-Host "DEBUG: PestoZoomViewport Width=$($script:PestoZoomViewport.Width) ActualWidth=$($script:PestoZoomViewport.ActualWidth)"
+    ```
+
+2.  **Vérifier les `MinWidth` des colonnes :**
+    Si l'erreur persiste, c'est que la somme des `MinWidth` des colonnes de `SuiteRoot` (Grid) dépasse la largeur demandée (ex: 1100px).
+    *   Dans `Pesto-Shell.xaml`, vérifiez `<ColumnDefinition x:Name="SidebarWidth" Width="194"/>` et les colonnes internes.
+    *   Si `194 + MinWidth(Col2) + MinWidth(Col3) > 1100`, le Grid ne peut pas se rétracter.
+    *   *Note :* Le test à 1100px échoue probablement si `SidebarWidth` (194) + `MinWidth` du contenu central est trop grand. Vérifiez que `MinWidth` sur les colonnes centrales est faible ou nul.
+
+### Résumé
+Le patch ajoute 2 lignes pour forcer la taille du `ScrollViewer` racine. Cela résout le problème de mesure hors-fenêtre. Si l'erreur persiste à 1100px, c'est un problème de conception XAML (colonnes trop larges), pas un bug de test.

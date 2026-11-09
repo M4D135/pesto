@@ -1,0 +1,178 @@
+Text "P"
+Text "Pesto" #SuiteBrandLabel
+Text "Active Directory" #SuiteBrandHint
+Pane ""
+  Button "Accueil" #NavHome
+    Text "⌂"
+    Text "Accueil" #NavHomeLabel
+  Button "Renommer" #NavRename
+    Text "✎"
+    Text "Un seul poste" #NavRenameLabel
+  Button "Plusieurs postes (file)" #NavBatch
+    Text "▦"
+    Text "Plusieurs postes" #NavBatchLabel
+  Button "Ajouter au domaine" #NavJoin
+    Text "+"
+    Text "Ajouter au domaine" #NavJoinLabel
+  Button "Noms disponibles" #NavNames
+    Text "▤"
+    Text "Noms disponibles" #NavNamesLabel
+  Button "Historique" #NavHistory
+    Text "◷"
+    Text "Historique" #NavHistoryLabel
+  Button "Journal" #NavLogs
+    Text "≡"
+    Text "Journal" #NavLogsLabel
+  Button "Paramètres" #NavSettings
+    Text "⚙"
+    Text "Paramètres" #NavSettingsLabel
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+    Button "" #PART_LineUpButton [inactif] [hors-ecran]
+    Button "" #PageUp [inactif] [hors-ecran]
+    Button "" #PageDown [inactif] [hors-ecran]
+    Thumb "" [inactif] [hors-ecran]
+    Button "" #PART_LineDownButton [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Button "?   Aide et raccourcis" #NavHelp [hors-ecran]
+Text "Pesto 1.0" #UxVersion
+Text "Windows · PowerShell"
+Button "Réduire le menu : conserver uniquement les icônes." #SuiteNavToggle
+Text "" #PestoPersistenceWarning [hors-ecran]
+Text "P111301VA765172"
+Text "labo.local"
+Text "LABO\tech.pesto"
+Text "" [hors-ecran]
+Text "" [hors-ecran]
+Text "" [hors-ecran]
+Button "Palette de commandes" #WorkspaceButton
+  Text "Actions · Ctrl+K"
+Button "Audit" #BtnLog
+  Text "Audit"
+Button "Changer de thème" #BtnTheme
+Button "Aide" #BtnHelp
+  Text "?"
+Tab "" #MainTabs
+  TabItem "Renommer" #TabRename [hors-ecran]
+    Pane "" #ActionScroll
+      Text "Préparer plusieurs postes" #UxPageTitle
+      Text "La file regroupe les postes à traiter. Les résultats partiels ne sont pas rejoués automatiquement." #UxPageSubtitle
+      Text "Cible et compte de l’intervention" #SuiteTargetPin
+      Button "Un seul poste" #SuiteModeSingle
+      Button "Plusieurs postes" #SuiteModeBatch
+      Button "État du poste" #SuitePostState
+      Text "1" #Step1Text
+      Text "Choisir le poste"
+      Text "2" #Step2Text
+      Text "Nouveau nom"
+      Text "3" #Step3Text
+      Text "Vérifier"
+      Text "4" #Step4Text
+      Text "Exécuter"
+      Text "Données : 1 min · récent" #SuiteDataAge
+      Button "Actualiser ce site" #SuiteRefreshSite
+      Text "1. Choisir le poste"
+      Text "Utilisez ce PC ou saisissez le nom d'un autre poste."
+      CheckBox "Un autre poste du domaine" #ChkRemote [inactif]
+      Text "Compte requis pour un poste distant" #SuiteRemoteAccountHint [hors-ecran]
+      Text "Nom du poste actuel  ⓘ"
+      Edit "Nom du poste actuel" #TxtPCName
+      Button "Lire le poste" #BtnReadComputer
+      Text "" #LblPCInfo [hors-ecran]
+      Text "2. Définir le nouveau nom"
+      Text "Le nom est proposé selon votre convention à 15 caractères."
+      Text "Organisme  ⓘ"
+      ComboBox "Organisme" #CbOrg
+      Text "Site  ⓘ"
+      ComboBox "Site" #CbSite
+      Text "Service  ⓘ"
+      ComboBox "Code service" #CbService
+      Text "Type  ⓘ"
+      ComboBox "Type de poste" #CbType
+      Text "Nouveau nom  ⓘ"
+      ComboBox "Nouveau nom" #CbName
+      Button "Proposer un autre nom" #BtnOtherName
+      Text "Ce nom est déjà utilisé dans l'AD" #LblNameTaken [hors-ecran]
+      Text "ⓘ  Déplacement automatique uniquement si le site change." #UxMoveRule
+      Group "Options : déplacement seul et redémarrage" #AdvancedOptions
+      Group "Favoris de préparation" [hors-ecran]
+      Button "Ajouter à la file" #BtnAdd
+      Text "Ajoutez ce brouillon à la file. Aucun poste ne sera modifié à cette étape." #UxAddHint
+      Thumb "Séparation formulaire et aperçu" #FormSplitter
+      Text "Aperçu avant / après"
+      Text "Brouillon du formulaire, pas un résultat d'exécution."
+      Text "Nom actuel"
+      Text "P111301VA765172" #UxCurrentName
+      Text "Nouveau nom"
+      Text "P111301LY765097" #UxNewName
+      Button "Copier le nom proposé" #BtnCopyNewName
+      Text "Site : VA → LY" #UxSiteTransition
+      Text "OU actuelle  : ADCC-Lab › Departement 111301 › Postes › SITES › Paris" #LblCurrentOU
+      Text "OU cible     : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon" #LblTargetOU [hors-ecran]
+      Text "Après : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon" #UxActualTargetOU
+      Text "Opération prévue"
+      Text "Renommer puis déplacer" #UxOperation
+      Text "Redémarrage : non demandé" #UxRebootSummary
+      Text "La prochaine étape"
+      Text "Contrôlez les lignes cochées dans AD, puis prévisualisez la file avant de lancer son exécution." #UxNextStep
+      Text "Ajouter prépare. Contrôler lit AD. Seul Exécuter peut modifier les postes."
+      Button "Comprendre le parcours" #BtnInlineHelp
+      Text "Suivi de l’opération" #SuiteDirectTitle [hors-ecran]
+      Text "Confirmation annulée. Aucun changement lancé." #SuiteDirectStage [hors-ecran]
+      Text "LECTURE : Site VA -> LY : déplacement automatique après renommage confirmé.
+LECTURE : Source AD unique, périmètre et OU source contrôlés.
+LECTURE : Nom cible libre sur le contrôleur interrogé au moment de cette lecture.
+LECTURE : OU de destination effective et son GUID confirmés sur le même contrôleur.
+LECTURE : Droits de mutation, canaux RPC/WMI et redémarrage : non certifiés par ce contrôle en lecture seule." #SuiteDirectAdvice [hors-ecran]
+      Button "Vérifier puis reprendre" #SuiteDirectVerify [hors-ecran]
+      Button "Détails" #SuiteDirectDetails [hors-ecran]
+      Button "Annuler la lecture" #SuiteDirectCancelRead [hors-ecran]
+      Text "3. Vérifier la file"
+      Text "1 poste(s) • 1 à traiter" #LblQueueCount
+      Text "Seules les lignes cochées seront exécutées. Les lignes masquées par un filtre restent cochées."
+      Button "Contrôler dans AD" #BtnPreflight
+      Button "Prévisualiser la file" #BtnPreview
+      Button "Détails" #BtnDetails [inactif]
+      Button "Retirer de la file" #BtnDelete [inactif]
+      Button "Préparer un lot" #BtnBulk
+      Button "Annuler le contrôle" #BtnCancelPreflight [hors-ecran]
+      Edit "Rechercher dans la file" #TxtQueueSearch
+      Text "⌕"
+      ComboBox "Filtrer la file" #CmbQueueFilter
+      Text "1 visible(s)" #LblFilterCount
+      Text "1 poste(s) | 1 coché(s) | 0 OK | 0 à examiner" #LblPilotage [hors-ecran]
+      DataGrid "File des opérations" #Grid
+      Text "Aucune ligne ne correspond au filtre." #LblEmpty [hors-ecran]
+      Button "Tout cocher (visible)" #BtnCheckAll
+      Button "Tout décocher (visible)" #BtnUncheckAll
+      CheckBox "Colonnes techniques" #ChkTechnicalColumns
+      Group "Plus d'outils : modifier, importer, exporter…" #QueueTools
+      Button "Lever le verrou" #BtnSafetyReset [hors-ecran]
+      ScrollBar "" #VerticalScrollBar
+      ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Text "Le contrôle relit l'identité, le nom et l'OU. L'écriture ne commence qu'après votre confirmation." #SuiteDirectHint [hors-ecran]
+    Button "Vérifier seulement" #SuiteDirectCheck [hors-ecran]
+      Text "Vérifier seulement" [hors-ecran]
+    Button "Vérifier puis renommer" #SuiteDirectRun [hors-ecran]
+      Text "Vérifier puis renommer" [hors-ecran]
+    Text "MODE RÉEL : écritures après confirmation" #UxExecutionMode
+    Text "Inventaire actualisé : 7 noms / 7 postes." #LblStatus
+    Text "Contrôler ne modifie aucun poste. Le rapport couvre toute la file." #LblQueueActivity
+    ProgressBar "Progression de la file" #Progress [hors-ecran]
+    CheckBox "Confirmer chaque action" #ChkConfirm
+      Text "Confirmer chaque action"
+    CheckBox "Poste pilote avant le reste du lot" #QueuePilot
+      Text "Faire un poste pilote puis arrêter le lot"
+    Button "Exécuter la file (1)" #BtnRun
+      Text "Exécuter la file (1)"
+    Button "Arrêter après cette action" #BtnStop [inactif]
+      Text "Arrêter après cette action" [inactif]
+  TabItem "Noms disponibles" [hors-ecran]
+  TabItem "Paramètres" [hors-ecran]
+  TabItem "Journal" [hors-ecran]
+  TabItem "Accueil" [hors-ecran]
+  TabItem "Historique" [hors-ecran]
+  TabItem "Aide" [hors-ecran]
+  TabItem "Ajouter au domaine" #TabJoin [hors-ecran]
+Button "›" #SuiteHelpClose [hors-ecran]
+Text "À vos côtés" [hors-ecran]
+Pane "" [hors-ecran]

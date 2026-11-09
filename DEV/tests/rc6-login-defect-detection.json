@@ -1,0 +1,46 @@
+{
+  "base": "GP_17_WAD_RC6.zip",
+  "scope": "Structural checks against original XAML, no Windows execution",
+  "failed_checks": [
+    {
+      "name": "TextBox: content host has no duplicate outer spacing",
+      "status": "FAIL"
+    },
+    {
+      "name": "PasswordBox: content host has no duplicate outer spacing",
+      "status": "FAIL"
+    },
+    {
+      "name": "PasswordBox: centered contents",
+      "status": "FAIL"
+    },
+    {
+      "name": "TxtUser: height can grow",
+      "status": "FAIL"
+    },
+    {
+      "name": "TxtUser: adequate minimum size",
+      "status": "FAIL"
+    },
+    {
+      "name": "TxtUser: vertical alignment explicit",
+      "status": "FAIL"
+    },
+    {
+      "name": "TxtPwd: height can grow",
+      "status": "FAIL"
+    },
+    {
+      "name": "TxtPwd: adequate minimum size",
+      "status": "FAIL"
+    },
+    {
+      "name": "TxtPwd: vertical alignment explicit",
+      "status": "FAIL"
+    },
+    {
+      "name": "No remaining doubled input margin in the source",
+      "status": "FAIL"
+    }
+  ]
+}

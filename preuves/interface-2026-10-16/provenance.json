@@ -1,0 +1,14 @@
+{
+  "sourceCommit": "f8a531e38f69ae218bf9ef9b1934fdf942e43aaf",
+  "deliveredExeSha256": "d5d1ab86646fb18136deb07919da9ecf65045e4d4e2ac61cb6ff98bcbe25d631",
+  "guiObservedExeSha256": "a59648942b80597bef1c2fb5918d64c179d3ffd298c5038172e038d5211c9b83",
+  "guiSourceCommit": "31741811a8b386db79edbf2118e290eea776774c",
+  "unchangedUiFiles": {
+    "DEV/wad/Pesto-Join.xaml": "98621fbb28348691b2bb008f14d21587270b18bce63e0106b8a45c7b57d94dd2",
+    "DEV/wad/Pesto-Shell.xaml": "4d8b330db2fee2b36e6a619aecd77b9d2d25a21a51e12d9c1da6f5bd040b1357",
+    "DEV/wad/Pesto-Appearance.ps1": "640262d77fcddd596f141acd0b8f2172cff7e2b1d2f9d1479821509c947ede06",
+    "DEV/wad/Pesto-SuiteUI.ps1": "eabb4e45d7c863afa0f0b675b609755c430b1db764fb8b46e34d98ff54b750a4"
+  },
+  "latestExeLaunchedInVM": false,
+  "latestDcomFixTestedOnWindows51": true
+}

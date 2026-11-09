@@ -1,0 +1,70 @@
+SKIP symbolic links: creation API unavailable (not a Windows validation).
+{
+    "Status":  "PASS",
+    "SourceCommit":  "a050525abb46696d6b1516b18cccc2b837908a09",
+    "PS":  "5.1.26100.6584",
+    "CLR":  "4.0.30319.42000",
+    "Windows":  "Microsoft Windows NT 10.0.26200.0",
+    "Computer":  "P111301LY765128",
+    "Scope":  "Isolated Common contracts on Windows; no Pesto GUI or AD operation",
+    "Results":  [
+                    {
+                        "Assertions":  2625,
+                        "SHA256":  "53ceaf3f24dae275b417a6b4c82e6b9b9a4a4f87074617a42e8c59eb7e7cb1c5",
+                        "Name":  "M4D.Admin.Common.Tests.Core.dll"
+                    },
+                    {
+                        "Assertions":  81,
+                        "SHA256":  "14381c11b0f00673f2f7af303b876bd71591822bdf40840c40f23c403a59ee61",
+                        "Name":  "M4D.Admin.Common.Tests.Query.dll"
+                    },
+                    {
+                        "Assertions":  22,
+                        "SHA256":  "80de5bcccdcad9361ef7f70a7a45f2be4d00066a51dfed00c7de67ee2bed26e0",
+                        "Name":  "M4D.Admin.Common.Tests.IO.dll"
+                    },
+                    {
+                        "Assertions":  15,
+                        "SHA256":  "00f3503f7106f90b1c53e6f200a373ab4acafd7a5b445a5b7ee23e9bcde815db",
+                        "Name":  "M4D.Admin.Common.Tests.Diagnostics.dll"
+                    }
+                ],
+    "Wpf":  {
+                "Schema":  1,
+                "Scope":  "Windows WPF isolated",
+                "SHA256":  "3F8F6FD8704FA858CA66B18ABE1931BED6C1CB7A042DDC89A5796C0DF0BF8957",
+                "Checks":  [
+                               {
+                                   "Name":  "lower bound",
+                                   "Passed":  true
+                               },
+                               {
+                                   "Name":  "upper bound",
+                                   "Passed":  true
+                               },
+                               {
+                                   "Name":  "fraction retained",
+                                   "Passed":  true
+                               },
+                               {
+                                   "Name":  "NaN fallback",
+                                   "Passed":  true
+                               },
+                               {
+                                   "Name":  "no peer created",
+                                   "Passed":  true
+                               },
+                               {
+                                   "Name":  "requests coalesced",
+                                   "Passed":  true
+                               },
+                               {
+                                   "Name":  "dispose cancels pending",
+                                   "Passed":  true
+                               }
+                           ],
+                "ADExecuted":  false,
+                "ApplicationExecuted":  false
+            }
+}
+

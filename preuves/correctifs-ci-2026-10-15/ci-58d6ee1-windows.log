@@ -1,0 +1,3420 @@
+
+=== Run-SsoTests.ps1 ===
+OK Domaine : connexion Windows par défaut
+OK Hors domaine : formulaire explicite conservé
+OK Autre compte : opt-in conservé
+OK Démonstration : pas de connexion AD
+OK AskCredential reste absent du lancement UAC par défaut
+OK AskCredential explicite traverse le lancement UAC
+OK AD intégré : le paramètre Credential est absent, pas égal à null
+OK AD explicite : credential conservé
+OK File : renommage local sans credential autorisé
+OK File : déplacement distant sans credential autorisé
+OK File : renommage distant doit être signalé avant exécution
+OK Snapshot : mauvaise identité refusée sans credential affecté
+OK Snapshot : domaine différent refusé
+OK Snapshot validé : compte du worker conservé, aucun credential
+OK Renommage local intégré : dsreg puis CIM, sans Rename-Computer
+OK Renommage distant intégré : aucune mutation ni retrait Entra
+OK Compte explicite : parcours Rename-Computer conservé
+OK Sans élévation : refus avant dsregcmd
+OK Compte local : refus avant dsregcmd
+OK Nom déjà pris : aucun appel système
+OK GUID ou OU dérivés : aucun appel système
+OK Nom WMI différent : aucun appel de mutation
+OK Domaine réel différent : aucune mutation
+OK Contrôleur de domaine exclu
+OK Lecture WMI impossible : pas de retrait Entra
+OK Echec du retrait Entra : pas de renommage
+OK Retrait Entra incertain : pas de renommage
+OK WMI code 5 : refus sans second essai
+OK WMI résultat empty : incertain, aucun succès inventé
+OK WMI résultat missing : incertain, aucun succès inventé
+OK WMI résultat null : incertain, aucun succès inventé
+OK WMI résultat string : incertain, aucun succès inventé
+OK WMI résultat multi : incertain, aucun succès inventé
+OK Exception après appel WMI : incertain, sans retry
+OK Simulation : aucun retrait Entra ni renommage
+OK Connexion auto : worker sans credential et contexte correspondant au compte élevé
+OK Connexion auto : identité locale refusée sans ouvrir un second login
+OK Connexion auto : élévation absente refusée avant lecture AD
+OK Connexion auto : résultat périmé ignoré
+OK Connexion auto : résultat après annulation ignoré
+OK Connexion auto : lecture confirmée ferme attente sans identifiants Pesto
+OK Connexion auto : échec de validation affiche erreur sans relogin automatique
+OK Nouvelle fenêtre : XAML natif valide, sans mot de passe ni maximisation
+Tests SSO terminés : 43. Rapport : D:\a\pesto\pesto\DEV\tests\windows-sso-results.json
+
+=== Run-StartupTests.ps1 ===
+OK  Parseur natif : wad\Pesto-Startup.ps1
+OK  Parseur natif : wad\Pesto-Core.ps1
+OK  Parseur natif : tests\Run-StartupTests.ps1
+OK  Parseur natif : tools\Verify-StartupUac.ps1
+OK  Mode reel non eleve : UAC avant moteur
+OK  Deja eleve : aucune nouvelle UAC
+OK  Relais eleve : ouverture du moteur autorisee
+OK  Relais sans jeton admin : arret, pas de boucle
+OK  Demo sans droits : aucune UAC
+OK  Etat reel du jeton retourne un bool, pas un nom de compte
+OK  Chemin avec espaces et apostrophe : reste un argument -File
+OK  Antislash final protege dans les arguments
+OK  Caracteres de controle et guillemets refuses
+OK  Lanceur EXE : pas de parametre PowerShell -File
+OK  Pas de nom de compte ou mot de passe dans les arguments de relais
+OK  Relais : RunAs explicite, sans Credential, code enfant conserve
+OK  UAC annulee : code 1223, aucune seconde tentative
+OK  Refus Windows autre que annulation : erreur non masquee
+OK  Processus absent : erreur, pas de faux succes
+OK  API native : erreur fichier absent conserve Win32, sans fausse annulation
+OK  Code Win32 1223 imbrique reconnu
+OK  Identifiant de reprise identique au moteur pour le meme cfg.json
+OK  Reprise sous un autre compte : file et verrou copies a l identique
+OK  Une reprise deja importee ne reimporte pas un ancien verrou
+OK  Changement de l ancienne file : conflit signale sans ecrasement
+OK  Deux files Idle vides entre comptes : dates et noms différents, originaux conservés
+OK  Files vides : identités incompatibles, effets, schéma ou champs inconnus restent refusés
+OK  Historiques divergents : archive exacte, aucune fusion ni résolution de verrou
+OK  Historique non reconnu : domaine, schema, types ou champs actifs refusés
+OK  Archive historique déjà présente mais différente : rien écrasé
+OK  Fichier deja existant : CreateNew refuse de le remplacer
+OK  Fichier de reprise trop volumineux refuse
+OK  Dossier source absent : aucune creation d une fausse file
+OK  Reprise depuis une jonction refusee sans lecture de la cible
+OK  Chemin de reprise reseau refuse
+Tests startup : 35 OK, 0 echec(s). Rapport : D:\a\pesto\pesto\DEV\tests\windows-startup-results.json
+
+=== Run-EngineTests.ps1 ===
+OK  PS 5.1 : parsing natif du script complet
+OK  Booléen vrai : true
+OK  Booléen vrai : TRUE
+OK  Booléen vrai : oui
+OK  Booléen vrai : 1
+OK  Booléen vrai : on
+OK  Booléen vrai : True
+OK  Booléen faux : false
+OK  Booléen faux : FALSE
+OK  Booléen faux : non
+OK  Booléen faux : 0
+OK  Booléen faux : off
+OK  Booléen faux : False
+OK  Booléen inconnu strict refusé
+OK  Booléen inconnu non strict reste faux
+OK  DNS valide
+OK  DNS sans label vide
+OK  DNS label trop long refusé
+OK  Nom source court autorisé
+OK  Nom source injectable refusé
+OK  Nom source >15 refusé
+OK  Nom généré conforme
+OK  Numéro 000 refusé
+OK  Mauvais préfixe refusé
+OK  DN OU valide
+OK  DC avant OU refusé
+OK  CN racine non OU refusé
+OK  Virgule échappée préservée dans le parent
+OK  DN malformé refusé
+OK  RDN multivalué refusé
+OK  Extraction domaine DN
+OK  Suffixe par composants autorisé
+OK  Faux suffixe DN refusé
+OK  Virgule échappée ne crée pas un faux parent
+OK  Échappement de valeur OU
+OK  Confirmation HasSucceeded=True booléen
+OK  Confirmation chaîne true refusée
+OK  Confirmation absente refusée
+OK  Confirmation multiple refusée
+OK  Masquage du champ password non quote et de la fin de ligne
+OK  Valeur password quotee conserve les champs suivants
+OK  Formule CSV neutralisée
+OK  Texte CSV ordinaire conservé
+OK  Transport sans mot de passe en argument
+OK  Ancien transport secret bloqué avant COM
+OK  Résultat tâche 0 en RUNNING pas encore réussi
+OK  XML tâche à la demande sans trigger
+OK  Table : métadonnées et booléens par défaut
+OK  Ligne sans action refusée
+OK  Ligne déplacement seul valide
+OK  Hors domaine interdit un autre poste
+OK  Porte d'observation consultee avant toute mutation
+OK  Porte d'observation refusee : 96 et aucun appel de mutation
+OK  Renommage résultat none => indéterminé sans repli
+OK  Renommage résultat missing => indéterminé sans repli
+OK  Renommage résultat string => indéterminé sans repli
+OK  Renommage HasSucceeded=False => échec
+OK  Renommage confirmé
+OK  Compte de domaine du login reutilise sans nouveau prompt
+OK  Ordre preserve : preparation Entra puis renommage
+OK  Preparation Entra echouee : pas de renommage
+OK  Preparation Entra incertaine : verrou, pas de renommage
+OK  Renommage distant sans credential : refus avant dsregcmd, aucun prompt natif
+OK  Perte des droits locaux : aucun helper UAC pendant action
+OK  Jonction non elevee : code 96 sans nouveau UAC
+OK  Renommage RPC ambigu => arrêt sans repli
+OK  Refus Entra apres preparation ne provoque pas de deuxieme tentative
+OK  Simulation renommage aucune mutation
+OK  Renommage source hors périmètre interdit
+OK  Renommage local sans ComputerName ni LocalCredential
+OK  GUID source remplace : aucun renommage
+OK  OU source derivee : aucun renommage
+OK  GUID source remplace : aucun deplacement ni protection
+OK  OU source derivee : aucun deplacement
+OK  Déplacement utilise GUID et restaure protection
+OK  Déplacement déjà dans OU => sans écriture
+OK  Déplacement engagé puis refusé : 97 et protection restaurée
+OK  Déplacement RPC non confirmé => code 97 sans relance
+OK  Échec reprotection => code 32 et non succès
+OK  Déplacement protégé sans autorisation => refus
+OK  Simulation déplacement aucune écriture
+OK  OU cible hors périmètre refusée
+OK  Jonction résultat none => code 97
+OK  Jonction résultat missing => code 97
+OK  Jonction HasSucceeded=False après nom préparé => code 97
+OK  Jonction confirmée => code 10
+OK  Jonction serveur égal domaine refusée
+OK  Jonction prépare le nom local puis utilise JoinWithNewName sans ancien compte AD
+OK  Jonction nom déjà actif ne lance pas de renommage
+OK  Jonction refusée sans renommage reste refus confirmé
+OK  Préparation locale false bloque tout ajout AD
+OK  Préparation locale none bloque tout ajout AD
+OK  Préparation locale missing bloque tout ajout AD
+OK  Préparation locale string bloque tout ajout AD
+OK  Exception du renommage ne lance jamais Add-Computer
+OK  État préalable PartOfDomain bloque les deux mutations
+OK  État préalable PendingRename bloque les deux mutations
+OK  Dérive MachineId après préparation bloque la jonction
+OK  Dérive BootUtc après préparation bloque la jonction
+OK  Dérive ConfiguredName après préparation bloque la jonction
+OK  Dérive ActiveName après préparation bloque la jonction
+OK  Dérive PartOfDomain après préparation bloque la jonction
+OK  Dérive Computer après préparation bloque la jonction
+OK  Nom CIM nouveau accepté si registres et identité concordent
+OK  Reçu de préparation indisponible empêche les deux mutations
+OK  Annulation pendant reçu initial empêche la première commande
+OK  Reçu après nom préparé indisponible bloque ajout AD et reste incertain
+OK  Annulation après préparation conserve le nom et bloque ajout AD
+OK  Refus natif 5 après renommage reste partiel 97
+OK  Refus natif 1326 après renommage reste partiel 97
+OK  Refus natif 2732 après renommage reste partiel 97
+OK  Helper élevé refuse jonction avant tout effet
+OK  Configuration exemple cohérente
+OK  Domaine / DN incohérents refusés
+OK  Buffer énorme refusé sans exception de conversion
+OK  Faux mode hors domaine interdit en réel
+OK  Écriture atomique et sauvegarde du précédent
+OK  Ecriture atomique repetee sans backup (regression RC3 File.Replace)
+118/118 cas réussis. Rapport : D:\a\pesto\pesto\DEV\tests\windows-test-results.json
+
+=== Run-Engine120Tests.ps1 ===
+
+Suite     Passed Failed Skipped
+-----     ------ ------ -------
+Engine120     77      0       0
+
+
+
+=== Run-IntegrationTests.ps1 ===
+PASS Metadata liste fermée et limite
+PASS Plan exportable fermé et non secret
+PASS Plan altéré, configuration et machine différents refusés
+PASS Plan expiré refusé même avec empreinte recalculée
+PASS Schéma plan entier uniquement même avec empreinte recalculée
+PASS Export exclusif et UTF8 strict
+PASS Clé idempotente restitue résultat sans deuxième appel
+PASS Rejeu jonction conserve PreparedPlan et refuse schéma marqueur texte
+PASS Refus96 mémorisé exige une nouvelle clé après correction explicite
+PASS Même clé autre payload refusée sans mutation
+PASS Même clé autre machine refusée
+PASS Interruption après marqueur interdit rejeu
+PASS Disque refusé avant action interdit mutation
+PASS Disque refusé après action devient incertain sans rejeu
+PASS Consultation et clés invalides refusées sans écriture
+PASS Résultat ambigu non marqué Completed
+PASS T010 orchestrateur réel : Init
+PASS T010 orchestrateur réel : InvalidMetadata
+PASS T010 orchestrateur réel : Preflight
+PASS T010 orchestrateur réel : BeforeMutation
+PASS T010 orchestrateur réel : AfterMutation
+PASS CLI préparation puis plan réutilisé et clé sans masquage variable Action
+PASS CLI arguments différents du plan refusés avant moteur
+PASS CLI refus export avec exécution et lecture avec Execute
+
+Suite       Total Passed Failed
+-----       ----- ------ ------
+Integration    24     24      0
+
+
+
+=== Run-CliOutputTests.ps1 ===
+PASS Diagnostic Join : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Diagnostic Rename : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Diagnostic Move : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Diagnostic Observe : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Invoke-Pesto.ps1 : retour objet inchangé et aucun encodage global modifié
+PASS Invoke-Pesto.ps1 : JSON in-process capturable, ASCII et Unicode réversible
+PASS Invoke-Pesto.ps1 : vrai stdout sous OEM850 reste UTF8 valide sans perte
+PASS Invoke-Pesto.ps1 : refus96 JSON ASCII conserve message Unicode
+PASS Invoke-PestoAutoJoin.ps1 : retour objet inchangé et aucun encodage global modifié
+PASS Invoke-PestoAutoJoin.ps1 : JSON in-process capturable, ASCII et Unicode réversible
+PASS Invoke-PestoAutoJoin.ps1 : vrai stdout sous OEM850 reste UTF8 valide sans perte
+PASS Invoke-PestoAutoJoin.ps1 : refus96 JSON ASCII conserve message Unicode
+FAIL Invoke-PestoDeployment.ps1 : succès JSON ASCII et Unicode réversible : Code enfant inattendu : 96 
+FAIL Invoke-PestoDeployment.ps1 : refus précoce (chemin relatif) en JSON ASCII valide : Message altéré : Installation doit être un chemin absolu local.
+FAIL Invoke-PestoDeployment.ps1 : refus après CliHost en JSON ASCII valide : Message altéré : Intégrité du paquet non confirmée.
+
+=== Run-AuditPathTests.ps1 ===
+{
+    "Suite":  "AuditPath",
+    "Total":  5,
+    "Passed":  5,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "Plain directory creates a working audit writer",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Linked ancestor rejected before creating its descendant",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Existing linked directory receives no new daily journal",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Day rollover without loss: new daily file from the audit clock, writer usable",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Audit loss before midnight stays blocking after the day rollover",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ],
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  true,
+    "ADExecuted":  false,
+    "Scope":  "Real journal initializer and writer, isolated directories and real symlink; no production audit files"
+}
+
+=== Run-OptionalIntegrationsTests.ps1 ===
+PASS Profil sans secret fermé et chemins absolus
+PASS Profil refuse chemin relatif
+PASS Scénario requis autorisé et verrouillé
+PASS LAPS jamais appelé implicitement
+PASS Liens ticket HTTPS sans identifiants ni injection
+PASS Attributs complémentaires : aperçu non exécutable fermé
+PASS Export audit fermé sans détails sensibles
+PASS GPO seulement restrictive et sans mutation du config objet
+PASS GPO désactivée ne force pas activation locale
+PASS GPO valeurs mal typées bloquent
+PASS Modèles GPO XML lisibles et références cohérentes
+
+Suite                Total Passed Failed
+-----                ----- ------ ------
+OptionalIntegrations    11     11      0
+
+
+
+=== Run-Workbench120Tests.ps1 ===
+Workbench120 : 41/41 PASS
+
+=== Run-ConfigEditor120Tests.ps1 ===
+Every setting section is a visible settings tab and every control tooltip names its key: Infobulle sans clé : SetChkClockSkew
+ConfigEditor120 : 25/26 PASS
+
+=== Run-ReceiptTools120Tests.ps1 ===
+ReceiptTools120 : 26/26 PASS
+
+=== Run-BatchNames120Tests.ps1 ===
+ClassicCsv5000Ms=12504
+BatchNames120 : 30/30 PASS
+
+=== Run-Collections120Tests.ps1 ===
+Collections120 : 21/21 PASS
+
+=== Run-V1ImprovementsTests.ps1 ===
+{
+    "Scope":  "Local functions and UI doubles only",
+    "PowerShell":  "5.1.20348.5622",
+    "Passed":  13,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "Consultation refuses saving before reading UI or writing any file",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Restoring loaded configuration clears only its restart flag and refreshes commands",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette routes join through page controller",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette routes names through page controller",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette routes settings through page controller",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette routes help through page controller",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette preserves mode controller decision for single",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette preserves mode controller decision for batch",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "ICMP failure leaves services and rename available for the real preflight",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Computer snapshots deduplicate without losing names seen on the same GUID",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Nested scope filters at DN boundaries including escaped commas",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Site cache freshness expires on monotonic time and refuses incomplete entries",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Diagnostic covers the canonical runtime and reports modified or missing components independently",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}
+
+=== Run-DomainNavigationTests.ps1 ===
+{
+    "Passed":  10,
+    "PowerShell":  "5.1.20348.5622",
+    "Scope":  "Local UI state doubles",
+    "WindowsExecuted":  false,
+    "ADExecuted":  false
+}
+
+=== Run-RandomNamesTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "Platform":  "Local only",
+    "NoWindows":  true,
+    "NoAD":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Absent policy enables full random and leaves optional coordination disabled",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Empty policy schema enables random",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Legacy explicit 0 and 1 remain opt-out",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Legacy positive setting maps to whole pool without numeric limit",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conflicting legacy/new choices are rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid legacy/new types rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Explicit false selects first; empty pool has no index",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "System RNG supports entire pool rather than first 50",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other name always excludes current index and handles edge cases",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Sequential other name wraps without repetition",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other name refuses to alter pending operation selection",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-SharedNameReservationTests.ps1 ===
+{
+    "Suite":  "SharedNameReservation",
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  true,
+    "ADExecuted":  false,
+    "NetworkExecuted":  false,
+    "SourceHash":  "430A8F56EE760E8032B8DE2A89C227088778CED9DCB0C5554FE4886B4DE74031",
+    "Passed":  14,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Prepare creates only the requested local registry",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Exclusive initial reserve returns its owner",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Same owner renews the existing reservation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other owner cannot take a live reservation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Expired reservation can be taken under the existing write lock",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Owner release removes its file and reports exactly that name",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other owner release preserves byte-for-byte the file",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unreadable owner is retained and never announced as released",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Oversized owner file is retained without parsing unbounded data",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Already absent release is idempotent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Active writer prevents release and keeps the reservation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Read-only file makes failed deletion explicit in the returned name list",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "A competing takeover cannot be deleted between owner read and release",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Snapshot includes other owners without changing their data",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ],
+    "Scope":  "Actual shared-name worker, temporary local files; a debugger action schedules the competing worker at the owner/delete boundary"
+}
+
+=== Run-NamesLoadingTests.ps1 ===
+OK Noms AD et réservations exclus des disponibles
+OK Utilisés distingue les noms occupés des réservations
+OK Tous conserve les statuts et le nombre de libres
+OK Recherche insensible à la casse
+OK Un filtre sans résultat rend un tableau vide
+OK Une collecte vide ne crée pas de site ou équipe arbitraire
+OK Noms mal formés, 000 et autres préfixes ignorés
+OK Jusqu'à 999 respecte exactement la borne
+OK Limite d'affichage explicite et comptage non trompeur
+OK Limite exacte sans résultat supplémentaire non tronquée
+OK Index AD sans réservation persistée par erreur
+OK Types indépendants pour le même site/service
+OK VM : inventaire, reservation et generation restent distincts de P/S
+OK Progression partagée et génération restituée
+OK Entrées de calcul invalides refusées
+OK Tirage sur 001-999 indépendant de la marge et de la page
+OK Chaque bouton tire dans son type actif sur tous les sites et services
+OK Recherche éloignée trouve un candidat hors marge sans fausse ligne
+OK Statuts occupés et réservés ne proposent aucun nom
+OK Séquentiel propose les premiers candidats même avec marge nulle
+OK Propositions conservées entre pages puis remplacement seulement du nom devenu occupé
+OK Le cache AD est réutilisé et les nouvelles réservations restent séparées
+OK Après le dernier ignore les trous y compris pour les suggestions
+OK Domaine complet de candidats borné même avec marge nulle
+OK Annulation et indice aléatoire invalide échouent sans résultat partiel
+OK T108 : registre absent jamais cree, aucun etat vide annonce
+OK T108 : registre prepare lu en lecture seule sans creation ni verrou
+OK T108 : troncature signalee au-dela de la borne
+OK T108 : un registre d un autre domaine est refuse
+OK T108 : entree dont le nom ou le domaine differe du fichier est ignoree
+OK T108 : la source construite definit bien la fonction de lecture (vrai runspace)
+OK T108 : bornes refusees et octets non UTF-8 ignores
+OK T108 : expiration antérieure à la création reste inconnue
+OK T108 : marqueur trop volumineux ou UTF8 invalide refusé
+OK T108 : lecture tardive ignoree si racine, domaine ou configuration ont change
+OK T108 : un lien dans les reservations est refuse, jamais suivi
+OK Chargement garde les anciennes lignes grisées et désactive les commandes
+OK Le compteur est une quantité réellement lue, sans pourcentage
+OK Erreur arrête l'indicateur et propose Réessayer
+OK Ancien résultat filtré jamais publié
+OK Copie refusée quand la vue n'est pas prête
+OK Inventaire partiel ne lance aucun calcul de libres
+OK Une collecte déjà active ne déclenche pas un deuxième calcul
+OK Cache changé en plein calcul : pas de chargement infini ni résultat obsolète
+OK Candidat hors marge reste utilisable même quand le tableau est vide
+Rapport : C:\Users\runneradmin\AppData\Local\Temp\Pesto-Names-3b8928dfd84946e9bf6bb360e713bdcf.json
+
+=== Run-DirectoryCacheTests.ps1 ===
+{
+    "Passed":  20,
+    "Scope":  "Local AD and operator-identity doubles only",
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  false
+}
+
+=== Run-BulkPlanningTests.ps1 ===
+{
+    "Checks":  [
+                   {
+                       "Name":  "Opt-out selects first free names and preserves source input",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Default random uses complete filtered pool without duplicates",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Whole series remains available after occupied reserved and prior-row exclusions",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Preserving an occupied number refuses the whole batch",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Exhausted series never appends a partial plan",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "LDAP values escape RFC4515 metacharacters without RowFilter grammar",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Source batches retain nested arrays for 1 and 200 sources",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual worker reads sources AND target aliases/SPNs on same DC credential domain root",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses source-failure without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses source-limit without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses missing without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses ambiguous without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses alias-only without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses invalid-guid without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses target-failure without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Actual targeted worker refuses target-limit without partial result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Name exclusion policy applies to random pool and preserved number",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Current unchanged context can publish targeted preview",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after closed",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after epoch",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after source",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after reference",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after type",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after service",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after number",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after dc",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after domain",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after credential",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after config",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after table-replaced",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late targeted result refused after table-edited",
+                       "Passed":  true
+                   }
+               ],
+    "Failed":  0,
+    "WindowsExecuted":  false,
+    "ADExecuted":  false
+}
+
+=== Run-ReliabilityTests.ps1 ===
+{
+    "Checks":  [
+                   {
+                       "Name":  "Preflight deadline scales and remains bounded",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Inventory freshness distinguishes missing stale and incomplete",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Interrupted preflight preserves completed row without automatic execution",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Invalid partial result clears approval and never executes",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late preflight generation ignored",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Preflight display confirmation and execution expire together at two minutes",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Known preflight refusal never expires into approval",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "First worker transition records previous stage in initially empty queue",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Telemetry failure cannot break worker event processing",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Final worker timing is recorded once and stops the stage clock",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Partial failed read is discarded before retry",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Terminal read failure publishes no partial objects",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Cancelled successful read cannot publish a stale result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Cancellation fence prevents starting a later mutation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Stop after current worker preserves its result and leaves remaining PCs unstarted",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Access errors are not retried",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Transient read failures retry up to configured count",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Retention zero preserves every log",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Retention preserves current log receipts and noncanonical names",
+                       "Passed":  true
+                   }
+               ],
+    "Failed":  0,
+    "WindowsExecuted":  false,
+    "ADExecuted":  false
+}
+
+=== Run-WorkerContractTests.ps1 ===
+{
+    "Checks":  [
+                   {
+                       "Name":  "Queue worker exports every product function it calls",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Join worker exports every product function it calls",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct worker exports every product function it calls",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Preflight worker exports every product function it calls",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Directory projection has no missing product functions",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Worker source cache is stable within the process",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Preflight progress is synchronized and independent for each request",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real direct request completes the shared worker and reaches user confirmation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real queue producer shares progress with its callback and retains all results",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Cancelled queue retains exactly the row completed before cancellation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "AD refusal is returned as blocked and cannot reach direct confirmation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Import failure stays a worker error with no completed result",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete progress contract fails explicitly before importing AD",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct freshness accepts a recent result only within the two minute window",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct callback refuses Missing preflight before confirmation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct callback refuses Malformed preflight before confirmation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct callback refuses Expired preflight before confirmation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct callback refuses Future preflight before confirmation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Expired preflight cannot enter the direct execution boundary",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Expiry during modal confirmation is rejected without starting another worker",
+                       "Passed":  true
+                   }
+               ],
+    "Failed":  0,
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  false,
+    "ADExecuted":  false
+}
+
+=== Run-SettingsTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "NoWindows":  true,
+    "NoAD":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Complete JSON model validates on local parser",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Configuration diff identifies exact array field",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Canonical comparison ignores property order",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Diff tracks removed and new fields",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Editor source does not replace running context",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Dirty state tracks restoration exactly",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid policy bool and oversized number remain rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Reserved settings are reported as without effect",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Validated import reads full candidate without changing active config",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Malformed import is rejected before publication",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Oversized import rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Startup valid configuration bypasses repair",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Startup invalid JSON is displayed for repair and cancellation returns null",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Neutral startup configuration is not accepted by cancelling repair",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Startup accepts the validated repair result",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unexpected repair dialog failure is not converted to cancellation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid configuration cannot mark the repair dialog accepted",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Configuration write failure stays in repair without accepting it",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Voluntary configuration close exits Core boundary successfully without continuing",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Valid configuration continues past Core startup boundary",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unexpected startup reader failure keeps nonzero process exit",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Read-only AD check resolves exact mapping before wildcard; reports missing and ambiguous",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Saving other fields preserves unattended opt-in when control is unavailable",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unattended checkbox can explicitly revoke previous opt-in",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unattended option remains false for neutral settings",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Returning a field to its loaded value clears dirty status on focus leave",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Wizard writes the protection choice explicitly and keeps the Entra decision",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Wizard protection checkbox defaults to the engine value and explains the refusal",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-InterventionViewTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "NoWindows":  true,
+    "NoAD":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Absent directory returns empty catalogue",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unreadable receipt isolated; readable receipt retained",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Strict mutation reader still refuses corrupted file",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid identity remains separate with no receipt",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Completed command remains in follow-up filter without being certified",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Uncertain and partial results never become optional follow-up",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Acknowledged uncertain receipt is resolved but never a success",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Inconsistent PendingRestart never promises optional verification",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "UTC converted to local with offset and localized state",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown date does not become now",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Common Query pages and counts full snapshot",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Filter and search use AND; literal search cannot inject pattern",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Full filtered export includes rows beyond displayed page",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "CSV neutralizes spreadsheet formulas and omits raw receipt",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Offset resets to last valid page after filter",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Duplicate row identity rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Every business outcome has explicit label and next action",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Non-started code cannot appear as mutation refusal",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Masked report hides identity; unmasked choice restores it explicitly",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Report shows readable OU path and hides every DN component when masked",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Report dates: damaged values become Inconnue, start comes from the receipt, never N/A",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Catalogue reparse guard rejects symbolic linked root without touching the target",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Refused asynchronous start releases loading state and allows retry",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Worker source failure restores refresh and leaves receipts unknown",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-UiPresentationTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "NoWindows":  true,
+    "NoWpf":  true,
+    "NoAD":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Normal desktop aligns the four home actions in one row",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Intermediate desktop uses two columns for the four home actions",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Small display stacks fields and dashboard cards",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Collapsed navigation gives space back without changing user preference",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Docked help reduces available content only on wide screens",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Layout calculation is bounded before window measurement",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Layout handler never assigns read-only PowerShell automatic variables",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Narrow join form preserves label and input order without overlaps",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Wide form restores original positions exactly",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Single primary action stays outside page scrolling",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Batch primary action stays outside page scrolling",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Global zoom viewport is unique and wraps the complete application root",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Join primary action stays outside page scrolling",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "No duplicate named XAML controls after toolbar move",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Domaine and advanced settings scroll on short screens",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Appearance contains density and column tools",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Remote credentials are explained near source choice",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Policy validation errors map to their field and clear after correction",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Precise errors are adjacent to common inputs and announced politely",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Error reset restores help rather than leaving stale message",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Missing name cannot launch mutation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unread valid target offers read-only primary action",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Missing fields offer focus guidance without mutation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Read-only mode never offers execution",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Blocked operation routes to verification instead of execution",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Busy operations do not offer another launch",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Complete preparation offers explicit confirmation flow",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unattended opt-in is distinct from simulation settings",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "All two-file layouts remain valid XML without WPF execution",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "First-start repair wizard uses one apostrophe in its visible label",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "First-start repair JSON and errors begin at the top of their editors",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Both login dialogs stay topmost and visible in the taskbar",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Login activation and focus occur once on opening without a focus timer",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Main window does not inherit always-on-top login behavior",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Late inventory keeps submitted name for Running",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Late inventory keeps submitted name for PendingRestart",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Late inventory keeps submitted name for Uncertain",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Verified joined computer keeps its recorded name after inventory refresh",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Joined computer without receipt displays current name without proposing another",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Workgroup with resolved Verified receipt can prepare a fresh draft",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Workgroup with resolved Failed receipt can prepare a fresh draft",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Busy or locked operation without a receipt retains its submitted selection",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Recorded editable name is restored while preserving event suspension",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Primary action matrix covers all boolean combinations and blocked routes",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Mode labels distinguish real readonly simulation and demonstration",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Common block banner explains existing blockers without inventing one",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Site status never labels failed or partial results complete",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Worker stage history retains actual transitions and no progress percentage",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Log level combines with literal query and keeps original event references",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Log dates and controls expose full timestamps and error copying",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Local hardware reuses ComputerSystem query and is explicitly unavailable without result",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unit form tab order follows source naming and confirmation",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-WpfProjectionBenchTests.ps1 ===
+
+Rows Virtualization Changes Strategy   MedianMs   P95Ms
+---- -------------- ------- --------   --------   -----
+ 100           True      10 FullRebind  106.705 106.705
+ 100           True      10 InPlace      21.263  21.263
+
+
+Verdict : MEASURED_ONLY
+OK Deux cellules mesurées : FullRebind puis InPlace
+OK Deux mesures de 100 lignes par cellule
+OK FullRebind : passes de mise en page réellement comptées
+Banc WPF de projection : fumée réussie sous Windows PowerShell 5.1 (STA).
+
+=== Run-ZoomTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsWpfRequested":  false,
+    "WindowShown":  false,
+    "NoAD":  true,
+    "NoRegistry":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Every supported ten-percent value is preserved exactly",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Numeric values are clamped to 80 and 150",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Intermediate values round to ten away from zero at the half step",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Missing, malformed and nonfinite values use 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Normalization is idempotent and uses integer percentages",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Stored layout preserves normalized zoom and unrelated fields",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Old layout without zoom opens at 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Corrupt stored zoom cannot exceed bounds or become nonfinite",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Layout JSON round trip preserves the chosen zoom",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Initialization reads layout zoom without writing preferences",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Initialization without a preference chooses 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Malformed layout falls back safely without saving",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Set applies an absolute normalized percentage without implicit persistence",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Explicit persistence saves the percentage immediately",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Repeated assignment has no cumulative scale drift",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Reset from both bounds returns exactly to 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Viewport uses physical DIP divided by absolute scale",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Tiny viewport retains exact logical width without horizontal overflow",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid or unmeasured viewport stays finite and positive",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Zoomed logical width drives responsive one-column form",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "All zoom controls have stable accessible names and tooltips",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Zoom toolbar stays outside both scaled root and viewport scrolling",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Canvas uses vertical page scrolling and no horizontal page scrollbar",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Names page scrolls filters, grid and tools together while preserving grid virtualization",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Names grid uses the same bounded responsive height as the batch grid",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Preference save includes zoom in the established layout store",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Zoom presentation does not call mutation or domain commands",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Plus and minus buttons change by exactly ten and persist each click",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Repeated button clicks stop at both bounds",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Percentage button resets to exactly 100 and persists",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown button cannot change or persist zoom",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "One hundred reversible click cycles cannot accumulate rounding error",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-ToolsTabsTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsWpfRequested":  false,
+    "WindowShown":  false,
+    "NoAD":  true,
+    "NoRegistry":  true,
+    "NoApplicationStartup":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Main navigation preserves all eight page indices",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Nested SelectionChanged cannot trigger global navigation or refresh",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "An actual main-page selection refreshes navigation once",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Accessibility refresh reuses existing peers without polling, focus or peer creation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Queue tools use File, import/export and follow-up tabs",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Queue tools preserve every existing action control exactly once",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Batch execute and selection commands remain outside tool tabs",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Intervention tools use Consulter, Entretien and Donnees tabs",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Observe and ticket actions stay outside intervention tool tabs",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Intervention table and tools scroll while all final actions remain outside",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Settings preserves old tab order and appends Fichiers",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Config file actions remain explicit and are grouped in Fichiers",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Journal search and refresh stay visible outside display options",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Name tools are divided into preparation, inventory and options",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Name candidates and pagination remain outside the secondary tabs",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Name secondary actions preserve their control identities",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Palette category tabs have stable identifiers",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Every workspace command has one valid category and a unique action id",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Empty search restricts choices to the selected category",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Whitespace search uses the selected category",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Typing searches globally even when another category is selected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Global search remains accent and case insensitive",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "No match returns no command without a fallback selection",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Category filtering retains command identity and does not rewrite the source list",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Category handler cannot execute a workspace action",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Choosing a palette category clears search and only filters choices",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "A nested selection cannot clear the palette search or category",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-HomeDashboardTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "NoWpf":  true,
+    "NoAD":  true,
+    "NoRealCim":  true,
+    "NoRegistry":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Unobserved local computer is never replaced by a fabricated name or workgroup",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unread receipts differ from a successfully read empty catalogue",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Observed domain name comes from Windows instead of application domain assumptions",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "A known workgroup is shown only after a boolean Windows observation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Malformed domain membership cannot become a workgroup assertion",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "A local read failure takes precedence over a stale successful snapshot",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Observation timestamp is displayed; an invalid timestamp is not replaced by now",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Pending configured name is clearly distinct from active Windows name",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown configured-name observation never announces a pending reboot",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Non-boolean pending rename or empty configured name cannot invent a restart requirement",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "No active operation produces no empty activity card message",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Supplied active-operation text is retained without inventing progress",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Previously observed OU remains explicitly dated unknown when no linked stamp exists",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "A failed receipt read cannot render an old catalogue as newly reliable",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Truncated receipt catalogue explicitly reports incomplete coverage",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unreadable receipts remain actionable but are not listed as successful recent operations",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Inconsistent pending, partial, uncertain and running states retain attention",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Completed command stays visible without a mandatory verification alert",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Optional follow-up does not hide an uncertain intervention",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Verified, refused without uncertainty and not-started operations are not presented as running",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Recent operations are the three newest readable receipts sorted by UTC",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Recent entries carry identity, readable state, date and next action",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Demo and simulation cannot display real machine or receipt data",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Out-of-domain and busy contexts cannot enable the two preparation shortcuts",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Local snapshot uses a bounded local CIM read and separates active/configured names",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "CIM failure throws instead of guessing workgroup state",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Malformed CIM domain flag is refused",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Missing registry name retains CIM name and unknown pending status",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Home worker includes local snapshot function and runs it only without cache",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Revisiting home reuses the local snapshot and only reads receipts",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Local read failure does not hide an independently successful receipt read",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Receipt read failure does not invent an empty valid catalogue",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Busy worker, recent visit and demo do not start duplicate background reads",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Successful callback publishes independently known results and refreshes once",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Failed callback marks receipts unknown and keeps a dated prior local observation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Refused asynchronous start visibly reports unread receipts and allows retry",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Throwing asynchronous start reports the error without a successful read timestamp",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Worker source failure is contained and reports unread data without starting a worker",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Idle UI pulses never request AD, CIM or receipt reads",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Home rendering reads no directory, Windows or receipt source",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Empty cache/queue counters are hidden and useful dashboard fields exist",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "New home actions carry tooltip and assistive help",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "The four home action buttons share one aligned row in the expected order",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Several computers has the same button geometry and style as the other home actions",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Identical receipt catalogue renders once and preserves ItemsSource and selection",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Real dashboard rendering disables both preparation buttons outside the domain in every mode",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-AutomationTests.ps1 ===
+PASS Policy defaults off and rejects string booleans
+PASS Policy opt-in required before directory access
+PASS Dry plan reads only, all 999 candidates, shared common RNG available
+PASS Name, SAM and DNS aliases exclude names across the full domain
+PASS Random choice covers the complete pool
+PASS Last candidate 999 remains selectable
+PASS Exhausted filter refuses without retry or mutation
+PASS Partial AD inventory error never becomes free names
+PASS Credential string does not prompt or reach AD
+PASS Missing credential is refused
+PASS Simulation flags cannot turn a silent join into fake success
+PASS Read-only session is honored
+PASS Already joined local machine is refused before AD
+PASS Pending rename is refused before AD
+PASS Advanced AD reservation explicitly refused before any write
+PASS Shared coordination explicitly refused before connection
+PASS Preproduction filter must match configuration
+PASS OU exclusions and name exclusions apply during preparation
+PASS Direct production confirms site code against actual OU
+PASS Execute reuses engine mutex, fresh checks, receipts and returns 3010
+PASS Fresh collision freezes name and refuses without reroll
+PASS Last uniqueness check detects collision without native call
+PASS Local admin refusal cannot request UAC
+PASS Disabled neutral configuration cannot access directory
+PASS OU GUID changed since preparation stops execution
+PASS Local machine identity drift stops execution
+PASS Receipt cannot be written so native command is not called
+PASS Native refusal after local rename remains uncertain
+PASS Prepared local rename effect is recorded and cannot be replayed
+PASS Cancellation while saving join request stops native join after prepared name
+PASS Native missing response stays uncertain
+PASS Native transport failure stays uncertain and never retries
+PASS Final receipt failure after native success stays uncertain
+PASS T010 : erreur avant initialisation sans valeurs héritées
+PASS T010 : métadonnées invalides jamais renvoyées
+PASS T010 : exception du contrôle conserve identifiant et métadonnées validées
+PASS T010 : exception après mutation conserve plan, identifiant et incertitude
+PASS Actual platform guard rejects unsupported host
+
+Suite      Total Passed Failed
+-----      ----- ------ ------
+Automation    38     38      0
+
+
+
+=== Run-JoinReservationTests.ps1 ===
+WARNING: The generated type defines no public methods or properties.
+{
+    "Checks":  [
+                   {
+                       "Name":  "Only proven AD absence is Gone",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Access failure remains Failed with review required",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Exact stored identity and marker permit release",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Different reservation owner is kept",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Used account is kept",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Pending receipt exists before account creation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Storage failure before create prevents mutation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Creation transport failure is uncertain",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Unconfirmed creation GUID is uncertain",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Already exists never claims reservation ownership",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late creation preserves GUID and uncertainty",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late deletion remains uncertain without replay",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Cancelled request cannot start a mutation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Wrong domain refuses any AD mutation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Receipt from another machine cannot be resumed",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Another installation cannot overwrite a pending reservation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Explicit inspection recovers known reservation without AD writes",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real runspace keeps monitor and result identities",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "All reservation names use mutation cancellation classification",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Stopping reservation preserves live worker and sets cooperative fence",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Async timer delivers late reservation evidence only to late callback",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Late callback preserves GUID and never chains to domain join",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Automatic status keeps reservation locked without inspection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Reservation recovery messages name the visible status button exactly",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Explicit status click starts reservation inspection only",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Explicit status click respects existing mutation lock",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Closing only preserves reservation without any AD worker",
+                       "Passed":  true
+                   }
+               ],
+    "Passed":  27,
+    "Failed":  0,
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  false,
+    "ADExecuted":  false,
+    "Scope":  "Local worker requests, real in-process runspace, AD/registry/ACL doubles"
+}
+
+=== Run-BootIdentityTests.ps1 ===
+{
+    "Passed":  19,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Native event UTC accepts and normalizes nine fractional digits",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Clock correction changing CIM boot time cannot invent a reboot",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Pending local name is preserved with stable boot identity",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Missing boot event refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Unavailable event log refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Unexpected provider refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Unexpected event ID refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Multiple returned boot records refuse local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Missing StartTime refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Duplicate StartTime refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Malformed XML refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Invalid calendar date refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Timestamp without UTC refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Future boot timestamp refuses local status",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Drift from an older receipt before operation is not a restart",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Boot exactly at receipt creation does not prove a later restart",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Boot after receipt with matching Windows state is ready for AD observation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Acknowledged join receipt is not blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Stale join acknowledgement stays blocked",
+                       "Passed":  true
+                   }
+               ],
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  false,
+    "ADExecuted":  false,
+    "Scope":  "Production local-status and receipt decisions with CIM, registry and event-log doubles"
+}
+
+=== Run-OptionalPostCheckTests.ps1 ===
+{
+    "Passed":  91,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Completed code 10 is optional without changing receipt",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completed code 20 is optional without changing receipt",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completed code 77 is optional without changing receipt",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "JSON integer from disk is accepted",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [20] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [20] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [True] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [32] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [89] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [96] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [97] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [98] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Non-success or untyped code [99] is not optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [Running] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [Uncertain] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [Partial] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [Protection] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [MoveReady] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [Failed] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [Verified] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [pendingrestart] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Phase [] does not bypass protection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Property Outcome does not replace Phase",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "A direct receipt without code cannot masquerade as legacy join",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Protection [Requested] remains blocking",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Protection [Disabled] remains blocking",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Protection [Uncertain] remains blocking",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Protection [] remains blocking",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Requested mutation is never optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completed move resume preserves parent code89 yet permits follow-up",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Validated legacy join accepts optional follow-up",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Malformed legacy join cannot bypass guard",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Direct startup no longer requires manual observation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Legacy direct without linked ledger permits subsequent worker",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Foreign operator receipt remains refused",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Unknown direct receipt remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completed central receipt has no same-target conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Central Running remains same-target conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Central Uncertain remains same-target conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Central Partial remains same-target conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Central MoveReady remains same-target conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Fresh joined status permits operation without certifying receipt",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Joined local state cannot resolve Running receipt",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Joined local state cannot resolve Uncertain receipt",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [boot] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [pending] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [active] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [domain] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [workgroup] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [securefalse] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [securetype] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [secureerror] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Incomplete local state [machine] remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Stored join rereads current state before unrelated operation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "New pending rename is rejected by actual target guard",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completed shared coordination releases owned keys only",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Active shared coordination cannot be cleared as optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Old completed coordination is reconciled before acquiring new same-target lease",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Other owner shared lock is never discarded to allow a new operation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completed receipt does not hide a running receipt for same target",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Completion releases successful shared lease without marking verified",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Core and direct worker retain mutex and fresh target check",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Entra=Requested cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Entra=Refused cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Entra=Uncertain cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Rename=Requested cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Rename=Refused cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Rename=Uncertain cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Move=Requested cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Move=Refused cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory effect Move=Uncertain cannot be optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory native join evidence Prepared remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory native join evidence Requested remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory native join evidence Refused remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Contradictory native join evidence Unknown remains blocked",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Local join receipt refuses injected native evidence without ResultCode",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Accepted native join evidence remains optional",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Subsequent legitimate rename cannot reblock an old accepted join",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "An inconclusive optional observation cannot turn the receipt into Partial",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real isolated direct worker [completed] preserves receipts and exclusion",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real isolated direct worker [uncertain] preserves receipts and exclusion",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real isolated direct worker [foreign] preserves receipts and exclusion",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real isolated direct worker [busy] preserves receipts and exclusion",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Real isolated direct worker [invalid-id] preserves receipts and exclusion",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Acknowledged central receipt no longer conflicts",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Stale acknowledgement keeps the conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Malformed acknowledgement keeps the conflict",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Acknowledgement never applies to resolved phases",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Worker source carries acknowledgement predicates",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Acknowledged direct receipt bypasses a stale UI lock without a central copy",
+                       "Passed":  true
+                   }
+               ],
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  false,
+    "ADExecuted":  false,
+    "Scope":  "Production engine functions with Windows/AD doubles and isolated coordination files"
+}
+
+=== Run-OptionalFollowupUiTests.ps1 ===
+{
+    "Suite":  "OptionalFollowupUi",
+    "SourceHashes":  [
+                         {
+                             "Path":  "DEV/wad/Pesto-Policy.ps1",
+                             "Sha256":  "c4d84a1359e6c18cf9e2df32800c6b0831b76fcae694807ab734c57218082779"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-Direct.ps1",
+                             "Sha256":  "092aab38178aa7221ef593e02131f97726ca845b84381ec632616cb19e4206af"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-Join.ps1",
+                             "Sha256":  "d58692ce006cce323cda52a1190a2d2902def1880ffe430b94069c2a767e6a64"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-JoinRecovery.ps1",
+                             "Sha256":  "fc836fe4cf861d2412115c25606192a4a555c71128fc13d6f01a81265970163a"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-UXFlow.ps1",
+                             "Sha256":  "5454e2db594ce6c837545877a39d4867c0fe4315307539df93342c310eb91714"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-SuiteUI.ps1",
+                             "Sha256":  "eabb4e45d7c863afa0f0b675b609755c430b1db764fb8b46e34d98ff54b750a4"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-Interventions.ps1",
+                             "Sha256":  "3a621524df315601e9f78978fe1e112b23cdfdb2380af69b49fcedf4e8b474ff"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-Contracts.ps1",
+                             "Sha256":  "f650d8c8906fc2f6aefeef47ee61294ed3eb4cc26d0cc834067c7f5330715394"
+                         },
+                         {
+                             "Path":  "DEV/wad/Pesto-Shell.xaml",
+                             "Sha256":  "12d9772576c2a7fc63e3f39355b1474363f7dba17bdba6d119323cb079bae779"
+                         }
+                     ],
+    "PowerShell":  "5.1.20348.5622",
+    "WpfRequested":  false,
+    "WpfExecuted":  false,
+    "ADExecuted":  false,
+    "ApplicationLaunched":  false,
+    "Passed":  25,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Saved accepted rename loads without locking a new operation or changing its receipt",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Same target after accepted result offers ordinary read instead of forced review",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "New preparation after accepted result reaches preflight, never replays the previous command",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Another target remains available after an accepted result",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unresolved Running still routes the same target to review",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unresolved Uncertain still routes the same target to review",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unresolved Partial still routes the same target to review",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unresolved Protection still routes the same target to review",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Pending local rename blocks a new change typed as P111301AAINF001",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Pending local rename blocks a new change typed as p111301aainf002",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown or absent pending rename never blocks (aucune observation)",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown or absent pending rename never blocks (/P111301AAINF002)",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown or absent pending rename never blocks (False/P111301AAINF002)",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown or absent pending rename never blocks (True/)",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown or absent pending rename never blocks (True/P111301AAINF001)",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Pending local rename does not block another target nor the move resume",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unresolved operation keeps its review action even while a rename is pending",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Live worker remains prioritary even when the previous receipt is accepted",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Read-only context cannot execute a new mutation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Successful join after a proven boot and matching secure channel permits a new preparation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Join before the required restart keeps its specific review action and clear explanation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Join Running stays protected even with matching names after a boot",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Join Uncertain stays protected even with matching names after a boot",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Join secure channel unknown keeps review required",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Join secure channel failed keeps review required",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-CommonTests.ps1 ===
+{
+    "Passed":  18,
+    "Scope":  "Local DLL/hash and pure primitives; no application/AD",
+    "PowerShell":  "5.1.20348.5622",
+    "Target":  "net472",
+    "WindowsExecuted":  true,
+    "WpfExecuted":  false
+}
+
+=== Run-PackageTests.ps1 ===
+OK  Parseur natif : wad\Pesto-Startup.ps1
+OK  Parseur natif : tests\Run-StartupTests.ps1
+OK  Parseur natif : wad\Pesto-Core.ps1
+OK  Parseur natif : tests\Run-EngineTests.ps1
+OK  Parseur natif : tests\Run-PackageTests.ps1
+OK  Parseur natif : tests\Run-AsyncTests.ps1
+OK  Parseur natif : tests\Async-ScopeFixture.ps1
+OK  Parseur natif : tests\Run-RC4Tests.ps1
+OK  Parseur natif : tests\Run-PilotageTests.ps1
+OK  Parseur natif : tests\Run-UxTests.ps1
+OK  Parseur natif : tests\Run-AllTests.ps1
+OK  Parseur natif : tests\Run-QueueRemovalTests.ps1
+OK  Parseur natif : tools\Build-Pesto.ps1
+OK  Parseur natif : wad\ActiveDirectory.psd1
+OK  Parseur natif : bloc de déblocage livré
+OK  DEV : manifeste complet valide, configuration hors empreinte
+OK  Lanceur natif x64 graphique et version 1.0
+OK  Modèle neuf neutre disponible sans configuration obligatoire préremplie
+OK  Ressources dans wad ; aucun dossier mod
+OK  Disposition PROD minimale : EXE et wad, mêmes empreintes que DEV
+OK  Composant altéré dans la copie PROD refusé
+OK  Refus d'un dossier sans marqueurs Pesto
+OK  Deblocage recursif des flux Zone.Identifier (NTFS requis)
+OK  Contenu des fichiers preserve
+OK  Fichier voisin hors Pesto non touche
+OK  Deuxieme execution sans modification supplementaire
+OK  Jonction ignoree sans toucher la cible externe
+Tests de package reussis : 27. Rapport : D:\a\pesto\pesto\DEV\tests\windows-package-results.json
+
+=== Run-AsyncTests.ps1 ===
+OK  Parseur natif du moteur complet
+OK  La fixture ne rend pas les fonctions Pesto globales
+OK  Reproduction du login : timer WPF vers fonction privee du script enfant
+OK  Erreur worker relayee au callback, sans sortir du Dispatcher
+OK  Erreur non terminante worker ne devient pas un succes
+OK  Resultat vide conserve sous forme null
+OK  Tableau resultat garde entier dans le premier argument
+OK  Contexte erreur conserve par reference
+OK  Absence de callbacks autorisee
+OK  Callback invalide signale sans exception fatale
+OK  Exception du callback contenue et journalisee
+OK  Erreur du callback de file conserve le verrou de securite
+OK  Annulation non bloquante sans succes tardif
+OK  Remplacement : ancien worker ne supprime pas le nouveau
+OK  Doublon sans Replace refuse sans perdre le premier worker
+OK  Timeout notifie une seule fois puis nettoie le worker
+OK  Quatre workers concurrents gardent leur propre contexte
+OK  Reentrance du timer pendant le callback de timeout neutralisee
+OK  Defaut du polling notifie sans remonter a PushFrame
+OK  Toutes les mutations gardent leur worker et refusent Replace
+OK  Treizieme lecture refusee avec un seul rappel et aucun worker supplementaire
+OK  Erreur restitution directe conserve le verrou et rend la main sans mutation
+OK  Lecture poste : nom et generation restent disponibles au retour
+OK  Lecture poste en erreur : rappel prive retrouve
+OK  Actualisation AD : LockMain transmis sans closure privee
+OK  Actualisation AD en erreur : echec et verrou UI transmis
+OK  Navigateur OU : deux enfants, controle WPF reel
+OK  Navigateur OU vide : une indication, pas une OU sans nom
+OK  Navigateur OU en erreur : Write-Log retrouve la portee Pesto
+OK  Validation config : fonctions du script retrouvees, ecriture mockee
+OK  Validation config refusee : aucune sauvegarde
+OK  JSON invalide : erreur inline et aucune sauvegarde
+Tests asynchrones reussis : 32. Rapport : D:\a\pesto\pesto\DEV\tests\windows-async-results.json
+
+=== Run-RC4Tests.ps1 ===
+OK  Le moteur complet est accepte par le parseur Windows PowerShell
+OK  Reproduction RC3 : $null devient un chemin de sauvegarde invalide
+OK  RC4 : deux ecritures sans backup sur le meme fichier
+OK  RC4 : 100 remplacements successifs sans backup
+OK  RC4 : backup conserve exactement la version precedente
+OK  RC4 : fichier verrouille, erreur explicite et ancien contenu conserve
+OK  RC4 : contenu vide accepte
+OK  RC4 : chemin vide refuse
+OK  RC4 : UTF8 accents preservés et sans BOM de fichier JSON
+OK  Checkpoint reel : Idle -> Active -> BetweenActions -> Idle sur le meme chemin
+OK  Tag extrait du cas utilisateur : PR et VA
+OK  Nom hors convention ne produit pas un faux tag
+OK  PR -> VA : renommage et deplacement automatiques
+OK  VA -> VA : changer seulement le numero ne deplace pas
+OK  VA -> VA : changement de service, meme site, pas de deplacement
+OK  VA -> VA : Portable vers Fixe ne deplace pas
+OK  Drapeau Move RC3 ignore quand le site est identique
+OK  Drapeau Move false n empeche pas le deplacement auto PR -> VA
+OK  Site different mais poste deja dans OU cible : aucun deplacement inutile
+OK  Comparaison OU insensible a la casse
+OK  Changement de site sans cible : refus avant mutation
+OK  Meme site sans OU de destination : renommage seul autorise
+OK  Nom cible invalide refuse
+OK  Meme nom : pas de faux renommage
+OK  Tag insensible a la casse
+OK  Deplacement seul explicite conserve
+OK  Sans renommage et sans demande, pas de deplacement
+OK  Jonction locale hors domaine conserve OU obligatoire
+OK  Ancien nom libre : meme conteneur de site, sous-OU conservee
+OK  Ancien nom libre : autre conteneur de site, deplacement auto
+OK  Ancien nom libre : PREPROD reconnue par la configuration
+OK  Ancien nom libre : site indeterminable, aucune supposition
+OK  Sous-OU PREPROD reste dans le site PREPROD
+OK  Faux suffixe AD ne devient pas un site valide
+OK  File RC3 : normalisation avant execution active le move PR -> VA
+OK  File RC3 : normalisation retire le move inutile VA -> VA
+OK  Resultat historique jamais reecrit par normalisation
+OK  UI : case deplacement calculee et verrouillee lors du rename
+OK  Moteur : ordre RENAME puis MOVE et resultat 77
+OK  Moteur : renommage refuse, aucun deplacement
+OK  Moteur : resultat rename absent, aucun deplacement et code 97
+OK  Moteur : move refuse apres rename, code 89 partiel conserve
+OK  Moteur : meme site ignore ancien flag Move true
+OK  Moteur : ne rajoute pas une mutation absente du plan confirme
+OK  Moteur : lecture AD refusee, zero mutation
+OK  Moteur : deplacement seul explicite reste fonctionnel
+OK  Moteur : hors domaine la file refuse la jonction, renvoi vers la page
+OK  Integration locale : checkpoint existant puis lancement du worker mock
+OK  Precontrole local refuse : zero worker, zero echec AD, une non lancee
+OK  Precontrole local refuse : les lignes suivantes restent non lancees
+OK  Precontrole local ne leve jamais un verrou preexistant
+
+51/51 tests passes ; 0 echecs. Rapport : D:\a\pesto\pesto\DEV\tests\windows-rc4-results.json
+
+=== Run-PilotageTests.ps1 ===
+OK  Schéma RC5 complet, aucun champ credential
+OK  Liste accepte espaces tabulations virgules et point-virgule
+OK  Liste vide refusée
+OK  Doublon insensible à la casse refusé
+OK  FQDN et commandes refusés
+OK  Limite 200 postes
+OK  Liste volumineuse refusée
+OK  Filtre littéral applique les métacaractères à DataView
+OK  Filtre ne transforme pas une chaîne en expression
+OK  Filtre inconnu refusé
+OK  Succès simulation exclus du filtre réel
+OK  Index sélectionné suit la DataRow après tri et filtre
+OK  Décocher visibles ne perd pas la deuxième ligne dans un filtre actif
+OK  Lot PR vers VA : renommage puis déplacement, décoché, sans reboot
+OK  Lot PR vers PR : conserve sa sous-OU
+OK  Lot ignore numéros occupés et réservés
+OK  Lot conserve le type S
+OK  Lot source inconnue : aucun ajout partiel
+OK  Lot source dupliquée refusée
+OK  Lot source déjà en file refusée
+OK  Lot source hors périmètre refusée
+OK  Lot cible hors périmètre refusée
+OK  Lot cache ambigu refusé
+OK  Lot plage épuisée refusée sans écriture
+OK  Lot n'ajoute rien au cache
+OK  Lot refusé hors domaine
+OK  Empreinte indépendante des cases Traiter et du texte de ticket
+OK  Empreinte change avec cible, GUID et mode
+OK  Identité égale acceptée ; GUID invalide et différent refusés
+OK  Dérive OU source détectée
+OK  Contrôle valide : lecture sur DC unique, sans certification de droits
+OK  Contrôle nom cible occupé bloqué
+OK  Contrôle source absente bloqué
+OK  Contrôle source ambiguë bloqué
+OK  Contrôle GUID remplacé bloqué
+OK  Contrôle OU déplacée bloqué
+OK  Contrôle OU inexistante bloqué
+OK  Contrôle ordinateur désactivé : avertissement
+OK  Contrôle protection interdite : blocage, sans levée de protection
+OK  Contrôle protection autorisée : avertissement, aucune levée réelle
+OK  Contrôle lecture impossible : blocage et secret masqué
+OK  Contrôle renommage seul ne requiert pas une lecture OU cible
+OK  Contrôle respecte le plan de déplacement signé
+OK  Contrôle met en cache uniquement les OU lues
+OK  Source du worker en lecture seule sans commande de mutation
+OK  Blocage daté ne devient jamais autorisation par expiration
+OK  Résultat expiré signalé périmé
+OK  Un ancien marquage importé ne vaut pas contrôle de la session
+OK  Confirmation indique les lignes cochées masquées
+OK  Rapport HTML encode les valeurs et masque les secrets
+OK  Rapport vide et absence de ressource distante
+OK  Conseil partiel ne préconise pas un second renommage
+OK  Historique borné à 100 et sans objet de credential
+OK  Historique corrompu non écrasé
+OK  Gabarit de lot construit par le moteur WPF sans afficher une fenêtre
+55/55 cas réussis. Rapport : D:\a\pesto\pesto\DEV\tests\windows-pilotage-results.json
+
+=== Run-UxTests.ps1 ===
+OK  Parseur PowerShell natif du moteur et de ses composants
+OK  Chargement réel de la fenêtre XAML et de ses ressources
+OK  Table des libellés UX chargée depuis l'AST du moteur
+OK  Les contrôles publics du Shell sont uniques et résolus par FindName
+OK  Palettes Light et Dark lues dans $script:Themes sans exécuter le moteur
+OK  PR vers VA : aperçu renommer puis déplacer
+OK  Même site : conserver l'OU actuelle malgré une autre OU proposée
+OK  Même site, changement de service : aucun déplacement
+OK  Déplacement seul : nom source conservé
+OK  Redémarrage non demandé par défaut
+OK  Redémarrage explicite correctement présenté
+OK  Hors domaine : aperçu de jonction locale
+OK  Verrou de sécurité expliqué sans être effacé
+OK  Nom occupé expliqué
+OK  Lecture source en cours explique l'attente
+OK  Étape 4 réservée au traitement effectivement en cours
+OK  Contrôle AD reste en étape 3 sans annoncer une mutation
+OK  Aides des commandes désactivées activées dans WPF
+OK  Tous les contrôles interactifs publics possèdent une aide
+OK  Colonnes simples : exactement six colonnes visibles
+OK  Colonnes techniques réversibles et liaisons conservées
+OK  Thème clair appliqué par le véritable Set-Theme
+OK  Thème sombre appliqué aux mêmes ressources
+OK  Initialisation des événements sans closure privée
+OK  Fenêtre affichée hors écran : mise en page réellement rendue
+NT  Mise en page réelle à 1460 x 940 : 1044 px rendus < 1244 px requis (écran 1024 px)
+OK  Mise en page compacte à 1100 : aperçu sous le formulaire
+NT  Retour à la disposition large sans recréer le formulaire : 1044 px rendus < 1244 px requis (écran 1024 px)
+OK  ComboBox non éditable : menu contractuel présent
+OK  ComboBox éditable : vrai champ de saisie conservé
+OK  Navigation par vrais événements WPF
+OK  UIA : aucun pair créé lorsque personne ne consulte l'accessibilité
+OK  UIA : les changements de page exposent le contenu courant en conservant les pairs
+OK  UIA : dix demandes avant le rendu produisent une seule actualisation différée
+OK  UIA : changer les sous-onglets ne reconstruit pas les enfants de MainTabs
+OK  X5 contraste élevé : anneaux du menu actif, de l'onglet actif et de l'élément survolé, transparents en clair et sombre
+OK  Bouton Aide : panneau basculé et mémorisé, page conservée
+OK  Historique vide clairement expliqué
+OK  Historique d'un autre domaine refusé
+OK  La recherche invalide immédiatement l'ancien plan
+OK  Saisies rapides : aucune lecture du poste sans demande explicite
+OK  Lecture différée au même contexte : une seule lecture
+OK  Demande temporisée abandonnée après changement de ligne éditée
+OK  Demande temporisée abandonnée après changement local/distant
+OK  Bouton de lecture : une lecture, sans préparer ni lancer de ligne
+OK  Touche Entrée : lecture du poste seulement
+OK  Verrou de sécurité : aucune lecture du poste
+OK  Fermeture arrête les deux timers UI
+OK  Aucune mutation ni lecture AD pendant les tests UI
+OK  Aucune exception masquée par le rafraîchissement d'aperçu
+Tests UI isolés réussis, 2 cas non testés sur ce viewport (nom et mesure dans windows-ui-results.json) : la mise en page large demande un écran d'au moins 1244 px.
+
+=== Run-LoginTests.ps1 ===
+OK  Light : format compact sans agrandissement
+OK  Light : erreur visible et retour au format compact
+OK  Light : nom de compte entier, sans double marge
+OK  Light : puces du mot de passe, sans double marge
+OK  Light : curseur et texte contrastes
+OK  Light : hauteur flexible et champs centres
+OK  Light : agrandissement de police a 18
+OK  Light : agrandissement de police a 24
+OK  Light : saisie modifiable sans authentification
+OK  Dark : format compact sans agrandissement
+OK  Dark : erreur visible et retour au format compact
+OK  Dark : nom de compte entier, sans double marge
+OK  Dark : puces du mot de passe, sans double marge
+OK  Dark : curseur et texte contrastes
+OK  Dark : hauteur flexible et champs centres
+OK  Dark : agrandissement de police a 18
+OK  Dark : agrandissement de police a 24
+OK  Dark : saisie modifiable sans authentification
+OK  Controle negatif : le template RC6 reintroduit est bien detecte comme coupe
+Tests de saisie termines : 19 controles. Rapport : D:\a\pesto\pesto\DEV\tests\windows-login-results.json
+
+=== Run-LoginPreferencesTests.ps1 ===
+OK  Absence de preference : aucune memorisation implicite
+OK  Memoriser un identifiant court apres choix explicite
+OK  Ecriture successive : mise a jour atomique sans chaine null vide
+OK  Liste blanche du fichier : aucun champ de mot de passe
+OK  UPN memorise tel quel
+OK  Preference dun autre domaine ignoree
+OK  Chaine true refusee a la place dun booleen
+OK  Schema inconnu ignore
+OK  Nom vide ou trop long refuse sans remplacer la preference
+OK  Caracteres de controle refuses
+OK  Decocher oublie immediatement sans nouvelle connexion
+OK  Cocher seul necrit pas de preference
+OK  Preference JSON invalide ignoree
+OK  Fichier de preference trop volumineux ignore
+OK  Oubli idempotent et suppression du fichier corrompu
+Preferences : 15 tests reussis. Rapport : D:\a\pesto\pesto\DEV\tests\windows-login-preferences-results.json
+
+=== Run-QueueRemovalTests.ps1 ===
+OK  Cas de la capture : retirer autorisé pendant la modification, exécuter reste bloqué
+OK  Aucune ligne sélectionnée : retrait désactivé même si les cases sont cochées
+OK  Ligne décochée mais surlignée : peut être retirée
+OK  Exécution active : bouton et fonction refusent le retrait
+OK  Précontrôle actif : retrait refusé même en édition
+OK  Une DataRow provenant d une autre table est refusée
+OK  Une ancienne ligne détachée est refusée
+OK  Une ligne marquée Deleted est refusée
+OK  Refuser la confirmation ne change ni la file ni l édition ni la sauvegarde
+OK  Retirer la ligne modifiée quitte son édition après confirmation
+OK  Seule la ligne surlignée est retirée, pas les autres lignes cochées
+OK  Tri décroissant : le retrait utilise la DataRow réelle
+OK  Filtre : retirer la ligne visible ne retire pas une ligne masquée
+OK  Retirer avant une autre ligne en édition recalcule son index
+OK  Retirer après une autre ligne en édition conserve son index
+OK  La sauvegarde JSON ne contient plus la ligne retirée
+OK  Le cache du précontrôle retiré est invalidé sans vider les autres
+OK  Échec de sauvegarde : même objet, mêmes données et même ordre restaurés
+OK  Échec de sauvegarde : l édition et le cache sont conservés
+OK  Échec avant écriture : ancien checkpoint intact
+OK  Un traitement démarré pendant la confirmation est recontrôlé
+OK  Le retrait ne modifie ni le journal historique ni le verrou existant
+OK  File devenue vide : le verrou Uncertain survit à une relecture du checkpoint
+OK  Mode démo : retirer ne crée pas de checkpoint réel
+OK  File vide sans verrou : retrait désactivé et aucune exécution possible
+OK  Acquittement annulé conserve verrou et fichiers
+OK  Mutation démarrée pendant le dialogue refuse acquittement
+OK  Worker actif refuse acquittement avant le dialogue
+OK  Reçu manquant conserve verrou
+OK  Identifiant invalide conserve verrou
+OK  Autre domaine conserve verrou
+OK  Tâche non terminée conserve verrou
+OK  Identifiant de ligne absent de QueueOperationIds est acquitté
+OK  PARTIEL décoché conserve code message et identifiants
+OK  EN COURS devient INCERTAIN code 97 et décoché
+OK  Acquittement déjà enregistré ne se réécrit pas
+OK  Échec checkpoint restaure verrou et ligne
+37/37 tests de retrait réussis. Rapport : D:\a\pesto\pesto\DEV\tests\windows-queue-removal-results.json
+
+=== Run-ProgressTests.ps1 ===
+OK Parseur PowerShell natif : source complet
+OK Parseur natif : script du helper UAC
+OK Moniteur initial sans mutation
+OK Étape publiée immédiatement
+OK Masquage des clés de mot de passe dans les traces
+OK Drain FIFO sans duplication
+OK Drain borné pour laisser le Dispatcher disponible
+OK Pied de page : étape et PID du helper
+OK Barrière : lecture ne marque pas de mutation
+OK Barrière : mutation annoncée avant appel
+OK Barrière : aucune étape nouvelle après expiration
+OK Compatibilité des fonctions isolées sans moniteur
+OK Worker réel en STA sur demande
+OK Lecture AD : MTA reste le défaut
+OK Messages visibles AVANT la fin du worker réel
+OK Expiration : erreur unique, worker encore suivi, aucune mutation différée
+OK Succès tardif non publié après expiration
+OK Une mutation active ne peut pas être remplacée
+OK Arrêt coopératif conserve le suivi du worker
+OK Déverrouillage refusé tant que le worker est actif
+OK Timeout des lectures : ancien contrat conservé
+Tests : 21, échecs : 0. Rapport : D:\a\pesto\pesto\DEV\tests\windows-progress-results.json
+
+=== Run-AcknowledgementTests.ps1 ===
+
+OperationId                      Receipts                     Message                                                  
+-----------                      --------                     -------                                                  
+58106fc975a040b5a023d41b018e9c3d {registre des interventions} Acquitté : registre des interventions. Le résultat rée...
+404a617db960424d9d712543c85ef44b {registre des interventions} Acquitté : registre des interventions. Le résultat rée...
+{
+    "Passed":  16,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Acquittement registre + direct avec Phase Uncertain/code97/effets conservés",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Lecture sans observation et motif enregistré",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Aucun succès ajouté",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Refus read-only",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Refus simulation",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Refus worker actif",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Refus autre domaine",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Refus tâche Started, réussite Finished",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Aucun reçu à acquitter =\u003e refus",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Empreinte phase/code rend acquittement caduc",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Refus démonstration",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Mutex tenu dans un autre runspace refuse sans écrire",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Ancien reçu valide sans métadonnées de suivi peut être acquitté",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Reçu unitaire isolé d un autre domaine inchangé",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Jonction locale acquittée avec code absent conservé",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Jonction locale autre domaine reste inchangée",
+                       "Passed":  true
+                   }
+               ],
+    "PowerShell":  "5.1.20348.5622",
+    "WindowsExecuted":  true,
+    "ADExecuted":  false,
+    "WPFExecuted":  false,
+    "Scope":  "Windows PowerShell 5.1, vrais contrats/readers/writers, fichiers et ACL temporaires, doubles UI et coordination, aucun AD"
+}
+
+
+
+=== Run-RemotePreparationTests.ps1 ===
+RemotePreparation : 26/26 PASS
+
+=== Run-HeadlessAuditTests.ps1 ===
+{
+    "Suite":  "HeadlessAudit",
+    "PowerShell":  "5.1.20348.5622",
+    "NoAD":  true,
+    "NoVM":  true,
+    "RealLocalWriter":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "GUI monitor keeps the bounded event queue and never invokes a sink",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Headless events reach the sink immediately before final draining",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Stream preserves original UTC and redacts tokens",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Quoted JSON secrets escaped quotes and authorization schemes are fully redacted",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Real event and queued writer redact JSON secrets in message stage and context",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Temporary sink failure falls back once without duplicating accepted events",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Sink exceptions never escape the worker event publisher",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Exhausted fallback queue reports losses and remains bounded",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Final drain records persistent writer rejection as incomplete",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Closing is bounded and incomplete output uses stderr only",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Real async writer persists streaming events before worker completion",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Both real operation and join routes opt into streaming",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}
+
+=== Run-ReconciliationAuditTests.ps1 ===
+{
+    "PowerShell":  "5.1.20348.5622",
+    "NoWindows":  true,
+    "NoAD":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Reconciliation audit persists a bounded closed event without changing outcome",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Audit export excludes arbitrary state text XML credentials and malformed dates",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid audit parameters are rejected before persistence",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Actual reconciliation worker records READY code but never validates the operation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown task and missing original hash are recorded without a false finish",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Probe failure leaves durable unknown evidence and propagates failure",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Actual protection recovery persists requested confirmed and uncertain branches",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}

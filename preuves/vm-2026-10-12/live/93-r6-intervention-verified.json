@@ -1,0 +1,141 @@
+{
+    "Schema":  3,
+    "Version":  "1.0",
+    "OperationId":  "5f0eee7279bb459c93b9d9939e7caf11",
+    "Plan":  {
+                 "Nom_du_PC":  "P111301VA765172",
+                 "Nouveau_Nom":  "P111301LY765128",
+                 "OU_Actuelle":  "",
+                 "OU_Destination":  "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                 "Objet_GUID":  "",
+                 "Domain":  "labo.local",
+                 "DC":  "dc01.labo.local",
+                 "ConfigStamp":  "127D73A9767B1204AEEC7DFA35AF34E7EDD7FB9DB796E2E7E4DC57EBF2482AD6",
+                 "TargetOUGuid":  "58705e61-64a8-4e85-a121-8cfbf83a5af9",
+                 "Renommer":  false,
+                 "Deplacer":  false,
+                 "Reboot":  false
+             },
+    "StartedUtc":  "2026-10-12T19:51:53.9821997Z",
+    "UpdatedUtc":  "2026-10-12T20:00:03.1017003Z",
+    "Phase":  "Verified",
+    "InitialProtection":  null,
+    "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+    "TargetOUGuid":  "",
+    "Entra":  "NotRequested",
+    "Protection":  "NotChanged",
+    "Rename":  "Confirmed",
+    "Move":  "NotRequested",
+    "ResultCode":  10,
+    "ResultMessage":  "\"P111301VA765172\" ajouté au domaine \"labo.local\" → nom \"P111301LY765128\" / OU \"OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local\"",
+    "LastStage":  "Postconditions observed",
+    "VerifiedUtc":  "2026-10-12T19:58:26.6496434Z",
+    "VerifiedBy":  "LABO\\tech.pesto",
+    "ResumeFrom":  "",
+    "PlanFingerprint":  "340324ac0c957b512cdd526bc2d04f6447acc6320ce3434da98b78d3c4748b42",
+    "Coordination":  {
+                         "Enabled":  false,
+                         "Keys":  [
+
+                                  ],
+                         "Owner":  "5f0eee7279bb459c93b9d9939e7caf11"
+                     },
+    "Baseline":  {
+                     "Schema":  1,
+                     "CapturedUtc":  "2026-10-12T19:51:54.0695866Z",
+                     "ADUtc":  "",
+                     "WindowsUtc":  "2026-10-12T19:51:54.0695866Z",
+                     "HealthUtc":  "",
+                     "AD":  null,
+                     "Windows":  {
+                                     "ActiveName":  "P111301VA765172",
+                                     "ConfiguredName":  "P111301VA765172",
+                                     "Domain":  "WORKGROUP",
+                                     "PartOfDomain":  false,
+                                     "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                     "BootUtc":  "2026-10-12T19:33:31.5000000Z",
+                                     "DomainRole":  0
+                                 },
+                     "Health":  null
+                 },
+    "JoinEvidence":  {
+                         "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                         "BeforeBootUtc":  "2026-10-12T19:33:31.5000000Z",
+                         "PreparedUtc":  "2026-10-12T19:51:54.0695866Z",
+                         "NativeStatus":  "Accepted",
+                         "BoundObjectGuid":  "b4797c9c-d790-4797-bf71-424a57acb36e"
+                     },
+    "Sequence":  7,
+    "Timeline":  [
+                     {
+                         "Sequence":  1,
+                         "Utc":  "2026-10-12T19:51:54.0429598Z",
+                         "Stage":  "TargetMachineId",
+                         "State":  "81387449-2dd8-4bd9-8059-f868a5b8ec68"
+                     },
+                     {
+                         "Sequence":  2,
+                         "Utc":  "2026-10-12T19:51:54.0875760Z",
+                         "Stage":  "JoinBaseline",
+                         "State":  "RecordedBeforeCommand"
+                     },
+                     {
+                         "Sequence":  3,
+                         "Utc":  "2026-10-12T19:51:54.2609720Z",
+                         "Stage":  "Rename",
+                         "State":  "Requested"
+                     },
+                     {
+                         "Sequence":  4,
+                         "Utc":  "2026-10-12T19:51:54.4430980Z",
+                         "Stage":  "Rename",
+                         "State":  "Confirmed"
+                     },
+                     {
+                         "Sequence":  5,
+                         "Utc":  "2026-10-12T19:51:54.4748734Z",
+                         "Stage":  "Join",
+                         "State":  "Requested"
+                     },
+                     {
+                         "Sequence":  6,
+                         "Utc":  "2026-10-12T19:51:54.9546097Z",
+                         "Stage":  "Join",
+                         "State":  "Accepted"
+                     },
+                     {
+                         "Sequence":  7,
+                         "Utc":  "2026-10-12T19:51:55.0132399Z",
+                         "Stage":  "Result",
+                         "State":  "PendingRestart"
+                     }
+                 ],
+    "LastObservation":  {
+                            "Schema":  1,
+                            "CapturedUtc":  "2026-10-12T19:58:26.6496434Z",
+                            "ADUtc":  "2026-10-12T19:58:25.2376608Z",
+                            "WindowsUtc":  "2026-10-12T19:58:25.3624530Z",
+                            "HealthUtc":  "2026-10-12T19:58:25.3698514Z",
+                            "AD":  {
+                                       "Name":  "P111301LY765128",
+                                       "Guid":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                                       "OU":  "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                                       "Protected":  false
+                                   },
+                            "Windows":  {
+                                            "ActiveName":  "P111301LY765128",
+                                            "ConfiguredName":  "P111301LY765128",
+                                            "Domain":  "labo.local",
+                                            "PartOfDomain":  true,
+                                            "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                            "BootUtc":  "2026-10-12T19:56:50.5000000Z",
+                                            "DomainRole":  1
+                                        },
+                            "Health":  {
+                                           "Scope":  "Appareil local, compte du processus ; pas SSO utilisateur",
+                                           "AzureAdJoined":  "NO",
+                                           "DomainJoined":  "YES",
+                                           "SecureChannel":  true
+                                       }
+                        }
+}

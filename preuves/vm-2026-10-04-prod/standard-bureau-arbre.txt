@@ -1,0 +1,39 @@
+﻿Pane ""
+Window "Microsoft account"
+Window "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+  Pane ""
+  Pane ""
+    Tab "" #TabView
+      List "" #TabListView
+        TabItem "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+          Image ""
+          Text "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" #HeaderTextBlock
+          Button "Fermer l’onglet" #CloseButton
+      SplitButton "Nouvel onglet" #NewTabButton
+    Custom ""
+      Text "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+        ScrollBar "Vertical" #ScrollBar
+          Button "Légère diminution verticale" #VerticalSmallDecrease
+          Button "Diminution verticale importante" #VerticalLargeDecrease [hors-ecran]
+          Button "Augmentation verticale importante" #VerticalLargeIncrease
+          Button "Légère augmentation verticale" #VerticalSmallIncrease
+Window "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+  Pane ""
+  Pane ""
+    Tab "" #TabView
+      List "" #TabListView
+        TabItem "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+          Image ""
+          Text "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" #HeaderTextBlock
+          Button "Fermer l’onglet" #CloseButton
+      SplitButton "Nouvel onglet" #NewTabButton
+    Custom ""
+      Text "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+        ScrollBar "Vertical" #ScrollBar
+          Button "Légère diminution verticale" #VerticalSmallDecrease
+          Button "Diminution verticale importante" #VerticalLargeDecrease [hors-ecran]
+          Button "Augmentation verticale importante" #VerticalLargeIncrease
+          Button "Légère augmentation verticale" #VerticalSmallIncrease
+Pane "Program Manager"
+  Pane ""
+    Pane "FolderView" #1

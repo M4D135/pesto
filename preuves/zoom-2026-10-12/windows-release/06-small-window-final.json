@@ -1,0 +1,31 @@
+﻿{
+    "Result":  "PASS",
+    "ExeSHA256":  "AD05ADD239A884B93E47A2AE647687A26F46784AD690A234ABAF0E692C043E16",
+    "MutationInvoked":  false,
+    "RequestedWindow":  {
+                            "Height":  560,
+                            "Width":  760
+                        },
+    "Zoom":  150,
+    "NamesGrid":  {
+                      "Id":  "NmGrid",
+                      "Height":  345,
+                      "Width":  748,
+                      "Offscreen":  false
+                  },
+    "NamesScrollable":  true,
+    "LedgerGrid":  {
+                       "Id":  "LedgerGrid",
+                       "Height":  390,
+                       "Width":  995,
+                       "Offscreen":  false
+                   },
+    "LedgerClose":  {
+                        "Id":  "LedgerClose",
+                        "Height":  61,
+                        "Width":  110,
+                        "Offscreen":  false
+                    },
+    "LedgerScrollable":  true,
+    "ZoomRestored":  100
+}

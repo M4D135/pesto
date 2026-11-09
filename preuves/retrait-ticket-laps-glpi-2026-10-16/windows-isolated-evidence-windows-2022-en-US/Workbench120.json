@@ -1,0 +1,245 @@
+{
+    "Suite":  "Workbench120",
+    "Platform":  "Microsoft Windows NT 10.0.20348.0",
+    "PowerShell":  "5.1.20348.5622",
+    "Wpf":  true,
+    "Passed":  47,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "Short confirmation does not fill the whole desktop",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Long report fits finite viewport and scrolls internally",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invalid panel dimensions receive finite defaults",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Typed before and after retain exact values and mark only differences",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Oversized confirmation fields rejected",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette synonyms find receipts with report vocabulary",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette exact title comes first and retains original command reference",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette combines accent insensitive words",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palette typed query searches every category",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Exact candidate requires membership in current filter",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Exact candidate rejects arbitrary Windows name",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Name segments show all fields and retain leading zeros",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Unknown name produces no misleading segments",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Zoom logical width fits physical width at150percent",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "New actions are reachable as named controls",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Appearance notification keeps spacing before the density action",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "One global scrolling axis preserves the fixed zoom controls",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Four home shortcuts remain exactly four",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Next-operation action never removes writes or verifies receipts",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Narrator deduplicates text and never creates peers",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "F6 does not leave a modal panel",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice table remains read-only and selection cannot mutate",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Real preference gateway supports new keys within explicit limits without touching registry",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Named drafts survive JSON dates and remain distinct in storage",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Draft collection cannot restore reboot or execution agreement",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice tables wire close explicitly when hosted rather than relying on IsCancel",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "F6 from a sibling navigation button advances to the source zone",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "F6 and ShiftF6 from an organism field use its complete name zone",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "F6 cycles both ways at the first and last zones",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "F6 skips disabled or invisible target zones",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Hidden JSON key participates in choice search without a visible column",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice search still matches visible accent insensitive values",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice search accepts only explicit property names",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Settings search includes JSON path in the real table route",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice index preserves references and searches snapshot without re-reading rows",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice projected search handles literal punctuation empty and no matches",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Closed choice dialog ignores a pending search callback",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Choice timer is delayed and explicitly stopped and detached on close",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Search shortcuts stay scoped to every active page",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Refresh shortcuts map to current page and do not execute operations",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Small workspace maximizes oversized design without changing valid preferences",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF focus container includes sibling fields within their shared card",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF XAML loads: Show-PestoPanel",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF XAML loads: Show-PestoChoiceTable",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF XAML loads: Show-PestoDetailsPane",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF hosted cancel closes without selecting or accepting",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF hosted accept returns exact selected row and closes",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

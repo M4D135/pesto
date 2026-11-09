@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup><ProjectReference Include="../Pesto.Core/Pesto.Core.csproj" /></ItemGroup>
+</Project>

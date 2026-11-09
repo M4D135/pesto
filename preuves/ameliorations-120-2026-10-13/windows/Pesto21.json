@@ -1,0 +1,312 @@
+﻿{
+    "Version":  "1.0",
+    "PowerShell":  "5.1.26100.6584",
+    "Utc":  "2026-10-13T19:15:20.5405303Z",
+    "Failed":  0,
+    "Skipped":  1,
+    "NoLiveAD":  true,
+    "NoUAC":  true,
+    "Fixtures":  "C:\\Pesto120_20261013\\temp\\Pesto21-fixtures-e86de1c0e3c94c8db342170aa1b5e715",
+    "Checks":  [
+                   {
+                       "Name":  "Le parseur cible accepte chaque module applicatif",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Nommage aller-retour sur 5 994 combinaisons",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Nommage : bornes et préfixe invalides",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Analyse refuse noms vides, 000 et autres conventions",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Analyse normalise la casse sans inventer le site",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Empreinte canonique indépendante de l’ordre des propriétés",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Empreinte distingue ordre d’un tableau et booléen chaîne",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Plan identique accepté",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Plan modifié après confirmation refusé",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Changement de politique invalide la confirmation",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Booléen chaîne dans un plan refusé",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Brouillon sans autorisation ni redémarrage",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Brouillon refuse tous les champs sensibles",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Brouillon refuse fausse identité et booléens textuels",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Brouillon borné et sans caractères de contrôle",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Résultats mal typés ne deviennent jamais un succès",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Résultats des commandes différenciés",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Contrôle ancien, futur ou autre plan non frais",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Politiques par défaut sûres",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Politique refuse booléens textuels et clés inconnues",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Politique refuse bornes et coordination sans chemin",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Une option hors connexion non livrée ne s’active pas silencieusement",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Consultation bloque avant même la lecture AD de la politique",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Exclusion de nom bloque avant transport",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Clés de coordination stables pour la même cible",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Coordination sans infrastructure n’invente pas un partage",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Coordination arbitrée par création exclusive, pas par expiration",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Deux cibles sans noms communs ont des clés distinctes",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Index réutilisé sans relecture des postes",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Pagination ne matérialise que la page",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Cinq propositions maximum, déjà prises exclues",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Propositions disponibles avec les deux types sélectionnés",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Occupé AD et préparé dans Pesto sont distincts",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Réservation personnelle ne masque pas une réservation de file",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Stratégies premier trou et après la séquence",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Calcul remplacé annulé coopérativement",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Taille et décalage de page bornés",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Progression déterminée seulement avec dénominateur connu",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Sites sans postes présents depuis la configuration",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Préparation personnelle sans accès au registre en simulation",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Préparation personnelle d’un autre domaine non appliquée",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Favori ancien migré uniquement dans la présentation",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Favoris multiples, noms uniques et 20 maximum",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Favori refuse un champ mot de passe",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Timeline bornée garde un ordre croissant",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Une cible incertaine ne bloque pas une autre identité",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Ancien checkpoint importé sans transformer une incertitude en succès",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Import historique sans GUID refusé",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Réessai de lecture transitoire borné",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Refus d’authentification jamais réessayé",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Masquage des motifs sensibles dans les traces",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Diagnostic natif sépare refus réseau, identité et Netjoin",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Aucune checklist ne confond santé locale et SSO utilisateur",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Comparaison d’interventions donne des différences, pas une causalité",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Mesures locales bornées à 200 échantillons",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Vraie compilation C# du writer et barrière d’ordre",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Erreur disque du writer visible, pas ignorée",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Reçu central relisible avec plan figé, timeline et coordination",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Reçu refuse un champ inconnu même si le JSON est valide",
+                       "State":  "PASS",
+                       "Message":  ""
+                   },
+                   {
+                       "Name":  "Vrais XAML RC21",
+                       "State":  "SKIP",
+                       "Message":  "Passer -Wpf depuis Windows PowerShell -STA."
+                   }
+               ]
+}

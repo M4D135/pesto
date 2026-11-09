@@ -1,0 +1,72 @@
+{
+  "Schema": 1,
+  "Result": "PASS",
+  "CreatedUtc": "2026-10-13T08:30:37.588823+00:00",
+  "Edition": "Pesto 1.0",
+  "Scope": "Guides DOCX et PDF : vérification complémentaire facultative après une opération terminée.",
+  "Artifacts": [
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-technicien.docx",
+      "SHA256": "ff1f8d3db86153ad963fe1d560bc2683850df1f4e6363a5cb85434c1966129c7",
+      "Bytes": 1098516,
+      "Pages": 25
+    },
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-technicien.pdf",
+      "SHA256": "068d91f2c0580a1609f145972bdbb653ad8ea555331e88b3c0e7b6d3da744d8a",
+      "Bytes": 1552733,
+      "Pages": 25
+    },
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-administrateur.docx",
+      "SHA256": "6dcd8ae3a00f86b5e01eba1fdd4efb81444ff30e6bdb3bc53ea2caf38721fc0d",
+      "Bytes": 1601289,
+      "Pages": 57
+    },
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-administrateur.pdf",
+      "SHA256": "7cd9d060d1205fd5a08caaa7b46b29220cc0694a6c43be9f4f29e16c89860b7e",
+      "Bytes": 2436130,
+      "Pages": 57
+    }
+  ],
+  "Sources": [
+    {
+      "Path": "outils/guides/technicien.md",
+      "SHA256": "fe6c9c04513557b6a9fdbf87f4bea207113598de466352ed923003405d804429"
+    },
+    {
+      "Path": "outils/guides/technicien.json",
+      "SHA256": "9ebb12f92aaeaff456f6f39cb8d40ec14c3ce9688aaf23e8fa7d30a1809be545"
+    },
+    {
+      "Path": "outils/guides/administrateur.md",
+      "SHA256": "5b41342c2bcf3a6b5eef319d02ee83e793df0908fff67b49649ce77b483c49ca"
+    },
+    {
+      "Path": "outils/guides/administrateur.json",
+      "SHA256": "a18c5d5ab0842257fbb0adc3f4167ef77983d204c919a7fb858463481fe4e6ca"
+    },
+    {
+      "Path": "outils/guides/build_guide.js",
+      "SHA256": "087928792174866cd27153609765748caf78cf26b8efc1b334154f58aa48c57e"
+    }
+  ],
+  "VisualQA": [
+    "technicien-visual-qa.json",
+    "administrateur-visual-qa.json"
+  ],
+  "Contract": [
+    "Une commande terminée éligible conserve son reçu sans consignation obligatoire avant une nouvelle opération.",
+    "La jonction exige un démarrage ultérieur, la même identité machine et le même domaine, un canal sécurisé confirmé et des noms Windows actuels concordants ; un renommage légitime ultérieur ne doit pas imposer l’ancien nom du reçu.",
+    "En cours, incertain, partiel, protection non rétablie, renommage en attente et retour en groupe de travail restent protégés.",
+    "Un reçu n’est jamais présenté comme vérifié du seul fait que le suivi est devenu facultatif."
+  ],
+  "Screenshots": "Captures validées existantes conservées comme exemples ; références de deux vues obsolètes retirées sans supprimer leurs fichiers. Aucune nouvelle capture ni recette VM dans cette passe.",
+  "RenderWorkflow": "Générateur DOCX existant et render_docx.py avec LibreOffice fourni ; comparaison des PNG et lecture visuelle des pages impactées.",
+  "PagePNGsPublished": false,
+  "Limitations": [
+    "Les captures existantes illustrent une vérification volontaire déjà consignée ; elles ne constituent pas une nouvelle validation VM du comportement facultatif."
+  ],
+  "IndependentReview": "../verification-facultative-2026-10-13/guides/administrateur-visual-qa-engine.json"
+}

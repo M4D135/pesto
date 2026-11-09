@@ -1,0 +1,32 @@
+{
+    "Utc":  "2026-10-12T19:14:15.9531491Z",
+    "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+    "BootUtc":  "2026-10-12T18:59:12.6245780Z",
+    "Computer":  "P111301VA765172",
+    "Domain":  "WORKGROUP",
+    "PartOfDomain":  false,
+    "ActiveName":  "P111301VA765172",
+    "ConfiguredName":  "P111301VA765172",
+    "SameMachineAsReceipt":  true,
+    "SameBootAsReceipt":  false,
+    "DC":  "dc01.labo.local",
+    "RequestedADNames":  [
+                             "P111301VA765172",
+                             "P111301LY765201"
+                         ],
+    "ADObjects":  [
+                      {
+                          "Name":  "P111301VA765172",
+                          "Guid":  "899e0a2e-1c9d-469a-8c47-92252ba3ed9c",
+                          "DN":  "CN=P111301VA765172,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                          "Disabled":  true,
+                          "DNSHostName":  "P111301VA765172.labo.local"
+                      }
+                  ],
+    "TargetAbsent":  true,
+    "OldGuidPreserved":  true,
+    "ReceiptPhase":  "Uncertain",
+    "ReceiptOperationId":  "265b6efeb2214398a2c73c416b38f217",
+    "ReceiptSHA256":  "4b1adfb02939441461a41e208d20e9e03c1fc3a3c4e4a80f7363f8cfa658c5f7",
+    "NoMutationPerformedByThisProbe":  true
+}

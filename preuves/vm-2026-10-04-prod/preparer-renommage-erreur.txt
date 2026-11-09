@@ -1,0 +1,9 @@
+﻿Method invocation failed because [System.Windows.Automation.SelectionPattern] does not contain a method named 
+'GetCurrentSelection'.
+At C:\PestoTest-run\preparer-renommage-ui.ps1:7 char:1
++ $selection=$type.GetCurrentPattern([Windows.Automation.SelectionPatte ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodNotFound
+ 
+

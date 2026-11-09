@@ -1,0 +1,88 @@
+{
+  "Date": "2026-10-13",
+  "Platform": "macOS / PowerShell 7.4.20",
+  "RuntimeFrozen": true,
+  "WpfExecuted": false,
+  "ADExecuted": false,
+  "Receipts": "Private fixtures only; direct and central receipts checked byte-identical after classification and routing.",
+  "Reports": [
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/OptionalFollowupUi.json",
+      "Sha256": "681eb797341af8caef50668ea86f5db6cbf737d8de35bb7046826ec33d4397f2"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/OptionalFollowupUi.log",
+      "Sha256": "681eb797341af8caef50668ea86f5db6cbf737d8de35bb7046826ec33d4397f2"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/HomeDashboard.json",
+      "Sha256": "6fe37e4fbbcb1a40dd672089ba5dbb3ace2010d29591af9435332f9174c6bd40"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/HomeDashboard.log",
+      "Sha256": "6fe37e4fbbcb1a40dd672089ba5dbb3ace2010d29591af9435332f9174c6bd40"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/InterventionView.json",
+      "Sha256": "14d16710b728ee39e090f5b3412e8fededbdf003e6c8f76f7463297beab2fec0"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/InterventionView.log",
+      "Sha256": "14d16710b728ee39e090f5b3412e8fededbdf003e6c8f76f7463297beab2fec0"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/UiPresentation.json",
+      "Sha256": "e7e190d2833798df03f768da843e19a8584a8ee8116e0a20ae377833a0a5aa60"
+    },
+    {
+      "Path": "preuves/verification-facultative-2026-10-13/ui/UiPresentation.log",
+      "Sha256": "e7e190d2833798df03f768da843e19a8584a8ee8116e0a20ae377833a0a5aa60"
+    }
+  ],
+  "Sources": [
+    {
+      "Path": "DEV/wad/Pesto-Contracts.ps1",
+      "Sha256": "8647464d0cdc2a9b10db8e4d872e9a8ba52f435cd8a7c9c5761ea54d23d7b564"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Interventions.ps1",
+      "Sha256": "2e29aa0b85f51193a6c6a81d59ab40e656d1761707e1db69e5ccba3ea77ef219"
+    },
+    {
+      "Path": "DEV/wad/Pesto-SuiteUI.ps1",
+      "Sha256": "2b2baea98050981904d8d9a93127f8e2b2b02ddb1f471bb0644617a4f1890ee5"
+    },
+    {
+      "Path": "DEV/wad/Pesto-UXFlow.ps1",
+      "Sha256": "6ddfc333a432824c07b0c8eb9738774dd5354d1ccb10f5386d2b816ffabdd2a4"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Policy.ps1",
+      "Sha256": "9caa7c02937b7a7b91764f3f4643433526cfea0f325280c7a145bad53ceba038"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Direct.ps1",
+      "Sha256": "431ebc0db96069375860c5530ce20f3157c687855313fe7d46d5a3996ad1971f"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Join.ps1",
+      "Sha256": "e24dba5317bdb60ce14171f2f62513113ac67fc70af8c069df9b733ad195a462"
+    },
+    {
+      "Path": "DEV/tests/Run-OptionalFollowupUiTests.ps1",
+      "Sha256": "912868e425ed25313bfe5d887f79f4c66849cb1f431676f3ded6836720c2031d"
+    },
+    {
+      "Path": "DEV/tests/Run-HomeDashboardTests.ps1",
+      "Sha256": "adb4390df926012b324d7763ec9debeea5eb487e55ec3c9659c0622bc149be43"
+    },
+    {
+      "Path": "DEV/tests/Run-InterventionViewTests.ps1",
+      "Sha256": "8622a4c1906b5d856bf3cddcc3d00fce6333256668da897fca9650cd2612dd99"
+    },
+    {
+      "Path": "DEV/tests/Run-UxTests.ps1",
+      "Sha256": "26479a1218f3fe4798172350cb3aef5fe628df15dd1ca23b80267c7ae35a1e4c"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+﻿{
+    "Utc":  "2026-10-12T18:34:36.8039790Z",
+    "Operation":  "Controlled Windows restart after accepted rename and AD move",
+    "VM":  "PESTO-W11-TEST",
+    "ExpectedName":  "P111301VA765172"
+}

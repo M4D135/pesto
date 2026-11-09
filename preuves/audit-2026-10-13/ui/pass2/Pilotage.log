@@ -1,0 +1,56 @@
+OK  Sch‚ma RC5 complet, aucun champ credential
+OK  Liste accepte espaces tabulations virgules et point-virgule
+OK  Liste vide refus‚e
+OK  Doublon insensible … la casse refus‚
+OK  FQDN et commandes refus‚s
+OK  Limite 200 postes
+OK  Liste volumineuse refus‚e
+OK  Filtre litt‚ral applique les m‚tacaractŠres … DataView
+OK  Filtre ne transforme pas une chaŒne en expression
+OK  Filtre inconnu refus‚
+OK  SuccŠs simulation exclus du filtre r‚el
+OK  Index s‚lectionn‚ suit la DataRow aprŠs tri et filtre
+OK  D‚cocher visibles ne perd pas la deuxiŠme ligne dans un filtre actif
+OK  Lot PR vers VA : renommage puis d‚placement, d‚coch‚, sans reboot
+OK  Lot PR vers PR : conserve sa sous-OU
+OK  Lot ignore num‚ros occup‚s et r‚serv‚s
+OK  Lot conserve le type S
+OK  Lot source inconnue : aucun ajout partiel
+OK  Lot source dupliqu‚e refus‚e
+OK  Lot source d‚j… en file refus‚e
+OK  Lot source hors p‚rimŠtre refus‚e
+OK  Lot cible hors p‚rimŠtre refus‚e
+OK  Lot cache ambigu refus‚
+OK  Lot plage ‚puis‚e refus‚e sans ‚criture
+OK  Lot n'ajoute rien au cache
+OK  Lot refus‚ hors domaine
+OK  Empreinte ind‚pendante des cases Traiter et du texte de ticket
+OK  Empreinte change avec cible, GUID et mode
+OK  Identit‚ ‚gale accept‚e ; GUID invalide et diff‚rent refus‚s
+OK  D‚rive OU source d‚tect‚e
+OK  Contr“le valide : lecture sur DC unique, sans certification de droits
+OK  Contr“le nom cible occup‚ bloqu‚
+OK  Contr“le source absente bloqu‚
+OK  Contr“le source ambigu‰ bloqu‚
+OK  Contr“le GUID remplac‚ bloqu‚
+OK  Contr“le OU d‚plac‚e bloqu‚
+OK  Contr“le OU inexistante bloqu‚
+OK  Contr“le ordinateur d‚sactiv‚ : avertissement
+OK  Contr“le protection interdite : blocage, sans lev‚e de protection
+OK  Contr“le protection autoris‚e : avertissement, aucune lev‚e r‚elle
+OK  Contr“le lecture impossible : blocage et secret masqu‚
+OK  Contr“le renommage seul ne requiert pas une lecture OU cible
+OK  Contr“le respecte le plan de d‚placement sign‚
+OK  Contr“le met en cache uniquement les OU lues
+OK  Source du worker en lecture seule sans commande de mutation
+OK  Blocage dat‚ ne devient jamais autorisation par expiration
+OK  R‚sultat expir‚ signal‚ p‚rim‚
+OK  Un ancien marquage import‚ ne vaut pas contr“le de la session
+OK  Confirmation indique les lignes coch‚es masqu‚es
+OK  Rapport HTML encode les valeurs et masque les secrets
+OK  Rapport vide et absence de ressource distante
+OK  Conseil partiel ne pr‚conise pas un second renommage
+OK  Historique born‚ … 100 et sans objet de credential
+OK  Historique corrompu non ‚cras‚
+OK  Gabarit de lot construit par le moteur WPF sans afficher une fenˆtre
+55/55 cas r‚ussis. Rapport : C:\PestoAudit20261013\ui\reports\Pilotage.json

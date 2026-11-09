@@ -1,0 +1,80 @@
+{
+  "Utc": "2026-10-12T22:09:24.057643+00:00",
+  "Reviewer": "Codex /root/silent_join",
+  "Status": "PASS_TEXT_REVISION",
+  "Document": {
+    "Docx": "/Users/david/Projects/pesto/outils/guides/build/Pesto-1.0-Guide-technicien.docx",
+    "DocxSha256": "3d7f6920d8e70a6d36d33165c9ce3081ab628a8c43fd8fed5afac7417b4f053c",
+    "Pdf": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-v2/Pesto-1.0-Guide-technicien.pdf",
+    "PdfSha256": "5fb7324975292c13722ac977009baa2f0a8bcf4441a31174e94072de08df7f74",
+    "PageCount": 25
+  },
+  "PreviousReview": {
+    "Path": "preuves/guides-zoom-2026-10-12/technicien-visual-qa.json",
+    "Sha256": "45effa61c539d4c671bee707828ce9394a19a40b55e39eae871ad73b1f60e6fc"
+  },
+  "VisualReview": [
+    {
+      "Page": 3,
+      "PngSha256": "0560754759ed3246981a5c84554cb513b2fbf9f7a0ce1faece43346d2024044f",
+      "SourcePixels": [
+        1414,
+        2000
+      ],
+      "ViewedDetail": "original",
+      "Result": "PASS",
+      "Notes": "Jonction : aucun utilisateur ni sauvegarde de travail dans les prérequis ; PC disponible au redémarrage. Toutes étapes et titres lisibles."
+    },
+    {
+      "Page": 14,
+      "PngSha256": "2b8ca4f48ec1160bc9fc2db5b02e4a4e93bee325789b18a67cdacdabf0d639a1",
+      "SourcePixels": [
+        1414,
+        2000
+      ],
+      "ViewedDetail": "original",
+      "Result": "PASS",
+      "Notes": "Plage des numéros / Depuis 001 conforme au runtime. Portée des trous et tirage aléatoire clairement expliqués ; TECH-NUMBERING-001 résolu. La page conserve sept étapes sans débordement."
+    },
+    {
+      "Page": 24,
+      "PngSha256": "14c9b710329e0746b2d7cd89c6ff0deab9bd724f51644d74e0a6c2163c7caf96",
+      "SourcePixels": [
+        1414,
+        2000
+      ],
+      "ViewedDetail": "original",
+      "Result": "PASS",
+      "Notes": "Rappel du travail à enregistrer explicitement limité au renommage ; zoom, raccourcis et liste lisibles."
+    }
+  ],
+  "UnchangedPagesVerified": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    25
+  ],
+  "Findings": [],
+  "ResolvedFindings": [
+    "TECH-NUMBERING-001"
+  ],
+  "RemainingDeliveryStep": "The two replacement screenshots for Noms and Interventions require a final differential review after rendering. No other issue found in this version."
+}

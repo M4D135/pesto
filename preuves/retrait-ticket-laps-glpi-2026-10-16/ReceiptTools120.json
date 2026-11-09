@@ -1,0 +1,137 @@
+{
+  "Suite": "ReceiptTools120",
+  "Passed": 26,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "Identities never merge receipts by name only",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "AD object identity survives renaming",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Invalid GUID falls back to intervention identity",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Every active or unresolved phase refuses archive",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Terminal phase cannot hide uncertain effects or lowered protection",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unfinished tasks refuse archive",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Masked support excludes private names reference and raw result text",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unmasked support retains identity and omits legacy reference",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "New export publishes exact UTF8 bytes and leaves no temporary file",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "New export never overwrites an existing destination",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Oversized export refuses before publishing or creating a temporary file",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Concurrent destination wins and failed publication removes its temporary file",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Archive preserves bytes hash and identity and creates provenance",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Matching orphan provenance resumes archive without rewriting provenance",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Conflicting orphan provenance is preserved along with the receipt",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unresolved receipt remains byte identical at active path",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Read-only context refuses archive before touching filesystem",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Timeline joins active and archived receipts of the same machine",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Timeline orders by UTC date, not by location",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Timeline without archive folder keeps active rows and adds no note",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unreadable other location is reported without hiding current rows",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Same receipt read in both locations is listed once",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Support export publishes three files with matching hashes",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Asynchronous timeline shows once, with archive rows or the read failure",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Archive uses same mutation mutex as real commands and never writes receipt status",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Comparison explicitly requires two receipts instead of hidden first-click state",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

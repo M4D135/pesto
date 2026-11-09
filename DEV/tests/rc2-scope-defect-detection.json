@@ -1,0 +1,147 @@
+{
+  "version": "17.0-RC3",
+  "utc": "2026-09-21T11:58:18.236058+00:00",
+  "source_sha256": "8f8aace297bf5d95762a175f2987bc565765a615f829a6e2f9d665eaf27ae7ed",
+  "scope": "TARGETED STATIC ONLY: lexical structure, not PowerShell binding or WPF runtime execution",
+  "totals": {
+    "checks": 25,
+    "passed": 5,
+    "failed": 20
+  },
+  "checks": [
+    {
+      "name": "No private closure in Start-GPAsyncOperation",
+      "status": "FAIL",
+      "detail": "Start-GPAsyncOperation still creates a private closure module"
+    },
+    {
+      "name": "No private closure in Invoke-GPAsyncTimerTick",
+      "status": "FAIL",
+      "detail": "'Invoke-GPAsyncTimerTick'"
+    },
+    {
+      "name": "No private closure in Select-PCName",
+      "status": "FAIL",
+      "detail": "Select-PCName still creates a private closure module"
+    },
+    {
+      "name": "No private closure in Refresh-Names",
+      "status": "FAIL",
+      "detail": "Refresh-Names still creates a private closure module"
+    },
+    {
+      "name": "No private closure in Load-OUChildren",
+      "status": "FAIL",
+      "detail": "Load-OUChildren still creates a private closure module"
+    },
+    {
+      "name": "No private closure in Show-GPConfigRepair",
+      "status": "FAIL",
+      "detail": "Show-GPConfigRepair still creates a private closure module"
+    },
+    {
+      "name": "All remaining closures contain no script scope or GP function lookup",
+      "status": "FAIL",
+      "detail": "Unsafe private-closure lookups: [{\"line\": 532, \"refs\": [\"Test-CfgValid\", \"Write-GPAtomicText\"]}, {\"line\": 890, \"refs\": [\"Invoke-GPAsyncCallback\", \"Invoke-GPAsyncCallback\", \"Invoke-GPAsyncCallback\"]}, {\"line\": 3079, \"refs\": [\"script:GPTaskbarIconHandles\", \"script:GPTaskbarIconHandles\"]}, {\"line\": 3054, \"refs\": [\"script:AppIconIcoB64\", \"script:GPTaskbarIconHandles\", \"script:GPTaskbarIconHandles\", \"script:GPTaskbarIconHandles\", \"script:GPTaskbarIconHandles\", \"Write-Log\"]}, {\"line\": 4430, \"refs\": [\"Complete-GPComputerProbeSuccess\"]}, {\"line\": 4431, \"refs\": [\"Complete-GPComputerProbeError\"]}, {\"line\": 5427, \"refs\": [\"Complete-GPDirectoryRefresh\"]}, {\"line\": 5428, \"refs\": [\"Complete-GPDirectoryRefresh\"]}, {\"line\": 5868, \"refs\": [\"Write-Log\"]}]"
+    },
+    {
+      "name": "Timer delegate bound to the named function",
+      "status": "FAIL",
+      "detail": "Unbound or anonymous timer handler"
+    },
+    {
+      "name": "Per-timer identity registry kept separate from operation names",
+      "status": "FAIL",
+      "detail": "Timer identity registry missing"
+    },
+    {
+      "name": "Completed handler and timer registry entry removed",
+      "status": "FAIL",
+      "detail": "'Invoke-GPAsyncTimerTick'"
+    },
+    {
+      "name": "Replaced operation cannot remove its successor",
+      "status": "FAIL",
+      "detail": "'Invoke-GPAsyncTimerTick'"
+    },
+    {
+      "name": "Callback context packed separately from the result array",
+      "status": "FAIL",
+      "detail": "Result/context argument contract changed"
+    },
+    {
+      "name": "Explicit callback context in Select-PCName",
+      "status": "FAIL",
+      "detail": "Missing callback context"
+    },
+    {
+      "name": "Explicit callback context in Refresh-Names",
+      "status": "FAIL",
+      "detail": "Missing callback context"
+    },
+    {
+      "name": "Explicit callback context in Load-OUChildren",
+      "status": "FAIL",
+      "detail": "Missing callback context"
+    },
+    {
+      "name": "Reentrancy guard restored in finally",
+      "status": "FAIL",
+      "detail": "'Invoke-GPAsyncTimerTick'"
+    },
+    {
+      "name": "No synchronous PowerShell.Stop used on the UI thread",
+      "status": "FAIL",
+      "detail": "'Invoke-GPAsyncTimerTick'"
+    },
+    {
+      "name": "Queue callback exceptions still preserve the security lock",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Configuration save uses a named handler and button-local state",
+      "status": "FAIL",
+      "detail": "Configuration handler still loses local commands"
+    },
+    {
+      "name": "Empty OU worker output filtered before building the tree",
+      "status": "FAIL",
+      "detail": "Null OU treated as a real child"
+    },
+    {
+      "name": "No global function export introduced",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "All three visible windows show RC3",
+      "status": "FAIL",
+      "detail": "Stale window version"
+    },
+    {
+      "name": "tests/Run-AsyncTests.ps1 encoding and delimiters",
+      "status": "PASS",
+      "detail": {
+        "lexical_tokens": 96,
+        "native_execution": false
+      }
+    },
+    {
+      "name": "tests/Async-ScopeFixture.ps1 encoding and delimiters",
+      "status": "PASS",
+      "detail": {
+        "lexical_tokens": 2474,
+        "native_execution": false
+      }
+    },
+    {
+      "name": "Native regression runner uses a child script scope",
+      "status": "PASS",
+      "detail": null
+    }
+  ],
+  "tested_source_revision": "17.0-RC2",
+  "expected_failures": true,
+  "interpretation": "Negative control on original supplied archive, not a failure report for the RC3 engine"
+}

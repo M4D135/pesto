@@ -1,0 +1,272 @@
+{
+  "version": "17.0-RC13",
+  "utc": "2026-09-30T12:22:32.921727+00:00",
+  "scope": "Source-only checks. No native PowerShell parser, WPF, UAC, AD or Windows execution.",
+  "core_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "passed": 60,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "True Windows principal, not a trusted flag",
+      "passed": true
+    },
+    {
+      "name": "Returned non-admin relay cannot loop",
+      "passed": true
+    },
+    {
+      "name": "Demo explicitly separated",
+      "passed": true
+    },
+    {
+      "name": "UAC relay via RunAs",
+      "passed": true
+    },
+    {
+      "name": "No credential in native process arguments",
+      "passed": true
+    },
+    {
+      "name": "No encoded command or policy bypass in startup",
+      "passed": true
+    },
+    {
+      "name": "Bounded cancellation test, no retry",
+      "passed": true
+    },
+    {
+      "name": "Child exit code propagated, process disposed",
+      "passed": true
+    },
+    {
+      "name": "Elevation and parent exit before core",
+      "passed": true
+    },
+    {
+      "name": "Relative config resolved before elevation",
+      "passed": true
+    },
+    {
+      "name": "Recheck before core",
+      "passed": true
+    },
+    {
+      "name": "State imported before core when account changes",
+      "passed": true
+    },
+    {
+      "name": "Direct core startup cannot bypass elevation",
+      "passed": true
+    },
+    {
+      "name": "Direct core parent exits after relay",
+      "passed": true
+    },
+    {
+      "name": "No delayed UAC in rename or join",
+      "passed": true
+    },
+    {
+      "name": "Remote explicit credential branch guarded before Entra leave",
+      "passed": true
+    },
+    {
+      "name": "Domain credential reused by rename",
+      "passed": true
+    },
+    {
+      "name": "Missing local token stops with code 96",
+      "passed": true
+    },
+    {
+      "name": "Queue validates admin before confirmations",
+      "passed": true
+    },
+    {
+      "name": "Login window cannot maximize",
+      "passed": true
+    },
+    {
+      "name": "Login checks token before XAML",
+      "passed": true
+    },
+    {
+      "name": "Windows-session credential limitation visible",
+      "passed": true
+    },
+    {
+      "name": "State writes do not overwrite existing data",
+      "passed": true
+    },
+    {
+      "name": "Original checkpoint is read-only during import",
+      "passed": true
+    },
+    {
+      "name": "State import conflict is explicit",
+      "passed": true
+    },
+    {
+      "name": "Prior import hash tracked, no repetitive restoration",
+      "passed": true
+    },
+    {
+      "name": "Reparse links rejected and read size bounded",
+      "passed": true
+    },
+    {
+      "name": "Only declared startup/login/authentication functions changed from RC10",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: Invoke-GPDsregLeaveLocal",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: Invoke-GPDsregLeaveBeforeRename",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: Invoke-GPSystemTaskScript",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: GoRenameOnly",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: GoRenameAndMove",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: MoveComputer",
+      "passed": true
+    },
+    {
+      "name": "RC10 unchanged: Restore-GPQueueCheckpoint",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: GP.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Async-ScopeFixture.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-AllTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-AsyncTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-EngineTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-LoginPreferencesTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-LoginTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-PackageTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-PilotageTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-ProgressTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-QueueRemovalTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-RC4Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-SsoTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-StartupTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-UxTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Build-GP.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Diagnostic-Rename.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Verify-StartupUac.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/GP-Core.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/GP-Startup.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and CRLF: GP.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and CRLF: wad/GP-Startup.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and CRLF: wad/GP-Core.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and CRLF: tests/Run-StartupTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and CRLF: tools/Verify-StartupUac.ps1",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "missing parent exit",
+      "detected": true
+    },
+    {
+      "name": "state import removed",
+      "detected": true
+    },
+    {
+      "name": "UAC verb removed",
+      "detected": true
+    },
+    {
+      "name": "domain credential guard removed",
+      "detected": true
+    },
+    {
+      "name": "login maximize regression",
+      "detected": true
+    }
+  ]
+}

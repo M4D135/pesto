@@ -1,0 +1,20 @@
+[
+  {
+    "channel": "PROD",
+    "sourceCommit": "e815af35bada17947b2eb2b20a4b95e43fe0e7e9",
+    "archiveSha256": "cc1e619b06f5abb421b87eb578e4b3b6ad06da9b58ab23ee121506a686b9b9e5",
+    "executableSha256": "6c3ef1cd514fd148e86f2197172c7f91dcb3416d308762203035533d54f53841",
+    "distribution": "candidate",
+    "adQualified": false,
+    "nativeUpdateQualified": false
+  },
+  {
+    "channel": "DEV",
+    "sourceCommit": "e815af35bada17947b2eb2b20a4b95e43fe0e7e9",
+    "archiveSha256": "f69959a358070f5a74189fc7cf76db576db0ea696f42663e961a8b254cab4bee",
+    "executableSha256": "6c3ef1cd514fd148e86f2197172c7f91dcb3416d308762203035533d54f53841",
+    "distribution": "candidate",
+    "adQualified": false,
+    "nativeUpdateQualified": false
+  }
+]

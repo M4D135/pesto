@@ -1,0 +1,13 @@
+{
+  "Version": "17.0-RC14",
+  "NativeExeBuilt": true,
+  "Architecture": "Windows x64 GUI",
+  "Bytes": 98816,
+  "Sha256": "bbb6cb177793fcda65ed7a0aa62153e4665943a2f5747e4f7f7c409b5c8b2941",
+  "RebuildIdentical": true,
+  "LinuxHostArgumentTestsPassed": 9,
+  "WindowsExeRun": false,
+  "WindowsPowerShellParserRun": false,
+  "WpfRun": false,
+  "RealAdRun": false
+}

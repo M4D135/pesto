@@ -1,0 +1,29 @@
+{
+  "Status": "PASS",
+  "Scope": "Real NTFS symbolic links created by PowerShell; fixture only",
+  "PS": "5.1.26100.6584",
+  "Computer": "P111301LY765128",
+  "SHA256": "FE89321C109DADABF2BDCACC66EEC947E002565AE88905B8CEB5078C128203CB",
+  "Checks": [
+    {
+      "Name": "Directory symlink skipped without double counting",
+      "Passed": true
+    },
+    {
+      "Name": "Reparse root refused",
+      "Passed": true
+    },
+    {
+      "Name": "Reparse ancestor refused",
+      "Passed": true
+    },
+    {
+      "Name": "Atomic write through linked parent refused",
+      "Passed": true
+    },
+    {
+      "Name": "Original contents preserved",
+      "Passed": true
+    }
+  ]
+}

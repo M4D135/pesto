@@ -1,0 +1,8 @@
+{
+  "Result": "PASS",
+  "Scope": "CycloneDX 1.6 official JSON schema, synthetic closed-runtime fixture; not a final build SBOM",
+  "Validator": "jsonschema 4.26.0 Draft7",
+  "SchemaURL": "https://raw.githubusercontent.com/CycloneDX/specification/1.6/schema/bom-1.6.schema.json",
+  "SchemaSHA256": "3e92dddbc30cf7f6a02b80f0942b1a4cfd4fb1c26f1dfc4310afa9d613cafb93",
+  "DocumentSHA256": "1d2ee821bd0b6306830da986f7493e7cb40eacc58a566d548a485f9ea39ec1d4"
+}

@@ -1,0 +1,14 @@
+{
+  "Recovery": {
+    "Recovered": true,
+    "Destination": "C:\\PestoQualPersonal_20261018\\failure102\\installed",
+    "Backup": "C:\\PestoQualPersonal_20261018\\failure102\\installed-code-backup-n3s5rg93",
+    "ConfigPreserved": true,
+    "ResultReportWritten": true,
+    "Note": "Previous application code restored, no operation receipt changed and no AD action."
+  },
+  "OriginalFilesRestored": true,
+  "FenceRemoved": true,
+  "ManagedHealthy": true,
+  "NoADMutation": true
+}

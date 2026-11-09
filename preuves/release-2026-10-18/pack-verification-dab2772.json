@@ -1,0 +1,16 @@
+{
+  "DEV": {
+    "zipSHA256": "182ea5ef54bae6508075560755072356c557d635bf46fca0ff0608495fa0c341",
+    "entries": 614,
+    "csharpSources": 3,
+    "configuration": "neutral",
+    "runtimeAndGuides": "byte-matched"
+  },
+  "PROD": {
+    "zipSHA256": "86e37c3b6b5d63bac9027dd7b4634f0d00e4c5df3b1b9445f07fc9b81736105c",
+    "entries": 70,
+    "csharpSources": 0,
+    "configuration": "neutral",
+    "runtimeAndGuides": "byte-matched"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "source": "administrateur.md",
+  "output": "Pesto-1.0-Guide-administrateur",
+  "product": "Pesto 1.0",
+  "title": "Guide administrateur",
+  "subtitle": "Installer, configurer, qualifier et maintenir Pesto",
+  "edition": "Pesto 1.0 (Octobre 2026)",
+  "author": "Pesto",
+  "info": [
+    [
+      "Pour qui",
+      "Administrateurs Active Directory et responsables du déploiement des postes Windows."
+    ],
+    [
+      "Ce que couvre ce guide",
+      "Installation et fabrication des packs DEV et PROD, configuration, jonction, renommage, déplacement, task sequence, contrôles, reçus, reprises et qualification du déploiement."
+    ],
+    [
+      "Version décrite",
+      "Pesto 1.0."
+    ]
+  ],
+  "tocIntro": "Cliquez sur un chapitre pour y aller. Dans Word, le volet Navigation (Affichage > Volet de navigation) donne aussi accès aux chapitres et aux sections.",
+  "figures": {
+    "accueil": {
+      "file": "images/ui-2026-10-13/accueil.png",
+      "width": 17
+    },
+    "noms-filtres": {
+      "file": "images/ui-2026-10-13/noms-filtres.png",
+      "width": 17
+    },
+    "parametres": {
+      "file": "images/ui-2026-10-13/parametres.png",
+      "width": 17
+    },
+    "zoom-interface": {
+      "file": "images/ui-2026-10-13/zoom-interface.png",
+      "width": 17
+    },
+    "etat-verifie": {
+      "file": "images/v1/etat-verifie.png",
+      "width": 17
+    },
+    "verification-consignation": {
+      "file": "images/v1/verification-consignation.png",
+      "width": 17
+    },
+    "parametres-noms": {
+      "file": "images/ui-2026-10-13/parametres-noms.png",
+      "width": 17
+    },
+    "confirmation": {
+      "file": "images/ui-2026-10-13/confirmation.png",
+      "width": 17
+    },
+    "deplacer-seul": {
+      "file": "images/v1/deplacer-seul.png",
+      "width": 17
+    },
+    "lot": {
+      "file": "images/ui-2026-10-12/lot.png",
+      "width": 17
+    },
+    "interventions": {
+      "file": "images/ui-2026-10-12/interventions.png",
+      "width": 17
+    },
+    "jonction-verifiee": {
+      "file": "images/v1/jonction-verifiee.png",
+      "width": 17
+    },
+    "outils-navigation": {
+      "file": "images/ui-2026-10-13/outils-navigation.png",
+      "width": 17
+    }
+  },
+  "cover": "accueil",
+  "coverCaption": "Accueil de Pesto 1.0"
+}

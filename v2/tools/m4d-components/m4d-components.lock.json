@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "tool": "m4d-components",
+  "version": "0.1.0",
+  "sourceRepository": "M4D135/m4d-admin-common",
+  "sourceCommit": "67ae057d3f46dbb9a72562b3f444a8fd069b10c5",
+  "files": [
+    {
+      "path": "components.py",
+      "sha256": "0cf21d76cf181d3c6b7829218f0c733c7fccb8c96bfb67023a80abccb58ea00e",
+      "bytes": 15221
+    },
+    {
+      "path": "components.schema.json",
+      "sha256": "b7c321f83392bc25af49b5713bfa857fe7ea0af50c57e881e6d6aa945273afbe",
+      "bytes": 4451
+    }
+  ]
+}

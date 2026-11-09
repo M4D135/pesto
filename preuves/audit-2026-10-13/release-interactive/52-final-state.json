@@ -1,0 +1,11 @@
+﻿{
+    "Utc":  "2026-10-12T23:41:23.8043446Z",
+    "Computer":  "P111301LY765128",
+    "Domain":  "labo.local",
+    "PartOfDomain":  true,
+    "ProductProcessesRemaining":  0,
+    "ExeSHA256":  "e3b7790a75338e762cb67cdbb239ad67f7e34717dd0ec6a170c41febeb31adae",
+    "ConfigSHA256":  "28d105c9b5b88ae505205832fd952fc2ab44855ea6d359de179ac1eb0397227b",
+    "Configured":  false,
+    "ApplicationClosedNormally":  true
+}

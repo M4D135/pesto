@@ -1,0 +1,9 @@
+{
+  "success": true,
+  "requestId": "2205908729a04c2cbafab65ebc0ddfec",
+  "profileDataPreserved": true,
+  "profileConfigurationRelativePath": "coexistence/data/LocalData/Pesto/v2/DEV/Live/cfg.json",
+  "profileConfigurationSha256": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+  "selectedZipSha256": "46f87375acc670a11163593bad9c16476076ec13bdf61d7a4a135293ce73d627",
+  "stage": "rollback"
+}

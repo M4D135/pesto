@@ -1,0 +1,7 @@
+#SetCmbDarkMode = Sombre
+clic : #NavHome (Accueil)
+capture C:\PestoQual_20261018\preuves\q41-final-dark.png 1730x920
+clic : #NavSettings (Paramètres)
+SetTabs                            Tab            actif=True  [216;147;1492;612] 
+SetCmbDarkMode                     ComboBox       actif=True  [230;292;240;36] Apparence
+

@@ -1,0 +1,21 @@
+{
+  "kind": "pesto.private-release-download-check",
+  "success": true,
+  "utc": "2026-11-01T04:45:03.5040518+00:00",
+  "workflowRun": false,
+  "scriptSha256": "4316145f9cb9e4d3fb5f934a3f5441315011000e784db3638c6e475908b2f201",
+  "files": [
+    {
+      "name": "Pesto_V2_PROD_2.0.8.zip",
+      "bytes": 370763696,
+      "sha256": "0fcbb2ce36c5ffc3acd146cbbdbd3ca76d6bba2b0bf56bcd837dfef262f494bf"
+    },
+    {
+      "name": "Pesto_V2_DEV_2.0.8.zip",
+      "bytes": 387327696,
+      "sha256": "a094152ada77f59e86368a38708c32813e558bf4df2bedecd3ae6853d8537519"
+    }
+  ],
+  "ownedDownloadedFilesRemoved": true,
+  "powershellVersion": "7.6.9"
+}

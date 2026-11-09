@@ -1,0 +1,7 @@
+{
+  "Title": "Cette étape n'a pas abouti.",
+  "NextStep": "Consultez les détails et le journal, puis corrigez la cause avant un nouvel essai.",
+  "Effect": "Aucune relance automatique. Vérifiez le résultat connu avant d'engager une nouvelle écriture.",
+  "Stage": "password=********",
+  "Detail": "password=********"
+}

@@ -1,0 +1,149 @@
+[
+  {
+    "Suite": "Engine",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 7260,
+    "Report": true
+  },
+  {
+    "Suite": "RandomNames",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1895,
+    "Report": true
+  },
+  {
+    "Suite": "NamesLoading",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 7496,
+    "Report": true
+  },
+  {
+    "Suite": "DirectoryCache",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1437,
+    "Report": false
+  },
+  {
+    "Suite": "BulkPlanning",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 4582,
+    "Report": true
+  },
+  {
+    "Suite": "Reliability",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1770,
+    "Report": true
+  },
+  {
+    "Suite": "WorkerContract",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 7862,
+    "Report": true
+  },
+  {
+    "Suite": "Automation",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 7364,
+    "Report": true
+  },
+  {
+    "Suite": "JoinReservation",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 3291,
+    "Report": true
+  },
+  {
+    "Suite": "BootIdentity",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1053,
+    "Report": true
+  },
+  {
+    "Suite": "Common",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1686,
+    "Report": false
+  },
+  {
+    "Suite": "Package",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1150,
+    "Report": false
+  },
+  {
+    "Suite": "V1Improvements",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 1148,
+    "Report": true
+  },
+  {
+    "Suite": "Startup",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 2461,
+    "Report": true
+  },
+  {
+    "Suite": "Sso",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 2045,
+    "Report": true
+  },
+  {
+    "Suite": "Join",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 3851,
+    "Report": true
+  },
+  {
+    "Suite": "Stabilisation",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 7067,
+    "Report": true
+  },
+  {
+    "Suite": "RC4",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 3345,
+    "Report": true
+  },
+  {
+    "Suite": "Pesto21",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 7538,
+    "Report": true
+  },
+  {
+    "Suite": "Pesto22",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 3178,
+    "Report": true
+  },
+  {
+    "Suite": "Pesto23",
+    "ExitCode": null,
+    "TimedOut": false,
+    "Ms": 5012,
+    "Report": true
+  }
+]

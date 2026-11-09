@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "checks": 60,
+  "channels": [
+    "PROD",
+    "DEV"
+  ],
+  "distinctFixtureBinaries": true,
+  "zipAcquisitionExercised": true,
+  "uiRequestGuardsExercised": true,
+  "nativeWindowsExecuted": false,
+  "adExecuted": false,
+  "fixtureRuntimeOnly": true
+}

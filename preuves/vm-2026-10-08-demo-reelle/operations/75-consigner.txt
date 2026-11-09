@@ -1,0 +1,137 @@
+﻿clic : #NavRename (Renommer)
+clic : #SuiteDirectVerify (Vérifier puis reprendre)
+capture C:\PestoTest-preuves\demo-reelle\captures\75-0-etat-ouvert.png 1460x940
+clic : #StateRefresh (Relire l’état)
+bouton suivant : « Consigner la vérification » actif=True
+rapport :
+ÉTAT OBSERVÉ, PAS UNE COMMANDE
+Lecture UTC : 2026-10-07T23:52:01.0718151Z
+
+WINDOWS
+Nom actif : P111301LY765003
+Nom configuré : P111301LY765003
+Redémarrage pour le nom : Non indiqué par ces deux valeurs
+Domaine : labo.local
+Dernier démarrage UTC : 2026-10-07T23:48:12.5000000Z
+Lecture : Local / 2026-10-07T23:51:59.8306308Z
+
+ACTIVE DIRECTORY
+Nom : P111301LY765003
+GUID : d684e54c-3a4e-4062-a1c3-99e05905d467
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon
+DN exact : CN=P111301LY765003,OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Protection anti-suppression : False
+Lecture UTC : 2026-10-07T23:51:59.7246177Z
+
+PLAN CONSERVÉ
+P111301LY765002 → P111301LY765003
+Renommer : True ; déplacer : False
+OU finale prévue : OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+
+AVANT / PRÉVU / OBSERVÉ : le plan conservé reste inchangé.
+
+Controle                     Etat     Observe                                                                         Attendu                                                       
+--------                     ----     -------                                                                         -------                                                       
+Nom actif                    Conforme P111301LY765003                                                                 P111301LY765003                                               
+Domaine Windows              Conforme labo.local                                                                    labo.local                                                  
+Identité AD                  Conforme d684e54c-3a4e-4062-a1c3-99e05905d467                                            d684e54c-3a4e-4062-a1c3-99e05905d467                          
+Emplacement AD               Conforme OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-La...
+Jointure Entra de l’appareil NO       NO                                                                              À contrôler séparément si retrait                             
+Canal sécurisé               Conforme                                                                                 Lecture dédiée après redémarrage                              
+
+
+
+AVANT / PRÉVU / OBSERVÉ
+
+
+Champ      : Nom Windows actif
+Avant      : Non enregistré
+Prevu      : P111301LY765003
+Observe    : P111301LY765003
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.8306308Z
+
+Champ      : Nom Windows configuré
+Avant      : Non enregistré
+Prevu      : P111301LY765003
+Observe    : P111301LY765003
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.8306308Z
+
+Champ      : Domaine Windows
+Avant      : Non enregistré
+Prevu      : labo.local
+Observe    : labo.local
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.8306308Z
+
+Champ      : Identité Windows
+Avant      : Non enregistré
+Prevu      : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Observe    : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.8306308Z
+
+Champ      : Nom AD
+Avant      : Non enregistré
+Prevu      : P111301LY765003
+Observe    : P111301LY765003
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.7246177Z
+
+Champ      : GUID AD
+Avant      : Non enregistré
+Prevu      : d684e54c-3a4e-4062-a1c3-99e05905d467
+Observe    : d684e54c-3a4e-4062-a1c3-99e05905d467
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.7246177Z
+
+Champ      : Emplacement AD
+Avant      : Non enregistré
+Prevu      : OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Observe    : OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.7246177Z
+
+Champ      : Protection AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : False
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.7246177Z
+
+Champ      : Inscription Entra
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : NO
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.8306308Z
+
+Champ      : Canal sécurisé
+Avant      : Non enregistré
+Prevu      : True
+Observe    : True
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-07T23:51:59.8306308Z
+
+
+
+
+conseil : Identité Windows, nom actif, nom configuré et objet AD conformes au plan.
+capture C:\PestoTest-preuves\demo-reelle\captures\75-1-etat-relu.png 1460x940
+capture C:\PestoTest-preuves\demo-reelle\captures\75-2-consigner.png 1460x940
+confirmation : Identité Windows, nom actif, nom configuré et objet AD conformes au plan.
+
+Consigner cette observation et préparer uniquement la suite indiquée ? Aucune commande n’est lancée par cette confirmation.
+clic : #PanelAccept (Confirmer)
+capture C:\PestoTest-preuves\demo-reelle\captures\75-3-consigne.png 1460x940

@@ -1,0 +1,176 @@
+{
+  "Result": "PASS",
+  "PackExeSHA256": "22f8f5c49304f67d346db72a687d216402e0c6aa86d8bb4e67a7d62878dfabad",
+  "ExeWasLaunchedByTheseTests": false,
+  "Scope": "Five targeted suites on source files identical to final runtime; Windows PowerShell 5.1 session 0, no console/AD/real preferences.",
+  "SourceManifest": "source-manifest.json",
+  "SourceManifestSHA256": "73cfaf19ed9882ab5a8f54f7229b6d37a96eace061faf686085522fdc0452bd1",
+  "Suites": [
+    {
+      "Suite": "HomeDashboard",
+      "Passed": 44,
+      "Skipped": 0,
+      "Failed": 0,
+      "Report": "final/HomeDashboard.json"
+    },
+    {
+      "Suite": "InterventionView",
+      "Passed": 18,
+      "Skipped": 0,
+      "Failed": 0,
+      "Report": "final/InterventionView.json"
+    },
+    {
+      "Suite": "Async",
+      "Passed": 32,
+      "Skipped": 0,
+      "Failed": 0,
+      "Report": "final/Async.json"
+    },
+    {
+      "Suite": "NamesLoading",
+      "Passed": 37,
+      "Skipped": 0,
+      "Failed": 0,
+      "Report": "final/NamesLoading.json"
+    },
+    {
+      "Suite": "Pesto21",
+      "Passed": 61,
+      "Skipped": 0,
+      "Failed": 0,
+      "Report": "final/Pesto21.json"
+    }
+  ],
+  "EvidenceFiles": [
+    {
+      "Path": "Async.err",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "GuestSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "GuestBytes": 0,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "Async.json",
+      "SHA256": "c70aba47e190964124c06d4d0b73d6b5999ccafada4aa19792983090d93c995a",
+      "Bytes": 8749,
+      "GuestSHA256": "c70aba47e190964124c06d4d0b73d6b5999ccafada4aa19792983090d93c995a",
+      "GuestBytes": 8749,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "Async.log",
+      "SHA256": "9d86b1839ef700bbd77a8cc40cfcdffb7eba03494ab33ead2581e439a42e26cc",
+      "Bytes": 1961,
+      "GuestSHA256": "9d86b1839ef700bbd77a8cc40cfcdffb7eba03494ab33ead2581e439a42e26cc",
+      "GuestBytes": 1961,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "HomeDashboard.err",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "GuestSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "GuestBytes": 0,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "HomeDashboard.json",
+      "SHA256": "9f76bf37ef22c445f6fe9e11d3d10687fc1f190cc28f1c14173474774e350afc",
+      "Bytes": 10368,
+      "GuestSHA256": "9f76bf37ef22c445f6fe9e11d3d10687fc1f190cc28f1c14173474774e350afc",
+      "GuestBytes": 10368,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "HomeDashboard.log",
+      "SHA256": "c99ca8af03ad4805c613ac2d070f8586a3ffb6e5c824dfccb75fbef156c4fc20",
+      "Bytes": 10365,
+      "GuestSHA256": "c99ca8af03ad4805c613ac2d070f8586a3ffb6e5c824dfccb75fbef156c4fc20",
+      "GuestBytes": 10365,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "InterventionView.err",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "GuestSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "GuestBytes": 0,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "InterventionView.json",
+      "SHA256": "f9d463398158103ace7a1e7585a5658ae76bd29b739a6d7faa9c358744a405a8",
+      "Bytes": 3989,
+      "GuestSHA256": "f9d463398158103ace7a1e7585a5658ae76bd29b739a6d7faa9c358744a405a8",
+      "GuestBytes": 3989,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "InterventionView.log",
+      "SHA256": "357a62d4317dd8d207ba5cd932ab50fe2f534a59018cf86739abdc9474e1eb97",
+      "Bytes": 3986,
+      "GuestSHA256": "357a62d4317dd8d207ba5cd932ab50fe2f534a59018cf86739abdc9474e1eb97",
+      "GuestBytes": 3986,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "NamesLoading.err",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "GuestSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "GuestBytes": 0,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "NamesLoading.json",
+      "SHA256": "03374e4b40930ed781559a73632cc2dd290b402cd7c9d788d50214960de06f16",
+      "Bytes": 8254,
+      "GuestSHA256": "03374e4b40930ed781559a73632cc2dd290b402cd7c9d788d50214960de06f16",
+      "GuestBytes": 8254,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "NamesLoading.log",
+      "SHA256": "2fbcc2f76d710d993dbcd78990cd48941ac7bf0cc897bbc7272fecf4b1b85b58",
+      "Bytes": 2280,
+      "GuestSHA256": "2fbcc2f76d710d993dbcd78990cd48941ac7bf0cc897bbc7272fecf4b1b85b58",
+      "GuestBytes": 2280,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "Pesto21.err",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0,
+      "GuestSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "GuestBytes": 0,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "Pesto21.json",
+      "SHA256": "457394b4c2d70e7d791de1ac6caf9aa74aae14e507002ffa5ae560562feea728",
+      "Bytes": 13341,
+      "GuestSHA256": "457394b4c2d70e7d791de1ac6caf9aa74aae14e507002ffa5ae560562feea728",
+      "GuestBytes": 13341,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "Pesto21.log",
+      "SHA256": "5ba4359924804bee9bea159481e03b56c0e71278f5252734d492fa9129275924",
+      "Bytes": 3365,
+      "GuestSHA256": "5ba4359924804bee9bea159481e03b56c0e71278f5252734d492fa9129275924",
+      "GuestBytes": 3365,
+      "UTF16ToUTF8": false
+    },
+    {
+      "Path": "runner.json",
+      "SHA256": "994791643ad3062543ee3b8f8cc5ef9bbf6f93c2debbb5be74893c92efaaf654",
+      "Bytes": 757,
+      "GuestSHA256": "994791643ad3062543ee3b8f8cc5ef9bbf6f93c2debbb5be74893c92efaaf654",
+      "GuestBytes": 757,
+      "UTF16ToUTF8": false
+    }
+  ],
+  "TransferPreparation": "transfer-check/README.md"
+}

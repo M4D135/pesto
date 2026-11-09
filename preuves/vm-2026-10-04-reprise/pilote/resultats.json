@@ -1,0 +1,32 @@
+﻿[
+    {
+        "Name":  "absence-session",
+        "Passed":  true,
+        "Detail":  ""
+    },
+    {
+        "Name":  "fin-0",
+        "Passed":  true,
+        "Detail":  ""
+    },
+    {
+        "Name":  "fin-7",
+        "Passed":  true,
+        "Detail":  ""
+    },
+    {
+        "Name":  "executable-absent",
+        "Passed":  true,
+        "Detail":  ""
+    },
+    {
+        "Name":  "delai-en-cours",
+        "Passed":  true,
+        "Detail":  ""
+    },
+    {
+        "Name":  "sans-attendre",
+        "Passed":  true,
+        "Detail":  ""
+    }
+]

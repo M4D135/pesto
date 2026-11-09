@@ -1,0 +1,58 @@
+{
+  "DEBUG": {
+    "Simulation": "true",
+    "HorsDomaine": "false",
+    "MauvaiseOU": "false",
+    "BPVerifNomAD": "false",
+    "ForceADM": "false",
+    "GUI": "false"
+  },
+  "CONF": [
+    {
+      "Domaine": "example.local",
+      "ADM": "test",
+      "Prefixe": "111301",
+      "PreprodSite": "765",
+      "DirectProd": "false",
+      "DarkMode": "0",
+      "Buffer": "10",
+      "OUScanNoms": "OU=Postes,DC=example,DC=local",
+      "AllowHybridRepair": "false",
+      "ClearProtectionOnMove": "true"
+    }
+  ],
+  "TAGS": [
+    {
+      "Site": "PREPROD",
+      "Tag": "PR"
+    },
+    {
+      "Site": "Paris",
+      "Tag": "PA"
+    },
+    {
+      "Site": "Lyon",
+      "Tag": "LY"
+    },
+    {
+      "Site": "Marseille",
+      "Tag": "MA"
+    }
+  ],
+  "OUBase": [
+    {
+      "Nom": "ROOT",
+      "OU": "OU=Postes,DC=example,DC=local"
+    },
+    {
+      "Nom": "PREPROD",
+      "OU": "OU=Transit,OU=Postes,DC=example,DC=local"
+    }
+  ],
+  "OUSite": [
+    {
+      "Nom": "DEMO",
+      "OU": "OU=Sites,OU=Postes,DC=example,DC=local"
+    }
+  ]
+}

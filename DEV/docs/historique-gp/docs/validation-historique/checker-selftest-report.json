@@ -1,0 +1,78 @@
+{
+  "utc": "2026-09-30T12:18:19.040240+00:00",
+  "scope": "Static checker negative controls only; NOT Windows runtime tests",
+  "total": 10,
+  "passed": 10,
+  "results": [
+    {
+      "name": "missing_control",
+      "passed": true,
+      "detected_failures": [
+        "Correspondance noms XAML / contrôles principaux"
+      ]
+    },
+    {
+      "name": "legacy_repair_option_enabled_in_example",
+      "passed": true,
+      "detected_failures": [
+        "Option legacy de réparation désactivée dans l’exemple"
+      ]
+    },
+    {
+      "name": "missing_confirmation_guard",
+      "passed": true,
+      "detected_failures": [
+        "Garde structurelle RenameComputer : Test-GPConfirmedChange $change"
+      ]
+    },
+    {
+      "name": "broken_protection_guard",
+      "passed": true,
+      "detected_failures": [
+        "Garde structurelle MoveComputer : if($restoreRequired -and -not [bool]$after"
+      ]
+    },
+    {
+      "name": "smart_quote_introduced",
+      "passed": true,
+      "detected_failures": [
+        "tools/Build-GP.ps1 : pas de guillemets typographiques"
+      ]
+    },
+    {
+      "name": "legacy_ad_path",
+      "passed": true,
+      "detected_failures": [
+        "Moteur : cinq chemins AD pointent dans wad, sans ancien mod"
+      ]
+    },
+    {
+      "name": "unblock_nonliteral",
+      "passed": true,
+      "detected_failures": [
+        "Deblocage : commande litterale et controle du flux apres retrait"
+      ]
+    },
+    {
+      "name": "unblock_missing_scope_check",
+      "passed": true,
+      "detected_failures": [
+        "Deblocage : garde du dossier GP et exclusion des jonctions"
+      ]
+    },
+    {
+      "name": "launcher_wrong_core",
+      "passed": true,
+      "detected_failures": [
+        "Lanceurs : GP.ps1 vers wad/GP-Core.ps1, PowerShell x64/STA"
+      ]
+    },
+    {
+      "name": "launcher_missing_x64",
+      "passed": true,
+      "detected_failures": [
+        "Lanceurs : GP.ps1 vers wad/GP-Core.ps1, PowerShell x64/STA"
+      ]
+    }
+  ]
+}

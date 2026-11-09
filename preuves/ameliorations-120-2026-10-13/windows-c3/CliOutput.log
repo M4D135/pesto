@@ -1,0 +1,12 @@
+PASS Diagnostic Join : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Diagnostic Rename : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Diagnostic Move : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Diagnostic Observe : LDAP389 et ADWS9389 distincts sans nouveau transport
+PASS Invoke-Pesto.ps1 : retour objet inchang‚ et aucun encodage global modifi‚
+PASS Invoke-Pesto.ps1 : JSON in-process capturable, ASCII et Unicode r‚versible
+FAIL Invoke-Pesto.ps1 : vrai stdout sous OEM850 reste UTF8 valide sans perte : Sortie erreur inattendue
+FAIL Invoke-Pesto.ps1 : refus96 JSON ASCII conserve message Unicode : Sortie erreur inattendue
+PASS Invoke-PestoAutoJoin.ps1 : retour objet inchang‚ et aucun encodage global modifi‚
+PASS Invoke-PestoAutoJoin.ps1 : JSON in-process capturable, ASCII et Unicode r‚versible
+FAIL Invoke-PestoAutoJoin.ps1 : vrai stdout sous OEM850 reste UTF8 valide sans perte : Sortie erreur inattendue
+FAIL Invoke-PestoAutoJoin.ps1 : refus96 JSON ASCII conserve message Unicode : Sortie erreur inattendue

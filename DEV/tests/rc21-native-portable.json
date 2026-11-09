@@ -1,0 +1,173 @@
+{
+  "Kind": "Linux C execution with mocked Windows APIs",
+  "WindowsExecuted": false,
+  "Commands": [
+    {
+      "Name": "entry-0",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 0 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-1",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 1 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-2",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 2 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-3",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 3 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-4",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 4 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-5",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 5 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-6",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 6 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-7",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 7 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-8",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 8 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-9",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 9 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-10",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 10 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-11",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 11 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-12",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 12 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-13",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 13 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-14",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 14 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-15",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 15 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-16",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 16 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-17",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 17 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-18",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 18 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-19",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 19 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-20",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 20 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-21",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 21 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-22",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 22 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-23",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 23 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-24",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 24 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-25",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 25 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-26",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 26 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-27",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 27 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-28",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 28 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-29",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 29 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-30",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 30 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "entry-31",
+      "ReturnCode": 0,
+      "Output": "OK entry simulation 31 (no Windows APIs executed)\n"
+    },
+    {
+      "Name": "arguments",
+      "ReturnCode": 0,
+      "Output": "9 explicit launcher checks and 2000 independent argument round-trips passed (Linux C only).\n"
+    }
+  ],
+  "ShaCases": 132,
+  "Passed": true
+}

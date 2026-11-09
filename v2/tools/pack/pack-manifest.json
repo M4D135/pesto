@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "packName": "Pesto-v2-portable",
+  "version": "2.0.10",
+  "layout": "singlefile-wad",
+  "requiredFiles": [
+    "Pesto.exe", "wad/Pesto.package.json", "wad/web/index.html", "wad/support/DEBLOQUER_TOUT.cmd",
+    "wad/runtime/activedirectory/ActiveDirectory.psd1",
+    "wad/runtime/activedirectory/Microsoft.ActiveDirectory.Management.dll",
+    "wad/runtime/activedirectory/ActiveDirectory.Types.ps1xml",
+    "wad/runtime/activedirectory/ActiveDirectory.Format.ps1xml",
+    "wad/runtime/activedirectory/ActiveDirectoryPowerShellResources.dll",
+    "wad/runtime/activedirectory/fr-FR/ActiveDirectoryPowerShellResources.dll.mui"
+  ],
+  "activeDirectoryBundle": {
+    "directory": "wad/runtime/activedirectory",
+    "sha256": {
+      "ActiveDirectory.psd1": "96e41708524316cb13a0d71d36a905f5d530e57e1714a12c3e5b30189a4c83eb",
+      "Microsoft.ActiveDirectory.Management.dll": "1a6af7b8f8bce5b35ff873e2528746480c980526d86e38ca5acd04c2e9037157",
+      "ActiveDirectory.Types.ps1xml": "3cb55021534ec67fa81d7981ee4b3364eea3ba79ebe61667ee44e14b7a668b3a",
+      "ActiveDirectory.Format.ps1xml": "ffefd16b151f10ea80b603f3acba3c361055314bb6b54f8f8f3f0b21e2ae3996",
+      "ActiveDirectoryPowerShellResources.dll": "e233d92238aa31ea1b3c60145d8811edb2e517e1b9b53f4bc496883ee5d9973b",
+      "fr-FR/ActiveDirectoryPowerShellResources.dll.mui": "bee3c0b2beeb6d5e5600e840e57c7361ef77aabd44006fd7d82f7fcbbfb8541e"
+    }
+  },
+  "appRequiredPaths": {
+    "webRoot": "wad/web",
+    "webIndex": "wad/web/index.html",
+    "activeDirectoryManifest": "wad/runtime/activedirectory/ActiveDirectory.psd1",
+    "packageInfo": "wad/Pesto.package.json",
+    "hashes": "wad/SHA256SUMS"
+  },
+  "comment": "Un seul Pesto.exe publié self-contained single-file à la racine. Tous les autres composants et documents dans wad. Packs LIGHT uniquement : le runtime WebView2 fixe vient du Socle (lien), jamais du pack. Les deux éditions livrent les six fichiers Microsoft ActiveDirectory épinglés. Les configurations diffusables sont uniquement des enveloppes validées sous wad/defaults/configuration.json dans les packs personnalisés. Les sources DEV n'incluent jamais bin/obj, journaux, cfg privé ni cache."
+}

@@ -1,0 +1,875 @@
+
+
+Relecture technique effectuée sur le périmètre joint, en lecture seule, sans exécution ni modification. Je ne conclus pas à l’absence des fonctions externes non fournies ; je liste les dépendances à vérifier. Les constats ci-dessous sont concrets, reproductibles par raisonnement sur le code, et ciblés sur les axes demandés : CLI Join/Rename/Move/Inspect/Diagnose, plans portables, idempotence, identité/GUID, scopes PowerShell dynamiques, propagation des erreurs, reçus, journaux, compatibilité Windows PowerShell 5.1.
+
+---
+
+## Dépendances externes à vérifier dans les modules non joints
+
+Ces symboles sont appelés dans le périmètre mais ne sont pas définis dans les fichiers fournis. Ils doivent exister dans d’autres modules runtime :
+
+- `ConvertTo-PestoCanonicalValue`
+- `Get-PestoJoinPreflight`
+- `Invoke-PestoJoinExecute`
+- `Get-PestoJoinReceiptDecision`
+- `Get-PestoJoinReceiptStatus`
+- `Get-PestoJoinLocalStatus`
+- `Get-PestoJoinStatePath`
+- `Read-PestoJoinReceipt`
+- `Write-PestoJoinReceipt`
+- `Get-PestoInterventions`
+- `Test-PestoInterventionConflict`
+- `Read-PestoIntervention`
+- `Write-PestoIntervention`
+- `Get-PestoInterventionRoot`
+- `Get-PestoRenameMoveDecision`
+- `Get-PestoEngineWorkerScriptBlock`
+- `Get-PestoWorkerCoreSource`
+- `Get-PestoDirectSupportSource`
+- `Get-PestoPreflightSource`
+- `Initialize-PestoCommon`
+- `Import-PestoADModule`
+- `Get-DomainController`
+- `Get-ADParams`
+- `Test-CfgValid`
+- `Get-PestoConfigurationSignature`
+- `Convert-Value-TF`
+- `Test-PestoComputerName`
+- `Test-PestoDnsName`
+- `Test-PestoOUPath`
+- `Test-PestoGeneratedComputerName`
+- `Get-PestoParentDN`
+- `Get-PestoDomainFromDN`
+- `Test-PestoOUInConfiguredScope`
+- `Test-PestoDNWithinScope`
+- `Get-PestoPlanSignature`
+- `Get-PestoPlanFingerprint`
+- `New-PestoQueueMonitor`
+- `Invoke-PestoReadDiagnostics`
+- `Get-PestoPostObservation`
+- `Get-PestoExplicitCredentialRequirement`
+- `Publish-PestoWorkerLog`
+- `Get-PestoNativeFailureCode`
+- `Get-PestoNativeGuidance`
+- `Get-PestoInitialNameIndex`
+- `Get-PestoSharedNameSettings`
+- `Add-PestoTakenNames`
+- `Test-PestoNameReservedByOther`
+- `Confirm-PestoInterventionObservation`
+- `Request-PestoAffectedRefresh`
+- `Invalidate-PestoNameInventory`
+- `Save-PestoRunHistory`
+- `Get-PestoResultGuidance`
+- `Show-PestoOutcome`
+- `Show-PestoPostState`
+- `Show-PestoTextReport`
+- `Format-OUPath`
+- `Get-PestoUxNom`
+- `Update-PestoSuiteUI`
+- `Update-QueueButtons`
+- `Update-AddButton`
+- `Update-PestoJoinUI`
+- `Update-NameList`
+- `Test-PestoAsyncOperationRunning`
+- `Start-PestoAsyncOperation`
+- `Stop-PestoAsyncOperation`
+- `New-PestoPreflightProgress`
+- `Get-ErrorDetail`
+- `Set-PestoPersistenceWarning`
+- `Get-PestoAuditQueued`
+- `Write-PestoAuditQueued`
+- `Get-PestoAuditHealth`
+- `Stop-PestoAuditWriter`
+- `Remove-PestoExpiredLogs`
+- `Get-PestoRuntimeFiles`
+- `Test-PestoPackage`
+- `Pesto-Integrity.ps1`
+- `Pesto.Engine.psd1`
+- `Pesto-LogWriter.cs` compilé ou chargé à l’exécution
+
+---
+
+# Constats classés par gravité
+
+---
+
+## 1. Gravité haute — `Invoke-PestoUnattendedOperation` peut retourner `ExitCode 0` alors que le reçu est `Uncertain`
+
+### Fonction
+
+`DEV/wad/Pesto-Enterprise.ps1`  
+`function Invoke-PestoUnattendedOperation`
+
+### Extrait exact
+
+```powershell
+        if(-not $result -or -not $result.Receipt -or $result.Action.ExitCode -isnot [int]){throw 'Résultat ou reçu moteur incomplet.'}
+        $code=[int]$result.Action.ExitCode
+        $exitCode=if($code -in @(20,77)){3010}elseif($code -in @(30,33)){0}elseif($code -in @(97,98,99)){97}else{$code}
+        return New-PestoIntegrationResult -Mode $Action -ExitCode $exitCode -State ([string]$result.Receipt.Phase) -Message ([string]$result.Action.ExitMsg) -Plan $portable -OperationId $op -MutationStarted ([bool]$monitor.MutationStarted) -EngineCode $code -Metadata $meta
+```
+
+### Scénario qui reproduit le problème
+
+1. Appel CLI :
+
+```powershell
+Invoke-PestoCommand -Action Rename -Computer PC001 -NewName P123456PAINF001 -Execute
+```
+
+2. Le worker direct détecte un timeout :
+
+```powershell
+$Request.Telemetry.TimedOut = $true
+```
+
+3. Dans `Pesto-Direct.ps1`, `Get-PestoDirectPhase` force la phase du reçu en `Uncertain` :
+
+```powershell
+if($TimedOut -or $Code -in @(97,98,99)){return 'Uncertain'}
+```
+
+4. Mais le moteur peut avoir retourné un code technique `30` ou `33`.
+
+5. Dans `Invoke-PestoUnattendedOperation`, le code est mappé sur `0` :
+
+```powershell
+$exitCode=if($code -in @(20,77)){3010}elseif($code -in @(30,33)){0}...
+```
+
+6. Résultat renvoyé :
+
+```powershell
+ExitCode = 0
+State    = 'Uncertain'
+```
+
+Un orchestrateur ConfigMgr/PSADT/PDQ qui se fie à `ExitCode 0` peut considérer l’opération comme réussie alors que le reçu dit `Uncertain`. Cela viole la contrainte : pas de succès supposé après effet incertain.
+
+### Correctif ciblé
+
+Remplacer le bloc de mapping par un mapping piloté par la phase du reçu et par `monitor.TimedOut`.
+
+```powershell
+        $code=[int]$result.Action.ExitCode
+        $phase=[string]$result.Receipt.Phase
+        $timedOut=[bool]$monitor.TimedOut
+
+        if($timedOut -or $phase -ceq 'Uncertain'){
+            $exitCode=97
+            $state='Uncertain'
+        }
+        elseif($phase -ceq 'PendingRestart' -or $code -in @(20,77)){
+            $exitCode=3010
+            $state=$phase
+        }
+        elseif($phase -ceq 'Verified' -or $code -in @(30,33)){
+            $exitCode=0
+            $state=$phase
+        }
+        elseif($code -in @(97,98,99)){
+            $exitCode=97
+            $state='Uncertain'
+        }
+        else{
+            $exitCode=$code
+            $state=$phase
+        }
+
+        if([bool]$monitor.MutationStarted -and $exitCode -eq 96){
+            $exitCode=97
+            $state='Uncertain'
+        }
+
+        return New-PestoIntegrationResult -Mode $Action -ExitCode $exitCode -State $state -Message ([string]$result.Action.ExitMsg) -Plan $portable -OperationId $op -MutationStarted ([bool]$monitor.MutationStarted) -EngineCode $code -Metadata $meta
+```
+
+### Test de régression
+
+Créer un faux worker direct qui retourne :
+
+```powershell
+[pscustomobject]@{
+    Action=[pscustomobject]@{ExitCode=30;ExitMsg='Move terminé'}
+    Reboot=$null
+    Logs=@()
+    Receipt=[pscustomobject]@{Phase='Uncertain'}
+}
+```
+
+Avec :
+
+```powershell
+$monitor.TimedOut=$true
+```
+
+Assert :
+
+```powershell
+Assert-Integration ($result.ExitCode -eq 97)
+Assert-Integration ($result.State -ceq 'Uncertain')
+```
+
+---
+
+## 2. Gravité haute — `Invoke-PestoUnattendedJoin` ignore `monitor.TimedOut` et peut confirmer une jonction après timeout
+
+### Fonction
+
+`DEV/wad/Pesto-Automation.ps1`  
+`function Invoke-PestoUnattendedJoin`
+
+### Extrait exact
+
+```powershell
+        $action=$result.Action
+        $code=if($action -and $action.ExitCode -is [int]){[int]$action.ExitCode}else{97}
+        $state=Get-PestoOutcome -Code $code -Committed ([bool]$monitor.MutationStarted)
+        $exitCode=$code
+        if($code -eq 10 -and $result.Receipt -and $result.Receipt.Phase -ceq 'PendingRestart'){$exitCode=3010;$state='PendingRestart'}
+        elseif($code -eq 10){$exitCode=97;$state='Uncertain'}
+        if($state -eq 'Uncertain'){$exitCode=97}
+```
+
+### Scénario qui reproduit le problème
+
+1. Jonction silencieuse exécutée.
+2. Le moteur retourne `Action.ExitCode = 30` ou `33`.
+3. La supervision a détecté un timeout :
+
+```powershell
+$monitor.TimedOut = $true
+```
+
+4. `Get-PestoOutcome` est appelé sans `-TimedOut`.
+
+Dans `Pesto-Contracts.ps1`, `Get-PestoOutcome` sait gérer le timeout :
+
+```powershell
+if($Code -isnot [int] -or $TimedOut){return 'Uncertain'}
+```
+
+Mais ici, `TimedOut` n’est pas transmis.
+
+5. Résultat possible :
+
+```powershell
+State = 'Verified'
+ExitCode = 30
+```
+
+Alors que la commande a expiré. C’est un faux succès technique.
+
+### Correctif ciblé
+
+Remplacer le bloc par :
+
+```powershell
+        $action=$result.Action
+        $code=if($action -and $action.ExitCode -is [int]){[int]$action.ExitCode}else{97}
+        $state=Get-PestoOutcome -Code $code -Committed ([bool]$monitor.MutationStarted) -TimedOut ([bool]$monitor.TimedOut)
+        $exitCode=$code
+
+        if($code -eq 10 -and $result.Receipt -and $result.Receipt.Phase -ceq 'PendingRestart'){
+            $exitCode=3010
+            $state='PendingRestart'
+        }
+        elseif($code -eq 10){
+            $exitCode=97
+            $state='Uncertain'
+        }
+
+        if($state -ceq 'PendingRestart'){
+            $exitCode=3010
+        }
+        elseif($state -ceq 'Verified'){
+            $exitCode=0
+        }
+        elseif($state -ceq 'Uncertain'){
+            $exitCode=97
+        }
+```
+
+Cela corrige aussi l’incohérence de normalisation des codes `20/77` et `30/33` dans le parcours Join, qui ne remontent pas respectivement `3010` et `0`.
+
+### Test de régression
+
+1. Faux `Invoke-PestoJoinExecute` retournant :
+
+```powershell
+[pscustomobject]@{
+    Action=[pscustomobject]@{ExitCode=30;ExitMsg='Jonction confirmée'}
+    Receipt=[pscustomobject]@{Phase='Verified'}
+    Check=[pscustomobject]@{Checks=@()}
+}
+```
+
+2. Forcer :
+
+```powershell
+$monitor.TimedOut=$true
+```
+
+3. Assert :
+
+```powershell
+Assert-Integration ($result.ExitCode -eq 97)
+Assert-Integration ($result.State -ceq 'Uncertain')
+```
+
+Second test sans timeout :
+
+```powershell
+$monitor.TimedOut=$false
+```
+
+Assert :
+
+```powershell
+Assert-Integration ($result.ExitCode -eq 0)
+Assert-Integration ($result.State -ceq 'Verified')
+```
+
+---
+
+## 3. Gravité haute — `Invoke-PestoCommand` ne nettoie pas `$script:cred` après `Diagnose`
+
+### Fonction
+
+`DEV/wad/Pesto-Enterprise.ps1`  
+`function Invoke-PestoCommand`
+
+### Extrait exact
+
+```powershell
+    finally{$Credential=$null;if($script:PestoAuditWriter){[void]$script:PestoAuditWriter.Close(2000);$script:PestoAuditWriter=$null}}
+```
+
+### Fonction appelante concernée
+
+`function Initialize-PestoHeadlessContext`
+
+```powershell
+    $script:SIM=$false;$script:GUI=$false;$script:PestoReadOnly=[bool]$ReadOnly;$script:cred=$Credential;$script:ActiveIntervention=$null
+```
+
+### Scénario qui reproduit le problème
+
+1. Dans un même processus PowerShell 5.1 :
+
+```powershell
+$cred = [pscredential]::new('DOMAIN\svc', $secure)
+$r = Invoke-PestoCommand -Action Diagnose -RuntimeRoot $runtime -ConfigPath $cfg -Credential $cred
+```
+
+2. `Initialize-PestoHeadlessContext` stocke le credential dans `$script:cred`.
+3. Le `finally` de `Invoke-PestoCommand` ne nettoie que la variable locale `$Credential`.
+4. Après le retour, `$script:cred` contient toujours l’objet `PSCredential`.
+
+Ce n’est pas une écriture disque, mais c’est une persistance mémoire non nécessaire dans un long processus ou un module chargé. Cela viole la contrainte « aucun secret persistant » au sens large.
+
+### Correctif ciblé
+
+Remplacer le `finally` de `Invoke-PestoCommand` par :
+
+```powershell
+    finally{
+        $Credential=$null
+        $script:cred=$null
+        if($script:PestoAuditWriter){
+            [void]$script:PestoAuditWriter.Close(2000)
+            $script:PestoAuditWriter=$null
+        }
+    }
+```
+
+Optionnel mais recommandé :
+
+```powershell
+        $script:ActiveIntervention=$null
+```
+
+### Test de régression
+
+```powershell
+$cred = [pscredential]::new('EXAMPLE\test',(ConvertTo-SecureString 'FAKE' -AsPlainText -Force))
+[void](Invoke-PestoCommand -Action Diagnose -RuntimeRoot $runtime -ConfigPath $cfg -Credential $cred)
+Assert-Integration ($null -eq $script:cred)
+```
+
+---
+
+## 4. Gravité moyenne — `Initialize-AuditLog` touche un fichier de journal avant le contrôle de reparse point
+
+### Fonction
+
+`DEV/wad/Pesto-Journal.ps1`  
+`function Initialize-AuditLog`
+
+### Extrait exact
+
+```powershell
+            $file = Join-Path $dir ("Pesto_{0}.log" -f (Get-Date -Format 'yyyy-MM-dd'))
+            [System.IO.File]::AppendAllText($file, '', [System.Text.Encoding]::UTF8)  # test d'écriture réel
+            $script:AuditFile = $file
+            if(-not ('Pesto.Runtime.AsyncAuditWriter' -as [type])){Add-Type -Path (Join-Path $PSScriptRoot 'Pesto-LogWriter.cs') -ErrorAction Stop}
+            if($script:PestoAuditWriter){[void]$script:PestoAuditWriter.Close(2000)}
+            $script:PestoAuditWriter=[Pesto.Runtime.AsyncAuditWriter]::new($file,2048)
+```
+
+### Scénario qui reproduit le problème
+
+1. Le fichier cible est un lien symbolique ou une jonction vers un fichier sensible.
+2. `AppendAllText` ouvre le fichier via le lien avant que `AsyncAuditWriter` ne vérifie le reparse point.
+3. `AsyncAuditWriter` refuse ensuite :
+
+```csharp
+if ((File.GetAttributes(path) & FileAttributes.ReparsePoint) != 0) throw new IOException("Lien de journal refusé.");
+```
+
+4. Le refus est bon, mais le test d’écriture a déjà pu toucher la cible.
+
+### Correctif ciblé
+
+Vérifier le reparse point avant `AppendAllText`.
+
+Remplacer le début de la boucle par :
+
+```powershell
+            $file = Join-Path $dir ("Pesto_{0}.log" -f (Get-Date -Format 'yyyy-MM-dd'))
+
+            if([IO.File]::Exists($file) -and (([IO.File]::GetAttributes($file) -band [IO.FileAttributes]::ReparsePoint))){
+                $script:AuditInitError='Lien de journal refusé.'
+                continue
+            }
+
+            [System.IO.File]::AppendAllText($file, '', [System.Text.Encoding]::UTF8)
+            $script:AuditFile = $file
+```
+
+Si `Assert-PestoPlainPath` est censé protéger les ancêtres, il faut aussi l’appeler avant `AppendAllText`, mais le contrôle explicite du fichier est nécessaire ici.
+
+### Test de régression
+
+1. Créer un fichier cible `C:\temp\journal-cible.log`.
+2. Créer un lien `C:\temp\logs\Pesto_2026-01-01.log` vers ce fichier.
+3. Appeler `Initialize-AuditLog`.
+4. Assert :
+
+```powershell
+Assert-Integration ($null -eq $script:AuditFile)
+Assert-Integration ($script:AuditInitError -match 'Lien de journal refusé')
+```
+
+Vérifier que la date de modification du fichier cible n’a pas changé.
+
+---
+
+## 5. Gravité moyenne — `Test-PestoOptionalPostCheckReceipt` peut valider un reçu de jonction `PendingRestart` sans preuve native `Accepted`
+
+### Fonction
+
+`DEV/wad/Pesto-Policy.ps1`  
+`function Test-PestoOptionalPostCheckReceipt`
+
+### Extrait exact
+
+```powershell
+    if(-not $Receipt -or $Receipt.Phase -cne 'PendingRestart'){return $false}
+    if($Receipt.PSObject.Properties['ResultCode']){
+        ...
+        if($Receipt.JoinEvidence -and $Receipt.JoinEvidence.NativeStatus -cne 'Accepted'){return $false}
+        return $true
+    }
+    # Le reçu local de jonction historique ne comporte pas de code ; son schéma fermé est validé.
+    try{[void](Assert-PestoJoinReceiptData $Receipt);return $true}catch{return $false}
+```
+
+### Scénario qui reproduit le problème
+
+1. Reçu d’intervention ou reçu de jonction avec :
+
+```powershell
+Phase = 'PendingRestart'
+```
+
+2. Pas de propriété `ResultCode`.
+3. Mais présence d’un `JoinEvidence` non accepté :
+
+```powershell
+JoinEvidence.NativeStatus = 'Refused'
+```
+
+ou :
+
+```powershell
+JoinEvidence.NativeStatus = 'Requested'
+```
+
+4. Comme il n’y a pas de `ResultCode`, le bloc de validation `JoinEvidence` n’est pas exécuté.
+5. `Assert-PestoJoinReceiptData` peut passer.
+6. La fonction retourne `$true`.
+
+Conséquences possibles :
+
+- `Exit-PestoCoordination` libère des verrous comme si l’opération était finie.
+- `Assert-PestoStoredMutationReady` peut ne plus bloquer une nouvelle opération.
+- Un suivi facultatif peut être considéré comme terminé alors que la commande native n’est pas acceptée.
+
+### Correctif ciblé
+
+Contrôler `JoinEvidence.NativeStatus` avant la branche `ResultCode`.
+
+Insérer après la vérification de phase :
+
+```powershell
+    if($Receipt.PSObject.Properties['JoinEvidence'] -and $Receipt.JoinEvidence -and $Receipt.JoinEvidence.NativeStatus -cne 'Accepted'){
+        return $false
+    }
+```
+
+Version complète ciblée :
+
+```powershell
+function Test-PestoOptionalPostCheckReceipt {
+    param($Receipt)
+    # Classe uniquement une commande terminée. Ne qualifie jamais son observation AD/Windows.
+    if(-not $Receipt -or $Receipt.Phase -cne 'PendingRestart'){return $false}
+
+    if($Receipt.PSObject.Properties['JoinEvidence'] -and $Receipt.JoinEvidence -and $Receipt.JoinEvidence.NativeStatus -cne 'Accepted'){
+        return $false
+    }
+
+    if($Receipt.PSObject.Properties['ResultCode']){
+        if($Receipt.ResultCode -isnot [int] -and $Receipt.ResultCode -isnot [long]){return $false}
+        $accepted=($Receipt.ResultCode -in @(10,20,77))
+        # Une reprise de déplacement confirmée laisse le code original 89 sur le reçu parent.
+        if($Receipt.ResultCode -eq 89 -and $Receipt.Rename -ceq 'Confirmed' -and $Receipt.Move -ceq 'Confirmed'){$accepted=$true}
+        if(-not $accepted){return $false}
+        if($Receipt.PSObject.Properties['Protection'] -and $Receipt.Protection -cnotin @('NotChanged','Restored')){return $false}
+        if($Receipt.PSObject.Properties['Entra'] -and $Receipt.Entra -cnotin @('NotRequested','Skipped','Confirmed')){return $false}
+        foreach($effect in @('Rename','Move')){if($Receipt.PSObject.Properties[$effect] -and $Receipt.$effect -cnotin @('NotRequested','Confirmed')){return $false}}
+        if($Receipt.JoinEvidence -and $Receipt.JoinEvidence.NativeStatus -cne 'Accepted'){return $false}
+        return $true
+    }
+    # Le reçu local de jonction historique ne comporte pas de code ; son schéma fermé est validé.
+    try{[void](Assert-PestoJoinReceiptData $Receipt);return $true}catch{return $false}
+}
+```
+
+### Test de régression
+
+```powershell
+$receipt=[pscustomobject]@{
+    Phase='PendingRestart'
+    JoinEvidence=[pscustomobject]@{NativeStatus='Refused'}
+}
+Assert-Integration (-not (Test-PestoOptionalPostCheckReceipt $receipt))
+```
+
+Avec `Accepted` et un schéma valide :
+
+```powershell
+$receipt.JoinEvidence.NativeStatus='Accepted'
+Assert-Integration (Test-PestoOptionalPostCheckReceipt $receipt)
+```
+
+---
+
+## 6. Gravité moyenne — L’idempotence conserve les refus `96 NotStarted` comme résultats terminaux et bloque toute nouvelle tentative avec la même clé
+
+### Fonction
+
+`DEV/wad/Pesto-Enterprise.ps1`  
+`function Invoke-PestoIdempotentExecution`
+
+### Extrait exact
+
+```powershell
+        $returned=@(& $Handler)
+        if($returned.Count -ne 1 -or -not $returned[0] -or $returned[0].ExitCode -isnot [int]){throw 'Résultat du moteur absent ou ambigu.'}
+        $result=$returned[0]
+        # Projection fermée : jamais Request, credentials, logs bruts ou objets AD.
+        $safe=[ordered]@{}
+        foreach($field in @('Schema','Mode','State','ExitCode','EngineCode','RestartRequired','MutationStarted','OperationId','Utc','Message','Plan','Metadata','Checks','CandidateCount','Replayed')){
+            if(Test-PestoPropertyPresent $result $field){$safe[$field]=$result.$field}
+        }
+        $record.Status='Completed';$record.Utc=[DateTime]::UtcNow.ToString('o');$record.Result=[pscustomobject]$safe
+```
+
+### Scénario qui reproduit le problème
+
+1. Exécution CLI avec clé idempotente :
+
+```powershell
+Invoke-PestoCommand -Action Rename -PlanPath C:\Plans\rename.json -IdempotencyKey 'campagne42/pc001' -Execute
+```
+
+2. Le moteur retourne un refus non engagé :
+
+```powershell
+ExitCode = 96
+State    = 'NotStarted'
+MutationStarted = $false
+```
+
+Exemple de cause : erreur AD transitoire, contrôle bloqué avant mutation, configuration temporairement invalide.
+
+3. `Invoke-PestoIdempotentExecution` enregistre :
+
+```powershell
+Status = 'Completed'
+Result.ExitCode = 96
+```
+
+4. Nouvelle tentative avec la même clé après correction :
+
+```powershell
+Invoke-PestoCommand -Action Rename -PlanPath C:\Plans\rename.json -IdempotencyKey 'campagne42/pc001' -Execute
+```
+
+5. Le fichier existe, statut `Completed`, résultat restitué :
+
+```powershell
+ExitCode = 96
+Replayed = $true
+```
+
+La clé est figée sur un refus non engagé. Ce n’est pas un effet incertain, donc le blocage permanent est trop fort.
+
+### Correctif ciblé
+
+Ne pas figer un refus `96 NotStarted` sans mutation.
+
+Insérer après `$result=$returned[0]` :
+
+```powershell
+        if($result.ExitCode -eq 96 -and -not [bool]$result.MutationStarted -and $result.PSObject.Properties['State'] -and $result.State -ceq 'NotStarted'){
+            # Refus non engagé : ne pas transformer la clé idempotente en blocage définitif.
+            try{[IO.File]::Delete($path)}catch{}
+            return $result
+        }
+```
+
+Bloc complet dans le contexte :
+
+```powershell
+        $returned=@(& $Handler)
+        if($returned.Count -ne 1 -or -not $returned[0] -or $returned[0].ExitCode -isnot [int]){throw 'Résultat du moteur absent ou ambigu.'}
+        $result=$returned[0]
+
+        if($result.ExitCode -eq 96 -and -not [bool]$result.MutationStarted -and $result.PSObject.Properties['State'] -and $result.State -ceq 'NotStarted'){
+            # Refus non engagé : ne pas transformer la clé idempotente en blocage définitif.
+            try{[IO.File]::Delete($path)}catch{}
+            return $result
+        }
+
+        # Projection fermée : jamais Request, credentials, logs bruts ou objets AD.
+        $safe=[ordered]@{}
+        foreach($field in @('Schema','Mode','State','ExitCode','EngineCode','RestartRequired','MutationStarted','OperationId','Utc','Message','Plan','Metadata','Checks','CandidateCount','Replayed')){
+            if(Test-PestoPropertyPresent $result $field){$safe[$field]=$result.$field}
+        }
+        $record.Status='Completed';$record.Utc=[DateTime]::UtcNow.ToString('o');$record.Result=[pscustomobject]$safe
+```
+
+### Test de régression
+
+1. Handler factice qui retourne :
+
+```powershell
+New-PestoIntegrationResult -Mode Rename -ExitCode 96 -State NotStarted -Message 'Refus non engagé'
+```
+
+2. Première exécution avec clé :
+
+```powershell
+$a=Invoke-PestoIdempotentExecution -Key 'test/refus96' -Payload $payload -Handler $handler
+```
+
+Assert :
+
+```powershell
+Assert-Integration ($a.ExitCode -eq 96)
+Assert-Integration (-not $a.Replayed)
+```
+
+3. Deuxième exécution avec même clé et handler qui change de compteur :
+
+```powershell
+$b=Invoke-PestoIdempotentExecution -Key 'test/refus96' -Payload $payload -Handler $handler
+```
+
+Assert :
+
+```powershell
+Assert-Integration ($handlerCalls -eq 2)
+```
+
+---
+
+## 7. Gravité moyenne — `Get-PestoDirectWorker` peut lever une exception dans son propre `catch` si `OperationId` est invalide
+
+### Fonction
+
+`DEV/wad/Pesto-Direct.ps1`  
+`$script:PestoDirectWorker`
+
+### Extrait exact
+
+```powershell
+            $centralPath=Join-Path (Get-PestoInterventionRoot) (([Guid]$receipt.OperationId).ToString('N')+'.json')
+            if(Test-Path -LiteralPath $centralPath){$code=97;$receipt.ResultCode=97}
+```
+
+### Scénario qui reproduit le problème
+
+1. Une exception survient dans le worker.
+2. On entre dans le `catch`.
+3. `$receipt.OperationId` est vide ou invalide.
+4. `[Guid]$receipt.OperationId` lève une exception.
+5. Cette exception se produit dans le `catch`, donc elle n’est pas convertie en résultat propre.
+6. Le worker ne retourne pas l’objet attendu `{Action, Receipt, Logs}`.
+7. L’appelant peut recevoir une exception non mappée ou un résultat absent.
+
+### Correctif ciblé
+
+Ne jamais caster brutalement un `OperationId` non validé dans le `catch`.
+
+Remplacer par :
+
+```powershell
+            $id=[Guid]::Empty
+            $centralPath=''
+            if([Guid]::TryParse([string]$receipt.OperationId,[ref]$id) -and $id -ne [Guid]::Empty){
+                $centralPath=Join-Path (Get-PestoInterventionRoot) ($id.ToString('N')+'.json')
+            }
+            if($centralPath -and (Test-Path -LiteralPath $centralPath)){
+                $code=97
+                $receipt.ResultCode=97
+            }
+```
+
+### Test de régression
+
+1. Appeler le worker avec :
+
+```powershell
+$Request.OperationId='not-a-guid'
+```
+
+2. Forcer une exception interne.
+3. Assert :
+
+```powershell
+Assert-Integration ($result.Action.ExitCode -in @(96,97))
+Assert-Integration ($null -ne $result.Receipt)
+```
+
+---
+
+## 8. Gravité faible — `Write-PestoHeadlessEvents` suppose que `Monitor.Events` existe
+
+### Fonction
+
+`DEV/wad/Pesto-Enterprise.ps1`  
+`function Write-PestoHeadlessEvents`
+
+### Extrait exact
+
+```powershell
+    if(-not $Monitor -or -not $script:PestoAuditWriter){return}
+    $item=$null
+    while($Monitor.Events.TryDequeue([ref]$item)){
+```
+
+### Scénario qui reproduit le problème
+
+1. Un moniteur est créé mais n’expose pas `Events`.
+2. `Write-PestoHeadlessEvents` est appelé.
+3. L’appel de méthode sur `$null` peut lever une exception.
+4. Dans les `finally`, l’exception est avalée :
+
+```powershell
+try{Write-PestoHeadlessEvents $monitor}catch{}
+```
+
+Conséquence : les événements secondaires sont perdus silencieusement.
+
+### Correctif ciblé
+
+Remplacer la garde par :
+
+```powershell
+    if(-not $Monitor -or -not $Monitor.Events -or -not $script:PestoAuditWriter){return}
+```
+
+### Test de régression
+
+```powershell
+$monitor=[pscustomobject]@{DroppedEvents=0}
+{Write-PestoHeadlessEvents $monitor} | Should -Not -Throw
+```
+
+Sans Pester, en assert manuel :
+
+```powershell
+$ok=$true
+try{Write-PestoHeadlessEvents ([pscustomobject]@{DroppedEvents=0})}catch{$ok=$false}
+Assert-Integration $ok
+```
+
+---
+
+# Points vérifiés sans constat concret
+
+Les points suivants ont été vérifiés et ne remontent pas de bug concret dans le périmètre joint, sous réserve des dépendances externes :
+
+- Compatibilité syntaxique Windows PowerShell 5.1 :  
+  `::new()`, `[Threading.Mutex]`, `[Threading.AbandonedMutexException]`, `[Collections.Generic.HashSet[string]]`, `[Collections.Generic.List[string]]`, `[Text.UTF8Encoding]`, `[Management.Automation.Language.Parser]`, `[DateTimeOffset]::TryParse`, `[Guid]::TryParse`, `[Management.Automation.WildcardPattern]` sont compatibles avec Windows PowerShell 5.1 / .NET Framework 4.7.2.
+
+- Aucun chargement WPF au chargement des modules headless.  
+  Les types WPF comme `Windows.Threading.DispatcherTimer` ne sont utilisés que dans des fonctions GUI.
+
+- Aucun changement automatique de DC dans le périmètre joint.  
+  `Get-DomainController` est appelé une fois dans `Initialize-PestoHeadlessContext` et dans `Invoke-PestoUnattendedJoin`, sans rebasculement automatique visible.
+
+- Aucune activation de service automatique dans le périmètre joint.
+
+- Aucune écriture de secret dans les reçus idempotents :  
+  `Invoke-PestoIdempotentExecution` projète une liste fermée de champs et n’enregistre pas `Credential`.
+
+- Aucune mutation sans opt-in explicite dans le CLI :  
+  `-Execute` est requis pour Join/Rename/Move/RenameMove.  
+  `Inspect` et `Diagnose` refusent `-Execute`.
+
+- `POLICY.UnattendedJoinEnabled` et `POLICY.UnattendedOperationsEnabled` restent des opt-ins explicites.
+
+- Les flags `DEBUG.Simulation`, `DEBUG.GUI`, `DEBUG.HorsDomaine`, `DEBUG.MauvaiseOU`, `DEBUG.ForceADM`, `DEBUG.BPVerifNomAD` sont refusés dans les parcours silencieux.
+
+- Les clés idempotentes sont validées par regex ASCII courte.
+
+- Les plans portables ont une empreinte de cohérence, une durée de vie, un `MachineId`, un `ConfigStamp`, et une liste fermée de champs.
+
+- L’export de plan utilise `FileMode.CreateNew`, donc ne remplace pas silencieusement un plan existant.
+
+- Les reçus directs refusent les fichiers trop volumineux et les reparse points sur les ancêtres dans `Read-PestoDirectReceipt`.
+
+- Le writer asynchrone `AsyncAuditWriter` refuse les liens de journal à l’écriture et en construction.
+
+- `Protect-PestoLogText` masque les motifs `password`, `motdepasse`, `passwd`, `pwd`, `token`, `secret`, les URLs avec credentials et les en-têtes `Authorization`.
+
+---
+
+## Conclusion
+
+Il y a des bugs concrets à corriger avant de considérer ce lot comme stable pour automatisation CLI silencieuse.
+
+Priorité minimale :
+
+1. Corriger le mapping `ExitCode`/`State` dans `Invoke-PestoUnattendedOperation`.
+2. Transmettre `TimedOut` dans `Invoke-PestoUnattendedJoin`.
+3. Nettoyer `$script:cred` dans `Invoke-PestoCommand`.
+4. Durcir `Test-PestoOptionalPostCheckReceipt` sur `JoinEvidence.NativeStatus`.
+5. Empêcher le figement idempotent des refus `96 NotStarted`.
+6. Sécuriser `Initialize-AuditLog` contre les liens avant `AppendAllText`.
+7. Durcir le `catch` du worker direct contre un `OperationId` invalide.

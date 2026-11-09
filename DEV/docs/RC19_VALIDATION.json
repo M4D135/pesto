@@ -1,0 +1,48 @@
+{
+  "Version": "17.0-RC19",
+  "DateUTC": "2026-09-30T21:53:03.341650+00:00",
+  "Source": "Pesto RC18 + reprise distribution",
+  "ExecutedOn": "Linux x86_64",
+  "WindowsExecuted": false,
+  "All44AcceptanceCriteriaClosed": false,
+  "Exe": {
+    "Bytes": 108544,
+    "SHA256": "dd26e6ae7400fcad634f805e10f4f0ebb8237f2a5dc3231650ed52f3cf2df63a",
+    "Format": "PE32+ Windows GUI x64",
+    "ReproducibleBuildMatch": true,
+    "Signed": false
+  },
+  "TestsExecuted": {
+    "PythonUnittest": {
+      "Passed": 40,
+      "Failed": 0,
+      "Details": "20 distribution + 12 RC19 + 8 update filesystem tests"
+    },
+    "UpdateInjectedCopyBoundaries": 29,
+    "PortableSourceXmlPeChecks": 266,
+    "NativeCMockedEntryScenarios": 24,
+    "ExplicitCArguments": 9,
+    "IndependentCArgumentRoundtrips": 2000,
+    "CSha256CasesAgainstHashlib": 132
+  },
+  "TestsNotExecuted": [
+    "Windows PowerShell 5.1 native parsing",
+    "PSScriptAnalyzer 1.24.0",
+    "Pester 5.7.1",
+    "Windows GUI EXE process",
+    "WPF runtime/rendering",
+    "UAC and Windows account token transitions",
+    "Task Scheduler RPC/DCOM",
+    "AD join/rename/move",
+    "Entra status and leave on a real machine",
+    "Real reboot/recovery",
+    "Windows hardlink/ACL attack fixtures",
+    "CI workflow"
+  ],
+  "RuntimeFileCount": 28,
+  "FunctionChanges": {
+    "modified": 80,
+    "added": 33
+  },
+  "RuntimeFunctionCount": 438
+}

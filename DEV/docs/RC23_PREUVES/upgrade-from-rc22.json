@@ -1,0 +1,33 @@
+{
+  "Version": "17.0-RC23",
+  "Environment": "Linux temporary filesystem only",
+  "SourceOld": "Actual RC22 runtime bytes",
+  "Cases": [
+    {
+      "CrashAfter": 1,
+      "ExactOldBytesRestored": true,
+      "ConfigurationPreserved": true,
+      "NewFilesRemovedOnRollback": true
+    },
+    {
+      "CrashAfter": 15,
+      "ExactOldBytesRestored": true,
+      "ConfigurationPreserved": true,
+      "NewFilesRemovedOnRollback": true
+    },
+    {
+      "CrashAfter": 38,
+      "ExactOldBytesRestored": true,
+      "ConfigurationPreserved": true,
+      "NewFilesRemovedOnRollback": true
+    },
+    {
+      "CrashAfter": 39,
+      "ExactOldBytesRestored": true,
+      "ConfigurationPreserved": true,
+      "NewFilesRemovedOnRollback": true
+    }
+  ],
+  "WindowsExecuted": false,
+  "FinalUpgrade": true
+}

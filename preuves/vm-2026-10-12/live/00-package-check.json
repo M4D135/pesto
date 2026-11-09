@@ -1,0 +1,14 @@
+﻿{
+    "Utc":  "2026-10-12T18:06:31.2149645Z",
+    "ExeSha256":  "22a1ae050333a768c1eb4598446b9de7ed51bd92bb206b0c0a341c4a3b0ea7cd",
+    "WindowsPowerShell":  "5.1.26100.6584",
+    "ScriptsParsed":  32,
+    "ParseErrors":  [
+
+                    ],
+    "ConfigJson":  "PASS",
+    "Configured":  true,
+    "RandomNameChoice":  true,
+    "ReserveNamesInAD":  false,
+    "UnattendedJoinEnabled":  false
+}

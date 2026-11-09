@@ -1,0 +1,239 @@
+{
+  "Application": "Pesto",
+  "Version": "17.0-RC18",
+  "Environment": "Linux, no Windows runtime",
+  "WindowsExecuted": false,
+  "NativeExeCompiled": true,
+  "NativeExeExecutedOnWindows": false,
+  "ReproducibleExe": true,
+  "ExeBytes": 99840,
+  "ExeSHA256": "1b193ff8623092d3f9dc73f632ff68096677bc043a02000cd856308e8d170c26",
+  "PortableChecks": {
+    "Passed": 251,
+    "Failed": 0
+  },
+  "DistributionUnittests": 20,
+  "BrandUnittests": 16,
+  "FunctionsPreservedAfterRename": 405,
+  "ArgumentRoundTrips": 2000,
+  "ExplicitArgumentCases": 9,
+  "EntryMockScenarios": 14,
+  "Commands": [
+    {
+      "Command": [
+        "/opt/pyvenv/bin/python",
+        "tools/launcher/build_native.py"
+      ],
+      "ExitCode": 0,
+      "Output": "Compiled: /mnt/data/pesto_work/source/DEV/Pesto.exe 99840 bytes (not executed)\n"
+    },
+    {
+      "Command": [
+        "/opt/pyvenv/bin/python",
+        "tools/launcher/build_native.py",
+        "--output",
+        "/mnt/data/pesto_work/build_tests/Pesto-rebuilt.exe"
+      ],
+      "ExitCode": 0,
+      "Output": "Compiled: /mnt/data/pesto_work/build_tests/Pesto-rebuilt.exe 99840 bytes (not executed)\n"
+    },
+    {
+      "Command": [
+        "/opt/pyvenv/bin/python",
+        "tools/refresh_manifest.py"
+      ],
+      "ExitCode": 0,
+      "Output": "Regenerated: 25 runtime components; no demos/tests/CMD/configuration. Not an author signature.\n"
+    },
+    {
+      "Command": [
+        "/opt/pyvenv/bin/python",
+        "tools/checks/validate_pesto.py"
+      ],
+      "ExitCode": 0,
+      "Output": "OK lexical Pesto-Appearance.ps1\nOK lexical Pesto-Async.ps1\nOK lexical Pesto-Authentication.ps1\nOK lexical Pesto-Configuration.ps1\nOK lexical Pesto-Core.ps1\nOK lexical Pesto-Direct.ps1\nOK lexical Pesto-Directory.ps1\nOK lexical Pesto-Inspection.ps1\nOK lexical Pesto-Integrity.ps1\nOK lexical Pesto-Join.ps1\nOK lexical Pesto-Journal.ps1\nOK lexical Pesto-Operations.ps1\nOK lexical Pesto-Startup.ps1\nOK lexical Pesto-SuiteUI.ps1\nOK lexical Pesto-Support.ps1\nOK lexical maintenance Regression-Join.ps1\nOK lexical maintenance Regression-Sso.ps1\nOK lexical maintenance Test-Pesto15.ps1\nOK lexical maintenance Test-Pesto16.ps1\nOK lexical maintenance Test-Pesto18.ps1\nOK lexical maintenance Test-PestoDistribution.ps1\nOK lexical maintenance Test-PestoStartupLayout.ps1\nOK no duplicate functions across runtime\nOK shell XML\nOK join XML\nOK secondary window XML Pesto-Authentication.ps1 0\nOK secondary window XML Pesto-Authentication.ps1 1\nOK secondary window XML Pesto-Configuration.ps1 0\nOK secondary window XML Pesto-Core.ps1 0\nOK secondary window XML Pesto-Core.ps1 1\nOK secondary window XML Pesto-Core.ps1 2\nOK secondary window XML Pesto-Core.ps1 3\nOK secondary window XML Pesto-Inspection.ps1 0\nOK secondary window XML Pesto-Support.ps1 0\nOK secondary window XML Pesto-Support.ps1 1\nOK shell non-template names unique\nOK join names unique\nOK shell resource references\nOK join resource references\nOK hover PART_EditableTextBox\nOK hover SuiteNavToggle\nOK hover NavHome\nOK hover NavRename\nOK hover NavBatch\nOK hover NavJoin\nOK hover NavNames\nOK hover NavHistory\nOK hover NavLogs\nOK hover NavSettings\nOK hover NavHelp\nOK hover BtnLog\nOK hover BtnTheme\nOK hover BtnHelp\nOK hover SuiteModeSingle\nOK hover SuiteModeBatch\nOK hover SuitePostState\nOK hover ChkRemote\nOK hover TxtPCName\nOK hover BtnReadComputer\nOK hover CbOrg\nOK hover SuiteSiteSearch\nOK hover CbSite\nOK hover CbService\nOK hover CbType\nOK hover CbName\nOK hover ChkRename\nOK hover ChkMove\nOK hover ChkReboot\nOK hover SuiteDirectRun\nOK hover SuiteDirectCheck\nOK hover BtnAdd\nOK hover BtnCopyNewName\nOK hover BtnInlineHelp\nOK hover SuiteDirectVerify\nOK hover SuiteDirectDetails\nOK hover SuiteDirectCancelRead\nOK hover BtnPreflight\nOK hover BtnPreview\nOK hover BtnDetails\nOK hover BtnDelete\nOK hover BtnBulk\nOK hover BtnCancelPreflight\nOK hover TxtQueueSearch\nOK hover CmbQueueFilter\nOK hover Grid\nOK hover BtnCheckAll\nOK hover BtnUncheckAll\nOK hover ChkTechnicalColumns\nOK hover BtnEdit\nOK hover BtnImport\nOK hover BtnExport\nOK hover BtnHtmlReport\nOK hover BtnHistory\nOK hover BtnRetryMove\nOK hover BtnClear\nOK hover BtnSafetyReset\nOK hover ChkConfirm\nOK hover BtnRun\nOK hover BtnStop\nOK hover NmBtnNextP\nOK hover NmBtnNextS\nOK hover NmBtnCopy\nOK hover NmBtnExport\nOK hover NmBtnRefresh\nOK hover NmCmbSite\nOK hover NmCmbEquipe\nOK hover NmCmbType\nOK hover NmCmbStatut\nOK hover NmTxtSearch\nOK hover NmChkAll\nOK hover NmGrid\nOK hover SetCmbDarkMode\nOK hover SuiteAppearanceNav\nOK hover SuiteAppearanceHelp\nOK hover SetTxtDomaine\nOK hover SetTxtADM\nOK hover SetTxtPrefixe\nOK hover SetTxtPreprod\nOK hover SetTxtBuffer\nOK hover SetChkDirectProd\nOK hover SetTxtOUScan\nOK hover SetBtnBrowseScan\nOK hover SetChkDsreg\nOK hover SetBtnTagAdd\nOK hover SetBtnTagDel\nOK hover SetGridTags\nOK hover SetBtnBaseBrowse\nOK hover SetBtnBaseAdd\nOK hover SetBtnBaseDel\nOK hover SetGridOUBase\nOK hover SetBtnSiteBrowse\nOK hover SetBtnSiteAdd\nOK hover SetBtnSiteDel\nOK hover SetGridOUSite\nOK hover SetChkGUI\nOK hover SetChkSim\nOK hover SetChkODM\nOK hover SetChkWOU\nOK hover SetChkBVA\nOK hover SetChkGOD\nOK hover SetBtnSave\nOK hover SetBtnReload\nOK hover SuiteLogSearch\nOK hover SuiteLogFollow\nOK hover SuiteLogWrap\nOK hover SuiteLogMinus\nOK hover SuiteLogPlus\nOK hover SuiteLogRefresh\nOK hover SuiteLogDiagnostic\nOK hover HomePrepare\nOK hover HomeQueue\nOK hover HomeNames\nOK hover HomeHistory\nOK hover BtnHistoryRefresh\nOK hover UxHistoryGrid\nOK hover SuiteHelpClose\nOK hover SuiteHelpGuide\nOK hover SuiteHelpDiagnostic\nOK hover JnRefresh\nOK hover JnRename\nOK hover JnType\nOK hover JnOrg\nOK hover JnSite\nOK hover JnService\nOK hover JnName\nOK hover JnReference\nOK hover JnCopy\nOK hover JnChecks\nOK hover JnLog\nOK hover JnExport\nOK hover JnCancelRead\nOK hover JnCheck\nOK hover JnStart\nOK hover JnLater\nOK hover JnRestart\nOK eight routed pages\nOK single / batch / join navigation\nOK configuration section titles human\nOK theme labels not numeric\nOK no theme applied by cfg reload\nOK cfg save does not require empty queue\nOK business invalidation keeps rows\nOK unwanted login phrase removed\nOK login NoResize\nOK light directory login\nOK no network on hostname typing\nOK direct no queue insertion\nOK join no queue insertion\nOK join no Entra leave\nOK same site decision preserved\nOK no implicit reboot in direct\nOK direct receipt protected atomic\nOK machine-wide mutation guard\nOK late return fence direct\nOK resume compares operation and GUID\nOK CIM observation uses DCOM\nOK no write commands in observation worker\nOK origin SID appearance flow\nOK appearance no profile loading\nOK diagnostic excludes raw free text\nOK all named callback functions defined\nOK core worker exports defined\nOK worker dependency closure\nOK Get-PestoJoinWorkerSource definitions present\nOK Get-PestoDirectSupportSource definitions present\nOK component loaded Pesto-Appearance.ps1\nOK component loaded Pesto-Async.ps1\nOK component loaded Pesto-Authentication.ps1\nOK component loaded Pesto-Configuration.ps1\nOK component loaded Pesto-Direct.ps1\nOK component loaded Pesto-Directory.ps1\nOK component loaded Pesto-Inspection.ps1\nOK component loaded Pesto-Integrity.ps1\nOK component loaded Pesto-Join.ps1\nOK component loaded Pesto-Journal.ps1\nOK component loaded Pesto-Operations.ps1\nOK component loaded Pesto-SuiteUI.ps1\nOK component loaded Pesto-Support.ps1\nOK native PE32+ x64 GUI\nOK launcher only system Windows imports\nOK unsigned binary identified\nOK no native-launcher CLR dependency\nOK launcher manifest asInvoker\nOK EXE version RC18\nOK EXE embeds original icon\nOK package manifest version/count\nOK package hash Pesto.exe\nOK package hash wad/ActiveDirectory.Format.ps1xml\nOK package hash wad/ActiveDirectory.Types.ps1xml\nOK package hash wad/ActiveDirectory.psd1\nOK package hash wad/ActiveDirectoryPowerShellResources.dll\nOK package hash wad/Pesto-Appearance.ps1\nOK package hash wad/Pesto-Async.ps1\nOK package hash wad/Pesto-Authentication.ps1\nOK package hash wad/Pesto-Configuration.ps1\nOK package hash wad/Pesto-Core.ps1\nOK package hash wad/Pesto-Direct.ps1\nOK package hash wad/Pesto-Directory.ps1\nOK package hash wad/Pesto-Inspection.ps1\nOK package hash wad/Pesto-Integrity.ps1\nOK package hash wad/Pesto-Join.ps1\nOK package hash wad/Pesto-Join.xaml\nOK package hash wad/Pesto-Journal.ps1\nOK package hash wad/Pesto-Operations.ps1\nOK package hash wad/Pesto-Shell.xaml\nOK package hash wad/Pesto-Startup.ps1\nOK package hash wad/Pesto-SuiteUI.ps1\nOK package hash wad/Pesto-Support.ps1\nOK package hash wad/Microsoft.ActiveDirectory.Management.dll\nOK package hash wad/fr-FR/ActiveDirectoryPowerShellResources.dll.mui\nOK package hash wad/Pesto.ico\nRESULT 251 passed 0 failed; native Windows NOT executed\n"
+    },
+    {
+      "Command": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_distribution.py",
+        "-v"
+      ],
+      "ExitCode": 0,
+      "Output": "test_01_runtime_only_needs_no_demo_or_helpers (test_distribution.DistributionTests.test_01_runtime_only_needs_no_demo_or_helpers) ... ok\ntest_02_optional_changes_do_not_modify_runtime_verification (test_distribution.DistributionTests.test_02_optional_changes_do_not_modify_runtime_verification) ... ok\ntest_03_each_missing_runtime_file_is_refused (test_distribution.DistributionTests.test_03_each_missing_runtime_file_is_refused) ... ok\ntest_04_each_modified_runtime_file_is_refused (test_distribution.DistributionTests.test_04_each_modified_runtime_file_is_refused) ... ok\ntest_05_invalid_manifest_is_refused (test_distribution.DistributionTests.test_05_invalid_manifest_is_refused) ... ok\ntest_06_linked_runtime_file_is_refused (test_distribution.DistributionTests.test_06_linked_runtime_file_is_refused) ... ok\ntest_07_linked_manifest_directory_is_refused (test_distribution.DistributionTests.test_07_linked_manifest_directory_is_refused) ... ok\ntest_08_generator_succeeds_without_dev_files (test_distribution.DistributionTests.test_08_generator_succeeds_without_dev_files) ... ok\ntest_09_prod_export_is_closed_and_preserves_configuration (test_distribution.DistributionTests.test_09_prod_export_is_closed_and_preserves_configuration) ... ok\ntest_10_dev_and_prod_share_the_same_runtime (test_distribution.DistributionTests.test_10_dev_and_prod_share_the_same_runtime) ... ok\ntest_11_existing_destination_is_never_overwritten (test_distribution.DistributionTests.test_11_existing_destination_is_never_overwritten) ... ok\ntest_12_unknown_and_state_files_not_exported (test_distribution.DistributionTests.test_12_unknown_and_state_files_not_exported) ... ok\ntest_13_manifest_ignores_new_optional_components_on_regeneration (test_distribution.DistributionTests.test_13_manifest_ignores_new_optional_components_on_regeneration) ... ok\ntest_14_partial_runtime_refuses_export (test_distribution.DistributionTests.test_14_partial_runtime_refuses_export) ... ok\ntest_15_old_root_script_is_not_required_or_exported (test_distribution.DistributionTests.test_15_old_root_script_is_not_required_or_exported) ... ok\ntest_16_no_production_script_launches_a_root_pesto_ps1 (test_distribution.DistributionTests.test_16_no_production_script_launches_a_root_pesto_ps1) ... ok\ntest_17_unblock_is_required_for_shipping_not_for_runtime (test_distribution.DistributionTests.test_17_unblock_is_required_for_shipping_not_for_runtime) ... ok\ntest_18_archives_have_distinct_named_roots (test_distribution.DistributionTests.test_18_archives_have_distinct_named_roots) ... ok\ntest_19_unblock_recognizes_exe_wad_without_root_ps1 (test_distribution.DistributionTests.test_19_unblock_recognizes_exe_wad_without_root_ps1) ... ok\ntest_20_wrong_zip_root_name_is_refused (test_distribution.DistributionTests.test_20_wrong_zip_root_name_is_refused) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 2.517s\n\nOK\n"
+    },
+    {
+      "Command": [
+        "/opt/pyvenv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_pesto_brand.py",
+        "-v"
+      ],
+      "ExitCode": 0,
+      "Output": "test_01_no_old_executable_or_root_ps1 (test_pesto_brand.PestoBrandTests.test_01_no_old_executable_or_root_ps1) ... ok\ntest_02_runtime_names_are_new (test_pesto_brand.PestoBrandTests.test_02_runtime_names_are_new) ... ok\ntest_03_no_developer_dependency (test_pesto_brand.PestoBrandTests.test_03_no_developer_dependency) ... ok\ntest_04_badge_and_titles_are_readable (test_pesto_brand.PestoBrandTests.test_04_badge_and_titles_are_readable) ... ok\ntest_05_all_runtime_functions_match_the_intended_rename (test_pesto_brand.PestoBrandTests.test_05_all_runtime_functions_match_the_intended_rename) ... ok\ntest_06_external_resources_and_configuration_are_unchanged (test_pesto_brand.PestoBrandTests.test_06_external_resources_and_configuration_are_unchanged) ... ok\ntest_07_machine_mutation_lock_is_shared_with_gp (test_pesto_brand.PestoBrandTests.test_07_machine_mutation_lock_is_shared_with_gp) ... ok\ntest_08_machine_receipts_are_not_reset (test_pesto_brand.PestoBrandTests.test_08_machine_receipts_are_not_reset) ... ok\ntest_09_original_user_preferences_remain_reachable (test_pesto_brand.PestoBrandTests.test_09_original_user_preferences_remain_reachable) ... ok\ntest_10_launcher_and_cross_account_guards_stay_compatible (test_pesto_brand.PestoBrandTests.test_10_launcher_and_cross_account_guards_stay_compatible) ... ok\ntest_11_current_launchers_reference_existing_files (test_pesto_brand.PestoBrandTests.test_11_current_launchers_reference_existing_files) ... ok\ntest_12_windows_build_versions_and_names_agree (test_pesto_brand.PestoBrandTests.test_12_windows_build_versions_and_names_agree) ... ok\ntest_13_binary_is_compiled_not_merely_renamed (test_pesto_brand.PestoBrandTests.test_13_binary_is_compiled_not_merely_renamed) ... ok\ntest_14_startup_and_tasks_use_the_new_components (test_pesto_brand.PestoBrandTests.test_14_startup_and_tasks_use_the_new_components) ... ok\ntest_15_rename_does_not_change_join_or_restart_policy (test_pesto_brand.PestoBrandTests.test_15_rename_does_not_change_join_or_restart_policy) ... ok\ntest_16_generators_keep_explicit_prod_dev_roots (test_pesto_brand.PestoBrandTests.test_16_generators_keep_explicit_prod_dev_roots) ... ok\n\n----------------------------------------------------------------------\nRan 16 tests in 0.293s\n\nOK\n"
+    },
+    {
+      "Command": [
+        "clang",
+        "-std=c11",
+        "-O2",
+        "-ffunction-sections",
+        "-fdata-sections",
+        "-fdeclspec",
+        "-fshort-wchar",
+        "-Wno-ignored-attributes",
+        "-Wl,--gc-sections",
+        "tools/launcher/test_arguments.c",
+        "-o",
+        "/mnt/data/pesto_work/build_tests/test_arguments"
+      ],
+      "ExitCode": 0,
+      "Output": ""
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_arguments"
+      ],
+      "ExitCode": 0,
+      "Output": "9 explicit launcher checks and 2000 independent argument round-trips passed (Linux C only).\n"
+    },
+    {
+      "Command": [
+        "clang",
+        "-std=c11",
+        "-O2",
+        "-fdeclspec",
+        "-fshort-wchar",
+        "-Wno-ignored-attributes",
+        "tools/launcher/test_entry.c",
+        "-o",
+        "/mnt/data/pesto_work/build_tests/test_entry"
+      ],
+      "ExitCode": 0,
+      "Output": ""
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "0"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 0 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "1"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 1 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "2"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 2 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "3"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 3 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "4"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 4 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "5"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 5 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "6"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 6 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "7"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 7 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "8"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 8 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "9"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 9 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "10"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 10 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "11"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 11 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "12"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 12 (no Windows APIs executed)\n"
+    },
+    {
+      "Command": [
+        "/mnt/data/pesto_work/build_tests/test_entry",
+        "13"
+      ],
+      "ExitCode": 0,
+      "Output": "OK entry simulation 13 (no Windows APIs executed)\n"
+    }
+  ]
+}

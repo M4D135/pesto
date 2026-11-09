@@ -1,0 +1,40 @@
+{
+  "schema": "Pesto.C18.ReplacementStatus.v1",
+  "oldVmName": "PESTO-W11-TEST",
+  "oldVmUuid": "9b2ad4f0-0506-4f58-aed2-c43ac1973516",
+  "unregisteredObservation": {
+    "utc": "2026-10-28T13:30:41.6345117Z",
+    "targetRegistered": false,
+    "configurationStillPresentAtThisIntermediateObservation": true
+  },
+  "finalRemovalObservation": {
+    "utc": "2026-10-28T13:31:57.0474320Z",
+    "targetRootExists": false,
+    "remainingTargetMediaCountChecked": 2,
+    "allCheckedTargetMediaFilesAbsent": true,
+    "otherRegisteredVmCount": 5,
+    "nativeExitCodes": [
+      null,
+      null
+    ],
+    "conclusionBasis": "Observed absence of target files and root; null native exit codes are not interpreted as success."
+  },
+  "replacementDecision": {
+    "utc": "2026-10-28T13:40:00Z",
+    "status": "vm_rebuild_deferred_by_user_until_code_github_windows_and_prod",
+    "newVmCreated": false,
+    "domainJoinPerformed": false,
+    "nextStep": "Resume VM creation only after code and GitHub Windows checks and PROD delivery."
+  },
+  "installationMediaReceipt": {
+    "utc": "2026-10-28T13:42:20.0051340Z",
+    "edition": "Windows 11 Enterprise Evaluation 26H2 fr-FR",
+    "length": 8234248192,
+    "sha256": "4614fb8cdd960bc9ecf1b8ab9bc708335cf7b350b152c045ff6259ec5ff4fc01",
+    "source": "https://software-static.download.prss.microsoft.com/dbazure/26300.9457.260913-1737.26h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_fr-fr.iso",
+    "hostReceiptReportsVerified": true
+  },
+  "qualificationContinuity": "Old campaign closed without original-name restoration or new-account join; old receipts cannot qualify a newly identified VM.",
+  "lastObservedAdObject": "P111301LY765715 in Paris; deleting the VM does not establish deletion of its AD object.",
+  "historicalSnapshotAvailability": "A snapshot inside the deleted VM root is not a retained recovery point."
+}

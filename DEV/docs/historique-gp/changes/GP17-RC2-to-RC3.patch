@@ -1,0 +1,464 @@
+--- a/wad/GP-Core.ps1
++++ b/wad/GP-Core.ps1
+@@ -5,7 +5,7 @@
+ #  GP - Gestion des Postes   (interface WPF, Active Directory)
+ #  Jonction au domaine / Renommage / Déplacement / File d'actions
+ #
+-#  Version 17.0 RC2 — renforcement du moteur, de la file et des contrôles ; recette Windows requise :
++#  Version 17.0 RC3 — renforcement du moteur, de la file et des contrôles ; recette Windows requise :
+ #    - Moteur AD entièrement découplé de l'interface (aucun appel UI dans le
+ #      moteur : les fonctions renvoient un résultat { ExitCode, ExitMsg }).
+ #    - Interface WPF moderne, thème clair / sombre commutable à chaud (soleil / lune).
+@@ -35,7 +35,7 @@
+ 
+ Set-StrictMode -Off
+ $ErrorActionPreference = 'Stop'
+-$script:GP_VERSION = '17.0-RC2'
++$script:GP_VERSION = '17.0-RC3'
+ 
+ if ($env:OS -ne 'Windows_NT') { throw "GP nécessite Windows PowerShell 5.1 x64 sous Windows." }
+ if ([Threading.Thread]::CurrentThread.ApartmentState -ne 'STA') {
+@@ -513,6 +513,21 @@
+     }
+ }
+ 
++function Invoke-GPConfigRepairSave {
++    param($Sender,$EventArgs)
++    $ctx=$Sender.Tag
++    if($null -eq $ctx){return}
++    try{
++        if($ctx.Json.Text.Length -gt 1MB){throw 'Configuration trop volumineuse (> 1 Mio).'}
++        $cfg=$ctx.Json.Text|ConvertFrom-Json -ErrorAction Stop
++        $errors=@(Test-CfgValid $cfg)
++        if($errors.Count){$ctx.Errors.Text=$errors -join "`r`n";return}
++        Write-GPAtomicText -Path $ctx.Path -Text $ctx.Json.Text -Backup
++        $ctx.Window.Tag=$cfg
++        $ctx.Window.DialogResult=$true
++    }catch{$ctx.Errors.Text=[string]$_.Exception.Message}
++}
++
+ function Show-GPConfigRepair {
+     param([string]$Path,[string]$Text,[string[]]$Errors)
+     [xml]$cx=@'
+@@ -529,16 +544,8 @@
+     $box=$w.FindName('Json');$errBox=$w.FindName('Errors');$box.Text=$Text
+     $errBox.Text=($Errors -join "`r`n");$w.FindName('PathLabel').Text="Aucun accès AD n'est lancé. Vérifiez vos valeurs réelles ; GP n'invente pas le domaine ni les OUs. Fichier : $Path"
+     $save=$w.FindName('Save')
+-    $save.Add_Click({
+-        try{
+-            if($box.Text.Length -gt 1MB){throw 'Configuration trop volumineuse (> 1 Mio).'}
+-            $cfg=$box.Text|ConvertFrom-Json -ErrorAction Stop
+-            $errs=@(Test-CfgValid $cfg)
+-            if($errs.Count){$errBox.Text=$errs -join "`r`n";return}
+-            Write-GPAtomicText -Path $Path -Text $box.Text -Backup
+-            $w.Tag=$cfg;$w.DialogResult=$true
+-        }catch{$errBox.Text=[string]$_.Exception.Message}
+-    }.GetNewClosure())
++    $save.Tag=[pscustomobject]@{Window=$w;Json=$box;Errors=$errBox;Path=$Path}
++    $save.Add_Click([Windows.RoutedEventHandler]${function:Invoke-GPConfigRepairSave})
+     if($w.ShowDialog() -eq $true){return $w.Tag}
+     return $null
+ }
+@@ -777,6 +784,7 @@
+ # le Dispatcher. Les callbacks sont validés et encapsulés : une erreur dans un
+ # callback ne doit jamais faire tomber tout GP.
+ $script:GPAsyncOperations = @{}
++$script:GPAsyncTimerOperations = @{}
+ 
+ function Test-GPAsyncOperationRunning {
+     param([string]$Name)
+@@ -815,7 +823,8 @@
+         [AllowNull()]$Callback,
+         [AllowNull()]$Argument,
+         [string]$OperationName = 'Async',
+-        [string]$CallbackKind = 'callback'
++        [string]$CallbackKind = 'callback',
++        [AllowNull()]$Context = $null
+     )
+     if ($null -eq $Callback) { return }
+     if ($Callback -isnot [scriptblock]) {
+@@ -827,8 +836,11 @@
+     }
+     try {
+         # Un tableau résultat doit rester UN SEUL argument du callback.
+-        $cbArgs = New-Object 'System.Object[]' 1
++        # Le contexte est un second argument optionnel, jamais une closure privée.
++        $count=if($null -eq $Context){1}else{2}
++        $cbArgs = New-Object 'System.Object[]' $count
+         $cbArgs[0] = $Argument
++        if($count -eq 2){$cbArgs[1]=$Context}
+         [void]$Callback.InvokeReturnAsIs($cbArgs)
+     } catch {
+         if($OperationName -eq "QueueAction"){try{Fail-GPQueueCallback -Failure $_}catch{$script:MutationUncertain=$true;$script:QueueStopRequested=$true}}
+@@ -839,10 +851,9 @@
+ }
+ 
+ function Start-GPAsyncOperation {
+-    <# Exécute un worker hors du thread WPF. TimeoutSec=0 désactive le timeout.
+-       Un timeout notifie immédiatement l'UI, demande un arrêt non bloquant au
+-       runspace, puis laisse le timer libérer les ressources dès que BeginStop
+-       a réellement terminé. Aucun PowerShell.Stop() synchrone sur le thread UI. #>
++    <# Le timer appelle une fonction liée au script GP, jamais un GetNewClosure.
++       Les données propres à un callback passent par CallbackContext ; elles ne
++       doivent pas être capturées dans un module dynamique privé. #>
+     param(
+         [Parameter(Mandatory)][string]$Name,
+         [Parameter(Mandatory)][scriptblock]$ScriptBlock,
+@@ -850,106 +861,145 @@
+         [scriptblock]$OnSuccess,
+         [scriptblock]$OnError,
+         [switch]$Replace,
+-        [ValidateRange(0,3600)][int]$TimeoutSec = 0
++        [ValidateRange(0,3600)][int]$TimeoutSec = 0,
++        [AllowNull()]$CallbackContext = $null
+     )
+-
+     if (Test-GPAsyncOperationRunning $Name) {
+         if (-not $Replace) { return $false }
+         Stop-GPAsyncOperation $Name
+     }
+ 
+-    $rs = $null; $ps = $null; $async = $null
++    $rs=$null; $ps=$null; $timer=$null; $op=$null; $tickHandler=$null
+     try {
+-        $rs = [System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspace()
+-        $rs.ApartmentState = [System.Threading.ApartmentState]::MTA
+-        $rs.ThreadOptions = [System.Management.Automation.Runspaces.PSThreadOptions]::ReuseThread
++        $rs=[System.Management.Automation.Runspaces.RunspaceFactory]::CreateRunspace()
++        $rs.ApartmentState=[System.Threading.ApartmentState]::MTA
++        $rs.ThreadOptions=[System.Management.Automation.Runspaces.PSThreadOptions]::ReuseThread
+         $rs.Open()
+-
+-        $ps = [System.Management.Automation.PowerShell]::Create()
+-        $ps.Runspace = $rs
+-        [void]$ps.AddScript($ScriptBlock.ToString(), $true)
+-        foreach ($arg in @($ArgumentList)) { [void]$ps.AddArgument($arg) }
+-        $async = $ps.BeginInvoke()
++        $ps=[System.Management.Automation.PowerShell]::Create()
++        $ps.Runspace=$rs
++        [void]$ps.AddScript($ScriptBlock.ToString(),$true)
++        foreach($arg in @($ArgumentList)){[void]$ps.AddArgument($arg)}
++
++        $timer=New-Object System.Windows.Threading.DispatcherTimer
++        $timer.Interval=[TimeSpan]::FromMilliseconds(90)
++        # Conserver le même délégué pour Add_Tick et Remove_Tick.
++        $tickHandler=[System.EventHandler]${function:Invoke-GPAsyncTimerTick}
++        $op=[pscustomobject]@{
++            Name=$Name; Runspace=$rs; PowerShell=$ps; Async=$null; Timer=$timer
++            OnSuccess=$OnSuccess; OnError=$OnError; Context=$CallbackContext
++            Started=(Get-Date); Completed=$false; Cancelled=$false
++            TimeoutSec=$TimeoutSec; TimeoutReported=$false
++            TickHandler=$tickHandler; TickBusy=$false; TimerFaultReported=$false
++        }
++        $script:GPAsyncOperations[$Name]=$op
++        # Une opération remplacée conserve sa propre entrée jusqu'à son nettoyage.
++        $script:GPAsyncTimerOperations[$timer]=$op
++        $timer.Add_Tick($tickHandler)
++        $timer.Start()
++        # Dernière étape susceptible d'échouer : avant BeginInvoke aucun worker
++        # n'a démarré. Le Dispatcher ne reprend qu'après le retour de la fonction.
++        $op.Async=$ps.BeginInvoke()
++        return $true
+     } catch {
+-        try { if ($ps) { $ps.Dispose() } } catch {}
+-        try { if ($rs) { $rs.Close(); $rs.Dispose() } } catch {}
+-        Invoke-GPAsyncCallback -Callback $OnError -Argument $_ -OperationName $Name -CallbackKind 'callback d''erreur'
++        $failure=$_
++        try{if($timer){$timer.Stop();if($tickHandler){$timer.Remove_Tick($tickHandler)}}}catch{}
++        try{if($timer){[void]$script:GPAsyncTimerOperations.Remove($timer)}}catch{}
++        try{
++            if($op -and $script:GPAsyncOperations.ContainsKey($Name) -and
++                [object]::ReferenceEquals($script:GPAsyncOperations[$Name],$op)){
++                [void]$script:GPAsyncOperations.Remove($Name)
++            }
++        }catch{}
++        try{if($ps){$ps.Dispose()}}catch{}
++        try{if($rs){$rs.Close();$rs.Dispose()}}catch{}
++        Invoke-GPAsyncCallback -Callback $OnError -Argument $failure -Context $CallbackContext -OperationName $Name -CallbackKind 'callback de démarrage'
+         return $false
+     }
+-
+-    $timer = New-Object System.Windows.Threading.DispatcherTimer
+-    $timer.Interval = [TimeSpan]::FromMilliseconds(90)
+-    $op = [pscustomobject]@{
+-        Name=$Name; Runspace=$rs; PowerShell=$ps; Async=$async; Timer=$timer
+-        OnSuccess=$OnSuccess; OnError=$OnError; Started=(Get-Date); Completed=$false
+-        Cancelled=$false; TimeoutSec=$TimeoutSec; TimeoutReported=$false
+-    }
+-    $script:GPAsyncOperations[$Name] = $op
+-    $ops = $script:GPAsyncOperations
+-
+-    $tick = {
+-        if ($op.Completed) { return }
+-
+-        if (-not $op.Async.IsCompleted) {
+-            if (-not $op.Cancelled -and [int]$op.TimeoutSec -gt 0 -and -not $op.TimeoutReported -and
+-                ((Get-Date) - $op.Started).TotalSeconds -ge [int]$op.TimeoutSec) {
+-                $op.TimeoutReported = $true
+-                try {
+-                    if ($ops.ContainsKey($op.Name) -and [object]::ReferenceEquals($ops[$op.Name], $op)) {
+-                        [void]$ops.Remove($op.Name)
++}
++
++function Invoke-GPAsyncTimerTick {
++    <# Handler WPF nommé : sa portée reste celle de GP-Core.ps1 même si ce fichier
++       est appelé via & depuis le lanceur GP.ps1. Aucune fonction globale ajoutée. #>
++    param($Sender,$EventArgs)
++    if($null -eq $Sender -or -not $script:GPAsyncTimerOperations.ContainsKey($Sender)){return}
++    $op=$script:GPAsyncTimerOperations[$Sender]
++    if($null -eq $op -or $op.Completed -or $op.TickBusy -or $null -eq $op.Async){return}
++    $op.TickBusy=$true
++    try {
++        if(-not $op.Async.IsCompleted){
++            if(-not $op.Cancelled -and [int]$op.TimeoutSec -gt 0 -and -not $op.TimeoutReported -and
++                ((Get-Date)-$op.Started).TotalSeconds -ge [int]$op.TimeoutSec){
++                $op.TimeoutReported=$true
++                if($script:GPAsyncOperations.ContainsKey($op.Name) -and
++                    [object]::ReferenceEquals($script:GPAsyncOperations[$op.Name],$op)){
++                    [void]$script:GPAsyncOperations.Remove($op.Name)
++                }
++                # Annulation non bloquante. Le timer reste vivant pour nettoyer
++                # le worker quand celui-ci a effectivement terminé.
++                try{
++                    if(-not $op.Async.IsCompleted -and $op.PowerShell.PSObject.Methods['BeginStop']){
++                        [void]$op.PowerShell.BeginStop($null,$null)
+                     }
+-                } catch {}
+-                # BeginStop est asynchrone : aucune attente bloquante du thread WPF.
+-                try {
+-                    if ($op.PowerShell -and -not $op.Async.IsCompleted -and $op.PowerShell.PSObject.Methods['BeginStop']) {
+-                        [void]$op.PowerShell.BeginStop($null, $null)
+-                    }
+-                } catch {}
+-                $timeoutRecord = $null
+-                try {
+-                    $timeoutException = New-Object System.TimeoutException -ArgumentList ("L'opération '{0}' a dépassé le délai de {1} s." -f $op.Name,$op.TimeoutSec)
+-                    throw $timeoutException
+-                } catch { $timeoutRecord = $_ }
+-                Invoke-GPAsyncCallback -Callback $op.OnError -Argument $timeoutRecord -OperationName $op.Name -CallbackKind 'callback de timeout'
++                }catch{}
++                $timeoutRecord=$null
++                try{
++                    throw ([System.TimeoutException]::new(("L'opération '{0}' a dépassé le délai de {1} s." -f $op.Name,$op.TimeoutSec)))
++                }catch{$timeoutRecord=$_}
++                Invoke-GPAsyncCallback -Callback $op.OnError -Argument $timeoutRecord -Context $op.Context -OperationName $op.Name -CallbackKind 'callback de timeout'
+             }
+             return
+         }
+ 
+-        $op.Completed = $true
+-        try { $op.Timer.Stop() } catch {}
+-        $value = $null; $caught = $null
+-        try {
+-            $raw = @($op.PowerShell.EndInvoke($op.Async))
+-            if ($op.PowerShell.Streams.Error.Count -gt 0) {
+-                $first = $op.PowerShell.Streams.Error[0]
+-                if ($first.Exception) { throw $first.Exception }
++        $op.Completed=$true
++        try{$op.Timer.Stop()}catch{}
++        try{$op.Timer.Remove_Tick($op.TickHandler)}catch{}
++        $value=$null; $caught=$null
++        try{
++            $raw=@($op.PowerShell.EndInvoke($op.Async))
++            if($op.PowerShell.Streams.Error.Count -gt 0){
++                $first=$op.PowerShell.Streams.Error[0]
++                if($first.Exception){throw $first.Exception}
+                 throw $first
+             }
+-            if ($raw.Count -eq 0) { $value = $null }
+-            elseif ($raw.Count -eq 1) { $value = $raw[0] }
+-            else { $value = $raw }
+-        } catch { $caught = $_ }
+-        finally {
+-            try { $op.PowerShell.Dispose() } catch {}
+-            try { $op.Runspace.Close(); $op.Runspace.Dispose() } catch {}
+-            try {
+-                if ($ops.ContainsKey($op.Name) -and [object]::ReferenceEquals($ops[$op.Name], $op)) {
+-                    [void]$ops.Remove($op.Name)
++            if($raw.Count -eq 0){$value=$null}
++            elseif($raw.Count -eq 1){$value=$raw[0]}
++            else{$value=$raw}
++        }catch{$caught=$_}
++        finally{
++            try{$op.PowerShell.Dispose()}catch{}
++            try{$op.Runspace.Close();$op.Runspace.Dispose()}catch{}
++            try{[void]$script:GPAsyncTimerOperations.Remove($op.Timer)}catch{}
++            try{
++                if($script:GPAsyncOperations.ContainsKey($op.Name) -and
++                    [object]::ReferenceEquals($script:GPAsyncOperations[$op.Name],$op)){
++                    [void]$script:GPAsyncOperations.Remove($op.Name)
+                 }
+-            } catch {}
+-        }
+-
+-        # Remplacement, annulation ou timeout : le callback a déjà été supprimé/notifié.
+-        if ($op.Cancelled -or $op.TimeoutReported) { return }
+-        if ($caught) {
+-            Invoke-GPAsyncCallback -Callback $op.OnError -Argument $caught -OperationName $op.Name -CallbackKind 'callback d''erreur'
+-        } else {
+-            Invoke-GPAsyncCallback -Callback $op.OnSuccess -Argument $value -OperationName $op.Name -CallbackKind 'callback de succès'
+-        }
+-    }.GetNewClosure()
+-    $timer.Add_Tick($tick)
+-    $timer.Start()
+-    return $true
++            }catch{}
++        }
++        # Un worker annulé/remplacé/expiré ne peut jamais publier un succès tardif.
++        if($op.Cancelled -or $op.TimeoutReported -or $op.TimerFaultReported){return}
++        if($caught){
++            Invoke-GPAsyncCallback -Callback $op.OnError -Argument $caught -Context $op.Context -OperationName $op.Name -CallbackKind 'callback d''erreur'
++        }else{
++            Invoke-GPAsyncCallback -Callback $op.OnSuccess -Argument $value -Context $op.Context -OperationName $op.Name -CallbackKind 'callback de succès'
++        }
++    }catch{
++        # Une défaillance du polling doit notifier l'opération, pas remonter à
++        # Window.ShowDialog. Aucun résultat positif n'est fabriqué en secours.
++        $failure=$_
++        if(-not $op.TimerFaultReported){
++            $op.TimerFaultReported=$true
++            $op.Cancelled=$true
++            try{
++                if($script:GPAsyncOperations.ContainsKey($op.Name) -and
++                    [object]::ReferenceEquals($script:GPAsyncOperations[$op.Name],$op)){
++                    [void]$script:GPAsyncOperations.Remove($op.Name)
++                }
++            }catch{}
++            try{if(-not $op.Async.IsCompleted){[void]$op.PowerShell.BeginStop($null,$null)}}catch{}
++            Invoke-GPAsyncCallback -Callback $op.OnError -Argument $failure -Context $op.Context -OperationName $op.Name -CallbackKind 'callback du timer'
++        }
++    }finally{$op.TickBusy=$false}
+ }
+ 
+ 
+@@ -3051,6 +3101,9 @@
+         }
+ 
+         $w=$Window
++        $iconBase64=$script:AppIconIcoB64
++        $iconHandles=$script:GPTaskbarIconHandles
++        $writeIconLog=${function:Write-Log}
+         $applyNative=({
+             try {
+                 if(-not ('GP.NativeShell' -as [type])){ return }
+@@ -3058,7 +3111,7 @@
+                 $hwnd=$helper.Handle
+                 if($hwnd -eq [IntPtr]::Zero){ return }
+ 
+-                $bytes=[Convert]::FromBase64String(($script:AppIconIcoB64 -replace '\s',''))
++                $bytes=[Convert]::FromBase64String(($iconBase64 -replace '\s',''))
+                 $ms=New-Object IO.MemoryStream(,$bytes)
+                 $srcIcon=New-Object System.Drawing.Icon($ms)
+                 $small=New-Object System.Drawing.Icon($srcIcon,16,16)
+@@ -3071,11 +3124,12 @@
+                 if(-not $w.Tag -or $w.Tag -is [string]){
+                     # Ne pas détourner Tag si l'appelant l'utilise ; la closure suffit à garder holder vivant.
+                 }
+-                [void]$script:GPTaskbarIconHandles.Add($hSmall)
+-                [void]$script:GPTaskbarIconHandles.Add($hLarge)
++                [void]$iconHandles.Add($hSmall)
++                [void]$iconHandles.Add($hLarge)
+                 [void][GP.NativeShell]::SendMessage($hwnd,0x0080,[IntPtr]0,$hSmall)
+                 [void][GP.NativeShell]::SendMessage($hwnd,0x0080,[IntPtr]1,$hLarge)
+ 
++                $cleanupHandles=$iconHandles
+                 $cleanup=({
+                     try { [void][GP.NativeShell]::SendMessage($hwnd,0x0080,[IntPtr]0,[IntPtr]::Zero) } catch {}
+                     try { [void][GP.NativeShell]::SendMessage($hwnd,0x0080,[IntPtr]1,[IntPtr]::Zero) } catch {}
+@@ -3083,12 +3137,12 @@
+                     try { $holder.Large.Dispose() } catch {}
+                     try { $holder.Source.Dispose() } catch {}
+                     try { $holder.Stream.Dispose() } catch {}
+-                    try { [void]$script:GPTaskbarIconHandles.Remove($hSmall) } catch {}
+-                    try { [void]$script:GPTaskbarIconHandles.Remove($hLarge) } catch {}
++                    try { [void]$cleanupHandles.Remove($hSmall) } catch {}
++                    try { [void]$cleanupHandles.Remove($hLarge) } catch {}
+                 }).GetNewClosure()
+                 $w.Add_Closed($cleanup)
+             } catch {
+-                try { Write-Log 'Application de l''icône Win32 impossible.' 'WARN' $_ 'ui' } catch {}
++                try { & $writeIconLog 'Application de l''icône Win32 impossible.' 'WARN' $_ 'ui' } catch {}
+             }
+         }).GetNewClosure()
+ 
+@@ -3127,7 +3181,7 @@
+ 
+         [xml]$sxaml = @"
+ <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+-        Title="GP 17.0-RC1 — Initialisation" Width="620" Height="330" ResizeMode="NoResize"
++        Title="GP 17.0-RC3 — Initialisation" Width="620" Height="330" ResizeMode="NoResize"
+         WindowStartupLocation="CenterScreen" Background="$bgWindow" FontFamily="Segoe UI" FontSize="12"
+         ShowInTaskbar="True" Topmost="True">
+   <Border Margin="18" Padding="22" CornerRadius="18" Background="$bgCard" BorderBrush="$border" BorderThickness="1">
+@@ -3232,7 +3286,7 @@
+ [xml]$xaml = @'
+ <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+-        Title="GP 17.0-RC1 — Gestion des Postes" Height="720" Width="1320"
++        Title="GP 17.0-RC3 — Gestion des Postes" Height="720" Width="1320"
+         MinHeight="680" MinWidth="1100" WindowStartupLocation="CenterScreen"
+         Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13"
+         TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
+@@ -4427,9 +4481,10 @@
+         Name=$name;Local=[bool]$script:LOCALHOST;DC=$script:DC;Credential=$script:cred
+         ADModulePath=(Join-Path $BasePath 'ActiveDirectory.psd1')
+     }
+-    $ok={param($r) Complete-GPComputerProbeSuccess -Result $r -Name $name -Generation $gen}.GetNewClosure()
+-    $err={param($e) Complete-GPComputerProbeError -Failure $e -Name $name -Generation $gen}.GetNewClosure()
+-    [void](Start-GPAsyncOperation -Name 'PCProbe' -ScriptBlock $script:GPComputerProbeWorker -ArgumentList @($request) -OnSuccess $ok -OnError $err -Replace -TimeoutSec 75)
++    $context=[pscustomobject]@{Name=$name;Generation=$gen}
++    $ok={param($r,$ctx) Complete-GPComputerProbeSuccess -Result $r -Name $ctx.Name -Generation $ctx.Generation}
++    $err={param($e,$ctx) Complete-GPComputerProbeError -Failure $e -Name $ctx.Name -Generation $ctx.Generation}
++    [void](Start-GPAsyncOperation -Name 'PCProbe' -ScriptBlock $script:GPComputerProbeWorker -ArgumentList @($request) -OnSuccess $ok -OnError $err -CallbackContext $context -Replace -TimeoutSec 75)
+ }
+ function Setup-HorsDomaineUI {
+     <# Prépare l'interface de jonction au domaine. En transit, PREPROD reste le
+@@ -5424,9 +5479,10 @@
+     $LblStatus.Text='Actualisation Active Directory…'
+     $request=New-GPDirectorySnapshotRequest -Credential $script:cred
+ 
+-    $ok={param($snap) Complete-GPDirectoryRefresh -Snapshot $snap -LockMain ([bool]$LockMain)}.GetNewClosure()
+-    $err={param($e) Complete-GPDirectoryRefresh -Failure $e -LockMain ([bool]$LockMain)}.GetNewClosure()
+-    $started=Start-GPAsyncOperation -Name 'DirectoryRefresh' -ScriptBlock $script:GPDirectorySnapshotWorker -ArgumentList @($request) -OnSuccess $ok -OnError $err -Replace:$Replace -TimeoutSec 180
++    $context=[pscustomobject]@{LockMain=[bool]$LockMain}
++    $ok={param($snap,$ctx) Complete-GPDirectoryRefresh -Snapshot $snap -LockMain $ctx.LockMain}
++    $err={param($e,$ctx) Complete-GPDirectoryRefresh -Failure $e -LockMain $ctx.LockMain}
++    $started=Start-GPAsyncOperation -Name 'DirectoryRefresh' -ScriptBlock $script:GPDirectorySnapshotWorker -ArgumentList @($request) -OnSuccess $ok -OnError $err -CallbackContext $context -Replace:$Replace -TimeoutSec 180
+     if(-not $started){
+         if($NmBtnRefresh){$NmBtnRefresh.IsEnabled=$true}
+         if($LockMain){
+@@ -5860,16 +5916,19 @@
+     $wait=New-Object Windows.Controls.TreeViewItem;$wait.Header='Chargement…';$wait.IsEnabled=$false;[void]$item.Items.Add($wait)
+     $req=[pscustomobject]@{DN=$dn;DC=$script:DC;Credential=$script:cred;ADModulePath=(Join-Path $BasePath 'ActiveDirectory.psd1')}
+     $opName='OU_'+[Guid]::NewGuid().ToString('N')
+-    $ok={param($children)
+-      $item.Items.Clear();$arr=@($children)
++    $context=[pscustomobject]@{Item=$item;DN=$dn}
++    $ok={param($children,$ctx)
++      $item=$ctx.Item
++      $item.Items.Clear();$arr=@($children | Where-Object {$null -ne $_})
+       if($arr.Count -eq 0){$leaf=New-Object Windows.Controls.TreeViewItem;$leaf.Header='(aucune sous-OU)';$leaf.IsEnabled=$false;[void]$item.Items.Add($leaf);return}
+       foreach($c in $arr){$ci=New-Object Windows.Controls.TreeViewItem;$ci.Header=$c.Name;$ci.Tag=$c.DN;[void]$ci.Items.Add('…');[void]$item.Items.Add($ci)}
+-    }.GetNewClosure()
+-    $err={param($e)
++    }
++    $err={param($e,$ctx)
++      $item=$ctx.Item;$dn=$ctx.DN
+       $item.Items.Clear();$leaf=New-Object Windows.Controls.TreeViewItem;$leaf.Header='(lecture impossible — voir Journal)';$leaf.IsEnabled=$false;[void]$item.Items.Add($leaf)
+       Write-Log "Lecture des sous-OU impossible pour '$dn'." 'ERROR' $e 'AD'
+-    }.GetNewClosure()
+-    [void](Start-GPAsyncOperation -Name $opName -ScriptBlock $script:GPOUChildrenWorker -ArgumentList @($req) -OnSuccess $ok -OnError $err -TimeoutSec 90)
++    }
++    [void](Start-GPAsyncOperation -Name $opName -ScriptBlock $script:GPOUChildrenWorker -ArgumentList @($req) -OnSuccess $ok -OnError $err -CallbackContext $context -TimeoutSec 90)
+ }
+ 
+ function Show-OUBrowser {
+@@ -6225,7 +6284,7 @@
+ 
+     [xml]$lxaml=@"
+ <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+-        Title="GP 17.0-RC1 — Connexion" Height="500" Width="470" MinHeight="500" MinWidth="470"
++        Title="GP 17.0-RC3 — Connexion" Height="500" Width="470" MinHeight="500" MinWidth="470"
+         WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="$($t['BgWindow'])"
+         FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="True">
+   <Grid Margin="22">

@@ -1,0 +1,14 @@
+﻿{
+    "Date":  "2026-10-04T19:25:59.3081444+02:00",
+    "Computer":  "PESTO-W11-TEST",
+    "Identity":  "PESTO-W11-TEST\\labadmin",
+    "PartOfDomain":  false,
+    "Domaine":  "labo.local",
+    "OU":  "OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+    "OUGuid":  "ad13eeac-026c-4085-a943-fad052cbaa2b",
+    "ADAccount":  "LABO\\pesto-qualif",
+    "ConfigValid":  true,
+    "Pack":  "C:\\Program Files\\Pesto-Qualification",
+    "NativeHash":  "AED2BE1900B45D380AC95F360DAAF770B613C047E4D1A80F5BEA07E24722D782",
+    "ExistingJoinReceipt":  false
+}

@@ -1,0 +1,18 @@
+{
+  "v1Root": "C:\\PestoQual_20261018\\candidate-final\\PROD\\wad",
+  "outputRoot": "C:\\Users\\Public\\pesto-v2-ad-native",
+  "expectedComputer": "P111301VA765158",
+  "action": "inspect",
+  "computer": "P111301VA765158",
+  "expectedGuid": "b4797c9c-d790-4797-bf71-424a57acb36e",
+  "expectedSourceOu": "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,@LABO_DN@",
+  "targetOu": "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,@LABO_DN@",
+  "site": "VA",
+  "service": "765",
+  "type": "P",
+  "execute": false,
+  "explicitCredential": true,
+  "confirmation": "",
+  "returnPlan": "",
+  "receiptId": ""
+}

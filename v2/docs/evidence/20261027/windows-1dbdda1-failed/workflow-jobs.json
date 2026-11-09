@@ -1,0 +1,217 @@
+{
+  "total_count": 1,
+  "jobs": [
+    {
+      "id": 122141151557,
+      "run_id": 40489970770,
+      "workflow_name": "Pesto V2 candidate and Windows isolation",
+      "head_branch": "codex/pesto-v2-20261023",
+      "run_url": "https://api.github.com/repos/M4D135/pesto/actions/runs/40489970770",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOU5JxSM8AAAAccC4RRQ",
+      "head_sha": "1dbdda1020cf21ea2c65fc69b5572bbfc857095e",
+      "url": "https://api.github.com/repos/M4D135/pesto/actions/jobs/122141151557",
+      "html_url": "https://github.com/M4D135/pesto/actions/runs/40489970770/job/122141151557",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-27T10:37:53Z",
+      "started_at": "2026-10-27T10:37:55Z",
+      "completed_at": "2026-10-27T10:49:48Z",
+      "name": "windows-critical",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-27T10:37:56Z",
+          "completed_at": "2026-10-27T10:37:57Z"
+        },
+        {
+          "name": "Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-27T10:37:57Z",
+          "completed_at": "2026-10-27T10:38:11Z"
+        },
+        {
+          "name": "Obtain the pinned previous source for a real cross-build update",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-27T10:38:11Z",
+          "completed_at": "2026-10-27T10:38:19Z"
+        },
+        {
+          "name": "Run actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-27T10:38:19Z",
+          "completed_at": "2026-10-27T10:38:54Z"
+        },
+        {
+          "name": "Build Windows candidate and isolated test assemblies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-27T10:38:54Z",
+          "completed_at": "2026-10-27T10:40:04Z"
+        },
+        {
+          "name": "Complete engine, bridge and transaction tests — isolated providers, no AD mutation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-27T10:40:04Z",
+          "completed_at": "2026-10-27T10:41:06Z"
+        },
+        {
+          "name": "Package mechanics and DEV-to-PROD rebuild — synthetic runtime, no Windows execution",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-27T10:41:06Z",
+          "completed_at": "2026-10-27T10:41:37Z"
+        },
+        {
+          "name": "Complete browser and bridge regressions — declared in-memory backends",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-27T10:41:37Z",
+          "completed_at": "2026-10-27T10:45:20Z"
+        },
+        {
+          "name": "Obtain pinned Microsoft fixed WebView2 runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-27T10:45:20Z",
+          "completed_at": "2026-10-27T10:45:28Z"
+        },
+        {
+          "name": "Assemble separate complete PROD and DEV candidates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-27T10:45:28Z",
+          "completed_at": "2026-10-27T10:46:20Z"
+        },
+        {
+          "name": "Native welcome rendering, cancellation and retry — synthetic UAC result",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-27T10:46:20Z",
+          "completed_at": "2026-10-27T10:46:26Z"
+        },
+        {
+          "name": "Native login controls and protected in-memory credentials — synthetic only",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-27T10:46:26Z",
+          "completed_at": "2026-10-27T10:46:27Z"
+        },
+        {
+          "name": "Native Windows startup, normal close and direct demo API isolation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-27T10:46:27Z",
+          "completed_at": "2026-10-27T10:48:39Z"
+        },
+        {
+          "name": "Native configuration buttons, positive folder selection and update preparation — isolated profiles only",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 14,
+          "started_at": "2026-10-27T10:48:39Z",
+          "completed_at": "2026-10-27T10:49:40Z"
+        },
+        {
+          "name": "Native cross-build ZIP updates — PROD failure/recovery and DEV rollback, isolated copies only",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 15,
+          "started_at": "2026-10-27T10:49:40Z",
+          "completed_at": "2026-10-27T10:49:40Z"
+        },
+        {
+          "name": "Archive candidates and record exact artifact identities",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16,
+          "started_at": "2026-10-27T10:49:40Z",
+          "completed_at": "2026-10-27T10:49:40Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-27T10:49:40Z",
+          "completed_at": "2026-10-27T10:49:42Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-10-27T10:49:42Z",
+          "completed_at": "2026-10-27T10:49:42Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-10-27T10:49:42Z",
+          "completed_at": "2026-10-27T10:49:42Z"
+        },
+        {
+          "name": "Post Run actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 36,
+          "started_at": "2026-10-27T10:49:42Z",
+          "completed_at": "2026-10-27T10:49:42Z"
+        },
+        {
+          "name": "Post Obtain the pinned previous source for a real cross-build update",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-10-27T10:49:42Z",
+          "completed_at": "2026-10-27T10:49:44Z"
+        },
+        {
+          "name": "Post Run actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-27T10:49:44Z",
+          "completed_at": "2026-10-27T10:49:46Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-27T10:49:46Z",
+          "completed_at": "2026-10-27T10:49:46Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/M4D135/pesto/check-runs/122141151557",
+      "labels": [
+        "windows-2025"
+      ],
+      "runner_id": 1000000818,
+      "runner_name": "GitHub Actions 1000000818",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

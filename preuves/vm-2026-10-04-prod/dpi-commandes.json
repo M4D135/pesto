@@ -1,0 +1,14 @@
+﻿[
+    {
+        "Id":  "BtnRun",
+        "Name":  "Exécuter la file",
+        "Offscreen":  true,
+        "Bounds":  "Empty"
+    },
+    {
+        "Id":  "ActionScroll",
+        "Name":  "",
+        "Offscreen":  false,
+        "Bounds":  "350;185;1505;733"
+    }
+]

@@ -1,0 +1,16 @@
+{
+  "review": "spark-final-response.txt",
+  "accepted": [
+    "Les trois filtres de sorties sont confirmés par 8 tests exécutés sur Mac et Windows2022.",
+    "Conserver les limites du scan textuel et de la mesure WPF isolée."
+  ],
+  "rejected": [
+    "Aucune preuve que windows-2025 soit preview; aucun continue-on-error ajouté.",
+    "ACL Microsoft ne prouve ni provenance ni droits de redistribution.",
+    "WDAC et AppLocker sont distincts; aucune politique de sécurité modifiée pour cette recette.",
+    "Points103 et104: lire un partage ou basculer de DC ne qualifie pas concurrence/réplication.",
+    "Point106 porte sur les secrets et ne se qualifie pas par les compteurs mémoire.",
+    "Le brouillon de guide emploie des onglets inexistants et des prérequis non établis; guides existants conservés."
+  ],
+  "codeChangesRequested": false
+}

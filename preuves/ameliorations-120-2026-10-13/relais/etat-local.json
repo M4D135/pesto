@@ -1,0 +1,121 @@
+{
+  "observedUtc": "2026-10-13T19:38:47.808118+00:00",
+  "repository": "/Users/david/Projects/pesto",
+  "branch": "master",
+  "head": "221e050111246c9ca5ec574243ffed578e3a1142",
+  "status": " M CLAUDE.md\n M DEV/.github/workflows/validate.yml\n M DEV/LIRE_MOI.txt\n M DEV/Pesto.exe\n M DEV/README.md\n M DEV/docs/FABRIQUER_PROD.md\n M DEV/docs/SOCLE_COMMUN.md\n M DEV/tests/Async-ScopeFixture.ps1\n M DEV/tests/Run-AllTests.ps1\n M DEV/tests/Run-BulkPlanningTests.ps1\n M DEV/tests/Run-CommonTests.ps1\n M DEV/tests/Run-EngineTests.ps1\n M DEV/tests/Run-HomeDashboardTests.ps1\n M DEV/tests/Run-InterventionViewTests.ps1\n M DEV/tests/Run-JoinTests.ps1\n M DEV/tests/Run-LoginPreferencesTests.ps1\n M DEV/tests/Run-NamesLoadingTests.ps1\n M DEV/tests/Run-Pesto21Tests.ps1\n M DEV/tests/Run-PilotageTests.ps1\n M DEV/tests/Run-QueueRemovalTests.ps1\n M DEV/tests/Run-RC4Tests.ps1\n M DEV/tests/Run-RandomNamesTests.ps1\n M DEV/tests/Run-SettingsTests.ps1\n M DEV/tests/Run-ToolsTabsTests.ps1\n M DEV/tests/Run-UxTests.ps1\n M DEV/tests/Run-ZoomTests.ps1\n M DEV/tests/test_distribution.py\n M DEV/tests/test_reservations_noms.py\n M DEV/tests/test_shared_common.py\n M DEV/tests/test_update_inputs.py\n M DEV/tools/Build-PestoPacks.py\n M DEV/tools/Build-PestoProduction.py\n M DEV/tools/New-PestoDistribution.ps1\n M DEV/tools/Sign-PestoRelease.ps1\n M DEV/tools/launcher/last-build.json\n M DEV/tools/launcher/pesto_runtime.h\n M DEV/tools/package_distribution.py\n M DEV/tools/refresh_manifest.py\n M DEV/tools/update_installation.py\n M DEV/vendor/M4D.Admin.Common/README.md\n M DEV/vendor/M4D.Admin.Common/tests/Core/CoreTests.cs\n M DEV/vendor/M4D.Admin.Common/tests/IO/FileIOTests.cs\n M DEV/vendor/M4D.Admin.Common/tools/build.ps1\n M DEV/vendor/M4D.Admin.Common/tools/test.ps1\n M DEV/vendor/M4D.Admin.Common/version.json\n M DEV/wad/Invoke-PestoAutoJoin.ps1\n M DEV/wad/M4D.Admin.Common.Core.dll\n M DEV/wad/M4D.Admin.Common.Query.dll\n M DEV/wad/Pesto-Appearance.ps1\n M DEV/wad/Pesto-Async.ps1\n M DEV/wad/Pesto-Automation.ps1\n M DEV/wad/Pesto-Common.ps1\n M DEV/wad/Pesto-Configuration.ps1\n M DEV/wad/Pesto-Contracts.ps1\n M DEV/wad/Pesto-Core.ps1\n M DEV/wad/Pesto-Direct.ps1\n M DEV/wad/Pesto-Integrity.ps1\n M DEV/wad/Pesto-Interventions.ps1\n M DEV/wad/Pesto-Join.ps1\n M DEV/wad/Pesto-JoinRecovery.ps1\n M DEV/wad/Pesto-Journal.ps1\n M DEV/wad/Pesto-Operations.ps1\n M DEV/wad/Pesto-Policy.ps1\n M DEV/wad/Pesto-Preparation.ps1\n M DEV/wad/Pesto-Review.ps1\n M DEV/wad/Pesto-Safety.ps1\n M DEV/wad/Pesto-Shell.xaml\n M DEV/wad/Pesto-SuiteUI.ps1\n M DEV/wad/Pesto-Workspace.ps1\n M DEV/wad/common.lock.json\n M DEV/wad/package.json\n M DEV/wad/support/DEBLOQUER_TOUT.cmd\n M README.md\n M outils/guides/administrateur.md\n M outils/guides/technicien.md\n?? .gitattributes\n?? .github/\n?? DEV/.gitattributes\n?? DEV/.github/workflows/release-evidence.yml\n?? DEV/docs/implementation/AUTOMATION_120.md\n?? DEV/docs/implementation/CLOTURE_120.md\n?? DEV/docs/implementation/COMMON_020_INTEGRATION.md\n?? DEV/docs/implementation/ENGINE_120.md\n?? DEV/docs/implementation/EXTENSIONS_120.md\n?? DEV/docs/implementation/GUIDE_TACHES_120.md\n?? DEV/docs/implementation/QUALIFICATION_120.md\n?? DEV/docs/implementation/RELEASE_120.md\n?? DEV/docs/implementation/UI_120.md\n?? DEV/integrations/\n?? DEV/tests/Measure-Engine120.ps1\n?? DEV/tests/Run-BatchNames120Tests.ps1\n?? DEV/tests/Run-CliOutputTests.ps1\n?? DEV/tests/Run-Collections120Tests.ps1\n?? DEV/tests/Run-ConfigEditor120Tests.ps1\n?? DEV/tests/Run-Engine120Tests.ps1\n?? DEV/tests/Run-IntegrationTests.ps1\n?? DEV/tests/Run-OptionalIntegrationsTests.ps1\n?? DEV/tests/Run-ReceiptTools120Tests.ps1\n?? DEV/tests/Run-Workbench120Tests.ps1\n?? DEV/tests/test_checkout_bytes.py\n?? DEV/tests/test_managed_update.py\n?? DEV/tests/test_release_120.py\n?? DEV/tools/Build-PestoEngineModule.ps1\n?? DEV/tools/Capture-PestoQualification.ps1\n?? DEV/tools/Measure-PestoSession.ps1\n?? DEV/tools/Test-PestoEnvironment.ps1\n?? DEV/tools/check_toolchain.py\n?? DEV/tools/installation_receipt.py\n?? DEV/tools/managed_install.py\n?? DEV/tools/qualification.py\n?? DEV/tools/rebind_signed_engine.py\n?? DEV/tools/release_assurance.py\n?? DEV/tools/reproducible_build.py\n?? DEV/tools/scan_evidence.py\n?? DEV/tools/toolchain.lock.json\n?? DEV/tools/update_channels.py\n?? DEV/vendor/M4D.Admin.Common/.github/\n?? DEV/vendor/M4D.Admin.Common/.gitignore\n?? DEV/vendor/M4D.Admin.Common/docs/\n?? DEV/vendor/M4D.Admin.Common/source-commit.txt\n?? DEV/vendor/M4D.Admin.Common/src/Core/Contracts.cs\n?? DEV/vendor/M4D.Admin.Common/src/Diagnostics/\n?? DEV/vendor/M4D.Admin.Common/src/IO/AtomicFile.cs\n?? DEV/vendor/M4D.Admin.Common/src/Wpf/\n?? DEV/vendor/M4D.Admin.Common/tests/Diagnostics/\n?? DEV/vendor/M4D.Admin.Common/tests/Wpf/\n?? DEV/vendor/M4D.Admin.Common/tests/test_release.py\n?? DEV/vendor/M4D.Admin.Common/tools/public_api.ps1\n?? DEV/vendor/M4D.Admin.Common/tools/release.py\n?? DEV/vendor/M4D.Admin.Common/validation/\n?? DEV/wad/Invoke-Pesto.ps1\n?? DEV/wad/M4D.Admin.Common.Diagnostics.dll\n?? DEV/wad/M4D.Admin.Common.IO.dll\n?? DEV/wad/Pesto-BatchTools.ps1\n?? DEV/wad/Pesto-Catalogue.ps1\n?? DEV/wad/Pesto-Collections.ps1\n?? DEV/wad/Pesto-ConfigEditor.ps1\n?? DEV/wad/Pesto-Diagnostics.ps1\n?? DEV/wad/Pesto-EngineContracts.ps1\n?? DEV/wad/Pesto-Enterprise.ps1\n?? DEV/wad/Pesto-ManagedPolicy.ps1\n?? DEV/wad/Pesto-NameWorkbench.ps1\n?? DEV/wad/Pesto-ReceiptTools.ps1\n?? DEV/wad/Pesto-Workbench.ps1\n?? DEV/wad/Pesto.Engine.Runtime.ps1\n?? DEV/wad/Pesto.Engine.build.json\n?? DEV/wad/Pesto.Engine.exports.json\n?? DEV/wad/Pesto.Engine.psd1\n?? DEV/wad/Pesto.Engine.psm1\n?? preuves/ameliorations-120-2026-10-13/\n?? preuves/implementation-120-2026-10-13/\n",
+  "candidateExeSHA256": "4bd73854d6499f3ded5d5712bd5869b441a5641c7401129d947461137bc70cd8",
+  "changedSinceC2": [
+    {
+      "path": "DEV/docs/FABRIQUER_PROD.md",
+      "c2SHA256": "310da07e1ebc78306551da76690cf8b351c4e2fae0b5d20c44cf309e216141ad",
+      "currentSHA256": "995242bc6f16e39a60ce1cea41b0967c6f7637516c74c6b21d4d408f07481318"
+    },
+    {
+      "path": "DEV/docs/implementation/QUALIFICATION_120.md",
+      "c2SHA256": "35a136ae6f14b0d00437319b502a6ca49f333a12aebddc846e35533522a82986",
+      "currentSHA256": "0776ea6478c2a1031ab8503772cc2fe5aada01be49260978a49fcdb054a966f0"
+    },
+    {
+      "path": "DEV/docs/implementation/RELEASE_120.md",
+      "c2SHA256": "f4012b93ea7a518f5ce78a1100197bf46318bd3fd49e30e6364e04451801a46f",
+      "currentSHA256": "cfa8a63a04c58b274b00d4f21213560ce25d1186c99a2fa415e1f292f167d95d"
+    },
+    {
+      "path": "DEV/tests/Async-ScopeFixture.ps1",
+      "c2SHA256": "40ae8ae6d79fc6a4007cc420575807f5b35c1f3191f1903b9f4eff4d80fb7122",
+      "currentSHA256": "d0cb4398b3d683615969b089fe4575f7bf710dc493c9839b62df469d7dee4ef6"
+    },
+    {
+      "path": "DEV/tests/Run-BulkPlanningTests.ps1",
+      "c2SHA256": "1750f01e56377147ab9584eb72f832dd5df95d117468132108dee3e518e69b9c",
+      "currentSHA256": "7f22bfd62fae70d9d17374d217625c5ceba1d18533c25114f3a714b9bbbe21a3"
+    },
+    {
+      "path": "DEV/tests/Run-JoinTests.ps1",
+      "c2SHA256": "a75ca51c712297c4c46183ef2bcd82b722a6baccedb812dba2f9152531649070",
+      "currentSHA256": "d0a95570f5b8e3fe3ad562fd0db3ba4d4e7062296ce5b432af0e85cf24f55999"
+    },
+    {
+      "path": "DEV/tests/Run-LoginPreferencesTests.ps1",
+      "c2SHA256": "ad152046023bd00e48c71aff38d4500837002cb69ede4b5fe2a63a79b109f87a",
+      "currentSHA256": "262fe0c84d07a857e0e170461cd7af6a6a1d57ac9948eb7cdb6cf4a70b1cf5ae"
+    },
+    {
+      "path": "DEV/tests/Run-NamesLoadingTests.ps1",
+      "c2SHA256": "ba5e383a4f60224965ceb8a9a50c3e890b7a2e46859455a679a024b7262be4c4",
+      "currentSHA256": "831c434566c343d34bcaaea71e066ea335b3a3a62620531c85c27ef207be3be1"
+    },
+    {
+      "path": "DEV/tests/Run-Pesto21Tests.ps1",
+      "c2SHA256": "beb916e060587ac468bca5b7715af208ec7343bf28e1aee87025f1387348a1ee",
+      "currentSHA256": "03cf3774070a6a2a61d696792160e2e02ef24016c2420eefde83bde207f0d97b"
+    },
+    {
+      "path": "DEV/tests/Run-PilotageTests.ps1",
+      "c2SHA256": "666aa009cd74b77c06366e2d9091ad8eb45c3ef43ccf3379e1c599a1056eb334",
+      "currentSHA256": "4fa365c60bd241223a90fb9e727818890b5c38e9ed19f79e7a2d8073fa49bb22"
+    },
+    {
+      "path": "DEV/tests/Run-RC4Tests.ps1",
+      "c2SHA256": "235d02c057bac67885d2c1b234d7e00525c1134ee4b8981408e4caa1e70e60cc",
+      "currentSHA256": "6c8cd4480be419255bdb8a7b8fd578f90a55bc95956b3cc5d281cb67c88209a0"
+    },
+    {
+      "path": "DEV/tests/Run-UxTests.ps1",
+      "c2SHA256": "26479a1218f3fe4798172350cb3aef5fe628df15dd1ca23b80267c7ae35a1e4c",
+      "currentSHA256": "ad86c5bca8a81aa8643dbba5b7f2aeb7e300f002edbf08dc60d5809695a21a60"
+    },
+    {
+      "path": "DEV/tests/Run-Workbench120Tests.ps1",
+      "c2SHA256": "7c04e46c69f8d59689e7e304b5884439ce00970434c040fc11c110eed2183198",
+      "currentSHA256": "bb9b61dd8285c3db2f5175f94207675f7c86de69afb10399593bf37ffe055a4d"
+    },
+    {
+      "path": "DEV/tests/test_checkout_bytes.py",
+      "c2SHA256": "beca796338f97b6473d3e10ecdd041cf215ba0b53f60babaee21b49ccd8552aa",
+      "currentSHA256": "1c5ad3f0be1df10e05d90c6c21cf5ab08739ae46ed20bfc6251dfedf38cc5a82"
+    },
+    {
+      "path": "DEV/tests/test_distribution.py",
+      "c2SHA256": "c5e704e2c6af4f026d6e6885e1a7ca1d9cc3e0fca4eae080944a94b719e43d8a",
+      "currentSHA256": "5e43dc02efcbc2b8efd05f5438449fbbdb869817c7c5f336b119b8a9156c1f9e"
+    },
+    {
+      "path": "DEV/tools/New-PestoDistribution.ps1",
+      "c2SHA256": "5a11b489bee6ca694d8415fb8aafbb95f6730c6563a232512a6a2024c8069e3c",
+      "currentSHA256": "8d91d095219dc86569bb70f5dc18dff09c4687acf86256f9d5f36c9616825900"
+    },
+    {
+      "path": "DEV/tools/package_distribution.py",
+      "c2SHA256": "e9ea8e1c81b9f5aaa6115669f9436170a5f095184a1a64da7c35518279212253",
+      "currentSHA256": "d1be8649da2c7a01d093f4aa54cbfdf86aebb2d21638ced33a707ac9355221fb"
+    },
+    {
+      "path": "DEV/wad/Invoke-Pesto.ps1",
+      "c2SHA256": "5d43e59883b4a1eb5d5362f1bf7b665ceb613e0fd7a698e88662f27dc62eb910",
+      "currentSHA256": "9678e77a53987d7e443e9c2614574db36c9e84d440619ec793645b235f6376cc"
+    },
+    {
+      "path": "DEV/wad/Invoke-PestoAutoJoin.ps1",
+      "c2SHA256": "a08930905497bbe95fb59f09ea6a0f04e60b0b8e13cdb446fe64b6c09cb55d52",
+      "currentSHA256": "81a2cfefbfd391ba0bcd88c507b35def9c3bdb6d210142595c4f2db6e556ae07"
+    },
+    {
+      "path": "DEV/wad/Pesto-Diagnostics.ps1",
+      "c2SHA256": "edc81f59f660f3d2320f14c8f8319203097c23f4587533814f89ead9ac5f0eb8",
+      "currentSHA256": "e7f44833f2baae9f85d870ea451158dec27f9d4daed3e7cacf112977b42b64a2"
+    },
+    {
+      "path": "DEV/wad/Pesto-Shell.xaml",
+      "c2SHA256": "26083c6a6c98064b18f325db5872f53dcc881eb62e75d54f072109c894202aa3",
+      "currentSHA256": "2d65792dc2d5355d6f4c5f29cdbaf48aebd1d6c8102d5a7130d499754d71e622"
+    },
+    {
+      "path": "DEV/wad/support/DEBLOQUER_TOUT.cmd",
+      "c2SHA256": "c432992cb3d3ccaaed2cb4b0b34a6d210c340ba1b3319efe7db5ed63d6e795bc",
+      "currentSHA256": "b562441225806fcb92ae4b7b5f86f1c169ed8f3bda20f61bd79fb9258b5cbd79"
+    }
+  ],
+  "limits": "Local read only. No fetch, no new test, no guest verification during handoff."
+}

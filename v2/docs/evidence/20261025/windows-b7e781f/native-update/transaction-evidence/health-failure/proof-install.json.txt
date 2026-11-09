@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-stage",
+  "scenario": "health-failure",
+  "stage": "install",
+  "success": true,
+  "status": "rolledBack",
+  "transactionId": "2ba9aabcb9db46ea97cc36e6756b35a4",
+  "installedFingerprint": "7f5d642e704c474858a15571b2b112aba861355e109fdd9534ae41458cd718cb",
+  "executableSha256": "b1c27d677a6a302abeabf5ebec31a513a0bffb39cbb0a8b648f6dba2d3a877af",
+  "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+  "sentinelSha256": "5bc524ac8f423b5a5c29d415af067a58dc21240e10e35a89fdb37b034d97c2db",
+  "healthAttemptCount": 2,
+  "syntheticManifestVersion": "2.0.0.101",
+  "sourceUnchanged": true,
+  "profileSentinelUnchanged": true,
+  "adExecuted": false
+}

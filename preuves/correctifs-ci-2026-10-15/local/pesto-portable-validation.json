@@ -1,0 +1,3112 @@
+{
+  "version": "1.0",
+  "kind": "Portable source/XML/PE checks; NOT native PowerShell/WPF/AD execution",
+  "windowsExecuted": false,
+  "parser": "PowerShell 7.4.20 Core",
+  "checks": [
+    {
+      "name": "lexical Pesto-Appearance.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Appearance.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Async.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Async.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Authentication.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Authentication.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Automation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Automation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-BatchTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-BatchTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Catalogue.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Catalogue.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-CliHost.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-CliHost.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Collections.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Collections.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Common.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Common.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-ConfigEditor.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-ConfigEditor.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Configuration.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Configuration.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Contracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Contracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Core.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Core.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Diagnostics.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Diagnostics.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Direct.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Direct.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Directory.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Directory.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-EngineContracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-EngineContracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Enterprise.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Enterprise.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Inspection.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Inspection.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Integrity.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Integrity.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Interventions.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Interventions.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-JoinRecovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-JoinRecovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Journal.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Journal.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-ManagedPolicy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-ManagedPolicy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-NameWorkbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-NameWorkbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Names.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Names.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Operations.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Operations.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Policy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Policy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Preparation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Preparation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-ReceiptTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-ReceiptTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Recovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Recovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Review.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Review.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Safety.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Safety.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Startup.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Startup.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-SuiteUI.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-SuiteUI.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Support.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Support.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Tables.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Tables.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-UXFlow.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-UXFlow.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Workbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Workbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical Pesto-Workspace.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "smart quote safety Pesto-Workspace.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Regression-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Regression-Sso.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Test-Pesto15.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Test-Pesto16.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Test-Pesto18.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Test-Pesto19.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Test-PestoDistribution.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "lexical maintenance Test-PestoStartupLayout.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no duplicate functions across runtime",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "shell XML",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "join XML",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Authentication.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Authentication.ps1 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-BatchTools.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Configuration.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Configuration.ps1 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Core.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Core.ps1 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Core.ps1 2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Core.ps1 3",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Inspection.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Interventions.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Interventions.ps1 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Support.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Support.ps1 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "secondary window XML Pesto-Workbench.ps1 0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "shell non-template names unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "join names unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "shell resource references",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "join resource references",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "hover NavHome",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavRename",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavBatch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavJoin",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavNames",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavHistory",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavLogs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavSettings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NavHelp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteNavToggle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover WorkspaceButton",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnLog",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnTheme",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnHelp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteModeSingle",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteModeBatch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuitePostState",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteRefreshSite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover ChkRemote",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover TxtPCName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnReadComputer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover CbOrg",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover CbSite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover CbService",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover CbType",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover CbName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnOtherName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover ChkRename",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover ChkMove",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover ChkReboot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepList",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepSave",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepRestore",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepImportCollection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepExportCollection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepHardware",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PrepClear",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnAdd",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoExactName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnCopyNewName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoTicketReference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnInlineHelp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoNextOperation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteDirectVerify",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteDirectDetails",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteDirectCancelRead",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnPreflight",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnPreview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnDetails",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnDelete",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnBulk",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnCancelPreflight",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover TxtQueueSearch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover CmbQueueFilter",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover Grid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnCheckAll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnUncheckAll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover ChkTechnicalColumns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover QueueViews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover QueueCollection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover QueueMultiEdit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover QueueUndo",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnEdit",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnClear",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover QueueMappedImport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnImport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnExport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnHtmlReport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnHistory",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnRetryMove",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnSafetyReset",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnSafetyAck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteDirectCheck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteDirectRun",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover ChkConfirm",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover QueuePilot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnRun",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnStop",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmRefreshSite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnNextP",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnNextS",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnNextV",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmCmbSite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmCmbEquipe",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmCmbType",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmCmbStatut",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmTxtSearch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmChkAll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmGrid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnRetryNames",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmPrevPage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmNextPage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmSuggestions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmOtherNames",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmSharedRegistry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmVerifyCandidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmUseCandidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmHoldCandidates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmReleaseCandidate",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmViews",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmSaveCollection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmCapacity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmConformity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmExclusionDetails",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnCopy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnExport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmBtnRefresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmStrategy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmServiceInput",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover NmAddService",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetCmbDarkMode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteAppearanceNav",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteAppearanceHelp",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoNotifyBatch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteAppearanceDensity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteAppearanceSaveColumns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteAppearanceResetColumns",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtDomaine",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtADM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtPrefixe",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtPreprod",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtBuffer",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkDirectProd",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtOUScan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnBrowseScan",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkDsreg",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtCoordRoot",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnCoordPrepare",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnCoordTest",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtReserveMinutes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkCoordRequired",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkRandomName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkReserveAD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkClockSkew",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkPrecreated",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtMaxBatch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtMaxReaders",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtLogRetention",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtReadAttempts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkClearProtection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkPasswordFallback",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtExcludedNames",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtExcludedOUs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetTxtExcludedGroups",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnTagAdd",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnTagDel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetGridTags",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnBaseBrowse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnBaseAdd",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnBaseDel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetGridOUBase",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnSiteBrowse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnSiteAdd",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnSiteDel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetGridOUSite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkIncidentMode",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkUnattendedOperations",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkUnattendedJoin",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkGUI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkSim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkODM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkWOU",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkBVA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetChkGOD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetConfigJson",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetConfigNames",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBrowseOU",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBrowseExcludedGroup",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetResetField",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetResetSection",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnConfigImport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnConfigExport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnConfigRestore",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnSave",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetSearchSettings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnConfigPreview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnReload",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SetBtnConfigAD",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogSearch",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogLevel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogErrors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogRefresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogDiagnostic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogFollow",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogWrap",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogMinus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteLogPlus",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeRefresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeInterventions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeOpenReceipt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeHistory",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomePrepare",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeQueue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeJoin",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover HomeNames",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnInterventions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover BtnHistoryRefresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover UxHistoryGrid",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteHelpClose",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteHelpGuide",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover SuiteHelpDiagnostic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoZoomOut",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoZoomReset",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover PestoZoomIn",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnRefresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnReview",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnRename",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnType",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnOrg",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnSite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnService",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnOtherName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnName",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnReference",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnCopy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnExisting",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnChecks",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnLog",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnExport",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnCancelRead",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnCheck",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnStart",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnLater",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "hover JnRestart",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "eight routed pages",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "single / batch / join navigation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "site search above site removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "join result popup",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "direct result popup",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "queue result popup",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "configuration section titles human",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "theme labels not numeric",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no theme applied by cfg reload",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "cfg save does not require empty queue",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "business invalidation keeps rows",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "unwanted login phrase removed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "login NoResize",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "light directory login",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no network on hostname typing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "direct no queue insertion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "join no queue insertion",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "join no Entra leave",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same site decision preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no implicit reboot in direct",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "direct receipt protected atomic",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "machine-wide mutation guard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "late return fence direct",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "resume compares operation and GUID",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "CIM observation uses DCOM",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no write commands in observation worker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "origin SID appearance flow",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "appearance no profile loading",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "diagnostic excludes raw free text",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "all named callback functions defined",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "core worker exports defined",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "worker dependency closure",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "Get-PestoJoinWorkerSource definitions present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "Get-PestoDirectSupportSource definitions present",
+      "passed": true,
+      "detail": "[]"
+    },
+    {
+      "name": "component loaded Pesto-Appearance.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Async.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Authentication.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Automation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-BatchTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Catalogue.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-CliHost.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Collections.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Common.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-ConfigEditor.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Configuration.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Contracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Diagnostics.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Direct.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Directory.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-EngineContracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Enterprise.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Inspection.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Integrity.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Interventions.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-JoinRecovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Journal.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-ManagedPolicy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-NameWorkbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Names.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Operations.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Policy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Preparation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-ReceiptTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Recovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Review.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Safety.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-SuiteUI.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Support.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Tables.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-UXFlow.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Workbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "component loaded Pesto-Workspace.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "native PE32+ x64 GUI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "launcher only system Windows imports",
+      "passed": true,
+      "detail": "['KERNEL32.dll', 'USER32.dll', 'SHELL32.dll']"
+    },
+    {
+      "name": "unsigned binary identified",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no native-launcher CLR dependency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "launcher manifest asInvoker",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "EXE version 1.0",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "EXE embeds original icon",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package manifest version/count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash Pesto.exe",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/ActiveDirectory.Format.ps1xml",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/ActiveDirectory.Types.ps1xml",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/ActiveDirectory.psd1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/ActiveDirectoryPowerShellResources.dll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Appearance.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Async.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Automation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Enterprise.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Catalogue.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-ConfigEditor.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Diagnostics.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-EngineContracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-NameWorkbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-ReceiptTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Workbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-BatchTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Collections.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto.Engine.Runtime.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto.Engine.psm1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto.Engine.psd1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto.Engine.build.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Invoke-Pesto.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-CliHost.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Invoke-PestoAutoJoin.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Authentication.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Configuration.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Contracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Common.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/common.lock.json",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/M4D.Admin.Common.Core.dll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/M4D.Admin.Common.Query.dll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/M4D.Admin.Common.IO.dll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/M4D.Admin.Common.Diagnostics.dll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-JoinRecovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-UXFlow.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Policy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-ManagedPolicy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Names.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-LogWriter.cs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Workspace.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Review.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Tables.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Recovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Core.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Direct.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Directory.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Inspection.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Integrity.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Join.xaml",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Journal.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Operations.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Shell.xaml",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Safety.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Interventions.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Preparation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Startup.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-SuiteUI.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto-Support.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Microsoft.ActiveDirectory.Management.dll",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/fr-FR/ActiveDirectoryPowerShellResources.dll.mui",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "package hash wad/Pesto.ico",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "version stamped from tools/version.json",
+      "passed": true,
+      "detail": "CHECK 1.0 / 1.0.0.0 OK\n"
+    },
+    {
+      "name": "real parser available",
+      "passed": true,
+      "detail": "PowerShell 7.4.20 Core"
+    },
+    {
+      "name": "real parser tools/Build-Pesto.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Build-PestoEngineModule.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Capture-PestoQualification.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Diagnostic-Rename.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Initialize-Coordination.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Install-Pesto.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Measure-PestoAddType.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Measure-PestoCoordinationRace.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Measure-PestoReadLoad.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Measure-PestoSession.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Measure-PestoWpfProjection.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/New-PestoDistribution.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Observe-PestoReplication.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/PestoWpfBench.Common.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Sign-PestoRelease.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Test-PestoEnvironment.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Update-PackageManifest.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Validate-PestoBuild.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Verify-Release.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tools/Verify-StartupUac.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Invoke-Pesto.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Invoke-PestoAutoJoin.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Appearance.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Async.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Authentication.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Automation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-BatchTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Catalogue.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-CliHost.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Collections.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Common.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-ConfigEditor.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Configuration.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Contracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Core.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Diagnostics.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Direct.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Directory.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-EngineContracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Enterprise.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Inspection.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Integrity.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Interventions.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-JoinRecovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Journal.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-ManagedPolicy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Names.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-NameWorkbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Operations.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Policy.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Preparation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-ReceiptTools.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Recovery.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Review.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Safety.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Startup.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-SuiteUI.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Support.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Tables.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-UXFlow.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Workbench.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto-Workspace.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/Pesto.Engine.Runtime.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Regression-Join.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Regression-Sso.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Test-Pesto15.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Test-Pesto16.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Test-Pesto18.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Test-Pesto19.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Test-PestoDistribution.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser wad/maintenance/Test-PestoStartupLayout.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Async-ScopeFixture.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Measure-Engine120.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Pesto.RC21.Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Pesto.Safety.Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-AcknowledgementTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-AllTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-AsyncTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-AuditPathTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-AutomationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-BatchNames120Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-BootIdentityTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-BulkPlanningTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-CliOutputTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-Collections120Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-CommonTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ConfigEditor120Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-DirectoryCacheTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-DomainNavigationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-Engine120Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-EngineTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-HeadlessAuditTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-HomeDashboardTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-IntegrationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-InterventionViewTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-JoinReservationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-JoinTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-LoginPreferencesTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-LoginTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-NamesLoadingTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-OptionalFollowupUiTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-OptionalIntegrationsTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-OptionalPostCheckTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-PackageTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-Pesto21Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-Pesto22Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-Pesto23Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-PilotageTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ProgressTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-QueueRemovalTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-RandomNamesTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-RC14Validation.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-RC4Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ReceiptTools120Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ReconciliationAuditTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ReliabilityTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-RemotePreparationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-SettingsTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-SharedNameReservationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-SsoTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-StabilisationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-StartupTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ToolsTabsTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-UiPresentationTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-UxTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-V1ImprovementsTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-Workbench120Tests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-WorkerContractTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-WpfProjectionBenchTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser tests/Run-ZoomTests.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser integrations/Invoke-PestoDeployment.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser vendor/M4D.Admin.Common/tools/build.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser vendor/M4D.Admin.Common/tools/public_api.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser vendor/M4D.Admin.Common/tools/test.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser vendor/M4D.Admin.Common/tests/Wpf/Run-WpfContracts.ps1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "real parser vendor/M4D.Admin.Common/tests/Query/Test-Query.ps1",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "passed": 620,
+  "failed": 0,
+  "exeSha256": "add688198e38269f4d3d8084bba9bd3b3a5664f1336ec961677c130eb2d75e7f",
+  "runtimeFunctions": 892
+}

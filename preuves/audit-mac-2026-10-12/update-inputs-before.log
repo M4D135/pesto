@@ -1,0 +1,433 @@
+test_cli_refuses_invalid_manifest_without_traceback_or_changes (__main__.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) ... 
+  test_cli_refuses_invalid_manifest_without_traceback_or_changes (__main__.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) (flags=[]) ... FAIL
+  test_cli_refuses_invalid_manifest_without_traceback_or_changes (__main__.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) (flags=['--apply']) ... FAIL
+test_downgrade_check_rejects_nonobject_manifest (__main__.UpdateInputTests.test_downgrade_check_rejects_nonobject_manifest) ... ERROR
+test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) ... 
+  test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value=[]) ... ERROR
+  test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value=None) ... ERROR
+  test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value=42) ... ERROR
+  test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value='entry') ... ERROR
+test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) ... 
+  test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value=[]) ... ERROR
+  test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value=None) ... ERROR
+  test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value={}) ... ERROR
+  test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value=42) ... ERROR
+test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) ... 
+  test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value=[]) ... ERROR
+  test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value=None) ... ERROR
+  test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value=42) ... ERROR
+  test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value='manifest') ... ERROR
+test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) ... 
+  test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value=[]) ... ERROR
+  test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value=None) ... ERROR
+  test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value={}) ... ERROR
+  test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value=42) ... ERROR
+test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) ... 
+  test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value=[]) ... ERROR
+  test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value=None) ... ERROR
+  test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value=42) ... ERROR
+  test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value='receipt') ... ERROR
+test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) ... 
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root=[]) ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry=[]) ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root=None) ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry=None) ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root=42) ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry=42) ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root='manifest') ... ERROR
+  test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry='manifest') ... ERROR
+
+======================================================================
+ERROR: test_downgrade_check_rejects_nonobject_manifest (__main__.UpdateInputTests.test_downgrade_check_rejects_nonobject_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 77, in test_downgrade_check_rejects_nonobject_manifest
+    update._assert_not_downgrade(self.installed, False)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 65, in _assert_not_downgrade
+    version=str(data.get('Version',''))
+                ^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 56, in test_installed_entries_must_be_objects
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 22, in old_components
+    name=entry.get('Path'); validate_relative(name)
+         ^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 56, in test_installed_entries_must_be_objects
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 22, in old_components
+    name=entry.get('Path'); validate_relative(name)
+         ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 56, in test_installed_entries_must_be_objects
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 22, in old_components
+    name=entry.get('Path'); validate_relative(name)
+         ^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) (value='entry')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 56, in test_installed_entries_must_be_objects
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 22, in old_components
+    name=entry.get('Path'); validate_relative(name)
+         ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 72, in test_installed_hash_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 27, in old_components
+    if not re.fullmatch(r'[a-fA-F0-9]{64}',digest) or file_hash(safe_file(root,name)).lower()!=digest.lower():
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'list'
+
+======================================================================
+ERROR: test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 72, in test_installed_hash_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 27, in old_components
+    if not re.fullmatch(r'[a-fA-F0-9]{64}',digest) or file_hash(safe_file(root,name)).lower()!=digest.lower():
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'NoneType'
+
+======================================================================
+ERROR: test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 72, in test_installed_hash_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 27, in old_components
+    if not re.fullmatch(r'[a-fA-F0-9]{64}',digest) or file_hash(safe_file(root,name)).lower()!=digest.lower():
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'dict'
+
+======================================================================
+ERROR: test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) (value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 72, in test_installed_hash_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 27, in old_components
+    if not re.fullmatch(r'[a-fA-F0-9]{64}',digest) or file_hash(safe_file(root,name)).lower()!=digest.lower():
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'int'
+
+======================================================================
+ERROR: test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 46, in test_installed_manifest_must_be_object
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+       ^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 46, in test_installed_manifest_must_be_object
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+       ^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 46, in test_installed_manifest_must_be_object
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+       ^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) (value='manifest')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 46, in test_installed_manifest_must_be_object
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+       ^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+ERROR: test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 63, in test_installed_version_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+                                                                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'list'
+
+======================================================================
+ERROR: test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 63, in test_installed_version_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+                                                                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'NoneType'
+
+======================================================================
+ERROR: test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 63, in test_installed_version_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+                                                                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'dict'
+
+======================================================================
+ERROR: test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) (value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 63, in test_installed_version_must_be_string
+    update.old_components(self.installed)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components
+    if data.get('Schema') != 2 or data.get('Scope') != 'Runtime' or not re.fullmatch(r'17\.0-RC(?:18|19|20|21|22|23)|1\.\d+',data.get('Version','')):
+                                                                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'int'
+
+======================================================================
+ERROR: test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 91, in test_local_receipt_must_be_object_and_is_preserved
+    update.check_local_states()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 84, in check_local_states
+    if state.get('Phase') not in ('Failed','NotStarted','Verified'):
+       ^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 91, in test_local_receipt_must_be_object_and_is_preserved
+    update.check_local_states()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 84, in check_local_states
+    if state.get('Phase') not in ('Failed','NotStarted','Verified'):
+       ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 91, in test_local_receipt_must_be_object_and_is_preserved
+    update.check_local_states()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 84, in check_local_states
+    if state.get('Phase') not in ('Failed','NotStarted','Verified'):
+       ^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) (value='receipt')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 91, in test_local_receipt_must_be_object_and_is_preserved
+    update.check_local_states()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 84, in check_local_states
+    if state.get('Phase') not in ('Failed','NotStarted','Verified'):
+       ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 119, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 135, in verify_runtime
+    entries = manifest.get("Files")
+              ^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 125, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 141, in verify_runtime
+    relative = entry.get("Path")
+               ^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 119, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 135, in verify_runtime
+    entries = manifest.get("Files")
+              ^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 125, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 141, in verify_runtime
+    relative = entry.get("Path")
+               ^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 119, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 135, in verify_runtime
+    entries = manifest.get("Files")
+              ^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 125, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 141, in verify_runtime
+    relative = entry.get("Path")
+               ^^^^^^^^^
+AttributeError: 'int' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (root='manifest')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 119, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 135, in verify_runtime
+    entries = manifest.get("Files")
+              ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+ERROR: test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) (entry='manifest')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 125, in test_source_manifest_and_entries_must_be_objects
+    verify_runtime(self.installed)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 141, in verify_runtime
+    relative = entry.get("Path")
+               ^^^^^^^^^
+AttributeError: 'str' object has no attribute 'get'
+
+======================================================================
+FAIL: test_cli_refuses_invalid_manifest_without_traceback_or_changes (__main__.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) (flags=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 109, in test_cli_refuses_invalid_manifest_without_traceback_or_changes
+    self.assertIn('Update refused:', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Update refused:' not found in 'Traceback (most recent call last):\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 633, in <module>\n    if __name__==\'__main__\':main()\n                            ~~~~^^\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 625, in main\n    else:result=apply_update(a.source,a.destination,allow_downgrade=a.allow_downgrade) if a.apply else plan_update(a.source,a.destination,allow_downgrade=a.allow_downgrade)\n                                                                                                       ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 366, in plan_update\n    before=old_components(destination)\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components\n    if data.get(\'Schema\') != 2 or data.get(\'Scope\') != \'Runtime\' or not re.fullmatch(r\'17\\.0-RC(?:18|19|20|21|22|23)|1\\.\\d+\',data.get(\'Version\',\'\')):\n       ^^^^^^^^\nAttributeError: \'list\' object has no attribute \'get\'\n'
+
+======================================================================
+FAIL: test_cli_refuses_invalid_manifest_without_traceback_or_changes (__main__.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) (flags=['--apply'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 109, in test_cli_refuses_invalid_manifest_without_traceback_or_changes
+    self.assertIn('Update refused:', result.stderr)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'Update refused:' not found in 'Traceback (most recent call last):\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 633, in <module>\n    if __name__==\'__main__\':main()\n                            ~~~~^^\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 625, in main\n    else:result=apply_update(a.source,a.destination,allow_downgrade=a.allow_downgrade) if a.apply else plan_update(a.source,a.destination,allow_downgrade=a.allow_downgrade)\n                ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 472, in apply_update\n    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 366, in plan_update\n    before=old_components(destination)\n  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 17, in old_components\n    if data.get(\'Schema\') != 2 or data.get(\'Scope\') != \'Runtime\' or not re.fullmatch(r\'17\\.0-RC(?:18|19|20|21|22|23)|1\\.\\d+\',data.get(\'Version\',\'\')):\n       ^^^^^^^^\nAttributeError: \'list\' object has no attribute \'get\'\n'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.175s
+
+FAILED (failures=2, errors=29)

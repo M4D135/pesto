@@ -1,0 +1,23 @@
+{
+  "sourceCommit": "e18d0f89d5f7fd60be8ce022fdf243d103cd3c81",
+  "workflowRunId": 40691329646,
+  "artifactsDownloaded": false,
+  "apiMetadataOnly": true,
+  "files": [
+    {
+      "path": "github-artifacts.json",
+      "bytes": 2570,
+      "sha256": "f160a0db6bb839e7b12457fd213e66f08fa7923536ec77cfb39d2d3f14c9dc7a"
+    },
+    {
+      "path": "workflow-jobs.json",
+      "bytes": 5217,
+      "sha256": "fabadb1b81f0b8783116c95736424bf093145791b3ca4de605ed9fec948f56b8"
+    },
+    {
+      "path": "workflow-run.json",
+      "bytes": 12852,
+      "sha256": "1c32f97247f38a1637b8d9e6aad4fc6bc64bc2608a78d7f5f0b57db07202ea90"
+    }
+  ]
+}

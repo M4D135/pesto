@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="32" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-04" time="22:36:41">
+  <environment clr-version="4.0.30319.42000" user-domain="LABO" cwd="C:\Users\labadmin" platform="Microsoft Windows 11 Enterprise Evaluation|C:\WINDOWS|\Device\Harddisk0\Partition4" machine-name="V999004AAQA1004" nunit-version="2.5.8.0" os-version="10.0.26200" user="labadmin" />
+  <culture-info current-culture="fr-FR" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="4.8803" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\PestoTest\tests\Pesto.Safety.Tests.ps1" executed="True" result="Success" success="True" time="2.0751" asserts="0" description="C:\PestoTest\tests\Pesto.Safety.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="Native codes independent of language" executed="True" result="Success" success="True" time="0.4672" asserts="0" description="Native codes independent of language">
+            <results>
+              <test-suite type="ParameterizedTest" name="Native codes independent of language.Preserves Win32 code &lt;Code&gt;" executed="True" result="Success" success="True" time="0.3949" asserts="0" description="Preserves Win32 code &lt;Code&gt;">
+                <results>
+                  <test-case description="Preserves Win32 code 5" name="Native codes independent of language.Preserves Win32 code 5" time="0.2337" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Preserves Win32 code 1314" name="Native codes independent of language.Preserves Win32 code 1314" time="0.0198" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Preserves Win32 code 1326" name="Native codes independent of language.Preserves Win32 code 1326" time="0.0104" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Preserves Win32 code 2732" name="Native codes independent of language.Preserves Win32 code 2732" time="0.009" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Preserves Win32 code 1722" name="Native codes independent of language.Preserves Win32 code 1722" time="0.122" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Entra decision before any removal" executed="True" result="Success" success="True" time="0.6045" asserts="0" description="Entra decision before any removal">
+            <results>
+              <test-case description="AD only never requests leave, even if permitted" name="Entra decision before any removal.AD only never requests leave, even if permitted" time="0.0463" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Hybrid disabled refuses, instead of silently proceeding" name="Entra decision before any removal.Hybrid disabled refuses, instead of silently proceeding" time="0.0124" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Hybrid approved requests preparation" name="Entra decision before any removal.Hybrid approved requests preparation" time="0.017" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Missing or ambiguous status fails closed" name="Entra decision before any removal.Missing or ambiguous status fails closed" time="0.0525" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Persistent target conflicts" executed="True" result="Success" success="True" time="0.9598" asserts="0" description="Persistent target conflicts">
+            <results>
+              <test-case description="Blocks matching unresolved target" name="Persistent target conflicts.Blocks matching unresolved target" time="0.0626" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Does not conflict after verification" name="Persistent target conflicts.Does not conflict after verification" time="0.0322" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Does not equate two domains" name="Persistent target conflicts.Does not equate two domains" time="0.2379" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Task definition fingerprint" executed="True" result="Success" success="True" time="1.058" asserts="0" description="Task definition fingerprint">
+            <results>
+              <test-case description="Changes if task contents change" name="Task definition fingerprint.Changes if task contents change" time="0.038" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Rejects absent and oversized content" name="Task definition fingerprint.Rejects absent and oversized content" time="0.0462" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+      <test-suite type="TestFixture" name="C:\PestoTest\tests\Pesto.RC21.Tests.ps1" executed="True" result="Success" success="True" time="2.8052" asserts="0" description="C:\PestoTest\tests\Pesto.RC21.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="RC21 : aucune répétition des effets confirmés" executed="True" result="Success" success="True" time="0.4846" asserts="0" description="RC21 : aucune répétition des effets confirmés">
+            <results>
+              <test-suite type="ParameterizedTest" name="RC21 : aucune répétition des effets confirmés.Refuse de demander à nouveau &lt;Field&gt; confirmé" executed="True" result="Success" success="True" time="0.2644" asserts="0" description="Refuse de demander à nouveau &lt;Field&gt; confirmé">
+                <results>
+                  <test-case description="Refuse de demander à nouveau Rename confirmé" name="RC21 : aucune répétition des effets confirmés.Refuse de demander à nouveau Rename confirmé" time="0.2349" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Refuse de demander à nouveau Move confirmé" name="RC21 : aucune répétition des effets confirmés.Refuse de demander à nouveau Move confirmé" time="0.0295" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-case description="Persiste un effet avant de rendre la main à l’appelant" name="RC21 : aucune répétition des effets confirmés.Persiste un effet avant de rendre la main à l’appelant" time="0.1646" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Une panne d’écriture remonte et interdit une suite normale" name="RC21 : aucune répétition des effets confirmés.Une panne d’écriture remonte et interdit une suite normale" time="0.0367" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="RC21 : contrat figé et entrées fermées" executed="True" result="Success" success="True" time="0.9122" asserts="0" description="RC21 : contrat figé et entrées fermées">
+            <results>
+              <test-suite type="ParameterizedTest" name="RC21 : contrat figé et entrées fermées.Le changement de &lt;Field&gt; invalide la confirmation" executed="True" result="Success" success="True" time="0.1974" asserts="0" description="Le changement de &lt;Field&gt; invalide la confirmation">
+                <results>
+                  <test-case description="Le changement de DC invalide la confirmation" name="RC21 : contrat figé et entrées fermées.Le changement de DC invalide la confirmation" time="0.1084" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Le changement de Nouveau_Nom invalide la confirmation" name="RC21 : contrat figé et entrées fermées.Le changement de Nouveau_Nom invalide la confirmation" time="0.0223" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Le changement de TargetOUGuid invalide la confirmation" name="RC21 : contrat figé et entrées fermées.Le changement de TargetOUGuid invalide la confirmation" time="0.0311" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="Le changement de Reboot invalide la confirmation" name="RC21 : contrat figé et entrées fermées.Le changement de Reboot invalide la confirmation" time="0.0355" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-case description="N’accepte pas une chaîne false comme autorisation" name="RC21 : contrat figé et entrées fermées.N’accepte pas une chaîne false comme autorisation" time="0.0186" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Une réponse vide ou textuelle ne prouve pas un succès" name="RC21 : contrat figé et entrées fermées.Une réponse vide ou textuelle ne prouve pas un succès" time="0.0222" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Un brouillon contenant un mot de passe est refusé" name="RC21 : contrat figé et entrées fermées.Un brouillon contenant un mot de passe est refusé" time="0.1752" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="RC21 : barrières avant transport" executed="True" result="Success" success="True" time="1.1452" asserts="0" description="RC21 : barrières avant transport">
+            <results>
+              <test-case description="Consultation refuse sans chercher la cible dans AD" name="RC21 : barrières avant transport.Consultation refuse sans chercher la cible dans AD" time="0.075" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Une exclusion de nom refuse avant transport" name="RC21 : barrières avant transport.Une exclusion de nom refuse avant transport" time="0.0619" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="La préparation Entra AD seule reste sans retrait" name="RC21 : barrières avant transport.La préparation Entra AD seule reste sans retrait" time="0.0177" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Un refus d’authentification ne boucle pas" name="RC21 : barrières avant transport.Un refus d’authentification ne boucle pas" time="0.0692" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="RC21 : noms et annulation" executed="True" result="Success" success="True" time="1.4254" asserts="0" description="RC21 : noms et annulation">
+            <results>
+              <test-case description="La dernière page ne conserve que 249 lignes sur 999" name="RC21 : noms et annulation.La dernière page ne conserve que 249 lignes sur 999" time="0.1317" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="Un calcul déjà remplacé est refusé" name="RC21 : noms et annulation.Un calcul déjà remplacé est refusé" time="0.0822" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="La réserve de file n’est jamais présentée comme libre AD" name="RC21 : noms et annulation.La réserve de file n’est jamais présentée comme libre AD" time="0.0574" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

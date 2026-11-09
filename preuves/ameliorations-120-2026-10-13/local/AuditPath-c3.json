@@ -1,0 +1,27 @@
+{
+  "Suite": "AuditPath",
+  "Total": 3,
+  "Passed": 3,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "Plain directory creates a working audit writer",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Linked ancestor rejected before creating its descendant",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Existing linked directory receives no new daily journal",
+      "Passed": true,
+      "Error": ""
+    }
+  ],
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "Scope": "Real journal initializer and writer, isolated directories and real symlink; no production audit files"
+}

@@ -1,0 +1,1 @@
+PASS: actual RC22 bytes recovered after 4 selected interruption boundaries, then RC23 applied; cfg preserved (Linux fixtures).

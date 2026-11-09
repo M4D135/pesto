@@ -1,0 +1,574 @@
+{
+  "version": "17.0-RC13",
+  "utc": "2026-10-12T13:50:04.832071+00:00",
+  "scope": "Source-only checks. No native PowerShell parser, WPF, UAC, AD or Windows execution.",
+  "core_sha256": "97a31f8adcda2f184c7b788c7a86ce8d254ad76de1e14999cf35faadbaf46d0f",
+  "files": [
+    "Pesto-Appearance.ps1",
+    "Pesto-Async.ps1",
+    "Pesto-Authentication.ps1",
+    "Pesto-Configuration.ps1",
+    "Pesto-Contracts.ps1",
+    "Pesto-Core.ps1",
+    "Pesto-Direct.ps1",
+    "Pesto-Directory.ps1",
+    "Pesto-Inspection.ps1",
+    "Pesto-Integrity.ps1",
+    "Pesto-Interventions.ps1",
+    "Pesto-Join.ps1",
+    "Pesto-JoinRecovery.ps1",
+    "Pesto-Journal.ps1",
+    "Pesto-Names.ps1",
+    "Pesto-Operations.ps1",
+    "Pesto-Policy.ps1",
+    "Pesto-Preparation.ps1",
+    "Pesto-Recovery.ps1",
+    "Pesto-Review.ps1",
+    "Pesto-Safety.ps1",
+    "Pesto-SuiteUI.ps1",
+    "Pesto-Support.ps1",
+    "Pesto-Tables.ps1",
+    "Pesto-UXFlow.ps1",
+    "Pesto-Workspace.ps1"
+  ],
+  "passed": 109,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Core and its dot-sourced components are all present, each function defined once",
+      "passed": true,
+      "detail": {
+        "missing_components": [],
+        "duplicates": {}
+      }
+    },
+    {
+      "name": "True Windows principal, not a trusted flag",
+      "passed": true
+    },
+    {
+      "name": "Returned non-admin relay cannot loop",
+      "passed": true
+    },
+    {
+      "name": "Demo explicitly separated",
+      "passed": true
+    },
+    {
+      "name": "UAC relay via RunAs",
+      "passed": true
+    },
+    {
+      "name": "Appel natif unique de relais UAC",
+      "passed": true,
+      "detail": {
+        "launch_calls": 1
+      }
+    },
+    {
+      "name": "No credential in native process arguments",
+      "passed": true
+    },
+    {
+      "name": "No encoded command or policy bypass in startup",
+      "passed": true
+    },
+    {
+      "name": "Bounded cancellation test, no retry",
+      "passed": true
+    },
+    {
+      "name": "Child exit code propagated, process disposed",
+      "passed": true
+    },
+    {
+      "name": "Elevation and parent exit before core",
+      "passed": true,
+      "detail": {
+        "elevation_call": 27600,
+        "parent_exit": 27817,
+        "core_call": 29929
+      }
+    },
+    {
+      "name": "Relative config resolved before elevation",
+      "passed": true
+    },
+    {
+      "name": "Recheck before core",
+      "passed": true
+    },
+    {
+      "name": "State imported before core when account changes",
+      "passed": true
+    },
+    {
+      "name": "Direct core startup cannot bypass elevation",
+      "passed": true
+    },
+    {
+      "name": "Direct core parent exits after relay",
+      "passed": true
+    },
+    {
+      "name": "No delayed UAC in rename or join",
+      "passed": true
+    },
+    {
+      "name": "Remote explicit credential branch guarded before Entra leave",
+      "passed": true
+    },
+    {
+      "name": "Domain credential reused by rename",
+      "passed": true
+    },
+    {
+      "name": "Missing local token stops with code 96",
+      "passed": true
+    },
+    {
+      "name": "Queue validates admin before confirmations",
+      "passed": true
+    },
+    {
+      "name": "Login window cannot maximize",
+      "passed": true
+    },
+    {
+      "name": "Login checks token before XAML",
+      "passed": true
+    },
+    {
+      "name": "Windows-session credential limitation visible",
+      "passed": true
+    },
+    {
+      "name": "State writes do not overwrite existing data",
+      "passed": true
+    },
+    {
+      "name": "Original checkpoint is read-only during import",
+      "passed": true
+    },
+    {
+      "name": "State import conflict is explicit",
+      "passed": true
+    },
+    {
+      "name": "Prior import hash tracked, no repetitive restoration",
+      "passed": true
+    },
+    {
+      "name": "Reparse links rejected and read size bounded",
+      "passed": true
+    },
+    {
+      "name": "Only declared functions changed from the current baseline",
+      "passed": true,
+      "detail": {
+        "intentional_changes": [
+          "Add-PestoDomainIdentityCause",
+          "Get-PestoDomainIdentityWarning"
+        ],
+        "baseline_functions": 585,
+        "baseline_commit": "3d72d02d966a064d64f1edb4002f101f60cfb614",
+        "obsolete_baseline_names": 0,
+        "obsolete_examples": [],
+        "rc10_history_informational_only": {
+          "historical_file": "tests/rc10-core-baseline.json",
+          "historical_version": "17.0-RC10",
+          "historical_functions": 269,
+          "names_gone_since_historical": 150,
+          "names_gone_examples": [
+            "Apply-GPComputerProbeResult",
+            "Assert-GPWorkerMayContinue",
+            "Close-GPStartupWindow",
+            "Complete-GPComputerProbeError",
+            "Complete-GPComputerProbeSuccess",
+            "Complete-GPDirectoryRefresh",
+            "Complete-GPLoginError",
+            "Complete-GPLoginSuccess"
+          ],
+          "changed_bodies_since_historical": 84
+        }
+      }
+    },
+    {
+      "name": "Current baseline unchanged: Invoke-PestoDsregLeaveLocal",
+      "passed": true
+    },
+    {
+      "name": "Current baseline unchanged: Invoke-PestoDsregLeaveBeforeRename",
+      "passed": true
+    },
+    {
+      "name": "Current baseline unchanged: Invoke-PestoSystemTaskScript",
+      "passed": true
+    },
+    {
+      "name": "Current baseline unchanged: GoRenameOnly",
+      "passed": true
+    },
+    {
+      "name": "Current baseline unchanged: GoRenameAndMove",
+      "passed": true
+    },
+    {
+      "name": "Current baseline unchanged: MoveComputer",
+      "passed": true
+    },
+    {
+      "name": "Current baseline unchanged: Restore-PestoQueueCheckpoint",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Async-ScopeFixture.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Pesto.RC21.Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Pesto.Safety.Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-AllTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-AsyncTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-EngineTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-JoinTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-LoginPreferencesTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-LoginTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-NamesLoadingTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-PackageTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-Pesto21Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-Pesto22Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-Pesto23Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-PilotageTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-ProgressTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-QueueRemovalTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-RC14Validation.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-RC4Tests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-SsoTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-StabilisationTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-StartupTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tests/Run-UxTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Build-Pesto.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Diagnostic-Rename.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Initialize-Coordination.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/New-PestoDistribution.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Sign-PestoRelease.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Update-PackageManifest.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Verify-Release.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: tools/Verify-StartupUac.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Appearance.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Async.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Authentication.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Configuration.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Contracts.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Core.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Direct.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Directory.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Inspection.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Integrity.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Interventions.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Join.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-JoinRecovery.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Journal.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Names.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Operations.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Policy.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Preparation.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Recovery.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Review.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Safety.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Startup.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-SuiteUI.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Support.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Tables.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-UXFlow.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/Pesto-Workspace.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Regression-Join.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Regression-Sso.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Test-Pesto15.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Test-Pesto16.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Test-Pesto18.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Test-Pesto19.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Test-PestoDistribution.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lexical delimiters: wad/maintenance/Test-PestoStartupLayout.ps1",
+      "passed": true
+    },
+    {
+      "name": "Lanceur CMD : ASCII pur et un seul style de fin de ligne : Pesto.cmd",
+      "passed": true
+    },
+    {
+      "name": "Lanceur CMD : ASCII pur et un seul style de fin de ligne : Pesto_COMPTE_AD.cmd",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and one line-ending style: wad/Pesto-Startup.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and one line-ending style: wad/Pesto-Core.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and one line-ending style: tests/Run-StartupTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "UTF8 BOM and one line-ending style: tools/Verify-StartupUac.ps1",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "missing parent exit",
+      "detected": true,
+      "expected_guards": [
+        "Elevation and parent exit before core"
+      ],
+      "failed_checks": [
+        "Anchor present in the startup main flow: parent exit after relay",
+        "Elevation and parent exit before core"
+      ],
+      "undetected_guards": []
+    },
+    {
+      "name": "state import removed",
+      "detected": true,
+      "expected_guards": [
+        "State imported before core when account changes"
+      ],
+      "failed_checks": [
+        "Anchor present in the startup main flow: state import call",
+        "State imported before core when account changes"
+      ],
+      "undetected_guards": []
+    },
+    {
+      "name": "UAC verb removed",
+      "detected": true,
+      "expected_guards": [
+        "UAC relay via RunAs"
+      ],
+      "failed_checks": [
+        "UAC relay via RunAs"
+      ],
+      "undetected_guards": []
+    },
+    {
+      "name": "domain credential guard removed",
+      "detected": true,
+      "expected_guards": [
+        "Remote explicit credential branch guarded before Entra leave"
+      ],
+      "failed_checks": [
+        "Remote explicit credential branch guarded before Entra leave",
+        "Only declared functions changed from the current baseline"
+      ],
+      "undetected_guards": []
+    },
+    {
+      "name": "login maximize regression",
+      "detected": true,
+      "expected_guards": [
+        "Login window cannot maximize"
+      ],
+      "failed_checks": [
+        "Login window cannot maximize",
+        "Only declared functions changed from the current baseline"
+      ],
+      "undetected_guards": []
+    }
+  ]
+}

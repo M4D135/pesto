@@ -1,0 +1,29 @@
+{
+  "Blocked": {
+    "Schema": 1,
+    "Expected": "Blocked",
+    "Status": "PASS",
+    "Blocked": true,
+    "Detail": "Recette GUI bloqu\u00e9e : session 0, sans bureau interactif.",
+    "SessionId": 0,
+    "Utc": "2026-10-16T06:47:56.2606308Z"
+  },
+  "Locked": {
+    "Schema": 1,
+    "Expected": "Blocked",
+    "Status": "PASS",
+    "Blocked": true,
+    "Detail": "Recette GUI bloqu\u00e9e : \u00e9cran de connexion pr\u00e9sent dans cette session. D\u00e9verrouiller la console.",
+    "SessionId": 1,
+    "Utc": "2026-10-16T07:02:56.8664801Z"
+  },
+  "Visible": {
+    "Schema": 1,
+    "Expected": "Visible",
+    "Status": "PASS",
+    "Blocked": false,
+    "Detail": "",
+    "SessionId": 1,
+    "Utc": "2026-10-16T07:05:45.3001158Z"
+  }
+}

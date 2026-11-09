@@ -1,0 +1,47 @@
+﻿[
+    {
+        "assetsPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.App\\obj\\project.assets.json",
+        "assetsSha256":  "f69fcf1e7ac4965bffe686e1af30db7c66003525414e93515a80d20abe92fb6b",
+        "projectName":  "Pesto",
+        "projectPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.App\\Pesto.App.csproj",
+        "packageFolders":  [
+                               "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\nuget"
+                           ]
+    },
+    {
+        "assetsPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Bridge\\obj\\project.assets.json",
+        "assetsSha256":  "cc7334b43d1e2ccbe3ab044b3355e0db7cf44c961c039fb1dbd2dfa8ede4a0c9",
+        "projectName":  "Pesto.Bridge",
+        "projectPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Bridge\\Pesto.Bridge.csproj",
+        "packageFolders":  [
+                               "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\nuget"
+                           ]
+    },
+    {
+        "assetsPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Core\\obj\\project.assets.json",
+        "assetsSha256":  "a27ffb9b341b613495c3b9f20d776c137297210831990a2dd3311f2f8e0531e3",
+        "projectName":  "Pesto.Core",
+        "projectPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Core\\Pesto.Core.csproj",
+        "packageFolders":  [
+                               "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\nuget"
+                           ]
+    },
+    {
+        "assetsPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Engine\\obj\\project.assets.json",
+        "assetsSha256":  "3673722b8ed4eaa34f28facba859b466a71e5ac4dce40eea70ae01ff87fa2b77",
+        "projectName":  "Pesto.Engine",
+        "projectPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Engine\\Pesto.Engine.csproj",
+        "packageFolders":  [
+                               "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\nuget"
+                           ]
+    },
+    {
+        "assetsPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Engine.Live\\obj\\project.assets.json",
+        "assetsSha256":  "dd20343ba7d622b4184c3341013c4e2ed2b6a0ed45a8750ba68637414018f2fc",
+        "projectName":  "Pesto.Engine.Live",
+        "projectPath":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\build\\wad\\dev\\src\\Pesto.Engine.Live\\Pesto.Engine.Live.csproj",
+        "packageFolders":  [
+                               "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-dev-rebuild-e5d3dd4efac647438769406e90361345\\nuget"
+                           ]
+    }
+]

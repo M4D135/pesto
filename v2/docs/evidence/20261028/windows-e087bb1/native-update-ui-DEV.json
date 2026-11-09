@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-ui-qualification",
+  "success": true,
+  "utc": "2026-10-27T14:10:15.5889329\u002B00:00",
+  "windowsVersion": "Microsoft Windows NT 10.0.26100.0",
+  "channel": "DEV",
+  "requestId": "162781f9c22442a5a98ffd340dbeb9c8",
+  "current": {
+    "directory": "D:\\a\\pesto\\pesto\\v2\\out\\DEV",
+    "fingerprint": "35b85f601384c356b6220f18af39a41ce8793333ad16520ebbbdf88a9f011a74",
+    "version": "2.0.0",
+    "channel": "DEV",
+    "executableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+    "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+    "sourceCommit": "e087bb16aed175bc35906fa533e9cd172d2fdaca"
+  },
+  "target": {
+    "directory": "D:\\a\\pesto\\pesto\\v2\\out\\baseline-DEV",
+    "fingerprint": "ee00b9d2a320ff8aec8a857f544e4ff0e536c4a457ebc4b3b9db714b704aeb5e",
+    "version": "2.0.0",
+    "channel": "DEV",
+    "executableSha256": "ff6b17081871d35582b328c688ec3c49927916b7cc1a82f0afe4a47fad68e1fe",
+    "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+    "sourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+  },
+  "targetZipSha256": "423a94f631452f8579b154961648646454d993dd7675c9ec271f4be5f0715edf",
+  "direction": "current-candidate-to-pinned-prior-build-then-rollback-to-current",
+  "nativeUpdateInstallFromUiQualified": true,
+  "nativeRollbackFromUiQualified": false,
+  "nativeServiceRollbackQualified": true,
+  "parentClosed": true,
+  "helperLaunched": true,
+  "sourceUnchanged": true,
+  "profileSentinelUnchanged": true,
+  "ownedInstallationRemoved": true,
+  "profileDataPreserved": true,
+  "profileDataRemoved": true,
+  "distinctBuilds": true,
+  "syntheticVersions": false,
+  "zipAcquisitionQualified": true,
+  "adQualification": false,
+  "adExecuted": false,
+  "realUac": false,
+  "ordinaryProfileAccess": false,
+  "uncQualification": false,
+  "uiProof": {
+    "schemaVersion": 1,
+    "kind": "pesto.native-update-ui-handoff",
+    "requestId": "162781f9c22442a5a98ffd340dbeb9c8",
+    "utc": "2026-10-27T14:07:40.9861102\u002B00:00",
+    "success": true,
+    "channel": "DEV",
+    "uiScope": "mainform-webview2-zip-install-confirmation-and-native-handoff",
+    "uiDriver": "compiled-dom-input-and-click",
+    "fixtureSetup": "synthetic-configuration-before-mainform-start",
+    "parentProcessId": 3620,
+    "parentStartUtcTicks": "639287068608316012",
+    "sourceCommit": "e087bb16aed175bc35906fa533e9cd172d2fdaca",
+    "targetSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298",
+    "sourceFingerprint": "35b85f601384c356b6220f18af39a41ce8793333ad16520ebbbdf88a9f011a74",
+    "targetFingerprint": "ee00b9d2a320ff8aec8a857f544e4ff0e536c4a457ebc4b3b9db714b704aeb5e",
+    "sourceExecutableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+    "targetExecutableSha256": "ff6b17081871d35582b328c688ec3c49927916b7cc1a82f0afe4a47fad68e1fe",
+    "candidateZipSha256": "423a94f631452f8579b154961648646454d993dd7675c9ec271f4be5f0715edf",
+    "adExecuted": false,
+    "adQualification": false,
+    "realUac": false,
+    "ordinaryProfileAccess": false,
+    "uncQualification": false,
+    "nativeUpdateInstallFromUiQualified": false,
+    "uiInstallConfirmationQualified": true,
+    "parentClosed": true,
+    "helperLaunched": true,
+    "timeoutSeconds": 480,
+    "checks": [
+      "requestBoundToRunningCopy",
+      "twoDistinctBuilds",
+      "sourceZipExact",
+      "parentReady",
+      "isolatedConfigurationPage",
+      "nativeZipSelectionExact",
+      "candidateInspectedFromButton",
+      "noTransactionBeforePreparation",
+      "preparedFromButton",
+      "preparedCopyExact",
+      "installWaitsForConfirmation",
+      "installCancellationPreservedPreparation",
+      "installReconfirmedFromUi",
+      "singleInstallBridgeRequest",
+      "singleNativeHostRequest",
+      "transactionBoundToUiRequest",
+      "parentClosedNormally",
+      "installationUnchangedBeforeHandoff",
+      "profileDataPreserved",
+      "sourceZipUnchanged",
+      "noForbiddenEffects",
+      "helperLaunchedAfterParentClose"
+    ],
+    "uiSteps": [
+      {
+        "step": "UpdateZip",
+        "source": "dom",
+        "accepted": true
+      },
+      {
+        "step": "PrepareUpdate",
+        "source": "dom",
+        "accepted": true
+      },
+      {
+        "step": "InstallUpdate",
+        "source": "dom",
+        "accepted": true
+      },
+      {
+        "step": "CancelInstall",
+        "source": "dom",
+        "accepted": true
+      },
+      {
+        "step": "InstallUpdate",
+        "source": "dom",
+        "accepted": true
+      },
+      {
+        "step": "ConfirmInstall",
+        "source": "dom",
+        "accepted": true
+      }
+    ],
+    "captures": [
+      "coexistence/maintenance-prepared.png",
+      "coexistence/maintenance-install-confirmation.png"
+    ],
+    "profileConfigurationRelativePath": "coexistence/data/LocalData/Pesto/v2/DEV/Live/cfg.json",
+    "profileConfigurationSha256": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+    "profileDataRelativePath": "coexistence/data",
+    "sourceVersion": "2.0.0",
+    "targetVersion": "2.0.0",
+    "candidateId": "260898622338416b8093d665b3d394ab",
+    "preparedId": "dbde9e18399443f1a5613959e99d20fa",
+    "preparedObservation": {
+      "text": "Version 2.0.0 pr\u00EAteDEV \u00B7 Source locale \u2014 origine \u00E0 v\u00E9rifierPack copi\u00E9 et rev\u00E9rifi\u00E9. L\u2019installation attend votre confirmation et fermera cette fen\u00EAtre.\n        Installer et v\u00E9rifier le d\u00E9marrage",
+      "version": "2.0.0",
+      "channel": "DEV",
+      "source": "local"
+    },
+    "confirmationObservation": {
+      "actions": [
+        "cancel",
+        "ok"
+      ],
+      "body": "Installer Pesto 2.0.0 (DEV) \u00B7 Source locale \u2014 origine \u00E0 v\u00E9rifier. Pesto va fermer ses fen\u00EAtres, conserver les anciens fichiers et installer ce pack. Un contr\u00F4le de sant\u00E9 isol\u00E9 v\u00E9rifiera son d\u00E9marrage. En cas d\u2019\u00E9chec, la sauvegarde sera r\u00E9tablie. Votre configuration reste dans votre profil.",
+      "subtitle": "",
+      "title": "Installer la mise \u00E0 jour pr\u00E9par\u00E9e"
+    },
+    "transactionId": "43e630dea28a41b4849ea86a70d499c3",
+    "installationUnchangedBeforeHandoff": true,
+    "profileDataPreserved": true,
+    "sourceZipUnchanged": true,
+    "helperProcessId": 1272,
+    "stage": "handed-off-awaiting-external-observation",
+    "backendCalls": [
+      {
+        "operation": "session.info",
+        "completed": true,
+        "confirmed": false,
+        "sequence": 1,
+        "result": {
+          "version": "2.0.0-dev"
+        }
+      },
+      {
+        "operation": "coordination.status",
+        "completed": true,
+        "confirmed": false,
+        "sequence": 2,
+        "result": {}
+      },
+      {
+        "operation": "configuration.settings",
+        "completed": true,
+        "confirmed": false,
+        "sequence": 3,
+        "result": {
+          "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+        }
+      },
+      {
+        "operation": "configuration.status",
+        "completed": true,
+        "confirmed": false,
+        "sequence": 4,
+        "result": {
+          "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+        }
+      },
+      {
+        "operation": "updates.inspect",
+        "completed": true,
+        "confirmed": false,
+        "kind": "zip",
+        "sequence": 5,
+        "result": {
+          "candidateId": "260898622338416b8093d665b3d394ab",
+          "version": "2.0.0",
+          "channel": "DEV",
+          "distribution": "candidate",
+          "fingerprint": "ee00b9d2a320ff8aec8a857f544e4ff0e536c4a457ebc4b3b9db714b704aeb5e",
+          "source": "local",
+          "officialSource": false
+        }
+      },
+      {
+        "operation": "updates.prepare",
+        "completed": true,
+        "confirmed": false,
+        "candidateId": "260898622338416b8093d665b3d394ab",
+        "sequence": 6,
+        "result": {
+          "preparedId": "dbde9e18399443f1a5613959e99d20fa",
+          "version": "2.0.0",
+          "channel": "DEV",
+          "distribution": "candidate",
+          "fingerprint": "ee00b9d2a320ff8aec8a857f544e4ff0e536c4a457ebc4b3b9db714b704aeb5e",
+          "source": "local",
+          "officialSource": false
+        }
+      },
+      {
+        "operation": "updates.install",
+        "completed": true,
+        "confirmed": true,
+        "preparedId": "dbde9e18399443f1a5613959e99d20fa",
+        "sequence": 7,
+        "result": {
+          "status": "closing",
+          "transactionId": "43e630dea28a41b4849ea86a70d499c3"
+        }
+      }
+    ],
+    "hostCalls": [
+      {
+        "action": "source",
+        "kind": "zip",
+        "completed": true,
+        "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-162781f9c22442a5a98ffd340dbeb9c8\\evidence\\normal\\ui\\coexistence\\data\\candidate.zip",
+        "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-162781f9c22442a5a98ffd340dbeb9c8\\evidence\\normal\\ui\\coexistence\\data\\candidate.zip",
+        "selectionObservedBeforeIo": true,
+        "cancelled": false
+      },
+      {
+        "action": "install",
+        "transactionId": "43e630dea28a41b4849ea86a70d499c3",
+        "completed": true
+      }
+    ],
+    "dialogObservations": [
+      {
+        "title": "Choisir un pack Pesto V2",
+        "pathRequired": true,
+        "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-162781f9c22442a5a98ffd340dbeb9c8\\evidence\\normal\\ui\\coexistence\\data\\candidate.zip",
+        "kind": "file",
+        "writeAttempts": 1,
+        "stableReads": 3,
+        "clicked": true,
+        "closedAfterClick": true,
+        "observedLength": 142,
+        "inputMethod": "focused-edit-character-input",
+        "typedCharacters": 142,
+        "writeAccepted": true,
+        "pathReadBackExact": true,
+        "editControlId": 1148,
+        "buttonFocusConfirmed": true,
+        "elapsedMs": 1235
+      }
+    ],
+    "forbiddenBackendInvocations": 0,
+    "forbiddenHostInvocations": 0,
+    "httpInvocations": 0,
+    "temporaryDataRemoved": false
+  },
+  "installation": {
+    "schemaVersion": 1,
+    "kind": "pesto.native-update-stage",
+    "scenario": "normal",
+    "stage": "install",
+    "success": true,
+    "status": "completed",
+    "transactionId": "43e630dea28a41b4849ea86a70d499c3",
+    "installedFingerprint": "ee00b9d2a320ff8aec8a857f544e4ff0e536c4a457ebc4b3b9db714b704aeb5e",
+    "executableSha256": "ff6b17081871d35582b328c688ec3c49927916b7cc1a82f0afe4a47fad68e1fe",
+    "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+    "sentinelSha256": "5fdb82648807f22d134f477b1981606f2be5716ad9fd12e7df0c025685c923b4",
+    "baseExecutableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+    "candidateExecutableSha256": "ff6b17081871d35582b328c688ec3c49927916b7cc1a82f0afe4a47fad68e1fe",
+    "baseSourceCommit": "e087bb16aed175bc35906fa533e9cd172d2fdaca",
+    "candidateSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298",
+    "healthAttemptCount": 1,
+    "candidateVersion": "2.0.0",
+    "acquisition": "zip",
+    "syntheticFault": false,
+    "syntheticVersions": false,
+    "distinctBuilds": true,
+    "zipAcquisitionQualified": true,
+    "uncQualification": false,
+    "sourceUnchanged": true,
+    "profileSentinelUnchanged": true,
+    "adExecuted": false
+  },
+  "rollback": {
+    "schemaVersion": 1,
+    "kind": "pesto.native-update-stage",
+    "scenario": "normal",
+    "stage": "rollback",
+    "success": true,
+    "status": "rolledBack",
+    "transactionId": "43e630dea28a41b4849ea86a70d499c3",
+    "installedFingerprint": "35b85f601384c356b6220f18af39a41ce8793333ad16520ebbbdf88a9f011a74",
+    "executableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+    "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+    "sentinelSha256": "5fdb82648807f22d134f477b1981606f2be5716ad9fd12e7df0c025685c923b4",
+    "baseExecutableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+    "candidateExecutableSha256": "ff6b17081871d35582b328c688ec3c49927916b7cc1a82f0afe4a47fad68e1fe",
+    "baseSourceCommit": "e087bb16aed175bc35906fa533e9cd172d2fdaca",
+    "candidateSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298",
+    "healthAttemptCount": 2,
+    "candidateVersion": "2.0.0",
+    "acquisition": "zip",
+    "syntheticFault": false,
+    "syntheticVersions": false,
+    "distinctBuilds": true,
+    "zipAcquisitionQualified": true,
+    "uncQualification": false,
+    "sourceUnchanged": true,
+    "profileSentinelUnchanged": true,
+    "adExecuted": false
+  }
+}

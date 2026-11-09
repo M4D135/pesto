@@ -1,0 +1,8 @@
+C:\PestoAudit20261013\engine\tests\Run-PackageTests.ps1 : Exception calling "ReadAllText" with 
+"1" argument(s): "Could not find file 'C:\PestoAudit20261013\engine\DEBLOQUER_TOUT.cmd'."
+At C:\PestoAudit20261013\engine\run-isolated.ps1:14 char:1
++ & ($PSScriptRoot+'\tests\Run-'+$Suite+'Tests.ps1') @parameters
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Run-PackageTests.ps1], MethodInvocationException
+    + FullyQualifiedErrorId : FileNotFoundException,Run-PackageTests.ps1
+ 

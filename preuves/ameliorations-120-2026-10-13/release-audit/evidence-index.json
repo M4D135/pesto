@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "candidate": "C2",
+  "buildSHA256": "4bd73854d6499f3ded5d5712bd5869b441a5641c7401129d947461137bc70cd8",
+  "catalogueSHA256": "b281b7650be53a2548161edd565a9ff581abd7b2916ef6d83f5eb2a4d606ab0c",
+  "catalogueStatesUntouched": true,
+  "evidence": [
+    {
+      "path": "local/python-c2.log",
+      "sha256": "9b7b39881b700888c92f839f971da73ffbbfbb515c7872f98b64c0e5737a2e99",
+      "bytes": 54360
+    },
+    {
+      "path": "local/engine-c2/summary.json",
+      "sha256": "6dcebcc72c26487fe3e3ddd560e3fb6d064024a02473134ebd7980d575dae86e",
+      "bytes": 6297
+    },
+    {
+      "path": "local/ui-c2/summary.json",
+      "sha256": "16fab1c9c9ecfa0031bd791b9b6c3984dfec461f1da51db374565a862eb7c66f",
+      "bytes": 8684
+    },
+    {
+      "path": "local/Integration-c2.json",
+      "sha256": "df79d08cec5f408ba55862556ee3f4deec433a70988fe70714cd09ee1ee921d8",
+      "bytes": 2509
+    },
+    {
+      "path": "local/repro-c2.json",
+      "sha256": "ba1423921c7d9fce61ffccbe8db835b1da244499815690931d4c065af7020e88",
+      "bytes": 419
+    },
+    {
+      "path": "common-windows/report.json",
+      "sha256": "0c9a814438c6a2b5aaf8fa8eb44f6e988ab2fa0f55e70bcf737ed90063dddd5d",
+      "bytes": 3086
+    },
+    {
+      "path": "common-windows/links-report.json",
+      "sha256": "19546576a4b04be340e0c2c619fd69b391918ed8ffd1e180d98dbe9f9ca94460",
+      "bytes": 677
+    },
+    {
+      "path": "release-audit/packs-c2.json",
+      "sha256": "12b4bbd617c227b77c0b866a634d057e6f162117aadbd05563a0ef7c1534ed9e",
+      "bytes": 3903
+    },
+    {
+      "path": "release-audit/standalone-checkout.json",
+      "sha256": "10144abe1091388e472703d693e33dcc96861314d9c810adf157e15b233a97ad",
+      "bytes": 2548
+    }
+  ],
+  "remaining": [
+    "Windows batch failures and retries are being triaged by their owners; no final PASS inferred from runner completion.",
+    "Interactive C2 observations are in progress under the parent operator.",
+    "Final DOCX/PDF rendering, visual QA, copying and final archives remain to be confirmed.",
+    "Signature/attestation/AppControl/Narrator/SMB/multi-DC/long-session/orchestrator cases require scoped evidence or explicit unqualified status."
+  ],
+  "procedure": "DEV/docs/implementation/CLOTURE_120.md"
+}

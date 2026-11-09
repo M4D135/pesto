@@ -1,0 +1,103 @@
+﻿Liste des noms du cache AD. Les filtres ne réservent pas les noms. Double-cliquez sur un nom pour le copier.
+P
+Pesto
+Active Directory
+⌂
+Accueil
+✎
+Un seul poste
+▦
+Plusieurs postes
++
+Ajouter au domaine
+▤
+Noms disponibles
+◷
+Historique
+≡
+Journal
+⚙
+Paramètres
+Pesto 1.0
+Windows · PowerShell
+P111301VA765345
+labo.local
+LABO\tech.pesto
+Actions · Ctrl+K
+Audit
+?
+Noms disponibles
+250 affichés / 620 correspondants · 620 libres · 0 AD · 0 préparés
+Actualiser le site
+Portable : P111301LYRH0117
+Fixe : S111301PRINF283
+Virtuel : V111301LY765099
+Site
+Service
+Type
+Statut
+Recherche
+Tableau jusqu’à 999
+Nom
+Type
+Site
+Service
+N°
+État au dernier inventaire
+P111301LY765002
+Portable
+LY
+765
+002
+Libre dans l'inventaire
+P111301LY765003
+Portable
+LY
+765
+003
+Libre dans l'inventaire
+P111301LY765004
+Portable
+LY
+765
+004
+Libre dans l'inventaire
+P111301LY765005
+Portable
+LY
+765
+005
+Libre dans l'inventaire
+P111301LY765006
+Portable
+LY
+765
+006
+Libre dans l'inventaire
+P111301LY765007
+Portable
+LY
+765
+007
+Libre dans l'inventaire
+P111301LY765008
+Portable
+LY
+765
+008
+Libre dans l'inventaire
+Précédente
+Page 1 / 3 · 250 lignes maximum
+Suivante
+Prochains candidats
+Autres noms
+Vérifier dans le domaine
+Utiliser dans Un poste
+Préparation et inventaire
+Choisissez un nom, puis vérifiez-le sur le contrôleur du domaine.
+Inventaire : 14/10/2026 16:28:22. Disponibilité dans le périmètre configuré, sans réservation AD. 26965 candidats libres sur 001–999 selon les filtres. La marge et la page limitent uniquement le tableau. Vérifier un candidat avant utilisation.
+Zoom
+−
+État de l’intervention
+100 %
++

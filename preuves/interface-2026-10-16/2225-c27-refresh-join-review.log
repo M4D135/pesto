@@ -1,0 +1,159 @@
+clic : #StateRefresh (Relire l’état)
+Observation: ÉTAT OBSERVÉ, PAS UNE COMMANDE
+Lecture UTC : 2026-10-16T07:37:57.3511377Z
+
+WINDOWS
+Nom actif : V111301VA765183
+Nom configuré : V111301VA765183
+Redémarrage pour le nom : Non indiqué par ces deux valeurs
+Domaine : labo.local
+Dernier démarrage UTC : 2026-10-16T06:38:52.5000000Z
+Lecture : Local / 2026-10-16T07:37:55.6842160Z
+
+ACTIVE DIRECTORY
+Nom : V111301VA765183
+GUID : 8a34ef81-1275-4718-8ee6-d423b0903b6f
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+DN exact : CN=V111301VA765183,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Protection anti-suppression : False
+Lecture UTC : 2026-10-16T07:37:55.3928003Z
+
+PLAN CONSERVÉ
+PESTO-REMOTE → V111301VA765183
+Jonction locale : un ajout, sans file ni nouvelle commande depuis cette fiche.
+OU finale prévue : OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+
+AVANT / PRÉVU / OBSERVÉ : le plan conservé reste inchangé.
+
+Controle                     Etat       Observe                                                                          Attendu                                                    
+--------                     ----       -------                                                                          -------                                                    
+Nom actif                    Conforme   V111301VA765183                                                                  V111301VA765183                                            
+Domaine Windows              Conforme   labo.local                                                                     labo.local                                               
+Identité AD                  À vérifier 8a34ef81-1275-4718-8ee6-d423b0903b6f                                                                                                        
+Emplacement AD               Conforme   OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADC...
+Jointure Entra de l'appareil NO         NO                                                                               À contrôler séparément si retrait                          
+Canal sécurisé               Conforme                                                                                    Lecture dédiée après redémarrage                           
+
+
+
+AVANT / PRÉVU / OBSERVÉ
+
+
+Champ      : Nom Windows actif
+Avant      : PESTO-REMOTE
+Prevu      : V111301VA765183
+Observe    : V111301VA765183
+Etat       : Concordant
+AvantUtc   : 2026-10-16T06:35:47.7432337Z
+ObserveUtc : 2026-10-16T07:37:55.6842160Z
+
+Champ      : Nom Windows configuré
+Avant      : PESTO-REMOTE
+Prevu      : V111301VA765183
+Observe    : V111301VA765183
+Etat       : Concordant
+AvantUtc   : 2026-10-16T06:35:47.7432337Z
+ObserveUtc : 2026-10-16T07:37:55.6842160Z
+
+Champ      : Domaine Windows
+Avant      : LABO
+Prevu      : labo.local
+Observe    : labo.local
+Etat       : Concordant
+AvantUtc   : 2026-10-16T06:35:47.7432337Z
+ObserveUtc : 2026-10-16T07:37:55.6842160Z
+
+Champ      : Identité Windows
+Avant      : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Prevu      : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Observe    : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Etat       : Concordant
+AvantUtc   : 2026-10-16T06:35:47.7432337Z
+ObserveUtc : 2026-10-16T07:37:55.6842160Z
+
+Champ      : Nom AD
+Avant      : Non enregistré
+Prevu      : V111301VA765183
+Observe    : V111301VA765183
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-16T07:37:55.3928003Z
+
+Champ      : GUID AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : 8a34ef81-1275-4718-8ee6-d423b0903b6f
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-16T07:37:55.3928003Z
+
+Champ      : Emplacement AD
+Avant      : Non enregistré
+Prevu      : OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Observe    : OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-16T07:37:55.3928003Z
+
+Champ      : Protection AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : False
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-16T07:37:55.3928003Z
+
+Champ      : Inscription Entra
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : NO
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-16T07:37:55.6842160Z
+
+Champ      : Canal sécurisé
+Avant      : Non enregistré
+Prevu      : True
+Observe    : True
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-16T07:37:55.6842160Z
+
+
+
+
+clic : #StateNext (Consigner la vérification)
+État de PESTO-REMOTE
+Nom actif, domaine, identité du PC, compte AD, emplacement et canal sécurisé confirmés après redémarrage. Entra reste un contrôle distinct.
+Relire l’état
+Conserver cette lecture
+Consigner la vérification
+Fermer
+Vérifier avant de confirmer
+Copier le texte
+Annuler
+Confirmer
+Zoom
+−
+État de l’intervention
+100 %
++
+PageUp                             Button         actif=False [Empty] 
+PageDown                           Button         actif=False [1862;519;17;448] 
+PART_LineDownButton                Button         actif=False [1862;967;17;17] 
+StateAdvice                        Text           actif=False [40;999;1840;17] Nom actif, domaine, identité du PC, compte AD, emplacement et canal sécurisé confirmés apr
+StateRefresh                       Button         actif=False [40;1030;97;37] Relire l’état
+StateSaveReading                   Button         actif=False [145;1030;171;37] Conserver la lecture sans résoudre l’intervention
+StateNext                          Button         actif=False [324;1030;175;37] Consigner la vérification
+StateClose                         Button         actif=False [507;1030;73;37] Fermer
+PanelTitle                         Text           actif=True  [483;465;954;30] Vérifier avant de confirmer
+PanelBody                          Edit           actif=True  [483;505;954;120] Détails du panneau
+PanelHint                          Text           actif=True  [483;597;954;17] 
+PanelCopy                          Button         actif=True  [1083;628;118;37] Copier le texte
+PanelCancel                        Button         actif=True  [1209;628;100;37] Annuler
+PanelAccept                        Button         actif=True  [1317;628;120;37] Confirmer
+PestoZoomOut                       Button         actif=True  [1761;1112;34;36] Réduire le zoom
+PestoStatusAnnouncement            Text           actif=True  [1799;1130;1;17] État de l’intervention
+PestoZoomReset                     Button         actif=True  [1800;1112;72;36] Zoom 100 pour cent. Rétablir 100 pour cent.
+PestoZoomIn                        Button         actif=True  [1876;1112;34;36] Agrandir le zoom
+

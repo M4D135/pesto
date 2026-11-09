@@ -1,0 +1,7 @@
+﻿{
+    "CompletedCycles":  10,
+    "WarmupCycles":  3,
+    "ElapsedSeconds":  600.99556109999992,
+    "Locked":  false,
+    "Result":  "WORKLOAD_COMPLETED"
+}

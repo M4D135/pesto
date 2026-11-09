@@ -1,0 +1,4 @@
+﻿Pane "OK" #2
+Pane "" #20
+Pane "Pesto est deja ouvert depuis ce dossier.
+Revenez a la fenetre existante. Aucune nouvelle demande UAC ni operation lancee." #65535

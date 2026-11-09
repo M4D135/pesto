@@ -1,0 +1,18 @@
+OK Panneau réservation : chargement local seulement, aucune action avant inspection
+OK Inspection explicite limitée à l’identifiant du reçu
+OK Retrait : annulation sans écriture, confirmation exacte, un seul envoi
+OK Reprise : reçu pendingRestart conservé, aucun reboot ni succès inventé
+OK Plan de réservation refusé si identité divergente
+OK Plan de réservation refusé si reçu divergente
+OK Plan de réservation refusé si mode divergente
+OK Plan de réservation refusé si expiration divergente
+OK Navigation pendant confirmation : aucun envoi tardif
+OK Échec de retrait : pas de rejeu ni de résultat réussi
+OK Résultat associé à un autre reçu : aucun statut confirmé affiché
+OK Reçu enfant incohérent : réservation utilisée et succès ne sont pas affichés
+OK Coordination : statut local, inspection uniquement au clic
+OK Coordination : aperçu puis confirmation, annulation sans création
+OK Coordination : chemin différent du statut relu refusé
+OK Démonstration : les deux panneaux ne demandent aucune API réelle
+OK Aucune erreur JavaScript ni accès extérieur pendant les scénarios
+POLICY UI OK: 17/17 contrôles ; backend de fixture uniquement.

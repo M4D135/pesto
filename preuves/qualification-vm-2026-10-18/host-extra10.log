@@ -1,0 +1,24 @@
+host 0 PREPARED
+
+prepare 0 Harnais préparé : \\192.168.1.173\PestoQual20261018\extra10
+
+RAW 0 0 Rapport : C:\PestoQual_20261018\preuves\q103-extra10-distinct-0.json
+ 
+distinct {'Schema': 1, 'Action': 'Observe', 'Owner': 'A', 'ObserverOwner': 'A-OBS', 'Name': 'DIST0', 'Domain': 'race-harness.invalid', 'Root': '\\\\192.168.1.173\\PestoQual20261018\\extra10', 'Utc': '2026-10-18T13:21:25.1509701Z', 'LeaseMinutes': 5, 'OthersCount': 1, 'Others': [{'Name': 'DIST1', 'Station': 'PESTO-QCLIENT', 'User': 'coordination-extra', 'ExpiresUtc': '2026-10-18T13:25:51.7823035Z'}], 'AttemptState': 'Reserved', 'AttemptHolder': '', 'AttemptHolderExpiresUtc': '', 'Connected': ''}
+RAW 1 0 Rapport : C:\PestoQual_20261018\preuves\q103-extra10-distinct-1.json
+ 
+distinct {'Schema': 1, 'Action': 'Observe', 'Owner': 'B', 'ObserverOwner': 'B-OBS', 'Name': 'DIST1', 'Domain': 'race-harness.invalid', 'Root': '\\\\192.168.1.173\\PestoQual20261018\\extra10', 'Utc': '2026-10-18T13:20:51.7432055Z', 'LeaseMinutes': 5, 'OthersCount': 0, 'Others': [], 'AttemptState': 'Reserved', 'AttemptHolder': '', 'AttemptHolderExpiresUtc': '', 'Connected': ''}
+OWNER_STOPPED
+
+after crash Held
+outage exit 1 output  Coordination refusÃ©e : Registre partagé non préparé (pesto-coordination.json absent). Utilisez « Préparer ce dossier » dans Paramètres.
+
+share restored, original owner retained
+waiting natural expiry seconds 336
+natural expiry reacquisition Reserved
+cleanup {
+    "ShareAbsent":  true,
+    "FirewallAbsent":  true,
+    "UsersAbsent":  true
+}
+

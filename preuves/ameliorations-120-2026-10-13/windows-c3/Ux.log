@@ -1,0 +1,51 @@
+OK  Parseur PowerShell natif du moteur et de ses composants
+OK  Chargement r‚el de la fenˆtre XAML et de ses ressources
+OK  Table des libell‚s UX charg‚e depuis l'AST du moteur
+OK  Les contr“les publics du Shell sont uniques et r‚solus par FindName
+OK  Palettes Light et Dark lues dans $script:Themes sans ex‚cuter le moteur
+OK  PR vers VA : aper‡u renommer puis d‚placer
+OK  Mˆme site : conserver l'OU actuelle malgr‚ une autre OU propos‚e
+OK  Mˆme site, changement de service : aucun d‚placement
+OK  D‚placement seul : nom source conserv‚
+OK  Red‚marrage non demand‚ par d‚faut
+OK  Red‚marrage explicite correctement pr‚sent‚
+OK  Hors domaine : aper‡u de jonction locale
+OK  Verrou de s‚curit‚ expliqu‚ sans ˆtre effac‚
+OK  Nom occup‚ expliqu‚
+OK  Lecture source en cours explique l'attente
+OK  tape 4 r‚serv‚e au traitement effectivement en cours
+OK  Contr“le AD reste en ‚tape 3 sans annoncer une mutation
+OK  Aides des commandes d‚sactiv‚es activ‚es dans WPF
+OK  Tous les contr“les interactifs publics possŠdent une aide
+OK  Colonnes simples : exactement six colonnes visibles
+OK  Colonnes techniques r‚versibles et liaisons conserv‚es
+OK  ThŠme clair appliqu‚ par le v‚ritable Set-Theme
+OK  ThŠme sombre appliqu‚ aux mˆmes ressources
+OK  Initialisation des ‚v‚nements sans closure priv‚e
+OK  Fenˆtre affich‚e hors ‚cran : mise en page r‚ellement rendue
+NT  Mise en page r‚elle … 1460 x 940 : 1044 px rendus < 1244 px requis (‚cran 1024 px)
+OK  Mise en page compacte … 1100 : aper‡u sous le formulaire
+NT  Retour … la disposition large sans recr‚er le formulaire : 1044 px rendus < 1244 px requis (‚cran 1024 px)
+OK  ComboBox non ‚ditable : menu contractuel pr‚sent
+OK  ComboBox ‚ditable : vrai champ de saisie conserv‚
+OK  Navigation par vrais ‚v‚nements WPF
+OK  UIA : aucun pair cr‚‚ lorsque personne ne consulte l'accessibilit‚
+OK  UIA : les changements de page exposent le contenu courant en conservant les pairs
+OK  UIA : dix demandes avant le rendu produisent une seule actualisation diff‚r‚e
+OK  UIA : changer les sous-onglets ne reconstruit pas les enfants de MainTabs
+OK  X5 contraste ‚lev‚ : anneaux du menu actif, de l'onglet actif et de l'‚l‚ment survol‚, transparents en clair et sombre
+OK  Bouton Aide : panneau bascul‚ et m‚moris‚, page conserv‚e
+OK  Historique vide clairement expliqu‚
+OK  Historique d'un autre domaine refus‚
+OK  La recherche invalide imm‚diatement l'ancien plan
+OK  Saisies rapides : aucune lecture du poste sans demande explicite
+OK  Lecture diff‚r‚e au mˆme contexte : une seule lecture
+OK  Demande temporis‚e abandonn‚e aprŠs changement de ligne ‚dit‚e
+OK  Demande temporis‚e abandonn‚e aprŠs changement local/distant
+OK  Bouton de lecture : une lecture, sans pr‚parer ni lancer de ligne
+OK  Touche Entr‚e : lecture du poste seulement
+OK  Verrou de s‚curit‚ : aucune lecture du poste
+OK  Fermeture arrˆte les deux timers UI
+OK  Aucune mutation ni lecture AD pendant les tests UI
+OK  Aucune exception masqu‚e par le rafraŒchissement d'aper‡u
+Tests UI isol‚s r‚ussis, 2 cas non test‚s sur ce viewport (nom et mesure dans windows-ui-results.json) : la mise en page large demande un ‚cran d'au moins 1244 px.

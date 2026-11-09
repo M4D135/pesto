@@ -1,0 +1,5 @@
+2026-10-25 — contrôle de connectivité uniquement, après push du code.
+Commande : ssh -o BatchMode=yes -o ConnectTimeout=12 -o ConnectionAttempts=1 -o StrictHostKeyChecking=yes degun@192.168.1.173 hostname
+Exit : 255
+Résultat : ssh: connect to host 192.168.1.173 port 22: Connection refused
+Aucune session ouverte, aucune commande sur VM, aucune mutation AD, aucun accès aux VM voisines.

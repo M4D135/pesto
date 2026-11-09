@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>Pesto</AssemblyName>
+    <RootNamespace>Pesto.App</RootNamespace>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets/Pesto.ico</ApplicationIcon>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <PublishTrimmed>false</PublishTrimmed>
+    <MSBuildWarningsAsMessages>$(MSBuildWarningsAsMessages);MSB3277</MSBuildWarningsAsMessages>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Pesto.Core/Pesto.Core.csproj" />
+    <ProjectReference Include="../Pesto.Bridge/Pesto.Bridge.csproj" />
+    <ProjectReference Include="../Pesto.Engine/Pesto.Engine.csproj" />
+    <ProjectReference Include="../Pesto.Engine.Live/Pesto.Engine.Live.csproj" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4258.31" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DemoQualificationSnapshot.js" LogicalName="Pesto.Qualification.DemoSnapshot" />
+    <EmbeddedResource Include="Assets/Pesto.ico" LogicalName="Pesto.Brand.Icon" />
+    <EmbeddedResource Include="../../web/assets/pesto.png" LogicalName="Pesto.Brand.Mark" />
+    <Content Include="../../web/**/*" LinkBase="wad/web" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+{
+    "Schema":  1,
+    "Version":  "1.0",
+    "OperationId":  "2efe6815e02941b9a7c36ef277b8bba3",
+    "Phase":  "PendingRestart",
+    "Utc":  "2026-10-04T17:48:07.9814550Z",
+    "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+    "BootUtc":  "2026-10-04T17:26:26.5000000Z",
+    "Computer":  "PESTO-W11-TEST",
+    "NewName":  "V999004AAQA1001",
+    "Domain":  "labo.local",
+    "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+    "DC":  "dc01.labo.local",
+    "Reference":  "",
+    "Account":  "LABO\\pesto-qualif",
+    "Message":  "\"PESTO-W11-TEST\" ajouté au domaine \"labo.local\" → nom \"V999004AAQA1001\" / OU \"OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local\""
+}

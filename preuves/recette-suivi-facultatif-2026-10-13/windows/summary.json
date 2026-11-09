@@ -1,0 +1,400 @@
+{
+  "Schema": 1,
+  "CreatedUtc": "2026-10-13T16:49:14.846231+00:00",
+  "EvidenceReviewOnly": true,
+  "ReviewerConnectedToVM": false,
+  "BaseCommit": "fb9d6846b07e7c683c069974424629c136b2e45f",
+  "ExeSHA256": "b5e42115d2d0c740a1b5dc98bdc9798121ab678d18004abdc1313f565662c5f4",
+  "GuestDirectory": "C:\\PestoOptionalLive20261013",
+  "Environment": {
+    "Session": 0,
+    "Computer": "P111301LY765128",
+    "PS": "5.1.26100.6584",
+    "Edition": "Desktop",
+    "OS": "Microsoft Windows NT 10.0.26200.0",
+    "Is64Bit": true,
+    "Utc": "2026-10-13T16:30:40.9677825Z"
+  },
+  "SuiteCount": 12,
+  "Passed": 492,
+  "Failed": 0,
+  "Skipped": 0,
+  "AllProcessesExitedZero": true,
+  "AllStderrEmpty": true,
+  "WindowsPowerShellExecuted": true,
+  "WpfFixtureExecuted": true,
+  "WpfFixtureChecks": 18,
+  "PestoApplicationLaunchedByTheseSuites": false,
+  "RealADExecutedByTheseSuites": false,
+  "Suites": [
+    {
+      "Suite": "OptionalPostCheck",
+      "Key": "OptionalPostCheck",
+      "Report": "OptionalPostCheck.json",
+      "ReportSHA256": "a2b3fc75789129a4e6831a3125af9cf0953d0389f65a620d5675689f00de54b6",
+      "CountedArray": "Checks",
+      "Passed": 83,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 20097,
+      "CompletedUtc": "2026-10-13T16:39:42.8297072Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "OptionalPostCheck.log",
+      "Stderr": "OptionalPostCheck.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "WorkerContract",
+      "Key": "WorkerContract",
+      "Report": "WorkerContract.json",
+      "ReportSHA256": "f8ddb36cc5b4e848c6cf9ed390bae4c019f59a6e9398058b227ce612d0febcea",
+      "CountedArray": "Checks",
+      "Passed": 20,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 5228,
+      "CompletedUtc": "2026-10-13T16:39:49.6001841Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "WorkerContract.log",
+      "Stderr": "WorkerContract.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "BootIdentity",
+      "Key": "BootIdentity",
+      "Report": "BootIdentity.json",
+      "ReportSHA256": "c9202263ff49e82ea0cdafd4aea855b6643093f437b2995c53ef890a89b2e4d1",
+      "CountedArray": "Checks",
+      "Passed": 17,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 1217,
+      "CompletedUtc": "2026-10-13T16:39:52.0416120Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "BootIdentity.log",
+      "Stderr": "BootIdentity.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "Engine",
+      "Key": "Engine",
+      "Report": "Engine.json",
+      "ReportSHA256": "751d7f7ae5400a49b9e17c3ef719c1c44d778b363c5294d9aad81f95e40401c2",
+      "CountedArray": "Tests",
+      "Passed": 117,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 6865,
+      "CompletedUtc": "2026-10-13T16:40:00.1524019Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "Engine.log",
+      "Stderr": "Engine.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "Join",
+      "Key": "Join",
+      "Report": "Join.json",
+      "ReportSHA256": "2b7d8806e17d5fd17ef2caa50c2f4201cc044baebbe5115c350c91b431353dbc",
+      "CountedArray": "Tests",
+      "Passed": 39,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 4696,
+      "CompletedUtc": "2026-10-13T16:40:05.7561154Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "Join.log",
+      "Stderr": "Join.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "JoinReservation",
+      "Key": "JoinReservation",
+      "Report": "JoinReservation.json",
+      "ReportSHA256": "f13ab5276f4b76660fa3ccfb8fa08ae766ab7b02b207958047d3b3746f025457",
+      "CountedArray": "Checks",
+      "Passed": 27,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 4302,
+      "CompletedUtc": "2026-10-13T16:40:10.6348057Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "JoinReservation.log",
+      "Stderr": "JoinReservation.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "Automation",
+      "Key": "Automation",
+      "Report": "Automation.json",
+      "ReportSHA256": "36553f22b5d3e87c272047cf64680a49b1c867a6cd299af50bad523328e06bc0",
+      "CountedArray": "Tests",
+      "Passed": 34,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 9674,
+      "CompletedUtc": "2026-10-13T16:40:20.6633776Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "Automation.log",
+      "Stderr": "Automation.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "Package",
+      "Key": "Package",
+      "Report": "Package.json",
+      "ReportSHA256": "d76da9594848351dd7230ca27893a48db70f62ce037fdaa0ef38e5315421ac63",
+      "CountedArray": "Results",
+      "Passed": 27,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 6094,
+      "CompletedUtc": "2026-10-13T16:40:28.0302738Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "Package.log",
+      "Stderr": "Package.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "HomeDashboard",
+      "Key": "HomeDashboard",
+      "Report": "HomeDashboard.json",
+      "ReportSHA256": "9ce5ba766c969f4b9b566f06c8c0385a8896c55b49738f9a437f3da21fe53f04",
+      "CountedArray": "Checks",
+      "Passed": 46,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 2236,
+      "CompletedUtc": "2026-10-13T16:40:31.5518697Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "HomeDashboard.log",
+      "Stderr": "HomeDashboard.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "InterventionView",
+      "Key": "InterventionView",
+      "Report": "InterventionView.json",
+      "ReportSHA256": "03d8682bca59f80e11471e2365e1117b1b570f15b2cb033083a4907488a98774",
+      "CountedArray": "Checks",
+      "Passed": 21,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 2403,
+      "CompletedUtc": "2026-10-13T16:40:35.1674630Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "InterventionView.log",
+      "Stderr": "InterventionView.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "UiPresentation",
+      "Key": "UiPresentation",
+      "Report": "UiPresentation.json",
+      "ReportSHA256": "80796790ca8197cdd35c5083c0bac55b0bc3a349556ac37ac80fd1182bd28476",
+      "CountedArray": "Checks",
+      "Passed": 43,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 1956,
+      "CompletedUtc": "2026-10-13T16:40:37.9237801Z",
+      "WpfRequested": false,
+      "WpfExecuted": false,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "UiPresentation.log",
+      "Stderr": "UiPresentation.err",
+      "StderrBytes": 0
+    },
+    {
+      "Suite": "OptionalFollowupUi",
+      "Key": "OptionalFollowupUi-Wpf",
+      "Report": "OptionalFollowupUi-Wpf.json",
+      "ReportSHA256": "e77c4770a64ae6c3b50f7722e8a99d600ffb80218f0c6331f5d29452ef9bc12d",
+      "CountedArray": "Checks",
+      "Passed": 18,
+      "Failed": 0,
+      "Skipped": 0,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "DurationMs": 2849,
+      "CompletedUtc": "2026-10-13T16:41:08.0767856Z",
+      "WpfRequested": true,
+      "WpfExecuted": true,
+      "ApplicationLaunched": false,
+      "ADExecuted": false,
+      "Stdout": "OptionalFollowupUi-Wpf.log",
+      "Stderr": "OptionalFollowupUi-Wpf.err",
+      "StderrBytes": 0
+    }
+  ],
+  "GuestFileHashVerification": [
+    {
+      "Path": "stage-verification.json",
+      "SHA256": "16e158659968fe4aa45aa5f58ff8d0c04d2c464c25a2bdd0f731aed952130c6d",
+      "Utc": "2026-10-13T16:38:58.7955698Z",
+      "FilesMatched": 275
+    },
+    {
+      "Path": "before-OptionalFollowupUi-Wpf-1fb67d434608-b0ff40be.json",
+      "SHA256": "c64fade3865b82277d805d0c5f96120c371b359fb332d6ecdd1a8c384780d616",
+      "Utc": "2026-10-13T16:41:03.1988033Z",
+      "FilesMatched": 275
+    },
+    {
+      "Path": "before-OptionalPostCheck-1bf8189185df-f2c82930.json",
+      "SHA256": "effe671065eb94b5c6369261f31ee0b662ae6842ba6cd4b1ea49479f2451557f",
+      "Utc": "2026-10-13T16:39:19.0464537Z",
+      "FilesMatched": 275
+    }
+  ],
+  "EngineAggregateSourceHash": {
+    "SHA256": "2804b34c2386bddba783cbbb3940a44d9c848447141d6aae0d6c4e1b1101ab6b",
+    "Files": 32,
+    "IncludesPs1Xml": true,
+    "MatchesReport": true
+  },
+  "FetchedFileIntegrity": {
+    "Manifest": "fetched-file-manifest.json",
+    "ManifestSHA256": "510ee731bfeb97ad7867f2117dcb8cb403add4b58ea2c7e85784d4e5983e06f8",
+    "FilesVerifiedAgainstStoredHash": 36,
+    "FilesNormalizedFromUTF16": 0,
+    "RawReportFilesModifiedDuringSummary": false
+  },
+  "NotesFr": [
+    "Les 492 PASS sont comptés dans les tableaux Tests, Checks ou Results, puis rapprochés des totaux explicites lorsqu’ils existent. Douze processus ont terminé avec code 0, sans délai expiré et sans stderr.",
+    "L’exécution sous Windows PowerShell 5.1 x64 est attestée par environment.json, les trois vérifications des 275 empreintes invitées et le wrapper qui impose Windows/Desktop 5/x64 en session 0. Les champs constants WindowsExecuted=false, NoWindows=true et certains textes « no Windows/VM » sont conservés dans les rapports bruts : ils ne détectent pas la plateforme et ne doivent pas annuler cette preuve d’exécution.",
+    "Les bancs métier utilisent des doubles AD, CIM, registre et commandes sensibles selon leur périmètre. Ils ne prouvent pas une vraie jonction, un vrai renommage ni une mutation AD.",
+    "OptionalFollowupUi-Wpf a exécuté 18 cas, dont deux routages du vrai bouton WPF chargé depuis Pesto-Shell.xaml. Les précontrôles sont doublés, les reçus sont temporaires et l’application Pesto n’est pas lancée. Ce test en session 0 ne constitue pas un parcours interactif complet de Pesto.",
+    "Package contient 27 contrôles : parseur PowerShell natif, intégrité et disposition DEV/PROD, inspection PE sans lancement, et vrai support de déblocage sur des fixtures NTFS. Cette partie dépasse un contrôle textuel, mais elle ne lance pas le moteur ni l’UAC.",
+    "La recette par souris/clavier du vrai programme et le second renommage sans consignation doivent être documentés séparément. Ils ne sont pas déduits de ces douze bancs."
+  ],
+  "RawScopeMetadata": [
+    {
+      "Suite": "OptionalPostCheck",
+      "RawMetadataUnchanged": {
+        "WindowsExecuted": false,
+        "Scope": "Production engine functions with Windows/AD doubles and isolated coordination files"
+      }
+    },
+    {
+      "Suite": "WorkerContract",
+      "RawMetadataUnchanged": {
+        "WindowsExecuted": false
+      }
+    },
+    {
+      "Suite": "BootIdentity",
+      "RawMetadataUnchanged": {
+        "WindowsExecuted": false,
+        "Scope": "Production local-status and receipt decisions with CIM, registry and event-log doubles"
+      }
+    },
+    {
+      "Suite": "Engine",
+      "RawMetadataUnchanged": {
+        "Scope": "Fonctions extraites + mocks ; pas de validation AD/WPF/UAC réelle."
+      }
+    },
+    {
+      "Suite": "JoinReservation",
+      "RawMetadataUnchanged": {
+        "WindowsExecuted": false,
+        "Scope": "Local worker requests, real in-process runspace, AD/registry/ACL doubles"
+      }
+    },
+    {
+      "Suite": "Automation",
+      "RawMetadataUnchanged": {
+        "Environment": "Local doubles, no Windows/AD/VM"
+      }
+    },
+    {
+      "Suite": "Package",
+      "RawMetadataUnchanged": {
+        "Scope": "Parseur natif, manifeste DEV/PROD, inspection PE sans lancement et support réel sur fixtures NTFS ; aucun moteur WPF, UAC ou accès AD."
+      }
+    },
+    {
+      "Suite": "HomeDashboard",
+      "RawMetadataUnchanged": {
+        "NoWpf": true,
+        "NoAD": true,
+        "NoRealCim": true,
+        "NoRegistry": true
+      }
+    },
+    {
+      "Suite": "InterventionView",
+      "RawMetadataUnchanged": {
+        "NoWindows": true,
+        "NoAD": true
+      }
+    },
+    {
+      "Suite": "UiPresentation",
+      "RawMetadataUnchanged": {
+        "NoWindows": true,
+        "NoWpf": true,
+        "NoAD": true
+      }
+    }
+  ],
+  "SourceEvidence": {
+    "environment.json": "d5b52954f8f4f4e660408895d4b9ec63d783e923b00f1e14d9ab9cb26b7a10aa",
+    "runner.json": "6057ec161983f26d03147d15fc12c1fb4e056189a294b9f6e2ac9ee820b979f6",
+    "source-manifest.json": "55af1738943e153c18cf47178c1440d8fffc0d1e25c1a36de950592bfd1a8863"
+  }
+}

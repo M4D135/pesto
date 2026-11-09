@@ -1,0 +1,7 @@
+﻿{
+    "Utc":  "2026-10-12T19:23:34.0197302Z",
+    "Candidate":  "R6",
+    "ExeSHA256":  "5c561531b0811b2947c89d11ddc344c625792a5d0b6b44789a0729502d079bc4",
+    "Config":  "Copied previous lab fixture; distribution neutral unchanged",
+    "PowerShell":  "5.1.26100.6584"
+}

@@ -1,0 +1,11 @@
+test_config_array_refused_without_partial_install (test_installer.InstallerTests.test_config_array_refused_without_partial_install) ... ok
+test_corrupted_runtime_refused (test_installer.InstallerTests.test_corrupted_runtime_refused) ... ok
+test_existing_destination_preserved (test_installer.InstallerTests.test_existing_destination_preserved) ... ok
+test_install_copies_exact_payload_and_preserves_sources (test_installer.InstallerTests.test_install_copies_exact_payload_and_preserves_sources) ... ok
+test_linked_parent_refused (test_installer.InstallerTests.test_linked_parent_refused) ... ok
+test_nested_destination_refused (test_installer.InstallerTests.test_nested_destination_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.022s
+
+OK

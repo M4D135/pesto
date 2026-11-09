@@ -1,0 +1,664 @@
+{
+  "DOCX": "outils/guides/build/Pesto-1.0-Guide-administrateur.docx",
+  "DOCXSHA256": "6bc9d6247e22bd623202e5a3340b7b93fcf8fc0635943ce0681a0bc50e087f44",
+  "PDF": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-final/Pesto-1.0-Guide-administrateur.pdf",
+  "PDFSHA256": "f8887a5fb1e3386f26274133fe13ff55a217f17c7d31d8e2cf93eb13d03557c5",
+  "Images": [
+    {
+      "Id": "accueil",
+      "Path": "outils/guides/images/ui-2026-10-12/accueil.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "c295e1e41156b6f25ea50aeee6a13f91cf6c6ee4fb6542eb7f4d3c9109a4f16e",
+      "NativeHD": true
+    },
+    {
+      "Id": "noms-filtres",
+      "Path": "outils/guides/images/ui-2026-10-12/noms-filtres.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "b03ef69c024a2e337ced777f1ba3c3940489c4e70c9bc20edb408ef2f15c0c08",
+      "NativeHD": true
+    },
+    {
+      "Id": "renommer-deplacer",
+      "Path": "outils/guides/images/v1/renommer-deplacer.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "b01f7e7e198a1d23b7094f1fe283fad44a4ef0a4a7b661325ae6957ef0a8588f",
+      "NativeHD": true
+    },
+    {
+      "Id": "parametres",
+      "Path": "outils/guides/images/ui-2026-10-12/parametres.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "cb54753540b61329216dc61af45f607f9aa6cde2b00ec133a8e25c1b9ce122b9",
+      "NativeHD": true
+    },
+    {
+      "Id": "renommage-bilan",
+      "Path": "outils/guides/images/v1/renommage-bilan.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "3e0e84e24487a6e2abc560c7909d24d99effd0549f0a554a5fc256a5bb0853b7",
+      "NativeHD": true
+    },
+    {
+      "Id": "zoom-interface",
+      "Path": "outils/guides/images/ui-2026-10-12/zoom-interface.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "4fea0a09bf5dc7b78c5197028002fe2ff811c3202bb6966cddd3d422ad50a1d2",
+      "NativeHD": true
+    },
+    {
+      "Id": "etat-verifie",
+      "Path": "outils/guides/images/v1/etat-verifie.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "22f498d851ade5dbe34836848ee7c32b8b823271871126034fcacfebf802a329",
+      "NativeHD": true
+    },
+    {
+      "Id": "verification-consignation",
+      "Path": "outils/guides/images/v1/verification-consignation.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "d36ca4ebc5247b75c2e713bd003380e143defc95dec9e9b77f87dc2a9dcc20c5",
+      "NativeHD": true
+    },
+    {
+      "Id": "parametres-noms",
+      "Path": "outils/guides/images/v1/parametres-noms.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "67a3ac3cc09e6db8746d4b988ac7472f49a3aa17a0a3d8144d63824348182b67",
+      "NativeHD": true
+    },
+    {
+      "Id": "renommer-seul",
+      "Path": "outils/guides/images/v1/renommer-seul.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "a117248c9fe2fb8e9cb6190c81d466e961fd0154465ddbc029a0333ad5dd0e8d",
+      "NativeHD": true
+    },
+    {
+      "Id": "confirmation",
+      "Path": "outils/guides/images/v1/confirmation.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "21afac1c931ec2eaf190ec7e7d5c4bcaea9bd8786765b4b4b94156ac3772bfe5",
+      "NativeHD": true
+    },
+    {
+      "Id": "deplacer-seul",
+      "Path": "outils/guides/images/v1/deplacer-seul.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "8af2724f8ceb5c7bc3e5d9c3343a0cd8ac8b7ef17bd0b3e639b469b4d5cedd35",
+      "NativeHD": true
+    },
+    {
+      "Id": "lot",
+      "Path": "outils/guides/images/ui-2026-10-12/lot.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "487ad85974c045212f693cfc42c5a434af5dac484b4075c5a4a15a512db65162",
+      "NativeHD": true
+    },
+    {
+      "Id": "interventions",
+      "Path": "outils/guides/images/ui-2026-10-12/interventions.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "f3f574290a2c81269b0563229c6eadfe86c99f1234671f00cf4cfeed2f30df7f",
+      "NativeHD": true
+    },
+    {
+      "Id": "hors-domaine",
+      "Path": "outils/guides/images/v1/hors-domaine.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "212f7c70a82e4564a5effb3d5da6fe6d7197b5e7199c3cb9964477a37e3091eb",
+      "NativeHD": true
+    },
+    {
+      "Id": "jonction-preparation",
+      "Path": "outils/guides/images/v1/jonction-preparation.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "8dd0d49827a57a46a49eea36f66428edac66c8c536b863cfc55f96f78ae11e70",
+      "NativeHD": true
+    },
+    {
+      "Id": "jonction-verifiee",
+      "Path": "outils/guides/images/v1/jonction-verifiee.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "14c21a579415dd83f33f5ef905fe5ec3dd2fc9ca263708bf9bfecf3fe93f2db5",
+      "NativeHD": true
+    },
+    {
+      "Id": "outils-navigation",
+      "Path": "outils/guides/images/ui-2026-10-12/outils-navigation.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "86bc6fcbeb819bfa748a1576e6070bc60cbbb93010ed405efde6f742da584dda",
+      "NativeHD": true
+    }
+  ],
+  "AllSourcesNativeHD": true,
+  "EmbeddedImages": 18,
+  "Pages": [
+    {
+      "Page": 1,
+      "Words": 54,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0\nGuide administrateur\nInstaller, configurer, qualifier et maintenir Pesto\nPour qui\nAdministrateurs Active Directory et responsables du déploiement des postes Windows.\nCe q",
+      "End": "postes Windows.\nCe que couvre ce guide\nInstallation et fabrication des packs DEV et PROD, configuration, jonction, renommage, déplacement,\ntask sequence, contrôles, reçus, reprises et qualification du déploiement.\nVersion décrite\nPesto 1.0.\nPesto 1.0"
+    },
+    {
+      "Page": 2,
+      "Words": 182,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nSommaire\nCliquez sur un chapitre pour y aller. Dans Word, le volet Navigation (Affichage > Volet de navigation)\ndonne aussi accès aux chapitres et ",
+      "End": "s états\n21 Mise à jour et copie interrompue\n22 Sauvegarde et retour arrière\n23 Diagnostiquer le lancement\n24 Contrôles et journaux\n25 Qualifier le déploiement du parc\n26 Architecture et fabrication de la distribution\n27 Mots à connaître\nPage 2 sur 57"
+    },
+    {
+      "Page": 3,
+      "Words": 338,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n1 Périmètre et prérequis de Pesto 1.0\nCe guide explique comment installer, configurer et exploiter Pesto 1.0 pour joindre un PC à un domaine\nActive",
+      "End": ". Empreinte. Contrôlez le candidat exact que vous distribuez avec son manifeste\nwad\\package.json et son EXE. Une empreinte confirme la cohérence du paquet ; elle ne remplace ni la\nprovenance approuvée ni la qualification sur votre parc.\nPage 3 sur 57"
+    },
+    {
+      "Page": 4,
+      "Words": 186,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n2 Démarrage rapide\nCes étapes mettent Pesto 1.0 en service. Chaque ligne renvoie au chapitre qui la détaille. Ne sautez\npas l'étape 7 : un poste li",
+      "End": "es lots. 15\n9 Vérifier que chaque poste du banc joint un contrôleur de 8\ndomaine (DNS, flux AD) ; prévenir les techniciens du délai de\nréplication.\n10 Qualifier les options activées, puis mener un pilote sur un 18 et 25\npérimètre dédié.\nPage 4 sur 57"
+    },
+    {
+      "Page": 5,
+      "Words": 247,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n3 Mise au domaine : fonctionnement et règles\nLa page « Ajouter au domaine » joint le PC sur lequel Pesto tourne, et lui seul. Elle ne passe jamais ",
+      "End": "\nÀ savoir. Sans production directe, un motif de TAGS doit couvrir PREPROD ou le code de\nPreprodSite. Sinon la configuration est refusée (chapitre 13).\nFigure 1. Exemple de préparation en production directe : nom et emplacement proposés.\nPage 5 sur 57"
+    },
+    {
+      "Page": 6,
+      "Words": 591,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nListe des services\nLe champ « Service · 3 caractères » propose les services connus du site choisi. Ce sont ceux des\npostes conformes rangés sous l'",
+      "End": "ler ».\n4 Inventaire arrivé entre-temps. Hors domaine, l'inventaire se charge en arrière-plan. S'il\narrive pendant la vérification et change le nom proposé, Pesto revérifie aussitôt le nouveau\nnom (trois fois au plus), sans nouveau clic.\nPage 6 sur 57"
+    },
+    {
+      "Page": 7,
+      "Words": 475,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n5 Limite. Au-delà de cinq noms pris d'affilée, Pesto s'arrête sur « Plusieurs noms déjà pris » :\n« Cinq noms de suite étaient pris : actualisez l'i",
+      "End": "al avec Rename-Computer et vérifie le nom\nconfiguré. Il demande ensuite la jonction avec Add-Computer et les options JoinWithNewName et\nAccountCreate. Windows utilise ainsi le nom préparé pour l'ajout, sans joindre d'abord l'ancien nom.\nPage 7 sur 57"
+    },
+    {
+      "Page": 8,
+      "Words": 399,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nDès qu'une préparation du nom a été demandée, un échec ou une réponse incomplète reste en 97 : un\nrenommage peut attendre le prochain démarrage, mê",
+      "End": " ».\nRésultat attendu. Message d'une jonction vérifiée : « Nom actif, domaine, identité du PC, compte AD,\nemplacement et canal sécurisé confirmés après redémarrage. Entra reste un contrôle distinct. ». La\nconsignation suit au chapitre 6.\nPage 8 sur 57"
+    },
+    {
+      "Page": 9,
+      "Words": 72,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nLe parcours après vérification\nFigure 2. Autre exemple, jonction vérifiée : le nom exécuté et l’emplacement restent affichés.\nLa page rappelle le n",
+      "End": "gistré et la dernière vérification. Le champ de proposition ne tire plus un\nautre nom pour cette demande. « Vérifier dans AD » ouvre une nouvelle observation ; aucune seconde\njonction n'est lancée depuis ce poste déjà membre du domaine.\nPage 9 sur 57"
+    },
+    {
+      "Page": 10,
+      "Words": 411,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n4 Renommage : fonctionnement et règles\nLa page « Un seul poste » renomme un poste déjà dans le domaine, un seul à la fois, sans passer par\nla file.",
+      "End": "OU, sans rien modifier. Une lecture réussie\nne certifie pas les droits d'écriture.\n• Le ping est indicatif : le renommage est tenté même si ICMP est filtré.\n• La touche Entrée dans le champ du nom lit le poste ; elle ne renomme jamais.\nPage 10 sur 57"
+    },
+    {
+      "Page": 11,
+      "Words": 180,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nAprès le renommage\nAvant le redémarrage, le nom Windows actif et le nom configuré diffèrent. C'est normal. Un second\nrenommage pour « corriger » ce",
+      "End": "alifiez le parcours hybride et sa réinscription dans votre environnement (chapitre\n18).\nLa jonction et le déplacement seul ne demandent jamais de retrait Entra.\nFigure 3. Renommer seulement : l’aperçu conserve le site et l’emplacement.\nPage 11 sur 57"
+    },
+    {
+      "Page": 12,
+      "Words": 126,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n5 Déplacement et changement de site\nUn changement de site change le code site du nom, donc l'OU. Pesto renomme d'abord, puis déplace\nl'objet dans l",
+      "End": "confirmation indique le nom final, l'OU cible et les contrôles effectués.\nCode Sens\n77 Renommage et déplacement réussis, redémarrage requis.\n88 Nom déjà pris (renommage avec déplacement).\n89 Renommage confirmé, déplacement à reprendre.\nPage 12 sur 57"
+    },
+    {
+      "Page": 13,
+      "Words": 85,
+      "Images": 2,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nFigure 5. Bilan d’un changement Lyon → Paris : redémarrage et contrôle restent à faire.\nFigure 6. Avant confirmation : relire le nom, la destinatio",
+      "End": "hnicien déplie « Options : déplacement seul et redémarrage », décoche « Renommer » et coche\n« Déplacer ». Le bouton principal devient « Vérifier puis déplacer ». La case « Déplacer » est\ndésactivée si le poste est déjà dans l'OU cible.\nPage 13 sur 57"
+    },
+    {
+      "Page": 14,
+      "Words": 210,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nCe parcours ne joint pas le poste au domaine et ne lance pas de retrait Entra. Un résultat 30 signifie\ndéplacement vérifié ; 33 signifie que l'obje",
+      "End": " 30 si tout est conforme.\nObjet protégé, ClearProtectionOnMove=false 31 : « Objet protégé ; levée temporaire interdite par\nla configuration. »\nRétablissement en échec 32 : protection non rétablie. Le déplacement\nobservé reste consigné.\nPage 14 sur 57"
+    },
+    {
+      "Page": 15,
+      "Words": 412,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nSituation Résultat\nDéplacement refusé, objet resté dans l'OU 31 : protection d'origine conservée.\nsource\nSi ClearProtectionOnMove est absent, le mo",
+      "End": "\nl'annulation. Un résultat tardif d'une reprise ne résout pas le parent : seul un résultat à temps et vérifié\n(30 ou 33) le fait. Le code initial 89 ou 97 peut rester affiché après une reprise réussie : il garde la trace\nde l'incident.\nPage 15 sur 57"
+    },
+    {
+      "Page": 16,
+      "Words": 307,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n6 Vérification après redémarrage et consignation\nUne opération acceptée n'est pas une opération terminée. Après le redémarrage, Pesto relit Windows",
+      "End": "sécurisé local, contrôlé contre le contrôleur du plan.\nEn mode réel, le rapport de la fenêtre ajoute une comparaison « AVANT / PRÉVU / OBSERVÉ ». Une\ndonnée absente reste inconnue : une valeur inconnue n'est jamais une valeur conforme.\nPage 16 sur 57"
+    },
+    {
+      "Page": 17,
+      "Words": 158,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nFigure 8. Jonction après redémarrage : Windows, objet AD et canal sécurisé comparés au plan.\nRègles de consignation\n• Une observation de plus de de",
+      "End": " à\nune autre opération.\n• Un résultat tardif ou incomplet reste incertain.\nAttention. Si « Consigner la vérification » reste grisé, lisez la condition manquante dans l'infobulle. Ne\nsupprimez jamais un reçu ou un verrou pour débloquer.\nPage 17 sur 57"
+    },
+    {
+      "Page": 18,
+      "Words": 58,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nFigure 9. Exemple après renommage : la confirmation consigne une lecture, sans nouvelle commande.\nEntra reste un contrôle séparé\nUn nom, une OU et ",
+      "End": "ouvelle commande.\nEntra reste un contrôle séparé\nUn nom, une OU et un canal sécurisé conformes ne certifient ni la réinscription Entra ni la connexion\nunique (SSO) de l'utilisateur. Pour un poste hybride, prévoyez un contrôle distinct.\nPage 18 sur 57"
+    },
+    {
+      "Page": 19,
+      "Words": 294,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n7 Lots et poste pilote\nLa page « Plusieurs postes » traite des postes déjà dans le domaine, l'un après l'autre, dans une file.\nLa jonction n'y pass",
+      "End": "e ligne.\nContrôler avant d'exécuter\n• « Contrôler dans AD » contrôle les lignes cochées. Aucune écriture. Ce contrôle ne certifie pas les\ndroits RPC, WMI ou AD. Sa validité est de 120 secondes ; une ligne expirée doit être contrôlée de\nPage 19 sur 57"
+    },
+    {
+      "Page": 20,
+      "Words": 329,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nnouveau avant confirmation et exécution. Le délai alloué à la lecture du lot dépend de sa taille, de\n120 à 1800 secondes, sans prolonger la validit",
+      "End": " ni reçu.\nÀ savoir. Si la sélection dépasse MaxBatch, Pesto refuse : « La sélection dépasse la limite de lot\nautorisée par la politique. ». La page « Historique » garde les 100 dernières synthèses de cette\ninstallation et de ce profil.\nPage 20 sur 57"
+    },
+    {
+      "Page": 21,
+      "Words": 545,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n8 Plusieurs techniciens en même temps\nSur un banc de préparation, plusieurs techniciens peuvent recevoir le même nom tant que les créations\nne sont",
+      "End": "crit aucune.\nNuméro au hasard\nRandomNameEnabled=true active le tirage uniforme parmi tous les candidats libres des filtres actifs :\ntype, préfixe, site et service. La série contient les numéros 001 à 999. Le choix utilise le générateur\nPage 21 sur 57"
+    },
+    {
+      "Page": 22,
+      "Words": 438,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\naléatoire du système, indépendant de l'horloge et d'un indice partagé entre PC. Il n'est pas limité aux\npremiers noms de la série ni à la page affi",
+      "End": " une\nvérification administrative.\nSi le nom est déjà pris lors de la création, Pesto propose un autre candidat, le revérifie puis demande\nune confirmation. Des contrôleurs distincts peuvent avoir des vues différentes avant réplication.\nPage 22 sur 57"
+    },
+    {
+      "Page": 23,
+      "Words": 175,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nFigure 11. Tirage aléatoire actif ; registre partagé et réservation AD désactivés par défaut.\nChoisir les options du banc\nRéglage Usage\nTirage aléa",
+      "End": "tible, avec les services web\nAD, le plus proche du poste. Avec plusieurs contrôleurs, deux postes peuvent interroger des\ncontrôleurs différents. Un nom créé par un autre poste n'apparaît alors sur votre contrôleur qu'après\nréplication.\nPage 23 sur 57"
+    },
+    {
+      "Page": 24,
+      "Words": 152,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nCe qui reste à surveiller\nSituation Risque Réponse\nPlusieurs contrôleurs Un nom écrit sur un autre contrôleur Prévenir les techniciens du banc,\nde ",
+      "End": " techniciens. Devant « Nom déjà pris : nom suivant proposé », ils relisent le\nnouveau nom puis confirment ou annulent. Devant « Plusieurs noms déjà pris », ils\nactualisent l'inventaire dans « Noms disponibles » puis choisissent un nom.\nPage 24 sur 57"
+    },
+    {
+      "Page": 25,
+      "Words": 258,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n9 Modes de lancement\nPesto n'a qu'un mode d'intervention : le mode réel. La consultation, la démonstration et la simulation\nservent à lire, former ",
+      "End": " : aucun accès AD » PC ». OU affichée\ndémonstration ». Avec « Démonstration : aucune\n-Demo ou -DemoJoin, OU lue ». Bilan d'une action\naussi « SIMULATION ». directe « SIMULATION\nTERMINÉE · aucune\nmutation réelle. ».\nConsignation grisée.\nPage 25 sur 57"
+    },
+    {
+      "Page": 26,
+      "Words": 236,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nMode En-tête Indicateur de la file Autres signes\nSimulation « SIMULATION » : les « SIMULATION : « Simuler l'ajout de ce\ncommandes sont aucune mutat",
+      "End": "tion pour tester un parcours\nLa simulation (« Simulation — affiche les commandes au lieu de les exécuter ») lit l'AD réel avec le\ncompte réel, mais n'écrit rien. Exception : sur la page « Ajouter au domaine », « Vérifier sans ajouter »\nPage 26 sur 57"
+    },
+    {
+      "Page": 27,
+      "Words": 376,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\net « Vérifier l’état » sont simulés, sans lecture AD. Elle sert à tester une configuration et un parcours\navant un pilote. Elle ne teste pas les dr",
+      "End": " apparaître.\nL'indicateur de la file affiche « MODE RÉEL : écritures après confirmation ».\nAttention. Ne livrez jamais le cfg.json du pack de démonstration. Un technicien qui voit\n« SIMULATION » croit agir alors que rien n'est modifié.\nPage 27 sur 57"
+    },
+    {
+      "Page": 28,
+      "Words": 275,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n10 Préparer Windows et les droits\nPesto tourne sur Windows x64 avec Windows PowerShell 5.1 Desktop et WPF/.NET. PowerShell 7 ne\nremplace pas le mot",
+      "End": "OU concernées. Le rôle\nAdministrateurs du domaine n'est pas un prérequis à généraliser.\nLaissez en place UAC, AppLocker, l'antivirus et les contrôles de confiance de l'organisation. Un refus\nse diagnostique dans ce cadre (chapitre 23).\nPage 28 sur 57"
+    },
+    {
+      "Page": 29,
+      "Words": 333,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n11 Installer le paquet\nLe paquet PROD ne contient que Pesto.exe et le dossier wad. Il s'installe sous Program Files, dans un\ndossier que les opérat",
+      "End": " un profil\nutilisateur, un dossier synchronisé à la demande ou un emplacement inscriptible par les\nopérateurs ordinaires.\nC:\\Program Files\\Pesto\\\nPesto.exe\nwad\\\ncfg.json\npackage.json\nPesto-*.ps1 et ressources\nsupport\\DEBLOQUER_TOUT.cmd\nPage 29 sur 57"
+    },
+    {
+      "Page": 30,
+      "Words": 149,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n3 Contrôler les ACL. Vérifiez la racine, wad et le propriétaire. Les utilisateurs ordinaires n'ont\nque lecture et exécution ; l'écriture reste aux ",
+      "End": "mposants de versions différentes.\n& 'C:\\Program Files\\Pesto\\Pesto.exe' --check\nAttention. Les ACL font partie des conditions de déploiement. Le lanceur vérifie les composants listés\ndans le manifeste, pas les fichiers ajoutés dans wad.\nPage 30 sur 57"
+    },
+    {
+      "Page": 31,
+      "Words": 233,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n12 Créer ou importer la configuration\nUn paquet neuf contient un cfg.json avec Configured=false. Ce n'est pas une configuration\nopérationnelle. Au ",
+      "End": "ant est décrite au chapitre 13.\nÀ savoir. Validation locale. Elle contrôle la structure et la cohérence des valeurs, pas l'existence des\nOU ni les droits AD. Les exemples du guide utilisent example.local, un domaine fictif à remplacer.\nPage 31 sur 57"
+    },
+    {
+      "Page": 32,
+      "Words": 271,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n13 Régler le placement et enregistrer\nLa seconde partie de l'assistant fixe le circuit de jonction et les codes des sites. Rien n'est sauvegardé\nau",
+      "End": "Apparence », « Domaine », « Noms et coordination »,\n« Politique », « Tags », « OU & organismes », « Options avancées » et « Fichiers ». Le formulaire\npréparé, le fichier enregistré et le contexte utilisé par la session sont distingués.\nPage 32 sur 57"
+    },
+    {
+      "Page": 33,
+      "Words": 238,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n1 Préparer. Modifiez les champs. Le message « Modifications non enregistrées » signale un\nbrouillon ; les erreurs s'affichent près des champs conce",
+      "End": "reporter dans le formulaire ;\nprévisualiser et enregistrer séparément.\nLa modification est bloquée pendant une jonction ou une opération. Une vérification AD incomplète doit\nêtre examinée ; elle n'autorise pas une destination inconnue.\nPage 33 sur 57"
+    },
+    {
+      "Page": 34,
+      "Words": 216,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nRégler la présentation\nFigure 14. Zoom à 120 % : les commandes fixes restent en bas à droite.\nDans « Apparence », choisissez le thème, la densité, ",
+      "End": " enregistré immédiatement dans le profil de l'utilisateur de départ :\nHKU\\<SID>\\Software\\GP\\Appearance, valeur Layout, propriété UiZoomPercent. Il est restauré à la\nprochaine ouverture ; en démonstration, il reste seulement en mémoire.\nPage 34 sur 57"
+    },
+    {
+      "Page": 35,
+      "Words": 263,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n14 Champs de configuration\nLe fichier usuel est wad\\cfg.json. Une configuration alternative se passe avec -ConfigPath ; ce chemin\nparticipe à l'ide",
+      "End": "s de noms. Ces\ndeux clés sont les seules admises.\nDEBUG Drapeaux de test GUI, Simulation, HorsDomaine,\nMauvaiseOU, BPVerifNomAD, ForceADM. Tous à false\nen service (chapitre 9).\nPOLICY Politique optionnelle à schéma fermé (chapitre 15).\nPage 35 sur 57"
+    },
+    {
+      "Page": 36,
+      "Words": 137,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nAstuce. Commentaires. Le JSON n'admet pas // ni /* */. Une clé qui commence par « _ » (par exemple\n\"_Simulation\" à côté de \"Simulation\") est un com",
+      "End": "CY exige de vrais\nbooléens. Ne placez jamais de mot de passe dans la configuration.\nAttention. Mode réel. DEBUG.GUI et DEBUG.Simulation doivent être faux. HorsDomaine et\nMauvaiseOU, qui simulent un faux état, sont refusés en mode réel.\nPage 36 sur 57"
+    },
+    {
+      "Page": 37,
+      "Words": 267,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n15 Encadrer les opérations avec POLICY\nPOLICY règle les exclusions et les capacités optionnelles. Son schéma est fermé : une clé inconnue,\nun type ",
+      "End": "vation des journaux de 1 à 3650\njours ; 0 désactive la purge. Les reçus ne\nsont jamais purgés par ce réglage.\nUnattendedJoinEnabled false Autorise le script de jonction par task\nsequence ; -Execute reste requis pour agir\n(chapitre 18).\nPage 37 sur 57"
+    },
+    {
+      "Page": 38,
+      "Words": 90,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nChaque liste compte 200 entrées au plus.\nExemple volontairement restrictif\n\"POLICY\": {\n\"Schema\": 1,\n\"AllowPrecreatedJoin\": false,\n\"AllowPasswordTas",
+      "End": "re au premier niveau d'une configuration complète ; il ne remplace pas le fichier.\nPOLICY complète les délégations AD et les ACL du code. Elle n'est pas une frontière de sécurité face à\nun administrateur qui peut modifier ces éléments.\nPage 38 sur 57"
+    },
+    {
+      "Page": 39,
+      "Words": 309,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n16 Nommage et identité des objets\nPesto génère le nom selon les choix du formulaire et le contrôle dans l'AD avant toute action. Les\nobjets restent",
+      "End": "tent les combinaisons déclarées ou observées et admettent les sous-OU du site. Destination\nambiguë, métadonnée absente et détails tronqués sont signalés, sans correction automatique. Des\nTAGS explicites stabilisent les correspondances.\nPage 39 sur 57"
+    },
+    {
+      "Page": 40,
+      "Words": 317,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n17 Authentification et profils Windows\nLe lancement normal demande un jeton administrateur par UAC. En domaine, Pesto utilise ensuite le\ncompte Win",
+      "End": "rchive n'est ni fusionnée avec l'historique\naffiché, ni utilisée pour relancer ou valider une opération.\nÀ savoir. Un refus UAC rend 1223 et ne lance rien. Une instance déjà ouverte peut être refusée par le\nlanceur en 128, avant l'UAC.\nPage 40 sur 57"
+    },
+    {
+      "Page": 41,
+      "Words": 408,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n18 Options à qualifier séparément\nLa coordination, la réutilisation de comptes précréés, le repli par tâche avec mot de passe et la jonction\nsilenc",
+      "End": "compte en mémoire. La task sequence récupère un PSCredential non vide\ndepuis son mécanisme de secrets approuvé. Ne placez ni mot de passe dans cfg.json, ni mot\nde passe en argument texte, ni credential dans un fichier JSON de résultat.\nPage 41 sur 57"
+    },
+    {
+      "Page": 42,
+      "Words": 398,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n3 Définir le filtre. Type vaut P, S ou V ; SiteCode contient deux lettres ; ServiceCode contient\ntrois caractères alphanumériques. Le préfixe et le",
+      "End": "éé choisi à la main.\nCode de sortie Signification pour la task sequence\n0 Préparation valide, aucune jonction demandée.\n3010 Jonction acceptée et reçu PendingRestart conservé. Prévoir explicitement le\nredémarrage dans la task sequence.\nPage 42 sur 57"
+    },
+    {
+      "Page": 43,
+      "Words": 144,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nCode de sortie Signification pour la task sequence\n96 Non lancé : configuration, identité, état local, politique ou contrôle bloquant.\n97 Résultat ",
+      "End": " sequence décide quand redémarrer. Une fois Windows revenu, vérifiez et\nconsignez la jonction sur ce PC selon le chapitre 6. Aucune réparation du canal sécurisé, suppression\nd'objet ou relance automatique n'est effectuée par le script.\nPage 43 sur 57"
+    },
+    {
+      "Page": 44,
+      "Words": 294,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n19 États, reçus et preuves\nPesto garde une trace durable de chaque opération : le reçu. Il distingue ce qui a été prévu, demandé,\nconstaté et vérif",
+      "End": "lien parent et enfant permet de reprendre sans rejouer une étape\nconfirmée.\nPesto 1.0 lit les schémas centraux 1, 2 et 3. Un reçu incompatible ou mal typé doit être examiné et\nconservé ; ne le supprimez pas pour contourner le contrôle.\nPage 44 sur 57"
+    },
+    {
+      "Page": 45,
+      "Words": 264,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nÉtats d'une intervention\nÉtat affiché Sens\n« Issue à vérifier » Opération engagée dont l'issue n'est pas encore établie.\n« Refus confirmé » Échec d",
+      "End": "un nom configuré en attente lorsqu'ils sont\nconstatés. « Actualiser » relit Windows et les reçus locaux, sans accès AD. L'emplacement AD\néventuel est une observation déjà connue pour ce même nom, pas une vérification actuelle ; sa date\nPage 45 sur 57"
+    },
+    {
+      "Page": 46,
+      "Words": 400,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nreste inconnue si elle n'a pas été conservée. Sélectionnez un reçu puis « Ouvrir le reçu » pour le\nconsulter ; utilisez la vérification du poste po",
+      "End": "s. Une étape confirmée n'est jamais rejouée.\nAttention. Le ZIP du logiciel ne sauvegarde pas ces états. Retirer une ligne de file, recopier un paquet\nou changer de profil n'efface pas le besoin de résoudre les interventions existantes.\nPage 46 sur 57"
+    },
+    {
+      "Page": 47,
+      "Words": 352,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n20 Incertitude (97) et anciens états\nUn résultat 97 signifie qu'une demande a pu atteindre Windows ou l'AD sans qu'un résultat exploitable\nrevienne",
+      "End": "\nAttention. Escalade. Si le plan, le PC d'origine, le GUID ou la protection initiale ne peut pas être établi,\nconservez les preuves et faites arbitrer l'administrateur responsable. Une absence de preuve n'autorise\njamais à recommencer.\nPage 47 sur 57"
+    },
+    {
+      "Page": 48,
+      "Words": 404,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n21 Mise à jour et copie interrompue\nLa mise à jour se fait depuis un nouveau paquet DEV extrait à part. L'outil copie, vérifie et remplace\nl'EXE en",
+      "End": ". Limites. Le mécanisme récupère une copie interrompue fichier par fichier. Ce n'est pas une\ntransaction globale ni une garantie contre toute panne électrique. Ne supprimez jamais .pesto-\nupdate.lock à la main pour forcer le lancement.\nPage 48 sur 57"
+    },
+    {
+      "Page": 49,
+      "Words": 299,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n22 Sauvegarde et retour arrière\nUne sauvegarde utile contient le code, la configuration et tous les états d'exploitation. Revenir à un\nancien EXE n",
+      "End": "lité. Le schéma 3 exige une version qui sait le lire. Une restauration sur un autre\nPC ne transfère pas l'identité Windows du PC d'origine : elle ne permet pas de vérifier sa jonction.\nConservez les originaux et les archives importées.\nPage 49 sur 57"
+    },
+    {
+      "Page": 50,
+      "Words": 338,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n23 Diagnostiquer le lancement\nPesto.exe rend ses propres codes de sortie, de 120 à 132, quand il refuse de démarrer. Les autres\ncodes viennent de W",
+      "End": "ent « Pesto 1.0 | Diagnostic ». Avec --quiet, --check-json ou --validate-plan,\naucune fenêtre ne s'ouvre : seul le code reste.\nÀ savoir. En mode silencieux, fiez-vous au code et au rapport. L'absence de fenêtre ne prouve pas un\nsuccès.\nPage 50 sur 57"
+    },
+    {
+      "Page": 51,
+      "Words": 300,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n24 Contrôles et journaux\nTrois contrôles se lancent sans UAC ni AD : --check, --check-json et --validate-plan. Ils prouvent\nl'intégrité du paquet o",
+      "End": "t navigation » : « Postes », « Préparer », « Analyser » et\n« Affichage ». Le champ « Rechercher un outil » couvre toutes ces rubriques. Sélectionnez une\ncommande puis « Ouvrir » ; cette sélection ne lance aucune opération sur un poste.\nPage 51 sur 57"
+    },
+    {
+      "Page": 52,
+      "Words": 155,
+      "Images": 1,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nFigure 17. Les outils sont classés par usage ; la recherche porte sur toutes les rubriques.\nCollecter un incident\n1 Relever le contexte. Notez le c",
+      "End": "et.\nÀ savoir. Performance. La palette donne les mesures locales de la session : attente, temps de travail,\nmoyenne, P95 et maximum. Returned signifie qu'un worker a répondu ; ce n'est pas la preuve qu'une\nmodification Windows a réussi.\nPage 52 sur 57"
+    },
+    {
+      "Page": 53,
+      "Words": 335,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n25 Qualifier le déploiement du parc\nLa qualification porte sur le candidat exact à distribuer, sa configuration, les droits des opérateurs et les\np",
+      "End": "ie interrompue.\nLes scénarios qui modifient Windows ou AD demandent un périmètre et une fenêtre approuvés. Ne\nprovoquez pas une coupure, un manque de disque ou un arrêt forcé sur une installation en service\npour tester sa récupération.\nPage 53 sur 57"
+    },
+    {
+      "Page": 54,
+      "Words": 120,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\nQualifier les options séparément\nLa coordination, les réservations AD, les comptes précréés, le repli par tâche et la jonction silencieuse\nnécessit",
+      "End": "redémarrage. Faites traiter les écarts bloquants, puis étendez progressivement à\nun groupe pilote représentatif. La décision de généralisation appartient au responsable du parc, à partir\nde ces résultats et des possibilités de reprise.\nPage 54 sur 57"
+    },
+    {
+      "Page": 55,
+      "Words": 330,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n26 Architecture et fabrication de la distribution\nLe pack DEV contient les sources, tests et outils permettant de modifier le logiciel et de recons",
+      "End": "uis le dossier DEV, lancez .\\FABRIQUER_PROD.cmd dans le terminal de\ncompilation. Le script vérifie syntaxe et configuration, recompile le lanceur avec les nouvelles\nempreintes, régénère le manifeste, puis vérifie les fichiers produits.\nPage 55 sur 57"
+    },
+    {
+      "Page": 56,
+      "Words": 348,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n5 Contrôler la sortie. Un nouveau dossier Pesto_PROD_… contient Pesto.exe et wad. Les\nsources et les distributions existantes ne sont pas écrasées.",
+      "End": "droits et les données décrits aux chapitres 11 et 21.\nVérifier les empreintes. Comparez l'EXE à wad\\package.json avec Get-FileHash, puis lancez\nPesto.exe --check-json. Conservez le rapport de fabrication et les empreintes des archives.\nPage 56 sur 57"
+    },
+    {
+      "Page": 57,
+      "Words": 301,
+      "Images": 0,
+      "OutsidePageCharacters": [],
+      "Start": "Pesto 1.0 · Guide administrateur\n27 Mots à connaître\nTerme En clair\nAD Active Directory local, avec ses objets ordinateurs et ses OU.\nOU et DN Unité d'organisation et son chemin LD",
+      "End": "s AD, données fictives (-Demo, -DemoJoin ou\nDEBUG.GUI).\nSimulation Mode de test : lectures AD réelles, aucune modification\n(DEBUG.Simulation).\nConsultation Lancement Pesto.exe --consult, sans UAC ; modifications et résolution\nbloquées.\nPage 57 sur 57"
+    }
+  ],
+  "Fonts": [
+    "BAAAAA+LiberationSans",
+    "CAAAAA+LiberationSans-Bold",
+    "DAAAAA+LiberationSans-Bold",
+    "EAAAAA+LiberationSans",
+    "FAAAAA+LiberationSans-Bold",
+    "GAAAAA+LiberationSans",
+    "HAAAAA+LiberationSans-Bold",
+    "IAAAAA+LiberationSans",
+    "JAAAAA+LiberationSans-Bold",
+    "KAAAAA+LiberationSans-Bold",
+    "LAAAAA+LiberationSans",
+    "MAAAAA+LiberationSans-Bold",
+    "NAAAAA+LiberationMono"
+  ],
+  "VisualReview": "REQUIRED_SEPARATELY"
+}

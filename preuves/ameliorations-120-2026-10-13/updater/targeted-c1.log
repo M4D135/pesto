@@ -1,0 +1,1505 @@
+test_cli_refuses_invalid_manifest_without_traceback_or_changes (test_update_inputs.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) ... ok
+test_current_engine_build_manifest_is_an_installed_runtime_component (test_update_inputs.UpdateInputTests.test_current_engine_build_manifest_is_an_installed_runtime_component) ... ERROR
+test_downgrade_check_rejects_nonobject_manifest (test_update_inputs.UpdateInputTests.test_downgrade_check_rejects_nonobject_manifest) ... ok
+test_engine_metadata_tamper_is_not_excused_by_extension (test_update_inputs.UpdateInputTests.test_engine_metadata_tamper_is_not_excused_by_extension) ... ok
+test_installed_component_budget_accepts_boundary_not_unbounded_input (test_update_inputs.UpdateInputTests.test_installed_component_budget_accepts_boundary_not_unbounded_input) ... ERROR
+test_installed_entries_must_be_objects (test_update_inputs.UpdateInputTests.test_installed_entries_must_be_objects) ... ok
+test_installed_hash_must_be_string (test_update_inputs.UpdateInputTests.test_installed_hash_must_be_string) ... ok
+test_installed_manifest_must_be_object (test_update_inputs.UpdateInputTests.test_installed_manifest_must_be_object) ... ok
+test_installed_version_must_be_string (test_update_inputs.UpdateInputTests.test_installed_version_must_be_string) ... ok
+test_local_receipt_must_be_object_and_is_preserved (test_update_inputs.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) ... ok
+test_recovery_accepts_only_explicit_new_runtime_formats (test_update_inputs.UpdateInputTests.test_recovery_accepts_only_explicit_new_runtime_formats) ... ok
+test_source_manifest_and_entries_must_be_objects (test_update_inputs.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) ... ok
+test_downgrade_allowed_with_flag (test_update.UpdateTests.test_downgrade_allowed_with_flag) ... ERROR
+test_downgrade_from_1_99_refused (test_update.UpdateTests.test_downgrade_from_1_99_refused) ... ok
+test_downgrade_refused (test_update.UpdateTests.test_downgrade_refused) ... ok
+test_existing_update_lock_refused (test_update.UpdateTests.test_existing_update_lock_refused) ... ERROR
+test_installed_manifest_without_file_version_tolerated (test_update.UpdateTests.test_installed_manifest_without_file_version_tolerated) ... ERROR
+test_linked_configuration_refused (test_update.UpdateTests.test_linked_configuration_refused) ... ok
+test_normal_update_allowed (test_update.UpdateTests.test_normal_update_allowed) ... ERROR
+test_preview_changes_nothing (test_update.UpdateTests.test_preview_changes_nothing) ... ERROR
+test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) ... 
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=1) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=2) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=3) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=4) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=5) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=6) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=7) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=8) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=9) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=10) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=11) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=12) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=13) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=14) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=15) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=16) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=17) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=18) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=19) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=20) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=21) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=22) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=23) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=24) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=25) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=26) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=27) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=28) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=29) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=30) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=31) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=32) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=33) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=34) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=35) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=36) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=37) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=38) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=39) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=40) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=41) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=42) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=43) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=44) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=45) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=46) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=47) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=48) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=49) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=50) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=51) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=52) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=53) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=54) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=55) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=56) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=57) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=58) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=59) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=60) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=61) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=62) ... ERROR
+  test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=63) ... ERROR
+test_same_or_nested_source_refused (test_update.UpdateTests.test_same_or_nested_source_refused) ... ok
+test_tampered_installed_file_refused (test_update.UpdateTests.test_tampered_installed_file_refused) ... ok
+test_update_preserves_config_and_preferences (test_update.UpdateTests.test_update_preserves_config_and_preferences) ... ERROR
+test_wrong_schema_refused (test_update.UpdateTests.test_wrong_schema_refused) ... ok
+test_restore_rules (test_update_queues.SourceRulesTests.test_restore_rules) ... ok
+test_row_statuses (test_update_queues.SourceRulesTests.test_row_statuses) ... ok
+test_save_writes_what_the_scan_expects (test_update_queues.SourceRulesTests.test_save_writes_what_the_scan_expects) ... ok
+test_state_directory_formula (test_update_queues.SourceRulesTests.test_state_directory_formula) ... ok
+test_command_line_preview_prints_clear_warning (test_update_queues.UserQueueTests.test_command_line_preview_prints_clear_warning) ... FAIL
+test_command_line_with_ansi_code_page_and_foreign_profile_path (test_update_queues.UserQueueTests.test_command_line_with_ansi_code_page_and_foreign_profile_path) ... FAIL
+test_concluded_queues_are_listed_without_warning (test_update_queues.UserQueueTests.test_concluded_queues_are_listed_without_warning) ... ok
+test_console_lines_never_raise (test_update_queues.UserQueueTests.test_console_lines_never_raise) ... ok
+test_directory_listing_failure_is_reported (test_update_queues.UserQueueTests.test_directory_listing_failure_is_reported) ... ok
+test_encodings_read_like_get_content_utf8 (test_update_queues.UserQueueTests.test_encodings_read_like_get_content_utf8) ... ok
+test_exact_values_like_powershell (test_update_queues.UserQueueTests.test_exact_values_like_powershell) ... ok
+test_failing_scan_never_turns_an_update_into_a_failure (test_update_queues.UserQueueTests.test_failing_scan_never_turns_an_update_into_a_failure) ... FAIL
+test_library_plan_and_update_never_scan (test_update_queues.UserQueueTests.test_library_plan_and_update_never_scan) ... ERROR
+test_links_are_refused_and_not_followed (test_update_queues.UserQueueTests.test_links_are_refused_and_not_followed) ... ok
+test_lock_and_verify_cases (test_update_queues.UserQueueTests.test_lock_and_verify_cases) ... ok
+test_no_profile_is_reported_not_blocking (test_update_queues.UserQueueTests.test_no_profile_is_reported_not_blocking) ... ok
+test_no_state_directory_still_names_the_profile_and_its_limit (test_update_queues.UserQueueTests.test_no_state_directory_still_names_the_profile_and_its_limit) ... ok
+test_not_concluded_cases (test_update_queues.UserQueueTests.test_not_concluded_cases) ... ok
+test_own_queue_is_read_first_whatever_the_limits (test_update_queues.UserQueueTests.test_own_queue_is_read_first_whatever_the_limits) ... ok
+test_powershell_shapes_tolerated (test_update_queues.UserQueueTests.test_powershell_shapes_tolerated) ... ok
+test_queues_stay_out_of_the_plan_and_never_block_the_update (test_update_queues.UserQueueTests.test_queues_stay_out_of_the_plan_and_never_block_the_update) ... FAIL
+test_restore_format_rules (test_update_queues.UserQueueTests.test_restore_format_rules) ... ok
+test_state_id_matches_powershell_formula (test_update_queues.UserQueueTests.test_state_id_matches_powershell_formula) ... ok
+test_typed_path_under_linked_parent_is_recognised (test_update_queues.UserQueueTests.test_typed_path_under_linked_parent_is_recognised) ... FAIL
+test_unreadable_queues_are_reported_never_raised (test_update_queues.UserQueueTests.test_unreadable_queues_are_reported_never_raised) ... ok
+test_completed_update_uses_new_bytes (test_rc22.RecoveryTests.test_completed_update_uses_new_bytes) ... ERROR
+test_conflicting_code_edit_refuses_all_recovery_writes (test_rc22.RecoveryTests.test_conflicting_code_edit_refuses_all_recovery_writes) ... ERROR
+test_crash_after_completed_update_keeps_new_code (test_rc22.RecoveryTests.test_crash_after_completed_update_keeps_new_code) ... ERROR
+test_crash_recovery_does_not_overwrite_changed_configuration (test_rc22.RecoveryTests.test_crash_recovery_does_not_overwrite_changed_configuration) ... ERROR
+test_exception_after_actual_replace_is_also_rolled_back (test_rc22.RecoveryTests.test_exception_after_actual_replace_is_also_rolled_back) ... ERROR
+test_external_backup_refused (test_rc22.RecoveryTests.test_external_backup_refused) ... ERROR
+test_incomplete_rollback_keeps_lock_until_explicit_recovery (test_rc22.RecoveryTests.test_incomplete_rollback_keeps_lock_until_explicit_recovery) ... ERROR
+test_interrupted_preparation_is_released_after_verification (test_rc22.RecoveryTests.test_interrupted_preparation_is_released_after_verification) ... ERROR
+test_interrupted_preparation_with_modified_code_keeps_fence (test_rc22.RecoveryTests.test_interrupted_preparation_with_modified_code_keeps_fence) ... ERROR
+test_linked_destination_refused_without_touching_outside (test_rc22.RecoveryTests.test_linked_destination_refused_without_touching_outside) ... ERROR
+test_process_termination_at_every_copy_boundary (test_rc22.RecoveryTests.test_process_termination_at_every_copy_boundary) ... ERROR
+test_tampered_backup_refused_and_lock_retained (test_rc22.RecoveryTests.test_tampered_backup_refused_and_lock_retained) ... ERROR
+test_traversing_journal_refused_even_if_lock_hash_changed (test_rc22.RecoveryTests.test_traversing_journal_refused_even_if_lock_hash_changed) ... ERROR
+test_uninitialized_fence_is_not_silently_deleted (test_rc22.RecoveryTests.test_uninitialized_fence_is_not_silently_deleted) ... ERROR
+
+======================================================================
+ERROR: test_current_engine_build_manifest_is_an_installed_runtime_component (test_update_inputs.UpdateInputTests.test_current_engine_build_manifest_is_an_installed_runtime_component)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 42, in test_current_engine_build_manifest_is_an_installed_runtime_component
+    paths=update.old_components(self.installed)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 52, in old_components
+    raise ValueError('Installed code is incomplete or modified: '+name)
+ValueError: Installed code is incomplete or modified: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_installed_component_budget_accepts_boundary_not_unbounded_input (test_update_inputs.UpdateInputTests.test_installed_component_budget_accepts_boundary_not_unbounded_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_inputs.py", line 55, in test_installed_component_budget_accepts_boundary_not_unbounded_input
+    self.assertEqual(len(update.old_components(self.installed)),update.MAX_RUNTIME_COMPONENTS)
+                         ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 52, in old_components
+    raise ValueError('Installed code is incomplete or modified: '+name)
+ValueError: Installed code is incomplete or modified: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_downgrade_allowed_with_flag (test_update.UpdateTests.test_downgrade_allowed_with_flag)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 57, in test_downgrade_allowed_with_flag
+    plan=plan_update(ROOT,self.dest,allow_downgrade=True);self.assertEqual(plan['Version'],VERSION)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_existing_update_lock_refused (test_update.UpdateTests.test_existing_update_lock_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 33, in test_existing_update_lock_refused
+    with self.assertRaises(FileExistsError):apply_update(ROOT,self.dest)
+                                            ~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_installed_manifest_without_file_version_tolerated (test_update.UpdateTests.test_installed_manifest_without_file_version_tolerated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 47, in test_installed_manifest_without_file_version_tolerated
+    plan=plan_update(ROOT,self.dest);self.assertEqual(plan['Version'],VERSION)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_normal_update_allowed (test_update.UpdateTests.test_normal_update_allowed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 44, in test_normal_update_allowed
+    result=apply_update(ROOT,self.dest);self.assertTrue(result['Updated'])
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_preview_changes_nothing (test_update.UpdateTests.test_preview_changes_nothing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 16, in test_preview_changes_nothing
+    plan=plan_update(ROOT,self.dest);self.assertNotIn('wad/cfg.json',plan['Files'])
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=2)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=3)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=4)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=5)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=6)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=7)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=8)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=9)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=10)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=11)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=12)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=13)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=14)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=15)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=16)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=17)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=18)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=19)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=20)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=21)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=22)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=23)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=24)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=25)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=26)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=27)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=28)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=29)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=30)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=31)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=32)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=33)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=34)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=35)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=36)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=37)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=38)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=39)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=40)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=41)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=43)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=44)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=45)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=46)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=47)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=48)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=49)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=50)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=51)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=52)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=53)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=54)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=55)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=56)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=57)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=58)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=59)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=60)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=61)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=62)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_rollback_for_each_copy_boundary (test_update.UpdateTests.test_rollback_for_each_copy_boundary) (after=63)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 25, in test_rollback_for_each_copy_boundary
+    with self.assertRaises(OSError):apply_update(ROOT,self.dest,_inject_after=count)
+                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_update_preserves_config_and_preferences (test_update.UpdateTests.test_update_preserves_config_and_preferences)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update.py", line 19, in test_update_preserves_config_and_preferences
+    result=apply_update(ROOT,self.dest);self.assertTrue(result['Updated']);verify_runtime(self.dest)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 525, in apply_update
+    plan=plan_update(source,destination,allow_downgrade=allow_downgrade)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_library_plan_and_update_never_scan (test_update_queues.UserQueueTests.test_library_plan_and_update_never_scan)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_queues.py", line 252, in test_library_plan_and_update_never_scan
+    plan=ui.plan_update(ROOT,self.dest);result=ui.apply_update(ROOT,self.dest)
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 391, in plan_update
+    verify_runtime(source)
+    ~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 160, in verify_runtime
+    raise ValueError(f"Changed runtime component: {relative}")
+ValueError: Changed runtime component: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_completed_update_uses_new_bytes (test_rc22.RecoveryTests.test_completed_update_uses_new_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_conflicting_code_edit_refuses_all_recovery_writes (test_rc22.RecoveryTests.test_conflicting_code_edit_refuses_all_recovery_writes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_crash_after_completed_update_keeps_new_code (test_rc22.RecoveryTests.test_crash_after_completed_update_keeps_new_code)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_crash_recovery_does_not_overwrite_changed_configuration (test_rc22.RecoveryTests.test_crash_recovery_does_not_overwrite_changed_configuration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_exception_after_actual_replace_is_also_rolled_back (test_rc22.RecoveryTests.test_exception_after_actual_replace_is_also_rolled_back)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_external_backup_refused (test_rc22.RecoveryTests.test_external_backup_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_incomplete_rollback_keeps_lock_until_explicit_recovery (test_rc22.RecoveryTests.test_incomplete_rollback_keeps_lock_until_explicit_recovery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_interrupted_preparation_is_released_after_verification (test_rc22.RecoveryTests.test_interrupted_preparation_is_released_after_verification)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_interrupted_preparation_with_modified_code_keeps_fence (test_rc22.RecoveryTests.test_interrupted_preparation_with_modified_code_keeps_fence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_linked_destination_refused_without_touching_outside (test_rc22.RecoveryTests.test_linked_destination_refused_without_touching_outside)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_process_termination_at_every_copy_boundary (test_rc22.RecoveryTests.test_process_termination_at_every_copy_boundary)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_tampered_backup_refused_and_lock_retained (test_rc22.RecoveryTests.test_tampered_backup_refused_and_lock_retained)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_traversing_journal_refused_even_if_lock_hash_changed (test_rc22.RecoveryTests.test_traversing_journal_refused_even_if_lock_hash_changed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+ERROR: test_uninitialized_fence_is_not_silently_deleted (test_rc22.RecoveryTests.test_uninitialized_fence_is_not_silently_deleted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_rc22.py", line 31, in setUp
+    verify_runtime(self.dest)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 163, in verify_runtime
+    verify_native_binding(root)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 132, in verify_native_binding
+    raise ValueError("EXE was built for different bytes: " + path)
+ValueError: EXE was built for different bytes: wad/Pesto-Contracts.ps1
+
+======================================================================
+FAIL: test_command_line_preview_prints_clear_warning (test_update_queues.UserQueueTests.test_command_line_preview_prints_clear_warning)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_queues.py", line 284, in test_command_line_preview_prints_clear_warning
+    self.assertEqual(code,0,err)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 1 != 0 : Update refused: Changed runtime component: wad/Pesto-Contracts.ps1
+
+
+======================================================================
+FAIL: test_command_line_with_ansi_code_page_and_foreign_profile_path (test_update_queues.UserQueueTests.test_command_line_with_ansi_code_page_and_foreign_profile_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_queues.py", line 292, in test_command_line_with_ansi_code_page_and_foreign_profile_path
+    self.assertEqual(code,0,err);result=json.loads(out)  # Valid JSON even when the console cannot show the path.
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 1 != 0 : Update refused: Changed runtime component: wad/Pesto-Contracts.ps1
+
+
+======================================================================
+FAIL: test_failing_scan_never_turns_an_update_into_a_failure (test_update_queues.UserQueueTests.test_failing_scan_never_turns_an_update_into_a_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_queues.py", line 258, in test_failing_scan_never_turns_an_update_into_a_failure
+    self.assertEqual(code,0,err);self.assertTrue(result['Updated'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 1 != 0 : Update refused: Changed runtime component: wad/Pesto-Contracts.ps1
+
+
+======================================================================
+FAIL: test_queues_stay_out_of_the_plan_and_never_block_the_update (test_update_queues.UserQueueTests.test_queues_stay_out_of_the_plan_and_never_block_the_update)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_queues.py", line 232, in test_queues_stay_out_of_the_plan_and_never_block_the_update
+    self.assertEqual(code,0,err);self.assertEqual(preview['UserQueues']['Status'],'Attention');self.assertIn('ATTENTION',err)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 1 != 0 : Update refused: Changed runtime component: wad/Pesto-Contracts.ps1
+
+
+======================================================================
+FAIL: test_typed_path_under_linked_parent_is_recognised (test_update_queues.UserQueueTests.test_typed_path_under_linked_parent_is_recognised)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_update_queues.py", line 225, in test_typed_path_under_linked_parent_is_recognised
+    self.assertEqual(code,0,err);self.assertTrue(result['Updated'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: 1 != 0 : Update refused: Changed runtime component: wad/Pesto-Contracts.ps1
+
+
+----------------------------------------------------------------------
+Ran 64 tests in 1.163s
+
+FAILED (failures=5, errors=86)

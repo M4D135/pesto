@@ -1,0 +1,16 @@
+PASS Profil sans secret fermé et chemins absolus
+PASS Profil refuse chemin relatif
+PASS Scénario requis autorisé et verrouillé
+PASS LAPS jamais appelé implicitement
+PASS Liens ticket HTTPS sans identifiants ni injection
+PASS Attributs complémentaires : aperçu non exécutable fermé
+PASS Export audit fermé sans détails sensibles
+PASS GPO seulement restrictive et sans mutation du config objet
+PASS GPO désactivée ne force pas activation locale
+PASS GPO valeurs mal typées bloquent
+PASS Modèles GPO XML lisibles et références cohérentes
+
+[32;1mSuite               [0m[32;1m Total[0m[32;1m Passed[0m[32;1m Failed[0m
+[32;1m-----               [0m [32;1m-----[0m [32;1m------[0m [32;1m------[0m
+OptionalIntegrations    11     11      0
+

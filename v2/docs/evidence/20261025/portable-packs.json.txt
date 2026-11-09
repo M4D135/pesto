@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "finishedUtc": "2026-10-25T17:33:53.100280+00:00",
+  "status": "portable-validation-passed-with-pinned-runtime",
+  "artifactRoot": "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618",
+  "sourceCommit": null,
+  "sourceInputsMatchPublishedSnapshot": true,
+  "sourceInputCount": 62,
+  "publishCommand": [
+    "/workspace/scratch/bc61a0d0a686/dotnet/dotnet",
+    "publish",
+    "src/Pesto.App/Pesto.App.csproj",
+    "-c",
+    "Release",
+    "-r",
+    "win-x64",
+    "--self-contained",
+    "true",
+    "--disable-build-servers",
+    "-m:1",
+    "-o",
+    "/workspace/scratch/bc61a0d0a686/pesto/v2/out/verified-candidate-20261025-5998df9631/publish"
+  ],
+  "publishExitCode": 0,
+  "executableSha256": "3dcbe0dfbc5a7374efaefc72248b4d0630acf86dc651c88450e70ac8828f602f",
+  "executableBytes": 118131015,
+  "packCheck": {
+    "command": [
+      "node",
+      "tools/tests/pack-check.mjs",
+      "/workspace/scratch/bc61a0d0a686/pesto/v2/out/verified-candidate-20261025-5998df9631/publish"
+    ],
+    "exitCode": 0,
+    "finishedUtc": "2026-10-25T17:24:23.646076+00:00",
+    "summary": "PACK CHECK OK : 35/35 contrôles ; aucune exécution Windows."
+  },
+  "packs": [
+    {
+      "Directory": "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/PROD",
+      "Version": "2.0.0",
+      "Channel": "PROD",
+      "Distribution": "candidate",
+      "Fingerprint": "5dd7bed8468a80c625973ab12a7ee13a4a8a0afb1de6f29efcac391c525b5a9b",
+      "FileCount": 341,
+      "Bytes": 825282911,
+      "ConfigurationFingerprint": null,
+      "manifest": {
+        "schemaVersion": 2,
+        "packName": "Pesto-v2-portable",
+        "version": "2.0.0",
+        "channel": "PROD",
+        "entryPoint": "Pesto.exe",
+        "layout": "singlefile-wad",
+        "repository": "M4D135/pesto",
+        "distribution": "candidate",
+        "official": false,
+        "qualification": "unqualified",
+        "webview2Runtime": "fixed",
+        "webview2Version": "156.0.4314.42"
+      },
+      "manifestSha256": "60f1bf71096b0eac52c1d9f054f8bde2b33d0d83b667fc4dda91ad1278d3e2a7",
+      "executableSha256": "3dcbe0dfbc5a7374efaefc72248b4d0630acf86dc651c88450e70ac8828f602f",
+      "rootEntries": [
+        "Pesto.exe",
+        "wad"
+      ],
+      "runtimeFileCount": 257,
+      "runtimeBytes": 706167729,
+      "runtimeInventorySha256": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+      "runtimeExecutableSha256": "337a496fffec9940ef7142e67162f80e40c878cb8fc2af66e5bd9aa75ffcdbae"
+    },
+    {
+      "Directory": "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/DEV",
+      "Version": "2.0.0",
+      "Channel": "DEV",
+      "Distribution": "candidate",
+      "Fingerprint": "dee532002a34b1ea9cf49b645b489fc76605e51052c7109d055966594178652a",
+      "FileCount": 552,
+      "Bytes": 840679523,
+      "ConfigurationFingerprint": null,
+      "manifest": {
+        "schemaVersion": 2,
+        "packName": "Pesto-v2-portable",
+        "version": "2.0.0",
+        "channel": "DEV",
+        "entryPoint": "Pesto.exe",
+        "layout": "singlefile-wad",
+        "repository": "M4D135/pesto",
+        "distribution": "candidate",
+        "official": false,
+        "qualification": "unqualified",
+        "webview2Runtime": "fixed",
+        "webview2Version": "156.0.4314.42"
+      },
+      "manifestSha256": "839a63ab1db4ecf7ac2ae595d610c7df927d3f27d50dabac0a8589dfa0c72dfb",
+      "executableSha256": "3dcbe0dfbc5a7374efaefc72248b4d0630acf86dc651c88450e70ac8828f602f",
+      "rootEntries": [
+        "Pesto.exe",
+        "wad"
+      ],
+      "runtimeFileCount": 257,
+      "runtimeBytes": 706167729,
+      "runtimeInventorySha256": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+      "runtimeExecutableSha256": "337a496fffec9940ef7142e67162f80e40c878cb8fc2af66e5bd9aa75ffcdbae"
+    }
+  ],
+  "commands": [
+    {
+      "name": "assemble-PROD",
+      "command": [
+        "node",
+        "tools/pack/make-pack.mjs",
+        "--source",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/publish",
+        "--dest",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/PROD",
+        "--channel",
+        "PROD",
+        "--webview2",
+        "/tmp/pesto-pinned-runtime-7ded6e30d06744cba52ebeb6d0276a62/extracted/Microsoft.WebView2.FixedVersionRuntime.156.0.4314.42.x64",
+        "--webview2-version",
+        "156.0.4314.42"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-25T17:33:43.589788+00:00",
+      "finishedUtc": "2026-10-25T17:33:45.929062+00:00"
+    },
+    {
+      "name": "assemble-DEV",
+      "command": [
+        "node",
+        "tools/pack/make-pack.mjs",
+        "--source",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/publish",
+        "--dest",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/DEV",
+        "--channel",
+        "DEV",
+        "--webview2",
+        "/tmp/pesto-pinned-runtime-7ded6e30d06744cba52ebeb6d0276a62/extracted/Microsoft.WebView2.FixedVersionRuntime.156.0.4314.42.x64",
+        "--webview2-version",
+        "156.0.4314.42"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-25T17:33:45.929467+00:00",
+      "finishedUtc": "2026-10-25T17:33:48.401039+00:00"
+    },
+    {
+      "name": "node-verify-PROD",
+      "command": [
+        "node",
+        "tools/pack/make-pack.mjs",
+        "--verify",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/PROD"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-25T17:33:48.401714+00:00",
+      "finishedUtc": "2026-10-25T17:33:49.462528+00:00"
+    },
+    {
+      "name": "node-verify-DEV",
+      "command": [
+        "node",
+        "tools/pack/make-pack.mjs",
+        "--verify",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/DEV"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-25T17:33:49.463182+00:00",
+      "finishedUtc": "2026-10-25T17:33:50.425509+00:00"
+    },
+    {
+      "name": "engine-verify",
+      "command": [
+        "/workspace/scratch/bc61a0d0a686/dotnet/dotnet",
+        "/workspace/scratch/bc61a0d0a686/pesto/v2/out/verified-candidate-20261025-5998df9631/validator/Validator.dll",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/PROD",
+        "/tmp/pesto-clean-candidates-df00157b814f495b8b73ac617386b618/DEV"
+      ],
+      "exitCode": 0,
+      "startedUtc": "2026-10-25T17:33:50.426290+00:00",
+      "finishedUtc": "2026-10-25T17:33:51.895033+00:00"
+    }
+  ],
+  "runtimeCabSha256": "cb4612ce79a62a0be094301a72f73cf91bb250f5e83dc51886f66a083fc0694f",
+  "runtimeInventorySha256": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+  "runtimeSourceProof": "/tmp/pesto-pinned-runtime-7ded6e30d06744cba52ebeb6d0276a62/runtime-proof.json",
+  "engineAssemblySha256": "61064183e08cd60456c2312f8344e3980f22ed26eecb769ce702c3638fc33639",
+  "windowsExecuted": false,
+  "adExecuted": false,
+  "nativeHealthExecuted": false,
+  "nativeBinaryUpdateExecuted": false,
+  "previousOutAndVendorCopiesPreserved": true,
+  "previousArtifactsSuperseded": true
+}

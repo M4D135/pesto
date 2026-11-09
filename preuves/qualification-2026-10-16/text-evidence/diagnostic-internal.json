@@ -1,0 +1,57 @@
+{
+  "Schema": 1,
+  "Application": "Pesto",
+  "Version": "1.0",
+  "CollectedUtc": "2026-10-15T22:23:08.6535440Z",
+  "IdentitiesMasked": false,
+  "Notice": "Aucun texte brut du journal, commande, mot de passe, PSCredential ou configuration complète collecté. Relire avant partage.",
+  "Environment": {
+    "PowerShell": "7.4.20",
+    "Edition": "Core",
+    "OS": "26.4.0",
+    "Process64Bit": true,
+    "Admin": false
+  },
+  "Session": {
+    "Computer": "",
+    "Account": "PESTO_PRIVATE_IDENTITY_106_ONLY",
+    "AuthMode": "",
+    "Domain": "PESTO_PRIVATE_IDENTITY_106_ONLY",
+    "DC": "PESTO_PRIVATE_IDENTITY_106_ONLY",
+    "InDomain": false,
+    "Demo": false,
+    "Simulation": false
+  },
+  "Presentation": {
+    "ThemeMode": "",
+    "EffectiveTheme": "",
+    "Saved": null,
+    "NavigationCollapsed": false,
+    "HelpVisible": false
+  },
+  "Configuration": {
+    "Path": "PESTO_PRIVATE_IDENTITY_106_ONLY",
+    "SiteGroups": 0,
+    "InventoryLoaded": false,
+    "InventoryUtc": "",
+    "RestartRequired": false
+  },
+  "Operations": {
+    "QueueRows": 0,
+    "QueueRunning": false,
+    "QueueLocked": false,
+    "DirectBusy": false,
+    "DirectLocked": false,
+    "JoinBusy": false,
+    "JoinLocked": false,
+    "Direct": null
+  },
+  "Components": [],
+  "RecentEventCategories": [
+    {
+      "Time": "12:00",
+      "Severity": "err",
+      "Category": "Événement applicatif"
+    }
+  ]
+}

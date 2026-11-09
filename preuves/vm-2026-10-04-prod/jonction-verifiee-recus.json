@@ -1,0 +1,156 @@
+﻿{
+    "Date":  "2026-10-04T20:05:03.2422604+02:00",
+    "Join":  {
+                 "Schema":  1,
+                 "Version":  "1.0",
+                 "OperationId":  "2efe6815e02941b9a7c36ef277b8bba3",
+                 "Phase":  "Verified",
+                 "Utc":  "2026-10-04T18:04:42.8954320Z",
+                 "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                 "BootUtc":  "2026-10-04T17:26:26.5000000Z",
+                 "Computer":  "PESTO-W11-TEST",
+                 "NewName":  "V999004AAQA1001",
+                 "Domain":  "labo.local",
+                 "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                 "DC":  "dc01.labo.local",
+                 "Reference":  "",
+                 "Account":  "LABO\\pesto-qualif",
+                 "Message":  "Nom actif, domaine, identité du PC, compte AD, emplacement et canal sécurisé confirmés après redémarrage. Entra reste un contrôle distinct."
+             },
+    "Central":  {
+                    "Schema":  3,
+                    "Version":  "1.0",
+                    "OperationId":  "2efe6815e02941b9a7c36ef277b8bba3",
+                    "Plan":  {
+                                 "Nom_du_PC":  "PESTO-W11-TEST",
+                                 "Nouveau_Nom":  "V999004AAQA1001",
+                                 "OU_Actuelle":  "",
+                                 "OU_Destination":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                 "Objet_GUID":  "",
+                                 "Domain":  "labo.local",
+                                 "DC":  "dc01.labo.local",
+                                 "ConfigStamp":  "4928F1F81841BD7B338D178B1349BFCFDFCFE9CDB7D003D36DAABDC26C53233E",
+                                 "TargetOUGuid":  "02826a0f-e401-4934-850a-c9872a33b4ce",
+                                 "Renommer":  false,
+                                 "Deplacer":  false,
+                                 "Reboot":  false
+                             },
+                    "StartedUtc":  "2026-10-04T17:48:03.4863014Z",
+                    "UpdatedUtc":  "2026-10-04T18:04:42.8597310Z",
+                    "Phase":  "Verified",
+                    "InitialProtection":  null,
+                    "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                    "TargetOUGuid":  "",
+                    "Entra":  "NotRequested",
+                    "Protection":  "NotChanged",
+                    "Rename":  "NotRequested",
+                    "Move":  "NotRequested",
+                    "ResultCode":  10,
+                    "ResultMessage":  "\"PESTO-W11-TEST\" ajouté au domaine \"labo.local\" → nom \"V999004AAQA1001\" / OU \"OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local\"",
+                    "LastStage":  "Postconditions observed",
+                    "VerifiedUtc":  "2026-10-04T18:04:41.8596879Z",
+                    "VerifiedBy":  "LABO\\pesto-qualif",
+                    "ResumeFrom":  "",
+                    "PlanFingerprint":  "5ca869684aca1c21819308c55a4b62f623368b92942c11d0c711434d1fd0743e",
+                    "Coordination":  {
+                                         "Enabled":  false,
+                                         "Keys":  [
+
+                                                  ],
+                                         "Owner":  "2efe6815e02941b9a7c36ef277b8bba3"
+                                     },
+                    "Baseline":  {
+                                     "Schema":  1,
+                                     "CapturedUtc":  "2026-10-04T17:48:03.5652640Z",
+                                     "ADUtc":  "",
+                                     "WindowsUtc":  "2026-10-04T17:48:03.5652640Z",
+                                     "HealthUtc":  "",
+                                     "AD":  null,
+                                     "Windows":  {
+                                                     "ActiveName":  "PESTO-W11-TEST",
+                                                     "ConfiguredName":  "PESTO-W11-TEST",
+                                                     "Domain":  "LABO",
+                                                     "PartOfDomain":  false,
+                                                     "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                                     "BootUtc":  "2026-10-04T17:26:26.5000000Z",
+                                                     "DomainRole":  0
+                                                 },
+                                     "Health":  null
+                                 },
+                    "JoinEvidence":  {
+                                         "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                         "BeforeBootUtc":  "2026-10-04T17:26:26.5000000Z",
+                                         "PreparedUtc":  "2026-10-04T17:48:03.5652640Z",
+                                         "NativeStatus":  "Accepted",
+                                         "BoundObjectGuid":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b"
+                                     },
+                    "Sequence":  6,
+                    "Timeline":  [
+                                     {
+                                         "Sequence":  1,
+                                         "Utc":  "2026-10-04T17:48:03.5385569Z",
+                                         "Stage":  "TargetMachineId",
+                                         "State":  "81387449-2dd8-4bd9-8059-f868a5b8ec68"
+                                     },
+                                     {
+                                         "Sequence":  2,
+                                         "Utc":  "2026-10-04T17:48:03.6148986Z",
+                                         "Stage":  "JoinBaseline",
+                                         "State":  "RecordedBeforeCommand"
+                                     },
+                                     {
+                                         "Sequence":  3,
+                                         "Utc":  "2026-10-04T17:48:03.7280099Z",
+                                         "Stage":  "Join",
+                                         "State":  "Requested"
+                                     },
+                                     {
+                                         "Sequence":  4,
+                                         "Utc":  "2026-10-04T17:48:07.9090011Z",
+                                         "Stage":  "Join",
+                                         "State":  "Accepted"
+                                     },
+                                     {
+                                         "Sequence":  5,
+                                         "Utc":  "2026-10-04T17:48:07.9515307Z",
+                                         "Stage":  "Result",
+                                         "State":  "PendingRestart"
+                                     },
+                                     {
+                                         "Sequence":  6,
+                                         "Utc":  "2026-10-04T18:01:18.8717082Z",
+                                         "Stage":  "Observation",
+                                         "State":  "RecordedNotResolved"
+                                     }
+                                 ],
+                    "LastObservation":  {
+                                            "Schema":  1,
+                                            "CapturedUtc":  "2026-10-04T18:04:41.8596879Z",
+                                            "ADUtc":  "2026-10-04T18:04:41.0491831Z",
+                                            "WindowsUtc":  "2026-10-04T18:04:41.1245010Z",
+                                            "HealthUtc":  "2026-10-04T18:04:41.1245010Z",
+                                            "AD":  {
+                                                       "Name":  "V999004AAQA1001",
+                                                       "Guid":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                                       "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                                       "Protected":  false
+                                                   },
+                                            "Windows":  {
+                                                            "ActiveName":  "V999004AAQA1001",
+                                                            "ConfiguredName":  "V999004AAQA1001",
+                                                            "Domain":  "labo.local",
+                                                            "PartOfDomain":  true,
+                                                            "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                                            "BootUtc":  "2026-10-04T17:55:26.5000000Z",
+                                                            "DomainRole":  1
+                                                        },
+                                            "Health":  {
+                                                           "Scope":  "Appareil local, compte du processus ; pas SSO utilisateur",
+                                                           "AzureAdJoined":  "NO",
+                                                           "DomainJoined":  "YES",
+                                                           "SecureChannel":  true
+                                                       }
+                                        }
+                },
+    "Direct":  null
+}

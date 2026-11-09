@@ -1,0 +1,522 @@
+--- RC12/GP.ps1
++++ RC13/GP.ps1
+@@ -2,11 +2,12 @@
+ [CmdletBinding()]
+ param(
+     [switch]$Demo,
++    [switch]$AskCredential,
+     [string]$ConfigPath,
+     [switch]$ElevatedLaunch,
+     [string]$OriginLocalAppData
+ )
+-# GP 17.0-RC12 : elevation avant le moteur, le login et toute preparation d'action.
++# GP 17.0-RC13 : elevation avant le moteur, le login et toute preparation d'action.
+ $ErrorActionPreference='Stop'
+ $root=$null
+ try {
+@@ -27,7 +28,7 @@
+     . $startup
+ 
+     # ConfigPath relatif est resolu dans le processus appelant, avant l'UAC.
+-    $parameters=@{Demo=$Demo.IsPresent}
++    $parameters=@{Demo=$Demo.IsPresent;AskCredential=$AskCredential.IsPresent}
+     if($PSBoundParameters.ContainsKey('ConfigPath')){
+         if([string]::IsNullOrWhiteSpace($ConfigPath)){throw 'Le parametre ConfigPath ne peut pas etre vide.'}
+         $parameters.ConfigPath=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ConfigPath)
+@@ -35,7 +36,7 @@
+     $isAdmin=Test-GPStartupAdministrator
+     $route=Get-GPStartupRoute -Demo $Demo.IsPresent -IsAdministrator $isAdmin -ElevatedLaunch $ElevatedLaunch.IsPresent
+     $identity=Get-GPStartupIdentity
+-    Write-GPStartupLog -Root $root -Message ("RC12 Route=$route Admin=$isAdmin Identite=$($identity.Name)")
++    Write-GPStartupLog -Root $root -Message ("RC13 Route=$route Admin=$isAdmin Identite=$($identity.Name)")
+ 
+     if($route -eq 'Refuse'){
+         throw 'Le relais Windows ne dispose pas d''un jeton administrateur. GP s''arrete avant la connexion ; aucune nouvelle demande UAC en boucle.'
+@@ -44,7 +45,7 @@
+         # Aucun credential GP n'existe encore : rien de secret a faire transiter.
+         $origin=[Environment]::GetFolderPath('LocalApplicationData')
+         if([string]::IsNullOrWhiteSpace($origin)){throw 'Profil de depart indisponible : reprise de file non garantie.'}
+-        $exitCode=Invoke-GPStartupElevation -EntryPath $entry -ConfigPath $parameters.ConfigPath -OriginLocalAppData $origin -Root $root
++        $exitCode=Invoke-GPStartupElevation -EntryPath $entry -ConfigPath $parameters.ConfigPath -OriginLocalAppData $origin -Root $root -AskCredential:$AskCredential
+         exit $exitCode
+     }
+     if($route -eq 'Run'){
+@@ -56,7 +57,7 @@
+             if([string]::IsNullOrWhiteSpace($current)){throw 'Profil administrateur indisponible.'}
+             Import-GPStartupState -OriginLocalAppData $OriginLocalAppData -CurrentLocalAppData $current -ConfigPath $stateConfig -Root $root
+         }
+-        Write-GPStartupLog -Root $root -Message 'Admin=True confirme. Chargement du moteur et du login dans CE processus eleve.'
++        Write-GPStartupLog -Root $root -Message 'Admin=True confirme. Chargement du moteur dans CE processus eleve ; compte Windows reutilise automatiquement dans le domaine.'
+     } else {
+         Write-GPStartupLog -Root $root -Message 'Demo : sans demande UAC, sans connexion AD ni operation reelle.'
+     }
+--- RC12/wad/GP-Startup.ps1
++++ RC13/wad/GP-Startup.ps1
+@@ -34,7 +34,7 @@
+ }
+ 
+ function New-GPStartupArgumentLine {
+-    param([string]$EntryPath,[string]$ConfigPath,[string]$OriginLocalAppData)
++    param([string]$EntryPath,[string]$ConfigPath,[string]$OriginLocalAppData,[switch]$AskCredential)
+     $parts=[Collections.Generic.List[string]]::new()
+     if([IO.Path]::GetExtension($EntryPath) -ieq '.ps1'){
+         foreach($arg in @('-NoLogo','-NoProfile','-STA','-ExecutionPolicy','RemoteSigned','-File')){$parts.Add($arg)}
+@@ -43,6 +43,7 @@
+         throw 'Le point d''entree doit etre GP.ps1 ou GP.exe.'
+     }
+     $parts.Add('-ElevatedLaunch')
++    if($AskCredential){$parts.Add('-AskCredential')}
+     if($ConfigPath){$parts.Add('-ConfigPath');$parts.Add((ConvertTo-GPStartupArgument $ConfigPath))}
+     if($OriginLocalAppData){$parts.Add('-OriginLocalAppData');$parts.Add((ConvertTo-GPStartupArgument $OriginLocalAppData))}
+     return ($parts -join ' ')
+@@ -66,8 +67,8 @@
+ }
+ 
+ function Invoke-GPStartupElevation {
+-    param([string]$EntryPath,[string]$ConfigPath,[string]$OriginLocalAppData,[string]$Root)
+-    $line=New-GPStartupArgumentLine -EntryPath $EntryPath -ConfigPath $ConfigPath -OriginLocalAppData $OriginLocalAppData
++    param([string]$EntryPath,[string]$ConfigPath,[string]$OriginLocalAppData,[string]$Root,[switch]$AskCredential)
++    $line=New-GPStartupArgumentLine -EntryPath $EntryPath -ConfigPath $ConfigPath -OriginLocalAppData $OriginLocalAppData -AskCredential:$AskCredential
+     $exe=if([IO.Path]::GetExtension($EntryPath) -ieq '.exe'){$EntryPath}else{Join-Path $PSHOME 'powershell.exe'}
+     if(-not(Test-Path -LiteralPath $exe -PathType Leaf)){throw "Lanceur Windows introuvable : $exe"}
+     $process=$null
+--- RC12/wad/GP-Core.ps1
++++ RC13/wad/GP-Core.ps1
+@@ -1,11 +1,11 @@
+ #requires -version 5.1
+ [CmdletBinding()]
+-param([switch]$Demo,[string]$ConfigPath)
++param([switch]$Demo,[string]$ConfigPath,[switch]$AskCredential)
+ ###############################################################################
+ #  GP - Gestion des Postes   (interface WPF, Active Directory)
+ #  Jonction au domaine / Renommage / Déplacement / File d'actions
+ #
+-#  Version 17.0 RC12 - connexion compacte RBP ; UAC et moteur RC11 conserves :
++#  Version 17.0 RC13 - connexion Windows automatique dans le domaine :
+ #    - Retrait Entra obligatoire avant le premier renommage, avec contrôle du résultat.
+ #    - Déplacements seuls et jonctions au domaine inchangés.
+ #    - Moteur AD entièrement découplé de l'interface (aucun appel UI dans le
+@@ -39,7 +39,7 @@
+ 
+ Set-StrictMode -Off
+ $ErrorActionPreference = 'Stop'
+-$script:GP_VERSION = '17.0-RC12'
++$script:GP_VERSION = '17.0-RC13'
+ 
+ if ($env:OS -ne 'Windows_NT') { throw "GP nécessite Windows PowerShell 5.1 x64 sous Windows." }
+ if ([Threading.Thread]::CurrentThread.ApartmentState -ne 'STA') {
+@@ -54,7 +54,7 @@
+     if (-not $startupAdmin) {
+         $startupLauncher=Join-Path (Split-Path -Parent $PSScriptRoot) 'GP.ps1'
+         if (-not (Test-Path -LiteralPath $startupLauncher -PathType Leaf)) { throw 'GP.ps1 absent. Utilisez le pack complet ; le login ne peut pas commencer sans elevation.' }
+-        $startupParams=@{}
++        $startupParams=@{AskCredential=$AskCredential.IsPresent}
+         if ($PSBoundParameters.ContainsKey('ConfigPath')) {
+             if ([string]::IsNullOrWhiteSpace($ConfigPath)) { throw 'ConfigPath vide.' }
+             $startupParams.ConfigPath=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ConfigPath)
+@@ -3243,6 +3243,61 @@
+         return New-ActionResult 11 "Erreur Add-Computer : $($_.Exception.Message)"
+     }
+ }
++function Invoke-GPWindowsLocalRename {
++    # Appel WMI local avec le jeton courant. Aucun PSCredential fabriqué à vide.
++    # Win32_ComputerSystem.Rename utilise l'appelant si UserName/Password sont omis.
++    param([string]$ComputerName,[string]$NewName)
++    if(-not (Test-GPComputerName $ComputerName) -or -not (Test-GPGeneratedComputerName $NewName)){
++        return New-ActionResult 96 'Renommage Windows intégré : noms invalides, aucune action lancée.'
++    }
++    if($ComputerName -ine $env:COMPUTERNAME){
++        return New-ActionResult 96 'Le renommage Windows intégré est strictement local. Aucun dsregcmd lancé.'
++    }
++    if($script:SIM -or $script:GUI){return New-ActionResult 20 'SIMULATION : renommage local avec le compte Windows, aucune écriture.'}
++    try {
++        Assert-GPWorkerMayContinue
++        $identity=Get-GPWindowsAuthIdentity
++        if(-not $identity.IsAdministrator -or -not $identity.IsDomainUser){throw 'Un compte du domaine avec jeton administrateur local est requis.'}
++        $local=@(Get-CimInstance -ClassName Win32_ComputerSystem -Namespace 'root/cimv2' -OperationTimeoutSec 15 -ErrorAction Stop)
++        if($local.Count -ne 1){throw 'La lecture du poste local ne renvoie pas un résultat unique.'}
++        $cs=$local[0]
++        if([string]$cs.Name -ine $ComputerName -or $cs.PartOfDomain -isnot [bool] -or -not $cs.PartOfDomain -or
++           ([string]$cs.Domain).TrimEnd('.') -ine $script:DOMAINE.TrimEnd('.')){
++            throw 'Le nom ou le domaine réel du poste ne correspond plus au plan préparé.'
++        }
++        if($null -eq $cs.DomainRole -or [int]$cs.DomainRole -notin @(1,3)){throw 'Le rôle Windows ne permet pas ce renommage. Les contrôleurs de domaine sont exclus.'}
++        # Vérifie la disponibilité de la cmdlet avant le retrait Entra.
++        [void](Get-Command Invoke-CimMethod -ErrorAction Stop)
++    } catch {return New-ActionResult 96 ('Précontrôle du renommage intégré refusé : '+$_.Exception.Message+' Aucun dsregcmd lancé.')}
++
++    $leave=Invoke-GPDsregLeaveBeforeRename -ComputerName $ComputerName
++    if(-not $leave){return New-ActionResult 97 'Résultat dsregcmd absent : aucun renommage lancé.'}
++    if($leave.ExitCode -ne 20){return $leave}
++    $note=' | Retrait Entra préalable effectué : contrôler la réinscription après redémarrage ou après correction du renommage.'
++    try {
++        Assert-GPWorkerMayContinue -Mutation
++        Set-GPWorkerStage 'Renommage local avec le compte Windows' $identity.Name
++        # -Query cible l'instance, sans -ComputerName, -CimSession ni -InputObject :
++        # session COM locale, pas de WinRM ni de délégation vers un autre poste.
++        $query="SELECT * FROM Win32_ComputerSystem WHERE Name='$ComputerName'"
++        $result=@(Invoke-CimMethod -Query $query -Namespace 'root/cimv2' -MethodName 'Rename' -Arguments @{Name=$NewName} -OperationTimeoutSec 120 -ErrorAction Stop)
++        if($result.Count -ne 1 -or $null -eq $result[0] -or -not $result[0].PSObject.Properties['ReturnValue']){
++            return New-ActionResult 97 ('Résultat WMI absent ou incomplet : aucun succès supposé.'+$note)
++        }
++        $code=$result[0].ReturnValue
++        if(($code -isnot [uint32] -and $code -isnot [int] -and $code -isnot [uint64] -and $code -isnot [long]) -or
++            [long]$code -lt 0 -or [long]$code -gt [uint32]::MaxValue){
++            return New-ActionResult 97 ('Code de retour WMI invalide : aucun succès supposé.'+$note)
++        }
++        if([uint32]$code -eq 0){return New-ActionResult 20 ("'$ComputerName' renommé en '$NewName' avec le compte Windows ; redémarrage requis."+$note)}
++        $text=try{([ComponentModel.Win32Exception]::new([int]$code)).Message}catch{'Erreur Windows non traduite'}
++        return New-ActionResult 21 ("Renommage WMI refusé (code $code) : $text. Aucun nouvel essai automatique."+$note)
++    } catch {
++        Write-Log 'Renommage Windows intégré interrompu après le retrait Entra.' 'ERROR' $_ 'rename'
++        return New-ActionResult 97 ('Résultat incertain : '+$_.Exception.Message+'. Vérifier Windows et AD avant toute reprise.'+$note)
++    }
++}
++
+ function RenameComputer {
+     param([string]$Computername,[string]$NewName)
+     $Computername=$Computername.Trim();$NewName=$NewName.Trim().ToUpperInvariant()
+@@ -3269,7 +3324,8 @@
+         return New-ActionResult 96 'Renommage non lance : GP n''est pas eleve. Fermez GP et relancez GP.cmd ; aucune nouvelle demande UAC pendant cette action.'
+     }
+     if($script:cred -isnot [Management.Automation.PSCredential]){
+-        return New-ActionResult 96 'Renommage non lance : le compte AD et son mot de passe doivent etre saisis au login GP. Le mode Session Windows ne fournit pas le credential de domaine requis. Aucun dsregcmd lance.'
++        if(-not $local){return New-ActionResult 96 'Renommage distant non lancé : utiliser GP_COMPTE_AD.cmd pour ce parcours RPC avec identifiants explicites. Le jeton UAC ne fournit pas un mot de passe à déléguer. Aucun dsregcmd lancé.'}
++        return Invoke-GPWindowsLocalRename -ComputerName $Computername -NewName $NewName
+     }
+     $leave=Invoke-GPDsregLeaveBeforeRename -ComputerName $Computername
+     if(-not $leave){return New-ActionResult 97 'Résultat dsregcmd absent : aucun renommage lancé.'}
+@@ -4350,7 +4406,7 @@
+         $bgInput = [string]$t['BgInputRO']
+ 
+         [xml]$sxaml = @"
+-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC12 — Initialisation" Width="620" Height="330" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="$bgWindow" FontFamily="Segoe UI" FontSize="12" ShowInTaskbar="True" Topmost="True">
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC13 — Initialisation" Width="620" Height="330" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="$bgWindow" FontFamily="Segoe UI" FontSize="12" ShowInTaskbar="True" Topmost="True">
+   <Border Margin="18" Padding="22" CornerRadius="18" Background="$bgCard" BorderBrush="$border" BorderThickness="1">
+     <Grid>
+       <Grid.RowDefinitions>
+@@ -4450,7 +4506,7 @@
+ ###############################################################################
+ 
+ [xml]$xaml = @'
+-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC12 | Gestion des Postes" Width="1460" Height="940" MinWidth="1000" MinHeight="620" WindowStartupLocation="CenterScreen" Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13" TextOptions.TextFormattingMode="Display" UseLayoutRounding="True" SnapsToDevicePixels="True">
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC13 | Gestion des Postes" Width="1460" Height="940" MinWidth="1000" MinHeight="620" WindowStartupLocation="CenterScreen" Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13" TextOptions.TextFormattingMode="Display" UseLayoutRounding="True" SnapsToDevicePixels="True">
+ <Window.Resources>
+ <SolidColorBrush x:Key="BgWindow" Color="#F5F7FB"/><SolidColorBrush x:Key="BgSidebar" Color="#EDF3FC"/><SolidColorBrush x:Key="BgCard" Color="#FFFFFF"/><SolidColorBrush x:Key="BgInput" Color="#FFFFFF"/><SolidColorBrush x:Key="BgInputRO" Color="#F0F3F8"/><SolidColorBrush x:Key="FgText" Color="#172B4D"/><SolidColorBrush x:Key="FgMuted" Color="#5A6C86"/><SolidColorBrush x:Key="FgAccent" Color="#0065D5"/><SolidColorBrush x:Key="ClrBorder" Color="#DCE4EF"/><SolidColorBrush x:Key="BtnBg" Color="#F7F9FD"/><SolidColorBrush x:Key="BtnFg" Color="#243B60"/><SolidColorBrush x:Key="BtnBorder" Color="#CED9E8"/><SolidColorBrush x:Key="GridBg" Color="#FFFFFF"/><SolidColorBrush x:Key="GridAltBg" Color="#FAFCFF"/><SolidColorBrush x:Key="GridHeaderBg" Color="#F3F6FB"/><SolidColorBrush x:Key="GridLine" Color="#E7EDF5"/><SolidColorBrush x:Key="RowSelBg" Color="#DCEAFF"/><SolidColorBrush x:Key="RowSelFg" Color="#172B4D"/><SolidColorBrush x:Key="LogBg" Color="#FFFFFF"/><SolidColorBrush x:Key="AddBg" Color="#0065D5"/><SolidColorBrush x:Key="RunBg" Color="#0065D5"/><SolidColorBrush x:Key="RunFg" Color="#FFFFFF"/><SolidColorBrush x:Key="BadgeBg" Color="#EDF3FC"/><SolidColorBrush x:Key="BadgeFg" Color="#172B4D"/><SolidColorBrush x:Key="FieldOk" Color="#F1FAF6"/><SolidColorBrush x:Key="FieldKo" Color="#FFF1F0"/><SolidColorBrush x:Key="OkFg" Color="#146845"/><SolidColorBrush x:Key="ErrFg" Color="#B52C32"/><SolidColorBrush x:Key="WarnFg" Color="#8A5700"/><SolidColorBrush x:Key="HeadFg" Color="#0065D5"/><SolidColorBrush x:Key="ChipOkBg" Color="#E3F5EB"/><SolidColorBrush x:Key="ChipOkFg" Color="#146845"/><SolidColorBrush x:Key="ChipWarnBg" Color="#FFF0D9"/><SolidColorBrush x:Key="ChipWarnFg" Color="#825000"/><SolidColorBrush x:Key="ChipInfoBg" Color="#E5EFFF"/><SolidColorBrush x:Key="ChipInfoFg" Color="#075BB4"/><SolidColorBrush x:Key="ChipNeutralBg" Color="#EEF2F7"/><SolidColorBrush x:Key="ChipNeutralFg" Color="#4D5F79"/><SolidColorBrush x:Key="SectionFg" Color="#0065D5"/><SolidColorBrush x:Key="Divider" Color="#E2E9F2"/><SolidColorBrush x:Key="Shadow" Color="#B3C0D4"/><SolidColorBrush x:Key="RowHoverBg" Color="#F0F6FF"/><SolidColorBrush x:Key="AccentSoft" Color="#E7F0FF"/><SolidColorBrush x:Key="FocusRing" Color="#0065D5"/><SolidColorBrush x:Key="TipBg" Color="#202E43"/><SolidColorBrush x:Key="TipFg" Color="#FFFFFF"/><SolidColorBrush x:Key="TipBorder" Color="#34455D"/><!-- RC6 : contrôles WPF natifs ; aucun framework externe ni police à installer. -->
+ <Style x:Key="FocusCue" TargetType="Control"><Setter Property="Template"><Setter.Value><ControlTemplate><Border Margin="-3" CornerRadius="9" BorderThickness="2" BorderBrush="{DynamicResource FocusRing}"/></ControlTemplate></Setter.Value></Setter></Style>
+@@ -4559,13 +4615,13 @@
+   <Grid Margin="14,20,14,16"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <StackPanel Margin="11,0,0,26"><StackPanel Orientation="Horizontal"><Border Width="31" Height="31" CornerRadius="8" Background="{DynamicResource AddBg}" Margin="0,0,9,0"><TextBlock Text="GP" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/></Border><TextBlock Text="Gestion des postes" FontSize="12" FontWeight="SemiBold" TextWrapping="Wrap" Width="91"/></StackPanel><TextBlock Text="Votre espace de travail" Style="{StaticResource Hint}" Margin="0,10,0,0" FontSize="11"/></StackPanel>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel><Button x:Name="NavHome" Style="{StaticResource NavButton}" ToolTip="Afficher le résumé local et les accès rapides. Aucune opération sur les postes." AutomationProperties.Name="Accueil" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Afficher le résumé local et les accès rapides. Aucune opération sur les postes." AutomationProperties.AutomationId="NavHome"><StackPanel Orientation="Horizontal"><TextBlock Text="⌂" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavHomeLabel" Text="Accueil" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavRename" Style="{StaticResource NavButton}" ToolTip="Préparer un renommage ou la jonction locale hors domaine, puis vérifier la file." AutomationProperties.Name="Renommer" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Préparer un renommage ou la jonction locale hors domaine, puis vérifier la file." AutomationProperties.AutomationId="NavRename"><StackPanel Orientation="Horizontal"><TextBlock Text="✎" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavRenameLabel" Text="Renommer" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavNames" Style="{StaticResource NavButton}" ToolTip="Consulter les noms libres dans le périmètre du cache AD." AutomationProperties.Name="Noms disponibles" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Consulter les noms libres dans le périmètre du cache AD." AutomationProperties.AutomationId="NavNames"><StackPanel Orientation="Horizontal"><TextBlock Text="▤" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavNamesLabel" Text="Noms disponibles" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavHistory" Style="{StaticResource NavButton}" ToolTip="Consulter les 100 dernières synthèses locales. Aucune relance automatique." AutomationProperties.Name="Historique" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Consulter les 100 dernières synthèses locales. Aucune relance automatique." AutomationProperties.AutomationId="NavHistory"><StackPanel Orientation="Horizontal"><TextBlock Text="◷" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavHistoryLabel" Text="Historique" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavLogs" Style="{StaticResource NavButton}" ToolTip="Lire les événements et les résultats détaillés de la session." AutomationProperties.Name="Journal" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Lire les événements et les résultats détaillés de la session." AutomationProperties.AutomationId="NavLogs"><StackPanel Orientation="Horizontal"><TextBlock Text="≡" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavLogsLabel" Text="Journal" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavSettings" Style="{StaticResource NavButton}" ToolTip="Modifier la configuration puis enregistrer explicitement les changements." AutomationProperties.Name="Paramètres" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Modifier la configuration puis enregistrer explicitement les changements." AutomationProperties.AutomationId="NavSettings"><StackPanel Orientation="Horizontal"><TextBlock Text="⚙" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavSettingsLabel" Text="Paramètres" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button></StackPanel></ScrollViewer>
+-   <StackPanel Grid.Row="2"><Button x:Name="NavHelp" Content="?   Aide et raccourcis" Style="{StaticResource NavButton}" ToolTip="Aide locale. F1 explique le contrôle qui a le focus." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Aide locale. F1 explique le contrôle qui a le focus." AutomationProperties.AutomationId="NavHelp" AutomationProperties.Name="?   Aide et raccourcis"/><Border BorderBrush="{DynamicResource ClrBorder}" BorderThickness="0,1,0,0" Padding="11,13,0,0" Margin="0,10,0,0"><StackPanel><TextBlock x:Name="UxVersion" Text="GP 17.0-RC12" FontSize="11" Foreground="{DynamicResource FgMuted}"/><TextBlock Text="Windows · PowerShell" FontSize="10" Foreground="{DynamicResource FgMuted}" Margin="0,3,0,0"/></StackPanel></Border></StackPanel>
++   <StackPanel Grid.Row="2"><Button x:Name="NavHelp" Content="?   Aide et raccourcis" Style="{StaticResource NavButton}" ToolTip="Aide locale. F1 explique le contrôle qui a le focus." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Aide locale. F1 explique le contrôle qui a le focus." AutomationProperties.AutomationId="NavHelp" AutomationProperties.Name="?   Aide et raccourcis"/><Border BorderBrush="{DynamicResource ClrBorder}" BorderThickness="0,1,0,0" Padding="11,13,0,0" Margin="0,10,0,0"><StackPanel><TextBlock x:Name="UxVersion" Text="GP 17.0-RC13" FontSize="11" Foreground="{DynamicResource FgMuted}"/><TextBlock Text="Windows · PowerShell" FontSize="10" Foreground="{DynamicResource FgMuted}" Margin="0,3,0,0"/></StackPanel></Border></StackPanel>
+   </Grid>
+  </Border>
+  <Grid Grid.Column="1"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+   <Border Grid.Row="0" Background="{DynamicResource BgCard}" BorderBrush="{DynamicResource ClrBorder}" BorderThickness="0,0,0,1" Padding="22,14">
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+-    <WrapPanel VerticalAlignment="Center"><Border x:Name="ChipMember" Style="{StaticResource Chip}"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipDomain" Style="{StaticResource Chip}"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipJoin" Style="{StaticResource Chip}"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipSim" Style="{StaticResource Chip}" Visibility="Collapsed"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipGui" Style="{StaticResource ChipMini}" Visibility="Collapsed">
++    <WrapPanel VerticalAlignment="Center"><Border x:Name="ChipMember" Style="{StaticResource Chip}"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipDomain" Style="{StaticResource Chip}"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipAccount" Style="{StaticResource Chip}" MaxWidth="330"><TextBlock Style="{StaticResource ChipTxt}" TextTrimming="CharacterEllipsis"/></Border><Border x:Name="ChipJoin" Style="{StaticResource Chip}"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipSim" Style="{StaticResource Chip}" Visibility="Collapsed"><TextBlock Style="{StaticResource ChipTxt}"/></Border><Border x:Name="ChipGui" Style="{StaticResource ChipMini}" Visibility="Collapsed">
+           <TextBlock Style="{StaticResource ChipMiniTxt}"/>
+         </Border></WrapPanel>
+     <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10,0,0,0"><Button x:Name="BtnLog" Content="Audit" Style="{StaticResource Btn}" Padding="11,7" Margin="0,0,8,0" ToolTip="Ouvrir le dossier du journal d'audit" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Ouvrir le dossier du journal d'audit" AutomationProperties.AutomationId="BtnLog" AutomationProperties.Name="Audit"/><Button x:Name="BtnTheme" Style="{StaticResource BtnIcon}" ToolTip="Changer de thème" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Changer de thème" AutomationProperties.AutomationId="BtnTheme" AutomationProperties.Name="BtnTheme"/><Button x:Name="BtnHelp" Content="?" FontSize="17" Style="{StaticResource BtnIcon}" Margin="8,0,0,0" ToolTip="Ouvrir le guide local. F1 : aide sur le contrôle actif." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Ouvrir le guide local. F1 : aide sur le contrôle actif." AutomationProperties.AutomationId="BtnHelp" AutomationProperties.Name="?"/></StackPanel>
+@@ -4985,7 +5041,7 @@
+ # ── Récupération des contrôles nommés ────────────────────────────────────────
+ $names = 'SidebarWidth','NavHome','NavHomeLabel','NavRename','NavRenameLabel','NavNames','NavNamesLabel',
+          'NavHistory','NavHistoryLabel','NavLogs','NavLogsLabel','NavSettings','NavSettingsLabel','NavHelp',
+-         'UxVersion','ChipMember','ChipDomain','ChipJoin','ChipSim','ChipGui','BtnLog',
++         'UxVersion','ChipMember','ChipDomain','ChipAccount','ChipJoin','ChipSim','ChipGui','BtnLog',
+          'BtnTheme','BtnHelp','MainTabs','ActionScroll','UxPageTitle','UxPageSubtitle','Step1',
+          'Step1Text','Step2','Step2Text','Step3','Step3Text','Step4','Step4Text',
+          'BodyGrid','ConfigPanel','ChkRemote','TxtPCName','BtnReadComputer','LblPCInfo','CbOrg',
+@@ -5937,7 +5993,7 @@
+ 
+ $script:GPWorkerCoreNames = @(
+  'Publish-GPWorkerLog','Set-GPWorkerStage','Assert-GPWorkerMayContinue',
+- 'Get-GPIdentityChangeReason',
++ 'Get-GPIdentityChangeReason','Get-GPWindowsAuthIdentity','Invoke-GPWindowsLocalRename',
+  'Get-GPNameSiteCode','Get-GPSiteContainerDN','Get-GPRenameMoveDecision','Test-GPDnsName','Split-GPDistinguishedName','Get-GPParentDN','Get-GPDomainFromDN','Test-GPDNWithinScope','Test-GPOUInConfiguredScope','Test-QueueRowSafe','Test-GPConfirmedChange','Protect-GPLogText','New-GPTaskService','Release-GPComObject','Get-GPTaskArgument','Test-GPPipeClient','Invoke-GPElevatedLocalChange',
+  'Test-GPComputerName','Test-GPGeneratedComputerName','Test-GPOUPath','Get-ADParams','Find-ADComputerByName','Get-ComputerOU','Get-AllComputersInOU','Update-ComputersNoms',
+  'New-ActionResult','ConvertTo-GPQuotedArg','Get-GPSecretArgIndexes','Invoke-GPProcess','Invoke-GPSchtasks','Get-GPSchtasksTransportArgs','Get-GPSchtasksHint',
+@@ -6141,9 +6197,9 @@
+     if(-not $rows.Count){Show-MsgInfo 'Aucune ligne cochée.';return}
+     if(-not ($script:SIM -or $script:GUI -or $script:SimOn)){
+         if(-not (Test-GPIsAdministrator)){Show-MsgError 'File non lancee : les droits administrateur locaux ne sont pas actifs. Relancez GP.cmd pour accepter l''UAC avant la connexion.';return}
+-        $requiresCredential=(-not $script:INDOMAIN) -or @($rows|Where-Object{$_.Renommer}).Count -gt 0
+-        if($requiresCredential -and $script:cred -isnot [Management.Automation.PSCredential]){
+-            Show-MsgError 'File non lancee : pour renommer ou joindre, saisissez le compte AD et son mot de passe dans le login GP au demarrage. Session Windows seule ne suffit pas. Aucun dsregcmd ni renommage lance.';return
++        $credentialReason=Get-GPExplicitCredentialRequirement -InDomain ([bool]$script:INDOMAIN) -Rows $rows -LocalComputerName $env:COMPUTERNAME
++        if($credentialReason -and $script:cred -isnot [Management.Automation.PSCredential]){
++            Show-MsgError ($credentialReason+"`nFermez GP puis utilisez GP_COMPTE_AD.cmd, ou GP.cmd -AskCredential, pour choisir explicitement ce parcours.`nAucune action de ce lot n'a été lancée.");return
+         }
+     }
+     $errors=New-Object 'System.Collections.Generic.List[string]';$sources=@{};$targets=@{}
+@@ -7550,6 +7606,174 @@
+ # Même logique que le login ADCC : compte AD explicite OU session Windows,
+ # validation Active Directory inchangée ; erreurs et progression visibles seulement au besoin.
+ 
++function Get-GPWindowsAuthIdentity {
++    # Lit le jeton du processus, jamais le nom du compte de la session de bureau.
++    $identity=[Security.Principal.WindowsIdentity]::GetCurrent()
++    try {
++        $name=[string]$identity.Name
++        $authority=($name -split '\\',2)[0]
++        $domainUser=$identity.IsAuthenticated -and -not $identity.IsSystem -and
++            $name.Contains('\') -and $authority -ine $env:COMPUTERNAME -and
++            $authority -notin @('NT AUTHORITY','NT SERVICE','BUILTIN','Window Manager','Font Driver Host')
++        return [pscustomobject]@{
++            Name=$name;Sid=[string]$identity.User.Value;IsDomainUser=[bool]$domainUser
++            IsAdministrator=([Security.Principal.WindowsPrincipal]::new($identity)).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
++        }
++    } finally { $identity.Dispose() }
++}
++
++function Get-GPAuthenticationRoute {
++    param([bool]$InDomain,[bool]$AskCredential,[bool]$Demo)
++    if($Demo){return 'Demo'}
++    if($InDomain -and -not $AskCredential){return 'Windows'}
++    return 'Explicit'
++}
++
++function Get-GPExplicitCredentialRequirement {
++    param([bool]$InDomain,[object[]]$Rows,[string]$LocalComputerName)
++    if(-not $InDomain){return 'La jonction au domaine nécessite un compte AD explicite.'}
++    foreach($row in $Rows){
++        if([bool]$row.Renommer -and [string]$row.Nom_du_PC -ine $LocalComputerName){
++            return 'Le renommage d''un autre PC nécessite un compte AD explicite dans ce moteur RPC, contrairement au renommage du PC local.'
++        }
++    }
++    return ''
++}
++
++function Set-GPAuthenticatedSnapshot {
++    param($Snapshot,[Management.Automation.PSCredential]$Credential,[string]$Mode,[string]$User)
++    if($null -eq $Snapshot -or [string]::IsNullOrWhiteSpace([string]$Snapshot.DC)){
++        throw 'La validation AD n''a pas renvoyé de contrôleur de domaine.'
++    }
++    if(([string]$Snapshot.Domain).TrimEnd('.') -ine $script:DOMAINE.TrimEnd('.')){
++        throw 'Le domaine retourné par AD ne correspond pas au domaine configuré.'
++    }
++    if($Mode -eq 'Windows' -and ([string]::IsNullOrWhiteSpace($User) -or [string]$Snapshot.Identity -ine $User)){
++        throw 'Le compte utilisé par le worker AD ne correspond pas au compte Windows élevé.'
++    }
++    $script:DC=[string]$Snapshot.DC
++    $script:Sites=$Snapshot.Sites
++    $script:Computers=@($Snapshot.Root)
++    $script:ComputersNoms=@($Snapshot.Names)
++    $script:LocalComputerSnapshot=$Snapshot.LocalComputer
++    if([string]$Snapshot.LocalPCType -in @('Portable','Fixe')){$script:CachedPCType=[string]$Snapshot.LocalPCType}
++    Update-GPComputerIndex
++    $script:cred=$Credential
++    $script:AuthMode=$Mode
++    $script:AuthUser=$User
++}
++
++function Complete-GPWindowsConnectionError {
++    param($ErrorObject,[string]$Message='',$Context)
++    $state=$script:GPWindowsConnection
++    if(-not $state -or $state.Result -ne 'Pending'){return}
++    if($Context -and $Context.Id -ne $state.Id){return}
++    $state.Busy=$false
++    if(-not $Message){try{$Message=[string]$ErrorObject.Exception.Message}catch{}}
++    if(-not $Message){$Message='La connexion AD n''a pas pu être établie.'}
++    $state.Progress.Visibility='Collapsed'
++    $state.Status.Text="Accès AD non établi.`n$Message`n`nVérifiez le compte choisi dans l'UAC, le réseau et le domaine configuré. Aucun autre mot de passe n'est demandé automatiquement."
++    $state.Retry.Visibility='Visible';$state.Other.Visibility='Visible'
++    $state.Retry.IsEnabled=$true;$state.Other.IsEnabled=$true
++    Write-Log ('Connexion Windows intégrée non établie pour '+$state.User+'. '+$Message) 'ERROR' $null 'auth'
++}
++
++function Complete-GPWindowsConnectionSuccess {
++    param($Snapshot,$Context)
++    $state=$script:GPWindowsConnection
++    if(-not $state -or $state.Result -ne 'Pending' -or -not $state.Busy){return}
++    if(-not $Context -or $Context.Id -ne $state.Id){return}
++    try {
++        Set-GPAuthenticatedSnapshot -Snapshot $Snapshot -Mode 'Windows' -User $Context.User
++        $state.Busy=$false;$state.Result='Connected';$script:LoginOk=$true
++        Write-Log ('Connexion Windows intégrée confirmée : '+$script:AuthUser+' ; aucun credential GP.') 'INFO' $null 'auth'
++        try{Show-GPStartupWindow;Set-GPStartupStage -Stage 'Préparation de la session' -Detail ('Compte Windows : '+$script:AuthUser)}catch{}
++        $state.Window.DialogResult=$true
++    } catch { Complete-GPWindowsConnectionError -ErrorObject $_ -Context $Context }
++}
++
++function Start-GPWindowsConnection {
++    $state=$script:GPWindowsConnection
++    if(-not $state -or $state.Result -ne 'Pending' -or $state.Busy){return}
++    if(Test-GPAsyncOperationRunning 'WindowsAuth'){return}
++    try {
++        $identity=Get-GPWindowsAuthIdentity
++        $state.User=[string]$identity.Name;$state.Identity.Text=$state.User
++        if(-not $script:INDOMAIN){throw 'La connexion intégrée est réservée au poste membre du domaine cible.'}
++        if(-not $identity.IsAdministrator){throw 'Le jeton administrateur n''est pas actif. Relancez GP.cmd.'}
++        if(-not $identity.IsDomainUser){throw 'Le compte choisi dans l''UAC est local ou système. Relancez GP avec un compte du domaine autorisé sur ce PC.'}
++        $state.Busy=$true;$state.Progress.Visibility='Visible'
++        $state.Status.Text='Lecture du domaine, des sites et des postes avec ce compte. Aucune saisie supplémentaire.'
++        $state.Retry.IsEnabled=$false;$state.Other.IsEnabled=$false
++        $context=[pscustomobject]@{Id=$state.Id;User=$state.User}
++        $request=New-GPDirectorySnapshotRequest -IncludeLocalHardware
++        $started=Start-GPAsyncOperation -Name 'WindowsAuth' -ScriptBlock $script:GPDirectorySnapshotWorker -ArgumentList @($request) -TimeoutSec 180 -CallbackContext $context `
++            -OnSuccess {param($snapshot,$ctx) Complete-GPWindowsConnectionSuccess -Snapshot $snapshot -Context $ctx} `
++            -OnError {param($errorObject,$ctx) Complete-GPWindowsConnectionError -ErrorObject $errorObject -Context $ctx}
++        if(-not $started){Complete-GPWindowsConnectionError -Message 'Le worker de connexion n''a pas pu démarrer.' -Context $context}
++    } catch { Complete-GPWindowsConnectionError -ErrorObject $_ }
++}
++
++function Show-GPWindowsConnectionWindow {
++    # Fenêtre d'attente automatique : aucun champ de compte ou de mot de passe.
++    [xml]$wxaml=@'
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC13 | Connexion Windows" Width="500" SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13" UseLayoutRounding="True">
++ <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
++  <Border Margin="16" Padding="22" CornerRadius="16" Background="{DynamicResource BgCard}" BorderBrush="{DynamicResource ClrBorder}" BorderThickness="1">
++   <StackPanel>
++    <TextBlock Text="Ouverture de GP" FontSize="22" FontWeight="SemiBold" Foreground="{DynamicResource FgText}"/>
++    <TextBlock Text="Avec le compte Windows autorisé par l'UAC" TextWrapping="Wrap" Margin="0,6,0,10" Foreground="{DynamicResource FgMuted}"/>
++    <Border Background="{DynamicResource AccentSoft}" CornerRadius="8" Padding="10"><TextBlock x:Name="WindowsIdentity" TextWrapping="Wrap" Foreground="{DynamicResource FgAccent}" ToolTip="Identité du processus élevé. Ce n'est pas nécessairement le compte de la session de bureau." AutomationProperties.HelpText="Identité du processus élevé. Ce n'est pas nécessairement le compte de la session de bureau." ToolTipService.ShowOnDisabled="True"/></Border>
++    <TextBlock x:Name="WindowsStatus" Text="Préparation de la connexion automatique…" Margin="0,14,0,12" TextWrapping="Wrap" Foreground="{DynamicResource FgText}"/>
++    <ProgressBar x:Name="WindowsProgress" IsIndeterminate="True" Height="6" Margin="0,0,0,12" ToolTip="Lecture AD en cours. Annuler arrête l'ouverture de GP, sans modifier les postes." AutomationProperties.HelpText="Lecture AD en cours. Annuler arrête l'ouverture de GP, sans modifier les postes." ToolTipService.ShowOnDisabled="True"/>
++    <WrapPanel HorizontalAlignment="Right">
++     <Button x:Name="WindowsRetry" Content="Réessayer" Visibility="Collapsed" Margin="0,4,6,0" Padding="12,8" MinHeight="38" ToolTip="Réessayer avec le même compte Windows, sans demander de mot de passe." AutomationProperties.HelpText="Réessayer avec le même compte Windows, sans demander de mot de passe." ToolTipService.ShowOnDisabled="True"/>
++     <Button x:Name="WindowsOther" Content="Autre compte AD…" Visibility="Collapsed" Margin="0,4,6,0" Padding="12,8" MinHeight="38" ToolTip="Choix explicite : ouvrir le formulaire GP pour utiliser un autre compte AD." AutomationProperties.HelpText="Choix explicite : ouvrir le formulaire GP pour utiliser un autre compte AD." ToolTipService.ShowOnDisabled="True"/>
++     <Button x:Name="WindowsCancel" Content="Annuler" IsCancel="True" Margin="0,4,0,0" Padding="12,8" MinHeight="38" ToolTip="Fermer GP sans lancer d'opération." AutomationProperties.HelpText="Fermer GP sans lancer d'opération." ToolTipService.ShowOnDisabled="True"/>
++    </WrapPanel>
++   </StackPanel>
++  </Border>
++ </ScrollViewer>
++</Window>
++'@
++    $window=[Windows.Markup.XamlReader]::Load((New-Object Xml.XmlNodeReader $wxaml))
++    $window.Resources=$Win.Resources
++    Set-GPLoginWindowBounds -Window $window
++    Set-WindowIcon $window
++    $state=[pscustomobject]@{
++        Id=[guid]::NewGuid().ToString('N');Window=$window;Result='Pending';Busy=$false;Started=$false;User=''
++        Identity=$window.FindName('WindowsIdentity');Status=$window.FindName('WindowsStatus');Progress=$window.FindName('WindowsProgress')
++        Retry=$window.FindName('WindowsRetry');Other=$window.FindName('WindowsOther');Cancel=$window.FindName('WindowsCancel')
++    }
++    $script:GPWindowsConnection=$state
++    $script:cred=$null;$script:AuthMode=$null;$script:AuthUser=$null;$script:LoginOk=$false
++    $state.Retry.Add_Click({Start-GPWindowsConnection})
++    $state.Other.Add_Click({
++        $s=$script:GPWindowsConnection
++        if($s -and -not $s.Busy){$s.Result='Explicit';$s.Window.Close()}
++    })
++    $state.Cancel.Add_Click({
++        $s=$script:GPWindowsConnection
++        if($s){$s.Result='Cancelled';$s.Window.Close()}
++    })
++    $window.Add_ContentRendered({
++        $s=$script:GPWindowsConnection
++        if($s -and -not $s.Started){$s.Started=$true;Start-GPWindowsConnection}
++    })
++    $window.Add_Closing({
++        $s=$script:GPWindowsConnection
++        if($s -and $s.Result -eq 'Pending'){$s.Result='Cancelled'}
++        if(Test-GPAsyncOperationRunning 'WindowsAuth'){Stop-GPAsyncOperation 'WindowsAuth'}
++    })
++    try {
++        [void]$window.ShowDialog()
++        return [string]$state.Result
++    } finally {
++        if(Test-GPAsyncOperationRunning 'WindowsAuth'){Stop-GPAsyncOperation 'WindowsAuth'}
++        $script:GPWindowsConnection=$null
++    }
++}
++
+ function Get-GPLoginPreferencePath {
+     # Même isolation par profil Windows et configuration que les autres préférences.
+     return (Join-Path (Get-GPStateDirectory) 'login.json')
+@@ -7658,23 +7882,9 @@
+     $ui=$script:GPLoginUi;$state=$script:GPLoginState
+     if($null -eq $ui -or $null -eq $state){return}
+     try {
+-        if($null -eq $Snapshot){throw "La validation Active Directory n'a retourné aucun résultat."}
+-        if([string]::IsNullOrWhiteSpace([string]$Snapshot.DC)){throw "Aucun contrôleur de domaine valide n'a été déterminé."}
+-        $script:DC=[string]$Snapshot.DC
+-        $script:Sites=$Snapshot.Sites
+-        $script:Computers=@($Snapshot.Root)
+-        $script:ComputersNoms=@($Snapshot.Names)
+-        $script:LocalComputerSnapshot=$Snapshot.LocalComputer
+-        if([string]$Snapshot.LocalPCType -in @('Portable','Fixe')){$script:CachedPCType=[string]$Snapshot.LocalPCType}
+-
+-        # Index local O(1) par nom. Il évite de rescanner le tableau et surtout
+-        # permet d'initialiser le poste courant sans nouvel aller-retour AD.
+-        Update-GPComputerIndex
+-        $script:cred=$state.PendingCredential
++        Set-GPAuthenticatedSnapshot -Snapshot $Snapshot -Credential $state.PendingCredential -Mode ([string]$state.PendingMode) -User ([string]$state.PendingUser)
+         $state.PendingCredential=$null
+         try{$ui.Password.Clear()}catch{}
+-        $script:AuthMode=[string]$state.PendingMode
+-        $script:AuthUser=[string]$state.PendingUser
+         if($state.PendingMode -eq 'Explicit'){
+             try { Save-GPLoginPreference -RememberUser ([bool]$ui.Remember.IsChecked) -UserName ([string]$ui.Login.Text) }
+             catch {
+@@ -7750,7 +7960,7 @@
+     $bannerTextXml=[Security.SecurityElement]::Escape($bannerText)
+ 
+     [xml]$lxaml=@"
+-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC12 · Connexion" Width="460" SizeToContent="Height" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" WindowState="Normal" WindowStartupLocation="CenterScreen" Background="$($t['BgWindow'])" Foreground="$($t['FgText'])" FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="True" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC13 · Connexion" Width="460" SizeToContent="Height" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" WindowState="Normal" WindowStartupLocation="CenterScreen" Background="$($t['BgWindow'])" Foreground="$($t['FgText'])" FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="True" UseLayoutRounding="True" TextOptions.TextFormattingMode="Display">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" CanContentScroll="False" Focusable="False">
+   <Border Margin="14,16,14,16" Padding="20,22,20,18" Background="$($t['BgCard'])" CornerRadius="17" BorderBrush="$($t['ClrBorder'])" BorderThickness="1">
+    <StackPanel>
+@@ -7774,7 +7984,7 @@
+      <Button x:Name="BtnCancel" Content="Annuler" IsCancel="True" MinHeight="40" Padding="12,8" TabIndex="4" Background="$($t['BgInputRO'])" BorderThickness="0" AutomationProperties.AutomationId="BtnCancel" ToolTip="Annuler la connexion et fermer GP. Raccourci : Échap." ToolTipService.ShowOnDisabled="True" AutomationProperties.HelpText="Annuler la connexion et fermer GP. Raccourci : Échap."/>
+      <Button x:Name="BtnOk" Grid.Column="2" Content="Se connecter" IsDefault="True" MinHeight="40" Padding="12,8" TabIndex="3" Background="$($t['AddBg'])" Foreground="White" BorderBrush="$($t['AddBg'])" AutomationProperties.AutomationId="BtnOk" ToolTip="Valider ce compte et ouvrir GP. Le compte reste disponible pour les actions de cette session. Raccourci : Entrée." ToolTipService.ShowOnDisabled="True" AutomationProperties.HelpText="Valider ce compte et ouvrir GP. Le compte reste disponible pour les actions de cette session. Raccourci : Entrée."/>
+     </Grid>
+-    <Button x:Name="BtnWindows" Content="Utiliser mon compte Windows" Margin="0,8,0,0" MinHeight="36" Padding="12,7" TabIndex="5" Background="$($t['BgInputRO'])" BorderThickness="0" AutomationProperties.AutomationId="BtnWindows" AutomationProperties.HelpText="Session Windows élevée : lecture et déplacement selon les droits. Pour renommer ou joindre, utilisez le compte et le mot de passe ci-dessus." ToolTip="Utiliser la session Windows élevée pour les lectures AD et les déplacements autorisés. Pour renommer ou joindre au domaine, connectez-vous avec l'identifiant et le mot de passe ci-dessus." ToolTipService.ShowOnDisabled="True"/>
++    <Button x:Name="BtnWindows" Content="Utiliser mon compte Windows" Margin="0,8,0,0" MinHeight="36" Padding="12,7" TabIndex="5" Background="$($t['BgInputRO'])" BorderThickness="0" AutomationProperties.AutomationId="BtnWindows" AutomationProperties.HelpText="Session Windows élevée : lectures AD, déplacements autorisés et renommage du PC local. La jonction et le renommage distant exigent un compte explicite." ToolTip="Utiliser la session Windows élevée pour les lectures AD, les déplacements autorisés et le renommage local. Pour joindre au domaine ou renommer un autre PC, utilisez un compte explicite." ToolTipService.ShowOnDisabled="True"/>
+     <TextBlock Text="Le mot de passe n'est jamais enregistré." Foreground="$($t['FgMuted'])" FontSize="11" TextAlignment="Center" Margin="0,12,0,0" TextWrapping="Wrap"/>
+    </StackPanel>
+   </Border>
+@@ -7799,7 +8009,7 @@
+     }
+ 
+     $winIdentity=try{[Security.Principal.WindowsIdentity]::GetCurrent().Name}catch{"$env:USERDOMAIN\$env:USERNAME"}
+-    $ui.Windows.ToolTip="Session elevee : $winIdentity. Lecture AD et deplacements selon les droits. Le renommage et la jonction exigent la connexion avec mot de passe ci-dessus."
++    $ui.Windows.ToolTip="Session élevée : $winIdentity. Lecture AD, déplacements autorisés et renommage local. Jonction et renommage distant : compte explicite."
+     $preference=Get-GPLoginPreference
+     $ui.Remember.IsChecked=[bool]$preference.RememberUser
+     if($preference.RememberUser){$ui.Login.Text=[string]$preference.UserName}
+@@ -7842,8 +8052,13 @@
+         Quit 1
+     } else { $script:INDOMAIN = [bool]$domainState }
+ 
+-    $loginOk = Show-LoginWindow
+-    if (-not $loginOk) { Show-MsgInfo 'Authentification annulée : fermeture.' 'Annulé'; Quit }
++    $authRoute=Get-GPAuthenticationRoute -InDomain ([bool]$script:INDOMAIN) -AskCredential $AskCredential.IsPresent -Demo $false
++    if($authRoute -eq 'Windows'){
++        $connection=Show-GPWindowsConnectionWindow
++        $loginOk=($connection -eq 'Connected')
++        if($connection -eq 'Explicit'){$loginOk=Show-LoginWindow}
++    } else { $loginOk=Show-LoginWindow }
++    if (-not $loginOk) { Quit }
+ } else {
+     $script:INDOMAIN = -not $script:ODM
+     $script:DC = 'GUI-DC'; $script:cred = $null
+@@ -7889,6 +8104,9 @@
+ Set-Chip $ChipMember $env:COMPUTERNAME $(if ($script:INDOMAIN) { 'Neutral' } else { 'Warn' }) $hostTip
+ 
+ Set-Chip $ChipDomain $script:DOMAINE 'Neutral' 'Domaine Active Directory ciblé.'
++$accountLabel=if($script:GUI){'Compte : démonstration'}elseif($script:AuthUser){[string]$script:AuthUser}else{'Compte non confirmé'}
++$accountTip=if($script:AuthMode -eq 'Windows'){'Compte Windows élevé réutilisé automatiquement. Aucun mot de passe conservé par GP. Les droits sont vérifiés par Windows et AD à chaque opération.'}else{'Compte AD explicitement choisi pour cette session GP.'}
++Set-Chip $ChipAccount $accountLabel 'Info' ($accountLabel+' : '+$accountTip)
+ 
+ # Le mode de jonction ne concerne qu'un poste PAS encore dans le domaine.
+ # Pour un poste déjà membre (renommage / déplacement), on masque la pastille.
+@@ -7964,6 +8182,7 @@
+ 
+ # En-tête de session dans le journal d'audit (traçabilité + diagnostic complet).
+ if ($script:AuditFile) {
++    Write-Log ('AuthMode='+[string]$script:AuthMode+' | AuthUser='+[string]$script:AuthUser+' | CredentialEnMemoire='+[bool]($null -ne $script:cred)) 'INFO' $null 'auth'
+     $acct  = if ($script:cred) { $script:cred.UserName } elseif ($script:GUI) { '(aucun — mode GUI)' } elseif ($script:AuthUser) { "$($script:AuthUser) [Compte Windows]" } else { "$env:USERDOMAIN\$env:USERNAME [Compte Windows]" }
+     $flags = (@(if ($script:SIM){'SIM'}; if ($script:GUI){'GUI'}; if ($script:PRD){'PRD'}; if ($script:ODM){'ODM'}; if ($script:WOU){'WOU'}) -join ',')
+     $isAdmin = $false
+--- RC12/GP_COMPTE_AD.cmd
++++ RC13/GP_COMPTE_AD.cmd
+@@ -0,0 +1,5 @@
++@echo off
++setlocal EnableExtensions DisableDelayedExpansion
++rem Connexion explicite optionnelle. Aucun mot de passe en argument.
++call "%~dp0GP.cmd" -AskCredential %*
++exit /b %errorlevel%

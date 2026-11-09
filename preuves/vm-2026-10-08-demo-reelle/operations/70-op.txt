@@ -1,0 +1,31 @@
+﻿clic : #NavHome (Accueil)
+capture C:\PestoTest-preuves\demo-reelle\captures\70-0-accueil.png 1460x940
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+#CbOrg = Département 111301
+#CbSite = Lyon
+#CbService = 765 (saisie)
+#CbType = Portable
+#CbName = P111301LY765003
+capture C:\PestoTest-preuves\demo-reelle\captures\70-1-formulaire.png 1460x940
+bouton principal : Vérifier puis renommer
+capture C:\PestoTest-preuves\demo-reelle\captures\70-2-confirmation.png 1460x940
+confirmation : RÉEL · Renommer uniquement
+
+Poste : P111301LY765002
+Nom final : P111301LY765003
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon
+
+LECTURE : Site LY conserve : renommage seul, aucun deplacement.
+LECTURE : Source AD unique, périmètre et OU source contrôlés.
+LECTURE : Nom cible libre sur le contrôleur interrogé au moment de cette lecture.
+LECTURE : Droits de mutation, canaux RPC/WMI et redémarrage : non certifiés par ce contrôle en lecture seule.
+
+Aucun redémarrage automatique.
+État Entra relu avant renommage : aucun retrait si AD seul ; retrait si hybride et autorisé. Réinscription à vérifier séparément.
+clic : #PanelAccept (Confirmer)
+capture C:\PestoTest-preuves\demo-reelle\captures\70-3-bilan.png 1460x940
+bilan : 
+clic : #PanelCancel (Fermer)
+capture C:\PestoTest-preuves\demo-reelle\captures\70-4-apres-bilan.png 1460x940
+OPÉRATION : étape terminée

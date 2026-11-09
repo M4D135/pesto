@@ -1,0 +1,83 @@
+{
+    "Suite":  "SharedNameReservation",
+    "PowerShell":  "5.1.26100.6584",
+    "WindowsExecuted":  true,
+    "ADExecuted":  false,
+    "NetworkExecuted":  false,
+    "SourceHash":  "68B73FE2F2CB067E3A4E4B512E06D1C22AC7AFB384014610FE66B9EE4508F62F",
+    "Passed":  14,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Prepare creates only the requested local registry",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Exclusive initial reserve returns its owner",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Same owner renews the existing reservation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other owner cannot take a live reservation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Expired reservation can be taken under the existing write lock",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Owner release removes its file and reports exactly that name",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other owner release preserves byte-for-byte the file",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unreadable owner is retained and never announced as released",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Oversized owner file is retained without parsing unbounded data",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Already absent release is idempotent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Active writer prevents release and keeps the reservation",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Read-only file makes failed deletion explicit in the returned name list",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "A competing takeover cannot be deleted between owner read and release",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Snapshot includes other owners without changing their data",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ],
+    "Scope":  "Actual shared-name worker, temporary local files; a debugger action schedules the competing worker at the owner/delete boundary"
+}

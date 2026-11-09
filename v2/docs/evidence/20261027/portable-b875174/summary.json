@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "kind": "pesto.c15.portable-validation",
+  "sourceCommit": "b87517453a4d00d0082b8f3a346459fe0c4890c6",
+  "baseCommit": "daa256477452b4866bb24fdd690f1761dbb42c3c",
+  "platform": "Linux",
+  "sdk": "10.0.302",
+  "crossBuild": {
+    "target": "net10.0-windows/win-x64",
+    "result": "succeeded",
+    "warnings": 0,
+    "errors": 0,
+    "evidence": "Observed exec result; not a raw build log",
+    "nativeWindowsExecution": false
+  },
+  "engine": {
+    "passed": 108,
+    "failed": 0,
+    "newTests": 5,
+    "scope": "Five targeted suites; not the complete engine suite"
+  },
+  "browser": {
+    "passed": 39,
+    "failed": 0,
+    "newRegressionCases": 10,
+    "backend": "Explicit in-memory fixtures",
+    "previousInterface": {
+      "passed": 0,
+      "failed": 10,
+      "source": "daa2564"
+    }
+  },
+  "webChecks": {
+    "passed": 149,
+    "failed": 0
+  },
+  "adMutation": false,
+  "sourceSha256": {
+    ".github/workflows/pesto-v2.yml": "4fa5064ab001612d9bddddd55f1fa0d2f0c06b9d89e0d5aa879b9a54207f9f2e",
+    "v2/docs/BRIDGE.md": "1ef0adc2bed2e593fa7433713399df19678ce39dfd1fd81fa5d58593959e8348",
+    "v2/src/Pesto.Engine/LiveBackend.cs": "b7176e4d58f8ebb16e9caa4c8d5e59bcd8ce2be0adea5d0c61b21baf5d6c9c7d",
+    "v2/src/Pesto.Engine/UpdateService.cs": "6f3f6d31d98f150a798a2beb22db6a6c400b2e4c83bb8cb8e47f9de0e3df1119",
+    "v2/tests/Pesto.Engine.Tests/LiveReadTests.cs": "ef663eb8d82b0b1d6a83543e1f2fd4ecf00150eeef624e5ceffb95799c30595d",
+    "v2/tests/Pesto.Engine.Tests/UpdateTests.cs": "0d7b4ff0c9a9e22dd96e6076ec543d04a7fafebb9d10d20cfe703a3856b95b1f",
+    "v2/tools/tests/web-business-check.mjs": "cfdbfa90922731f13d693708c0f4637994263d05a79e92dfaf547c1ea159d29a",
+    "v2/web/js/pages/unposte.js": "03e95373a33d243801a511ebd36791b952dac52c423df8c62265e8d77b2e57f4"
+  }
+}

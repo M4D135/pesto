@@ -1,0 +1,98 @@
+{
+    "Schema":  2,
+    "Version":  "1.0",
+    "OperationId":  "1e852d3a4a5e4f09ab8b902c05276f21",
+    "Plan":  {
+                 "Nom_du_PC":  "V999004AAQA1004",
+                 "Nouveau_Nom":  "V999004AAQA1004",
+                 "OU_Actuelle":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                 "OU_Destination":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                 "Objet_GUID":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                 "Domain":  "labo.local",
+                 "DC":  "dc01.labo.local",
+                 "ConfigStamp":  "4928F1F81841BD7B338D178B1349BFCFDFCFE9CDB7D003D36DAABDC26C53233E",
+                 "TargetOUGuid":  "02826a0f-e401-4934-850a-c9872a33b4ce",
+                 "Renommer":  false,
+                 "Deplacer":  true,
+                 "Reboot":  false
+             },
+    "StartedUtc":  "2026-10-04T20:29:17.9456191Z",
+    "UpdatedUtc":  "2026-10-04T20:29:20.5433713Z",
+    "Phase":  "Uncertain",
+    "InitialProtection":  false,
+    "TargetMachineId":  "",
+    "TargetOUGuid":  "02826a0f-e401-4934-850a-c9872a33b4ce",
+    "Entra":  "NotRequested",
+    "Protection":  "NotChanged",
+    "Rename":  "NotRequested",
+    "Move":  "Confirmed",
+    "ResultCode":  97,
+    "ResultMessage":  "Déplacement confirmé par GUID vers \u0027OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local\u0027 ; protection d\u0027origine vérifiée. Résultat non classifiable avec certitude ; aucune relance automatique.",
+    "LastObservation":  null,
+    "LastStage":  "Move: Confirmed",
+    "VerifiedUtc":  "",
+    "VerifiedBy":  "",
+    "ResumeFrom":  "e640e9f327cb4adbaaf8c31920c4869f",
+    "PlanFingerprint":  "63e104e726c3a66bc3b8413d354051de32bbb1648edcad12ab6307a26ef01dc5",
+    "Coordination":  {
+                         "Enabled":  false,
+                         "Keys":  [
+
+                                  ],
+                         "Owner":  "1e852d3a4a5e4f09ab8b902c05276f21"
+                     },
+    "Baseline":  {
+                     "Schema":  1,
+                     "CapturedUtc":  "2026-10-04T20:29:18.0888754Z",
+                     "ADUtc":  "2026-10-04T20:29:18.0888754Z",
+                     "WindowsUtc":  "",
+                     "HealthUtc":  "",
+                     "AD":  {
+                                "Name":  "V999004AAQA1004",
+                                "Guid":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                "OU":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                "Protected":  false
+                            },
+                     "Windows":  null,
+                     "Health":  null
+                 },
+    "Sequence":  6,
+    "Timeline":  [
+                     {
+                         "Sequence":  1,
+                         "Utc":  "2026-10-04T20:29:18.0935403Z",
+                         "Stage":  "Observation",
+                         "State":  "Initial"
+                     },
+                     {
+                         "Sequence":  2,
+                         "Utc":  "2026-10-04T20:29:18.1136868Z",
+                         "Stage":  "InitialProtection",
+                         "State":  "False"
+                     },
+                     {
+                         "Sequence":  3,
+                         "Utc":  "2026-10-04T20:29:18.1318729Z",
+                         "Stage":  "TargetOUGuid",
+                         "State":  "02826a0f-e401-4934-850a-c9872a33b4ce"
+                     },
+                     {
+                         "Sequence":  4,
+                         "Utc":  "2026-10-04T20:29:18.1499883Z",
+                         "Stage":  "Move",
+                         "State":  "Requested"
+                     },
+                     {
+                         "Sequence":  5,
+                         "Utc":  "2026-10-04T20:29:18.2212384Z",
+                         "Stage":  "Move",
+                         "State":  "Confirmed"
+                     },
+                     {
+                         "Sequence":  6,
+                         "Utc":  "2026-10-04T20:29:20.5411292Z",
+                         "Stage":  "Result",
+                         "State":  "Uncertain"
+                     }
+                 ]
+}

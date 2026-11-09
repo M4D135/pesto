@@ -1,0 +1,26 @@
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+clic : #PestoZoomOut (Réduire le zoom)
+clic : #PestoZoomOut (Réduire le zoom)
+capture C:\PestoZoom20261012\preuves\03-zoom-80.png 1920x1160
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+capture C:\PestoZoom20261012\preuves\04-zoom-150.png 1920x1160
+capture C:\PestoZoom20261012\preuves\05-zoom-small-150.png 760x560
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #NavHome (Accueil)
+capture C:\PestoZoom20261012\preuves\06-zoom-home-120.png 1920x1160
+clic : #SuiteNavToggle (Déployer le menu : icônes et libellés.)
+capture C:\PestoZoom20261012\preuves\06b-zoom-menu-120.png 1920x1160
+clic : #SuiteNavToggle (Réduire le menu : conserver uniquement les icônes.)
+clic : #NavNames (Noms disponibles)
+capture C:\PestoZoom20261012\preuves\07-zoom-names-120.png 1920x1160
+clic : #NavSettings (Paramètres)
+capture C:\PestoZoom20261012\preuves\08-zoom-settings-120.png 1920x1160
+clic : #NavHome (Accueil)

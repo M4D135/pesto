@@ -1,0 +1,133 @@
+{
+  "source": "Domenia-D120",
+  "commit": "d88e20cb64514e5c4378c22e36114d0d802292c7",
+  "files": [
+    {
+      "path": "css/tokens.css",
+      "sha256": "15dd927dec2acca6dc1d882dd41475180b37a278379ed7fba82fb0e0d4a4fc10"
+    },
+    {
+      "path": "css/base.css",
+      "sha256": "c4b0516545eec64978cda9c92a115bc5cf058da567b6521d0119fedabe84450f"
+    },
+    {
+      "path": "css/layout.css",
+      "sha256": "26f597cbeaffb7c1f2fde462b515d5d144b97ef20e2debd082dcfc27c2049f1d",
+      "modified": "Poignée de largeur du menu replacée au bord du rail (spécificité au-dessus de [data-tip]) (29/10/2026)."
+    },
+    {
+      "path": "css/motion.css",
+      "sha256": "478f2785ca749b792b69a7d8a246b8e2550f29aaa58762103cc58bbe33645a3e",
+      "modified": "Pause des ornements en boucle dans la fenêtre Pesto inactive (03/11/2026)."
+    },
+    {
+      "path": "css/components.css",
+      "sha256": "225f20523043c3fe1f0a653f7335136245c032cc167eb21ad4311b2924f7b101",
+      "modified": "Retour à la ligne des identifiants longs repris de Domenia V2 a2c2148fb4a4c3acb8398f2192972ae94fe925dc ; animations Pesto conservées (28/10/2026)."
+    },
+    {
+      "path": "css/kit.css",
+      "sha256": "12437533ab6040cb5069e487cac3a4ccd7a44ab7a754ba3423a61608a1661c4c",
+      "modified": "Formulaire du kit masqué quand il porte lui-même l’attribut hidden (29/10/2026)."
+    },
+    {
+      "path": "css/shell.css",
+      "sha256": "55409f6477a3e4e8d0dbc33353f0c4f29f4a27ba611be621a09a94f68fa38ea4",
+      "modified": "Style Domenia adapté aux pages Pesto, démonstration, configuration/mises à jour, confirmations, attributs AD et parcours local hors ligne (25/10/2026). Marque Pesto cadrée dans le pavé existant, dimensions et animations conservées (28/10/2026). Bordures de configuration alignées sur le token --border Domenia V2 (28/10/2026). Bouton de repli du menu en icône seule de 32 px tout en bas, pied de barre collé et entrées non écrasées, comme le bouton de barre latérale Domenia (29/10/2026). Défilement du rail réservé sous le pied, infobulles flottantes du rail et poignée masquée en rail forcé (29/10/2026). Bouton de repli harmonisé avec Domenia, FILPRO et GLPI : ligne avec libellé en déplié, icône seule en replié (29/10/2026). Coche, point des cases et cadre des boutons pleins visibles en contraste élevé (30/10/2026)."
+    },
+    {
+      "path": "js/ui.js",
+      "sha256": "a281f5fe669f3f9b80056f7e55e48dec5b7c8128cf0ef8893d603ad4d4ae7fd3"
+    },
+    {
+      "path": "js/icons.js",
+      "sha256": "6fdfc7a91cbdcc24098927399e16d45b7fe642f41b0badbcae2bd0ffa18918d3",
+      "modified": "Seule la marque D héritée est remplacée par le P et la feuille de Pesto ; autres pictogrammes Domenia inchangés (28/10/2026)."
+    },
+    {
+      "path": "js/kit/breadcrumb.js",
+      "sha256": "febe30b2f9363f1140b81f827a268f07593a239d5068dc3ad558abdd5beb8b36"
+    },
+    {
+      "path": "js/kit/commandbar.js",
+      "sha256": "04a903fb55a871fd7c7ad18a4b0355b1da3952f702fa2185cb578e819c2cf958"
+    },
+    {
+      "path": "js/kit/copy.js",
+      "sha256": "d40f6e06d70b936c14a2309720ffeb591e5e1c3d90becd3472b96c0c354768cf"
+    },
+    {
+      "path": "js/kit/dialog.js",
+      "sha256": "7fbffa623631a8d62e57ee05bb19585f8ad137aacbef586ce532b1b2570ecf41",
+      "modified": "Dialogue Domenia enrichi de consentements explicites, avertissements visibles et motif borné ; Entrée respecte tous les prérequis (25/10/2026)."
+    },
+    {
+      "path": "js/kit/drawer.js",
+      "sha256": "4b093aaff0c0b18fa95139bce63c0327373c1d07b2f248a4f0de66695669257c"
+    },
+    {
+      "path": "js/kit/filterbar.js",
+      "sha256": "2abbaf13c077732e7cf8538bb0f402cec4f2e7d453691c0946ef8ac2432725df"
+    },
+    {
+      "path": "js/kit/form.js",
+      "sha256": "ea674360e8d7b7ba19e9e1065e82e2c2eb249499ab159258b81c3427f344876f"
+    },
+    {
+      "path": "js/kit/freshness.js",
+      "sha256": "b2556bdc6b839d20b7664b53c3d10a2dd1f209418e72d14cccea2af64ac15ba7"
+    },
+    {
+      "path": "js/kit/gauge.js",
+      "sha256": "0297813e83b110470309bf548f4168f3da49daa965db02b8ba1e5bcd6cd4bed0"
+    },
+    {
+      "path": "js/kit/glyphs.js",
+      "sha256": "a0d9f12798055bf12fa2330d8da0d2e0466060b3a8146842a2d306bead0d928b"
+    },
+    {
+      "path": "js/kit/grid.js",
+      "sha256": "ae83951457ee2b70c6103b2824a50c3ee23070cd5dd39a1ecff1ac192fef218c"
+    },
+    {
+      "path": "js/kit/index.js",
+      "sha256": "fc149a622eb71315ccd37dbc95b4ad64275e073a773da35bb2ef6e7a5d7f438a"
+    },
+    {
+      "path": "js/kit/infinite.js",
+      "sha256": "fc49cba716e79fb83829f7a1232e45950b31d31a14c4bac5bd7ac9655a13273d"
+    },
+    {
+      "path": "js/kit/kv.js",
+      "sha256": "15019f23ad40013e16efa799139d4025988d7bf008868e73a67cc2e9c807a635"
+    },
+    {
+      "path": "js/kit/menu.js",
+      "sha256": "221294cac95778f32dd03907494720f94ebc79a957c46bd9bd668890f65ab301"
+    },
+    {
+      "path": "js/kit/split.js",
+      "sha256": "e8f14ddc3394fe15a3c02ed0ace47f54cb8cfcaf52ff219cd011fa665d4bf4c5"
+    },
+    {
+      "path": "js/kit/status.js",
+      "sha256": "a1418a04996e23b2eb8f5f2e5988bd776ca99732b8ae05611ea9c2d9639b71e7"
+    },
+    {
+      "path": "js/kit/tabs.js",
+      "sha256": "0412fd9e12c5a5fdb0692d8d09a33d0d307d3d369ddda27200a97fc4d1b524df"
+    },
+    {
+      "path": "js/kit/timeline.js",
+      "sha256": "edabcae6705f2055d1643814f1ef1f67288a849f3d5fe68f7e462405edee2ca7"
+    },
+    {
+      "path": "js/kit/tree.js",
+      "sha256": "283acff5871d465e322092869fb6619a3cc0e22d8ffff843db7768aee020fe4d"
+    },
+    {
+      "path": "js/kit/util.js",
+      "sha256": "9ccc2d0225ef7a05c6f9f8e2b408f807f5dc52fa021378bae908fc75efcc4f48"
+    }
+  ]
+}

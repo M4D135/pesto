@@ -1,0 +1,251 @@
+{
+  "PublishedCaptureCount": 10,
+  "LocalArchiveDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/pesto-optional-transient-captures",
+  "Captures": [
+    {
+      "File": "01-console-boot.png",
+      "SHA256": "c1c40a349b3c852d8e8601da95904bf669d90d141689f99001a9700772aaec89",
+      "Bytes": 3608480,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "02-lancement.png",
+      "SHA256": "2b0d42b3013608df17a8ae56017d96f62f2a4bd528ff3564ceae85d4150b4e76",
+      "Bytes": 4866120,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "03-console-session.png",
+      "SHA256": "c4ce77a43289d3417f14749855ed6cea17748f6c5ddb77da2481d7f8500cda57",
+      "Bytes": 3608610,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "04-lancement-prod.png",
+      "SHA256": "8166a017ecd94ddc05d5042ac60264e618775072f3d4c404fae3a4e3fdc110fb",
+      "Bytes": 3456619,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "05-commande-prod.png",
+      "SHA256": "56f4017f9764c60ab0db0c9c2c456d643ac9413bb1bded14b2bf41fc958f876e",
+      "Bytes": 3457212,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "06-prod-uac.png",
+      "SHA256": "dcdc0e3a238ef7acd61635718d6ca8f18ba05797d82969566f358ce26bf677e5",
+      "Bytes": 2358265,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "07-prod-accueil.png",
+      "SHA256": "4ad7f7d7fb44afd977c15ce1fe8ac69a97eeae815c3826bf4660992b24411c9f",
+      "Bytes": 3331069,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "08-accueil-prod.png",
+      "SHA256": "01930e9c6076064756933f1ae222e3f748cc9a19695f9c432e9d27cd795c356c",
+      "Bytes": 117516,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "09-premier-nom.png",
+      "SHA256": "1c24926fe5b06b649174e854c512d33539f441ef9959e805f99626a5da9b5c28",
+      "Bytes": 125320,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "10-premier-formulaire.png",
+      "SHA256": "253e0a6d5660a4411a06a112947aeac2a67f37316101f0533801c05af12f83fa",
+      "Bytes": 121288,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "11-premiere-confirmation.png",
+      "SHA256": "530bbe51ecd637bed8ddf0a0e0e0b2098e5fdf26d7ea6a6defa0bfbb37275f83",
+      "Bytes": 113872,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "12-premier-resultat.png",
+      "SHA256": "5cfa34c5125cf483ac3f1d13811360b501883a76e11f1196a4ec8d1839486421",
+      "Bytes": 104203,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "14-menu-redemarrage.png",
+      "SHA256": "a00fabf80bb8d3ec10a3d78b9f9b18f620e8b8631f2844f44a099c505af04881",
+      "Bytes": 3608512,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "15-demarrer-windows.png",
+      "SHA256": "090091c3a4103ece620a910aaa93371bb759ca1f9a8a587b16e2399604226c1f",
+      "Bytes": 2739404,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "16-arret-options.png",
+      "SHA256": "9e1624932def4fed7ac3cfad7610f74d1b63439671c6efbb4d8b696aa6ea067b",
+      "Bytes": 2744461,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "17-redemarrage-1.png",
+      "SHA256": "765c3d7fc7b47a99868fbd096e352fb61d4e62c63b154a63fa195d6008d1ba88",
+      "Bytes": 9624,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "18-console-apres-redemarrage.png",
+      "SHA256": "d801d37fefaa7a3100ee8d5f575fb8e741e9244fb4b5f14d42793dedf2ce652e",
+      "Bytes": 760709,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "19-bureau-retour.png",
+      "SHA256": "e809c86f3521e0d5e538470902a3800a511b55ea49e6191e5b022294af0fba1e",
+      "Bytes": 3608437,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "20-uac-apres-reboot.png",
+      "SHA256": "e809c86f3521e0d5e538470902a3800a511b55ea49e6191e5b022294af0fba1e",
+      "Bytes": 3608437,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "21-reouverture.png",
+      "SHA256": "e809c86f3521e0d5e538470902a3800a511b55ea49e6191e5b022294af0fba1e",
+      "Bytes": 3608437,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "22-executer.png",
+      "SHA256": "d206530c1ee90f0cff936a105b2c66ec5bfbe17abd015e2511d897b41f6a7e4c",
+      "Bytes": 3457663,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "23-uac-reouverture.png",
+      "SHA256": "dcdc0e3a238ef7acd61635718d6ca8f18ba05797d82969566f358ce26bf677e5",
+      "Bytes": 2358265,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "24-retour-pesto-sans-verification.png",
+      "SHA256": "8ae3dfbb5eb3ace17a5bf9a2179ebbabf779589c2db5947474a37060c2ac036a",
+      "Bytes": 3244399,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "25-apres-ouverture-sans-suivi.png",
+      "SHA256": "f391ff284134777126098ca0b5198c133ae7f02590fcd4e8a251b5d9646f8d54",
+      "Bytes": 117269,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "26-deuxieme-formulaire.png",
+      "SHA256": "f0bcb4be4d1639de1b56f416d33a6b0bb759567c54cdf54be1e6ed48592887ca",
+      "Bytes": 117890,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "27-seconde-confirmation-sans-suivi.png",
+      "SHA256": "2eb3cf447b10311dc1c01ed1d2c37e30440f8b6e64a0d9f74a141094ed0778fa",
+      "Bytes": 113585,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "28-seconde-execution-sans-suivi.png",
+      "SHA256": "98c9600fc05de75964ac09fbb025210fc81d14e78dc0188ceeedbd9a42c6452d",
+      "Bytes": 108816,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    },
+    {
+      "File": "30-menu-second-redemarrage.png",
+      "SHA256": "20fd6a18c96441f38b324b1616222a356d58e4244f67ea778cb13292568e3cb3",
+      "Bytes": 2744420,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "31-redemarrage-2.png",
+      "SHA256": "f999b841cae2a2ef3a890eebe1e74d29e6f68d4cd7543fd6c1eb6ce518f6f07d",
+      "Bytes": 9647,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "32-bureau-final.png",
+      "SHA256": "7c3dfbb4e2587b3e061bc73ccffedc45d617d77579b61f5e7cbeff54c10284de",
+      "Bytes": 3608484,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "33-uac-final.png",
+      "SHA256": "6379b202b06b673bc8640d25fe4ed3b57bd1655a0504acfaf6dddab7a221a312",
+      "Bytes": 3608461,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "34-executer-final.png",
+      "SHA256": "dcdc0e3a238ef7acd61635718d6ca8f18ba05797d82969566f358ce26bf677e5",
+      "Bytes": 2358265,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "35-pesto-final.png",
+      "SHA256": "9c5f40293ff996606f631471e2507644f2cf2ebd6fe47ff2592a7a96bd572c11",
+      "Bytes": 3241745,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "36-accueil-final.png",
+      "SHA256": "c7d1b512ac79b9b8ddda23f65c68ab3e0f2d48f2a11725a5472c5e0338ce27dd",
+      "Bytes": 66615,
+      "Published": false,
+      "Reason": "Intermediate desktop, UAC, tooltip or loading capture; preserved locally"
+    },
+    {
+      "File": "37-accueil-suivi-facultatif.png",
+      "SHA256": "8c34bae493485177f8eff0a9615d71c26070ee5de5f75d38d1ad18f67f7b42ff",
+      "Bytes": 87374,
+      "Published": true,
+      "Reason": "Application and scenario evidence"
+    }
+  ]
+}

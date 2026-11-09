@@ -1,0 +1,6 @@
+{
+    "processId":  6576,
+    "startUtcTicks":  "639285495422138693",
+    "executable":  "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-55da8937cab446cc844bc7ba8f6eef97\\cases\\interruption\\.pesto-v2-update-d49f8839d9566cfb\\4379948fc27842028517ad09451a5c4e\\helper\\Pesto.exe",
+    "transactionId":  "4379948fc27842028517ad09451a5c4e"
+}

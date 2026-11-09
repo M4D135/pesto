@@ -1,0 +1,358 @@
+{
+  "BaseCommit": "b6678c4a51749516e275835a37112c1ac3e83977",
+  "GuestDirectory": "C:\\PestoAudit20261013\\ui",
+  "Files": [
+    {
+      "Path": "DEV/wad/cfg.demo.json",
+      "SHA256": "f1b14cba8e4695463779f8a424ea82ced2b9dcc89a5c61c89a8a75cf17fb8564"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Operations.ps1",
+      "SHA256": "be722587461d7d0c27e9abe8f54c8359971d34bc3181070157e4243781761118"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Authentication.ps1",
+      "SHA256": "14ac0e936446cbbade80590e86a65ec9d2fe823248bf3f5adfa9054e6c0486fc"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Integrity.ps1",
+      "SHA256": "99fcc49c665931de47f1f74907ad31aae83dfdc9bbb319b25e9e771b93256502"
+    },
+    {
+      "Path": "DEV/wad/Pesto-LogWriter.cs",
+      "SHA256": "f0a76642d1fff64416129cb273dd0d907d6875431d2fa90f642aee43de90b790"
+    },
+    {
+      "Path": "DEV/wad/ActiveDirectoryPowerShellResources.dll",
+      "SHA256": "e233d92238aa31ea1b3c60145d8811edb2e517e1b9b53f4bc496883ee5d9973b"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Startup.ps1",
+      "SHA256": "3d433821b84ac1911633d44d53eff4efe6e9e4c982d3d761af7485e582c3a1e8"
+    },
+    {
+      "Path": "DEV/wad/cfg.example.json",
+      "SHA256": "dbc1927de12736192db1b89b2df9e29d7393dad769c32b0552a6d42b008342de"
+    },
+    {
+      "Path": "DEV/wad/Pesto-JoinRecovery.ps1",
+      "SHA256": "a64871e3e7c2cbe983494a334f78614855a6e6f4364ad2483d2e6db665fdc7c5"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Shell.xaml",
+      "SHA256": "38f1d54020909d6413ea71943020ff79e94b0db6de9685c73e75be850575bd9c"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Join.xaml",
+      "SHA256": "fb8c9ce0ba9036477423e40eafcfce65e34612712a39f1f5e7fbfcebdfb55369"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Workspace.ps1",
+      "SHA256": "f3db7dc75562d149f4af838f9b09b148fa781e57899d83ad6d1ecad78b97a70a"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Directory.ps1",
+      "SHA256": "320225214606c8d435eea1f487885e5b00e59b838353e5c5aa397261fd710199"
+    },
+    {
+      "Path": "DEV/wad/ActiveDirectory.psd1",
+      "SHA256": "96e41708524316cb13a0d71d36a905f5d530e57e1714a12c3e5b30189a4c83eb"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Journal.ps1",
+      "SHA256": "cd5bbf0b137ad3a886a43327255914933c207d5aa6880c51ce82736c80261ea7"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Async.ps1",
+      "SHA256": "6bc5dbd04cac81149f15ce868be9fcfa398323027b7483a2f2e8bb5fe365ccab"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Policy.ps1",
+      "SHA256": "cbc1109e25469413bc8ca2224d5748a1c1af5003a649b008d906dd555e41e88c"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Names.ps1",
+      "SHA256": "7b8da864bace477f30c963035539004d0e433d2eaa8edf316db94a6859b13b45"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Core.ps1",
+      "SHA256": "d631c5c0f9769ad31e5eed38a9db6e202b0f9c0481ec9b8f4dece3d164c61fc1"
+    },
+    {
+      "Path": "DEV/wad/Pesto-UXFlow.ps1",
+      "SHA256": "43de68269357367913e87052c3d092404ea932b4841b729bbb1e94eb4e46bb92"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Appearance.ps1",
+      "SHA256": "fb182077de6298e37d44f480a90509eb339f848313e18c1827133d155caf2eb8"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Review.ps1",
+      "SHA256": "21dae04612834379b06b01e48a5da756fad09f31e080898a87d97195eed5a5e4"
+    },
+    {
+      "Path": "DEV/wad/M4D.Admin.Common.Query.dll",
+      "SHA256": "269b7d1cbdd6ab42062a75e0ca4a45876b3ff0eae4cbf730acf91a12828bd7ca"
+    },
+    {
+      "Path": "DEV/wad/Pesto-SuiteUI.ps1",
+      "SHA256": "ecfae69c635ec640006ef17da88d101a688864d8ffcf31621820454602fddcbc"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Safety.ps1",
+      "SHA256": "0cff9a1fd83fa0a90c15e79a4e0c655f82761ac3e1565f03393d654c04048239"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Contracts.ps1",
+      "SHA256": "1ab4d6a4d5c1cea6fe3f246e94d9f08f0383c8e7b0e8d437755ac1580b4b376b"
+    },
+    {
+      "Path": "DEV/wad/ActiveDirectory.Types.ps1xml",
+      "SHA256": "3cb55021534ec67fa81d7981ee4b3364eea3ba79ebe61667ee44e14b7a668b3a"
+    },
+    {
+      "Path": "DEV/wad/cfg.json",
+      "SHA256": "28d105c9b5b88ae505205832fd952fc2ab44855ea6d359de179ac1eb0397227b"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Automation.ps1",
+      "SHA256": "b9a0c5609694cd120637757811c49badf6a6cd97d4fd5b49d19fd7128ea3b0e1"
+    },
+    {
+      "Path": "DEV/wad/Invoke-PestoAutoJoin.ps1",
+      "SHA256": "a4b2c423ec17fe86f5e19b7e9a4174106629b2f0f6d10b6631a9f9f4cfe3e846"
+    },
+    {
+      "Path": "DEV/wad/common.lock.json",
+      "SHA256": "7891ffe7b843f9655d07c898c455fc0fad682afe9ec748fc451ca1165440327c"
+    },
+    {
+      "Path": "DEV/wad/package.json",
+      "SHA256": "33a322ee7c1a0f45f5e72453a915cb0cc5c5c503feae284d3659f4097cc2fefc"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Configuration.ps1",
+      "SHA256": "f5161d527d3311fc69101b293fd6d53593f02f8e8d039d4fc84601ab02a65e06"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Interventions.ps1",
+      "SHA256": "ab9b759485174fe05c71d8aed14f9d8c34ba0344abe6250f01c8187ae5adc2fb"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Inspection.ps1",
+      "SHA256": "a19d2bfa946ae6f1b74d3b9c14aec022a962f6c20f6289d38db1a228ac975d8a"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Tables.ps1",
+      "SHA256": "d8daae256e86d69f21856ae4cd493a1562e0791242a814288fe225ac555868b6"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Support.ps1",
+      "SHA256": "a68ed2c1494b08bc7d8cf6ae3872737c2a4c43f425f397d6e9d9640d236ac32c"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Join.ps1",
+      "SHA256": "234017884835b77870ea27c8782e4d7ab795ecc72a039ed07cdc505366ee4aa7"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Common.ps1",
+      "SHA256": "85cac8be33452baa6760495fc04a4e8efa4c99a30ec2a59d528eb5d1f1bee37e"
+    },
+    {
+      "Path": "DEV/wad/M4D.Admin.Common.Core.dll",
+      "SHA256": "de702e82baa4aa6547669540b0ff0a18c2ac359215dbfaaa547ff0f589584ac3"
+    },
+    {
+      "Path": "DEV/wad/Microsoft.ActiveDirectory.Management.dll",
+      "SHA256": "1a6af7b8f8bce5b35ff873e2528746480c980526d86e38ca5acd04c2e9037157"
+    },
+    {
+      "Path": "DEV/wad/ActiveDirectory.Format.ps1xml",
+      "SHA256": "ffefd16b151f10ea80b603f3acba3c361055314bb6b54f8f8f3f0b21e2ae3996"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Preparation.ps1",
+      "SHA256": "543dce5e3eecf42921e43f33192808d6b7bfca49ed3349fbba795f4add7a92a5"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Direct.ps1",
+      "SHA256": "aef4cc95002502ed27eb74116f84b50a393e33f4470177cb838cd7e77808a961"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Recovery.ps1",
+      "SHA256": "e97d83c8dfc3dae1b2b9d3254a77ed0015e46045b474df1d8064e7946136ab00"
+    },
+    {
+      "Path": "DEV/wad/Pesto.ico",
+      "SHA256": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a"
+    },
+    {
+      "Path": "DEV/tests/Run-EngineTests.ps1",
+      "SHA256": "2849ea32e517db3fbe286f196ea63d8c587ea359e747486943d5115ed4f87c27"
+    },
+    {
+      "Path": "DEV/tests/Run-AutomationTests.ps1",
+      "SHA256": "ad74c2e75de5d3ee678a8d1496bb3185a2ca44dfb84c37a5419b28320c87da82"
+    },
+    {
+      "Path": "DEV/tests/Run-PackageTests.ps1",
+      "SHA256": "2720428b06d64c58126a91a3c3e4b42c3927c64b9abb885c26f3670827afca59"
+    },
+    {
+      "Path": "DEV/tests/Run-SsoTests.ps1",
+      "SHA256": "7f72a82b469bc73d2a47e5f38252a5e0f4659a530c935f4218f1b991328d3bc8"
+    },
+    {
+      "Path": "DEV/tests/Run-DirectoryCacheTests.ps1",
+      "SHA256": "af24ae03aed310feea051aad79a3b3e76232f699f06300e5129b508dcb522ae7"
+    },
+    {
+      "Path": "DEV/tests/Run-ZoomTests.ps1",
+      "SHA256": "2fdeebda2f16df19a8897b948776371241d9a1956dd662c8c528687b9ad9b79f"
+    },
+    {
+      "Path": "DEV/tests/Run-ReliabilityTests.ps1",
+      "SHA256": "5da9b20045d46f12d4e86eab9dc421144d75ffb6e31d49ae07d6d08ca81bda41"
+    },
+    {
+      "Path": "DEV/tests/Run-DomainNavigationTests.ps1",
+      "SHA256": "48474a0ca1a2f2187e976217bfc99699b036eba0aa9fce00b93c4ba3d3a056b3"
+    },
+    {
+      "Path": "DEV/tests/Pesto.Safety.Tests.ps1",
+      "SHA256": "d3717b5370023e796ab9a2b6971e02d59ce7a95e73ac07e9c9815db02f46d2df"
+    },
+    {
+      "Path": "DEV/tests/Run-RandomNamesTests.ps1",
+      "SHA256": "4dcbffd61d79ae876d6730cf60ca02113ec28ef73fc2ece488628a3e7db79d04"
+    },
+    {
+      "Path": "DEV/tests/Run-AllTests.ps1",
+      "SHA256": "b8db63f2508a9b1db1694c3d85ea7021f1e8238ec3ea53d4dc6a0cfa509a2a0e"
+    },
+    {
+      "Path": "DEV/tests/Run-CommonTests.ps1",
+      "SHA256": "24c521867cb9ea02268574ffb9ddab0da9ec8a3d7e1a1456f1114607b17e110a"
+    },
+    {
+      "Path": "DEV/tests/Run-Pesto22Tests.ps1",
+      "SHA256": "29414c2cc341448bd6731d627e4649a67245c4fe0e5f38625cfef8d2a1277601"
+    },
+    {
+      "Path": "DEV/tests/Run-Pesto23Tests.ps1",
+      "SHA256": "ec0fd7c872f36861f0cbbb045fe509b89b4dcf2b5a7676594062a8ad23f8a3ec"
+    },
+    {
+      "Path": "DEV/tests/Run-HomeDashboardTests.ps1",
+      "SHA256": "9ccef984316e789b7d4da9edd62062d75c693cd77f4dfbf53ab7f47e4e6193e3"
+    },
+    {
+      "Path": "DEV/tests/Run-StartupTests.ps1",
+      "SHA256": "e6fdfdd3fdccd91be6e431e5227e111add54592dad1e67bf46e5e194cc51ad88"
+    },
+    {
+      "Path": "DEV/tests/Run-JoinReservationTests.ps1",
+      "SHA256": "3fbdf41f6f07cbd35c07139354dfd64bf3a0282fbc4d3caad23e4a8dd7ea4c03"
+    },
+    {
+      "Path": "DEV/tests/Run-V1ImprovementsTests.ps1",
+      "SHA256": "b08623328edcbd07b6a1d656a1df643856eaa6b7c13b6dfa408c70d3fc5a9b8b"
+    },
+    {
+      "Path": "DEV/tests/Pesto.RC21.Tests.ps1",
+      "SHA256": "efd6bf6a3db010be055b5de0e954a538d68c17f8ad8e1df348181abbbefabc6e"
+    },
+    {
+      "Path": "DEV/tests/Run-UxTests.ps1",
+      "SHA256": "dff1614507abfd959457de01521be706b4a1c09296e1babaac9ea6ba845abde3"
+    },
+    {
+      "Path": "DEV/tests/Run-UiPresentationTests.ps1",
+      "SHA256": "c974465c3369f254a5a17a1dd4080c76c6eb50d80ecbed30dcacf80efe4eaa33"
+    },
+    {
+      "Path": "DEV/tests/Run-BulkPlanningTests.ps1",
+      "SHA256": "1750f01e56377147ab9584eb72f832dd5df95d117468132108dee3e518e69b9c"
+    },
+    {
+      "Path": "DEV/tests/Run-PilotageTests.ps1",
+      "SHA256": "998c55913fa0b3b6bb94df850a49086d285b0a1954d037deb2471f3f2d58ae23"
+    },
+    {
+      "Path": "DEV/tests/Run-WorkerContractTests.ps1",
+      "SHA256": "c64f8b8b3cac6a562300eb197fe5054774d09efc6a0acb2845da50090e1a350d"
+    },
+    {
+      "Path": "DEV/tests/Async-ScopeFixture.ps1",
+      "SHA256": "f3839e4513a13cc765876f82da736b6b745da1219c8582600ec59a2f581c94a4"
+    },
+    {
+      "Path": "DEV/tests/Run-NamesLoadingTests.ps1",
+      "SHA256": "0ae56d0afcd7b2d8f145d517a102878658848bc63602d34a30da0e57919d536d"
+    },
+    {
+      "Path": "DEV/tests/Run-ToolsTabsTests.ps1",
+      "SHA256": "1d390f6a590350e6ae8e79de5f35d00c076d11878b415e7ea832a4a018518d5b"
+    },
+    {
+      "Path": "DEV/tests/Run-LoginPreferencesTests.ps1",
+      "SHA256": "ad152046023bd00e48c71aff38d4500837002cb69ede4b5fe2a63a79b109f87a"
+    },
+    {
+      "Path": "DEV/tests/Run-InterventionViewTests.ps1",
+      "SHA256": "91a0c2a4fa4586a11dceb0a442a6a853e31bd10aa4a16a2b5dfcf7a1e009f2f2"
+    },
+    {
+      "Path": "DEV/tests/Run-RC4Tests.ps1",
+      "SHA256": "235d02c057bac67885d2c1b234d7e00525c1134ee4b8981408e4caa1e70e60cc"
+    },
+    {
+      "Path": "DEV/tests/Run-RC14Validation.ps1",
+      "SHA256": "f549d12f6c3594657c6d85d7a0cc8d196be886653d3b1b4bb18d67fe85e2cb55"
+    },
+    {
+      "Path": "DEV/tests/Run-StabilisationTests.ps1",
+      "SHA256": "7b06f6f2163136115de3cd73212d7af3d1e63b31afd1099abb934db105a152b5"
+    },
+    {
+      "Path": "DEV/tests/Run-AsyncTests.ps1",
+      "SHA256": "72e59cacc7c80a8969a91f6ff76190804abc6f464add7286c0abe33c5f690fc2"
+    },
+    {
+      "Path": "DEV/tests/Run-ProgressTests.ps1",
+      "SHA256": "4735aa1ea1536d66c79e6fbd7d14f031847fa039f7b39dbe3724af0c78072f9e"
+    },
+    {
+      "Path": "DEV/tests/Run-LoginTests.ps1",
+      "SHA256": "c7973163d8c9a7e7c0ac66066fd5a11c14b3d66a37033198d724f255d1d68e22"
+    },
+    {
+      "Path": "DEV/tests/Run-BootIdentityTests.ps1",
+      "SHA256": "2df19302a8fd2bea4f449c782155e32e0832c8790ab61c6ba099a7b3b8ed5907"
+    },
+    {
+      "Path": "DEV/tests/Run-Pesto21Tests.ps1",
+      "SHA256": "807e7ae99e5f6814d7534c5dbfb8beb9de00c7f9aa91053375a043f7b06e4aa3"
+    },
+    {
+      "Path": "DEV/tests/Run-QueueRemovalTests.ps1",
+      "SHA256": "0f2c9c532ec0642573e03ebfd9adc2ab5d323e86433df274eef2f710684dd6be"
+    },
+    {
+      "Path": "DEV/tests/Run-SettingsTests.ps1",
+      "SHA256": "a3503acb56fc53aff77c40ba21a6ff9f991764a9c0fe307075ef480c85070972"
+    },
+    {
+      "Path": "DEV/tests/Run-JoinTests.ps1",
+      "SHA256": "af7c2238b0a6e120754a24a0475649cd0fd37991506299fbf65b9fb1d1a2a9ca"
+    },
+    {
+      "Path": "DEV/tools/cfg.modele-complet.json",
+      "SHA256": "43bc012d47a09800fa4ee77a524d03190b9c1ff706ea20b65138f787a8ab2554"
+    },
+    {
+      "Path": "DEV/tools/cfg.template.json",
+      "SHA256": "28d105c9b5b88ae505205832fd952fc2ab44855ea6d359de179ac1eb0397227b"
+    }
+  ]
+}

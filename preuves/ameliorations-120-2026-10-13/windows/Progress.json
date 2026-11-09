@@ -1,0 +1,137 @@
+﻿{
+    "Version":  "17.0-RC9",
+    "Engine":  "5.1.26100.6584",
+    "Platform":  "Microsoft Windows NT 10.0.26200.0",
+    "Utc":  "2026-10-13T19:15:59.8678963Z",
+    "Scope":  "Parseur natif, fonctions isolées, vrais runspaces et timers WPF. Aucune connexion AD, aucun UAC, aucune mutation.",
+    "Total":  21,
+    "Failed":  0,
+    "Results":  [
+                    {
+                        "Name":  "Parseur PowerShell natif : source complet",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  21
+                    },
+                    {
+                        "Name":  "Parseur natif : script du helper UAC",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  28
+                    },
+                    {
+                        "Name":  "Moniteur initial sans mutation",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  28
+                    },
+                    {
+                        "Name":  "Étape publiée immédiatement",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  47
+                    },
+                    {
+                        "Name":  "Masquage des clés de mot de passe dans les traces",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  18
+                    },
+                    {
+                        "Name":  "Drain FIFO sans duplication",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  66
+                    },
+                    {
+                        "Name":  "Drain borné pour laisser le Dispatcher disponible",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  61
+                    },
+                    {
+                        "Name":  "Pied de page : étape et PID du helper",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  25
+                    },
+                    {
+                        "Name":  "Barrière : lecture ne marque pas de mutation",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  22
+                    },
+                    {
+                        "Name":  "Barrière : mutation annoncée avant appel",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  18
+                    },
+                    {
+                        "Name":  "Barrière : aucune étape nouvelle après expiration",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  36
+                    },
+                    {
+                        "Name":  "Compatibilité des fonctions isolées sans moniteur",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  16
+                    },
+                    {
+                        "Name":  "Worker réel en STA sur demande",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  303
+                    },
+                    {
+                        "Name":  "Lecture AD : MTA reste le défaut",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  147
+                    },
+                    {
+                        "Name":  "Messages visibles AVANT la fin du worker réel",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  1426
+                    },
+                    {
+                        "Name":  "Expiration : erreur unique, worker encore suivi, aucune mutation différée",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  2523
+                    },
+                    {
+                        "Name":  "Succès tardif non publié après expiration",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  1840
+                    },
+                    {
+                        "Name":  "Une mutation active ne peut pas être remplacée",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  355
+                    },
+                    {
+                        "Name":  "Arrêt coopératif conserve le suivi du worker",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  399
+                    },
+                    {
+                        "Name":  "Déverrouillage refusé tant que le worker est actif",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  360
+                    },
+                    {
+                        "Name":  "Timeout des lectures : ancien contrat conservé",
+                        "Passed":  true,
+                        "Message":  "",
+                        "Ms":  1249
+                    }
+                ]
+}

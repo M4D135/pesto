@@ -1,0 +1,11 @@
+capture C:\PestoAudit20261013\final\preuves\01-hors-domaine.png 1920x1160
+clic : #NavHome (Accueil)
+capture C:\PestoAudit20261013\final\preuves\01-hors-domaine-accueil.png 1920x1160
+Disabled state mismatch
+At C:\PestoAudit20261013\final\pilot\01-demo-join.ps1:2 char:1154
++ ... |Where-Object{-not$_.Passed}).Count){throw 'Disabled state mismatch'}
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Disabled state mismatch:String) [], RuntimeException
+    + FullyQualifiedErrorId : Disabled state mismatch
+ 
+

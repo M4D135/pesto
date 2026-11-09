@@ -1,0 +1,112 @@
+{
+    "Schema":  2,
+    "Version":  "1.0",
+    "OperationId":  "1622230f01fc469aa443e5c28d341871",
+    "Plan":  {
+                 "Nom_du_PC":  "P111301LY765128",
+                 "Nouveau_Nom":  "P111301LY765559",
+                 "OU_Actuelle":  "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                 "OU_Destination":  "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                 "Objet_GUID":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                 "Domain":  "labo.local",
+                 "DC":  "dc01.labo.local",
+                 "ConfigStamp":  "127D73A9767B1204AEEC7DFA35AF34E7EDD7FB9DB796E2E7E4DC57EBF2482AD6",
+                 "TargetOUGuid":  "",
+                 "Renommer":  true,
+                 "Deplacer":  false,
+                 "Reboot":  false
+             },
+    "StartedUtc":  "2026-10-13T16:41:26.1526685Z",
+    "UpdatedUtc":  "2026-10-13T16:41:28.5310889Z",
+    "Phase":  "PendingRestart",
+    "InitialProtection":  null,
+    "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+    "TargetOUGuid":  "",
+    "Entra":  "Skipped",
+    "Protection":  "NotChanged",
+    "Rename":  "Confirmed",
+    "Move":  "NotRequested",
+    "ResultCode":  20,
+    "ResultMessage":  "\u0027P111301LY765128\u0027 renommé en \u0027P111301LY765559\u0027 avec le compte Windows ; redémarrage requis. | Aucun retrait Entra nécessaire.",
+    "LastObservation":  null,
+    "LastStage":  "Rename: Confirmed",
+    "VerifiedUtc":  "",
+    "VerifiedBy":  "",
+    "ResumeFrom":  "",
+    "PlanFingerprint":  "9f9b2b850fa58456476f6b6f656a8160c1986ebad85368e86379faab324f50a9",
+    "Coordination":  {
+                         "Enabled":  false,
+                         "Keys":  [
+
+                                  ],
+                         "Owner":  "1622230f01fc469aa443e5c28d341871"
+                     },
+    "Baseline":  {
+                     "Schema":  1,
+                     "CapturedUtc":  "2026-10-13T16:41:26.7148740Z",
+                     "ADUtc":  "2026-10-13T16:41:26.5131698Z",
+                     "WindowsUtc":  "2026-10-13T16:41:26.7129489Z",
+                     "HealthUtc":  "",
+                     "AD":  {
+                                "Name":  "P111301LY765128",
+                                "Guid":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                                "OU":  "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                                "Protected":  false
+                            },
+                     "Windows":  {
+                                     "ActiveName":  "P111301LY765128",
+                                     "ConfiguredName":  "P111301LY765128",
+                                     "Domain":  "labo.local",
+                                     "PartOfDomain":  true,
+                                     "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                     "BootUtc":  "2026-10-13T16:25:31.5000000Z",
+                                     "DomainRole":  1
+                                 },
+                     "Health":  null
+                 },
+    "Sequence":  7,
+    "Timeline":  [
+                     {
+                         "Sequence":  1,
+                         "Utc":  "2026-10-13T16:41:26.7366825Z",
+                         "Stage":  "Observation",
+                         "State":  "Initial"
+                     },
+                     {
+                         "Sequence":  2,
+                         "Utc":  "2026-10-13T16:41:26.7659174Z",
+                         "Stage":  "TargetMachineId",
+                         "State":  "81387449-2dd8-4bd9-8059-f868a5b8ec68"
+                     },
+                     {
+                         "Sequence":  3,
+                         "Utc":  "2026-10-13T16:41:26.8431819Z",
+                         "Stage":  "Entra",
+                         "State":  "Requested"
+                     },
+                     {
+                         "Sequence":  4,
+                         "Utc":  "2026-10-13T16:41:28.0770068Z",
+                         "Stage":  "Entra",
+                         "State":  "Skipped"
+                     },
+                     {
+                         "Sequence":  5,
+                         "Utc":  "2026-10-13T16:41:28.1108661Z",
+                         "Stage":  "Rename",
+                         "State":  "Requested"
+                     },
+                     {
+                         "Sequence":  6,
+                         "Utc":  "2026-10-13T16:41:28.4792343Z",
+                         "Stage":  "Rename",
+                         "State":  "Confirmed"
+                     },
+                     {
+                         "Sequence":  7,
+                         "Utc":  "2026-10-13T16:41:28.5275403Z",
+                         "Stage":  "Result",
+                         "State":  "PendingRestart"
+                     }
+                 ]
+}

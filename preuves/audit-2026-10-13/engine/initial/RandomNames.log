@@ -1,0 +1,64 @@
+{
+    "PowerShell":  "5.1.26100.6584",
+    "Platform":  "Local only",
+    "NoWindows":  true,
+    "NoAD":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Absent policy enables full random and leaves optional coordination disabled",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Empty policy schema enables random",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Legacy explicit 0 and 1 remain opt-out",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Legacy positive setting maps to whole pool without numeric limit",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conflicting legacy/new choices are rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid legacy/new types rejected",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Explicit false selects first; empty pool has no index",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "System RNG supports entire pool rather than first 50",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other name always excludes current index and handles edge cases",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Sequential other name wraps without repetition",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Other name refuses to alter pending operation selection",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}

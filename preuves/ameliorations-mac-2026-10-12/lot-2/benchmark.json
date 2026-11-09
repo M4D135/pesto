@@ -1,0 +1,8 @@
+{
+  "Candidates": 99900,
+  "Milliseconds": 1875,
+  "Rows": 250,
+  "Suggestions": 5,
+  "Runtime": "PowerShell 7.4.20 macOS",
+  "Scope": "Pure calculation; one measurement, not a Windows performance claim"
+}

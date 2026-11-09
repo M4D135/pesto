@@ -1,0 +1,12 @@
+{
+  "Date": "2026-10-04T21:16:05.365889+02:00",
+  "VM": "PESTO-W11-TEST",
+  "NIC": 2,
+  "Network": "LABO-LAB",
+  "NAT_NIC3_Kept": true,
+  "Cut": true,
+  "DriverExit": 0,
+  "DriverOutput": "tache PestoPilote-f5b8f0be etat=Ready resultat=0\r\n",
+  "Restored": true,
+  "RestoredAt": "2026-10-04T21:16:18.583775+02:00"
+}

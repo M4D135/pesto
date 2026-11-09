@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "utc": "2026-10-13T18:50:05.930995+00:00",
+  "platform": "macOS; PowerShell 7.4.20",
+  "scope_ids": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54
+  ],
+  "passed": 102,
+  "failed": 0,
+  "suites": [
+    {
+      "name": "Workbench",
+      "passed": 25,
+      "failed": 0,
+      "report": "Workbench.json",
+      "log": "Workbench.log"
+    },
+    {
+      "name": "ConfigEditor",
+      "passed": 20,
+      "failed": 0,
+      "report": "ConfigEditor.json",
+      "log": "ConfigEditor.log"
+    },
+    {
+      "name": "ReceiptTools",
+      "passed": 14,
+      "failed": 0,
+      "report": "ReceiptTools.json",
+      "log": "ReceiptTools.log"
+    },
+    {
+      "name": "BatchNames",
+      "passed": 22,
+      "failed": 0,
+      "report": "BatchNames.json",
+      "log": "BatchNames.log"
+    },
+    {
+      "name": "Collections",
+      "passed": 21,
+      "failed": 0,
+      "report": "Collections.json",
+      "log": "Collections.log"
+    }
+  ],
+  "parser": {
+    "files": 43,
+    "failed": 0,
+    "report": "parser.json"
+  },
+  "wpf_executed": false,
+  "windows_requested": {
+    "Workbench120 -Wpf": 30,
+    "BatchNames120 -Wpf": 23,
+    "Collections120": 21,
+    "ConfigEditor120": 20,
+    "ReceiptTools120": 14
+  },
+  "sources": [
+    {
+      "path": "DEV/wad/Pesto-Core.ps1",
+      "bytes": 350542,
+      "sha256": "9c7b55690beb7d91a511252a0649044148613feb57ced14e6db06687c3211a1a"
+    },
+    {
+      "path": "DEV/wad/Pesto-Shell.xaml",
+      "bytes": 209804,
+      "sha256": "26083c6a6c98064b18f325db5872f53dcc881eb62e75d54f072109c894202aa3"
+    },
+    {
+      "path": "DEV/wad/Pesto-Workspace.ps1",
+      "bytes": 36100,
+      "sha256": "a5e0def04262aa1efb7d3da1ee981422fb6fccdc6a4cf7169d996ac7896f2300"
+    },
+    {
+      "path": "DEV/wad/Pesto-Configuration.ps1",
+      "bytes": 57324,
+      "sha256": "e193251bc65a689df9f1790dd5176c122b79524ccda399680d70ce8ff48df2a3"
+    },
+    {
+      "path": "DEV/wad/Pesto-Preparation.ps1",
+      "bytes": 12464,
+      "sha256": "2d817e1441e53df53057af1cfcb1d87f2fe44c8ef2da8cbdd6e8d1ce5e31def9"
+    },
+    {
+      "path": "DEV/wad/Pesto-Tables.ps1",
+      "bytes": 6453,
+      "sha256": "d8daae256e86d69f21856ae4cd493a1562e0791242a814288fe225ac555868b6"
+    },
+    {
+      "path": "DEV/wad/Pesto-Interventions.ps1",
+      "bytes": 42378,
+      "sha256": "6488a25afaca97ed2b9e27019d4f159a27b874186152ccff08063f1f60539b0a"
+    },
+    {
+      "path": "DEV/wad/Pesto-SuiteUI.ps1",
+      "bytes": 35008,
+      "sha256": "c81b0dd1764f7a164e4d3151db04d993e962c197d6bf938149779f83756526bb"
+    },
+    {
+      "path": "DEV/wad/Pesto-Review.ps1",
+      "bytes": 10919,
+      "sha256": "6d655acc9052c08558deb0d37c1e590c785109d71c4c40fadeed2f5469f704f9"
+    },
+    {
+      "path": "DEV/wad/Pesto-Appearance.ps1",
+      "bytes": 20388,
+      "sha256": "bae814fd5343926bf71516dadcc25892f733ccc937b10a81d29b6fc7ec073ed2"
+    },
+    {
+      "path": "DEV/wad/Pesto-Workbench.ps1",
+      "bytes": 17922,
+      "sha256": "3a736d44b42120bc76c5b0d827c7ebb5cc04dd08d78c2d33dd82a3c3e7182b1c"
+    },
+    {
+      "path": "DEV/wad/Pesto-ConfigEditor.ps1",
+      "bytes": 18705,
+      "sha256": "0fc43899321487d0aad353e775955d88777ec9fb65210f04667ad47b9d0eb576"
+    },
+    {
+      "path": "DEV/wad/Pesto-ReceiptTools.ps1",
+      "bytes": 10106,
+      "sha256": "09bde8cbf2596575436effc852697703a2385252289da7fbc02342046c13616d"
+    },
+    {
+      "path": "DEV/wad/Pesto-BatchTools.ps1",
+      "bytes": 19788,
+      "sha256": "a1e342b5e688f0a3767ddcd0e94a72660844ac831b71a4b613a8caf0805098ad"
+    },
+    {
+      "path": "DEV/wad/Pesto-NameWorkbench.ps1",
+      "bytes": 8640,
+      "sha256": "233f47b20e82a07032061c03b8882dd4cbe8146d140cfffc127a6600b9c35498"
+    },
+    {
+      "path": "DEV/wad/Pesto-Collections.ps1",
+      "bytes": 19152,
+      "sha256": "9dfcb5878ac9e0c6085d7f0e501dfb5f065f2dcf6671fa3d2c4251e30837249b"
+    },
+    {
+      "path": "DEV/wad/Pesto-Contracts.ps1",
+      "bytes": 26286,
+      "sha256": "61b3a3b8f6d9f1cb52732c010f761831430f2d3a8d22e1e5737a22aea22896e2"
+    },
+    {
+      "path": "DEV/tests/Run-Workbench120Tests.ps1",
+      "bytes": 10102,
+      "sha256": "fb3e40ed540e25d11c6a506066484e1899d9cbfc252130752700ac77a9cc6980"
+    },
+    {
+      "path": "DEV/tests/Run-ConfigEditor120Tests.ps1",
+      "bytes": 7483,
+      "sha256": "98b33a33415b5b648b193e20360daa41ab3f0400c3496ae87d9238d7e80bdff1"
+    },
+    {
+      "path": "DEV/tests/Run-ReceiptTools120Tests.ps1",
+      "bytes": 6656,
+      "sha256": "95d4de483249c4f84c7af36002696157174c54378bf81a734da2af7073cfbc2d"
+    },
+    {
+      "path": "DEV/tests/Run-BatchNames120Tests.ps1",
+      "bytes": 10405,
+      "sha256": "196d19ce891347347982c66e054b5bb2784663b0ca6427d381a16372043ed42c"
+    },
+    {
+      "path": "DEV/tests/Run-Collections120Tests.ps1",
+      "bytes": 9918,
+      "sha256": "8e7b6775ffd11efff208aa6cdb846442c295acee69af18420f2e8128b1d360ab"
+    }
+  ],
+  "limitations": [
+    "No VM or AD operation by this agent.",
+    "Mac portable tests do not qualify WPF rendering, native keyboard focus, Narrator or persistent Windows registry preferences.",
+    "Historical test suites are attributed separately in engine/ui-baselines/summary.json.",
+    "Initial Workbench JSON roundtrip failure retained under initial; final result uses Contracts int/int64 schema fix."
+  ]
+}

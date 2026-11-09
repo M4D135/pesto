@@ -1,0 +1,77 @@
+{
+  "Product": "Pesto 1.0",
+  "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6",
+  "RuntimeFiles": 44,
+  "Guides": {
+    "docs/Pesto-1.0-Guide-administrateur.docx": "92e60fca4cfcd1e013db827ddc441200cc55dc3080cfd2288ea3290b05e94689",
+    "docs/Pesto-1.0-Guide-administrateur.pdf": "087545512c7cda342565e08f1bf7e9b16e7c3b07b930bd9c2514b964d3ccac42",
+    "docs/Pesto-1.0-Guide-technicien.docx": "d92c22ee65a5b20eba792afcb764ac45e240e44f4d8fb50c2338aa3885932955",
+    "docs/Pesto-1.0-Guide-technicien.pdf": "da75268d7040431a53718ef7328b20c1bc90a889016323e7065908ef56cd6eee"
+  },
+  "Archives": [
+    {
+      "Path": "packs/Pesto_PROD.zip",
+      "Channel": "PROD",
+      "SHA256": "f1d917e8970e74a4bedaa0c7956afefcefee9f8c6a3839f0bd96c11fd72ca727",
+      "Bytes": 960435,
+      "Entries": 47,
+      "RootEntries": [
+        "Pesto.exe",
+        "wad"
+      ],
+      "NeutralConfig": true,
+      "AllEntriesMatchSource": true,
+      "Integrity": "PASS"
+    },
+    {
+      "Path": "packs/Pesto_DEV.zip",
+      "Channel": "DEV",
+      "SHA256": "9c8e378ea525b60b8509ff75e409c5054548f590e228a97b8c80a2d2d27154d2",
+      "Bytes": 8010155,
+      "Entries": 445,
+      "RootEntries": [
+        ".github",
+        ".gitignore",
+        "APERCU_LOGIN.cmd",
+        "CHANGELOG.md",
+        "DEMO.cmd",
+        "DEMO_DOMAINE.cmd",
+        "ETAT_RENOMMAGE.cmd",
+        "FABRIQUER_PACKS.cmd",
+        "FABRIQUER_PROD.cmd",
+        "LIRE_MOI.txt",
+        "Pesto.cmd",
+        "Pesto.exe",
+        "Pesto_COMPTE_AD.cmd",
+        "README.md",
+        "TESTER.cmd",
+        "TEST_ASYNC.cmd",
+        "TEST_CONNEXION_UNIQUE.cmd",
+        "TEST_CORRECTIF.cmd",
+        "TEST_DISTRIBUTION.cmd",
+        "TEST_FILE.cmd",
+        "TEST_INTERFACE.cmd",
+        "TEST_LOGIN.cmd",
+        "TEST_LOGIN_COMPACT.cmd",
+        "TEST_NOMS.cmd",
+        "TEST_PILOTAGE.cmd",
+        "TEST_PROGRESS.cmd",
+        "TEST_RC22.cmd",
+        "TEST_RC23.cmd",
+        "TEST_TOUT.cmd",
+        "TEST_UAC.cmd",
+        "VERIFIER_PACK.cmd",
+        "VERIFIER_UAC.cmd",
+        "docs",
+        "pytest.ini",
+        "tests",
+        "tools",
+        "vendor",
+        "wad"
+      ],
+      "NeutralConfig": true,
+      "AllEntriesMatchSource": true,
+      "Integrity": "PASS"
+    }
+  ]
+}

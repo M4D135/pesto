@@ -1,0 +1,189 @@
+{
+  "base_commit": "af555e5897945a9cdd00eb039ba5e6f47cf441fd",
+  "scope": "Audit et contrôles locaux macOS uniquement ; aucune VM, AD, UAC ou API Windows exécutée.",
+  "environment": {
+    "system": "Darwin",
+    "release": "25.4.0",
+    "machine": "arm64",
+    "python": "3.14.7"
+  },
+  "build": {
+    "Schema": 1,
+    "Version": "1.0",
+    "FileVersion": "1.0.0.0",
+    "Utc": "2026-10-12T13:45:56.862203+00:00",
+    "Clang": "Homebrew clang version 23.1.2",
+    "Lld": "Homebrew LLD 23.1.2",
+    "Exe": "Pesto.exe",
+    "Size": 113152,
+    "SHA256": "d8b926d9f58e2dc18fd69d08d7499159b89062620b06c2479f5ed6279d2c6eb2",
+    "Inputs": {
+      "tools/launcher/Pesto-launcher.c": "eecb4680690af5fbf65fb77cfe9e595c4c44fdbf4d38eb222b3a0fbae603a893",
+      "tools/launcher/pesto_runtime.h": "fad4110b253735bce177dce0b93c94b945a86d470131d28699485229a1bd1e7c",
+      "tools/launcher/pesto_sha256.h": "23dee663ebf2aad88ee45002c9c71abe87ff2fc4621b8a1610466d471bc233b8",
+      "tools/launcher/pesto_verify.h": "4583e08d7d0e39dd21e2ecd7ae64d981bc4d5f8f913eb016a348a67ac2942241",
+      "tools/launcher/Pesto.manifest": "79213be8dcb79ae4859a1d9aa61ce262e018af327ded7139f52cd7e42f34999f",
+      "wad/Pesto.ico": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a",
+      "tools/version.json": "e5bd73d68dce560d34edec2efe8628b81ebcd546717bae19c871e48b677304f2"
+    },
+    "WindowsExecution": "NOT_RUN"
+  },
+  "python_repository": {
+    "tests": 303,
+    "passed": 303,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": "python-final-master.log",
+    "source": "Copie isolée alignée fichier par fichier sur les sources et tests courants."
+  },
+  "python_standalone_dev_pack": {
+    "tests": 303,
+    "passed": 302,
+    "failed": 0,
+    "skipped": 1,
+    "reason": "outils/parse_all.ps1 appartient au dépôt, pas au pack autonome ; le parseur livré est vérifié séparément.",
+    "evidence": "python-pack-master-final.log"
+  },
+  "shell_local_mock": {
+    "tests": 6,
+    "before_failures": 4,
+    "after_failures": 0,
+    "network": "NOT_USED"
+  },
+  "portable_validation": {
+    "passed": 360,
+    "failed": 0,
+    "real_powershell_parser": "NOT_RUN"
+  },
+  "native_portable": {
+    "entry_scenarios": 48,
+    "explicit_arguments": 9,
+    "argument_roundtrips": 2000,
+    "sha256_cases": 132,
+    "Windows_APIs": "NOT_RUN"
+  },
+  "worker_contract": {
+    "passed": 9,
+    "failed": 0,
+    "negative_detected": 7,
+    "negative_total": 7,
+    "PowerShell_execution": "NOT_RUN"
+  },
+  "preserved_existing_change": {
+    "path": "DEV/tests/worker-runspace-report.json",
+    "SHA256": "ec0af62fe89f7ebefb085ffcd60dcac88557c94df820fa6e163ec3d2b96c0548",
+    "committed_in": "5d213da0689dcededef0e1e84abaf3111b876142"
+  },
+  "qualification": "Nouveau build non exécuté sous Windows. Les preuves Windows antérieures restent liées à leurs candidats.",
+  "source_files": {
+    "DEV/wad/Pesto-Authentication.ps1": "819b88d29b4278bc33013927cf287c89bc2688b005da0cfc00c07bc96ccac357",
+    "DEV/wad/Pesto-Directory.ps1": "cb2780dad53080f157e6a14629b4167a9b6675cb99efafb4f0cb61fe77e49af1",
+    "DEV/tests/worker_runspace_static_checks.py": "700027369b8387f9a6f93c4c2d0c4dfd75d8f46f14212bdb97236a274a566c00",
+    "DEV/tools/package_distribution.py": "8cbc4951940fd9fb51a6eda5732afe00bdbfa9c13e8cfe67f82533e232d37a0c",
+    "DEV/tools/New-PestoDistribution.ps1": "43ff6a47cc2977df5b366836e7538389306f9190a577cd1509562012f06dcac8",
+    "outils/labo/mac/vps.sh": "cf22749188731ad7b46a1124b673f7609156fff43ce3a57a0376bfd5b9f69736",
+    "DEV/tools/Build-PestoPacks.py": "cc325820015e5857ac5c30c38b96ba6ea6b5859c2fa8aacd1bf700e71ffd8972",
+    "DEV/tools/update_installation.py": "7282b4a5b847a31f57339b8243bd22cc391f685fd1d554cda68b1c56fa8c9001",
+    "DEV/tools/refresh_manifest.py": "ca35c41dfccf33b45ef55cfa3db98a00cb82b5a110f1d7e383ac9eec37a703ab",
+    "DEV/tests/test_update_inputs.py": "60cb522be9716d74e22cda7ca5516d22204253b39a37a808aaa0af1265a94d8e"
+  },
+  "checks_note": "Une première copie isolée avait omis outils/parse_all.ps1 : 1 erreur de fixture. Le dépôt complet passe ; le pack autonome marque ce seul contrôle externe SKIP. Reprise finale : la copie isolée contenait encore un fabricant PowerShell antérieur ; 1 échec de parité, conservé dans python-final-master-stale-copy.log. Copie ensuite alignée fichier par fichier et 303/303 passés.",
+  "packs": [
+    {
+      "channel": "PROD",
+      "files": 41,
+      "SHA256": "0aa74d2109ef6875ef8083e138bc385f51d301cda7efd8a6826e0ca029d116e3",
+      "previous_SHA256": "0aa74d2109ef6875ef8083e138bc385f51d301cda7efd8a6826e0ca029d116e3",
+      "matches_source": "PASS",
+      "CRC": "PASS",
+      "runtimeFiles": 38
+    },
+    {
+      "channel": "DEV",
+      "files": 391,
+      "SHA256": "798e313fe491c476e56c3ba3135754727ce46df4d5993638404b2897d5358dae",
+      "previous_SHA256": "d76ba525341d41177f1e63dab9cf82ad5b02c6c07637834fad5c8c7efc20db44",
+      "matches_source": "PASS",
+      "CRC": "PASS",
+      "runtimeFiles": 38
+    }
+  ],
+  "utc": "2026-10-12T14:27:54.206704+00:00",
+  "transient_test_runs": {
+    "initial_python": 286,
+    "first_postfix_python": 293,
+    "final_python": 303,
+    "pack_skip": 1,
+    "initial_isolated_before_sync": 299
+  },
+  "spark_review": {
+    "status": "COMPLETE_REVIEWED",
+    "findings": 6,
+    "confirmed_and_fixed": 5,
+    "rejected": 1,
+    "evidence": "spark-review-assessment.json"
+  },
+  "github_consolidation": {
+    "repository": "M4D135/pesto",
+    "private": true,
+    "default_branch": "master",
+    "branches": [
+      "master"
+    ],
+    "open_pull_requests": [],
+    "merged_pr": {
+      "number": 2,
+      "merged": true,
+      "merged_at": "2026-10-12T14:19:22Z",
+      "merge_commit_sha": "c8865f61cda641833ff969bed68eed45356f2ee3"
+    },
+    "user_decision": "Dernière consigne de David : master, remplace main ; deux packs DEV/PROD.",
+    "renames": [
+      "master -> main",
+      "main -> master (dernière demande)"
+    ]
+  },
+  "python_repository_initial": {
+    "tests": 295,
+    "passed": 295,
+    "failed": 0,
+    "skipped": 0
+  },
+  "updater_inputs": {
+    "tests": 8,
+    "before_failures": 2,
+    "before_errors": 29,
+    "after_failed": 0,
+    "after_errors": 0,
+    "subtests_note": "Les compteurs avant sont des sous-cas, pas 31 méthodes de test.",
+    "regression_update_tests": 46,
+    "regression_distribution_tests": 26
+  },
+  "packs_previous_pass": [
+    {
+      "channel": "PROD",
+      "files": 41,
+      "SHA256": "0aa74d2109ef6875ef8083e138bc385f51d301cda7efd8a6826e0ca029d116e3",
+      "previous_SHA256": "a02159a1d92b0cdea0d67f52a010d32d945a0545116e844de76c13a52f4078c1",
+      "matches_source": "PASS",
+      "CRC": "PASS",
+      "runtimeFiles": 38
+    },
+    {
+      "channel": "DEV",
+      "files": 390,
+      "SHA256": "d76ba525341d41177f1e63dab9cf82ad5b02c6c07637834fad5c8c7efc20db44",
+      "previous_SHA256": "3eb20845771cef0bf1917c279af83afb07ea4d52397153911ebbb78ed603c39b",
+      "matches_source": "PASS",
+      "CRC": "PASS",
+      "runtimeFiles": 38
+    }
+  ],
+  "python_standalone_dev_pack_initial": {
+    "tests": 295,
+    "passed": 294,
+    "failed": 0,
+    "skipped": 1,
+    "reason": "outils/parse_all.ps1 appartient au dépôt, pas au pack autonome ; le parseur livré est vérifié séparément."
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "Schema": 1,
+  "Captures": [
+    {
+      "Id": "accueil",
+      "Source": "preuves/zoom-2026-10-12/windows-final/02-accueil-100.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/accueil.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "c295e1e41156b6f25ea50aeee6a13f91cf6c6ee4fb6542eb7f4d3c9109a4f16e",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    },
+    {
+      "Id": "noms-filtres",
+      "Source": "preuves/zoom-2026-10-12/windows-release/04-noms-inventaire-120.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/noms-filtres.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "b03ef69c024a2e337ced777f1ba3c3940489c4e70c9bc20edb408ef2f15c0c08",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    },
+    {
+      "Id": "renommer-deplacer",
+      "Source": "preuves/vm-2026-10-12/live/50-renommer-deplacer-hd.png",
+      "GuideAsset": "outils/guides/images/v1/renommer-deplacer.png",
+      "SHA256": "b01f7e7e198a1d23b7094f1fe283fad44a4ef0a4a7b661325ae6957ef0a8588f",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "renommage-bilan",
+      "Source": "preuves/vm-2026-10-12/live/33-rename-result-hd-clean.png",
+      "GuideAsset": "outils/guides/images/v1/renommage-bilan.png",
+      "SHA256": "3e0e84e24487a6e2abc560c7909d24d99effd0549f0a554a5fc256a5bb0853b7",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "zoom-interface",
+      "Source": "preuves/zoom-2026-10-12/windows-final/03-menu-zoom-120.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/zoom-interface.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "4fea0a09bf5dc7b78c5197028002fe2ff811c3202bb6966cddd3d422ad50a1d2",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    },
+    {
+      "Id": "etat-verifie",
+      "Source": "preuves/vm-2026-10-12/live/94-r6-jonction-etat-verifie-hd.png",
+      "GuideAsset": "outils/guides/images/v1/etat-verifie.png",
+      "SHA256": "22f498d851ade5dbe34836848ee7c32b8b823271871126034fcacfebf802a329",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "renommer-seul",
+      "Source": "preuves/vm-2026-10-12/live/50-renommer-seul-hd.png",
+      "GuideAsset": "outils/guides/images/v1/renommer-seul.png",
+      "SHA256": "a117248c9fe2fb8e9cb6190c81d466e961fd0154465ddbc029a0333ad5dd0e8d",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "deplacer-seul",
+      "Source": "preuves/vm-2026-10-12/live/51-deplacer-seul-hd.png",
+      "GuideAsset": "outils/guides/images/v1/deplacer-seul.png",
+      "SHA256": "8af2724f8ceb5c7bc3e5d9c3343a0cd8ac8b7ef17bd0b3e639b469b4d5cedd35",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "lot",
+      "Source": "preuves/zoom-2026-10-12/windows-final/08-file-suivi-120.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/lot.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "487ad85974c045212f693cfc42c5a434af5dac484b4075c5a4a15a512db65162",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    },
+    {
+      "Id": "interventions",
+      "Source": "preuves/zoom-2026-10-12/windows-release/05-interventions-consulter-120.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/interventions.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "f3f574290a2c81269b0563229c6eadfe86c99f1234671f00cf4cfeed2f30df7f",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    },
+    {
+      "Id": "jonction-preparation",
+      "Source": "preuves/vm-2026-10-12/live/65-jonction-preparation-hd.png",
+      "GuideAsset": "outils/guides/images/v1/jonction-preparation.png",
+      "SHA256": "8dd0d49827a57a46a49eea36f66428edac66c8c536b863cfc55f96f78ae11e70",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "jonction-verifiee",
+      "Source": "preuves/vm-2026-10-12/live/98-r7-jonction-verifiee-hd.png",
+      "GuideAsset": "outils/guides/images/v1/jonction-verifiee.png",
+      "SHA256": "14c21a579415dd83f33f5ef905fe5ec3dd2fc9ca263708bf9bfecf3fe93f2db5",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "parametres",
+      "Source": "preuves/zoom-2026-10-12/windows-final/05-parametres-fichiers-120.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/parametres.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "cb54753540b61329216dc61af45f607f9aa6cde2b00ec133a8e25c1b9ce122b9",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    },
+    {
+      "Id": "verification-consignation",
+      "Source": "preuves/vm-2026-10-12/live/47-verification-save.png",
+      "GuideAsset": "outils/guides/images/v1/verification-consignation.png",
+      "SHA256": "d36ca4ebc5247b75c2e713bd003380e143defc95dec9e9b77f87dc2a9dcc20c5",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "parametres-noms",
+      "Source": "preuves/vm-2026-10-12/live/49-parametres-noms-hd.png",
+      "GuideAsset": "outils/guides/images/v1/parametres-noms.png",
+      "SHA256": "67a3ac3cc09e6db8746d4b988ac7472f49a3aa17a0a3d8144d63824348182b67",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "confirmation",
+      "Source": "preuves/vm-2026-10-12/live/50-confirmation-hd.png",
+      "GuideAsset": "outils/guides/images/v1/confirmation.png",
+      "SHA256": "21afac1c931ec2eaf190ec7e7d5c4bcaea9bd8786765b4b4b94156ac3772bfe5",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "hors-domaine",
+      "Source": "preuves/vm-2026-10-12/live/64-hors-domaine-commandes-hd.png",
+      "GuideAsset": "outils/guides/images/v1/hors-domaine.png",
+      "SHA256": "212f7c70a82e4564a5effb3d5da6fe6d7197b5e7199c3cb9964477a37e3091eb",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false,
+      "VisualTooltipReview": "PASS",
+      "NewForInterfaceUpdate": false
+    },
+    {
+      "Id": "outils-navigation",
+      "Source": "preuves/zoom-2026-10-12/windows-final/04-outils-preparer-120.png",
+      "GuideAsset": "outils/guides/images/ui-2026-10-12/outils-navigation.png",
+      "NewForInterfaceUpdate": true,
+      "VisualTooltipReview": "PASS",
+      "SHA256": "86bc6fcbeb819bfa748a1576e6070bc60cbbb93010ed405efde6f742da584dda",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "ExactCopy": true,
+      "NativeCapture": true,
+      "ArtificialUpscale": false
+    }
+  ],
+  "Method": "Copies exactes contrôlées par octets et SHA-256 ; dimensions natives vérifiées. Sept vues de l’interface réorganisée sont ajoutées ou remplacées ; chaque nouvelle source a été relue visuellement sans infobulle. Les autres sources sont couvertes par le manifeste et la QA précédents.",
+  "Baseline": "preuves/guides-2026-10-12/captures.json",
+  "Limit": "Une capture de préparation, de consultation ou de confirmation ne certifie pas une exécution."
+}

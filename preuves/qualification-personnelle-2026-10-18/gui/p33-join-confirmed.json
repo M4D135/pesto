@@ -1,0 +1,33 @@
+﻿{
+    "OperationId":  "d826072472714a09bcaa7d3fea86ad14",
+    "Phase":  "Verified",
+    "ResultCode":  10,
+    "LastObservation":  {
+                            "Schema":  1,
+                            "CapturedUtc":  "2026-10-18T16:18:29.4386177Z",
+                            "ADUtc":  "2026-10-18T16:18:27.9554689Z",
+                            "WindowsUtc":  "2026-10-18T16:18:28.0570857Z",
+                            "HealthUtc":  "2026-10-18T16:18:28.0570857Z",
+                            "AD":  {
+                                       "Name":  "V111301VA765542",
+                                       "Guid":  "fc6f4538-2fb8-43fa-812b-5c9b07b454a7",
+                                       "OU":  "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                                       "Protected":  false
+                                   },
+                            "Windows":  {
+                                            "ActiveName":  "V111301VA765542",
+                                            "ConfiguredName":  "V111301VA765542",
+                                            "Domain":  "labo.local",
+                                            "PartOfDomain":  true,
+                                            "MachineId":  "a20fa269-76f2-4f01-9ff4-fe0f4db1499b",
+                                            "BootUtc":  "2026-10-18T14:33:55.5000000Z",
+                                            "DomainRole":  1
+                                        },
+                            "Health":  {
+                                           "Scope":  "Appareil local, compte du processus ; pas SSO utilisateur",
+                                           "AzureAdJoined":  "NO",
+                                           "DomainJoined":  "YES",
+                                           "SecureChannel":  true
+                                       }
+                        }
+}

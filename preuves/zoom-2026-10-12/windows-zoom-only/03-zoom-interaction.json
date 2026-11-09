@@ -1,0 +1,258 @@
+﻿[
+    {
+        "Label":  "reset-100",
+        "Percent":  100,
+        "Window":  "-8;-8;1936;1168",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1762;1112;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 100 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1800;1112;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1876;1112;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "14;120;165;50"
+    },
+    {
+        "Label":  "minimum-80",
+        "Percent":  80,
+        "Window":  "-8;-8;1936;1168",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  false,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1762;1112;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 80 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1800;1112;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1876;1112;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "11;101;132;40"
+    },
+    {
+        "Label":  "maximum-150",
+        "Percent":  150,
+        "Window":  "-8;-8;1936;1168",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1762;1112;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 150 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1800;1112;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  false,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1876;1112;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "21;169;248;75"
+    },
+    {
+        "Label":  "minimum-window-150",
+        "Percent":  150,
+        "Window":  "230;106;760;560",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "824;618;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 150 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "862;618;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  false,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "938;618;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "259;283;222;75"
+    },
+    {
+        "Label":  "minimum-window-reset-100",
+        "Percent":  100,
+        "Window":  "230;106;760;560",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "824;618;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 100 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "862;618;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "938;618;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "252;234;148;50"
+    },
+    {
+        "Label":  "persistent-120",
+        "Percent":  120,
+        "Window":  "-8;-8;1936;1168",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1762;1112;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 120 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1800;1112;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1876;1112;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "17;139;198;60"
+    },
+    {
+        "Label":  "names-120",
+        "Percent":  120,
+        "Window":  "-8;-8;1936;1168",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1762;1112;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 120 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1800;1112;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1876;1112;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "17;139;198;60"
+    },
+    {
+        "Label":  "settings-120",
+        "Percent":  120,
+        "Window":  "-8;-8;1936;1168",
+        "Controls":  [
+                         {
+                             "Id":  "PestoZoomOut",
+                             "Name":  "Réduire le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1762;1112;34;36"
+                         },
+                         {
+                             "Id":  "PestoZoomReset",
+                             "Name":  "Zoom 120 pour cent. Rétablir 100 pour cent.",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1800;1112;72;36"
+                         },
+                         {
+                             "Id":  "PestoZoomIn",
+                             "Name":  "Agrandir le zoom",
+                             "Enabled":  true,
+                             "InsideWindow":  true,
+                             "Offscreen":  false,
+                             "Bounds":  "1876;1112;34;36"
+                         }
+                     ],
+        "NavHomeBounds":  "17;139;198;60"
+    }
+]

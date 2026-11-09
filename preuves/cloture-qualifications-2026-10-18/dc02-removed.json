@@ -1,0 +1,10 @@
+{
+  "DiskRemoved": true,
+  "PrivateBootstrapRemoved": true,
+  "Utc": "2026-10-18T19:02:08.0261338Z",
+  "Name": "LABO-DC02",
+  "FreeGiB": 75.94,
+  "TemporaryDirectoryRemoved": true,
+  "Note": "VBox removal completed; progress on stderr interrupted first wrapper; absence verified before remaining cleanup",
+  "Unregistered": true
+}

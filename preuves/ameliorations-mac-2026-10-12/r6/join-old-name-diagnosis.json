@@ -1,0 +1,26 @@
+{
+  "ObservedBuild": "R5",
+  "TargetName": "P111301LY765201",
+  "NativeName": "P111301VA765172",
+  "NativeOptions": "0x3",
+  "NativeFailure": "0x8b0 (2224)",
+  "ExistingAccountOU": "Paris",
+  "RequestedOU": "Lyon",
+  "TargetAccountCreated": false,
+  "PolicyReuseBlock2732Observed": false,
+  "Evidence": "preuves/vm-2026-10-12/live/69-netsetup-tail.log",
+  "Diagnosis": "Windows tente de joindre sous le nom actif avant le nouveau nom ; ancien compte trouvé dans une autre OU.",
+  "PlannedCorrection": "Préparer le nom local confirmé puis Add-Computer avec JoinWithNewName,AccountCreate sans paramètre NewName ; conserver et bloquer toute opération partielle.",
+  "PrimaryReference": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/add-computer?view=powershell-5.1#example-10-add-a-computer-to-a-domain-with-a-new-name",
+  "Status": "Correction R6 validée par jonction réelle puis vérification Windows/AD après redémarrage",
+  "Validation": {
+    "NewName": "P111301LY765128",
+    "OU": "Lyon",
+    "SecureChannel": true,
+    "InterventionPhase": "Verified",
+    "Evidence": [
+      "preuves/vm-2026-10-12/live/90-r6-postboot-state.json",
+      "preuves/vm-2026-10-12/live/93-r6-intervention-verified.json"
+    ]
+  }
+}

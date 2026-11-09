@@ -1,0 +1,33 @@
+{
+  "Schema": 1,
+  "Status": "IMPLEMENTED_AWAITING_FINAL_FROZEN_CANDIDATE",
+  "RecordedUtc": "2026-10-13T18:52:15.650370+00:00",
+  "Changes": [
+    "Bound installed/source runtime components to128; recovery union to257",
+    "Recovery validates shared immutable-path policy then exact approved Engine/Common/CLI additions",
+    "Preserved whole staged/old manifest membership, hashes, duplicate/traversal/link and mutable-file refusals"
+  ],
+  "AddedTests": 4,
+  "Attempt": {
+    "Suites": [
+      "test_update_inputs",
+      "test_update",
+      "test_update_queues",
+      "test_rc22.RecoveryTests"
+    ],
+    "Tests": 64,
+    "Qualified": false,
+    "FailureReason": "Runtime source changed while developing: wad/Pesto-Contracts.ps1 no longer matches candidate manifest/native binding. No result claimed for the patch.",
+    "Log": "targeted-c1.log",
+    "SHA256": "d3209904b32c11724d84e9a36de6e7d583d9be7fe24797b789c3cc82f707023d"
+  },
+  "StaticChecks": {
+    "PythonCompilation": "PASS",
+    "DiffWhitespace": "PASS"
+  },
+  "SourceHashes": {
+    "DEV/tools/update_installation.py": "d2ceab81314c221fd0bb7ac2ca3fa6c42f39fc72e9834514490153d8362d52c4",
+    "DEV/tests/test_update_inputs.py": "a125ccd483413d631038418a2890a0d9ae20aa276f47e33ec691c92557f9fbd3"
+  },
+  "FinalTests": "Deferred until development freeze by user instruction; release owner runs final campaign."
+}

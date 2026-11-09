@@ -1,0 +1,61 @@
+{
+  "Schema": 1,
+  "Agent": "/root/engine_finish",
+  "Document": "technicien",
+  "PDFSHA256": "b3cafd43515a6d25812d0e78994748172225bb8797028f6fad3ca69b1605b174",
+  "DOCXSHA256": "1f2e98cd48cb0486c16df31a02c4b30cb4911171c79208b114538bdb78eb8d95",
+  "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/technicien-final",
+  "Method": "Chaque page couverte a été ouverte individuellement avec view_image, en séries de cinq au plus. Relecture visuelle des tableaux, commandes, images, légendes et fins de page ; extraction de texte seulement en complément.",
+  "Pages": [
+    {
+      "Page": 17,
+      "ImageSHA256": "8a4f09d621fce5e725ac32c5ade17d9ee66665ca9b8fc0da107178e4eb0c139d",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 18,
+      "ImageSHA256": "dd9e35d52bfe34c3e44d4bd89215c99c04fa5877c6d3a711b757696cd604a185",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 19,
+      "ImageSHA256": "10a57434e6e9ad05641b15224eec2c374cfd16ebb232b2213e5477125457cf9d",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 20,
+      "ImageSHA256": "3b60b9c74d74c612d3a206a0ba7e7d3243c6925e9c190cd530a356c4e77cc95a",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 21,
+      "ImageSHA256": "fe7eb6193f67b55049626ad40d97d30c5117461e1824db16950f02f0a30d0abf",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 22,
+      "ImageSHA256": "496f5cade87b8327189b37aba4efb9150555b6d055aca8d1f5b067d117999a38",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 23,
+      "ImageSHA256": "023c0c6ca6e0571517dccbb4244014b143ece1a67f452c819505883c05818a30",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 24,
+      "ImageSHA256": "187c0200a3a42586de1065b19ff96713d6a991885fbc9f9b9bc5592d4e9a7325",
+      "VisualReview": "PASS",
+      "Findings": []
+    }
+  ],
+  "Overall": "PASS après relecture des pages corrigées dans le rendu suivant ; aucune troncature, aucun débordement, aucune colonne cassée ni titre isolé observés sur les autres pages.",
+  "Pending": "Évolution R6 du parcours de jonction à intégrer ; une nouvelle comparaison de tous les PNG et une relecture de chaque page différente seront exigées avant livraison."
+}

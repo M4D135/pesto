@@ -1,0 +1,301 @@
+{
+  "Product": "Pesto 1.0",
+  "Campaign": "2026-10-12 UI completion; finalized 2026-10-13 Europe/Paris",
+  "FinalExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6",
+  "RuntimeFiles": 44,
+  "Platform": "macOS local + Windows PowerShell 5.1 / WPF in PESTO-W11-TEST",
+  "VM": "PESTO-W11-TEST",
+  "VMUuid": "9b2ad4f0-0506-4f58-aed2-c43ac1973516",
+  "ADMutationsDuringUICampaign": false,
+  "FinalSourceSHA256": {
+    "wad/ActiveDirectory.Format.ps1xml": "ffefd16b151f10ea80b603f3acba3c361055314bb6b54f8f8f3f0b21e2ae3996",
+    "wad/ActiveDirectory.Types.ps1xml": "3cb55021534ec67fa81d7981ee4b3364eea3ba79ebe61667ee44e14b7a668b3a",
+    "wad/ActiveDirectory.psd1": "96e41708524316cb13a0d71d36a905f5d530e57e1714a12c3e5b30189a4c83eb",
+    "wad/ActiveDirectoryPowerShellResources.dll": "e233d92238aa31ea1b3c60145d8811edb2e517e1b9b53f4bc496883ee5d9973b",
+    "wad/Invoke-PestoAutoJoin.ps1": "a4b2c423ec17fe86f5e19b7e9a4174106629b2f0f6d10b6631a9f9f4cfe3e846",
+    "wad/M4D.Admin.Common.Core.dll": "de702e82baa4aa6547669540b0ff0a18c2ac359215dbfaaa547ff0f589584ac3",
+    "wad/M4D.Admin.Common.Query.dll": "269b7d1cbdd6ab42062a75e0ca4a45876b3ff0eae4cbf730acf91a12828bd7ca",
+    "wad/Microsoft.ActiveDirectory.Management.dll": "1a6af7b8f8bce5b35ff873e2528746480c980526d86e38ca5acd04c2e9037157",
+    "wad/Pesto-Appearance.ps1": "fb182077de6298e37d44f480a90509eb339f848313e18c1827133d155caf2eb8",
+    "wad/Pesto-Async.ps1": "6bc5dbd04cac81149f15ce868be9fcfa398323027b7483a2f2e8bb5fe365ccab",
+    "wad/Pesto-Authentication.ps1": "14ac0e936446cbbade80590e86a65ec9d2fe823248bf3f5adfa9054e6c0486fc",
+    "wad/Pesto-Automation.ps1": "b9a0c5609694cd120637757811c49badf6a6cd97d4fd5b49d19fd7128ea3b0e1",
+    "wad/Pesto-Common.ps1": "85cac8be33452baa6760495fc04a4e8efa4c99a30ec2a59d528eb5d1f1bee37e",
+    "wad/Pesto-Configuration.ps1": "f5161d527d3311fc69101b293fd6d53593f02f8e8d039d4fc84601ab02a65e06",
+    "wad/Pesto-Contracts.ps1": "1ab4d6a4d5c1cea6fe3f246e94d9f08f0383c8e7b0e8d437755ac1580b4b376b",
+    "wad/Pesto-Core.ps1": "d631c5c0f9769ad31e5eed38a9db6e202b0f9c0481ec9b8f4dece3d164c61fc1",
+    "wad/Pesto-Direct.ps1": "aef4cc95002502ed27eb74116f84b50a393e33f4470177cb838cd7e77808a961",
+    "wad/Pesto-Directory.ps1": "320225214606c8d435eea1f487885e5b00e59b838353e5c5aa397261fd710199",
+    "wad/Pesto-Inspection.ps1": "a19d2bfa946ae6f1b74d3b9c14aec022a962f6c20f6289d38db1a228ac975d8a",
+    "wad/Pesto-Integrity.ps1": "99fcc49c665931de47f1f74907ad31aae83dfdc9bbb319b25e9e771b93256502",
+    "wad/Pesto-Interventions.ps1": "ab9b759485174fe05c71d8aed14f9d8c34ba0344abe6250f01c8187ae5adc2fb",
+    "wad/Pesto-Join.ps1": "234017884835b77870ea27c8782e4d7ab795ecc72a039ed07cdc505366ee4aa7",
+    "wad/Pesto-Join.xaml": "fb8c9ce0ba9036477423e40eafcfce65e34612712a39f1f5e7fbfcebdfb55369",
+    "wad/Pesto-JoinRecovery.ps1": "a64871e3e7c2cbe983494a334f78614855a6e6f4364ad2483d2e6db665fdc7c5",
+    "wad/Pesto-Journal.ps1": "cd5bbf0b137ad3a886a43327255914933c207d5aa6880c51ce82736c80261ea7",
+    "wad/Pesto-LogWriter.cs": "f0a76642d1fff64416129cb273dd0d907d6875431d2fa90f642aee43de90b790",
+    "wad/Pesto-Names.ps1": "7b8da864bace477f30c963035539004d0e433d2eaa8edf316db94a6859b13b45",
+    "wad/Pesto-Operations.ps1": "be722587461d7d0c27e9abe8f54c8359971d34bc3181070157e4243781761118",
+    "wad/Pesto-Policy.ps1": "cbc1109e25469413bc8ca2224d5748a1c1af5003a649b008d906dd555e41e88c",
+    "wad/Pesto-Preparation.ps1": "543dce5e3eecf42921e43f33192808d6b7bfca49ed3349fbba795f4add7a92a5",
+    "wad/Pesto-Recovery.ps1": "e97d83c8dfc3dae1b2b9d3254a77ed0015e46045b474df1d8064e7946136ab00",
+    "wad/Pesto-Review.ps1": "21dae04612834379b06b01e48a5da756fad09f31e080898a87d97195eed5a5e4",
+    "wad/Pesto-Safety.ps1": "0cff9a1fd83fa0a90c15e79a4e0c655f82761ac3e1565f03393d654c04048239",
+    "wad/Pesto-Shell.xaml": "38f1d54020909d6413ea71943020ff79e94b0db6de9685c73e75be850575bd9c",
+    "wad/Pesto-Startup.ps1": "3d433821b84ac1911633d44d53eff4efe6e9e4c982d3d761af7485e582c3a1e8",
+    "wad/Pesto-SuiteUI.ps1": "ecfae69c635ec640006ef17da88d101a688864d8ffcf31621820454602fddcbc",
+    "wad/Pesto-Support.ps1": "a68ed2c1494b08bc7d8cf6ae3872737c2a4c43f425f397d6e9d9640d236ac32c",
+    "wad/Pesto-Tables.ps1": "d8daae256e86d69f21856ae4cd493a1562e0791242a814288fe225ac555868b6",
+    "wad/Pesto-UXFlow.ps1": "43de68269357367913e87052c3d092404ea932b4841b729bbb1e94eb4e46bb92",
+    "wad/Pesto-Workspace.ps1": "f3db7dc75562d149f4af838f9b09b148fa781e57899d83ad6d1ecad78b97a70a",
+    "wad/Pesto.ico": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a",
+    "wad/cfg.demo.json": "f1b14cba8e4695463779f8a424ea82ced2b9dcc89a5c61c89a8a75cf17fb8564",
+    "wad/cfg.example.json": "dbc1927de12736192db1b89b2df9e29d7393dad769c32b0552a6d42b008342de",
+    "wad/common.lock.json": "7891ffe7b843f9655d07c898c455fc0fad682afe9ec748fc451ca1165440327c",
+    "wad/package.json": "33a322ee7c1a0f45f5e72453a915cb0cc5c5c503feae284d3659f4097cc2fefc"
+  },
+  "LocalPython": {
+    "Total": 329,
+    "Passed": 323,
+    "Skipped": 6,
+    "Failed": 0,
+    "Report": "local-release/python.txt",
+    "ExeSHA256": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16"
+  },
+  "FinalWindows": [
+    {
+      "Suite": "Zoom",
+      "Passed": 42,
+      "Failed": 0,
+      "Report": "windows-home-buttons/windows-Zoom.json",
+      "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6"
+    },
+    {
+      "Suite": "ToolsTabs",
+      "Passed": 33,
+      "Failed": 0,
+      "Report": "windows-home-buttons/windows-ToolsTabs.json",
+      "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6"
+    }
+  ],
+  "InteractiveFinal": [
+    {
+      "Report": "windows-release/04-final-navigation.json",
+      "Result": "PASS",
+      "Observed": [
+        "Noms / Inventaire",
+        "Interventions / Consulter",
+        "Accueil"
+      ],
+      "ExeSHA256": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16"
+    },
+    {
+      "Report": "windows-release/06-small-window-final.json",
+      "Result": "PASS",
+      "Observed": [
+        "760x560 / 150%",
+        "Finite Names and Ledger grids",
+        "Page scrolling"
+      ],
+      "ExeSHA256": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16"
+    },
+    {
+      "Report": "windows-release/09-small-footer-final.json",
+      "Result": "PASS",
+      "Observed": [
+        "Global vertical and horizontal scrolling makes rightmost footer action visible",
+        "Zoom bar outside global scrolling"
+      ],
+      "ExeSHA256": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16"
+    },
+    {
+      "Report": "windows-home-buttons/01-home-four-buttons.json",
+      "Result": "PASS",
+      "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6",
+      "Observed": [
+        "Four identically sized buttons aligned horizontally",
+        "Several computers button opens the queue",
+        "Home at100% and reduced navigation at120%"
+      ]
+    }
+  ],
+  "Qualifications": [
+    "At 760x560 and 150%, not every footer action is visible simultaneously; vertical and horizontal scrolling is needed.",
+    "UIA IsOffscreen alone does not establish that an action is fully in the physical viewport; final check 09 verifies the rectangle and is visually reviewed.",
+    "Step08 asserted that the rightmost Close button was visible while horizontally scrolled left; this overly strict assertion failed, was investigated, and was replaced by explicit rightward scrolling in step09.",
+    "Steps01/02 ran while the VM had locked. Their screenshots were rejected; only step04/05 captures are approved for the final Names/Interventions pages.",
+    "Windows Ux suite ran on the earlier cab4 build: 48 passes, 2 session0 transparent-window geometry skips; no claim of an exhaustive Windows DPI matrix.",
+    "AD rename/move/join checks belong to the prior R4/R6/R7 recipe under ../vm-2026-10-12 and were not replayed during this presentation-only campaign.",
+    "Final540c changes only the Home action group and its responsive column count versus ad05. Python and earlier local suites are retained as earlier-build results; final targeted local suites and final Windows Zoom/ToolsTabs were rerun."
+  ],
+  "Builds": {
+    "windows-release": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16",
+    "windows-final": "cab4f9c2790cca90022b7c504f2425b3823e78ca5c7a11b71a371458b52cdbc5",
+    "windows-home": "6e65febf09055c073ad1cdfbbbe2cac37736b86a52997c98cc91179b2f7c081b",
+    "windows": "b48fa8082faaa328fc12bdab75c919c01e9c43ed85364d12bb4ee6d4dbf8fd25",
+    "windows-zoom-only": "df008775619fccae9f2c2922c28564e47a648f9f776d308347632b64043d4d2f",
+    "windows-home-buttons": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6"
+  },
+  "GuideCaptures": [
+    {
+      "Path": "windows-final/04-outils-preparer-120.png",
+      "SHA256": "86bc6fcbeb819bfa748a1576e6070bc60cbbb93010ed405efde6f742da584dda",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false
+    },
+    {
+      "Path": "windows-final/05-parametres-fichiers-120.png",
+      "SHA256": "cb54753540b61329216dc61af45f607f9aa6cde2b00ec133a8e25c1b9ce122b9",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false
+    },
+    {
+      "Path": "windows-final/08-file-suivi-120.png",
+      "SHA256": "487ad85974c045212f693cfc42c5a434af5dac484b4075c5a4a15a512db65162",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false
+    },
+    {
+      "Path": "windows-release/04-noms-inventaire-120.png",
+      "SHA256": "b03ef69c024a2e337ced777f1ba3c3940489c4e70c9bc20edb408ef2f15c0c08",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false
+    },
+    {
+      "Path": "windows-release/05-interventions-consulter-120.png",
+      "SHA256": "f3f574290a2c81269b0563229c6eadfe86c99f1234671f00cf4cfeed2f30df7f",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false
+    },
+    {
+      "Path": "windows-home-buttons/01-accueil-quatre-boutons-100.png",
+      "SHA256": "2920cde9a46a6cffd69c9fcc34c8e6cadaa824ce057448f32c32ec70445c8ca0",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false,
+      "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6"
+    },
+    {
+      "Path": "windows-home-buttons/02-menu-zoom-quatre-boutons-120.png",
+      "SHA256": "7935099898b1ef1b6f6f09da509d4555f535ae71cc8aba31305d5b328a9f498b",
+      "Resolution": [
+        1920,
+        1160
+      ],
+      "VisualReview": "PASS",
+      "Tooltips": false,
+      "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6"
+    }
+  ],
+  "Cleanup": {
+    "Report": "windows-home-buttons/03-cleanup.json",
+    "LayoutRestored": true,
+    "PestoProcesses": 0,
+    "OwnPilotTasksRemoved": true,
+    "HostTemporaryScreenshotRemoved": true
+  },
+  "EarlierLocalPowerShell": [
+    {
+      "Suite": "Zoom",
+      "Passed": 32,
+      "Failed": 0,
+      "Report": "local-release/Run-ZoomTests.json"
+    },
+    {
+      "Suite": "ToolsTabs",
+      "Passed": 27,
+      "Failed": 0,
+      "Report": "local-release/Run-ToolsTabsTests.json"
+    },
+    {
+      "Suite": "UiPresentation",
+      "Passed": 40,
+      "Failed": 0,
+      "Report": "local-release/Run-UiPresentationTests.json"
+    },
+    {
+      "Suite": "Settings",
+      "Passed": 26,
+      "Failed": 0,
+      "Report": "local-release/Run-SettingsTests.json"
+    },
+    {
+      "Suite": "HomeDashboard",
+      "Passed": 40,
+      "Failed": 0,
+      "Report": "local-release/Run-HomeDashboardTests.json"
+    },
+    {
+      "Suite": "DomainNavigation",
+      "Passed": 10,
+      "Failed": 0,
+      "Report": "local-release/Run-DomainNavigationTests.json"
+    },
+    {
+      "Suite": "InterventionView",
+      "Passed": 17,
+      "Failed": 0,
+      "Report": "local-release/Run-InterventionViewTests.json"
+    }
+  ],
+  "EarlierLocalPowerShellExeSHA256": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16",
+  "FinalLocalPowerShell": {
+    "ExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6",
+    "Suites": [
+      {
+        "Name": "HomeDashboard",
+        "Passed": 43,
+        "Failed": 0
+      },
+      {
+        "Name": "UiPresentation",
+        "Passed": 41,
+        "Failed": 0
+      },
+      {
+        "Name": "DomainNavigation",
+        "Passed": 10,
+        "Failed": 0
+      }
+    ],
+    "Directory": "../ameliorations-mac-2026-10-12/zoom/home-four-buttons/"
+  },
+  "Guides": {
+    "Report": "../guides-zoom-2026-10-12/summary.json",
+    "TechnicianPages": 25,
+    "AdministratorPages": 57,
+    "NativeHDCaptures": 18,
+    "Result": "PASS",
+    "DomainJoinText": "No user-profile or personal-data backup instruction in join section."
+  },
+  "Packs": {
+    "Report": "pack-verification.json",
+    "Result": "PASS",
+    "ProductionEntries": 47,
+    "DeveloperEntries": 445,
+    "NeutralConfig": true
+  }
+}

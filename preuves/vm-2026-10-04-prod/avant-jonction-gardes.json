@@ -1,0 +1,31 @@
+﻿[
+    {
+        "Case":  "4.6 compte precree supprime puis recree : GUID change refuse",
+        "Passed":  true,
+        "Detail":  {
+                       "BeforeGuid":  "3d126af0-58d4-4bf1-a43d-b01e9b35c332",
+                       "AfterGuid":  "80aabccd-c66f-4ca5-acd7-b6e4d7bb940b",
+                       "Refusal":  "Identité de l\u0027OU, du compte précréé ou du PC modifiée depuis confirmation. Aucun ajout lancé.",
+                       "ReceiptAbsent":  true
+                   }
+    },
+    {
+        "Case":  "4.7 OU recréée au même DN : GUID change refuse",
+        "Passed":  true,
+        "Detail":  {
+                       "BeforeGuid":  "8ccb2033-21c4-40d1-ba3c-a11e271563a8",
+                       "AfterGuid":  "7db6db0b-5177-4836-8ab6-779eb201954f",
+                       "Refusal":  "Identité de l\u0027OU, du compte précréé ou du PC modifiée depuis confirmation. Aucun ajout lancé.",
+                       "ReceiptAbsent":  true
+                   }
+    },
+    {
+        "Case":  "4.5 politique refusee avant la commande Windows : pas de Running",
+        "Passed":  true,
+        "Detail":  {
+                       "Refusal":  "Cible exclue par la politique : V999004RRQA1996",
+                       "ReceiptAbsent":  true,
+                       "ADObjectAbsent":  true
+                   }
+    }
+]

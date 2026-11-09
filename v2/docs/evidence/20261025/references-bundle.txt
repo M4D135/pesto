@@ -1,0 +1,8 @@
+OK    ReferenceImportTests.ConcurrentConfigurationChangeCancelsReferenceMerge
+OK    ReferenceImportTests.ConflictsRequireExplicitResolutionBeforeAtomicApplication
+OK    ReferenceImportTests.DuplicateReferencesAreRejectedAndRepeatedImportAddsNoDuplicates
+OK    ReferenceImportTests.ImportedServiceLabelIsUsedByActualDirectoryApi
+OK    ReferenceImportTests.KeepingAConflictPreservesTheLocalValue
+OK    ReferenceImportTests.ReferenceUrisAndEmptySiteIdentifiersAreRejectedAsData
+OK    ReferenceImportTests.UnknownSiteCannotBeIntroducedByAServiceOnly
+7 réussis, 0 en échec, 7 au total.

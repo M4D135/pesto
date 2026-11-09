@@ -1,0 +1,4 @@
+  ok   Jonction avec réservation AD : création annoncée dans la confirmation, annulation sans envoi
+  ok   Aucune erreur JavaScript/console
+
+2/2 contrôles métier navigateur réussis (fixtures explicites, sans Windows/AD).

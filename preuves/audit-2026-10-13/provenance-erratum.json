@@ -1,0 +1,8 @@
+{
+  "Record": "python-package/support-hidden-review.json",
+  "Pointer": "/WindowsQualification/Evidence",
+  "OriginalPath": "preuves/audit-2026-10-13/engine/Package.json",
+  "ResolvedPath": "preuves/audit-2026-10-13/engine/Package-22f8.json",
+  "SHA256": "e9a821a2236dbb341ec49ebb1126bb167214854d28aac925de4c41ef22798d9e",
+  "Reason": "The earlier result was archived when the final e3b7 Package run replaced Package.json. The original report remains unchanged."
+}

@@ -1,0 +1,13 @@
+﻿clic : #NavHome (Accueil)
+capture C:\PestoTest-preuves\demo-reelle\captures\10-accueil.png 1460x940
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+#CbOrg = Département 111301
+#CbSite = Paris
+#CbService = 765 (saisie)
+#CbType = Portable
+#CbName = P111301VA765003
+capture C:\PestoTest-preuves\demo-reelle\captures\11-unposte-pret.png 1460x940
+bouton principal : Vérification requise
+ÉCHEC : Exception calling "Invoke" with "0" argument(s): "Unrecognized error."
+capture C:\PestoTest-preuves\demo-reelle\captures\03-echec.png 1920x1043

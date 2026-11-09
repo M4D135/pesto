@@ -1,0 +1,155 @@
+{
+  "Utc": "2026-10-12T23:13:44.472230+00:00",
+  "BaseCommit": "b6678c4a51749516e275835a37112c1ac3e83977",
+  "Result": "TARGETED_PASS_AWAITING_FINAL_REBUILD",
+  "Scope": "Python packaging, preparation, build pins and local installation/update fixtures. No native compilation, launcher execution, real Windows/AD operation, shipped pack or neutral configuration edit.",
+  "ChangedSources": [
+    {
+      "Path": "DEV/tools/Build-PestoPacks.py",
+      "SHA256": "4b53bd9b8786f1f0337baaecdbc9477bb4741ab752aae8fad8a02e2ed864d570"
+    },
+    {
+      "Path": "DEV/tools/Build-PestoProduction.py",
+      "SHA256": "902e49ece048ee1e5a9381390a4703d5036f948dc35e60a0a061edbb7c04771c"
+    },
+    {
+      "Path": "DEV/tools/launcher/build_native.py",
+      "SHA256": "6098da6c2613a107df3deff85c85acf1ac9fb8637605406497ff27c00b5018a2"
+    },
+    {
+      "Path": "DEV/tools/package_distribution.py",
+      "SHA256": "97d9ae77c0e23dea796c7f5a1f30aa257031168daaf2c5aafe4f8375d374236c"
+    },
+    {
+      "Path": "DEV/tools/prepare_dev.py",
+      "SHA256": "44a5c0ae9f8638b47b8d1d328fb8c267db8832132faa6bc5eef32430fa5d2fb5"
+    },
+    {
+      "Path": "DEV/tools/refresh_manifest.py",
+      "SHA256": "a561e290e29f0bcdbadcaa783ca26e96a836f587a16c031c2376fc49df3071ea"
+    },
+    {
+      "Path": "DEV/tools/update_installation.py",
+      "SHA256": "06f84c3950346769bb4cda75421c7e13bce403ec9ad28f60d3a712da79b76420"
+    },
+    {
+      "Path": "DEV/tests/test_packaging_edges.py",
+      "SHA256": "5522174a50a315a27827e1ff86ed0cd85c7eb0568ff91ce5327b48b68ec01565"
+    }
+  ],
+  "SourcesFrozen": true,
+  "Findings": [
+    {
+      "Id": "PACKAGE-01",
+      "Result": "FIXED",
+      "Description": "Missing cfg creation followed linked wad or template parent; creation/pack guard now rejects linked components, while an already existing cfg remains untouched."
+    },
+    {
+      "Id": "PACKAGE-02",
+      "Result": "FIXED",
+      "Description": "Directory or ZIP copy failure could leave incomplete output. Only the owned partial output is cleaned after an exception; existing/concurrent outputs and broken links remain untouched."
+    },
+    {
+      "Id": "PACKAGE-03",
+      "Result": "FIXED",
+      "Description": "ZIP writer accepted a target inside its payload and followed linked entries. Both are rejected."
+    },
+    {
+      "Id": "PACKAGE-04",
+      "Result": "FIXED",
+      "Description": "Native runtime_header bypassed closed-list/path validation used by the manifest. It now shares runtime_files/safe_file and refuses linked generated headers."
+    },
+    {
+      "Id": "PACKAGE-05",
+      "Result": "FIXED",
+      "Description": "Malformed recovery Id/Backup/hash values caused uncaught type errors. Exact required value types now produce validation errors without altering the fence."
+    },
+    {
+      "Id": "PACKAGE-06",
+      "Result": "FIXED",
+      "Description": "Old update manifests accepted logs, configuration backups and developer paths. Both new and old manifests now share the runtime path policy."
+    },
+    {
+      "Id": "PACKAGE-07",
+      "Result": "FIXED",
+      "Description": "Production staging followed links inside development tools. Included tool links/junctions are rejected before staging is created."
+    },
+    {
+      "Id": "PACKAGE-08",
+      "Result": "FIXED",
+      "Description": "A two-pack request could publish PROD before a failed DEV step. Both directories and ZIPs are prepared and verified before output publication; failures clean only the owned output."
+    }
+  ],
+  "Runs": [
+    {
+      "Log": "edges-before.log",
+      "SHA256": "0f3136ec86469955752c006065e1d6edb98b92a01ba12cd1daae8aa605c5bd71",
+      "Cases": 11,
+      "Result": "FAILURE_REPRODUCED",
+      "Summary": "FAILED (failures=13, errors=15)"
+    },
+    {
+      "Log": "edges-after.log",
+      "SHA256": "fce85bebb23210bf9495c090f9075fb9373b65ef3d026bca4d40f2893ff15b1c",
+      "Cases": 11,
+      "Result": "PASS",
+      "Summary": "OK"
+    },
+    {
+      "Log": "edges-staging-before.log",
+      "SHA256": "90884554b58748669ce5389e9dad44252f6137330782bf60962a8ddf20ea6fb6",
+      "Cases": 13,
+      "Result": "FAILURE_REPRODUCED",
+      "Summary": "FAILED (failures=2)"
+    },
+    {
+      "Log": "edges-staging-after.log",
+      "SHA256": "8a9e7047801c2ecc551044f130bbd168439f6b38f7a1c3f79c83c1274703bb9b",
+      "Cases": 13,
+      "Result": "PASS",
+      "Summary": "OK"
+    },
+    {
+      "Log": "edges-final.log",
+      "SHA256": "f5c475d98607383bf4323b6eb4e165117b3eb7954e3cba10aad0d8184b8233bb",
+      "Cases": 21,
+      "Result": "PASS",
+      "Summary": "OK"
+    },
+    {
+      "Log": "path-security-final.log",
+      "SHA256": "7abf1dc1091dc4c8feb56820df49c736a30e60775de4ceef852d194dcfe32baf",
+      "Cases": 35,
+      "Result": "PASS",
+      "Summary": "OK"
+    },
+    {
+      "Log": "prepare-final.log",
+      "SHA256": "71fa6999f709cfec86c0ec7c02ede6796c08eb55263c6219bea68a0fc23e23a3",
+      "Cases": 6,
+      "Result": "PASS",
+      "Summary": "OK"
+    },
+    {
+      "Log": "production-builder-final.log",
+      "SHA256": "35e9ba9cbabb0a13a1d0784850a3ad003f968d77344cbb7a7065017cefcccdd9",
+      "Cases": 13,
+      "Result": "PASS",
+      "Summary": "OK"
+    },
+    {
+      "Log": "installer-local.log",
+      "SHA256": "1d8ba99b9b256964e4f433216d37250ab9ad39c8da129c501614f5cac6ad0a1f",
+      "Cases": 6,
+      "Result": "PASS",
+      "Summary": "OK"
+    }
+  ],
+  "InstallerRuntime": "PowerShell 7.4.20 on macOS, real Install-Pesto.ps1 against disposable local fixture files; no application execution. All6cases executed, no skip.",
+  "InitialGlobalRun": "329 cases:323 passed,6 installer cases skipped because PESTO_TEST_PWSH was not set. The dedicated installer run closes those6cases; final full rerun will use the explicit variable.",
+  "Limits": [
+    "File exception handling tested; no claim of atomic multi-file publication under machine power loss.",
+    "Windows junction detection uses the existing filesystem detector; these link cases run on macOS.",
+    "Final full Python run awaits root rebuilding the launcher and manifest after concurrent runtime edits."
+  ]
+}

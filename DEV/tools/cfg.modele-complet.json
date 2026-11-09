@@ -1,0 +1,83 @@
+{
+  "Configured": true,
+  "DEBUG": {
+    "Simulation": "false",
+    "GUI": "false",
+    "HorsDomaine": "false",
+    "MauvaiseOU": "false",
+    "BPVerifNomAD": "false",
+    "ForceADM": "false"
+  },
+  "CONF": [
+    {
+      "Domaine": "EXAMPLE.LOCAL",
+      "ADM": "EXAMPLE\\admin-postes",
+      "Prefixe": "123456",
+      "PreprodSite": "765",
+      "DirectProd": "false",
+      "DarkMode": "2",
+      "Buffer": "10",
+      "OUScanNoms": "OU=Postes,OU=Organisme,DC=example,DC=local",
+      "EntraPolicy": "HybridOnly",
+      "ClearProtectionOnMove": "true"
+    }
+  ],
+  "TAGS": [
+    {
+      "Site": "PREPROD",
+      "Tag": "PR"
+    },
+    {
+      "Site": "Paris*",
+      "Tag": "PA"
+    },
+    {
+      "Site": "Lyon*",
+      "Tag": "LY"
+    }
+  ],
+  "OUBase": [
+    {
+      "Nom": "ROOT",
+      "OU": "OU=Postes,OU=Organisme,DC=example,DC=local"
+    },
+    {
+      "Nom": "PREPROD",
+      "OU": "OU=Staging,OU=Postes,OU=Organisme,DC=example,DC=local"
+    }
+  ],
+  "OUSite": [
+    {
+      "Nom": "Siège",
+      "OU": "OU=SITES,OU=Postes,OU=Organisme,DC=example,DC=local"
+    }
+  ],
+  "NameCatalogue": [
+    {
+      "Site": "PA",
+      "Service": "INF"
+    }
+  ],
+  "POLICY": {
+    "Schema": 1,
+    "ExcludedNames": [
+      "P123456*SRV*"
+    ],
+    "ExcludedOUs": [],
+    "ExcludedGroupGuids": [],
+    "CoordinationRoot": "",
+    "CoordinationRequired": false,
+    "AllowPasswordTaskFallback": false,
+    "AllowPrecreatedJoin": false,
+    "AllowOfflineJoin": false,
+    "MaxReaders": 4,
+    "ReadAttempts": 2,
+    "MaxBatch": 200,
+    "NameReservationMinutes": 15,
+    "ReserveNamesInAD": false,
+    "RandomNameEnabled": true,
+    "LogRetentionDays": 30,
+    "UnattendedJoinEnabled": false,
+    "BlockJoinOnClockSkew": false
+  }
+}

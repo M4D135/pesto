@@ -1,0 +1,37 @@
+﻿[
+    {
+        "Suite":  "HomeDashboard",
+        "ExitCode":  0,
+        "TimedOut":  false,
+        "Ms":  1599,
+        "Report":  true
+    },
+    {
+        "Suite":  "InterventionView",
+        "ExitCode":  0,
+        "TimedOut":  false,
+        "Ms":  2457,
+        "Report":  true
+    },
+    {
+        "Suite":  "Async",
+        "ExitCode":  0,
+        "TimedOut":  false,
+        "Ms":  10293,
+        "Report":  true
+    },
+    {
+        "Suite":  "NamesLoading",
+        "ExitCode":  0,
+        "TimedOut":  false,
+        "Ms":  9975,
+        "Report":  true
+    },
+    {
+        "Suite":  "Pesto21",
+        "ExitCode":  0,
+        "TimedOut":  false,
+        "Ms":  7929,
+        "Report":  true
+    }
+]

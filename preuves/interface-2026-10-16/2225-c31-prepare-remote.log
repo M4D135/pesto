@@ -1,0 +1,78 @@
+Join detail: Windows et canal sécurisé concordants après redémarrage. Vérification complémentaire facultative dans Interventions ; reçu conservé sans certification AD.
+{
+    "Schema":  1,
+    "Version":  "1.0",
+    "OperationId":  "cd9f2618aa8a4add9315ec2ef1275613",
+    "Phase":  "Verified",
+    "Utc":  "2026-10-16T07:40:49.6345808Z",
+    "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+    "BootUtc":  "2026-10-16T05:56:24.5000000Z",
+    "Computer":  "PESTO-REMOTE",
+    "NewName":  "V111301VA765183",
+    "Domain":  "labo.local",
+    "OU":  "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+    "DC":  "dc01.labo.local",
+    "Reference":  "",
+    "Account":  "LABO\\administrateur",
+    "Message":  "Nom actif, domaine, identité du PC, compte AD, emplacement et canal sécurisé confirmés après redémarrage. Entra reste un contrôle distinct."
+}
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+Un autre poste du domaine
+Compte requis pour un poste distant
+Nom du poste actuel ⓘ
+Lire le poste
+2. Définir le nouveau nom
+Le nom est proposé selon votre convention à 15 caractères.
+Organisme ⓘ
+Site ⓘ
+Service ⓘ
+Services lus · Données : 8 s · récent
+Type ⓘ
+2 · Nouveau nom ⓘ
+Autre nom
+ⓘ Déplacement automatique uniquement si le site change.
+Options : déplacement seul et redémarrage
+Favoris de préparation
+Avant / après
+Brouillon du formulaire, pas un résultat d'exécution.
+Nom actuel
+P111301VA765480
+Nouveau nom
+P111301VA765480
+Choisir un nom exact…
+Copier le nom proposé
+Site cible : Paris
+OU actuelle : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+Après : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+Opération prévue
+Aucune action prête
+Référence du ticket (facultative)
+Redémarrage : aucun redémarrage automatique
+3 · Vérifier et confirmer
+Choisissez ou saisissez le service (3 caractères). « Compléter le formulaire » place le curseur sur ce choix.
+Vérifier seulement
+Compléter le formulaire
+Zoom
+−
+État de l’intervention
+100 %
++
+UxVersion                          Text           actif=True  [25;1021;154;13] Pesto 1.0
+UxPageTitle                        Text           actif=True  [216;147;1673;32] Modifier un poste
+CbOrg                              ComboBox       actif=True  [235;615;398;36] Organisme
+CbSite                             ComboBox       actif=True  [645;615;365;36] Site
+CbService                          ComboBox       actif=True  [1022;615;282;36] Code service
+CbType                             ComboBox       actif=True  [235;697;422;36] Type de poste
+CbName                             ComboBox       actif=False [671;697;633;36] Nouveau nom
+UxMoveRule                         Text           actif=True  [246;798;1047;15] ⓘ Déplacement automatique uniquement si le site change.
+UxCurrentName                      Text           actif=True  [1354;355;516;15] P111301VA765480
+UxNewName                          Text           actif=True  [1354;402;516;15] P111301VA765480
+UxSiteTransition                   Text           actif=True  [1354;530;516;15] Site cible : Paris
+UxActualTargetOU                   Text           actif=True  [1354;579;516;15] Après : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+UxOperation                        Text           actif=True  [1365;633;494;17] Aucune action prête
+UxRebootSummary                    Text           actif=True  [1354;737;516;15] Redémarrage : aucun redémarrage automatique
+SuiteDirectHint                    Text           actif=True  [231;1013;1652;15] Choisissez ou saisissez le service (3 caractères). « Compléter le formulaire » place le cu
+SuiteDirectCheck                   Button         actif=False [1558;1036;138;42] Vérifier seulement
+SuiteDirectRun                     Button         actif=True  [1704;1036;179;42] Compléter le formulaire
+

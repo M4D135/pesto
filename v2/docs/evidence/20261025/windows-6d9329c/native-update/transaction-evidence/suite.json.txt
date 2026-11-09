@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "55da8937cab446cc844bc7ba8f6eef97",
+  "sourceDirectory": "D:\\a\\pesto\\pesto\\v2\\out\\PROD",
+  "sourceFingerprint": "65d43c10e8e9687d721cb8d4ca1ea5124aaff7e6f30192bb68aa5e742f82b1a0",
+  "channel": "PROD",
+  "version": "2.0.0",
+  "executableSha256": "bf91f1d132415efeb1794164306dc9626ff775a4568cacf8e9a56b0e90f12710",
+  "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+  "sentinelSha256": "24a9f7ad064dd6c443f5ae82c0e0befe077ca6e9b3766c149a16d220856bf06e"
+}

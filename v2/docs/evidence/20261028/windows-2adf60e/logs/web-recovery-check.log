@@ -1,0 +1,24 @@
+  ok   Action réservée au reçu réel renameMove/code89 non résolu
+  ok   Aucune reprise sans capacité move ou session réelle
+  ok   Aucune reprise sans capacité move ou session réelle
+  ok   Preuve insuffisante : reçu conservé et aucune exécution
+  ok   Plan contradictoire refusé avant confirmation : kind
+  ok   Plan contradictoire refusé avant confirmation : parentReceiptId
+  ok   Plan contradictoire refusé avant confirmation : computer
+  ok   Plan contradictoire refusé avant confirmation : newName
+  ok   Plan contradictoire refusé avant confirmation : targetOU
+  ok   Plan contradictoire refusé avant confirmation : confirmationName
+  ok   Plan contradictoire refusé avant confirmation : mode
+  ok   Annulation explicite : aucun déplacement envoyé
+  ok   Plan affiché confirmé sans recopie : cible exacte envoyée, lien serveur et parent inchangé
+  ok   Enfant refused : aucune résolution optimiste
+  ok   Enfant uncertain : aucune résolution optimiste
+  ok   Enfant pendingRestart : aucune résolution optimiste
+  ok   Enfant confirmé sans lien parent relu : parent non résolu
+  ok   Enfant confirmé sans lien parent relu : parent non résolu
+  ok   Refus execute : pas de reçu enfant ni de nouvelle tentative
+  ok   Enfant lié à un autre parent : résultat non accepté
+  ok   Préparation : double clic bloqué et réponse périmée ignorée après relecture
+  ok   Simulation refuse explicitement la préparation réelle
+  ok   Aucune exception JavaScript ni erreur console
+23/23 contrôles de reprise UI réussis (fixture navigateur, aucune preuve AD).

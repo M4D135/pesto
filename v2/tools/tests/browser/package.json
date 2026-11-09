@@ -1,0 +1,9 @@
+{
+  "name": "pesto-browser-checks",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build-time Chromium regression checks; never required by the Pesto application.",
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "review": "spark-ux-response.txt",
+  "applied": false,
+  "reason": "Le brouillon attribue le problème au ScrollViewer et propose de fixer ses dimensions. Il ne traite pas la suspension du layout après retrait du visuel, confirmée dans UIElement.cs. Le correctif retenu rattache le véritable arbre à un parent actif : les trois dimensions exactes1460/1100/1460DIP passent en CI. Les contrôles nommés sont bien déclarés dynamiquement dans le banc. Aucun min-width produit ni calcul de largeur logique simulé n’a été modifié."
+}

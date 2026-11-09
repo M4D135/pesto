@@ -1,0 +1,3 @@
+﻿GUID, nom et emplacement AD conformes au déplacement demandé.
+
+Consigner cette observation et préparer uniquement la suite indiquée ? Aucune commande n’est lancée par cette confirmation.

@@ -1,0 +1,12 @@
+moteur : 5.1.26100.6584 Desktop ; STA=STA
+PASS JnService est une liste �ditable
+PASS Liste des services de Paris
+PASS Saisie libre conserv�e apr�s actualisation de la liste
+PASS Liste des services de Lyon
+PASS Zone �ditable : 3 caract�res, majuscules
+PASS Frappe dans la liste : brouillon invalid� et noms recalcul�s
+PASS Choix dans la liste : texte et �v�nement
+PASS Changement de site : liste refaite et inventaire demand�
+PASS Noms : colonne Service, aucune colonne �quipe
+PASS Noms : filtre libell� Service
+RESULTAT 10 reussis, 0 echecs

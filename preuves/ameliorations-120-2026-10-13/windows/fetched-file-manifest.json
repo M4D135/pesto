@@ -1,0 +1,1356 @@
+{
+  "GuestDirectory": "C:\\Pesto120_20261013",
+  "Note": "Raw originals remain on Windows. Local UTF-16 normalization is linked to both byte hashes.",
+  "Files": [
+    {
+      "Path": "Async.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Async.err",
+      "OriginalSHA256": "d309392b700a9c0565724adf0c9740b1a40b7159654a6c8171797131a4fd86a1",
+      "StoredSHA256": "d309392b700a9c0565724adf0c9740b1a40b7159654a6c8171797131a4fd86a1",
+      "OriginalBytes": 458,
+      "StoredBytes": 458,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Async.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Async.log",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Automation.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Automation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Automation.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Automation.json",
+      "OriginalSHA256": "36553f22b5d3e87c272047cf64680a49b1c867a6cd299af50bad523328e06bc0",
+      "StoredSHA256": "36553f22b5d3e87c272047cf64680a49b1c867a6cd299af50bad523328e06bc0",
+      "OriginalBytes": 7225,
+      "StoredBytes": 7225,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Automation.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Automation.log",
+      "OriginalSHA256": "ff5df366fbe2064c649adb8d5b711c694183c370ba9782491de354c021bb5797",
+      "StoredSHA256": "ff5df366fbe2064c649adb8d5b711c694183c370ba9782491de354c021bb5797",
+      "OriginalBytes": 2038,
+      "StoredBytes": 2038,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BatchNames120.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BatchNames120.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BatchNames120.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BatchNames120.json",
+      "OriginalSHA256": "68a65018313d5e17a641af07b29f066a2807142937a958891b932cdd5965c89f",
+      "StoredSHA256": "68a65018313d5e17a641af07b29f066a2807142937a958891b932cdd5965c89f",
+      "OriginalBytes": 4960,
+      "StoredBytes": 4960,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BatchNames120.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BatchNames120.log",
+      "OriginalSHA256": "8e7ea0d7dac14d84769a4b12ff715e3b9a42b94e789166dc5939b89a45a64428",
+      "StoredSHA256": "8e7ea0d7dac14d84769a4b12ff715e3b9a42b94e789166dc5939b89a45a64428",
+      "OriginalBytes": 28,
+      "StoredBytes": 28,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BootIdentity.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BootIdentity.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BootIdentity.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BootIdentity.json",
+      "OriginalSHA256": "c9202263ff49e82ea0cdafd4aea855b6643093f437b2995c53ef890a89b2e4d1",
+      "StoredSHA256": "c9202263ff49e82ea0cdafd4aea855b6643093f437b2995c53ef890a89b2e4d1",
+      "OriginalBytes": 3187,
+      "StoredBytes": 3187,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BootIdentity.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BootIdentity.log",
+      "OriginalSHA256": "76e8b09b297f5c6e7e36a858f37e6d3c3bcaa14f144f49d68f142db4c5b0c277",
+      "StoredSHA256": "76e8b09b297f5c6e7e36a858f37e6d3c3bcaa14f144f49d68f142db4c5b0c277",
+      "OriginalBytes": 3184,
+      "StoredBytes": 3184,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BulkPlanning.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BulkPlanning.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BulkPlanning.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BulkPlanning.json",
+      "OriginalSHA256": "ad2a4f9d9cac419bb69c7f26ac77854add9e7ea2579c6b562974a818e31989df",
+      "StoredSHA256": "ad2a4f9d9cac419bb69c7f26ac77854add9e7ea2579c6b562974a818e31989df",
+      "OriginalBytes": 1860,
+      "StoredBytes": 1860,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "BulkPlanning.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\BulkPlanning.log",
+      "OriginalSHA256": "83ec20fb622c0429f74285fa070c68a3d71bfec53ebe5f2bcad107f9f2d9b345",
+      "StoredSHA256": "83ec20fb622c0429f74285fa070c68a3d71bfec53ebe5f2bcad107f9f2d9b345",
+      "OriginalBytes": 1857,
+      "StoredBytes": 1857,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Collections120.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Collections120.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Collections120.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Collections120.json",
+      "OriginalSHA256": "c2ffe22f12406dcf36cab86e6d0bd74299ebdfbaf1d2b8c61e0492ee45709b9f",
+      "StoredSHA256": "c2ffe22f12406dcf36cab86e6d0bd74299ebdfbaf1d2b8c61e0492ee45709b9f",
+      "OriginalBytes": 4701,
+      "StoredBytes": 4701,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Collections120.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Collections120.log",
+      "OriginalSHA256": "b7587aaf2f4eb9bdcb25f7ae2f8e90b49f7b3b48cc85e5e9a2af7f6b581f5f12",
+      "StoredSHA256": "b7587aaf2f4eb9bdcb25f7ae2f8e90b49f7b3b48cc85e5e9a2af7f6b581f5f12",
+      "OriginalBytes": 29,
+      "StoredBytes": 29,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Common.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Common.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Common.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Common.json",
+      "OriginalSHA256": "4c9d83b726a7c75fe8f5f3cb1973cb0dfeae46c63a79e9c29356eefbc956e98d",
+      "StoredSHA256": "4c9d83b726a7c75fe8f5f3cb1973cb0dfeae46c63a79e9c29356eefbc956e98d",
+      "OriginalBytes": 223,
+      "StoredBytes": 223,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Common.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Common.log",
+      "OriginalSHA256": "33943b89ea4caeed3a173ed24dcf0077982a702d41720cf5afa9669354965017",
+      "StoredSHA256": "33943b89ea4caeed3a173ed24dcf0077982a702d41720cf5afa9669354965017",
+      "OriginalBytes": 220,
+      "StoredBytes": 220,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ConfigEditor120.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ConfigEditor120.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ConfigEditor120.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ConfigEditor120.json",
+      "OriginalSHA256": "870365ef338738cbb2a373d8c738b5bbb021d677c276a915b71b97b792c10bdf",
+      "StoredSHA256": "870365ef338738cbb2a373d8c738b5bbb021d677c276a915b71b97b792c10bdf",
+      "OriginalBytes": 4322,
+      "StoredBytes": 4322,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ConfigEditor120.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ConfigEditor120.log",
+      "OriginalSHA256": "28f5ee909a91c10d2d50df68b431894fa6e3f8b530014e2396a87e6ddf845f40",
+      "StoredSHA256": "28f5ee909a91c10d2d50df68b431894fa6e3f8b530014e2396a87e6ddf845f40",
+      "OriginalBytes": 30,
+      "StoredBytes": 30,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "DirectoryCache.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\DirectoryCache.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "DirectoryCache.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\DirectoryCache.log",
+      "OriginalSHA256": "e4f8101210141921686c958da9be9521b9a24ba943f031facf783550acccce01",
+      "StoredSHA256": "e4f8101210141921686c958da9be9521b9a24ba943f031facf783550acccce01",
+      "OriginalBytes": 157,
+      "StoredBytes": 157,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "DomainNavigation.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\DomainNavigation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "DomainNavigation.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\DomainNavigation.json",
+      "OriginalSHA256": "193b489f876185ba1d3687644e8c802a3cb5bd8cb2780a0443b452a2180185e1",
+      "StoredSHA256": "193b489f876185ba1d3687644e8c802a3cb5bd8cb2780a0443b452a2180185e1",
+      "OriginalBytes": 166,
+      "StoredBytes": 166,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "DomainNavigation.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\DomainNavigation.log",
+      "OriginalSHA256": "3cc015c75d7e44738e518a76aa2b19bf13d4286fe3494768fc3f6407a74337ef",
+      "StoredSHA256": "3cc015c75d7e44738e518a76aa2b19bf13d4286fe3494768fc3f6407a74337ef",
+      "OriginalBytes": 163,
+      "StoredBytes": 163,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Engine.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Engine.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Engine.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Engine.json",
+      "OriginalSHA256": "933012dad217d977a5e5078a1732f3c2e9bb07c92cabaa8d5b53ba09603a3026",
+      "StoredSHA256": "933012dad217d977a5e5078a1732f3c2e9bb07c92cabaa8d5b53ba09603a3026",
+      "OriginalBytes": 27291,
+      "StoredBytes": 27291,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Engine.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Engine.log",
+      "OriginalSHA256": "d131dbb58c536ac241df3e8612b0984e25816ccfae1b05d5b0a8a906638230d4",
+      "StoredSHA256": "d131dbb58c536ac241df3e8612b0984e25816ccfae1b05d5b0a8a906638230d4",
+      "OriginalBytes": 5208,
+      "StoredBytes": 5208,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Engine120.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Engine120.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Engine120.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Engine120.json",
+      "OriginalSHA256": "6c15ac6a9bfd03934a89ae6840fa0e0e56fc0cdce043c3d6c37a901a0b9fab64",
+      "StoredSHA256": "6c15ac6a9bfd03934a89ae6840fa0e0e56fc0cdce043c3d6c37a901a0b9fab64",
+      "OriginalBytes": 13091,
+      "StoredBytes": 13091,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Engine120.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Engine120.log",
+      "OriginalSHA256": "cc8485f2a14588f1864955fc1b1c57b1a582cfdf4d8f3fb43e6e326238d77994",
+      "StoredSHA256": "cc8485f2a14588f1864955fc1b1c57b1a582cfdf4d8f3fb43e6e326238d77994",
+      "OriginalBytes": 105,
+      "StoredBytes": 105,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "HomeDashboard.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\HomeDashboard.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "HomeDashboard.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\HomeDashboard.json",
+      "OriginalSHA256": "9ce5ba766c969f4b9b566f06c8c0385a8896c55b49738f9a437f3da21fe53f04",
+      "StoredSHA256": "9ce5ba766c969f4b9b566f06c8c0385a8896c55b49738f9a437f3da21fe53f04",
+      "OriginalBytes": 10822,
+      "StoredBytes": 10822,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "HomeDashboard.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\HomeDashboard.log",
+      "OriginalSHA256": "54f586b575ccc981597c5baa3ddddbbd4994a14fc29ab337d617db15d3cd80bf",
+      "StoredSHA256": "54f586b575ccc981597c5baa3ddddbbd4994a14fc29ab337d617db15d3cd80bf",
+      "OriginalBytes": 10819,
+      "StoredBytes": 10819,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Integration.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Integration.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Integration.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Integration.json",
+      "OriginalSHA256": "daa6e1c22005de3bcaa638d9382ca6a09f026c5208a409eb8c8d9b2eed65b3b1",
+      "StoredSHA256": "daa6e1c22005de3bcaa638d9382ca6a09f026c5208a409eb8c8d9b2eed65b3b1",
+      "OriginalBytes": 4112,
+      "StoredBytes": 4112,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Integration.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Integration.log",
+      "OriginalSHA256": "aa923280db032741e019371596be0ad8dd6ced789b8ca823f5d35dbe2acc7482",
+      "StoredSHA256": "aa923280db032741e019371596be0ad8dd6ced789b8ca823f5d35dbe2acc7482",
+      "OriginalBytes": 1079,
+      "StoredBytes": 1079,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "InterventionView.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\InterventionView.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "InterventionView.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\InterventionView.json",
+      "OriginalSHA256": "03d8682bca59f80e11471e2365e1117b1b570f15b2cb033083a4907488a98774",
+      "StoredSHA256": "03d8682bca59f80e11471e2365e1117b1b570f15b2cb033083a4907488a98774",
+      "OriginalBytes": 4663,
+      "StoredBytes": 4663,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "InterventionView.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\InterventionView.log",
+      "OriginalSHA256": "4d1d46d4de7e3c6bf9c2cc4a91dba5adec6173852efed99ccbc9df9b000f6f1c",
+      "StoredSHA256": "4d1d46d4de7e3c6bf9c2cc4a91dba5adec6173852efed99ccbc9df9b000f6f1c",
+      "OriginalBytes": 4660,
+      "StoredBytes": 4660,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Join.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Join.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Join.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Join.json",
+      "OriginalSHA256": "71e344112da64b39be2bb1252f1d86e23f269718e130ff36315d0ab0f2a340f7",
+      "StoredSHA256": "71e344112da64b39be2bb1252f1d86e23f269718e130ff36315d0ab0f2a340f7",
+      "OriginalBytes": 13960,
+      "StoredBytes": 13960,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Join.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Join.log",
+      "OriginalSHA256": "61bb0054cd2e3d9df2d10d7cec2408ee4e3779733617b3c1030352a5fb20f1eb",
+      "StoredSHA256": "61bb0054cd2e3d9df2d10d7cec2408ee4e3779733617b3c1030352a5fb20f1eb",
+      "OriginalBytes": 7739,
+      "StoredBytes": 7739,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "JoinReservation.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\JoinReservation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "JoinReservation.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\JoinReservation.json",
+      "OriginalSHA256": "f13ab5276f4b76660fa3ccfb8fa08ae766ab7b02b207958047d3b3746f025457",
+      "StoredSHA256": "f13ab5276f4b76660fa3ccfb8fa08ae766ab7b02b207958047d3b3746f025457",
+      "OriginalBytes": 4903,
+      "StoredBytes": 4903,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "JoinReservation.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\JoinReservation.log",
+      "OriginalSHA256": "ad2cfe6e6174e1193f46a6efb050ac6ad32d8ba4d69a92d1670f6ec44b890978",
+      "StoredSHA256": "ad2cfe6e6174e1193f46a6efb050ac6ad32d8ba4d69a92d1670f6ec44b890978",
+      "OriginalBytes": 4969,
+      "StoredBytes": 4969,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Login.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Login.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Login.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Login.json",
+      "OriginalSHA256": "7a9628bc2eeae8e2b1ec6ca30dce189976f754396f1c051696e81331b083b14e",
+      "StoredSHA256": "7a9628bc2eeae8e2b1ec6ca30dce189976f754396f1c051696e81331b083b14e",
+      "OriginalBytes": 14957,
+      "StoredBytes": 14957,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Login.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Login.log",
+      "OriginalSHA256": "70d3189ddd712f49e2e6292282195dec5213b6af7a4a7ec63b7d864b9b524d66",
+      "StoredSHA256": "70d3189ddd712f49e2e6292282195dec5213b6af7a4a7ec63b7d864b9b524d66",
+      "OriginalBytes": 1022,
+      "StoredBytes": 1022,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "LoginPreferences.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\LoginPreferences.err",
+      "OriginalSHA256": "38d6ca46ff2dcbb9afce6ecf7b1931730ea48582d60ca797161b68ec7d8ca3ef",
+      "StoredSHA256": "38d6ca46ff2dcbb9afce6ecf7b1931730ea48582d60ca797161b68ec7d8ca3ef",
+      "OriginalBytes": 623,
+      "StoredBytes": 623,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "LoginPreferences.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\LoginPreferences.json",
+      "OriginalSHA256": "bd8dbecdf99b3c22f4d6f06639f807c6ead8355a30561d165001de448a03dab0",
+      "StoredSHA256": "bd8dbecdf99b3c22f4d6f06639f807c6ead8355a30561d165001de448a03dab0",
+      "OriginalBytes": 639,
+      "StoredBytes": 639,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "LoginPreferences.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\LoginPreferences.log",
+      "OriginalSHA256": "fe6e7ce24578a222903a34e8cc51c47fc3b36f6292d810e5a951f83883696ea5",
+      "StoredSHA256": "fe6e7ce24578a222903a34e8cc51c47fc3b36f6292d810e5a951f83883696ea5",
+      "OriginalBytes": 162,
+      "StoredBytes": 162,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "NamesLoading.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\NamesLoading.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "NamesLoading.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\NamesLoading.json",
+      "OriginalSHA256": "76b8b6e3ffac63364ccca85ff9ca48dfd73bb806130cc2e305f36d462ec7ec90",
+      "StoredSHA256": "76b8b6e3ffac63364ccca85ff9ca48dfd73bb806130cc2e305f36d462ec7ec90",
+      "OriginalBytes": 7578,
+      "StoredBytes": 7578,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "NamesLoading.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\NamesLoading.log",
+      "OriginalSHA256": "6cb255628a4642b7a36b4145580a74fe3748e6aa0d8f709cf82f06e4e49b9a53",
+      "StoredSHA256": "6cb255628a4642b7a36b4145580a74fe3748e6aa0d8f709cf82f06e4e49b9a53",
+      "OriginalBytes": 2065,
+      "StoredBytes": 2065,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalFollowupUi.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalFollowupUi.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalFollowupUi.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalFollowupUi.json",
+      "OriginalSHA256": "7b7416adcea07ed523d4d72010c53a48d8dd39653ae4256cc5864eef74757adb",
+      "StoredSHA256": "7b7416adcea07ed523d4d72010c53a48d8dd39653ae4256cc5864eef74757adb",
+      "OriginalBytes": 6059,
+      "StoredBytes": 6059,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalFollowupUi.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalFollowupUi.log",
+      "OriginalSHA256": "a4d49a85e52c4e7394fa2cb3e2c7fa248ee588535ef84f58df1e3d1ee750cfa8",
+      "StoredSHA256": "a4d49a85e52c4e7394fa2cb3e2c7fa248ee588535ef84f58df1e3d1ee750cfa8",
+      "OriginalBytes": 6056,
+      "StoredBytes": 6056,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalIntegrations.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalIntegrations.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalIntegrations.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalIntegrations.json",
+      "OriginalSHA256": "79a1092e89c4a1f1e6b12f07de0e74c229f58a60cc55d3dc240e2c7bddbdc0d2",
+      "StoredSHA256": "79a1092e89c4a1f1e6b12f07de0e74c229f58a60cc55d3dc240e2c7bddbdc0d2",
+      "OriginalBytes": 2682,
+      "StoredBytes": 2682,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalIntegrations.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalIntegrations.log",
+      "OriginalSHA256": "cdab17b0608b20d852a5cf9c4b3ca5982f91d9d110c4d2a70dbe342c0ad8b006",
+      "StoredSHA256": "cdab17b0608b20d852a5cf9c4b3ca5982f91d9d110c4d2a70dbe342c0ad8b006",
+      "OriginalBytes": 667,
+      "StoredBytes": 667,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalPostCheck.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalPostCheck.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalPostCheck.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalPostCheck.json",
+      "OriginalSHA256": "a2b3fc75789129a4e6831a3125af9cf0953d0389f65a620d5675689f00de54b6",
+      "StoredSHA256": "a2b3fc75789129a4e6831a3125af9cf0953d0389f65a620d5675689f00de54b6",
+      "OriginalBytes": 14684,
+      "StoredBytes": 14684,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "OptionalPostCheck.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\OptionalPostCheck.log",
+      "OriginalSHA256": "201eb237f736329a81c264b2cf29b38108eb1f02716819a67de91063e9d4ce32",
+      "StoredSHA256": "201eb237f736329a81c264b2cf29b38108eb1f02716819a67de91063e9d4ce32",
+      "OriginalBytes": 14681,
+      "StoredBytes": 14681,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Package.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Package.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Package.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Package.json",
+      "OriginalSHA256": "0ed25e24f68a20c064abd346c37f0aa9bf1f5d0ca014a999de4f58fbecde7ce7",
+      "StoredSHA256": "0ed25e24f68a20c064abd346c37f0aa9bf1f5d0ca014a999de4f58fbecde7ce7",
+      "OriginalBytes": 6023,
+      "StoredBytes": 6023,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Package.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Package.log",
+      "OriginalSHA256": "c204345357fbfbef70c446366592e094bb3f5a99f1d06e06aadde9215a761744",
+      "StoredSHA256": "c204345357fbfbef70c446366592e094bb3f5a99f1d06e06aadde9215a761744",
+      "OriginalBytes": 1393,
+      "StoredBytes": 1393,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto21.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto21.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto21.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto21.json",
+      "OriginalSHA256": "408e131d06f265cbc46d5e630749c6b86afc8ac8e1314f5258496ac077b6e33e",
+      "StoredSHA256": "408e131d06f265cbc46d5e630749c6b86afc8ac8e1314f5258496ac077b6e33e",
+      "OriginalBytes": 13108,
+      "StoredBytes": 13108,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto21.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto21.log",
+      "OriginalSHA256": "9d5fd4bad79faaaf5fcd2ad5e0742e88e3fd9c2e0030085d45faeac9741bafd2",
+      "StoredSHA256": "9d5fd4bad79faaaf5fcd2ad5e0742e88e3fd9c2e0030085d45faeac9741bafd2",
+      "OriginalBytes": 3234,
+      "StoredBytes": 3234,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto22.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto22.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto22.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto22.json",
+      "OriginalSHA256": "7375a157eb4c3a4861ab057c80b244dfb79e2a3beed16f02f9050d2dd4ac2124",
+      "StoredSHA256": "7375a157eb4c3a4861ab057c80b244dfb79e2a3beed16f02f9050d2dd4ac2124",
+      "OriginalBytes": 7111,
+      "StoredBytes": 7111,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto22.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto22.log",
+      "OriginalSHA256": "74905488440caa6bf742942a5c55a7b5de9a0560c1b5a62a45fbe8eb0d48f146",
+      "StoredSHA256": "74905488440caa6bf742942a5c55a7b5de9a0560c1b5a62a45fbe8eb0d48f146",
+      "OriginalBytes": 1850,
+      "StoredBytes": 1850,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto23.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto23.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto23.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto23.json",
+      "OriginalSHA256": "3a56309e894bfe85ee287d34ff6f363d66948876cb82f3e596fb9b5efde1fed6",
+      "StoredSHA256": "3a56309e894bfe85ee287d34ff6f363d66948876cb82f3e596fb9b5efde1fed6",
+      "OriginalBytes": 13667,
+      "StoredBytes": 13667,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pesto23.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pesto23.log",
+      "OriginalSHA256": "c377048321092130a061d5e098075626200c34b315a383ae0e18e7dc1ea8e346",
+      "StoredSHA256": "c377048321092130a061d5e098075626200c34b315a383ae0e18e7dc1ea8e346",
+      "OriginalBytes": 3222,
+      "StoredBytes": 3222,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pilotage.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pilotage.err",
+      "OriginalSHA256": "8d6c5dee1a743faee3fe548d65d12829b36189bcde0ac269c630dd870dc2bd0f",
+      "StoredSHA256": "8d6c5dee1a743faee3fe548d65d12829b36189bcde0ac269c630dd870dc2bd0f",
+      "OriginalBytes": 368,
+      "StoredBytes": 368,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pilotage.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pilotage.json",
+      "OriginalSHA256": "2bfd634f1275ccbc80d031e5e50a125a6c912a70387dbbccee978495da8509fd",
+      "StoredSHA256": "2bfd634f1275ccbc80d031e5e50a125a6c912a70387dbbccee978495da8509fd",
+      "OriginalBytes": 12583,
+      "StoredBytes": 12583,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Pilotage.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Pilotage.log",
+      "OriginalSHA256": "a902ec42b009705911d03e689c2d8836fe9a71840b3b9bdfc20215c6b2e68e0f",
+      "StoredSHA256": "a902ec42b009705911d03e689c2d8836fe9a71840b3b9bdfc20215c6b2e68e0f",
+      "OriginalBytes": 3814,
+      "StoredBytes": 3814,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Progress.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Progress.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Progress.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Progress.json",
+      "OriginalSHA256": "1023a08c3d704e96b9caec4c7fc5f089558971a7dfacfd782be3543f132279d0",
+      "StoredSHA256": "1023a08c3d704e96b9caec4c7fc5f089558971a7dfacfd782be3543f132279d0",
+      "OriginalBytes": 5570,
+      "StoredBytes": 5570,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Progress.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Progress.log",
+      "OriginalSHA256": "2453ab23c6094382ac5c53777a0df952634d9378993fe600c6191a68ea745163",
+      "StoredSHA256": "2453ab23c6094382ac5c53777a0df952634d9378993fe600c6191a68ea745163",
+      "OriginalBytes": 1046,
+      "StoredBytes": 1046,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "QueueRemoval.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\QueueRemoval.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "QueueRemoval.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\QueueRemoval.json",
+      "OriginalSHA256": "42a717ebe377f62c93070c0baa1719931e5f5f836a2f05cccb51733b0b022467",
+      "StoredSHA256": "42a717ebe377f62c93070c0baa1719931e5f5f836a2f05cccb51733b0b022467",
+      "OriginalBytes": 5774,
+      "StoredBytes": 5774,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "QueueRemoval.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\QueueRemoval.log",
+      "OriginalSHA256": "643c08c3cb12cf0bb906387a65287e6ce0f0965960f76349c1e9c559268e41d2",
+      "StoredSHA256": "643c08c3cb12cf0bb906387a65287e6ce0f0965960f76349c1e9c559268e41d2",
+      "OriginalBytes": 1715,
+      "StoredBytes": 1715,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "RC4.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\RC4.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "RC4.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\RC4.json",
+      "OriginalSHA256": "4edaf6b8eda542d04db99bb9936bf3d5a5b6225b487e26fbbabb84e8a7ecc988",
+      "StoredSHA256": "4edaf6b8eda542d04db99bb9936bf3d5a5b6225b487e26fbbabb84e8a7ecc988",
+      "OriginalBytes": 13076,
+      "StoredBytes": 13076,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "RC4.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\RC4.log",
+      "OriginalSHA256": "7043a286a821eac584b8af27e020036a1a1dc702fe1094f3721f1fe1e4b02314",
+      "StoredSHA256": "7043a286a821eac584b8af27e020036a1a1dc702fe1094f3721f1fe1e4b02314",
+      "OriginalBytes": 3237,
+      "StoredBytes": 3237,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "RandomNames.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\RandomNames.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "RandomNames.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\RandomNames.json",
+      "OriginalSHA256": "20b40bb3e7c4057c5667c6ff06b048cfe4f8f601b4e19fd425c4d81fe47d18c2",
+      "StoredSHA256": "20b40bb3e7c4057c5667c6ff06b048cfe4f8f601b4e19fd425c4d81fe47d18c2",
+      "OriginalBytes": 2494,
+      "StoredBytes": 2494,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "RandomNames.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\RandomNames.log",
+      "OriginalSHA256": "c8d515a1fa5aee1b2518cc16d7ce1b59d3d86b037f6ca51c979b4e4573a66c8d",
+      "StoredSHA256": "c8d515a1fa5aee1b2518cc16d7ce1b59d3d86b037f6ca51c979b4e4573a66c8d",
+      "OriginalBytes": 2491,
+      "StoredBytes": 2491,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ReceiptTools120.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ReceiptTools120.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ReceiptTools120.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ReceiptTools120.json",
+      "OriginalSHA256": "3b4696c03bd05b840f02ee8a7f41c929daaf360e8af81e97c082ebd349c260b3",
+      "StoredSHA256": "3b4696c03bd05b840f02ee8a7f41c929daaf360e8af81e97c082ebd349c260b3",
+      "OriginalBytes": 3074,
+      "StoredBytes": 3074,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ReceiptTools120.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ReceiptTools120.log",
+      "OriginalSHA256": "9f270ec2fad400e9e2e7d0ea7eb31d7608ae06107d7d67ae53df1c5b41d13872",
+      "StoredSHA256": "9f270ec2fad400e9e2e7d0ea7eb31d7608ae06107d7d67ae53df1c5b41d13872",
+      "OriginalBytes": 30,
+      "StoredBytes": 30,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Reliability.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Reliability.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Reliability.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Reliability.json",
+      "OriginalSHA256": "5c18f22dafbcbcbe084ee13c6ce9bb7fe5db0ae1e2036bdbfb5074d06d7b8c1c",
+      "StoredSHA256": "5c18f22dafbcbcbe084ee13c6ce9bb7fe5db0ae1e2036bdbfb5074d06d7b8c1c",
+      "OriginalBytes": 3485,
+      "StoredBytes": 3485,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Reliability.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Reliability.log",
+      "OriginalSHA256": "7df5fb9820d2b9809fdefdb3d0a492e36e426d1e2198b300f8d7d9972a30f6b5",
+      "StoredSHA256": "7df5fb9820d2b9809fdefdb3d0a492e36e426d1e2198b300f8d7d9972a30f6b5",
+      "OriginalBytes": 3482,
+      "StoredBytes": 3482,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Settings.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Settings.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Settings.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Settings.json",
+      "OriginalSHA256": "6a5368d18b1c68b663df4441c39773f99cc395323397471550bbf1ed2e5a845c",
+      "StoredSHA256": "6a5368d18b1c68b663df4441c39773f99cc395323397471550bbf1ed2e5a845c",
+      "OriginalBytes": 5759,
+      "StoredBytes": 5759,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Settings.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Settings.log",
+      "OriginalSHA256": "d12ae9b4372a312dcae6c9c31da1883eea532c754d5ca6178c599b841d70489e",
+      "StoredSHA256": "d12ae9b4372a312dcae6c9c31da1883eea532c754d5ca6178c599b841d70489e",
+      "OriginalBytes": 5756,
+      "StoredBytes": 5756,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "SharedNameReservation.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\SharedNameReservation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "SharedNameReservation.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\SharedNameReservation.json",
+      "OriginalSHA256": "df10265ae8fc9c70158f8ca1450f41b2fe6f59d46659bd3adc43066dc906ccc1",
+      "StoredSHA256": "df10265ae8fc9c70158f8ca1450f41b2fe6f59d46659bd3adc43066dc906ccc1",
+      "OriginalBytes": 3488,
+      "StoredBytes": 3488,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "SharedNameReservation.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\SharedNameReservation.log",
+      "OriginalSHA256": "35d4c0f126b7d95575071279d45647cf9d710c2ce86ee82313a26df02813b2dc",
+      "StoredSHA256": "35d4c0f126b7d95575071279d45647cf9d710c2ce86ee82313a26df02813b2dc",
+      "OriginalBytes": 3485,
+      "StoredBytes": 3485,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Sso.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Sso.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Sso.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Sso.json",
+      "OriginalSHA256": "b31107f1f6e22cac25a498a274f95cdc0e5429ba21e93a4198c7cc52cd2b2d2f",
+      "StoredSHA256": "b31107f1f6e22cac25a498a274f95cdc0e5429ba21e93a4198c7cc52cd2b2d2f",
+      "OriginalBytes": 9191,
+      "StoredBytes": 9191,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Sso.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Sso.log",
+      "OriginalSHA256": "ead11b90d7a834ca2caadb125df15888bbb9ef600111dfb82d6b260e09964288",
+      "StoredSHA256": "ead11b90d7a834ca2caadb125df15888bbb9ef600111dfb82d6b260e09964288",
+      "OriginalBytes": 2371,
+      "StoredBytes": 2371,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Stabilisation.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Stabilisation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Stabilisation.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Stabilisation.json",
+      "OriginalSHA256": "ab82a78e2fe0f48570e8481e1eac4e24c5c9db87dc5e8d82a79104090ce27752",
+      "StoredSHA256": "ab82a78e2fe0f48570e8481e1eac4e24c5c9db87dc5e8d82a79104090ce27752",
+      "OriginalBytes": 8059,
+      "StoredBytes": 8059,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Stabilisation.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Stabilisation.log",
+      "OriginalSHA256": "e867c39916a8f226fbc89826429b3d23a3a4b9357babf9135b3707355110ba0e",
+      "StoredSHA256": "e867c39916a8f226fbc89826429b3d23a3a4b9357babf9135b3707355110ba0e",
+      "OriginalBytes": 2923,
+      "StoredBytes": 2923,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Startup.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Startup.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Startup.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Startup.json",
+      "OriginalSHA256": "87869b13960bf50e5783ee2ea6663ea8cab9eaa484ebd7a19ee399ceb451d3bc",
+      "StoredSHA256": "87869b13960bf50e5783ee2ea6663ea8cab9eaa484ebd7a19ee399ceb451d3bc",
+      "OriginalBytes": 7546,
+      "StoredBytes": 7546,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Startup.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Startup.log",
+      "OriginalSHA256": "ade47b7352cd7157a2bc58b97bfa86b875d1c9f4db51d646216502b292fdeaf8",
+      "StoredSHA256": "ade47b7352cd7157a2bc58b97bfa86b875d1c9f4db51d646216502b292fdeaf8",
+      "OriginalBytes": 2118,
+      "StoredBytes": 2118,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ToolsTabs.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ToolsTabs.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ToolsTabs.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ToolsTabs.json",
+      "OriginalSHA256": "23c95911873e018f09be51cd68ad374d8ed94691870bab68c0a3de243c64523b",
+      "StoredSHA256": "23c95911873e018f09be51cd68ad374d8ed94691870bab68c0a3de243c64523b",
+      "OriginalBytes": 6194,
+      "StoredBytes": 6194,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "ToolsTabs.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\ToolsTabs.log",
+      "OriginalSHA256": "204eeff6256eee73220d820ebc0677c81cd28271d923d90d49ab5b8c9cc06863",
+      "StoredSHA256": "204eeff6256eee73220d820ebc0677c81cd28271d923d90d49ab5b8c9cc06863",
+      "OriginalBytes": 6191,
+      "StoredBytes": 6191,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "UiPresentation.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\UiPresentation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "UiPresentation.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\UiPresentation.json",
+      "OriginalSHA256": "80796790ca8197cdd35c5083c0bac55b0bc3a349556ac37ac80fd1182bd28476",
+      "StoredSHA256": "80796790ca8197cdd35c5083c0bac55b0bc3a349556ac37ac80fd1182bd28476",
+      "OriginalBytes": 9523,
+      "StoredBytes": 9523,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "UiPresentation.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\UiPresentation.log",
+      "OriginalSHA256": "b44b0d92cddd8dfe3cd2253a3a411ee60b9a17579d6f6b251d93365e6874c828",
+      "StoredSHA256": "b44b0d92cddd8dfe3cd2253a3a411ee60b9a17579d6f6b251d93365e6874c828",
+      "OriginalBytes": 9520,
+      "StoredBytes": 9520,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Ux.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Ux.err",
+      "OriginalSHA256": "b71431c0aba4c2eea4e8a99749c9b1c2273ed19e9eafa9642f17cdf1d8bad5fd",
+      "StoredSHA256": "b71431c0aba4c2eea4e8a99749c9b1c2273ed19e9eafa9642f17cdf1d8bad5fd",
+      "OriginalBytes": 529,
+      "StoredBytes": 529,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Ux.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Ux.log",
+      "OriginalSHA256": "3a329fac8485441480736c99c7ca447684fade4b1032a74cd3ae256440a0d860",
+      "StoredSHA256": "3a329fac8485441480736c99c7ca447684fade4b1032a74cd3ae256440a0d860",
+      "OriginalBytes": 63660,
+      "StoredBytes": 63660,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "V1Improvements.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\V1Improvements.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "V1Improvements.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\V1Improvements.json",
+      "OriginalSHA256": "35aa52de5e9268bfc28f9b9595ccea6427e7d8454e6dba4dc8ccd4b22b64c148",
+      "StoredSHA256": "35aa52de5e9268bfc28f9b9595ccea6427e7d8454e6dba4dc8ccd4b22b64c148",
+      "OriginalBytes": 2992,
+      "StoredBytes": 2992,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "V1Improvements.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\V1Improvements.log",
+      "OriginalSHA256": "317192c9e4260be41a829fe213ecabfbda1563c48c96ce4f6500d9aa25c06392",
+      "StoredSHA256": "317192c9e4260be41a829fe213ecabfbda1563c48c96ce4f6500d9aa25c06392",
+      "OriginalBytes": 2994,
+      "StoredBytes": 2994,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Workbench120.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Workbench120.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Workbench120.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Workbench120.json",
+      "OriginalSHA256": "ee093e86ce63872832fd35034e4861dcca295f6b4a63ccfe41d24d7e73364d21",
+      "StoredSHA256": "ee093e86ce63872832fd35034e4861dcca295f6b4a63ccfe41d24d7e73364d21",
+      "OriginalBytes": 7140,
+      "StoredBytes": 7140,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Workbench120.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Workbench120.log",
+      "OriginalSHA256": "382528e4149d77ce0ad7e6c82a20e34acd442efba03fdb30f29ad26326aefb95",
+      "StoredSHA256": "382528e4149d77ce0ad7e6c82a20e34acd442efba03fdb30f29ad26326aefb95",
+      "OriginalBytes": 27,
+      "StoredBytes": 27,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "WorkerContract.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\WorkerContract.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "WorkerContract.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\WorkerContract.json",
+      "OriginalSHA256": "f8ddb36cc5b4e848c6cf9ed390bae4c019f59a6e9398058b227ce612d0febcea",
+      "StoredSHA256": "f8ddb36cc5b4e848c6cf9ed390bae4c019f59a6e9398058b227ce612d0febcea",
+      "OriginalBytes": 3853,
+      "StoredBytes": 3853,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "WorkerContract.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\WorkerContract.log",
+      "OriginalSHA256": "d72c87e1991b2870f9b34ee5e658c870f5f58b4a1c84a20ae8e19a2e997326a3",
+      "StoredSHA256": "d72c87e1991b2870f9b34ee5e658c870f5f58b4a1c84a20ae8e19a2e997326a3",
+      "OriginalBytes": 3850,
+      "StoredBytes": 3850,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Zoom.err",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Zoom.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "StoredSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "OriginalBytes": 0,
+      "StoredBytes": 0,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Zoom.json",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Zoom.json",
+      "OriginalSHA256": "4d5995b54df4c90eff7beef7e1981cf820b23ed8e2cd8292184ad3bad175bf72",
+      "StoredSHA256": "4d5995b54df4c90eff7beef7e1981cf820b23ed8e2cd8292184ad3bad175bf72",
+      "OriginalBytes": 7178,
+      "StoredBytes": 7178,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    },
+    {
+      "Path": "Zoom.log",
+      "GuestPath": "C:\\Pesto120_20261013\\reports\\Zoom.log",
+      "OriginalSHA256": "e54db5df36ddb72d71c1378f9eee08a91be69856f1baba6ed1a121c29ce56f42",
+      "StoredSHA256": "e54db5df36ddb72d71c1378f9eee08a91be69856f1baba6ed1a121c29ce56f42",
+      "OriginalBytes": 7175,
+      "StoredBytes": 7175,
+      "OriginalEncoding": "unchanged bytes",
+      "StoredEncoding": "unchanged bytes"
+    }
+  ]
+}

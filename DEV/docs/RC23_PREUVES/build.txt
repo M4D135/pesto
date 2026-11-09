@@ -1,0 +1,3 @@
+Compiled: /mnt/data/pesto_rc23_work/DEV/Pesto.exe 112128 bytes (not executed)
+Regenerated: 38 runtime components; no demos/tests/CMD/configuration. Not an author signature.
+Compiled: /mnt/data/pesto_rc23_work/Pesto-repeat.exe 112128 bytes (not executed)

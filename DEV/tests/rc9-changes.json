@@ -1,0 +1,36 @@
+{
+  "rc8_sha256": "4bb15092eacd7143f3edd1d693bcceefc02e832b7396767bf407a226e4a83fa4",
+  "rc9_sha256": "7abf86c296fdea5a6661f131cea1e80ba36f15278367b2ab8b8cd32f241a216c",
+  "modified_functions": [
+    "Invoke-GPElevatedLocalChange",
+    "Reset-GPSafetyLock",
+    "Complete-GPQueueItem",
+    "Invoke-GPPilotagePulse",
+    "Stop-GPAsyncOperation",
+    "Start-GPAsyncOperation",
+    "Invoke-GPAsyncTimerTick",
+    "Invoke-GPSchtasks",
+    "AddToDomain",
+    "RenameComputer",
+    "MoveComputer",
+    "Wait-ADComputerVisible",
+    "GoRenameAndMove",
+    "Go",
+    "Complete-GPQueueRun",
+    "Start-GPNextQueueTask"
+  ],
+  "version_label_only": [
+    "Show-GPStartupWindow",
+    "Show-LoginWindow"
+  ],
+  "added_functions": [
+    "Assert-GPWorkerMayContinue",
+    "Get-GPQueueActivityText",
+    "New-GPQueueMonitor",
+    "Publish-GPWorkerLog",
+    "Receive-GPQueueEvents",
+    "Set-GPQueueCancellationFence",
+    "Set-GPWorkerStage",
+    "Test-GPQueueWorkerStillActive"
+  ]
+}

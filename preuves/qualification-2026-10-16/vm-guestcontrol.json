@@ -1,0 +1,6 @@
+{
+  "method": "VirtualBox guestcontrol, read-only hostname/quser",
+  "exit": 255,
+  "stdout": "",
+  "stderr": "Connection to 192.168.1.173 port 22 timed out\n"
+}

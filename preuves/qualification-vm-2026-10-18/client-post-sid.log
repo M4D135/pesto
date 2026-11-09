@@ -1,0 +1,11 @@
+{
+    "Name":  "PESTO-QCLIENT",
+    "Domain":  "LABO",
+    "PartOfDomain":  false,
+    "UserName":  null
+}
+S-1-5-21-2319835047-749961104-1734977362-1000
+{
+    "Name":  "sshd",
+    "Status":  4
+}

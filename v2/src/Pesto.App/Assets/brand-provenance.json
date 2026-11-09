@@ -1,0 +1,41 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-28",
+  "mode": "background-color edit requested by user",
+  "source": "pesto-pastel-green-master.png",
+  "source_size": [
+    1254,
+    1254
+  ],
+  "opaque": true,
+  "palette": [
+    "#B7DCC5",
+    "#8FC4A3",
+    "#19C3B2"
+  ],
+  "reference_roles": [
+    "Existing white P and leaf: edit target; pastel green background requested by user"
+  ],
+  "source_sha256": "d2ef54579b652bc9e9c0c1cfb46d000e55799e80aa0babc12f161be2b809265e",
+  "ico_sizes": [
+    16,
+    20,
+    24,
+    32,
+    40,
+    48,
+    64,
+    128,
+    256
+  ],
+  "conversion": "Pillow RGBA Lanczos resampling and ICO encoding only; no artistic retouching, no alpha masking",
+  "assets_sha256": {
+    "src/Pesto.App/Assets/pesto-master.png": "d2ef54579b652bc9e9c0c1cfb46d000e55799e80aa0babc12f161be2b809265e",
+    "src/Pesto.App/Assets/Pesto.ico": "d7854cc94ddfc0d5046d61de8616e9d48e9de3f4fd8ecb7ed20971e07adc3145",
+    "web/assets/pesto.png": "1345bba11d6f9aadfd516648c2d3ecf53a5b690003ebaa28ac4f2b731f17222d",
+    "web/assets/pesto-favicon.png": "7ea760101546c0d455fb550b5c4b948bf1dde6953d9c37a5b79f233913b30f8a"
+  },
+  "prompt": "Edit this exact Pesto application icon. The user's precise correction is: make the background GREEN PASTEL. Preserve the existing rounded thick WHITE capital P, its single mint/turquoise leaf, their placement, proportions, crisp smooth edges and subtle dimensional relief. Change the entire blue/indigo background, including the inner counter of the P and the small visible gap in the leaf, to a gentle pastel green gradient: light sage/mint #B7DCC5 toward slightly deeper soft sage #8FC4A3. The result must clearly read as pastel green, not cyan, blue, neon, saturated emerald, grey or white. Keep enough restrained soft green shadow around the white P for excellent legibility at 16 to 32 pixels. Preserve the white monogram and leaf identity; no redesign, no new symbols, no extra text. Fully opaque square canvas with color reaching all four edges and corners. No outer rounded tile, no framing border, no transparent pixels, no slogan, no watermark. One production-ready icon only.",
+  "usage": "Master is fully opaque. UI and native drawing clip to existing rounded bounds. ICO includes square opaque entries; no runtime art generation or downloads.",
+  "previous_blue_mark_sha256": "77f5cbdec8cb91d5ba11c3fbb9e796c2a754c0b790364c77a17a3107f6ee8d52"
+}

@@ -1,0 +1,26 @@
+﻿[
+    {
+        "Nom":  "",
+        "Pid":  872,
+        "Classe":  "Shell_TrayWnd",
+        "Rect":  "0;995;1920;48"
+    },
+    {
+        "Nom":  "Pesto 1.0 | Gestion des Postes",
+        "Pid":  9036,
+        "Classe":  "Window",
+        "Rect":  "230;28;1460;940"
+    },
+    {
+        "Nom":  "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Pid":  2504,
+        "Classe":  "CASCADIA_HOSTING_WINDOW_CLASS",
+        "Rect":  "Empty"
+    },
+    {
+        "Nom":  "Program Manager",
+        "Pid":  872,
+        "Classe":  "Progman",
+        "Rect":  "0;0;1920;1043"
+    }
+]

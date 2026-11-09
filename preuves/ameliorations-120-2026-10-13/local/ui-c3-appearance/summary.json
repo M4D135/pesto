@@ -1,0 +1,19 @@
+{
+  "scope": "Appearance spacing only: PestoNotifyBatch right margin0 to16; C3 target; no business change",
+  "proof": "Workbench120.json",
+  "sources": [
+    {
+      "path": "DEV/wad/Pesto-Shell.xaml",
+      "sha256": "2d65792dc2d5355d6f4c5f29cdbaf48aebd1d6c8102d5a7130d499754d71e622"
+    },
+    {
+      "path": "DEV/tests/Run-Workbench120Tests.ps1",
+      "sha256": "e8a300895ce1664238ddab48d51ed822c23e37987b07fa0659a732d175e997de"
+    }
+  ],
+  "portable": {
+    "passed": 34,
+    "failed": 0
+  },
+  "windows_visual": "pending C3"
+}

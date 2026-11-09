@@ -1,0 +1,22 @@
+OK Parseur PowerShell natif : source complet
+OK Parseur natif : script du helper UAC
+OK Moniteur initial sans mutation
+OK tape publi‚e imm‚diatement
+OK Masquage des cl‚s de mot de passe dans les traces
+OK Drain FIFO sans duplication
+OK Drain born‚ pour laisser le Dispatcher disponible
+OK Pied de page : ‚tape et PID du helper
+OK BarriŠre : lecture ne marque pas de mutation
+OK BarriŠre : mutation annonc‚e avant appel
+OK BarriŠre : aucune ‚tape nouvelle aprŠs expiration
+OK Compatibilit‚ des fonctions isol‚es sans moniteur
+OK Worker r‚el en STA sur demande
+OK Lecture AD : MTA reste le d‚faut
+OK Messages visibles AVANT la fin du worker r‚el
+OK Expiration : erreur unique, worker encore suivi, aucune mutation diff‚r‚e
+OK SuccŠs tardif non publi‚ aprŠs expiration
+OK Une mutation active ne peut pas ˆtre remplac‚e
+OK Arrˆt coop‚ratif conserve le suivi du worker
+OK D‚verrouillage refus‚ tant que le worker est actif
+OK Timeout des lectures : ancien contrat conserv‚
+Tests : 21, ‚checs : 0. Rapport : C:\PestoAudit20261013\ui\reports\Progress.json

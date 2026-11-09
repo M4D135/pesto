@@ -1,0 +1,55 @@
+{
+  "scope": "Read-only adverse review of recorded renameMove restore, source receipt-50a635a9b3ee46138c9fc231bcff83af / P111301LY765715 / original GUID b4797c9c-d790-4797-bf71-424a57acb36e",
+  "vm_actions": false,
+  "repo_edits": false,
+  "finding": {
+    "priority": "P2",
+    "file": "v2/tools/qualification/ad-harness/RestoreName.cs",
+    "detail": "ReturnMoveReceiptId reaches ReadReconciliation before receipt-kind/local target checks. ReadReconciliation may call InspectEntraBarrier, append inspection evidence, and dispatch an inspection task to the target of another Entra receipt, even with Execute=false. Require pure receipt validation before observations. Source campaign archived Entra is Skipped."
+  },
+  "verified_guards": [
+    "Global GP mutex held through reservation and native call",
+    "CreateNew durable marker flushed before native call",
+    "Existing marker refuses replay",
+    "Raw V1 barriers rechecked, old V1 history retained unchanged",
+    "Both receipt hashes checked again before native operation",
+    "No GP reservation in preparedOnly branch",
+    "Normal rename C14 remains limited to VA765xxx"
+  ],
+  "test": {
+    "sdk": "10.0.401 portable, outside pinned global.json; no repository pin change",
+    "command": "Pesto.AdQualification.Tests.dll with TMPDIR real work path",
+    "result": "28 restore +20 V1 raw barriers +22 history +74 recorded renameMove return guards passed",
+    "initial_default_tmp_failure": "macOS /var temp symlink correctly refused; rerun with actual work path passed"
+  },
+  "evidence_limit": "Archived source native receipt is PendingRestart, subsequent receipts.reconcile DTO is verified=true. Current source native Phase=Verified and Reconciliation still require the root agent current elevated read. CurrentBootUtc in policy is fresh observation, not historic reconciliation payload.",
+  "followup_review": {
+    "finding_status": "Resolved in code; no new concrete defect found",
+    "files": [
+      "v2/tools/qualification/ad-harness/RestoreRenameMoveReceiptGate.cs",
+      "v2/tools/qualification/ad-harness/RestoreName.cs",
+      "v2/tools/qualification/ad-harness-tests/RestoreReceiptGateTests.cs"
+    ],
+    "confirmed": [
+      "Both receipts validated in pure reads before any adapter observation",
+      "Strict opaque ID and recorded campaign identities, local target, no Entra effects",
+      "Read/FileShare.Read handles kept through final result to deny write/delete on Windows",
+      "Observe validates both byte snapshots before either callback",
+      "Observation hashes compared against gate hashes",
+      "Prepared-only branch retains no durable reservation"
+    ],
+    "independent_test": "246/246 policy checks passed on macOS with portable SDK10.0.401: 28 restore,20 V1 barriers,22 history,74 return proof,102 raw gate",
+    "limitations": [
+      "Windows sharing-violation branches not executed on macOS",
+      "Current source native Verified/Reconciliation receipt still required before deployment execution",
+      "return InitialBootUtc must precede source verified Utc; a newer boot intentionally refuses rather than silently broadening the campaign"
+    ]
+  },
+  "chronology_followup": {
+    "status": "Approved targeted chronology correction; no new concrete defect",
+    "raw_order": "source.InitialBoot < source.Created < source.Utc < return.Created <= return.Utc; source.Created < return.InitialBoot <= return.Created",
+    "preserved": "Exact receipt/GUID/name/domain/DC/local target/Entra-free identities, hashes, GP mutex, current identity and equal fresh boot observations unchanged",
+    "tests": "248/248 passed independently; extra healthy boot after source verification accepted, boot after return creation and pre-mutation boot rejected",
+    "supersedes": "The previous followup limitation requiring returnBoot before sourceVerified no longer applies; historical source receipt is not rewritten."
+  }
+}

@@ -1,0 +1,13 @@
+﻿{
+    "ExeSha256":  "bcffecdc3d831ff6edccb0e979f3f4caa592092e6edf7b51c10832a76173eb80",
+    "Tests":  [
+                  {
+                      "Suite":  "UiPresentation",
+                      "ExitCode":  0
+                  },
+                  {
+                      "Suite":  "Settings",
+                      "ExitCode":  1
+                  }
+              ]
+}

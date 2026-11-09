@@ -1,0 +1,28 @@
+@echo off
+setlocal EnableExtensions DisableDelayedExpansion
+title Pesto - Validation locale complete
+set "Pesto_PS=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
+if exist "%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe" set "Pesto_PS=%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe"
+if not exist "%Pesto_PS%" (
+    echo ERREUR : Windows PowerShell x64 introuvable.
+    pause
+    exit /b 1
+)
+if not exist "%~dp0tests\Run-AllTests.ps1" (
+    echo ERREUR : extraire le dossier tests complet avec le projet.
+    pause
+    exit /b 1
+)
+echo Fonctions extraites et donnees fictives. Aucun acces Active Directory reel.
+echo Pas de changement de configuration ou de permissions. Rapports dans tests.
+echo.
+"%Pesto_PS%" -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File "%~dp0tests\Run-AllTests.ps1"
+set "Pesto_TEST_EXIT=%ERRORLEVEL%"
+echo.
+if not "%Pesto_TEST_EXIT%"=="0" (
+    echo ECHEC : ne pas utiliser cette version en production sans corriger les tests.
+) else (
+    echo Tests locaux termines. Ils ne remplacent pas une recette AD de preproduction.
+)
+pause
+exit /b %Pesto_TEST_EXIT%

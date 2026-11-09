@@ -1,0 +1,18 @@
+﻿{
+    "Version":  "1.0",
+    "Utc":  "2026-10-13T19:15:45.1142162Z",
+    "Runtime":  "5.1.26100.6584",
+    "Scope":  "Fonctions de preference isolees ; repertoire temporaire uniquement ; aucun AD/UAC/WPF.",
+    "Sources":  [
+
+                ],
+    "Count":  1,
+    "Failed":  1,
+    "Tests":  [
+                  {
+                      "Name":  "Execution interrompue hors controle",
+                      "Passed":  false,
+                      "Error":  "Fonction absente ou dupliquee : Write-PestoAtomicText (2 definition(s) Pesto.Engine.Runtime.ps1:13, Pesto-Core.ps1:160)"
+                  }
+              ]
+}

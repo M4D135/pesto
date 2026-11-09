@@ -1,0 +1,1 @@
+﻿Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match "PestoTest-[0-9a-f]{7,40}|PestoTest\\(Pesto\.exe|wad|[A-Z_]+\.cmd|tests)" -and $_.CommandLine -notmatch "stop\.ps1|lancer\.ps1|obs\.ps1|eveil" -and $_.ProcessId -ne $PID } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }

@@ -1,0 +1,31 @@
+diff --git a/v2/tools/tests/web-recovery-check.mjs b/v2/tools/tests/web-recovery-check.mjs
+index 19162c8..00b527f 100644
+--- a/v2/tools/tests/web-recovery-check.mjs
++++ b/v2/tools/tests/web-recovery-check.mjs
+@@ -92,7 +92,8 @@ try {
+   const prepare = async page => { await action(page).click(); await dialog(page).waitFor(); };
+   const execute = async page => {
+     const d = dialog(page);
+-    await d.getByRole('textbox').pressSequentially('PC-NEW');
++    assert.equal(await d.getByRole('textbox').count(), 0);
++    assert.equal(await d.locator('.k-cw-target b').innerText(), 'PC-NEW');
+     await d.getByRole('button', { name: 'Confirmer le déplacement', exact: true }).click();
+     await page.waitForFunction(() => document.querySelector('[data-receipt="parent"]')?.getAttribute('aria-busy') !== 'true');
+   };
+@@ -122,12 +123,13 @@ try {
+     assert.match(await parent(page).innerText(), /Confirmation annulée/);
+     assert.equal((await calls(page, 'operation.execute')).length, 0);
+   });
+-  await scenario('Confirmation exacte et enfant confirmé : lien serveur, parent inchangé', {}, async page => {
++  await scenario('Plan affiché confirmé sans recopie : cible exacte envoyée, lien serveur et parent inchangé', {}, async page => {
+     await prepare(page);
+     const d = dialog(page), confirm = d.getByRole('button', { name: 'Confirmer le déplacement', exact: true });
+-    await d.getByRole('textbox').pressSequentially('pc-new'); assert.equal(await confirm.isEnabled(), false);
++    assert.equal(await d.getByRole('textbox').count(), 0);
++    assert.equal(await d.locator('.k-cw-target b').innerText(), 'PC-NEW');
++    assert.equal(await confirm.isEnabled(), true);
+     assert.equal((await calls(page, 'operation.execute')).length, 0);
+-    await d.getByRole('textbox').fill('');
+     await execute(page);
+     assert.deepEqual(await calls(page, 'operation.execute'), [{ op: 'operation.execute', args: { planId: 'move-plan', confirmationName: 'PC-NEW' } }]);
+     assert.equal(await parent(page).getAttribute('data-status'), 'uncertain');

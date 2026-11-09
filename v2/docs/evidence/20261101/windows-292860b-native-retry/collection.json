@@ -1,0 +1,412 @@
+﻿{
+    "kind":  "pesto.isolated-native-update-collection",
+    "fullReleaseQualification":  false,
+    "sourceCommit":  "292860b934bcdff0f1321b0839158bf38b58816e",
+    "files":  [
+                  {
+                      "path":  "native-retry-DEV.log",
+                      "bytes":  154,
+                      "sha256":  "0221144022271b79941ed4018495e44f5a90be23cb3c62f2e92ad02fc25c72a5"
+                  },
+                  {
+                      "path":  "native-retry-inputs.json",
+                      "bytes":  1473,
+                      "sha256":  "f727e40596c5a9247d4f7294a7d5bc21bb56dcc7e373f8a06fb6b8240cf812ef"
+                  },
+                  {
+                      "path":  "native-retry-PROD.log",
+                      "bytes":  155,
+                      "sha256":  "a93413bb45e7f983e8d942362f44fec4c181c2db2c6118bbecc9582b3e918889"
+                  },
+                  {
+                      "path":  "native-retry-progress.json",
+                      "bytes":  737,
+                      "sha256":  "190efb584c24b429586d64700257636d74f6c924c1fd0830a8c082199cbc0ef7"
+                  },
+                  {
+                      "path":  "native-retry-result.json",
+                      "bytes":  794,
+                      "sha256":  "cbfff85f8f0391f4daff35a84b6a34eb1f8f88d681c8f951dbdb55c7e15665a0"
+                  },
+                  {
+                      "path":  "native-retry-start.json",
+                      "bytes":  311,
+                      "sha256":  "e16a2db3f48c04fc422c828bf7aa01f9da8aa94498e9da473a403473a9c4416a"
+                  },
+                  {
+                      "path":  "Start-NativeRetry.ps1",
+                      "bytes":  3315,
+                      "sha256":  "02f4684929c59c07cb3c37daa62533b206139b7b5f417de65223418082a5edda"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-01-init.txt",
+                      "bytes":  1395,
+                      "sha256":  "85ac212d56b233d3604f64fdd9c78743ab7a0830cb325363adfbbfba1954f9a9"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-02-scenarios.txt",
+                      "bytes":  26,
+                      "sha256":  "511b4a4c8f50fecafb087f12116c6d3269fc33707604e8185dcd98034259e53b"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-03-prepare.txt",
+                      "bytes":  530,
+                      "sha256":  "c8b584840813405c205b6c9bfdbed640e055ce909a1c58710812fbc4597d96f8"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-04-observe.txt",
+                      "bytes":  3128,
+                      "sha256":  "75985a4f430e68dec9b87f31a50372ee4ec1073457ecb7bf8322f76201669290"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-05-verify.txt",
+                      "bytes":  1408,
+                      "sha256":  "40dffa5c2599fb5e8815be34cc8eb881225ff0ae88d00b056907767ee43b8f24"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-06-cleanup.txt",
+                      "bytes":  90,
+                      "sha256":  "540fef25f961345dfa0af702ac9dacfc8a8e24740c2adc38b068f8502bf048f7"
+                  },
+                  {
+                      "path":  "native-retry-DEV/runner-07-finish.txt",
+                      "bytes":  3342,
+                      "sha256":  "0059c0bec462b0a54500bb904b1b3eb9bc11409585a4a56af8e17a27d883d099"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/proof.json",
+                      "bytes":  3340,
+                      "sha256":  "4c22619240323b284221fa18c0800017ce4cf668da09700e1dc47d9ce1673973"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/suite.json",
+                      "bytes":  1393,
+                      "sha256":  "c2ab603191178554b54bcdff2e91ccf0b33807ae6b8b7005641f8b5bb9fafd8c"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/acquisition.json",
+                      "bytes":  563,
+                      "sha256":  "aec4d9036ce1701b57902c12db9e2e64437dd4ddd17cf8684deaebd5d874c71b"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/fixture.json",
+                      "bytes":  833,
+                      "sha256":  "1aba98af98363ad65880288569c6163b4273d174f9030cf58cb6c0ffde87b22d"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/journal-install.json",
+                      "bytes":  976,
+                      "sha256":  "0cd3f3d0845a52e3b2fde4029a8daf29773acdcd58767c16304d0afdbc8577e9"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/launch-install.json",
+                      "bytes":  360,
+                      "sha256":  "6a1d682ed0f608b10fc207d1aa1aa9a9572287dc5b296993cdcc1c176095076b"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/observation-install.json",
+                      "bytes":  3126,
+                      "sha256":  "b7f49ddc76dcd8ee52a8667ec942e8b02debebafa4ad84455fb8be676178353e"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/proof-install.json",
+                      "bytes":  1406,
+                      "sha256":  "7774425e0828daf2b2914058de3bebc8f3a7cb0a1fb2b221f55dd5cdc957bdd8"
+                  },
+                  {
+                      "path":  "native-retry-DEV/transaction-evidence/format-refusal/request-install.json",
+                      "bytes":  528,
+                      "sha256":  "9bcb6ded5ab7056945b4ff893944525d04ea0488bd735b1e9be85608ef46b49c"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-01-init.txt",
+                      "bytes":  1401,
+                      "sha256":  "1492ce1e3630ca78a7cc53dc73a0a386ee33c7c20ca621ae6fbd942a87357be3"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-02-scenarios.txt",
+                      "bytes":  58,
+                      "sha256":  "a6d0e274e373ba184a3b0ef7a8aeda5124c3a79dd3cc16a21adfc5be945356c3"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-03-prepare.txt",
+                      "bytes":  514,
+                      "sha256":  "d4cd93c598592a19ddbe12e7e3ea1f318b0cd387ddbe99b0e373d23b4c8dd764"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-04-observe.txt",
+                      "bytes":  2843,
+                      "sha256":  "67752714a69deb2caba0e8dd043a499976f8693578f2f651128d8c42e3202179"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-05-verify.txt",
+                      "bytes":  1246,
+                      "sha256":  "25b6a5bd7066cc519e061837dd2429ca008791af31692556afe3b307191ec915"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-06-request.txt",
+                      "bytes":  515,
+                      "sha256":  "9190bd7ed99dd493554f14bb1981631e485b14237b485766f2d332dddf46374e"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-07-observe.txt",
+                      "bytes":  2847,
+                      "sha256":  "de2b6f0cdc080012bc21af424fa8dd17937e9ccaa2f65249dfbc30363f0be28e"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-08-verify.txt",
+                      "bytes":  1248,
+                      "sha256":  "3ba6047271687600ff9309be97cf3ef90bade7c7b416f83938864bf673620e2a"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-09-cleanup.txt",
+                      "bytes":  82,
+                      "sha256":  "931e2cbe798539414ad732e33805a5c85a8d12a0c3c0f8974d242fef4ee0e52c"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-10-prepare.txt",
+                      "bytes":  530,
+                      "sha256":  "b4a57ed119f373d4ab7c58a1f7733833549bda3b23f6760abd48ae6ce83ff986"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-11-observe.txt",
+                      "bytes":  2871,
+                      "sha256":  "4454ac22a9793d0bb0ae27dcc5852f26d8fdf800d34fd8794631f8299bf053d3"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-12-verify.txt",
+                      "bytes":  1261,
+                      "sha256":  "c2e6bff6655f178bdcfb3a558aac154363b72bd7ac6b2993117c5c93ce4170f6"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-13-cleanup.txt",
+                      "bytes":  90,
+                      "sha256":  "4a1ec8106791f6a7032ba377bd360b049babfc051e18580238acb83aa50f8e79"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-14-prepare.txt",
+                      "bytes":  526,
+                      "sha256":  "2831795639a63c9e7ca2174f085ddab1542bb79d2dde0b8017a2c6244aeee7ab"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-15-observe.txt",
+                      "bytes":  3826,
+                      "sha256":  "91034d2d2a4570455578c44299f65ece4fbfe909123d55706593d104ebf9e681"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-16-request.txt",
+                      "bytes":  526,
+                      "sha256":  "12273619b849e0e512dfd2f10d9637bcf1f0d68a95f21094b75b110facdf9a29"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-17-observe.txt",
+                      "bytes":  2857,
+                      "sha256":  "c5def4e3ab89f31d88e61debc69cff50f48c6bb0a65b3ecaa94b2f3ae6e2e437"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-18-verify.txt",
+                      "bytes":  1260,
+                      "sha256":  "4128700055221075d2c6edc176202cddddbf14b292ffb0949fb199feb345b701"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-19-cleanup.txt",
+                      "bytes":  88,
+                      "sha256":  "111a8de81363e03b0a5e314b3feb53e6987c53669291eb6490e7778d459a2b85"
+                  },
+                  {
+                      "path":  "native-retry-PROD/runner-20-finish.txt",
+                      "bytes":  5918,
+                      "sha256":  "156244811f9cb1b54aaa52d4a9e10e2a881548c6a33d7e01aa90454ee9ceee76"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/proof.json",
+                      "bytes":  5916,
+                      "sha256":  "603a2f97652ec9f391a30ab38a6f6fe157aec482b36332066e532e6e6ac2dbb1"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/suite.json",
+                      "bytes":  1399,
+                      "sha256":  "d7f511a38c35b1de1eca05a13a7ed3532f6ceec71b75f727160a3e711af92f5e"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/acquisition.json",
+                      "bytes":  506,
+                      "sha256":  "6e7937b894f421d942dfc2f6fd16ccae4d15df4b6440ea7404f169fed8c1fd8d"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/fixture.json",
+                      "bytes":  838,
+                      "sha256":  "ec1d0f1728fd33e0e029accb930f374473118f1953ab35494676d8452d07e478"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/health-84560128b418e844d484cab1e253a98c98fba239e40d9eaa56134bcf6f009c4e.json",
+                      "bytes":  937,
+                      "sha256":  "74eb1cdef9336a1da1dfbc70c4a35e4632331401161ab925566137961e766a15"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/health-a64e4486e5d936ee3f081251a3b22e88d99c47b49723a2eb0f3b2e5b275693fe.json",
+                      "bytes":  975,
+                      "sha256":  "dfda4bef0f90a6de7e98d79ee298dee6498ff2718896d866aef278c6eab83915"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/journal-install.json",
+                      "bytes":  992,
+                      "sha256":  "5955f44491f7723238c5c03b93af8495a935f71a7185d2bf89b40530ee55f2b6"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/launch-install.json",
+                      "bytes":  360,
+                      "sha256":  "78d746951cb82d7044d673213412256c6329131e7041e3995e640c6dc19b2f2e"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/observation-install.json",
+                      "bytes":  2869,
+                      "sha256":  "d2cfe507b77ef7976cdb41f878c0d0ed82c264b84c0cfe3956f83fede2610992"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/proof-install.json",
+                      "bytes":  1259,
+                      "sha256":  "21fc29b992dd864b902d767ea5b3be3a40fa89a3dcb2c2f30752c140a332187e"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/health-failure/request-install.json",
+                      "bytes":  528,
+                      "sha256":  "e24cdac5aee8cb2de3dcab61f0ab3d4c95f54f9f887cae6f275ae442e1d509e1"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/acquisition.json",
+                      "bytes":  506,
+                      "sha256":  "70e5bf3b056ca3d0cf49e3065a1750eb8a54348d9b79d31d1ad8ca0e356c65a8"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/fixture.json",
+                      "bytes":  832,
+                      "sha256":  "5955284d9d131e806d3dc3a6b01a16971687dbd09931958c0fccfce7b611441f"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/health-09670733760fa0666d7eea848f7d8ee21ccca94c0890e08ecd268741ce78fc16.json",
+                      "bytes":  573,
+                      "sha256":  "4963e530dc2f3225d2a1d5717070ee819cb236911f5280c5728d04bf71364055"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/health-64ceae59577a7ec06b07903f9e0429610bb781f1a828ad7e4a31a1eba65f2f65.json",
+                      "bytes":  937,
+                      "sha256":  "19dc38b3180e98c9324dc027b2812c37192f6d1f77d0534cdb9b0d57797d3012"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/journal-interrupted.json",
+                      "bytes":  977,
+                      "sha256":  "f676162b9030943200bdc0b193b99581cc7135688c1e37471b54aeb9d4494d57"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/journal-recovery.json",
+                      "bytes":  978,
+                      "sha256":  "1497d1db10700259778b13eef238b721386332496fbeeec58440b30c5974540d"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/launch-install.json",
+                      "bytes":  358,
+                      "sha256":  "a7e77bf0b1cf59f6e954e87065e0ec41ff5bd9ea9fe189929b271bb639a40f89"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/launch-recovery.json",
+                      "bytes":  358,
+                      "sha256":  "016eb9409ac6f774cd594e7d17b631fa612c9ff2be3a9ef76ff29fb813490151"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/observation-install.json",
+                      "bytes":  3824,
+                      "sha256":  "33e539478986aaf8d624722deb72ed25543e6c6b9636344852d7b361041a4bc1"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/observation-recovery.json",
+                      "bytes":  2855,
+                      "sha256":  "feef1effbf16c7c8b9bc7d9b3c003d0876ebc9d1bb393c06caa19e459a3a0ef1"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/proof-recovery.json",
+                      "bytes":  1258,
+                      "sha256":  "42752169a267eb978857b77b67ce250ba25e7545918178bc3e72cd4d6d8f8753"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/request-install.json",
+                      "bytes":  524,
+                      "sha256":  "506caf751c085616253e6661db042c89fbee156710c7318b0545240422c5d36e"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/interruption/request-recovery.json",
+                      "bytes":  524,
+                      "sha256":  "2055ce7f6febd6abcc10d50c434cdbf1a8b538b5190c4563b6dc758f7d06eeb9"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/acquisition.json",
+                      "bytes":  563,
+                      "sha256":  "992bc6e7d3869978b4f6784a9b2d41ba8843961b5a8f6fe38a34c84b4ee86221"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/fixture.json",
+                      "bytes":  809,
+                      "sha256":  "602f333b00d1c31d21d3d6ff1181272ec2dbb5a9613648628946a0ef9cf7a84d"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/health-32128b8f71e19da77452114a97aa9bda93c208c1d96303706b2df3edc300f26c.json",
+                      "bytes":  938,
+                      "sha256":  "5a17d389bcd65650df1715da9d5d519819d18d6d547d33abadd6870aeb652249"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/health-d540c9fef3c2e46f87293b1f9c7cc9d437fed19d71fae71516c21e1b88730483.json",
+                      "bytes":  937,
+                      "sha256":  "e3c569445bea8a52d092ca5af4719f34e3b9979bb6ea23a0c08c2c0487a6ee8f"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/journal-install.json",
+                      "bytes":  972,
+                      "sha256":  "85343e4d31d3321f150a9fad5ca756671c99adcca4b2f38970307297b9c57b59"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/journal-rollback.json",
+                      "bytes":  974,
+                      "sha256":  "480388a1611db33fd80f2be868aa46a5c2725f1b2620fb4760c4e2caf6ae0d49"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/launch-install.json",
+                      "bytes":  352,
+                      "sha256":  "61bb86d0302f5ddc56aeaa77a369d7cc963144d508121d666dbb16bc6e44f9ba"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/launch-rollback.json",
+                      "bytes":  352,
+                      "sha256":  "f8c5de8a3b0818e1e386edcd87802a4f5a6ea4b5b2f65d368693d16ff5858ba9"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/observation-install.json",
+                      "bytes":  2841,
+                      "sha256":  "b5d177c8833f987968355ac9084ba55544e893a70da801450195b496f3717dcf"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/observation-rollback.json",
+                      "bytes":  2845,
+                      "sha256":  "9d2c2746cf75821bb63376e7cc7201ccc9f25cb1d782dc417845ad56d1822856"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/proof-install.json",
+                      "bytes":  1244,
+                      "sha256":  "3c900efd1ba469b75934f33ffe74a7f91847cc690a8debd2ae652ee053406337"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/proof-rollback.json",
+                      "bytes":  1246,
+                      "sha256":  "daf761f2cf82c98c8513a69363b65327dd0b84dc56a730c5a97681ac6d844904"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/request-install.json",
+                      "bytes":  512,
+                      "sha256":  "1af019d0eef601bcd96cb787e7c07b4dcf9694b27b2e7b3a825db594c97d885a"
+                  },
+                  {
+                      "path":  "native-retry-PROD/transaction-evidence/normal/request-rollback.json",
+                      "bytes":  513,
+                      "sha256":  "d9f7046f71ea8ed8d55ffa67867cbc62a65eb11b27b40f3d2a86e0f296d78871"
+                  }
+              ]
+}

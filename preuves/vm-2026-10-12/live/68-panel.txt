@@ -1,0 +1,4 @@
+Résultat à vérifier
+
+Jonction engagée, résultat non confirmé. Code natif  : Computer 'P111301VA765172' failed to join domain 'labo.local\dc01.labo.local' from its current workgroup 'WORKGROUP' with following error message: The account already exists.
+Ne relancez pas la jonction.

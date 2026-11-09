@@ -1,0 +1,2 @@
+﻿# Arrête les processus Pesto de la campagne, jamais la commande qui lance stop.ps1 ou lancer.ps1.
+Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $PID -and $_.CommandLine -match "PestoProto|PestoTest\\(Pesto\.exe|wad|[A-Z_]+\.cmd|tests)" -and $_.CommandLine -notmatch "stop\.ps1|lancer\.ps1|obs\.ps1" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue; "arrete " + $_.ProcessId }

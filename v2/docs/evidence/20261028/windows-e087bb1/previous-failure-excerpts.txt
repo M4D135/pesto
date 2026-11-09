@@ -1,0 +1,35 @@
+Job 122202316003
+2026-10-27T13:19:50.6411153Z PACK COMPLET VÉRIFIÉ — 523 fichiers, PROD, candidate (qualification Windows distincte).
+2026-10-27T13:25:17.4971599Z D:\a\pesto\pesto\v2\tools\qualification\Invoke-NativeUpdateUiQualification.ps1 : Qualification runner failed: observe, 
+2026-10-27T13:25:17.4972225Z exit 2; see D:\a\pesto\pesto\v2\out\evidence\native-update-ui-DEV\runner-06-observe.txt
+2026-10-27T13:25:17.4972728Z At D:\a\pesto\pesto\v2\tools\qualification\Invoke-NativeUpdateUiQualification.ps1:213 char:17
+2026-10-27T13:25:17.4973136Z + if ($failure) { Write-Error $failure; exit 2 }
+2026-10-27T13:25:17.4973389Z +                 ~~~~~~~~~~~~~~~~~~~~
+2026-10-27T13:25:17.4973690Z     + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+2026-10-27T13:25:17.4974167Z     + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Invoke-NativeUpdateUiQualification.ps1
+2026-10-27T13:25:17.4974608Z  
+2026-10-27T13:25:17.7469785Z ##[error]Process completed with exit code 1.
+
+Job 122198491163
+2026-10-27T12:54:37.4121397Z   Pesto.App -> C:\Users\runneradmin\AppData\Local\Temp\Pesto-dev-rebuild-eeb418550e5748ddaf6cf2fec6ccb5aa\new-publication\
+2026-10-27T12:54:37.6792431Z D:\a\pesto\pesto\v2\tools\qualification\Invoke-DevRebuildQualification.ps1 : The rebuild reused an external NuGet 
+2026-10-27T12:54:37.6793328Z package cache.
+2026-10-27T12:54:37.6794042Z At D:\a\pesto\pesto\v2\tools\qualification\Invoke-DevRebuildQualification.ps1:280 char:17
+2026-10-27T12:54:37.6794786Z + if ($failure) { Write-Error $failure; exit 2 }
+2026-10-27T12:54:37.6795100Z +                 ~~~~~~~~~~~~~~~~~~~~
+2026-10-27T12:54:37.6795534Z     + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+2026-10-27T12:54:37.6796307Z     + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Invoke-DevRebuildQualification.ps1
+2026-10-27T12:54:37.6796892Z  
+2026-10-27T12:54:37.7580296Z ##[error]Process completed with exit code 1.
+
+Job 122181957890
+2026-10-27T12:43:09.7894396Z PACK COMPLET VÉRIFIÉ — 523 fichiers, PROD, candidate (qualification Windows distincte).
+2026-10-27T12:43:15.6442907Z D:\a\pesto\pesto\v2\tools\qualification\Invoke-DevRebuildQualification.ps1 : Rebuild check failed: 
+2026-10-27T12:43:15.6443891Z deliveredSdkVersionUsed
+2026-10-27T12:43:15.6444676Z At D:\a\pesto\pesto\v2\tools\qualification\Invoke-DevRebuildQualification.ps1:269 char:17
+2026-10-27T12:43:15.6445497Z + if ($failure) { Write-Error $failure; exit 2 }
+2026-10-27T12:43:15.6445878Z +                 ~~~~~~~~~~~~~~~~~~~~
+2026-10-27T12:43:15.6446361Z     + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
+2026-10-27T12:43:15.6447162Z     + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,Invoke-DevRebuildQualification.ps1
+2026-10-27T12:43:15.6447799Z  
+2026-10-27T12:43:15.6996789Z ##[error]Process completed with exit code 1.

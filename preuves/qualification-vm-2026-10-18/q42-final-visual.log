@@ -1,0 +1,33 @@
+#SetCmbDarkMode = Clair
+clic : #NavHome (Accueil)
+capture C:\PestoQual_20261018\preuves\q42-final-light.png 1730x920
+clic : #NavRename (Renommer)
+capture C:\PestoQual_20261018\preuves\q42-final-small.png 1100x760
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+#CbOrg = Departement 111301
+#CbSite = Paris
+#CbService = 765 (saisie)
+#CbType = Portable
+OU actuelle : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon
+Après : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon
+Opération prévue
+Renommer seulement
+Redémarrage : aucun redémarrage automatique
+4 · Suivi de l’opération
+Dernière opération unitaire : ✓ Windows / AD vérifié · P111301VA765480 → P111301LY765678
+Déplacement confirmé par GUID vers 'OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local' ; protection d'origine vérifiée.
+Préparer une autre opération
+Vérifier puis reprendre
+Détails
+3 · Vérifier et confirmer
+Le contrôle relit l'identité, le nom et l'OU. L'écriture ne commence qu'après votre confirmation.
+Vérifier seulement
+Vérifier puis renommer
+Zoom
+−
+État de l’intervention
+100 %
++
+capture C:\PestoQual_20261018\preuves\q42-rename-prepare.png 1730x920
+

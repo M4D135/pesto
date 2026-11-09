@@ -1,0 +1,10 @@
+﻿{
+    "schemaVersion":  1,
+    "kind":  "pesto.targeted-reader-diagnostic",
+    "diagnosticOnly":  true,
+    "fullSuite":  false,
+    "success":  true,
+    "scenario":  "health-failure",
+    "startupHookUsed":  false,
+    "fixtureRoot":  "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-009a9a15121140518df4df3002d87a84"
+}

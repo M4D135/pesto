@@ -1,0 +1,55 @@
+BtnTheme                           Button         actif=True  [1624;37;38;38] Changer de thème
+SetCmbDarkMode                     ComboBox       actif=True  [230;292;240;36] Apparence
+SuiteAppearanceNav                 Button         actif=True  [230;367;195;37] Réduire / déployer le menu
+SuiteAppearanceHelp                Button         actif=True  [230;412;176;37] Afficher / masquer l’aide
+SuiteAppearanceDensity             Button         actif=True  [574;488;130;37] Densité des tableaux
+SuiteAppearanceSaveColumns         Button         actif=True  [712;488;173;37] Mémoriser les colonnes
+SuiteAppearanceResetColumns        Button         actif=True  [893;488;176;37] Réinitialiser les colonnes
+clic : #NavHome (Accueil)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+capture C:\PestoQual_20261018\preuves\q37-zoom150.png 1730x920
+Noms disponibles
+Zoom
+−
+État de l’intervention
+150 %
++
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+clic : #PestoZoomOut (Réduire le zoom)
+clic : #PestoZoomOut (Réduire le zoom)
+capture C:\PestoQual_20261018\preuves\q37-zoom80.png 1730x920
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+clic : #NavNames (Noms disponibles)
+NmPageScroll                       Pane           actif=True  [216;147;1492;706] 
+NmLblCount                         Text           actif=True  [358;160;229;15] Actualisation : ancien résultat non utilisable
+NmRefreshSite                      Button         actif=True  [227;186;128;37] Actualiser le site
+NmBtnNextP                         Button         actif=False [366;186;91;43] Portable : —
+NmBtnNextS                         Button         actif=False [463;186;64;43] Fixe : —
+NmBtnNextV                         Button         actif=False [533;186;79;43] Virtuel : —
+NmCmbSite                          ComboBox       actif=True  [227;263;100;36] Filtre par site
+NmCmbEquipe                        ComboBox       actif=True  [339;263;110;36] Filtre par service
+NmCmbType                          ComboBox       actif=True  [461;263;120;36] Filtre Portable, Fixe ou Virtuel
+NmCmbStatut                        ComboBox       actif=True  [593;263;130;36] Filtre par statut des noms
+NmTxtSearch                        Edit           actif=True  [735;263;180;36] Rechercher dans les noms
+NmChkAll                           CheckBox       actif=True  [927;263;111;17] toute la plage
+NmPrevPage                         Button         actif=False [227;600;98;37] Précédente
+NmPageLabel                        Text           actif=True  [335;610;39;17] Page 1
+NmNextPage                         Button         actif=False [384;600;82;37] Suivante
+NmSuggestions                      ComboBox       actif=True  [356;643;240;37] Noms proposés
+NmOtherNames                       Button         actif=False [604;643;108;37] Renouveler les noms proposés
+NmSharedRegistry                   Button         actif=False [720;643;130;37] Registre partagé
+NmVerifyCandidate                  Button         actif=False [858;643;175;37] Vérifier dans le domaine
+NmUseCandidate                     Button         actif=False [1041;643;163;37] Utiliser dans Un poste
+NmExtraTools                       Group          actif=True  [227;698;1470;37] Outils des noms disponibles
+NmCheckResult                      Text           actif=True  [229;743;1466;17] 
+NmViewNote                         Text           actif=True  [229;770;1466;13] Actualisation en cours. Ancien résultat grisé, non sélectionnable et non exportable.
+NmLoadingTitle                     Text           actif=True  [887;416;150;25] Calcul des noms
+NmLoadingBar                       ProgressBar    actif=True  [887;459;150;5] Chargement des noms disponibles
+NmLoadingDetail                    Text           actif=True  [887;476;150;17] 5 601 numéros examinés.
+NmLoadingElapsed                   Text           actif=True  [887;499;150;15] Temps écoulé : 5 s
+capture C:\PestoQual_20261018\preuves\q37-names.png 1730x920
+

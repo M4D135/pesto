@@ -1,0 +1,12 @@
+Pesto - sonde UAC (VERIFIER_UAC.cmd)
+Sonde=2749d5c4890b4fe392340089cf669501
+Resultat=UAC_OK
+Admin=True
+RelaisEleve=True
+Route=Run
+Compte=PESTO-W11-TEST\PestoFinal
+PID=5588
+UTC=2026-10-04T16:53:25.8376611Z
+Moteur=NON_CHARGE
+RepriseEtat=NON_FAITE
+AD=NON_CONTACTE

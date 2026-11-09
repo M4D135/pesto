@@ -1,0 +1,4 @@
+﻿Renommage accepté · redémarrage et vérification nécessaires.
+
+Renommage et déplacement annoncés réussis. Vérifiez le nom après redémarrage et les stratégies du nouveau site.
+"P111301LY765002" renommé en "P111301VA765172" et déplacé dans "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local"

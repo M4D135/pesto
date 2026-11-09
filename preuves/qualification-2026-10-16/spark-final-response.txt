@@ -1,0 +1,103 @@
+Salut David. Voici la revue finale du dossier Pesto pour la fenêtre de test du 16 octobre.
+
+### 1. Revue Technique & Correctifs (PowerShell 5.1 / C#5 / Sécurité)
+
+J'ai analysé les fichiers fournis. Le code est globalement robuste pour la cible PS 5.1. Voici les points critiques identifiés et les correctifs précis à appliquer **avant** de lancer les tests VM.
+
+#### A. Bugs de Compatibilité & Logique (PowerShell 5.1)
+
+**1. `DEV/tests/Run-SecretOutputsTests.ps1` : Risque de variable non initialisée**
+*   **Problème :** Dans le bloc `Case 'Masked diagnostics...'`, tu définis `$script:BasePath=$null` mais tu ne déclares pas `$BasePath` en scope local ou global avant usage dans certaines fonctions internes si elles s'y attendent. Plus critique : l'objet `$receipt` est créé avec des champs comme `Plan` qui contiennent `$payload` (le secret). Si une fonction interne tente d'accéder à `$Receipt.Plan.Reference` sans passer par `Protect-PestoLogText`, le secret fuite.
+*   **Vérification :** La fonction `Get-PestoOperationSupport` (dans `Pesto-ReceiptTools.ps1`) a été corrigée dans le diff pour utiliser `Protect-PestoLogText` sur `Reference`. C'est bon.
+*   **Correctif mineur :** Dans `Run-SecretOutputsTests.ps1`, assure-toi que `$script:OUV` est bien un hashtable vide (`@{}`) et non `$null` si les fonctions de diagnostic itèrent dessus. C'est déjà le cas (`$script:OUV=@{}`).
+*   **Action :** Aucun correctif de code nécessaire ici, la logique de protection est en place.
+
+**2. `DEV/tools/Measure-PestoWpfSession.ps1` : Gestion des AssemblyNames**
+*   **Problème :** `Add-Type -ReferencedAssemblies @(..., 'System.dll')`. En PS 5.1, `System.dll` est souvent résolu automatiquement, mais l'ajout explicite est bon. Par contre, `System.Xaml` est requis pour `XamlReader`.
+*   **Vérification :** Le script ajoute bien `System.Xaml`.
+*   **Action :** OK.
+
+**3. `DEV/wad/Pesto-Support.ps1` : Affichage de l'étape**
+*   **Diff :** `$w.FindName('ErrorStage').Text='Étape : '+$info.Stage` remplace l'usage direct de `$Stage`.
+*   **Analyse :** C'est une correction de sécurité majeure. `$info.Stage` est le résultat de `Protect-PestoLogText $Stage`. Cela empêche l'injection de secrets dans l'UI WPF.
+*   **Action :** **Valider ce correctif.** Il est essentiel.
+
+#### B. Fuites de Secrets (Canary Test)
+
+Le test `Run-SecretOutputsTests.ps1` utilise un canary `PESTO_SYNTHETIC_SECRET_106_ONLY`.
+*   **Point critique :** La fonction `Get-PestoTicketText` (dans `Pesto-Workspace.ps1`) a été modifiée pour retourner `Protect-PestoLogText ($lines -join ...)`.
+*   **Risque résiduel :** Si `Get-PestoNativeGuidance` ou d'autres fonctions internes ajoutent du texte brut contenant des données sensibles *avant* la jointure, `Protect-PestoLogText` ne masquera que ce qui est passé en paramètre final.
+*   **Vérification :** `Protect-PestoLogText` est-il robuste ? Il doit remplacer les patterns connus (password, token, etc.). Si le canary est une chaîne simple, il doit être détecté.
+*   **Action :** Le test `Case 'Internal ticket keeps useful identity and filters credential-like text'` vérifie que `PC-OLD` est présent mais que le secret est masqué. Si ce test passe en local, la protection est active.
+
+#### C. CI & Preuves Trop Fortes
+
+*   **`validate.yml` :**
+    *   Le job `windows-isolated` utilise `windows-2025` (preview). C'est risqué pour la stabilité des tests.
+    *   **Recommandation :** Pour le 16 octobre, **désactive le matrix `windows-2025`** ou marque-le comme `continue-on-error: true` pour ne pas bloquer la qualification si l'OS change de comportement.
+    *   **Preuve :** Le scan `scan_evidence.py` est bien présent. Assure-toi qu'il échoue si le canary est trouvé.
+
+### 2. Checklist Manuelle pour les 12 Points (VM Pesto - 16 Oct)
+
+**Prérequis :** VM Windows Server 2022/2025 (selon dispo), PowerShell 5.1, Pesto installé.
+**Règle d'or :** Ne jamais affirmer "Qualifié". Utiliser "Testé avec succès" ou "Non testé".
+
+| ID | Point de Contrôle | Action Manuelle | Preuve Attendue (Screenshot/Log) | Statut |
+|:---|:---|:---|:---|:---|
+| **88** | **Signature Certificat** | Vérifier la signature de `Pesto.exe` ou des DLLs principales via `Get-AuthenticodeSignature`. | Log montrant `Status: Valid` et le nom du signer. | ☐ |
+| **92** | **WDAC (AppLocker)** | Activer une politique WDAC restrictive (mode audit ou enforce) bloquant les exécutables non signés. Lancer Pesto. | Log Pesto + Event Viewer (Code Integrity) montrant que Pesto est autorisé (si signé) ou bloqué (si non signé). | ☐ |
+| **95** | **Provenance DLL & Droits** | Vérifier les ACLs des dossiers `wad/` et `tools/`. S'assurer que l'utilisateur courant n'a pas d'écriture sur les DLLs système. | `Get-Acl` sur les fichiers critiques. | ☐ |
+| **98** | **Matrice Windows** | Lancer Pesto sur Windows 10/11 (Client) et Server 2022/2025. Vérifier l'absence de crash au démarrage. | Screenshots de la fenêtre principale ouverte sur chaque OS. | ☐ |
+| **99** | **GUI Join/Rename/Move** | Utiliser l'interface pour : 1. Joindre un PC (simulé ou réel), 2. Renommer, 3. Déplacer. Vérifier les messages de succès. | Screenshots des boîtes de dialogue de confirmation et des logs d'audit. | ☐ |
+| **100** | **DPI & Moniteurs** | Changer la résolution de l'écran (100%, 125%, 150%) et la disposition (multi-moniteur). Vérifier que les contrôles ne se chevauchent pas. | Screenshots de l'UI à différentes échelles DPI. | ☐ |
+| **101** | **Narrator** | Activer Narrator (Windows + Ctrl + Entrée). Naviguer dans l'UI avec Tab. Vérifier que les labels sont lus correctement. | Enregistrement audio ou log de Narrator montrant la lecture des champs. | ☐ |
+| **102** | **Pannes NTFS/SMB** | Simuler une perte de connexion réseau (couper le câble ou désactiver la carte) pendant une opération SMB. Vérifier la gestion de l'erreur. | Log d'erreur Pesto indiquant une perte de connexion, sans crash. | ☐ |
+| **103** | **SMB Deux PC** | Configurer Pesto pour accéder à un partage sur un second PC. Vérifier l'authentification et la lecture des fichiers. | Screenshot de la liste des fichiers distants chargés. | ☐ |
+| **104** | **Réplication Deux DC** | Si applicable, vérifier que Pesto lit les données AD depuis un DC secondaire si le primaire est indisponible (ou vérifier la stratégie de site). | Log montrant le DC contacté. | ☐ |
+| **106** | **Captures de Session** | Lancer `Measure-PestoSession.ps1` pendant une session réelle. Vérifier que les compteurs (RAM, Handles) sont enregistrés. | Fichier JSON de rapport généré avec des données non nulles. | ☐ |
+| **107** | **Longue Session** | Lancer `Measure-PestoWpfSession.ps1` avec `MinimumDurationSeconds=300` (5 min). Vérifier l'absence de fuite mémoire massive. | Rapport JSON montrant une stabilisation de la mémoire après échauffement. | ☐ |
+
+### 3. Documentation v1.0 (Brouillon)
+
+**Titre :** Pesto - Guide d'Utilisation et de Validation v1.0
+
+**1. Introduction**
+Pesto est un outil de gestion de poste Windows (Rename, Move, Join) conçu pour les environnements d'entreprise. Cette version v1.0 est destinée à la validation interne.
+
+**2. Prérequis**
+*   Windows 10/11 ou Windows Server 2019+.
+*   PowerShell 5.1.
+*   Accès AD (si opération de domaine).
+
+**3. Installation**
+*   Copier le dossier `DEV` sur le poste cible.
+*   Exécuter `DEV/tools/Test-PestoEnvironment.ps1` pour vérifier l'intégrité des composants.
+
+**4. Utilisation Basique**
+*   Lancer `Pesto.exe` ou le script principal.
+*   Utiliser l'onglet **Rename** pour changer le nom du PC.
+*   Utiliser l'onglet **Move** pour déplacer l'objet AD.
+*   **Important :** Toujours vérifier le "Receipt" (reçu) généré après chaque opération.
+
+**5. Sécurité et Confidentialité**
+*   Pesto masque automatiquement les secrets (mots de passe, tokens) dans les logs et l'interface.
+*   Les rapports de diagnostic (`Get-PestoDiagnosticText`) sont masqués par défaut. Utilisez `-Redact $false` uniquement en interne et avec prudence.
+
+**6. Validation**
+*   Les tests automatisés (`Run-AllTests.ps1`) doivent passer avant toute mise en production.
+*   Les tests manuels (checklist ci-dessus) sont requis pour la qualification finale.
+
+**7. Limites Connues**
+*   La validation visuelle sur des résolutions très élevées (4K+) nécessite un test manuel.
+*   La compatibilité avec WDAC strict nécessite une signature certifiée.
+
+---
+
+### Recommandation Finale pour David
+
+1.  **Appliquer le correctif de sécurité** sur `Pesto-Support.ps1` (déjà dans le diff, à valider en merge).
+2.  **Lancer les tests locaux** (`Run-SecretOutputsTests.ps1`, `Run-WpfSessionTests.ps1`) pour confirmer que le canary est bien masqué.
+3.  **Préparer la VM** pour le 16 octobre avec la checklist ci-dessus.
+4.  **Ne pas compter sur la CI Windows 2025** pour la preuve de stabilité. Se concentrer sur Windows 2022.
+
+Les tests locaux sont prêts. La documentation est prête à être finalisée après les tests VM.

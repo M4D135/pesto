@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "26284c5e0bfc48a88c677b9ed5023237",
+  "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\health-failure\\installation",
+  "channel": "PROD",
+  "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+  "nextFingerprint": "c750fc1c0ffa9392e94232ac93b2eef42fd8b8ea163b4e9923969590943e2011",
+  "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+  "nextExecutableHash": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+  "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+  "currentVersion": "2.0.0",
+  "nextVersion": "2.0.9",
+  "action": "recover",
+  "status": "rolledBack",
+  "createdUtc": "2026-11-01T04:24:58.0363151\u002B00:00",
+  "parentProcessId": 16768,
+  "parentStartUtc": "2026-11-01T04:23:33.6334859\u002B00:00",
+  "failure": "update.health"
+}

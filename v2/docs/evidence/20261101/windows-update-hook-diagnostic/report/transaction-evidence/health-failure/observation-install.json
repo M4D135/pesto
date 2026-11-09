@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-observation",
+  "scenario": "health-failure",
+  "stage": "install",
+  "transactionId": "bd651e7081ad451dae96fa67f00dc65f",
+  "helperProcessId": 21524,
+  "helperStartUtcTicks": "639290982304774412",
+  "helperExecutableSha256": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+  "candidateExecutableSha256": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+  "success": false,
+  "interrupted": false,
+  "dialogClosed": false,
+  "checkingObserved": false,
+  "healthChildObserved": false,
+  "webViewChildObserved": false,
+  "events": [
+    {
+      "utc": "2026-11-01T02:50:30.7256314\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "bd651e7081ad451dae96fa67f00dc65f",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-eca7c0ec74bb4f86980bb66a2676fdde\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "install",
+        "status": "prepared",
+        "createdUtc": "2026-11-01T02:50:11.0329625\u002B00:00",
+        "parentProcessId": 6588,
+        "parentStartUtc": "2026-11-01T02:49:34.1425081\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-11-01T02:50:39.9713741\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "bd651e7081ad451dae96fa67f00dc65f",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-eca7c0ec74bb4f86980bb66a2676fdde\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "install",
+        "status": "backedUp",
+        "createdUtc": "2026-11-01T02:50:11.0329625\u002B00:00",
+        "parentProcessId": 6588,
+        "parentStartUtc": "2026-11-01T02:49:34.1425081\u002B00:00",
+        "failure": null
+      }
+    }
+  ],
+  "descendantAttributionRefusals": [],
+  "helperHandleRetained": true,
+  "failure": "InvalidOperationException: Native helper timed out or the required interruption boundary was not observed.",
+  "failureDiagnostics": {
+    "utc": "2026-11-01T02:54:00.8412760\u002B00:00",
+    "helperProcessId": 21524,
+    "helperStartUtcTicks": "639290982304774412",
+    "identityRevalidated": true,
+    "informationalOnly": true,
+    "maximumThreads": 64,
+    "maximumWindows": 16,
+    "maximumControls": 32,
+    "maximumControlTextCharacters": 1024,
+    "threads": [
+      {
+        "id": 13324,
+        "state": "Wait",
+        "waitReason": "UserRequest"
+      },
+      {
+        "id": 6128,
+        "state": "Wait",
+        "waitReason": "UserRequest"
+      },
+      {
+        "id": 8120,
+        "state": "Wait",
+        "waitReason": "UserRequest"
+      },
+      {
+        "id": 2052,
+        "state": "Wait",
+        "waitReason": "UserRequest"
+      }
+    ],
+    "windows": [
+      {
+        "handle": "27396134",
+        "threadId": 13324,
+        "class": "#32770",
+        "title": "Pesto v2",
+        "controls": [
+          {
+            "handle": "526448",
+            "class": "Button",
+            "textReadSucceeded": true,
+            "text": "OK",
+            "textTruncated": false
+          },
+          {
+            "handle": "11864198",
+            "class": "Static",
+            "textReadSucceeded": true,
+            "text": "",
+            "textTruncated": false
+          },
+          {
+            "handle": "3082390",
+            "class": "Static",
+            "textReadSucceeded": true,
+            "text": "Pesto ne peut pas d\u00E9marrer. V\u00E9rifiez le pack portable et l\u2019acc\u00E8s \u00E0 votre dossier de donn\u00E9es local.",
+            "textTruncated": false
+          }
+        ]
+      },
+      {
+        "handle": "4196584",
+        "threadId": 13324,
+        "class": "MSCTFIME UI",
+        "title": "MSCTFIME UI",
+        "controls": []
+      },
+      {
+        "handle": "4458560",
+        "threadId": 13324,
+        "class": "IME",
+        "title": "Default IME",
+        "controls": []
+      }
+    ],
+    "descendantCount": 0,
+    "descendants": [],
+    "descendantsTruncated": false,
+    "threadCount": 4,
+    "threadsTruncated": false,
+    "windowBudgetExhausted": false,
+    "windowLimitReached": false,
+    "controlLimitReached": false
+  },
+  "failedFixtureProcessStopped": true,
+  "helperDiagnosticCollection": {
+    "helperProcessId": 21524,
+    "helperStartUtcTicks": "639290982304774412",
+    "maximumFiles": 8,
+    "maximumBytesPerFile": 65536,
+    "maximumCandidates": 64,
+    "files": [],
+    "refusals": [],
+    "completed": true,
+    "informationalOnly": true,
+    "scannedCandidates": 0,
+    "copiedFiles": 0
+  },
+  "finishedUtc": "2026-11-01T02:54:01.0373833\u002B00:00"
+}

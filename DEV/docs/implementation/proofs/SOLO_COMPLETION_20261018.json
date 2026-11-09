@@ -1,0 +1,299 @@
+{
+  "schema": 1,
+  "date": "2026-10-18",
+  "scope": "Twelve requested implementations; local checks only, not Windows/AD qualification",
+  "implementedIds": [
+    56,
+    59,
+    60,
+    61,
+    63,
+    64,
+    72,
+    109,
+    111,
+    114,
+    117,
+    119
+  ],
+  "sourceParent": "d31a296d644b61b743e9542b8c28440572653516",
+  "build": {
+    "profile": "macos-reference",
+    "clang": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "lld": "Homebrew LLD 23.1.2",
+    "native": "PASS; two byte-identical builds",
+    "runtimeTypes": "PASS deterministic CSharp5/net472 build check",
+    "engine": "PASS generated-source freshness check; 734 functions, 165 worker dependencies",
+    "manifest": "PASS; 67 runtime components"
+  },
+  "artifacts": {
+    "DEV/Pesto.exe": {
+      "sha256": "96177e08ce808d43bf64253793d3e0292c1d01edf9d014e5b9ff022032b3dbf3",
+      "bytes": 118272
+    },
+    "DEV/wad/Pesto.Runtime.dll": {
+      "sha256": "6cd066ec56afb3240d6b493732ea97098c4a4bd77f3a79f2e46517ec3ac13d47",
+      "bytes": 8192
+    },
+    "DEV/wad/Pesto.Engine.Runtime.ps1": {
+      "sha256": "ceb67c8a1eb2b2fb3452ea2e4f46f19d3e767c27cc676e65b0f9ae2b075066a9",
+      "bytes": 1112079
+    },
+    "DEV/wad/package.json": {
+      "sha256": "b36ece37e68af7b169b094b78b1c6f23f8caf859194805ae9ea868c5a0d209db",
+      "bytes": 9378
+    }
+  },
+  "pythonFullSuite": {
+    "tests": 596,
+    "passed": 590,
+    "skipped": 6,
+    "failed": 0,
+    "errors": 0,
+    "durationSeconds": 155.757,
+    "logSHA256": "9192c38be21ab09fab9d0d2df106f606656a7588e10a92ef2e2be09eaa418128",
+    "notes": "Full suite passed before final AttributeObserve ExitCode correction, receipt fixture strengthening and documentation cleanup; affected checks rerun separately. Six opt-in installer fixtures skipped (PESTO_TEST_PWSH unset)."
+  },
+  "portablePowerShell": {
+    "runtime": "PowerShell 7.4.6 on macOS, test runner only; product remains Windows PowerShell 5.1 x64",
+    "suites": [
+      {
+        "suite": "Engine",
+        "exit": 0,
+        "verification": "Passed after loading complete contract dependencies in the fixture"
+      },
+      {
+        "suite": "Engine120",
+        "exit": 0
+      },
+      {
+        "suite": "ReadPool56",
+        "exit": 0
+      },
+      {
+        "suite": "DirectoryDelta60",
+        "exit": 0
+      },
+      {
+        "suite": "CompiledHelpers63",
+        "exit": 0
+      },
+      {
+        "suite": "ManagedExtensions",
+        "exit": 0
+      },
+      {
+        "suite": "ExtensionEffects",
+        "exit": 0
+      },
+      {
+        "suite": "NamingFlows119",
+        "exit": 0
+      },
+      {
+        "suite": "Integration",
+        "exit": 0
+      },
+      {
+        "suite": "CliOutput",
+        "exit": 0
+      },
+      {
+        "suite": "AuditPath",
+        "exit": 0
+      },
+      {
+        "suite": "AuditSink",
+        "exit": 0
+      },
+      {
+        "suite": "OptionalIntegrations",
+        "exit": 0
+      },
+      {
+        "suite": "RetiredFeatures",
+        "exit": 0
+      },
+      {
+        "suite": "Workbench120",
+        "exit": 0
+      },
+      {
+        "suite": "ConfigEditor120",
+        "exit": 0
+      },
+      {
+        "suite": "NamingConvention119",
+        "exit": 0
+      },
+      {
+        "suite": "ReceiptTools120",
+        "exit": 0
+      },
+      {
+        "suite": "BatchNames120",
+        "exit": 0,
+        "verification": "Passed after loading complete contract dependencies in the fixture"
+      },
+      {
+        "suite": "Collections120",
+        "exit": 0
+      },
+      {
+        "suite": "V1Improvements",
+        "exit": 0,
+        "verification": "Passed after loading complete contract dependencies in the fixture"
+      },
+      {
+        "suite": "DomainNavigation",
+        "exit": 0
+      },
+      {
+        "suite": "RandomNames",
+        "exit": 0
+      },
+      {
+        "suite": "NamesLoading",
+        "exit": 0
+      },
+      {
+        "suite": "DirectoryCache",
+        "exit": 0
+      },
+      {
+        "suite": "BulkPlanning",
+        "exit": 0
+      },
+      {
+        "suite": "Reliability",
+        "exit": 0
+      },
+      {
+        "suite": "WorkerContract",
+        "exit": 0
+      },
+      {
+        "suite": "Settings",
+        "exit": 0,
+        "verification": "Passed after loading complete contract dependencies in the fixture"
+      },
+      {
+        "suite": "InterventionView",
+        "exit": 0
+      },
+      {
+        "suite": "UiPresentation",
+        "exit": 0,
+        "verification": "Passed after loading complete contract dependencies in the fixture"
+      },
+      {
+        "suite": "Zoom",
+        "exit": 0
+      },
+      {
+        "suite": "ToolsTabs",
+        "exit": 0
+      },
+      {
+        "suite": "HomeDashboard",
+        "exit": 0
+      },
+      {
+        "suite": "Automation",
+        "exit": 0
+      },
+      {
+        "suite": "JoinReservation",
+        "exit": 0
+      },
+      {
+        "suite": "BootIdentity",
+        "exit": 0
+      },
+      {
+        "suite": "OptionalPostCheck",
+        "exit": 0
+      },
+      {
+        "suite": "OptionalFollowupUi",
+        "exit": 0,
+        "verification": "Passed after loading complete contract dependencies in the fixture"
+      },
+      {
+        "suite": "Common",
+        "exit": 0
+      },
+      {
+        "suite": "LoginPreferences",
+        "exit": 0
+      },
+      {
+        "suite": "RemotePreparation",
+        "exit": 0
+      },
+      {
+        "suite": "HeadlessAudit",
+        "exit": 0
+      },
+      {
+        "suite": "ReconciliationAudit",
+        "exit": 0
+      },
+      {
+        "suite": "SecretOutputs",
+        "exit": 0
+      },
+      {
+        "suite": "SessionMeasure",
+        "exit": 0
+      }
+    ],
+    "suiteCount": 46,
+    "repairedFixtures": [
+      "Engine",
+      "BatchNames120",
+      "V1Improvements",
+      "Settings",
+      "UiPresentation",
+      "OptionalFollowupUi"
+    ],
+    "scope": "Real pure helpers and local runspaces; mocked external Windows/AD/ACL transports. Latest affected suite results recorded below."
+  },
+  "targetedCases": {
+    "Engine120": 95,
+    "ReadPool56": 15,
+    "DirectoryDelta60": 20,
+    "CompiledHelpers63": 10,
+    "ManagedExtensions": 21,
+    "ExtensionEffects": 21,
+    "NamingConvention119": 15,
+    "NamingFlows119": 11,
+    "WorkerContract": 20
+  },
+  "receiptVerification": "Real Start/SetEffect/Complete/Read intervention methods; attribute uncertainty blocks retry, observation returns nonzero on mismatch, ODJ receipt roundtrips and reconciles after simulated reboot. AD/DPAPI/djoin/ACL remain doubles.",
+  "windowsExecution": "NOT_RUN",
+  "wpfQualification": "NOT_RUN",
+  "adNetworkTests": "NOT_RUN",
+  "vmTestsRun": false,
+  "excluded": [
+    "ticket management",
+    "LAPS",
+    "GLPI/CMDB",
+    "multi-domain profiles",
+    "PowerShell 7 product migration"
+  ],
+  "pythonAffectedChecksAfterFinalChanges": {
+    "tests": 64,
+    "passed": 64,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "logSHA256": "d56ae7e9cd239f245390d1aef09b9ad52aab6faf972e8cca95537bc5dc8471de"
+  },
+  "latestPowerShellLogs": {
+    "effects-final.log": "103ee6e235ae595e48eab5bb2675e18d4b5c6485d1fa069ca04a1dbe3409e325",
+    "managed-final.log": "aeb1ecbab2e822f3c0d460308c4ee91144bd122efe53249cc6c7385d169196e9",
+    "naming-flows-final.log": "fe5d1ed7d92274262c79c37bf2e432531523d5f0c4c4a8b726c2cb601fdbc08a",
+    "worker-final.log": "52821a52c0bc645c8afdfcc7d996d8ce2f6320b81142bcc6ff1f92cd90b95809"
+  }
+}

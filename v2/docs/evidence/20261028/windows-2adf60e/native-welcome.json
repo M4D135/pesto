@@ -1,0 +1,17 @@
+{
+  "kind": "pesto.native-welcome-qualification",
+  "utc": "2026-10-28T11:10:45.7017370\u002B00:00",
+  "success": true,
+  "realUac": false,
+  "adExecuted": false,
+  "ordinaryProfileAccess": false,
+  "executableSha256": "b8361c8b0185ab5c528eb182639ca5bf81fbb456c647f68db410382190b33e24",
+  "checks": [
+    "readyWithoutPasswordOrClipping",
+    "cancelKeepsWindowAndActions",
+    "compactErrorKeepsActions",
+    "closedNormally",
+    "singleRequestPerClickAndRetry"
+  ],
+  "attempts": 3
+}

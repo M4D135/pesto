@@ -1,0 +1,78 @@
+{
+  "utc": "2026-09-30T12:17:43.464767+00:00",
+  "scope": "Negative controls of static source guards only; not a functional AD or PowerShell test",
+  "total": 10,
+  "detected": 10,
+  "results": [
+    {
+      "name": "bulk_autorun_regression",
+      "detected": true,
+      "failed_checks": [
+        "Bulk never selects/reboots newly prepared rows"
+      ]
+    },
+    {
+      "name": "bulk_collision_removed",
+      "detected": true,
+      "failed_checks": [
+        "Bulk reserves existing and queued target names"
+      ]
+    },
+    {
+      "name": "bulk_bypasses_site_rule",
+      "detected": true,
+      "failed_checks": [
+        "Bulk computes move with the shared site rule"
+      ]
+    },
+    {
+      "name": "readonly_worker_mutates",
+      "detected": true,
+      "failed_checks": [
+        "Read-only worker whitelist contains no mutation or arbitrary execution"
+      ]
+    },
+    {
+      "name": "late_result_applied",
+      "detected": true,
+      "failed_checks": [
+        "Late preflight result rejected by generation"
+      ]
+    },
+    {
+      "name": "unbounded_read_worker",
+      "detected": true,
+      "failed_checks": [
+        "Preflight uses runspace, deadline and named callbacks"
+      ]
+    },
+    {
+      "name": "source_identity_guard_removed",
+      "detected": true,
+      "failed_checks": [
+        "RenameComputer verifies source identity before a mutation"
+      ]
+    },
+    {
+      "name": "view_index_edits_wrong_row",
+      "detected": true,
+      "failed_checks": [
+        "Filtered editing resolves actual row, never view index"
+      ]
+    },
+    {
+      "name": "html_not_encoded",
+      "detected": true,
+      "failed_checks": [
+        "Reports escape HTML, suppress resources and preserve per-result mode"
+      ]
+    },
+    {
+      "name": "checkpoint_recovery_size_incompatible",
+      "detected": true,
+      "failed_checks": [
+        "Checkpoint read/write both bounded at 16 MiB"
+      ]
+    }
+  ]
+}

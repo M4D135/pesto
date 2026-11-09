@@ -1,0 +1,12 @@
+﻿Pane ""
+  Text "Ouverture de Pesto"
+  Text "Avec le compte Windows autorisé par l'UAC"
+  Text "LABO\pesto-qualif" #WindowsIdentity
+  Text "Connexion au domaine et chargement des sites…" #WindowsStatus
+  ProgressBar "" #WindowsProgress
+  Button "Réessayer" #WindowsRetry [inactif] [hors-ecran]
+  Button "Autre compte AD…" #WindowsOther [inactif] [hors-ecran]
+  Button "Annuler" #WindowsCancel
+    Text "Annuler"
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]

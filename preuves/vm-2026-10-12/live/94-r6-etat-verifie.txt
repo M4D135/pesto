@@ -1,0 +1,123 @@
+﻿ÉTAT OBSERVÉ, PAS UNE COMMANDE
+Lecture UTC : 2026-10-12T20:00:28.9185715Z
+
+WINDOWS
+Nom actif : P111301LY765128
+Nom configuré : P111301LY765128
+Redémarrage pour le nom : Non indiqué par ces deux valeurs
+Domaine : labo.local
+Dernier démarrage UTC : 2026-10-12T19:56:50.5000000Z
+Lecture : Local / 2026-10-12T20:00:27.8167698Z
+
+ACTIVE DIRECTORY
+Nom : P111301LY765128
+GUID : b4797c9c-d790-4797-bf71-424a57acb36e
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Lyon
+DN exact : CN=P111301LY765128,OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Protection anti-suppression : False
+Lecture UTC : 2026-10-12T20:00:27.6859413Z
+
+PLAN CONSERVÉ
+P111301VA765172 → P111301LY765128
+Jonction locale : un ajout, sans file ni nouvelle commande depuis cette fiche.
+OU finale prévue : OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+
+AVANT / PRÉVU / OBSERVÉ : le plan conservé reste inchangé.
+
+Controle                     Etat     Observe                                                                         Attendu                                                       
+--------                     ----     -------                                                                         -------                                                       
+Nom actif                    Conforme P111301LY765128                                                                 P111301LY765128                                               
+Domaine Windows              Conforme labo.local                                                                    labo.local                                                  
+Identité AD                  Conforme b4797c9c-d790-4797-bf71-424a57acb36e                                            b4797c9c-d790-4797-bf71-424a57acb36e                          
+Emplacement AD               Conforme OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-La...
+Jointure Entra de l'appareil NO       NO                                                                              À contrôler séparément si retrait                             
+Canal sécurisé               Conforme                                                                                 Lecture dédiée après redémarrage                              
+
+
+
+AVANT / PRÉVU / OBSERVÉ
+
+
+Champ      : Nom Windows actif
+Avant      : P111301VA765172
+Prevu      : P111301LY765128
+Observe    : P111301LY765128
+Etat       : Concordant
+AvantUtc   : 2026-10-12T19:51:54.0695866Z
+ObserveUtc : 2026-10-12T20:00:27.8167698Z
+
+Champ      : Nom Windows configuré
+Avant      : P111301VA765172
+Prevu      : P111301LY765128
+Observe    : P111301LY765128
+Etat       : Concordant
+AvantUtc   : 2026-10-12T19:51:54.0695866Z
+ObserveUtc : 2026-10-12T20:00:27.8167698Z
+
+Champ      : Domaine Windows
+Avant      : WORKGROUP
+Prevu      : labo.local
+Observe    : labo.local
+Etat       : Concordant
+AvantUtc   : 2026-10-12T19:51:54.0695866Z
+ObserveUtc : 2026-10-12T20:00:27.8167698Z
+
+Champ      : Identité Windows
+Avant      : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Prevu      : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Observe    : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Etat       : Concordant
+AvantUtc   : 2026-10-12T19:51:54.0695866Z
+ObserveUtc : 2026-10-12T20:00:27.8167698Z
+
+Champ      : Nom AD
+Avant      : Non enregistré
+Prevu      : P111301LY765128
+Observe    : P111301LY765128
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-12T20:00:27.6859413Z
+
+Champ      : GUID AD
+Avant      : Non enregistré
+Prevu      : b4797c9c-d790-4797-bf71-424a57acb36e
+Observe    : b4797c9c-d790-4797-bf71-424a57acb36e
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-12T20:00:27.6859413Z
+
+Champ      : Emplacement AD
+Avant      : Non enregistré
+Prevu      : OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Observe    : OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-12T20:00:27.6859413Z
+
+Champ      : Protection AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : False
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-12T20:00:27.6859413Z
+
+Champ      : Inscription Entra
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : NO
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-12T20:00:27.8167698Z
+
+Champ      : Canal sécurisé
+Avant      : Non enregistré
+Prevu      : True
+Observe    : True
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-12T20:00:27.8167698Z
+
+
+
+

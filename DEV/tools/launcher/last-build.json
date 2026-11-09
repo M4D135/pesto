@@ -1,0 +1,21 @@
+{
+  "Schema": 1,
+  "Version": "1.0",
+  "FileVersion": "1.0.0.0",
+  "Utc": "2026-11-08T23:44:36.445110+00:00",
+  "Clang": "Homebrew clang version 23.1.2",
+  "Lld": "Homebrew LLD 23.1.2",
+  "Exe": "Pesto.exe",
+  "Size": 118784,
+  "SHA256": "b7a20d3244125df812d3237b44d10590f4881c58da7c1d83ca0a618e4d6ac563",
+  "Inputs": {
+    "tools/launcher/Pesto-launcher.c": "93b1d9f310f6075b9e2f70fa804f33ebe47cfc9b1f3d64c841d70e2a1a21a836",
+    "tools/launcher/pesto_runtime.h": "6cb59d5113237892e48bfe1f517924f0dc053528db0e4f7b7339c32e1dafefc1",
+    "tools/launcher/pesto_sha256.h": "23dee663ebf2aad88ee45002c9c71abe87ff2fc4621b8a1610466d471bc233b8",
+    "tools/launcher/pesto_verify.h": "4583e08d7d0e39dd21e2ecd7ae64d981bc4d5f8f913eb016a348a67ac2942241",
+    "tools/launcher/Pesto.manifest": "79213be8dcb79ae4859a1d9aa61ce262e018af327ded7139f52cd7e42f34999f",
+    "wad/Pesto.ico": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a",
+    "tools/version.json": "e5bd73d68dce560d34edec2efe8628b81ebcd546717bae19c871e48b677304f2"
+  },
+  "WindowsExecution": "NOT_RUN"
+}

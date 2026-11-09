@@ -1,0 +1,6 @@
+clic : #BtnReadComputer (Lire le poste)
+#CbOrg = Département 111301
+#CbSite = Paris
+#CbService = 765 (saisie)
+#CbType = Portable
+capture C:\PestoRecette20261012\preuves\18-rename-plan.png 1440x860

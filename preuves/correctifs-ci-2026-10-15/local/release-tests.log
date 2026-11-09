@@ -1,0 +1,55 @@
+test_attestation_targets_generated_reports_not_supplied_executable (test_release_120.Release120Tests.test_attestation_targets_generated_reports_not_supplied_executable) ... ok
+test_compare_identical_supplied_builds (test_release_120.Release120Tests.test_compare_identical_supplied_builds) ... ok
+test_development_includes_adapter_formats (test_release_120.Release120Tests.test_development_includes_adapter_formats) ... ok
+test_evidence_requires_exact_build (test_release_120.Release120Tests.test_evidence_requires_exact_build) ... ok
+test_invalid_scope_refused (test_release_120.Release120Tests.test_invalid_scope_refused) ... ok
+test_managed_existing_destination_preserved (test_release_120.Release120Tests.test_managed_existing_destination_preserved) ... ok
+test_managed_install_detect_uninstall_preserves_configuration_and_unknown_files (test_release_120.Release120Tests.test_managed_install_detect_uninstall_preserves_configuration_and_unknown_files) ... ok
+test_managed_modified_code_never_removed (test_release_120.Release120Tests.test_managed_modified_code_never_removed) ... ok
+test_managed_mutation_guard_prevents_deletion (test_release_120.Release120Tests.test_managed_mutation_guard_prevents_deletion) ... ok
+test_metadata_deterministic_for_same_input (test_release_120.Release120Tests.test_metadata_deterministic_for_same_input) ... ok
+test_only_engine_build_json_is_runtime_exception (test_release_120.Release120Tests.test_only_engine_build_json_is_runtime_exception) ... ok
+test_output_inside_source_refused (test_release_120.Release120Tests.test_output_inside_source_refused) ... ok
+test_pack_identity_in_release_dossier (test_release_120.Release120Tests.test_pack_identity_in_release_dossier) ... ok
+test_provenance_never_claims_signature_or_windows (test_release_120.Release120Tests.test_provenance_never_claims_signature_or_windows) ... ok
+test_qualification_all_starts_not_run (test_release_120.Release120Tests.test_qualification_all_starts_not_run) ... ok
+test_qualification_cannot_pass_without_evidence (test_release_120.Release120Tests.test_qualification_cannot_pass_without_evidence) ... ok
+test_qualification_preserves_original_and_prevents_overwriting_case (test_release_120.Release120Tests.test_qualification_preserves_original_and_prevents_overwriting_case) ... ok
+test_raw_evidence_stays_raw (test_release_120.Release120Tests.test_raw_evidence_stays_raw) ... ok
+test_rebind_refuses_already_signed_module (test_release_120.Release120Tests.test_rebind_refuses_already_signed_module) ... ok
+test_release_output_existing_preserved (test_release_120.Release120Tests.test_release_output_existing_preserved) ... ok
+test_ring_cli_delegates_existing_safe_updater (test_release_120.Release120Tests.test_ring_cli_delegates_existing_safe_updater) ... ok
+test_ring_invalid_hash_refused (test_release_120.Release120Tests.test_ring_invalid_hash_refused) ... ok
+test_ring_requires_exact_supplied_artifact (test_release_120.Release120Tests.test_ring_requires_exact_supplied_artifact) ... ok
+test_sbom_contains_exact_runtime_hashes_not_configuration (test_release_120.Release120Tests.test_sbom_contains_exact_runtime_hashes_not_configuration) ... ok
+test_secret_canary_report_does_not_repeat_value (test_release_120.Release120Tests.test_secret_canary_report_does_not_repeat_value) ... ok
+test_secret_scan_bomless_utf16_is_unexamined (test_release_120.Release120Tests.test_secret_scan_bomless_utf16_is_unexamined) ... ok
+test_secret_scan_cli_accepts_bom_on_first_canary (test_release_120.Release120Tests.test_secret_scan_cli_accepts_bom_on_first_canary) ... ok
+test_secret_scan_cli_input_error_has_no_trace_or_sensitive_path (test_release_120.Release120Tests.test_secret_scan_cli_input_error_has_no_trace_or_sensitive_path) ... ok
+test_secret_scan_decodes_utf16_big_endian_with_bom (test_release_120.Release120Tests.test_secret_scan_decodes_utf16_big_endian_with_bom) ... ok
+test_secret_scan_decodes_windows_utf16 (test_release_120.Release120Tests.test_secret_scan_decodes_windows_utf16) ... ok
+test_secret_scan_directory_error_callback_is_reported (test_release_120.Release120Tests.test_secret_scan_directory_error_callback_is_reported) ... ok
+test_secret_scan_does_not_claim_images_examined (test_release_120.Release120Tests.test_secret_scan_does_not_claim_images_examined) ... ok
+test_secret_scan_enumeration_exception_is_reported (test_release_120.Release120Tests.test_secret_scan_enumeration_exception_is_reported) ... ok
+test_secret_scan_invalid_utf8_is_unexamined (test_release_120.Release120Tests.test_secret_scan_invalid_utf8_is_unexamined) ... ok
+test_secret_scan_masking_does_not_reintroduce_another_canary (test_release_120.Release120Tests.test_secret_scan_masking_does_not_reintroduce_another_canary) ... ok
+test_secret_scan_masks_hit_and_unexamined_paths_stably (test_release_120.Release120Tests.test_secret_scan_masks_hit_and_unexamined_paths_stably) ... ok
+test_secret_scan_read_error_is_unexamined_without_raw_exception (test_release_120.Release120Tests.test_secret_scan_read_error_is_unexamined_without_raw_exception) ... ok
+test_secret_scan_refuses_file_root (test_release_120.Release120Tests.test_secret_scan_refuses_file_root) ... ok
+test_secret_scan_refuses_link_root (test_release_120.Release120Tests.test_secret_scan_refuses_link_root) ... ok
+test_secret_scan_refuses_linked_child (test_release_120.Release120Tests.test_secret_scan_refuses_linked_child) ... ok
+test_secret_scan_root_io_error_is_reported (test_release_120.Release120Tests.test_secret_scan_root_io_error_is_reported) ... ok
+test_secret_scan_stat_error_is_unexamined_without_raw_exception (test_release_120.Release120Tests.test_secret_scan_stat_error_is_unexamined_without_raw_exception) ... ok
+test_secret_scan_utf8_with_nul_is_unexamined (test_release_120.Release120Tests.test_secret_scan_utf8_with_nul_is_unexamined) ... ok
+test_signed_engine_rebind_preserves_runtime_bytes (test_release_120.Release120Tests.test_signed_engine_rebind_preserves_runtime_bytes) ... ok
+test_signing_requires_existing_certificate_timestamp_and_copy (test_release_120.Release120Tests.test_signing_requires_existing_certificate_timestamp_and_copy) ... ok
+test_stale_build_record_refused (test_release_120.Release120Tests.test_stale_build_record_refused) ... ok
+test_toolchain_mismatch_refused (test_release_120.Release120Tests.test_toolchain_mismatch_refused) ... ok
+test_uninstall_conflicting_update_fence_preserved (test_release_120.Release120Tests.test_uninstall_conflicting_update_fence_preserved) ... ok
+test_unknown_ring_refused (test_release_120.Release120Tests.test_unknown_ring_refused) ... ok
+test_workflow_placed_at_repository_root_and_runs_on_push (test_release_120.Release120Tests.test_workflow_placed_at_repository_root_and_runs_on_push) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.207s
+
+OK

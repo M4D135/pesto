@@ -1,0 +1,350 @@
+{
+  "Passed": 85,
+  "Failed": 0,
+  "Checks": [
+    {
+      "Name": "Completed code 10 is optional without changing receipt",
+      "Passed": true
+    },
+    {
+      "Name": "Completed code 20 is optional without changing receipt",
+      "Passed": true
+    },
+    {
+      "Name": "Completed code 77 is optional without changing receipt",
+      "Passed": true
+    },
+    {
+      "Name": "JSON integer from disk is accepted",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [20] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [20] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [True] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [32] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [89] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [96] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [97] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [98] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Non-success or untyped code [99] is not optional",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [Running] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [Uncertain] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [Partial] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [Protection] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [MoveReady] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [Failed] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [Verified] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [pendingrestart] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Phase [] does not bypass protection",
+      "Passed": true
+    },
+    {
+      "Name": "Property Outcome does not replace Phase",
+      "Passed": true
+    },
+    {
+      "Name": "A direct receipt without code cannot masquerade as legacy join",
+      "Passed": true
+    },
+    {
+      "Name": "Protection [Requested] remains blocking",
+      "Passed": true
+    },
+    {
+      "Name": "Protection [Disabled] remains blocking",
+      "Passed": true
+    },
+    {
+      "Name": "Protection [Uncertain] remains blocking",
+      "Passed": true
+    },
+    {
+      "Name": "Protection [] remains blocking",
+      "Passed": true
+    },
+    {
+      "Name": "Requested mutation is never optional",
+      "Passed": true
+    },
+    {
+      "Name": "Completed move resume preserves parent code89 yet permits follow-up",
+      "Passed": true
+    },
+    {
+      "Name": "Validated legacy join accepts optional follow-up",
+      "Passed": true
+    },
+    {
+      "Name": "Malformed legacy join cannot bypass guard",
+      "Passed": true
+    },
+    {
+      "Name": "Direct startup no longer requires manual observation",
+      "Passed": true
+    },
+    {
+      "Name": "Legacy direct without linked ledger permits subsequent worker",
+      "Passed": true
+    },
+    {
+      "Name": "Foreign operator receipt remains refused",
+      "Passed": true
+    },
+    {
+      "Name": "Unknown direct receipt remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Completed central receipt has no same-target conflict",
+      "Passed": true
+    },
+    {
+      "Name": "Central Running remains same-target conflict",
+      "Passed": true
+    },
+    {
+      "Name": "Central Uncertain remains same-target conflict",
+      "Passed": true
+    },
+    {
+      "Name": "Central Partial remains same-target conflict",
+      "Passed": true
+    },
+    {
+      "Name": "Central MoveReady remains same-target conflict",
+      "Passed": true
+    },
+    {
+      "Name": "Fresh joined status permits operation without certifying receipt",
+      "Passed": true
+    },
+    {
+      "Name": "Joined local state cannot resolve Running receipt",
+      "Passed": true
+    },
+    {
+      "Name": "Joined local state cannot resolve Uncertain receipt",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [boot] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [pending] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [active] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [domain] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [workgroup] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [securefalse] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [securetype] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [secureerror] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete local state [machine] remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Stored join rereads current state before unrelated operation",
+      "Passed": true
+    },
+    {
+      "Name": "New pending rename is rejected by actual target guard",
+      "Passed": true
+    },
+    {
+      "Name": "Completed shared coordination releases owned keys only",
+      "Passed": true
+    },
+    {
+      "Name": "Active shared coordination cannot be cleared as optional",
+      "Passed": true
+    },
+    {
+      "Name": "Old completed coordination is reconciled before acquiring new same-target lease",
+      "Passed": true
+    },
+    {
+      "Name": "Other owner shared lock is never discarded to allow a new operation",
+      "Passed": true
+    },
+    {
+      "Name": "Completed receipt does not hide a running receipt for same target",
+      "Passed": true
+    },
+    {
+      "Name": "Completion releases successful shared lease without marking verified",
+      "Passed": true
+    },
+    {
+      "Name": "Core and direct worker retain mutex and fresh target check",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Entra=Requested cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Entra=Refused cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Entra=Uncertain cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Rename=Requested cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Rename=Refused cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Rename=Uncertain cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Move=Requested cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Move=Refused cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory effect Move=Uncertain cannot be optional",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory native join evidence Prepared remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory native join evidence Requested remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory native join evidence Refused remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Contradictory native join evidence Unknown remains blocked",
+      "Passed": true
+    },
+    {
+      "Name": "Local join receipt refuses injected native evidence without ResultCode",
+      "Passed": true
+    },
+    {
+      "Name": "Accepted native join evidence remains optional",
+      "Passed": true
+    },
+    {
+      "Name": "Subsequent legitimate rename cannot reblock an old accepted join",
+      "Passed": true
+    },
+    {
+      "Name": "An inconclusive optional observation cannot turn the receipt into Partial",
+      "Passed": true
+    },
+    {
+      "Name": "Real isolated direct worker [completed] preserves receipts and exclusion",
+      "Passed": true
+    },
+    {
+      "Name": "Real isolated direct worker [uncertain] preserves receipts and exclusion",
+      "Passed": true
+    },
+    {
+      "Name": "Real isolated direct worker [foreign] preserves receipts and exclusion",
+      "Passed": true
+    },
+    {
+      "Name": "Real isolated direct worker [busy] preserves receipts and exclusion",
+      "Passed": true
+    },
+    {
+      "Name": "Real isolated direct worker [invalid-id] preserves receipts and exclusion",
+      "Passed": true
+    }
+  ],
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "Scope": "Production engine functions with Windows/AD doubles and isolated coordination files"
+}

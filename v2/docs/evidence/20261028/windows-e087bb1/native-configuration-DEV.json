@@ -1,0 +1,676 @@
+{
+  "schemaVersion": 2,
+  "kind": "pesto.native-configuration-qualification",
+  "utc": "2026-10-27T13:45:34.0262448\u002B00:00",
+  "success": true,
+  "adQualification": false,
+  "adExecuted": false,
+  "realUac": false,
+  "ordinaryProfileAccess": false,
+  "uiScope": "mainform-webview2-buttons-and-native-dialogs",
+  "uiDriver": "compiled-dom-input-and-click",
+  "fixtureSetup": "synthetic-configuration-before-mainform-start",
+  "timeoutSeconds": 480,
+  "nativeUpdateInstallFromUiQualified": false,
+  "uncQualification": false,
+  "checks": [
+    "parentReady",
+    "isolatedConfigurationPage",
+    "nativeExportFromButton",
+    "nativeExportExact",
+    "noExportTemporaryFile",
+    "settingsUnchangedBeforeConfirmation",
+    "settingsSavedFromButton",
+    "settingsBackupExact",
+    "importCancelled",
+    "exportCancelled",
+    "invalidEncodingRejected",
+    "importPreviewBeforeWrite",
+    "importConfirmationCancelled",
+    "nativeImportFromButton",
+    "importRoundTrip",
+    "importBackupExact",
+    "customPackWaitsForConfirmation",
+    "customPackConfirmationCancelled",
+    "packDestinationCancelled",
+    "positiveNativeFolderSelection",
+    "customPackResultVisible",
+    "customPackValidated",
+    "customExecutableUnchanged",
+    "customDefaultsMatchUiExport",
+    "noCustomPackStagingLeft",
+    "freshProfileImportsDefaults",
+    "existingProfilePreserved",
+    "maintenanceFolderInspectedFromButton",
+    "maintenancePreparedFromButton",
+    "maintenancePreparedCopyExact",
+    "maintenanceInstallWaitsForConfirmation",
+    "maintenanceInstallConfirmationCancelled",
+    "maintenanceStatusFromButton",
+    "noForbiddenEffects",
+    "operatorDataPreserved",
+    "sourcePackUnchanged"
+  ],
+  "uiSteps": [
+    {
+      "step": "SetVersion",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Export",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "ChangePrefix",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "SaveSettings",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "ConfirmSettings",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Import",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Export",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Import",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Import",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "CancelImport",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Import",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "ConfirmImport",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Default",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "CancelDefault",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Default",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "ConfirmDefault",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "Default",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "ConfirmDefault",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "UpdateFolder",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "PrepareUpdate",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "InstallUpdate",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "CancelInstall",
+      "source": "dom",
+      "accepted": true
+    },
+    {
+      "step": "UpdateStatus",
+      "source": "dom",
+      "accepted": true
+    }
+  ],
+  "captures": [
+    "coexistence/configuration-export.png",
+    "coexistence/configuration-import-preview.png",
+    "coexistence/configuration-default-confirmation.png",
+    "coexistence/configuration-custom-pack.png",
+    "coexistence/maintenance-prepared.png",
+    "coexistence/maintenance-install-confirmation.png"
+  ],
+  "dialogObservations": [
+    {
+      "title": "Exporter les param\u00E8tres partageables",
+      "pathRequired": true,
+      "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "kind": "file",
+      "writeAttempts": 1,
+      "stableReads": 3,
+      "clicked": true,
+      "closedAfterClick": true,
+      "observedLength": 125,
+      "inputMethod": "focused-edit-character-input",
+      "typedCharacters": 125,
+      "writeAccepted": true,
+      "pathReadBackExact": true,
+      "editControlId": 1001,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 1350
+    },
+    {
+      "title": "Importer une configuration Pesto",
+      "pathRequired": false,
+      "requestedPath": null,
+      "kind": "file",
+      "writeAttempts": 0,
+      "stableReads": 0,
+      "clicked": true,
+      "closedAfterClick": true,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 404
+    },
+    {
+      "title": "Exporter les param\u00E8tres partageables",
+      "pathRequired": false,
+      "requestedPath": null,
+      "kind": "file",
+      "writeAttempts": 0,
+      "stableReads": 0,
+      "clicked": true,
+      "closedAfterClick": true,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 374
+    },
+    {
+      "title": "Importer une configuration Pesto",
+      "pathRequired": true,
+      "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\malformed.json",
+      "kind": "file",
+      "writeAttempts": 1,
+      "stableReads": 3,
+      "clicked": true,
+      "closedAfterClick": true,
+      "observedLength": 128,
+      "inputMethod": "focused-edit-character-input",
+      "typedCharacters": 128,
+      "writeAccepted": true,
+      "pathReadBackExact": true,
+      "editControlId": 1148,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 990
+    },
+    {
+      "title": "Importer une configuration Pesto",
+      "pathRequired": true,
+      "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "kind": "file",
+      "writeAttempts": 1,
+      "stableReads": 3,
+      "clicked": true,
+      "closedAfterClick": true,
+      "observedLength": 125,
+      "inputMethod": "focused-edit-character-input",
+      "typedCharacters": 125,
+      "writeAccepted": true,
+      "pathReadBackExact": true,
+      "editControlId": 1148,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 990
+    },
+    {
+      "title": "Importer une configuration Pesto",
+      "pathRequired": true,
+      "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "kind": "file",
+      "writeAttempts": 1,
+      "stableReads": 3,
+      "clicked": true,
+      "closedAfterClick": true,
+      "observedLength": 125,
+      "inputMethod": "focused-edit-character-input",
+      "typedCharacters": 125,
+      "writeAccepted": true,
+      "pathReadBackExact": true,
+      "editControlId": 1148,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 985
+    },
+    {
+      "title": "Choisir le dossier parent : Pesto y cr\u00E9era un nouveau pack personnalis\u00E9 complet, pr\u00EAt \u00E0 diffuser.",
+      "pathRequired": false,
+      "requestedPath": null,
+      "kind": "folder",
+      "writeAttempts": 0,
+      "stableReads": 0,
+      "clicked": true,
+      "closedAfterClick": true,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 380
+    },
+    {
+      "title": "Choisir le dossier parent : Pesto y cr\u00E9era un nouveau pack personnalis\u00E9 complet, pr\u00EAt \u00E0 diffuser.",
+      "pathRequired": true,
+      "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination",
+      "kind": "folder",
+      "writeAttempts": 1,
+      "stableReads": 3,
+      "clicked": true,
+      "closedAfterClick": true,
+      "observedLength": 134,
+      "inputMethod": "focused-edit-character-input",
+      "typedCharacters": 134,
+      "writeAccepted": true,
+      "pathReadBackExact": true,
+      "editControlId": 1152,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 998
+    },
+    {
+      "title": "Choisir le dossier du pack Pesto V2, local ou sur un partage UNC",
+      "pathRequired": true,
+      "requestedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination\\Pesto-DEV-personnalise-20261027-134617-e10ac1",
+      "kind": "folder",
+      "writeAttempts": 1,
+      "stableReads": 3,
+      "clicked": true,
+      "closedAfterClick": true,
+      "observedLength": 180,
+      "inputMethod": "focused-edit-character-input",
+      "typedCharacters": 180,
+      "writeAccepted": true,
+      "pathReadBackExact": true,
+      "editControlId": 1152,
+      "buttonFocusConfirmed": true,
+      "elapsedMs": 1061
+    }
+  ],
+  "channel": "DEV",
+  "sourceFingerprint": "35b85f601384c356b6220f18af39a41ce8793333ad16520ebbbdf88a9f011a74",
+  "executableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+  "exportObservation": {
+    "relativePath": "data/export.json",
+    "sha256": "e104b89382d84ec5bbdd6c600f9c4ecc278be2263cef8cf6f373472133f7e85f",
+    "configurationFingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+    "version": "native-ui-qualification"
+  },
+  "nativeExportFromUiQualified": true,
+  "nativeImportFromUiQualified": true,
+  "customPack": {
+    "relativePath": "data/selected destination/Pesto-DEV-personnalise-20261027-134617-e10ac1",
+    "fingerprint": "e5a3da1a275470591c35463e1a76e4022220a2adc3ab1833de6c2aea735af30c",
+    "configurationFingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+    "executableSha256": "e2f45e5032ae95e0582b4eebbc58ac8ae9548b1516b198822d32033cfb341d87",
+    "fileCount": 1175
+  },
+  "positiveFolderSelectionQualified": true,
+  "customPackButtonFlowQualified": true,
+  "maintenanceInspectionPreparationFromUiQualified": true,
+  "maintenanceInstallConfirmationCancelled": true,
+  "maintenanceScope": "local-folder-inspection-preparation-and-install-confirmation-cancellation",
+  "maintenancePreparedFingerprint": "e5a3da1a275470591c35463e1a76e4022220a2adc3ab1833de6c2aea735af30c",
+  "parentClosed": true,
+  "temporaryDataRemoved": true,
+  "stage": "integrity",
+  "backendCalls": [
+    {
+      "operation": "session.info",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 1,
+      "result": {
+        "version": "2.0.0-dev"
+      }
+    },
+    {
+      "operation": "coordination.status",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 2,
+      "result": {}
+    },
+    {
+      "operation": "configuration.settings",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 3,
+      "result": {
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+      }
+    },
+    {
+      "operation": "configuration.status",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 4,
+      "result": {
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+      }
+    },
+    {
+      "operation": "configuration.export",
+      "completed": true,
+      "confirmed": false,
+      "version": "native-ui-qualification",
+      "sequence": 5,
+      "result": {
+        "status": "exported",
+        "file": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+      }
+    },
+    {
+      "operation": "configuration.previewSettings",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 6,
+      "result": {
+        "fingerprint": "b309903c7ce6cc555f5fca684633bbb8d3f4325fb5ebbd7ab58403903874e4df",
+        "version": "settings-20261027-134557",
+        "planId": "59554a4cccc744899a1de98f09bc2c97"
+      }
+    },
+    {
+      "operation": "configuration.applyImport",
+      "completed": true,
+      "confirmed": true,
+      "planId": "59554a4cccc744899a1de98f09bc2c97",
+      "sequence": 7,
+      "result": {
+        "status": "applied",
+        "backup": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\LocalData\\Pesto\\v2\\DEV\\Live\\backups\\cfg.json.20261027-134557.c3c5e3e11e1f40b384c90df6c5b1f8f3.bak",
+        "fingerprint": "b309903c7ce6cc555f5fca684633bbb8d3f4325fb5ebbd7ab58403903874e4df"
+      }
+    },
+    {
+      "operation": "configuration.settings",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 8,
+      "result": {
+        "fingerprint": "b309903c7ce6cc555f5fca684633bbb8d3f4325fb5ebbd7ab58403903874e4df"
+      }
+    },
+    {
+      "operation": "coordination.status",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 9,
+      "result": {}
+    },
+    {
+      "operation": "session.info",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 10,
+      "result": {
+        "version": "2.0.0-dev"
+      }
+    },
+    {
+      "operation": "configuration.previewImport",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 11,
+      "result": {
+        "status": "cancelled"
+      }
+    },
+    {
+      "operation": "configuration.export",
+      "completed": true,
+      "confirmed": false,
+      "version": "native-ui-qualification",
+      "sequence": 12,
+      "result": {
+        "status": "cancelled",
+        "fingerprint": "b309903c7ce6cc555f5fca684633bbb8d3f4325fb5ebbd7ab58403903874e4df"
+      }
+    },
+    {
+      "operation": "configuration.previewImport",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 13,
+      "failureCode": "config.encoding"
+    },
+    {
+      "operation": "configuration.previewImport",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 14,
+      "result": {
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+        "version": "native-ui-qualification",
+        "planId": "1a0644459aaa4aa3b06b06e245e8f97e"
+      }
+    },
+    {
+      "operation": "configuration.previewImport",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 15,
+      "result": {
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+        "version": "native-ui-qualification",
+        "planId": "a218032e0372462482688cf13af81627"
+      }
+    },
+    {
+      "operation": "configuration.applyImport",
+      "completed": true,
+      "confirmed": true,
+      "planId": "a218032e0372462482688cf13af81627",
+      "sequence": 16,
+      "result": {
+        "status": "applied",
+        "backup": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\LocalData\\Pesto\\v2\\DEV\\Live\\backups\\cfg.json.20261027-134610.4371dbd843a94b2faa01573fe8f6e80f.bak",
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+      }
+    },
+    {
+      "operation": "configuration.settings",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 17,
+      "result": {
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f"
+      }
+    },
+    {
+      "operation": "session.info",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 18,
+      "result": {
+        "version": "2.0.0-dev"
+      }
+    },
+    {
+      "operation": "coordination.status",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 19,
+      "result": {}
+    },
+    {
+      "operation": "configuration.setDefault",
+      "completed": true,
+      "confirmed": true,
+      "version": "native-ui-qualification",
+      "sequence": 20,
+      "result": {
+        "status": "cancelled"
+      }
+    },
+    {
+      "operation": "configuration.setDefault",
+      "completed": true,
+      "confirmed": true,
+      "version": "native-ui-qualification",
+      "sequence": 21,
+      "result": {
+        "status": "prepared",
+        "destination": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination\\Pesto-DEV-personnalise-20261027-134617-e10ac1",
+        "fingerprint": "f504e531455ee3cc94c9f2ac3793068bf6bfea1b706a2750570b715f257df55f",
+        "version": "native-ui-qualification",
+        "distribution": "custom",
+        "official": false
+      }
+    },
+    {
+      "operation": "updates.inspect",
+      "completed": true,
+      "confirmed": false,
+      "kind": "folder",
+      "sequence": 22,
+      "result": {
+        "fingerprint": "e5a3da1a275470591c35463e1a76e4022220a2adc3ab1833de6c2aea735af30c",
+        "version": "2.0.0",
+        "candidateId": "2b4b87dd3853446c9573d34b28cb2006",
+        "distribution": "custom",
+        "channel": "DEV",
+        "officialSource": false
+      }
+    },
+    {
+      "operation": "updates.prepare",
+      "completed": true,
+      "confirmed": false,
+      "candidateId": "2b4b87dd3853446c9573d34b28cb2006",
+      "sequence": 23,
+      "result": {
+        "fingerprint": "e5a3da1a275470591c35463e1a76e4022220a2adc3ab1833de6c2aea735af30c",
+        "version": "2.0.0",
+        "preparedId": "05c575605987407b98232a728ff1e94e",
+        "distribution": "custom",
+        "channel": "DEV",
+        "officialSource": false
+      }
+    },
+    {
+      "operation": "updates.status",
+      "completed": true,
+      "confirmed": false,
+      "sequence": 24,
+      "result": {
+        "status": "idle",
+        "fingerprint": "35b85f601384c356b6220f18af39a41ce8793333ad16520ebbbdf88a9f011a74",
+        "version": "2.0.0",
+        "distribution": "candidate",
+        "channel": "DEV",
+        "pendingRecovery": false,
+        "canRollback": false
+      }
+    }
+  ],
+  "hostCalls": [
+    {
+      "action": "export",
+      "completed": true,
+      "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "selectionObservedBeforeIo": true,
+      "cancelled": false,
+      "relativePath": "data/export.json"
+    },
+    {
+      "action": "import",
+      "completed": true,
+      "cancelled": true
+    },
+    {
+      "action": "export",
+      "completed": true,
+      "cancelled": true
+    },
+    {
+      "action": "import",
+      "completed": true,
+      "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\malformed.json",
+      "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\malformed.json",
+      "selectionObservedBeforeIo": true,
+      "failureCode": "config.encoding"
+    },
+    {
+      "action": "import",
+      "completed": true,
+      "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "selectionObservedBeforeIo": true,
+      "cancelled": false
+    },
+    {
+      "action": "import",
+      "completed": true,
+      "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\export.json",
+      "selectionObservedBeforeIo": true,
+      "cancelled": false
+    },
+    {
+      "action": "destination",
+      "completed": true,
+      "cancelled": true
+    },
+    {
+      "action": "destination",
+      "completed": true,
+      "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination",
+      "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination",
+      "selectionObservedBeforeIo": true,
+      "cancelled": false,
+      "relativePath": "data/selected destination/Pesto-DEV-personnalise-20261027-134617-e10ac1"
+    },
+    {
+      "action": "source",
+      "completed": true,
+      "selectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination\\Pesto-DEV-personnalise-20261027-134617-e10ac1",
+      "normalizedSelectedPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-configuration-DEV-713901b57bf54d3e8108934a77adebf5\\coexistence\\data\\selected destination\\Pesto-DEV-personnalise-20261027-134617-e10ac1",
+      "selectionObservedBeforeIo": true,
+      "cancelled": false,
+      "relativePath": "data/selected destination/Pesto-DEV-personnalise-20261027-134617-e10ac1"
+    }
+  ],
+  "forbiddenBackendInvocations": 0,
+  "forbiddenHostInvocations": 0,
+  "httpInvocations": 0,
+  "sourcePackUnchanged": true
+}

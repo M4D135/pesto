@@ -1,0 +1,827 @@
+{
+  "Schema": 1,
+  "Document": "administrateur",
+  "Status": "INTERMEDIATE_VISUAL_PASS",
+  "CreatedAtUtc": "2026-10-12T22:09:24.066860+00:00",
+  "DOCXSHA256": "1a23a733df48e720a6397ccc5b0b9fda13b54eb0c401af17641ebdf4bb2f4e4d",
+  "PDFSHA256": "af47787b5362747ae37ba595082794cb29053895e41b9872df4500dac218f47b",
+  "PageCount": 57,
+  "BaselineReport": "preuves/guides-zoom-2026-10-12/administrateur-visual-qa-initial.json",
+  "BaselineReportSHA256": "b342c77115eeb86ef522efa099c96e468f91776fa8bfab641d0909eeec7d1d56",
+  "IndividuallyOpenedPages": [
+    15,
+    47
+  ],
+  "Pages": [
+    {
+      "Page": 1,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-1.png",
+      "SHA256": "1335e0946dfe93da1afae42f684b13988dd4d4d59937e3b1619b062bfdb8c138",
+      "BodySHA256": "3c425d5f28c126b5bf2992f16f403c5d8f47e63fa22046e9cbf2ada68dc3aa94",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 1,
+      "IdenticalBodyToBaseline": 1,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 2,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-2.png",
+      "SHA256": "1b7937f1219ab75e6044352067db830765e5b1327495a9da8b625956162cc55f",
+      "BodySHA256": "b28b05b6b0b91a54dbb6b346ce5b855a196d112ab3487b5ba4204de1f984604d",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 2,
+      "IdenticalBodyToBaseline": 2,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 3,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-3.png",
+      "SHA256": "271cac3205a5e74f8b65df510f02fe03367d93e28e7a92f50bcb228ee9b57b03",
+      "BodySHA256": "8aee002262c035b29be6827de45e360cf4c5ea08f283195b7be05afab09ad9a8",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 3,
+      "IdenticalBodyToBaseline": 3,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 4,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-4.png",
+      "SHA256": "f00e186cb5500f66f86fbe4093d4f1130a425b159d5a21ec03077310f1af554f",
+      "BodySHA256": "819a9d5cfdb35814c6e84f47730faba614a4b1fe92f048710aa8e6f1050a6556",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 4,
+      "IdenticalBodyToBaseline": 4,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 5,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-5.png",
+      "SHA256": "77100d07cf96f2faac22e6202237df360c0fa092f3979faf313cff1a03ce311d",
+      "BodySHA256": "6d007f947aaea2ef904627dd3d3ee77dea171ce587db4639dfde9b4f965407bc",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 5,
+      "IdenticalBodyToBaseline": 5,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 6,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-6.png",
+      "SHA256": "d754337c220d3a4e88e5f2362d8edd7cfae1217bc2dabb6544e96f664cdbf74f",
+      "BodySHA256": "e91e0ae267cccd09b3a11efa1068cca43fbdbaa04c20eeee1e2e414dbe511447",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 6,
+      "IdenticalBodyToBaseline": 6,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 7,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-7.png",
+      "SHA256": "45d24f196bab6b5569db4dac81284e0fd6f3ad499dc1df4afab8d342f8741fa7",
+      "BodySHA256": "05f353e6542fafb1f4f8e356254e5beb567cb8ad7fb1d759f1307e433a8e0b6c",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 7,
+      "IdenticalBodyToBaseline": 7,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 8,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-8.png",
+      "SHA256": "b83807f78b6a3cdd5c0d3626f9e69d8a7ce5dbde3864deaada86705d458a91ab",
+      "BodySHA256": "681d38cc3c45854f102e2d6eb102c84fcb07406cb1bea6073c39f7e50a598ac3",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 8,
+      "IdenticalBodyToBaseline": 8,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 9,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-9.png",
+      "SHA256": "547cdda794016a9087389adbc5c110a88ce8781addb9301e499f503f6133feac",
+      "BodySHA256": "10532b5a5168d0f46578a954f98cdf2a1124b829f4e72c8821eaeac1c4c4d3b5",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 9,
+      "IdenticalBodyToBaseline": 9,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 10,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-10.png",
+      "SHA256": "5693cf3ad4e411580a5223e5bea387c6667ccbd29519140dd904b587c88df2cd",
+      "BodySHA256": "c813283a46bad0a99b7581f5f7e958e8a4c443a747f5e4b5754ab9199354ab14",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 10,
+      "IdenticalBodyToBaseline": 10,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 11,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-11.png",
+      "SHA256": "ab6c118c486f3ee4546f5dac8316307ef4093cf3719bfc641df814b231fc47e2",
+      "BodySHA256": "73414c63986b9bd25919a81dee636d12d167807e53ce0abc85378c959f46c28a",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 11,
+      "IdenticalBodyToBaseline": 11,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 12,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-12.png",
+      "SHA256": "ddd8870f263b09834e74d5b9fc2336484fda36f7ce269b35f3c6b38f04ffd613",
+      "BodySHA256": "fd56efdd4cff04b20dd23296d58044479009cae1fef010d5a4baba18e92c3b97",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 12,
+      "IdenticalBodyToBaseline": 12,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 13,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-13.png",
+      "SHA256": "69174379318824f096e268e886776478ff6173139de9efd6c7f329a185577b41",
+      "BodySHA256": "eb7e900aec0e631b0cc17b99e5e09e3e9115b63a9b24c641bd3b5af05c584d8b",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 13,
+      "IdenticalBodyToBaseline": 13,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 14,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-14.png",
+      "SHA256": "8220976d979be1bbeacc3d46cff902da681caef40ef05f0543e8d898a519ea4d",
+      "BodySHA256": "8cfaf7ce95c6c5667a7cac5e38fbc7add40768ee761ba8b4d04b2d276eb8ffe8",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 14,
+      "IdenticalBodyToBaseline": 14,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 15,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-15.png",
+      "SHA256": "4224c8163f398fcc529c31735f827cae9206b99e93677712e41438b34f67e87c",
+      "BodySHA256": "7c12bfe5f4051beac24be15fab5a19ddb3012835cec30f4fe6f2a4541dee0354",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": null,
+      "IdenticalBodyToBaseline": null,
+      "NeedsVisualReview": true,
+      "VisualResult": "PASS"
+    },
+    {
+      "Page": 16,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-16.png",
+      "SHA256": "953f9ec4b211e5fb0243cda52a90863d5b2e56953cac9f8b796f41e34d7007b9",
+      "BodySHA256": "a6b9483275e8f5028e5286c3070d8e69a0f739f52ac18a95c31c692c96f7627e",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 16,
+      "IdenticalBodyToBaseline": 16,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 17,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-17.png",
+      "SHA256": "6371fffc81159892505bc24f8b4d6cce1ece076b2b5c28f10d01888b86722786",
+      "BodySHA256": "584ec4959b04f6cd354bbd5c06e343700fa7b8df248a4795a72a1c882faa27ab",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 17,
+      "IdenticalBodyToBaseline": 17,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 18,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-18.png",
+      "SHA256": "fa5414d38fa2a08a363e8a43f59a5d33f9a84c654349f68c8da74f31368cfc8c",
+      "BodySHA256": "4fd5f93f803536462e9e94cd9bc7c6433d266213c1881792cb3db5495cdbfe72",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 18,
+      "IdenticalBodyToBaseline": 18,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 19,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-19.png",
+      "SHA256": "b7c6b2475176c009e99c68ebeb2c08c9ff87a1b12ec64ddc9600c51ea8d2f629",
+      "BodySHA256": "73a635615b7deaf211f8a3bfd1b8e8d231d31647f2cb7624f81900c896ede603",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 19,
+      "IdenticalBodyToBaseline": 19,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 20,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-20.png",
+      "SHA256": "8d8df280e0c0a6b83254397753e5f97cae58de4aafc9cf64f931090e0514006b",
+      "BodySHA256": "ef85d1811253ebe6629490c9ed6e894c58e26261555c967f2b009d27ddb1e6d1",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 20,
+      "IdenticalBodyToBaseline": 20,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 21,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-21.png",
+      "SHA256": "f124569580a147751510c71cbac8723fec444ca2bdd61e20705b59cde01d82d9",
+      "BodySHA256": "ae06868f58584450365bbd9e2b6a5aad00a3973a5a5df0fb233f3b16ea765cb7",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 21,
+      "IdenticalBodyToBaseline": 21,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 22,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-22.png",
+      "SHA256": "bbe4f62b96a5f458aa5f0827d2f1af14583af2b3efc24c8625238ee28bbdcc94",
+      "BodySHA256": "d99ad2ebc67333447b9e83dc73d7871c97427c12c8a0b96d08049535605b8a44",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 22,
+      "IdenticalBodyToBaseline": 22,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 23,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-23.png",
+      "SHA256": "20e6fb3f2cc52bf08fca0aa1a74ad45152ba42ee15413febb99402e4bccb319c",
+      "BodySHA256": "24d4df73ce1416ff94b2a97eb47342fc0cff9cb0525f6cc4212af68ad8fc42ec",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 23,
+      "IdenticalBodyToBaseline": 23,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 24,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-24.png",
+      "SHA256": "b4e02630ebbfdddb951664b83b5a4c5a49f204064b2f66eda6caa9580b66425e",
+      "BodySHA256": "adc477d9fef7b8ced46ffa63a5a2bb3a285e8864e93cb58a597cd6c55d4e1c61",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 24,
+      "IdenticalBodyToBaseline": 24,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 25,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-25.png",
+      "SHA256": "60d24069a0bfa731182e8f9827f10d655b2aac259b74f7921d3bdfbe0efb9ace",
+      "BodySHA256": "1ceab2eb79db0920bcec1588792a4251f3c9c3faeeb06ecf68e7edf42d66d9f6",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 25,
+      "IdenticalBodyToBaseline": 25,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 26,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-26.png",
+      "SHA256": "e5ae67cec6cddd6ba794f8754f2861272c9ff68e273ac39f9b79745fcba00ef3",
+      "BodySHA256": "a5605ad59cbbebe843d3af66dcbfa5a789fa1de49f95eeb1a49f455b4e80d087",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 26,
+      "IdenticalBodyToBaseline": 26,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 27,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-27.png",
+      "SHA256": "ef6f62372a0234e40afe4369eb8310d85d9bc0e25c5c529b2673fd902b51778f",
+      "BodySHA256": "ee0e854f4fe23c115a62ce59864878779acf98b658212c8d331db9deb576d3fd",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 27,
+      "IdenticalBodyToBaseline": 27,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 28,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-28.png",
+      "SHA256": "fae4225f99c6d851305573343d6fb0a5c91ec70f4b92b13f78b3439967b764c2",
+      "BodySHA256": "308eed4d809ae1c58abcb79446e0365b3bbd9b32998ed32853bba7de1f838a5b",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 28,
+      "IdenticalBodyToBaseline": 28,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 29,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-29.png",
+      "SHA256": "c0f52ea0f1136655c26bbf90ae60efc0181a5c22ae6fad1f0821fde150b992c6",
+      "BodySHA256": "e623d12003b01369fb4791d1e842d0dfb418a3b8b40e3da32a60d0df94cca29c",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 29,
+      "IdenticalBodyToBaseline": 29,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 30,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-30.png",
+      "SHA256": "a1c9b87e8eb322664a7e628bb75c98f161cc1623f41fdc458714ffd6be86f3a8",
+      "BodySHA256": "14b0339cc2b7871a45cd2e1d061d4086f0f30e07e4c16160465807c179c82a0b",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 30,
+      "IdenticalBodyToBaseline": 30,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 31,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-31.png",
+      "SHA256": "81ea52ae85ee0b74f412315007621b6a2cce97d4d015dd487083a5deacab87cf",
+      "BodySHA256": "8cc00e4650ecfd49da3cca85096fe680fb220245abc437cbaa8545c0a77ce011",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 31,
+      "IdenticalBodyToBaseline": 31,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 32,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-32.png",
+      "SHA256": "cd707e6dc2b84046ba68fc5b497634f510da1f82fc641ac8dbb369088f87d8aa",
+      "BodySHA256": "e9e890f43b7f23317c494a2ed72138b05831bfe81086a3cfcad48a2d60692f4b",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 32,
+      "IdenticalBodyToBaseline": 32,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 33,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-33.png",
+      "SHA256": "b1c0462e62ac9126dec6814fc9be479b16afd2fd140bd8ad669b83ce5fba5050",
+      "BodySHA256": "ba9f4b8c1c12c030ff7e25604ea3f976366172aed981d6ebca5ae7fff86539cd",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 33,
+      "IdenticalBodyToBaseline": 33,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 34,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-34.png",
+      "SHA256": "464d1d027aa137a6592ece7bff47fb6a8062f61d84a3c87ea0c38a9a128e92d3",
+      "BodySHA256": "094cefd81342fff079823ae3666ff74587ac2b3286313f1e8aefc837deaaa009",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 34,
+      "IdenticalBodyToBaseline": 34,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 35,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-35.png",
+      "SHA256": "aa5cdb734116b2f9eee902ad7fc39dfca46ad9bd8022b5accfe19cd5f861eb09",
+      "BodySHA256": "84a33d95698c31d1b9b744d49932e7fdb10b176c05f8c75cdf7318b4cb8ac60a",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 35,
+      "IdenticalBodyToBaseline": 35,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 36,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-36.png",
+      "SHA256": "0bf7daf6ea882d7856c8174d8ec2b4ba5b478f14a86250fe963f84f2eb09ad0f",
+      "BodySHA256": "ca7fe94dfddc8b59b686ff6ec0029aca9e166515e627f059c289b4bd0464cf5e",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 36,
+      "IdenticalBodyToBaseline": 36,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 37,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-37.png",
+      "SHA256": "51ce5334ee5a71ce6462ed3241fcf316a4e4f89a777172b3be4d26d40d0983b4",
+      "BodySHA256": "9dd836b23a8db1cd0db0155efca018cb4834d6e00b667f2b355b214a2b6c6c17",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 37,
+      "IdenticalBodyToBaseline": 37,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 38,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-38.png",
+      "SHA256": "29ac010a587099963d16464cd8132736cebc2f58288abb63bb7b650f36777e34",
+      "BodySHA256": "b995afc3bf8c25a9606716349f261166af7829e596d36c06c2a99485973932e0",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 38,
+      "IdenticalBodyToBaseline": 38,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 39,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-39.png",
+      "SHA256": "2cfa8edf016c20bfa4cbf48ebea415109c0d66edb27902213d79e656572e63c7",
+      "BodySHA256": "6e3915fb289c3dc9910e78a5985df67a63f7fe312528b010361fe0cb14404623",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 39,
+      "IdenticalBodyToBaseline": 39,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 40,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-40.png",
+      "SHA256": "50d3f1d37a09e39faa1cccc23b1afa48abb6a05c284c43acd9bdb0d72a596223",
+      "BodySHA256": "c3caad704cfb067e3c0aef75e5d9e7b02a06efd55a0716722dd692eddfcb24ce",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 40,
+      "IdenticalBodyToBaseline": 40,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 41,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-41.png",
+      "SHA256": "df2c236deed7d09d35bf89a2c19a19c0f26b0986c98b91c8b7be280a68045420",
+      "BodySHA256": "fbbc3023d1b059999380cfdabd2c3f019a992ad58e560ef3220233a50a3c1542",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 41,
+      "IdenticalBodyToBaseline": 41,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 42,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-42.png",
+      "SHA256": "4105ca8683b9365258238ee3b5c1e3fd65fb4aa004e9fbb05e67c0b1eb8b42ba",
+      "BodySHA256": "ea17de13d8ae6a3f7953134e8f783e7f5e48f016cd59f68aa4474a1430a47ee4",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 42,
+      "IdenticalBodyToBaseline": 42,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 43,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-43.png",
+      "SHA256": "64fdace3fe58cb055ca90592835c25773a9dcd484ba23660a8a73eeea7afa19f",
+      "BodySHA256": "ab02a0838f91de982cf3e5da900f6948045e720571cc781c55ab7296ba22d1dd",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 43,
+      "IdenticalBodyToBaseline": 43,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 44,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-44.png",
+      "SHA256": "9fc8eacbb24ed24b1f12efa30642c61e7759d3897375cdb22c690850d094af40",
+      "BodySHA256": "c3446be8260ab1b74f800ddc2578aaf10aaa7055d186129851e96173f4c4c155",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 44,
+      "IdenticalBodyToBaseline": 44,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 45,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-45.png",
+      "SHA256": "cdc620a2b5b99b0aa3aabc9e226c126df74443dd1a1f6c04c4c728cee97f37ed",
+      "BodySHA256": "e4a37d8337cf48cb936c9550ddc942ca7599cdc0d0a2106e3da2189b3c7b02bf",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 45,
+      "IdenticalBodyToBaseline": 45,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 46,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-46.png",
+      "SHA256": "bea7e59ec53e578812e93e35bcd01c3b35d3360450fdf3faacc23415159103fe",
+      "BodySHA256": "4305cfee7013006ba7d4cf2143745f7f9e3747915d03000d842f3ba997dbdee0",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 46,
+      "IdenticalBodyToBaseline": 46,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 47,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-47.png",
+      "SHA256": "0eb9a9bb48cc41a5aee48184f9a14ffad244daa39823c8e5e3cc372e36a94341",
+      "BodySHA256": "cbd1719b58c51d7f6fcca5175181b30dfad6eb29ca33d86f3133f8cbbab48f63",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": null,
+      "IdenticalBodyToBaseline": null,
+      "NeedsVisualReview": true,
+      "VisualResult": "PASS"
+    },
+    {
+      "Page": 48,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-48.png",
+      "SHA256": "42754af450a2a841daf20d402fec01f33b988c3c7353648322422ca8e53b0295",
+      "BodySHA256": "ae6265fa13967d2206d454081e354560e36df3675cd6814faca8baa81cfccaf2",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 48,
+      "IdenticalBodyToBaseline": 48,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 49,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-49.png",
+      "SHA256": "69a8a1bec86062900e402d9a4e10422947764c91e94c60395e6fedea856c97af",
+      "BodySHA256": "7fcfa0706f59b96f53c72e78313d77a83973c50d255b836e536fdec5522a967d",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 49,
+      "IdenticalBodyToBaseline": 49,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 50,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-50.png",
+      "SHA256": "344c351d415521c6f27bc279742bda43268faf16626a733cd0ea1677ac709219",
+      "BodySHA256": "c6ea7b51d2d94bfd339edd9b21a5e6598cdaa2585a84f07dfd9253de2bea6507",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 50,
+      "IdenticalBodyToBaseline": 50,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 51,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-51.png",
+      "SHA256": "338459b42f0f901728672d4e55aa93ddca1f1596d919008c58de0964fb35da25",
+      "BodySHA256": "9ddfa56dfeb2d239121771f04b658476126781ccb84ce2d3ff80b31be55c6bc8",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 51,
+      "IdenticalBodyToBaseline": 51,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 52,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-52.png",
+      "SHA256": "3e947a3a9df916f294f2c8f27de2135c4f09061311a5776cfb747d17678899bf",
+      "BodySHA256": "434733f82827e8168dd541649cd6657e6272525b433e3215528af2c46a435072",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 52,
+      "IdenticalBodyToBaseline": 52,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 53,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-53.png",
+      "SHA256": "3da46a9da1a88dd2953654c92207184dae530477d0d5b27496b93865f728bdc6",
+      "BodySHA256": "76e44682a51c822c481cd67a1f54d6a76a39756495eff28421c88a2e36ba9964",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 53,
+      "IdenticalBodyToBaseline": 53,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 54,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-54.png",
+      "SHA256": "705d9040faf6f4ecf6c9940e2c1fcc074e5f3c8ea032b6c71e16bf39c3dd85b9",
+      "BodySHA256": "acd92f77487a76e5f567dbe14fe0d324145f108ced0f2fce2eec7679e99a116f",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 54,
+      "IdenticalBodyToBaseline": 54,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 55,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-55.png",
+      "SHA256": "e7a4cf31c123aa1c44cb3f827c1d3e5373607065a358f309fa1d3d901b5ead1a",
+      "BodySHA256": "3fad23d10d7c924837fbb5daa971204d55d0f86c9c09756b61557f3ba2e77a89",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 55,
+      "IdenticalBodyToBaseline": 55,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 56,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-56.png",
+      "SHA256": "71b36e8a8d09a7034c7c7acef477f5bc4e4c499f6d45fb2887c72c31567d8683",
+      "BodySHA256": "f2ad865a1916dfc56ff6cfcbb7fba9e35f48759658d747f5e13c7bdb71909628",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 56,
+      "IdenticalBodyToBaseline": 56,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    },
+    {
+      "Page": 57,
+      "Path": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/administrateur-v2/page-57.png",
+      "SHA256": "e458229e2a493c1db9e298a20e516de22a25d8e8c11fc6642822dd56c4754f12",
+      "BodySHA256": "976f002fe0598afe2743ddb92c79ad16f6b9bd9cf1f1a87e0fb793679b97824c",
+      "Pixels": [
+        1414,
+        2000
+      ],
+      "IdenticalFullPageToBaseline": 57,
+      "IdenticalBodyToBaseline": 57,
+      "NeedsVisualReview": false,
+      "VisualResult": "PREVIOUS_PASS_IDENTICAL"
+    }
+  ],
+  "LayoutFindings": [],
+  "ContentCorrections": [
+    "Chemin Entretien pour rétablir la protection.",
+    "Chemin Données pour importer un état.",
+    "Consulter pour relire les tâches, Entretien pour leur nettoyage."
+  ],
+  "Pending": [
+    "Deux captures Noms et Interventions à remplacer après correction du petit viewport."
+  ],
+  "Notes": [
+    "Les pages15 et47 ont été ouvertes individuellement en résolution originale. Tableaux, procédures et paragraphes lisibles, aucune troncature, aucun titre orphelin. Toutes les autres pages sont identiques à la première passe par corps de page."
+  ]
+}

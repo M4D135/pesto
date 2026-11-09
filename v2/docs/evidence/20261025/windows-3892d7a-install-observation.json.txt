@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-observation",
+  "scenario": "normal",
+  "stage": "install",
+  "transactionId": "ae0544f3c07c4ff4a57f2fa1bf73399c",
+  "helperProcessId": 8524,
+  "helperStartUtcTicks": "639285478463655485",
+  "helperExecutableSha256": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+  "success": false,
+  "interrupted": false,
+  "dialogClosed": false,
+  "checkingObserved": false,
+  "healthChildObserved": false,
+  "webViewChildObserved": false,
+  "events": [
+    {
+      "utc": "2026-10-25T17:57:26.7318288\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "ae0544f3c07c4ff4a57f2fa1bf73399c",
+        "installation": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-d25d4445364b4d248f14ff6637cbc3a9\\cases\\normal\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "dd18d13695a7ebf63be95ad2e41f73b3f66825dfbab60042d760580ed27d9d22",
+        "nextFingerprint": "58a00f99866c8de4454b7a10bc7bb87cbf2e386199c23dfc241a4ea1a3bca853",
+        "currentExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "nextExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "helperHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.0.100",
+        "action": "install",
+        "status": "prepared",
+        "createdUtc": "2026-10-25T17:57:21.8301956\u002B00:00",
+        "parentProcessId": 1844,
+        "parentStartUtc": "2026-10-25T17:56:46.9808239\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-10-25T17:57:30.5317266\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "ae0544f3c07c4ff4a57f2fa1bf73399c",
+        "installation": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-d25d4445364b4d248f14ff6637cbc3a9\\cases\\normal\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "dd18d13695a7ebf63be95ad2e41f73b3f66825dfbab60042d760580ed27d9d22",
+        "nextFingerprint": "58a00f99866c8de4454b7a10bc7bb87cbf2e386199c23dfc241a4ea1a3bca853",
+        "currentExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "nextExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "helperHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.0.100",
+        "action": "install",
+        "status": "backedUp",
+        "createdUtc": "2026-10-25T17:57:21.8301956\u002B00:00",
+        "parentProcessId": 1844,
+        "parentStartUtc": "2026-10-25T17:56:46.9808239\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-10-25T17:57:30.5956738\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "ae0544f3c07c4ff4a57f2fa1bf73399c",
+        "installation": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-d25d4445364b4d248f14ff6637cbc3a9\\cases\\normal\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "dd18d13695a7ebf63be95ad2e41f73b3f66825dfbab60042d760580ed27d9d22",
+        "nextFingerprint": "58a00f99866c8de4454b7a10bc7bb87cbf2e386199c23dfc241a4ea1a3bca853",
+        "currentExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "nextExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "helperHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.0.100",
+        "action": "install",
+        "status": "installed",
+        "createdUtc": "2026-10-25T17:57:21.8301956\u002B00:00",
+        "parentProcessId": 1844,
+        "parentStartUtc": "2026-10-25T17:56:46.9808239\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-10-25T17:57:32.0773531\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "ae0544f3c07c4ff4a57f2fa1bf73399c",
+        "installation": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-d25d4445364b4d248f14ff6637cbc3a9\\cases\\normal\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "dd18d13695a7ebf63be95ad2e41f73b3f66825dfbab60042d760580ed27d9d22",
+        "nextFingerprint": "58a00f99866c8de4454b7a10bc7bb87cbf2e386199c23dfc241a4ea1a3bca853",
+        "currentExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "nextExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "helperHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.0.100",
+        "action": "install",
+        "status": "checking",
+        "createdUtc": "2026-10-25T17:57:21.8301956\u002B00:00",
+        "parentProcessId": 1844,
+        "parentStartUtc": "2026-10-25T17:56:46.9808239\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-10-25T17:57:37.5803277\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "ae0544f3c07c4ff4a57f2fa1bf73399c",
+        "installation": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-d25d4445364b4d248f14ff6637cbc3a9\\cases\\normal\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "dd18d13695a7ebf63be95ad2e41f73b3f66825dfbab60042d760580ed27d9d22",
+        "nextFingerprint": "58a00f99866c8de4454b7a10bc7bb87cbf2e386199c23dfc241a4ea1a3bca853",
+        "currentExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "nextExecutableHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "helperHash": "711b9f71afb6885d367190835831197b8312377e4073fc6a10e7f2a138f55e28",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.0.100",
+        "action": "install",
+        "status": "completed",
+        "createdUtc": "2026-10-25T17:57:21.8301956\u002B00:00",
+        "parentProcessId": 1844,
+        "parentStartUtc": "2026-10-25T17:56:46.9808239\u002B00:00",
+        "failure": null
+      }
+    }
+  ],
+  "failure": "InvalidOperationException: Native helper timed out or the required interruption boundary was not observed.",
+  "failedFixtureProcessStopped": true,
+  "finishedUtc": "2026-10-25T18:00:56.7595929\u002B00:00"
+}

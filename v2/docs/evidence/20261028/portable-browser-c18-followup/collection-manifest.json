@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "07dc74116478f1dd28d5f54ab6e2f11b1b4ee472",
+  "sourceCommit": null,
+  "sourceStatus": "Working-tree correction of obsolete recovery test expectations, before next commit and Windows CI.",
+  "productCodeChangedAfterBase": false,
+  "changedTest": "v2/tools/tests/web-recovery-check.mjs",
+  "changedTestSha256": "ac663c881fba3a02897b2250c30489dee0483eea7bc2a08ef4f8daf1df17ea34",
+  "patchSha256": "0211dbdf109cfbb5ab41df44264e311895a6cee2080befd2614108ef5f85b934",
+  "suites": 16,
+  "passed": 16,
+  "platform": "macOS / Chromium fixtures or synthetic JavaScript providers",
+  "nativeEffects": false,
+  "newTestsRunByCollector": false,
+  "files": [
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/web-maintenance-check.log",
+      "path": "logs/web-maintenance-check.log",
+      "bytes": 3832,
+      "sha256": "4f8c652dd764cdbf280af394ca9ce6f912e66ef3f9505c6811cb38d94fbe9858",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/operator-ui-check.log",
+      "path": "logs/operator-ui-check.log",
+      "bytes": 3028,
+      "sha256": "24a272347d0cd79351df17378400be2fd1b9e27f0952c3c9d324a1333152971d",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/web-business-check.log",
+      "path": "logs/web-business-check.log",
+      "bytes": 4820,
+      "sha256": "1c1b6d03358d0d9393e82a682e4c729c0fe1750fb4885bc3c221d263c3f986ee",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/parity-ui-check.log",
+      "path": "logs/parity-ui-check.log",
+      "bytes": 4226,
+      "sha256": "4c856880a49ac37f94fb0d53b3acf489022aa0267bbd0ed0bee0975211297e68",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/policy-ui-check.log",
+      "path": "logs/policy-ui-check.log",
+      "bytes": 1189,
+      "sha256": "4b9c4ddbd8f51a43fcbfbd9a94855bd3dc62f9d42f42ba71706902b8a98d8c92",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/web-recovery-check.log",
+      "path": "logs/web-recovery-check.log",
+      "bytes": 1597,
+      "sha256": "f9f6628c64736d8e76065d6cb6d573697bdaed14a4e25272b77c0919d6ae118b",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/web-dom-check.log",
+      "path": "logs/web-dom-check.log",
+      "bytes": 2387,
+      "sha256": "9b695e985a3c01687faf4c162c3b224c0c8d6c75dff6166776d79ac82022b496",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/web-layout-check.log",
+      "path": "logs/web-layout-check.log",
+      "bytes": 540,
+      "sha256": "cb19ad16f9b17d69f0180ad28b77057db5157d46493ca17638f27f34abb41dc7",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/demo-dom-check.log",
+      "path": "logs/demo-dom-check.log",
+      "bytes": 911,
+      "sha256": "83213d54b4c78d73b01a08fc51f3f2b5f7fb9e211248d0946377a31c52332b81",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/login-dom-check.log",
+      "path": "logs/login-dom-check.log",
+      "bytes": 66,
+      "sha256": "a49ab6f2275be96bea6a0d2c8d7ef629d159afa0bebeb54def4e7e320437a237",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/web-check.log",
+      "path": "logs/web-check.log",
+      "bytes": 9795,
+      "sha256": "07899f66a84b6519c3f249558bcfe5ed7bc341a2e832832bee6b7631af265218",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/bridge-lifecycle-check.log",
+      "path": "logs/bridge-lifecycle-check.log",
+      "bytes": 2072,
+      "sha256": "8387759c29cdaa4d9803afa6713d04954808a1bc5dae68cb3ae474da9e7ad616",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/demo-check.log",
+      "path": "logs/demo-check.log",
+      "bytes": 865,
+      "sha256": "e0debd8e5f0cb2997d80d425b95201fae9e7bdf6c9d01fec7007d4d807f4b5e9",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/azerty-check.log",
+      "path": "logs/azerty-check.log",
+      "bytes": 960,
+      "sha256": "2c5d3949a7080e59062ab79c50a2dffec099e4743f0a4a74c90b56a7811e2097",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/watch-check.log",
+      "path": "logs/watch-check.log",
+      "bytes": 35,
+      "sha256": "7c31732c8c84c4d5f205fee9e1395bb567f1d4cc16269e1d4cff3482ea1121db",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/browser-ci-followup-07dc741/watcher-result-check.log",
+      "path": "logs/watcher-result-check.log",
+      "bytes": 112,
+      "sha256": "c77eebae0eacd9774d0f9e1164b4b4ee15bd93a39f7681f33d5f5865d995a7d3",
+      "transformation": "none"
+    }
+  ]
+}

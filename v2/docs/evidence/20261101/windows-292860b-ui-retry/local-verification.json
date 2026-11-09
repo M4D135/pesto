@@ -1,0 +1,20 @@
+{
+  "kind": "pesto.isolated-native-update-ui-local-verification",
+  "sourceCommit": "292860b934bcdff0f1321b0839158bf38b58816e",
+  "fullReleaseQualification": false,
+  "filesVerified": 92,
+  "channels": [
+    {
+      "channel": "PROD",
+      "uiInstall": "2.0.8 to 2.0.9",
+      "serviceRollback": "2.0.9 to 2.0.8",
+      "observations": 2
+    },
+    {
+      "channel": "DEV",
+      "uiInstall": "2.0.8 to 2.0.9",
+      "serviceRollback": "2.0.9 to 2.0.8",
+      "observations": 2
+    }
+  ]
+}

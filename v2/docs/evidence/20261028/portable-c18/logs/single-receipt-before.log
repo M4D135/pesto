@@ -1,0 +1,22 @@
+  FAIL Reçu isolé incohérent (poste étranger) : aucun succès ni lecture suivante — locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-zone="receipt"]').locator('[role="alert"]') to be visible[22m
+
+  FAIL Reçu isolé incohérent (nom final étranger) : aucun succès ni lecture suivante — locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-zone="rpreview"]').locator('[role="alert"]') to be visible[22m
+
+  FAIL Reçu isolé incohérent (OU étrangère) : aucun succès ni lecture suivante — locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-zone="rpreview"]').locator('[role="alert"]') to be visible[22m
+
+  FAIL Reçu isolé incohérent (mode différent) : aucun succès ni lecture suivante — locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-zone="rpreview"]').locator('[role="alert"]') to be visible[22m
+
+  FAIL Reçu isolé incohérent (identifiant absent) : aucun succès ni lecture suivante — locator.waitFor: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-zone="rpreview"]').locator('[role="alert"]') to be visible[22m
+
+
+0/5 contrôles métier navigateur réussis (fixtures explicites, sans Windows/AD).

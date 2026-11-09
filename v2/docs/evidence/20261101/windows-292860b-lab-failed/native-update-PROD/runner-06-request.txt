@@ -1,0 +1,5 @@
+{
+  "success": false,
+  "error": "PestoException",
+  "message": "Le pack autonome est incomplet : wad/runtime/webview2/msedgewebview2.exe"
+}

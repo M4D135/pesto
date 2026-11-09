@@ -1,0 +1,12 @@
+[
+  "Invoke-PestoCommand",
+  "Invoke-PestoUnattendedOperation",
+  "Invoke-PestoInspection",
+  "New-PestoPortablePlan",
+  "Assert-PestoPortablePlan",
+  "Export-PestoPortablePlan",
+  "ConvertTo-PestoDeploymentMetadata",
+  "Invoke-PestoIdempotentExecution",
+  "New-PestoCampaignApproval",
+  "Invoke-PestoExtensionCommand"
+]

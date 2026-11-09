@@ -1,0 +1,14 @@
+{
+  "id": 12013835287,
+  "name": "windows-isolated-evidence-windows-2022-en-US",
+  "size_in_bytes": 59755,
+  "digest": "sha256:5d1a40ebd4ec6e1b6cc8797cd79555129c1af0a646aeb9fb4b7f029fd4394598",
+  "created_at": "2026-10-15T23:07:02Z",
+  "workflow_run": {
+    "id": 38820708735,
+    "repository_id": 1402106184,
+    "head_repository_id": 1402106184,
+    "head_branch": "ci/pesto-qualification-20261016",
+    "head_sha": "7d195ca15c95480a79af38eccc2a21fd14ea6844"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "Result": "PASS",
+  "Utc": "2026-10-12T22:19:14.941810+00:00",
+  "Scope": "Local PowerShell 7.4 tests of extracted presentation functions and XML with memory controls only; no Windows, WPF, AD, real CIM or registry execution.",
+  "Changes": [
+    "Four equally styled home buttons in order: Un seul poste, Plusieurs postes, Ajouter au domaine, Noms disponibles.",
+    "Responsive action columns: 4 large, 2 intermediate, 1 narrow.",
+    "Real dashboard renderer reapplies the two preparation disabled states across domain/mode/operation combinations; no reads.",
+    "Domain initialization asserts both home preparation buttons along with menu navigation."
+  ],
+  "Sources": [
+    {
+      "Path": "DEV/tests/Run-HomeDashboardTests.ps1",
+      "SHA256": "9ccef984316e789b7d4da9edd62062d75c693cd77f4dfbf53ab7f47e4e6193e3",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    },
+    {
+      "Path": "DEV/tests/Run-UiPresentationTests.ps1",
+      "SHA256": "c974465c3369f254a5a17a1dd4080c76c6eb50d80ecbed30dcacf80efe4eaa33",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    },
+    {
+      "Path": "DEV/tests/Run-DomainNavigationTests.ps1",
+      "SHA256": "48474a0ca1a2f2187e976217bfc99699b036eba0aa9fce00b93c4ba3d3a056b3",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    }
+  ],
+  "RuntimeSources": [
+    {
+      "Path": "DEV/wad/Pesto-Shell.xaml",
+      "SHA256": "38f1d54020909d6413ea71943020ff79e94b0db6de9685c73e75be850575bd9c"
+    },
+    {
+      "Path": "DEV/wad/Pesto-SuiteUI.ps1",
+      "SHA256": "ecfae69c635ec640006ef17da88d101a688864d8ffcf31621820454602fddcbc"
+    }
+  ],
+  "Runs": [
+    {
+      "Suite": "HomeDashboard",
+      "Passed": 43,
+      "Failed": 0,
+      "ReportSHA256": "89a360ca2c07559787b79be0c0cee9d92366dc93078ca5b4360540552adbe213",
+      "LogSHA256": "89a360ca2c07559787b79be0c0cee9d92366dc93078ca5b4360540552adbe213"
+    },
+    {
+      "Suite": "UiPresentation",
+      "Passed": 41,
+      "Failed": 0,
+      "ReportSHA256": "319d2473227e24247a6ee4b0a977c1e6ec930fda7dd39ee52fc3e312c4cacd1b",
+      "LogSHA256": "319d2473227e24247a6ee4b0a977c1e6ec930fda7dd39ee52fc3e312c4cacd1b"
+    },
+    {
+      "Suite": "DomainNavigation",
+      "Passed": 10,
+      "Failed": 0,
+      "ReportSHA256": "1dac38bd4822a9249fd6510915ec93a351d909b36355827bb223f2a710ee30e8",
+      "LogSHA256": "1dac38bd4822a9249fd6510915ec93a351d909b36355827bb223f2a710ee30e8"
+    }
+  ],
+  "WindowsQualification": "Pending root build and separate Windows WPF plus visible UI checks."
+}

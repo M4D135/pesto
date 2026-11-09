@@ -1,0 +1,59 @@
+{
+  "utc": "2026-10-28T12:04:56.1169613Z",
+  "payloadFilesChecked": 205,
+  "payloadFilesMatching": 205,
+  "selectedPayloadHashes": {
+    "Pesto.AdQualification.dll": "b8d9615291ab65b62925523bc0b85221b873a89687c7f1602b3982f02e840e4e",
+    "lab-config/cfg.json": "f76ad53a8d7ea367248fd2b067cb48ddaa0bb1dd7e9cc87566f7d85b58adfe35"
+  },
+  "receiptsAndMarkers": [
+    {
+      "role": "sourceRenameMoveReceipt",
+      "exists": true,
+      "sha256": "3e4afe86c455c27ae4dd2dc5947ddf0fb25223b9413e4f3376a37ed25bc7b7d3",
+      "rawBytesHashVerified": true,
+      "phase": "Verified",
+      "ReceiptId": "receipt-50a635a9b3ee46138c9fc231bcff83af",
+      "Kind": "renameMove",
+      "Code": 77,
+      "RestartRequired": false
+    },
+    {
+      "role": "returnMoveReceipt",
+      "exists": true,
+      "sha256": "ebab4b6a19455145664c6e8ba53f6e0035c1007e0cb1eb426fda9e7f3cf7507c",
+      "rawBytesHashVerified": true,
+      "phase": "Verified",
+      "ReceiptId": "receipt-42ca32f46217459a8253cb4b6363f7b6",
+      "Kind": "move",
+      "Code": 30,
+      "RestartRequired": false
+    },
+    {
+      "role": "legacyJoinBarrier",
+      "exists": true,
+      "sha256": "3e19b65fd293fb238363243ab7d370e1d3e651b94f74c7ba5eee00196f8dfff8",
+      "rawBytesHashVerified": true,
+      "phase": "Verified"
+    },
+    {
+      "role": "legacyDirectBarrier",
+      "exists": true,
+      "sha256": "bd522a0eb4be13b9174681e20b15cad303b97b6d577b88b9161e6cd7b72724fa",
+      "rawBytesHashVerified": true,
+      "phase": "Verified"
+    },
+    {
+      "role": "restoreNameMarker",
+      "exists": false
+    },
+    {
+      "role": "bindingMarker",
+      "exists": false
+    }
+  ],
+  "step12Or13ResultPresent": false,
+  "dirtyQueryExitCode": 0,
+  "dirtyQueryObservation": "NOT Dirty",
+  "doesNotReplaceChkdskResult": true
+}

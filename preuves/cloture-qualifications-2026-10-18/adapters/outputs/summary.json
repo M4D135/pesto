@@ -1,0 +1,164 @@
+﻿{
+    "Before":  [
+                   {
+                       "SHA256":  "710C9ECEE5351D2BE7ACA9AEEBD2C71A9532D9C5285E1D2B65AC49A82552C0C4",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\10d8af85ed0b4abfbbb79ce55d1ff04e.json"
+                   },
+                   {
+                       "SHA256":  "D91C7B0D1ACFB3DF7932ACB87888CA51048FA005CB378BE0E39C1D5C59DE7DFB",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\1622230f01fc469aa443e5c28d341871.json"
+                   },
+                   {
+                       "SHA256":  "22C205851656DC9B82C8AD2A3B1CCBA32F3BCE1E698B48F2C75DF48EEB56CEF2",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\2920f915c0a940e6aaf33aaf3148bb99.json"
+                   },
+                   {
+                       "SHA256":  "AAE049BD8A38C066B1789A19F93202E27E90372F5124C3C411D747DEF5ABE206",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\542c12038e8b4e48be02d137a83526ec.json"
+                   },
+                   {
+                       "SHA256":  "1C77FFDC41EC9377E2FADE642F38FE6D6B6D0B08AD362F79B90DA5BF9D15B8D0",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\5f0eee7279bb459c93b9d9939e7caf11.json"
+                   },
+                   {
+                       "SHA256":  "BC065CC36A7C19CD4197E1FF7C35F0CAAF908561EB297BE9950A1F410A153B92",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\64644b16573d48fe990de2344bac7aaa.json"
+                   },
+                   {
+                       "SHA256":  "AE5940B7C8CEF19D306E597CCAE076C48AC3649724E3BE64A2C5321D28E24869",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\7a31220e001e40a6a7e62e3ca8e8869b.json"
+                   },
+                   {
+                       "SHA256":  "8E60770F897AE77B030329E0250FF2CD9B617B2A672F735E020B971A9A3AC841",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\92fbe087050847338606f4194ed51294.json"
+                   },
+                   {
+                       "SHA256":  "65945E1C7FF3CE67D5913ED7245C65AFC92EE6B83DA18D76777B3AEDA63607F2",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\9b09f68c53c14e9c9a5eabbb622d2045.json"
+                   },
+                   {
+                       "SHA256":  "E9AF572F4A3024C05BA48B053951384B3C53472848795A8CF96CEEC2817B6B86",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\9f3c253007004a59b24e1c17f6ca1e6e.json"
+                   },
+                   {
+                       "SHA256":  "2A508D1C6D62E0EAA0B8336D181743A27749E2901249171D861BE11409CFC327",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\cea5a9018ec64d7db7b98d64611c2c78.json"
+                   },
+                   {
+                       "SHA256":  "FC5CE0453191A172900D7EFB5D9C85DD9DC2FF769F30EFC44301EE8CF1CBCE61",
+                       "Path":  "C:\\ProgramData\\GP\\Interventions\\f17d651245b9490a92af0cb408c5b195.json"
+                   },
+                   {
+                       "SHA256":  "3E19B65FD293FB238363243AB7D370E1D3E651B94F74C7BA5EEE00196F8DFFF8",
+                       "Path":  "C:\\ProgramData\\GP\\Join\\receipt.json"
+                   },
+                   {
+                       "SHA256":  "BD522A0EB4BE13B9174681E20B15CAD303B97B6D577B88B9161E6CD7B72724FA",
+                       "Path":  "C:\\ProgramData\\GP\\Operations\\direct.json"
+                   }
+               ],
+    "ExeHash":  "155523258FCE24E506E1F13E4552F234C2D906485D690573BF5631489A04739A",
+    "ReceiptsUnchanged":  true,
+    "Results":  [
+                    {
+                        "Code":  null,
+                        "Name":  "ConfigMgr",
+                        "Bytes":  321,
+                        "MutationStarted":  false,
+                        "State":  "NotStarted"
+                    },
+                    {
+                        "Code":  null,
+                        "Name":  "PSADT",
+                        "Bytes":  321,
+                        "MutationStarted":  false,
+                        "State":  "NotStarted"
+                    },
+                    {
+                        "Code":  null,
+                        "Name":  "PDQ",
+                        "Bytes":  321,
+                        "MutationStarted":  false,
+                        "State":  "NotStarted"
+                    },
+                    {
+                        "Code":  null,
+                        "Name":  "DeployR",
+                        "Bytes":  321,
+                        "MutationStarted":  false,
+                        "State":  "NotStarted"
+                    },
+                    {
+                        "Code":  null,
+                        "Name":  "FirstBoot",
+                        "Bytes":  321,
+                        "MutationStarted":  false,
+                        "State":  "NotStarted"
+                    },
+                    {
+                        "Code":  null,
+                        "Name":  "Custom",
+                        "Bytes":  321,
+                        "MutationStarted":  false,
+                        "State":  "NotStarted"
+                    }
+                ],
+    "After":  [
+                  {
+                      "SHA256":  "710C9ECEE5351D2BE7ACA9AEEBD2C71A9532D9C5285E1D2B65AC49A82552C0C4",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\10d8af85ed0b4abfbbb79ce55d1ff04e.json"
+                  },
+                  {
+                      "SHA256":  "D91C7B0D1ACFB3DF7932ACB87888CA51048FA005CB378BE0E39C1D5C59DE7DFB",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\1622230f01fc469aa443e5c28d341871.json"
+                  },
+                  {
+                      "SHA256":  "22C205851656DC9B82C8AD2A3B1CCBA32F3BCE1E698B48F2C75DF48EEB56CEF2",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\2920f915c0a940e6aaf33aaf3148bb99.json"
+                  },
+                  {
+                      "SHA256":  "AAE049BD8A38C066B1789A19F93202E27E90372F5124C3C411D747DEF5ABE206",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\542c12038e8b4e48be02d137a83526ec.json"
+                  },
+                  {
+                      "SHA256":  "1C77FFDC41EC9377E2FADE642F38FE6D6B6D0B08AD362F79B90DA5BF9D15B8D0",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\5f0eee7279bb459c93b9d9939e7caf11.json"
+                  },
+                  {
+                      "SHA256":  "BC065CC36A7C19CD4197E1FF7C35F0CAAF908561EB297BE9950A1F410A153B92",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\64644b16573d48fe990de2344bac7aaa.json"
+                  },
+                  {
+                      "SHA256":  "AE5940B7C8CEF19D306E597CCAE076C48AC3649724E3BE64A2C5321D28E24869",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\7a31220e001e40a6a7e62e3ca8e8869b.json"
+                  },
+                  {
+                      "SHA256":  "8E60770F897AE77B030329E0250FF2CD9B617B2A672F735E020B971A9A3AC841",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\92fbe087050847338606f4194ed51294.json"
+                  },
+                  {
+                      "SHA256":  "65945E1C7FF3CE67D5913ED7245C65AFC92EE6B83DA18D76777B3AEDA63607F2",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\9b09f68c53c14e9c9a5eabbb622d2045.json"
+                  },
+                  {
+                      "SHA256":  "E9AF572F4A3024C05BA48B053951384B3C53472848795A8CF96CEEC2817B6B86",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\9f3c253007004a59b24e1c17f6ca1e6e.json"
+                  },
+                  {
+                      "SHA256":  "2A508D1C6D62E0EAA0B8336D181743A27749E2901249171D861BE11409CFC327",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\cea5a9018ec64d7db7b98d64611c2c78.json"
+                  },
+                  {
+                      "SHA256":  "FC5CE0453191A172900D7EFB5D9C85DD9DC2FF769F30EFC44301EE8CF1CBCE61",
+                      "Path":  "C:\\ProgramData\\GP\\Interventions\\f17d651245b9490a92af0cb408c5b195.json"
+                  },
+                  {
+                      "SHA256":  "3E19B65FD293FB238363243AB7D370E1D3E651B94F74C7BA5EEE00196F8DFFF8",
+                      "Path":  "C:\\ProgramData\\GP\\Join\\receipt.json"
+                  },
+                  {
+                      "SHA256":  "BD522A0EB4BE13B9174681E20B15CAD303B97B6D577B88B9161E6CD7B72724FA",
+                      "Path":  "C:\\ProgramData\\GP\\Operations\\direct.json"
+                  }
+              ]
+}

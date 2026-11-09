@@ -1,0 +1,75 @@
+﻿P
+Pesto
+Active Directory
+⌂
+Accueil
+✎
+Un seul poste
+▦
+Plusieurs postes
++
+Ajouter au domaine
+▤
+Noms disponibles
+◷
+Historique
+≡
+Journal
+⚙
+Paramètres
+Pesto 1.0
+Windows · PowerShell
+Étapes de l’opération
+RÉEL
+DC : dc01.labo.local
+V111301VA765542
+labo.local
+LABO\tech.pesto
+Actions · Ctrl+K
+Audit
+?
+Modifier un poste
+Cible et compte de l’intervention
+État du poste
+Données : 29 s · récent
+Actualiser ce site
+Poste à modifier
+Utilisez ce PC ou saisissez le nom d'un autre poste.
+Un autre poste du domaine
+Nom du poste actuel ⓘ
+Lire le poste
+2. Définir le nouveau nom
+Le nom est proposé selon votre convention à 15 caractères.
+Organisme ⓘ
+Site ⓘ
+Service ⓘ
+Services lus · Données : 12 s · récent
+Type ⓘ
+2 · Nouveau nom ⓘ
+Autre nom
+ⓘ Déplacement automatique uniquement si le site change.
+Options : déplacement seul et redémarrage
+Favoris de préparation
+Avant / après
+Brouillon du formulaire, pas un résultat d'exécution.
+Nom actuel
+V111301VA765542
+Nouveau nom
+V111301VA765542
+Choisir un nom exact…
+Copier le nom proposé
+Site cible : Paris
+OU actuelle : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+Après : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+Opération prévue
+Aucune action prête
+Redémarrage : aucun redémarrage automatique
+3 · Vérifier et confirmer
+Choisissez ou saisissez le service (3 caractères). « Compléter le formulaire » place le curseur sur ce choix.
+Vérifier seulement
+Compléter le formulaire
+Zoom
+−
+État de l’intervention
+80 %
++

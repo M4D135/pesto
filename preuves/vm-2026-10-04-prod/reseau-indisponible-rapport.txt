@@ -1,0 +1,121 @@
+﻿ÉTAT OBSERVÉ, PAS UNE COMMANDE
+Lecture UTC : 2026-10-04T19:16:16.5059319Z
+
+WINDOWS
+Nom actif : V999004BBQA1003
+Nom configuré : V999004BBQA1003
+Redémarrage pour le nom : Non indiqué par ces deux valeurs
+Domaine : labo.local
+Dernier démarrage UTC : 2026-10-04T19:11:40.5000000Z
+Lecture : Local / 2026-10-04T19:16:15.4344035Z
+
+ACTIVE DIRECTORY
+Objet non lu ou non identifié de manière unique.
+
+PLAN CONSERVÉ
+V999004BBQA1003 → V999004BBQA1003
+Renommer : False ; déplacer : True
+OU finale prévue : OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local
+
+LECTURES NON ABOUTIES
+AD : Unable to contact the server. This may be because this server does not exist, it is currently down, or it does not have the Active Directory Web Services running.
+
+AVANT / PRÉVU / OBSERVÉ : le plan conservé reste inchangé.
+
+Controle                     Etat     Observe         Attendu                                                                  Source                             
+--------                     ----     -------         -------                                                                  ------                             
+Nom actif                    Conforme V999004BBQA1003 V999004BBQA1003                                                          Windows                            
+Domaine Windows              Conforme labo.local    labo.local                                                             Windows                            
+Identité AD                  Inconnu                  568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b                                     AD                                 
+Emplacement AD               Inconnu                  OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local AD                                 
+Jointure Entra de l’appareil NO       NO              À contrôler séparément si retrait                                        Appareil local, pas SSO utilisateur
+Canal sécurisé               Unknown                  Lecture dédiée après redémarrage                                         Windows local                      
+
+
+
+AVANT / PRÉVU / OBSERVÉ
+
+
+Champ      : Nom Windows actif
+Avant      : Non enregistré
+Prevu      : V999004BBQA1003
+Observe    : V999004BBQA1003
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-04T19:16:15.4344035Z
+
+Champ      : Nom Windows configuré
+Avant      : Non enregistré
+Prevu      : V999004BBQA1003
+Observe    : V999004BBQA1003
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-04T19:16:15.4344035Z
+
+Champ      : Domaine Windows
+Avant      : Non enregistré
+Prevu      : labo.local
+Observe    : labo.local
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-04T19:16:15.4344035Z
+
+Champ      : Identité Windows
+Avant      : Non enregistré
+Prevu      : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Observe    : 81387449-2dd8-4bd9-8059-f868a5b8ec68
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-04T19:16:15.4344035Z
+
+Champ      : Nom AD
+Avant      : Non enregistré
+Prevu      : V999004BBQA1003
+Observe    : Inconnu
+Etat       : Non lu
+AvantUtc   : 
+ObserveUtc : 
+
+Champ      : GUID AD
+Avant      : Non enregistré
+Prevu      : 568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b
+Observe    : Inconnu
+Etat       : Non lu
+AvantUtc   : 
+ObserveUtc : 
+
+Champ      : Emplacement AD
+Avant      : Non enregistré
+Prevu      : OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local
+Observe    : Inconnu
+Etat       : Non lu
+AvantUtc   : 
+ObserveUtc : 
+
+Champ      : Protection AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : Inconnu
+Etat       : Non lu
+AvantUtc   : 
+ObserveUtc : 
+
+Champ      : Inscription Entra
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : NO
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-04T19:16:15.4358888Z
+
+Champ      : Canal sécurisé
+Avant      : Non enregistré
+Prevu      : True
+Observe    : Inconnu
+Etat       : Non lu
+AvantUtc   : 
+ObserveUtc : 2026-10-04T19:16:15.4358888Z
+
+
+
+

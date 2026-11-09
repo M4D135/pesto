@@ -1,0 +1,123 @@
+{
+  "Schema": 1,
+  "Utc": "2026-10-13T18:50:37.827457+00:00",
+  "GeneratorSHA256": "12121f0e5ad9e58d0092bf831d71b52cfbdbc7f8342dfe7f60deaf43a160f185",
+  "Scope": "Two independent copied source folders, five independent PowerShell processes; no shared generated artifact changed",
+  "Passed": 9,
+  "Failed": 0,
+  "Checks": [
+    "Generate A",
+    "Check A independent process",
+    "Generate B independent process",
+    "Check B independent process",
+    "Pesto.Engine.Runtime.ps1 byte identical",
+    "Pesto.Engine.psm1 byte identical",
+    "Pesto.Engine.psd1 byte identical",
+    "Pesto.Engine.build.json byte identical",
+    "Stale metadata explicitly rejected"
+  ],
+  "Processes": [
+    {
+      "Step": "generate-a",
+      "Pid": 19909,
+      "ExitCode": 0,
+      "Check": false
+    },
+    {
+      "Step": "check-a-independent-process",
+      "Pid": 19916,
+      "ExitCode": 0,
+      "Check": true
+    },
+    {
+      "Step": "generate-b-independent-process",
+      "Pid": 19922,
+      "ExitCode": 0,
+      "Check": false
+    },
+    {
+      "Step": "check-b-independent-process",
+      "Pid": 19924,
+      "ExitCode": 0,
+      "Check": true
+    },
+    {
+      "Step": "check-rejects-stale-metadata",
+      "Pid": 19925,
+      "ExitCode": 1,
+      "Check": true
+    }
+  ],
+  "Artifacts": [
+    {
+      "File": "Pesto.Engine.Runtime.ps1",
+      "BytesIdentical": true,
+      "SHA256": "3efae0d9af60d3ab2a62b0f62d3b7834ce271c9854e3cf0f9ea1247b16ac6c6e",
+      "Bytes": 952896
+    },
+    {
+      "File": "Pesto.Engine.psm1",
+      "BytesIdentical": true,
+      "SHA256": "07584497dc818456c8dc0dff704070791969775ab1e521055d98e5a2daa20b51",
+      "Bytes": 1322
+    },
+    {
+      "File": "Pesto.Engine.psd1",
+      "BytesIdentical": true,
+      "SHA256": "443a2b7f1524c5b9a7cc56fd234419421ecb64fa556b731fb47ad6f83eda5dc9",
+      "Bytes": 1091
+    },
+    {
+      "File": "Pesto.Engine.build.json",
+      "BytesIdentical": true,
+      "SHA256": "0fea13f89f25ce3ae6a3a059ebc6f1405829e2cd9c08f682b2a41a70d9acfdf3",
+      "Bytes": 97182
+    }
+  ],
+  "SourceSHA256": {
+    "Pesto-Appearance.ps1": "bae814fd5343926bf71516dadcc25892f733ccc937b10a81d29b6fc7ec073ed2",
+    "Pesto-Async.ps1": "87f0453806da7484d3c69c619c48938b8db6d4f475495a81b8ff1fc91e17894c",
+    "Pesto-Authentication.ps1": "14ac0e936446cbbade80590e86a65ec9d2fe823248bf3f5adfa9054e6c0486fc",
+    "Pesto-Automation.ps1": "4b07b6bb828f7fa8f4ed378ba6b1452c1c97794324d46c5cf643a2f628d43769",
+    "Pesto-BatchTools.ps1": "a1e342b5e688f0a3767ddcd0e94a72660844ac831b71a4b613a8caf0805098ad",
+    "Pesto-Catalogue.ps1": "cd6b256eae89490057aece872ed0a5574418f45845e2e545b2e39943ab198366",
+    "Pesto-Collections.ps1": "9dfcb5878ac9e0c6085d7f0e501dfb5f065f2dcf6671fa3d2c4251e30837249b",
+    "Pesto-Common.ps1": "49ff8575a59206efcb79c5fab6e0f8ed58387a53bd3f47e14baa0dd7b618be47",
+    "Pesto-ConfigEditor.ps1": "0fc43899321487d0aad353e775955d88777ec9fb65210f04667ad47b9d0eb576",
+    "Pesto-Configuration.ps1": "e193251bc65a689df9f1790dd5176c122b79524ccda399680d70ce8ff48df2a3",
+    "Pesto-Contracts.ps1": "61b3a3b8f6d9f1cb52732c010f761831430f2d3a8d22e1e5737a22aea22896e2",
+    "Pesto-Core.ps1": "9c7b55690beb7d91a511252a0649044148613feb57ced14e6db06687c3211a1a",
+    "Pesto-Diagnostics.ps1": "edc81f59f660f3d2320f14c8f8319203097c23f4587533814f89ead9ac5f0eb8",
+    "Pesto-Direct.ps1": "1b57dd17770cab2b62b0abcacf38ec565b952380ce0a7b37a2bad95312c8b233",
+    "Pesto-Directory.ps1": "320225214606c8d435eea1f487885e5b00e59b838353e5c5aa397261fd710199",
+    "Pesto-EngineContracts.ps1": "d7fe0514d47be10ef87fb3c1d57c7dd1f1b003ce1670935162dd56f86f2bc6b9",
+    "Pesto-Enterprise.ps1": "ee23faf94d24f52b1369f2f956dc61bd1f74c370c6e72315a6f7f6fae63bd1f9",
+    "Pesto-Inspection.ps1": "a19d2bfa946ae6f1b74d3b9c14aec022a962f6c20f6289d38db1a228ac975d8a",
+    "Pesto-Integrity.ps1": "f846da48226193f714316303f4a1f99d6618a69b7a1633a395bd6951c83a33d0",
+    "Pesto-Interventions.ps1": "6488a25afaca97ed2b9e27019d4f159a27b874186152ccff08063f1f60539b0a",
+    "Pesto-Join.ps1": "caa2e41629a2c46d08e9d8f252ff926e5bdc61de0589cfcf5d2ce3b09402ecb7",
+    "Pesto-JoinRecovery.ps1": "10a9e506cbcb697996068cf724bc4dc3ff31155c4e8ccfd5f0ad8ccb5fcaa229",
+    "Pesto-Journal.ps1": "18c30b0e51858a1cbb9904ac6fc51472b5e6554870e3dcfcb475b20fbfda4fe5",
+    "Pesto-ManagedPolicy.ps1": "8aa614affd1efcace5f715a6365e8b16c64be4045d85035e5cf46df71cf5e942",
+    "Pesto-NameWorkbench.ps1": "233f47b20e82a07032061c03b8882dd4cbe8146d140cfffc127a6600b9c35498",
+    "Pesto-Names.ps1": "68b73fe2f2cb067e3a4e4b512e06d1c22ac7afb384014610fe66b9ee4508f62f",
+    "Pesto-Operations.ps1": "5d79b4dc6a4f086ca2849bba3f3f8b1c824cfba3f1628c4c95bd30ae87d98e45",
+    "Pesto-Policy.ps1": "7dc7f7b06d3e7a0df92218923347b7a65518b26f44342301a227485cc60f6992",
+    "Pesto-Preparation.ps1": "2d817e1441e53df53057af1cfcb1d87f2fe44c8ef2da8cbdd6e8d1ce5e31def9",
+    "Pesto-ReceiptTools.ps1": "09bde8cbf2596575436effc852697703a2385252289da7fbc02342046c13616d",
+    "Pesto-Recovery.ps1": "e97d83c8dfc3dae1b2b9d3254a77ed0015e46045b474df1d8064e7946136ab00",
+    "Pesto-Review.ps1": "6d655acc9052c08558deb0d37c1e590c785109d71c4c40fadeed2f5469f704f9",
+    "Pesto-Safety.ps1": "f185482041cd9a43269f61856dd88b24e81abe5b1518cba1d27972726312bfd2",
+    "Pesto-Startup.ps1": "3d433821b84ac1911633d44d53eff4efe6e9e4c982d3d761af7485e582c3a1e8",
+    "Pesto-SuiteUI.ps1": "c81b0dd1764f7a164e4d3151db04d993e962c197d6bf938149779f83756526bb",
+    "Pesto-Support.ps1": "a68ed2c1494b08bc7d8cf6ae3872737c2a4c43f425f397d6e9d9640d236ac32c",
+    "Pesto-Tables.ps1": "d8daae256e86d69f21856ae4cd493a1562e0791242a814288fe225ac555868b6",
+    "Pesto-UXFlow.ps1": "6ddfc333a432824c07b0c8eb9738774dd5354d1ccb10f5386d2b816ffabdd2a4",
+    "Pesto-Workbench.ps1": "3a736d44b42120bc76c5b0d827c7ebb5cc04dd08d78c2d33dd82a3c3e7182b1c",
+    "Pesto-Workspace.ps1": "a5e0def04262aa1efb7d3da1ee981422fb6fccdc6a4cf7169d996ac7896f2300"
+  },
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "IsolatedRoot": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/engine-build-determinism-fb93dbde2213457eb97962b1cfe69ab6"
+}

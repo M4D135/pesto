@@ -1,0 +1,115 @@
+{
+  "DOCXSHA256": "d92c22ee65a5b20eba792afcb764ac45e240e44f4d8fb50c2338aa3885932955",
+  "PDFSHA256": "da75268d7040431a53718ef7328b20c1bc90a889016323e7065908ef56cd6eee",
+  "EmbeddedImagesEqualSourceBytes": true,
+  "UniqueEmbeddedImages": 12,
+  "PageCount": 25,
+  "PDFLinks": 10,
+  "PDFBookmarksTopLevel": 20,
+  "AllPageFootersCorrect": true,
+  "MaxBodyBottomAt2000px": 1826.7623550317994,
+  "PixelDiffCropContainsAllText": true,
+  "Footers": [
+    {
+      "Page": 1,
+      "Footer": "Pesto 1.0"
+    },
+    {
+      "Page": 2,
+      "Footer": "Page 2 sur 25"
+    },
+    {
+      "Page": 3,
+      "Footer": "Page 3 sur 25"
+    },
+    {
+      "Page": 4,
+      "Footer": "Page 4 sur 25"
+    },
+    {
+      "Page": 5,
+      "Footer": "Page 5 sur 25"
+    },
+    {
+      "Page": 6,
+      "Footer": "Page 6 sur 25"
+    },
+    {
+      "Page": 7,
+      "Footer": "Page 7 sur 25"
+    },
+    {
+      "Page": 8,
+      "Footer": "Page 8 sur 25"
+    },
+    {
+      "Page": 9,
+      "Footer": "Page 9 sur 25"
+    },
+    {
+      "Page": 10,
+      "Footer": "Page 10 sur 25"
+    },
+    {
+      "Page": 11,
+      "Footer": "Page 11 sur 25"
+    },
+    {
+      "Page": 12,
+      "Footer": "Page 12 sur 25"
+    },
+    {
+      "Page": 13,
+      "Footer": "Page 13 sur 25"
+    },
+    {
+      "Page": 14,
+      "Footer": "Page 14 sur 25"
+    },
+    {
+      "Page": 15,
+      "Footer": "Page 15 sur 25"
+    },
+    {
+      "Page": 16,
+      "Footer": "Page 16 sur 25"
+    },
+    {
+      "Page": 17,
+      "Footer": "Page 17 sur 25"
+    },
+    {
+      "Page": 18,
+      "Footer": "Page 18 sur 25"
+    },
+    {
+      "Page": 19,
+      "Footer": "Page 19 sur 25"
+    },
+    {
+      "Page": 20,
+      "Footer": "Page 20 sur 25"
+    },
+    {
+      "Page": 21,
+      "Footer": "Page 21 sur 25"
+    },
+    {
+      "Page": 22,
+      "Footer": "Page 22 sur 25"
+    },
+    {
+      "Page": 23,
+      "Footer": "Page 23 sur 25"
+    },
+    {
+      "Page": 24,
+      "Footer": "Page 24 sur 25"
+    },
+    {
+      "Page": 25,
+      "Footer": "Page 25 sur 25"
+    }
+  ],
+  "Result": "PASS"
+}

@@ -1,0 +1,3 @@
+﻿Nom actif, domaine, identité du PC, compte AD, emplacement et canal sécurisé confirmés après redémarrage. Entra reste un contrôle distinct.
+
+Consigner cette observation et préparer uniquement la suite indiquée ? Aucune commande n’est lancée par cette confirmation.

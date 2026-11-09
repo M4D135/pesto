@@ -1,0 +1,6 @@
+{
+  "v2/tools/release/lab-handoff.mjs": "f1478283ac08073fc1143b290e7b2c7e0629f6056874acf3187731e38a892794",
+  "v2/tools/release/publish-release.mjs": "06fac3d77ddcb20334f37c0985bb99e2f2e96c15d6728611db1f67d50167927e",
+  "v2/tools/tests/lab-handoff-check.mjs": "9b0088d9c27e3be7bb1ccd25d091c3a2cae2e1db80de13fea1372e4931f37f8d",
+  "v2/tools/tests/release-check.mjs": "feb7607f57c7bf6266bb40c3d262f0c9584ce517f73711052f436e2bb3526ad7"
+}

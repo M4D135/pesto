@@ -1,0 +1,70 @@
+{
+  "SourceFiles": [
+    {
+      "Path": "DEV/tests/Run-UiPresentationTests.ps1",
+      "SHA256": "9e4376f40dba8d94895063c533f7f7f280e5c7e045f577547d4491f581a49eed"
+    },
+    {
+      "Path": "DEV/wad/Pesto-SuiteUI.ps1",
+      "SHA256": "ecfae69c635ec640006ef17da88d101a688864d8ffcf31621820454602fddcbc"
+    },
+    {
+      "Path": "DEV/wad/Pesto-UXFlow.ps1",
+      "SHA256": "43de68269357367913e87052c3d092404ea932b4841b729bbb1e94eb4e46bb92"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Configuration.ps1",
+      "SHA256": "c802c26bade2df9e89007d4a14f7d7e3a05425874899109bfa1707c8d0984f72"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Interventions.ps1",
+      "SHA256": "b3acf5cce723f054be9f922157516e3719525c4583b2e31db446b1d489f92f58"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Authentication.ps1",
+      "SHA256": "14ac0e936446cbbade80590e86a65ec9d2fe823248bf3f5adfa9054e6c0486fc"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Join.ps1",
+      "SHA256": "234017884835b77870ea27c8782e4d7ab795ecc72a039ed07cdc505366ee4aa7"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Shell.xaml",
+      "SHA256": "38f1d54020909d6413ea71943020ff79e94b0db6de9685c73e75be850575bd9c"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Join.xaml",
+      "SHA256": "fb8c9ce0ba9036477423e40eafcfce65e34612712a39f1f5e7fbfcebdfb55369"
+    }
+  ],
+  "ReportFiles": [
+    {
+      "Path": "preuves/audit-2026-10-13/ui/first-start/windows/UiPresentation.log",
+      "OriginalSHA256": "b44b0d92cddd8dfe3cd2253a3a411ee60b9a17579d6f6b251d93365e6874c828",
+      "SHA256": "b44b0d92cddd8dfe3cd2253a3a411ee60b9a17579d6f6b251d93365e6874c828"
+    },
+    {
+      "Path": "preuves/audit-2026-10-13/ui/first-start/windows/UiPresentation.json",
+      "OriginalSHA256": "80796790ca8197cdd35c5083c0bac55b0bc3a349556ac37ac80fd1182bd28476",
+      "SHA256": "80796790ca8197cdd35c5083c0bac55b0bc3a349556ac37ac80fd1182bd28476"
+    },
+    {
+      "Path": "preuves/audit-2026-10-13/ui/first-start/windows/runner.json",
+      "OriginalSHA256": "876a73a18edacb03c07c8bd21b26706d1e0f355928d4c79ec83bb1e3a131ec9c",
+      "SHA256": "876a73a18edacb03c07c8bd21b26706d1e0f355928d4c79ec83bb1e3a131ec9c"
+    },
+    {
+      "Path": "preuves/audit-2026-10-13/ui/first-start/windows/UiPresentation.err",
+      "OriginalSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "WindowsChecks": 43,
+  "Failed": 0,
+  "NoAD": true,
+  "NoWpf": true,
+  "Session": 0,
+  "BeforeFailures": 2,
+  "AfterLocalChecks": 43,
+  "Scope": "AST and XML presentation assertions, no application launch"
+}

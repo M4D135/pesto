@@ -1,0 +1,20 @@
+{
+  "Scanner": "NO_CANARY_FOUND_IN_EXAMINED_TEXT",
+  "TextFiles": 16,
+  "EmptyStreams": [
+    "outputs-native/ConfigMgr.err",
+    "outputs-native/Custom.err",
+    "outputs-native/DeployR.err",
+    "outputs-native/FirstBoot.err",
+    "outputs-native/PDQ.err",
+    "outputs-native/PSADT.err",
+    "outputs/ConfigMgr.err",
+    "outputs/Custom.err",
+    "outputs/DeployR.err",
+    "outputs/FirstBoot.err",
+    "outputs/PDQ.err",
+    "outputs/PSADT.err"
+  ],
+  "Scope": "Six adapter labels, SYSTEM process, synthetic metadata rejection and native AD authentication/transport refusal. No external orchestration platform installed. Native process ExitCode not observed by the first pilot; JSON ExitCode=96 observed.",
+  "ReceiptsUnchanged": true
+}

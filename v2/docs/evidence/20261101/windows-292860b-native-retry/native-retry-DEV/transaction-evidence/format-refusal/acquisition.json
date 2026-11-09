@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sourceKind": "zip",
+  "inspectedFingerprint": "d458e748cdbccbad2e97cee11cd2793565ca288b8c7de58c6305952e31601448",
+  "preparedFingerprint": "d458e748cdbccbad2e97cee11cd2793565ca288b8c7de58c6305952e31601448",
+  "version": "2.0.9",
+  "archiveSha256": "46f87375acc670a11163593bad9c16476076ec13bdf61d7a4a135293ce73d627",
+  "candidateSourceCommit": "292860b934bcdff0f1321b0839158bf38b58816e",
+  "syntheticFault": false,
+  "syntheticVersion": false,
+  "installationPreservedBeforeConfirmation": true,
+  "directoryFallback": false
+}

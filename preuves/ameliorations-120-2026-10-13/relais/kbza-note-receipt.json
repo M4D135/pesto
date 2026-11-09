@@ -1,0 +1,24 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Note ajoutee : learnings/2026-10-13-mac.md — poussee sur Forgejo. ID : pesto-relais-codex-20261013-pause-tokens ; commit : fb12f136b9042e5806e659aecf13b673cf606428."
+    }
+  ],
+  "structuredContent": {
+    "schema_version": 1,
+    "note_id": "pesto-relais-codex-20261013-pause-tokens",
+    "path": "learnings/2026-10-13-mac.md",
+    "commit": "fb12f136b9042e5806e659aecf13b673cf606428",
+    "machine": "mac",
+    "kind": "handoff",
+    "topic": "pesto",
+    "duplicate": false,
+    "state": "pushed",
+    "sync": {
+      "pushed": true,
+      "detail": ""
+    }
+  },
+  "isError": false
+}

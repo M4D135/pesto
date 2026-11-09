@@ -1,0 +1,122 @@
+name: Pesto validation
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  portable:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: '3.12.10'
+      - name: Prepare neutral configuration and verify supplied runtime
+        run: |
+          python DEV/tools/prepare_dev.py
+          pwsh -NoProfile -File DEV/tools/Build-PestoEngineModule.ps1 -Root DEV -Check
+          python DEV/tools/refresh_manifest.py --root DEV --check
+      - name: Python tests (no Windows/AD execution)
+        working-directory: DEV
+        env:
+          PESTO_TEST_PWSH: pwsh
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Release metadata and unsigned provenance
+        run: python DEV/tools/release_assurance.py create --source DEV --output out/release
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: portable-release-evidence
+          path: out/release
+          if-no-files-found: warn
+  windows-isolated:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            culture: en-US
+          - os: windows-2025
+            culture: fr-FR
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.10'
+      - name: Prepare neutral configuration
+        run: python DEV/tools/prepare_dev.py
+      - name: Select user culture for isolated tests
+        shell: powershell
+        run: Set-Culture -CultureInfo ${{ matrix.culture }}
+      - name: WPF layout gate before extended suites
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File DEV/tests/Run-UxTests.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Filesystem interruption and release tooling on Windows
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Path out/windows -Force | Out-Null
+          cmd /d /c "python -m unittest discover -s DEV/tests -p test_managed_update.py -v > out\windows\managed-update.log 2>&1"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cmd /d /c "python -m unittest discover -s DEV/tests -p test_microsoft_components.py -v > out\windows\microsoft-components.log 2>&1"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Read-only signatures and environment inventory
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File DEV/tools/Test-PestoEnvironment.ps1 -Root DEV -ReportPath out/windows/environment.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Windows PowerShell 5.1 isolated suites
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Path out/windows -Force | Out-Null
+          cmd /d /c "powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File DEV/tests/Run-AllTests.ps1 > out\windows\run-all.log 2>&1"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: WPF layout and navigation, no interactive application or AD
+        shell: powershell
+        run: |
+          foreach ($suite in @('Zoom','ToolsTabs','Workbench120','BatchNames120')) {
+            & powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File "DEV/tests/Run-$($suite)Tests.ps1" -Wpf -ReportPath "out/windows/$suite.json"
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+      - name: Repeated WPF lifecycle and resource measurement
+        shell: powershell
+        run: |
+          Copy-Item DEV/tests/windows-ui-results.json out/windows/Ux.json
+          & powershell.exe -NoProfile -STA -ExecutionPolicy RemoteSigned -File DEV/tests/Run-WpfSessionTests.ps1 -MinimumDurationSeconds 120 -ReportPath out/windows/WpfSession.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Scan generated synthetic text evidence
+        shell: powershell
+        run: |
+          & powershell.exe -NoProfile -File DEV/tests/Run-SecretOutputsTests.ps1 -ReportPath out/windows/SecretOutputs.json -EvidenceDirectory out/windows/secret-outputs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          Set-Content -LiteralPath out/canaries.txt -Value 'PESTO_SYNTHETIC_SECRET_106_ONLY' -Encoding UTF8
+          python DEV/tools/scan_evidence.py out/windows/secret-outputs --canary-file out/canaries.txt > out/windows/secret-scan.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Preserve layout measurements even on failure
+        if: always()
+        shell: powershell
+        run: |
+          if (Test-Path DEV/tests/windows-ui-results.json) {
+            New-Item -ItemType Directory -Path out/windows -Force | Out-Null
+            Copy-Item DEV/tests/windows-ui-results.json out/windows/Ux.json
+          }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: windows-isolated-evidence-${{ matrix.os }}-${{ matrix.culture }}
+          path: out/windows
+          if-no-files-found: error

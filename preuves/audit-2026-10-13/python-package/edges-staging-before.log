@@ -1,0 +1,36 @@
+test_failed_directory_publication_removes_only_owned_partial_output (test_packaging_edges.PackagingEdgeTests.test_failed_directory_publication_removes_only_owned_partial_output) ... ok
+test_failed_zip_write_removes_incomplete_archive (test_packaging_edges.PackagingEdgeTests.test_failed_zip_write_removes_incomplete_archive) ... ok
+test_native_header_refuses_invalid_closed_list_before_writing (test_packaging_edges.PackagingEdgeTests.test_native_header_refuses_invalid_closed_list_before_writing) ... ok
+test_native_header_refuses_linked_parent (test_packaging_edges.PackagingEdgeTests.test_native_header_refuses_linked_parent) ... ok
+test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) ... ok
+test_pack_config_refuses_linked_template_even_if_bytes_equal (test_packaging_edges.PackagingEdgeTests.test_pack_config_refuses_linked_template_even_if_bytes_equal) ... ok
+test_prepare_refuses_linked_template_parent (test_packaging_edges.PackagingEdgeTests.test_prepare_refuses_linked_template_parent) ... ok
+test_prepare_refuses_linked_wad_before_creating_external_config (test_packaging_edges.PackagingEdgeTests.test_prepare_refuses_linked_wad_before_creating_external_config) ... ok
+test_production_staging_refuses_linked_tools_before_copying (test_packaging_edges.PackagingEdgeTests.test_production_staging_refuses_linked_tools_before_copying) ... FAIL
+test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) ... ok
+test_two_pack_generation_failure_does_not_publish_only_one_channel (test_packaging_edges.PackagingEdgeTests.test_two_pack_generation_failure_does_not_publish_only_one_channel) ... FAIL
+test_zip_refuses_linked_source_file (test_packaging_edges.PackagingEdgeTests.test_zip_refuses_linked_source_file) ... ok
+test_zip_refuses_target_inside_payload_without_creating_it (test_packaging_edges.PackagingEdgeTests.test_zip_refuses_target_inside_payload_without_creating_it) ... ok
+
+======================================================================
+FAIL: test_production_staging_refuses_linked_tools_before_copying (test_packaging_edges.PackagingEdgeTests.test_production_staging_refuses_linked_tools_before_copying)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_production_staging_refuses_linked_tools_before_copying
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_two_pack_generation_failure_does_not_publish_only_one_channel (test_packaging_edges.PackagingEdgeTests.test_two_pack_generation_failure_does_not_publish_only_one_channel)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 167, in test_two_pack_generation_failure_does_not_publish_only_one_channel
+    self.assertFalse(output.exists())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.059s
+
+FAILED (failures=2)

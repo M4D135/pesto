@@ -1,0 +1,11 @@
+date VM : 04/10/2026 17:06:01 +02:00
+Pesto.exe SHA-256 : 8FD5BD8CF914058F1F0B84A95F43536FF91C4DC2718C6C67F411BB24B7FD7CA0
+PowerShell : 5.1.26100.6584 Desktop
+compte : PESTO-W11-TEST\labadmin
+1.1 code 0 ; fin : FICHIERS=68 ERREURS=0 PARSEUR=PowerShell 5.1.26100.6584 (Desktop)
+1.2 code 0 ; Runtime=PASS ComponentCount=38 Syntax=PASS ParsedFiles=27 EmbeddedScripts=3 AuditWriter=PASS
+1.3 --check --quiet code 0
+1.4 FileVersionRaw=1.0.0.0 ProductVersionRaw=1.0.0.0 FileVersion="1.0.0.0" ProductVersion="1.0" ProductName="Pesto - Gestion des Postes"
+1.5 code 0 ; fin : RESULTAT 24 reussis, 0 echecs | moteur : PowerShell 5.1.26100.6584 (Desktop) | doubles AD/Windows, aucune operation reelle
+1.6 code 0
+1.7 code 0

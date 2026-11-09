@@ -1,0 +1,22 @@
+[
+  {
+    "etat": "avant",
+    "commande": "powershell -NoProfile -ExecutionPolicy Bypass -File C:\\PestoTest-run\\lancer-avant.ps1 -Exe cmd.exe -Arguments \"/c exit 7\" -Attendre -Delai 2",
+    "date_cockpit": "2026-10-04T18:26:15.174628+02:00",
+    "code_processus": 0,
+    "stdout": "tache PestoPilote-a61ee1df etat=Ready resultat=267011\r\n",
+    "stderr": "",
+    "attendu_regression": "code non nul sans session console",
+    "regression_passe": false
+  },
+  {
+    "etat": "apres",
+    "commande": "powershell -NoProfile -ExecutionPolicy Bypass -File C:\\PestoTest-run\\lancer.ps1 -Exe cmd.exe -Arguments \"/c exit 7\" -Attendre -Delai 2",
+    "date_cockpit": "2026-10-04T18:26:20.076733+02:00",
+    "code_processus": 1,
+    "stdout": "",
+    "stderr": "C:\\PestoTest-run\\lancer.ps1 : Echec du pilote : PestoPilote-6f260410 : Delai depasse : PestoPilote-6f260410 etat=Ready \r\nresultat=267011 ; definition retiree.\r\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\r\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1\r\n \r\n",
+    "attendu_regression": "code non nul sans session console",
+    "regression_passe": true
+  }
+]

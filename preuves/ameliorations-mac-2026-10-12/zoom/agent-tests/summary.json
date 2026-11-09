@@ -1,0 +1,52 @@
+{
+  "CreatedUtc": "2026-10-12T21:17:27.503148+00:00",
+  "PowerShell": "7.4.20",
+  "OS": "macOS",
+  "NoWpf": true,
+  "NoAD": true,
+  "NoVM": true,
+  "NoRegistry": true,
+  "Results": {
+    "Zoom": {
+      "Passed": 30,
+      "Failed": 0
+    },
+    "UiPresentation": {
+      "Passed": 40,
+      "Failed": 0
+    }
+  },
+  "WindowsWpf": "Not executed by this agent; -Wpf cases are provided for the Windows operator.",
+  "Files": {
+    "DEV/tests/Run-ZoomTests.ps1": {
+      "SHA256": "ba567ac040a6b187c8606bf80050c2690b795ab7e3f8e9cc7152f766505eeed2",
+      "UTF8BOM": true,
+      "BareLF": 0
+    },
+    "DEV/tests/Run-UiPresentationTests.ps1": {
+      "SHA256": "1b0e673bbd74dbaeb634887bafe658d4dd0b7faf9984d4f8733c5f72aecf3b00",
+      "UTF8BOM": true,
+      "BareLF": 0
+    },
+    "DEV/tests/Run-AllTests.ps1": {
+      "SHA256": "11d6eb5a8dba73a5e15384bf8f2258c01760a636fd37e688931362d09f6eb944",
+      "UTF8BOM": true,
+      "BareLF": 0
+    },
+    "DEV/wad/Pesto-Appearance.ps1": {
+      "SHA256": "fb182077de6298e37d44f480a90509eb339f848313e18c1827133d155caf2eb8"
+    },
+    "DEV/wad/Pesto-Shell.xaml": {
+      "SHA256": "9d30271f551b20d2bd78f4b47f2cb6b109eb227164f23751a1e20193132b041d"
+    },
+    "DEV/wad/Pesto-SuiteUI.ps1": {
+      "SHA256": "8d083f0215867301fad88f81e365fcf4abb372d8d78ad031c8445e2e750e8648"
+    },
+    "DEV/wad/Pesto-Core.ps1": {
+      "SHA256": "19b4bb2908ea8dcc5377648f2ed83d040c393c52ce96b577e6bdd809f2e85c18"
+    },
+    "DEV/wad/Pesto-Workspace.ps1": {
+      "SHA256": "76fe6567f56e938eec561cabe2b2f01e74991fe84ebac90d1321b46817ef9b5d"
+    }
+  }
+}

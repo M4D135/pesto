@@ -1,0 +1,17 @@
+{
+  "schema": 1,
+  "baseCommit": "ae2a6636a9ed7cc25d573b7bf0e58721c3bd7178",
+  "buildSHA256": "add688198e38269f4d3d8084bba9bd3b3a5664f1336ec961677c130eb2d75e7f",
+  "sources": {
+    "DEV/integrations/Invoke-PestoDeployment.ps1": "07144110afb82856b54c912232c0f140546b50cb6e0e2ba0e4cc67a00b6d3f2c",
+    "DEV/wad/Pesto-Journal.ps1": "e48ec5b9d61aefdc499463dad08e0645ec8253765dc493db254e321faeace239",
+    "DEV/wad/Pesto-Shell.xaml": "12d9772576c2a7fc63e3f39355b1474363f7dba17bdba6d119323cb079bae779",
+    "DEV/wad/Pesto.Engine.Runtime.ps1": "541d39109a28ce3235dde24e7465224151e0e9e2fa864233c61668343cd7257f",
+    "DEV/tests/Run-Engine120Tests.ps1": "2ef9ff9f7564173555e13a90e45b20ccf67f09788316110e95a005de323b5d63",
+    "DEV/tests/Run-HeadlessAuditTests.ps1": "04bbcf7d8341084b709bdc21c9d5fb03ca512e8238e4bbad11a6a6ebf5f0c75f",
+    "DEV/tests/Run-HomeDashboardTests.ps1": "e98edfd755064b40b419be1c3380662e51325ad3da7a000f60eba0f2dba09bb3",
+    "DEV/tests/test_spark_t014.py": "9d7adfb26a9c9d1f8da799c4157beaf4ee5270c8b0f13c0e2258d766c82641e8",
+    "DEV/tests/test_release_120.py": "83d2d0dd7e32209ae7ee8a10cd5f03f501177fb6a738fac207bc2e1a9d2436a7",
+    "DEV/tools/scan_evidence.py": "c4c6731cbdec89934652242eadbabf3cb1bae7757ddaa8eb43cbc6ddf28b01ca"
+  }
+}

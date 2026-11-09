@@ -1,0 +1,168 @@
+--- RC10/wad/GP-Core.ps1
++++ RC11/wad/GP-Core.ps1
+@@ -5,7 +5,7 @@
+ #  GP - Gestion des Postes   (interface WPF, Active Directory)
+ #  Jonction au domaine / Renommage / Déplacement / File d'actions
+ #
+-#  Version 17.0 RC10 — dsregcmd /leave avant renommage local/distant ; recette Windows requise :
++#  Version 17.0 RC11 - elevation avant connexion ; traitement Entra RC10 conserve :
+ #    - Retrait Entra obligatoire avant le premier renommage, avec contrôle du résultat.
+ #    - Déplacements seuls et jonctions au domaine inchangés.
+ #    - Moteur AD entièrement découplé de l'interface (aucun appel UI dans le
+@@ -39,11 +39,29 @@
+ 
+ Set-StrictMode -Off
+ $ErrorActionPreference = 'Stop'
+-$script:GP_VERSION = '17.0-RC10'
++$script:GP_VERSION = '17.0-RC11'
+ 
+ if ($env:OS -ne 'Windows_NT') { throw "GP nécessite Windows PowerShell 5.1 x64 sous Windows." }
+ if ([Threading.Thread]::CurrentThread.ApartmentState -ne 'STA') {
+     throw "GP nécessite un thread STA. Lancez powershell.exe -STA ou compilez GP en STA."
++}
++# Un appel direct du moteur passe aussi par le lanceur avant toute interface.
++# Le parametre Demo impose ensuite GUI=True ; il ne permet aucune mutation.
++if (-not $Demo) {
++    $startupIdentity=[Security.Principal.WindowsIdentity]::GetCurrent()
++    try { $startupAdmin=([Security.Principal.WindowsPrincipal]::new($startupIdentity)).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) }
++    finally { $startupIdentity.Dispose() }
++    if (-not $startupAdmin) {
++        $startupLauncher=Join-Path (Split-Path -Parent $PSScriptRoot) 'GP.ps1'
++        if (-not (Test-Path -LiteralPath $startupLauncher -PathType Leaf)) { throw 'GP.ps1 absent. Utilisez le pack complet ; le login ne peut pas commencer sans elevation.' }
++        $startupParams=@{}
++        if ($PSBoundParameters.ContainsKey('ConfigPath')) {
++            if ([string]::IsNullOrWhiteSpace($ConfigPath)) { throw 'ConfigPath vide.' }
++            $startupParams.ConfigPath=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ConfigPath)
++        }
++        & $startupLauncher @startupParams
++        exit $LASTEXITCODE
++    }
+ }
+ Add-Type -AssemblyName PresentationFramework
+ Add-Type -AssemblyName PresentationCore
+@@ -3157,8 +3175,8 @@
+ 
+ function AddToDomain {
+     <# Joint le poste local au domaine (mode hors-domaine uniquement).
+-       Si GP n'est pas élevé, seule la commande de jonction est élevée via UAC.
+-       Le GUI reste ouvert et le credential AD saisi au login est réutilisé. #>
++       GP doit deja etre eleve au demarrage. Le credential AD saisi au login
++       est reutilise ; aucune demande d'elevation n'est lancee pendant l'action. #>
+     param($DC,$DOMAINE,$OU,$NEWNAME,$CRED)
+     $NEWNAME = "$NEWNAME".Trim().ToUpperInvariant()
+     $OU = "$OU".Trim()
+@@ -3192,8 +3210,7 @@
+     # Add-Computer modifie la machine locale : le credential de domaine ne donne
+     # PAS un jeton administrateur local au processus GP.
+     if (-not (Test-GPIsAdministrator)) {
+-        Write-Log "GP non élevé : jonction de '$env:COMPUTERNAME' via helper UAC." 'INFO' $null 'join'
+-        return Invoke-GPElevatedDomainJoin -Domain $DOMAINE -OUPath $OU -NewName $NEWNAME -DC $dcFqdn -Credential $CRED
++        return New-ActionResult 96 'Jonction non lancee : GP n''est pas eleve. Relancez GP.cmd pour autoriser l''UAC avant la connexion.'
+     }
+ 
+     try {
+@@ -3247,8 +3264,12 @@
+     }catch{return New-ActionResult 21 "Précontrôle AD impossible : $($_.Exception.Message)"}
+     $local=$Computername -ieq $env:COMPUTERNAME
+     if($script:SIM){return New-ActionResult 20 "SIMULATION : dsregcmd /leave puis renommage '$Computername' vers '$NewName', aucune écriture."}
++    # Le login a lieu dans le processus eleve. Aucun second UAC pendant l'action.
+     if($local -and -not (Test-GPIsAdministrator)){
+-        return Invoke-GPElevatedLocalChange -Action Rename -Domain $script:DOMAINE -NewName $NewName -Credential $script:cred
++        return New-ActionResult 96 'Renommage non lance : GP n''est pas eleve. Fermez GP et relancez GP.cmd ; aucune nouvelle demande UAC pendant cette action.'
++    }
++    if($script:cred -isnot [Management.Automation.PSCredential]){
++        return New-ActionResult 96 'Renommage non lance : le compte AD et son mot de passe doivent etre saisis au login GP. Le mode Session Windows ne fournit pas le credential de domaine requis. Aucun dsregcmd lance.'
+     }
+     $leave=Invoke-GPDsregLeaveBeforeRename -ComputerName $Computername
+     if(-not $leave){return New-ActionResult 97 'Résultat dsregcmd absent : aucun renommage lancé.'}
+@@ -4329,7 +4350,7 @@
+         $bgInput = [string]$t['BgInputRO']
+ 
+         [xml]$sxaml = @"
+-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC10 — Initialisation" Width="620" Height="330" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="$bgWindow" FontFamily="Segoe UI" FontSize="12" ShowInTaskbar="True" Topmost="True">
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC11 — Initialisation" Width="620" Height="330" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="$bgWindow" FontFamily="Segoe UI" FontSize="12" ShowInTaskbar="True" Topmost="True">
+   <Border Margin="18" Padding="22" CornerRadius="18" Background="$bgCard" BorderBrush="$border" BorderThickness="1">
+     <Grid>
+       <Grid.RowDefinitions>
+@@ -4429,7 +4450,7 @@
+ ###############################################################################
+ 
+ [xml]$xaml = @'
+-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC10 | Gestion des Postes" Width="1460" Height="940" MinWidth="1000" MinHeight="620" WindowStartupLocation="CenterScreen" Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13" TextOptions.TextFormattingMode="Display" UseLayoutRounding="True" SnapsToDevicePixels="True">
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC11 | Gestion des Postes" Width="1460" Height="940" MinWidth="1000" MinHeight="620" WindowStartupLocation="CenterScreen" Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13" TextOptions.TextFormattingMode="Display" UseLayoutRounding="True" SnapsToDevicePixels="True">
+ <Window.Resources>
+ <SolidColorBrush x:Key="BgWindow" Color="#F5F7FB"/><SolidColorBrush x:Key="BgSidebar" Color="#EDF3FC"/><SolidColorBrush x:Key="BgCard" Color="#FFFFFF"/><SolidColorBrush x:Key="BgInput" Color="#FFFFFF"/><SolidColorBrush x:Key="BgInputRO" Color="#F0F3F8"/><SolidColorBrush x:Key="FgText" Color="#172B4D"/><SolidColorBrush x:Key="FgMuted" Color="#5A6C86"/><SolidColorBrush x:Key="FgAccent" Color="#0065D5"/><SolidColorBrush x:Key="ClrBorder" Color="#DCE4EF"/><SolidColorBrush x:Key="BtnBg" Color="#F7F9FD"/><SolidColorBrush x:Key="BtnFg" Color="#243B60"/><SolidColorBrush x:Key="BtnBorder" Color="#CED9E8"/><SolidColorBrush x:Key="GridBg" Color="#FFFFFF"/><SolidColorBrush x:Key="GridAltBg" Color="#FAFCFF"/><SolidColorBrush x:Key="GridHeaderBg" Color="#F3F6FB"/><SolidColorBrush x:Key="GridLine" Color="#E7EDF5"/><SolidColorBrush x:Key="RowSelBg" Color="#DCEAFF"/><SolidColorBrush x:Key="RowSelFg" Color="#172B4D"/><SolidColorBrush x:Key="LogBg" Color="#FFFFFF"/><SolidColorBrush x:Key="AddBg" Color="#0065D5"/><SolidColorBrush x:Key="RunBg" Color="#0065D5"/><SolidColorBrush x:Key="RunFg" Color="#FFFFFF"/><SolidColorBrush x:Key="BadgeBg" Color="#EDF3FC"/><SolidColorBrush x:Key="BadgeFg" Color="#172B4D"/><SolidColorBrush x:Key="FieldOk" Color="#F1FAF6"/><SolidColorBrush x:Key="FieldKo" Color="#FFF1F0"/><SolidColorBrush x:Key="OkFg" Color="#146845"/><SolidColorBrush x:Key="ErrFg" Color="#B52C32"/><SolidColorBrush x:Key="WarnFg" Color="#8A5700"/><SolidColorBrush x:Key="HeadFg" Color="#0065D5"/><SolidColorBrush x:Key="ChipOkBg" Color="#E3F5EB"/><SolidColorBrush x:Key="ChipOkFg" Color="#146845"/><SolidColorBrush x:Key="ChipWarnBg" Color="#FFF0D9"/><SolidColorBrush x:Key="ChipWarnFg" Color="#825000"/><SolidColorBrush x:Key="ChipInfoBg" Color="#E5EFFF"/><SolidColorBrush x:Key="ChipInfoFg" Color="#075BB4"/><SolidColorBrush x:Key="ChipNeutralBg" Color="#EEF2F7"/><SolidColorBrush x:Key="ChipNeutralFg" Color="#4D5F79"/><SolidColorBrush x:Key="SectionFg" Color="#0065D5"/><SolidColorBrush x:Key="Divider" Color="#E2E9F2"/><SolidColorBrush x:Key="Shadow" Color="#B3C0D4"/><SolidColorBrush x:Key="RowHoverBg" Color="#F0F6FF"/><SolidColorBrush x:Key="AccentSoft" Color="#E7F0FF"/><SolidColorBrush x:Key="FocusRing" Color="#0065D5"/><SolidColorBrush x:Key="TipBg" Color="#202E43"/><SolidColorBrush x:Key="TipFg" Color="#FFFFFF"/><SolidColorBrush x:Key="TipBorder" Color="#34455D"/><!-- RC6 : contrôles WPF natifs ; aucun framework externe ni police à installer. -->
+ <Style x:Key="FocusCue" TargetType="Control"><Setter Property="Template"><Setter.Value><ControlTemplate><Border Margin="-3" CornerRadius="9" BorderThickness="2" BorderBrush="{DynamicResource FocusRing}"/></ControlTemplate></Setter.Value></Setter></Style>
+@@ -4538,7 +4559,7 @@
+   <Grid Margin="14,20,14,16"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <StackPanel Margin="11,0,0,26"><StackPanel Orientation="Horizontal"><Border Width="31" Height="31" CornerRadius="8" Background="{DynamicResource AddBg}" Margin="0,0,9,0"><TextBlock Text="GP" FontSize="15" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/></Border><TextBlock Text="Gestion des postes" FontSize="12" FontWeight="SemiBold" TextWrapping="Wrap" Width="91"/></StackPanel><TextBlock Text="Votre espace de travail" Style="{StaticResource Hint}" Margin="0,10,0,0" FontSize="11"/></StackPanel>
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel><Button x:Name="NavHome" Style="{StaticResource NavButton}" ToolTip="Afficher le résumé local et les accès rapides. Aucune opération sur les postes." AutomationProperties.Name="Accueil" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Afficher le résumé local et les accès rapides. Aucune opération sur les postes." AutomationProperties.AutomationId="NavHome"><StackPanel Orientation="Horizontal"><TextBlock Text="⌂" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavHomeLabel" Text="Accueil" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavRename" Style="{StaticResource NavButton}" ToolTip="Préparer un renommage ou la jonction locale hors domaine, puis vérifier la file." AutomationProperties.Name="Renommer" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Préparer un renommage ou la jonction locale hors domaine, puis vérifier la file." AutomationProperties.AutomationId="NavRename"><StackPanel Orientation="Horizontal"><TextBlock Text="✎" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavRenameLabel" Text="Renommer" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavNames" Style="{StaticResource NavButton}" ToolTip="Consulter les noms libres dans le périmètre du cache AD." AutomationProperties.Name="Noms disponibles" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Consulter les noms libres dans le périmètre du cache AD." AutomationProperties.AutomationId="NavNames"><StackPanel Orientation="Horizontal"><TextBlock Text="▤" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavNamesLabel" Text="Noms disponibles" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavHistory" Style="{StaticResource NavButton}" ToolTip="Consulter les 100 dernières synthèses locales. Aucune relance automatique." AutomationProperties.Name="Historique" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Consulter les 100 dernières synthèses locales. Aucune relance automatique." AutomationProperties.AutomationId="NavHistory"><StackPanel Orientation="Horizontal"><TextBlock Text="◷" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavHistoryLabel" Text="Historique" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavLogs" Style="{StaticResource NavButton}" ToolTip="Lire les événements et les résultats détaillés de la session." AutomationProperties.Name="Journal" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Lire les événements et les résultats détaillés de la session." AutomationProperties.AutomationId="NavLogs"><StackPanel Orientation="Horizontal"><TextBlock Text="≡" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavLogsLabel" Text="Journal" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button><Button x:Name="NavSettings" Style="{StaticResource NavButton}" ToolTip="Modifier la configuration puis enregistrer explicitement les changements." AutomationProperties.Name="Paramètres" ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Modifier la configuration puis enregistrer explicitement les changements." AutomationProperties.AutomationId="NavSettings"><StackPanel Orientation="Horizontal"><TextBlock Text="⚙" FontSize="20" Width="29" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/><TextBlock x:Name="NavSettingsLabel" Text="Paramètres" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"/></StackPanel></Button></StackPanel></ScrollViewer>
+-   <StackPanel Grid.Row="2"><Button x:Name="NavHelp" Content="?   Aide et raccourcis" Style="{StaticResource NavButton}" ToolTip="Aide locale. F1 explique le contrôle qui a le focus." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Aide locale. F1 explique le contrôle qui a le focus." AutomationProperties.AutomationId="NavHelp" AutomationProperties.Name="?   Aide et raccourcis"/><Border BorderBrush="{DynamicResource ClrBorder}" BorderThickness="0,1,0,0" Padding="11,13,0,0" Margin="0,10,0,0"><StackPanel><TextBlock x:Name="UxVersion" Text="GP 17.0-RC10" FontSize="11" Foreground="{DynamicResource FgMuted}"/><TextBlock Text="Windows · PowerShell" FontSize="10" Foreground="{DynamicResource FgMuted}" Margin="0,3,0,0"/></StackPanel></Border></StackPanel>
++   <StackPanel Grid.Row="2"><Button x:Name="NavHelp" Content="?   Aide et raccourcis" Style="{StaticResource NavButton}" ToolTip="Aide locale. F1 explique le contrôle qui a le focus." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Aide locale. F1 explique le contrôle qui a le focus." AutomationProperties.AutomationId="NavHelp" AutomationProperties.Name="?   Aide et raccourcis"/><Border BorderBrush="{DynamicResource ClrBorder}" BorderThickness="0,1,0,0" Padding="11,13,0,0" Margin="0,10,0,0"><StackPanel><TextBlock x:Name="UxVersion" Text="GP 17.0-RC11" FontSize="11" Foreground="{DynamicResource FgMuted}"/><TextBlock Text="Windows · PowerShell" FontSize="10" Foreground="{DynamicResource FgMuted}" Margin="0,3,0,0"/></StackPanel></Border></StackPanel>
+   </Grid>
+  </Border>
+  <Grid Grid.Column="1"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+@@ -6118,6 +6139,13 @@
+     try{[void]$Grid.CommitEdit([Windows.Controls.DataGridEditingUnit]::Cell,$true);[void]$Grid.CommitEdit([Windows.Controls.DataGridEditingUnit]::Row,$true)}catch{Show-MsgError 'Impossible de valider la cellule en cours.';return}
+     $rows=@($script:table.Rows|Where-Object{$_.Traiter -eq $true})
+     if(-not $rows.Count){Show-MsgInfo 'Aucune ligne cochée.';return}
++    if(-not ($script:SIM -or $script:GUI -or $script:SimOn)){
++        if(-not (Test-GPIsAdministrator)){Show-MsgError 'File non lancee : les droits administrateur locaux ne sont pas actifs. Relancez GP.cmd pour accepter l''UAC avant la connexion.';return}
++        $requiresCredential=(-not $script:INDOMAIN) -or @($rows|Where-Object{$_.Renommer}).Count -gt 0
++        if($requiresCredential -and $script:cred -isnot [Management.Automation.PSCredential]){
++            Show-MsgError 'File non lancee : pour renommer ou joindre, saisissez le compte AD et son mot de passe dans le login GP au demarrage. Session Windows seule ne suffit pas. Aucun dsregcmd ni renommage lance.';return
++        }
++    }
+     $errors=New-Object 'System.Collections.Generic.List[string]';$sources=@{};$targets=@{}
+     if(-not $script:INDOMAIN -and $rows.Count -ne 1){$errors.Add('Hors domaine : une seule jonction locale autorisée.')}
+     foreach($r in $rows) {
+@@ -7631,14 +7659,18 @@
+ }
+ 
+ function Show-LoginWindow {
++    if(-not $script:GUI -and -not(Test-GPIsAdministrator)){
++        Show-MsgError 'Connexion non ouverte : GP doit etre eleve avant le login. Relancez GP.cmd.'
++        return $false
++    }
+     $t=$script:Themes[$script:CurrentTheme]
+     $horsDomaine=-not $script:INDOMAIN
+     $accentBanner=if($horsDomaine){'#E65C00'}else{$t['FgAccent']}
+-    $bannerText=if($horsDomaine){"Poste hors domaine — jonction au domaine $($script:DOMAINE)"}else{'Compte administrateur Active Directory requis.'}
++    $bannerText=if($horsDomaine){"Droits administrateur locaux actifs. Jonction au domaine $($script:DOMAINE)."}else{'Droits administrateur locaux actifs. Connectez le compte AD utilise pour les actions.'}
+     $bannerTextXml=[Security.SecurityElement]::Escape($bannerText)
+ 
+     [xml]$lxaml=@"
+-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC10 | Connexion" Height="700" Width="500" MinHeight="480" MinWidth="460" WindowStartupLocation="CenterScreen" ResizeMode="CanResize" Background="$($t['BgWindow'])" Foreground="$($t['FgText'])" FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="True" UseLayoutRounding="True">
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP 17.0-RC11 | Connexion" Height="700" Width="500" MinHeight="480" MinWidth="460" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="$($t['BgWindow'])" Foreground="$($t['FgText'])" FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="True" UseLayoutRounding="True">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><Border Margin="24" Background="$($t['BgCard'])" CornerRadius="18" BorderBrush="$($t['ClrBorder'])" BorderThickness="1" Padding="26">
+   <StackPanel>
+    <Border Width="48" Height="48" CornerRadius="13" Background="$($t['AddBg'])" HorizontalAlignment="Center" Margin="0,0,0,14"><TextBlock Text="GP" FontWeight="Bold" FontSize="22" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/></Border>
+@@ -7651,7 +7683,7 @@
+    <PasswordBox x:Name="TxtPwd" MinHeight="44" Padding="12,8" FontSize="14" VerticalContentAlignment="Center" ToolTip="Mot de passe de ce compte. Il n'est ni enregistré dans les préférences ni affiché dans le journal." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Mot de passe de ce compte. Il n'est ni enregistré dans les préférences ni affiché dans le journal." AutomationProperties.AutomationId="TxtPwd"/>
+    <StackPanel MinHeight="66" Margin="0,10,0,10"><TextBlock x:Name="LblErr" Text="" Foreground="$($t['ErrFg'])" FontSize="12" Visibility="Collapsed" TextWrapping="Wrap" ToolTip="Message complet de la tentative de connexion. Une erreur ne lance aucune action sur un poste." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Message complet de la tentative de connexion. Une erreur ne lance aucune action sur un poste." AutomationProperties.AutomationId="LblErr"/><TextBlock x:Name="LblStep" Text="Prêt à vous connecter." Foreground="$($t['FgMuted'])" FontSize="12" Margin="0,6,0,6" TextWrapping="Wrap" ToolTip="Étape courante de la connexion." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Étape courante de la connexion." AutomationProperties.AutomationId="LblStep"/><ProgressBar x:Name="PbLogin" Height="5" IsIndeterminate="True" Visibility="Collapsed" Foreground="$($t['FgAccent'])" Background="$($t['BgInputRO'])" BorderThickness="0" ToolTip="Lecture de connexion en cours. Patientez ou annulez." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Lecture de connexion en cours. Patientez ou annulez." AutomationProperties.AutomationId="PbLogin"/></StackPanel>
+    <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions><Button x:Name="BtnCancel" Content="Annuler" IsCancel="True" ToolTip="Annuler la connexion et fermer cette fenêtre." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Annuler la connexion et fermer cette fenêtre." AutomationProperties.AutomationId="BtnCancel"/><Button x:Name="BtnOk" Grid.Column="2" Content="Se connecter" Background="$($t['AddBg'])" Foreground="White" BorderBrush="$($t['AddBg'])" IsDefault="True" ToolTip="Vérifier ce compte et ouvrir GP après une connexion réussie. Entrée active ce bouton." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Vérifier ce compte et ouvrir GP après une connexion réussie. Entrée active ce bouton." AutomationProperties.AutomationId="BtnOk"/></Grid>
+-   <Button x:Name="BtnWindows" Content="Utiliser ma session Windows" Margin="0,12,0,0" ToolTip="Utiliser le compte Windows déjà connecté. Les droits existants ne sont pas augmentés par GP." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Utiliser le compte Windows déjà connecté. Les droits existants ne sont pas augmentés par GP." AutomationProperties.AutomationId="BtnWindows"/>
++   <Button x:Name="BtnWindows" Content="Session Windows (sans renommage)" Margin="0,12,0,0" ToolTip="Utiliser la session elevee pour les lectures AD et deplacements autorises. Pour renommer ou joindre, saisissez le compte AD et le mot de passe ci-dessus." ToolTipService.ShowOnDisabled="True" ToolTipService.InitialShowDelay="450" ToolTipService.ShowDuration="30000" AutomationProperties.HelpText="Utiliser la session elevee pour les lectures AD et deplacements autorises. Pour renommer ou joindre, saisissez le compte AD et le mot de passe ci-dessus." AutomationProperties.AutomationId="BtnWindows"/>
+   </StackPanel>
+  </Border></ScrollViewer>
+ </Window>
+@@ -7673,7 +7705,9 @@
+     }
+ 
+     $winIdentity=try{[Security.Principal.WindowsIdentity]::GetCurrent().Name}catch{"$env:USERDOMAIN\$env:USERNAME"}
+-    $ui.Windows.ToolTip="Utiliser la session Windows courante : $winIdentity"
++    $ui.Windows.ToolTip="Session elevee : $winIdentity. Lecture AD et deplacements selon les droits. Le renommage et la jonction exigent la connexion avec mot de passe ci-dessus."
++    if($winIdentity -and $winIdentity -notlike "$env:COMPUTERNAME\*"){$ui.Login.Text=$winIdentity}
++    $ui.Stage.Text='Droits administrateur locaux actifs. Le compte AD sera reutilise pendant les actions.' 
+     $script:GPLoginUi=$ui
+     $script:GPLoginState=[pscustomobject]@{LoginOk=$false;WindowsIdentity=$winIdentity;PendingCredential=$null;PendingMode='';PendingUser=''}
+     $script:LoginOk=$false;$script:AuthMode=$null;$script:AuthUser=$null
+@@ -7687,7 +7721,7 @@
+         try{$script:GPLoginUi.Window.Close()}catch{}
+     })
+     $window.Add_Closing({if(Test-GPAsyncOperationRunning 'LoginAuth'){Stop-GPAsyncOperation 'LoginAuth'}})
+-    $window.Add_ContentRendered({try{[void]$script:GPLoginUi.Login.Focus()}catch{}})
++    $window.Add_ContentRendered({try{if($script:GPLoginUi.Login.Text){[void]$script:GPLoginUi.Password.Focus()}else{[void]$script:GPLoginUi.Login.Focus()}}catch{}})
+ 
+     [void]$window.ShowDialog()
+     $ok=if($script:GPLoginState){[bool]$script:GPLoginState.LoginOk}else{$false}

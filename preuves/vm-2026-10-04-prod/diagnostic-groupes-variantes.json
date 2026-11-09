@@ -1,0 +1,44 @@
+﻿[
+    {
+        "Variant":  "RFC4515",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Filter":  "(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\28test\\29\\2a\\5c\\5cgroupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)",
+        "Count":  0,
+        "Error":  ""
+    },
+    {
+        "Variant":  "RawSlash",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Filter":  "(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\28test\\29\\2a\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)",
+        "Count":  1,
+        "Error":  ""
+    },
+    {
+        "Variant":  "HexDN",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Filter":  "(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\28test\\29\\2a\\5c5cgroupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)",
+        "Count":  0,
+        "Error":  ""
+    },
+    {
+        "Variant":  "SingleSlash",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Filter":  "(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\28test\\29\\2a\\5cgroupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)",
+        "Count":  1,
+        "Error":  ""
+    },
+    {
+        "Variant":  "GuidDN",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Filter":  "(memberOf:1.2.840.113556.1.4.1941:=\u003cGUID=91bcf969-14e1-437a-b448-b53596a9b488\u003e)",
+        "Count":  1,
+        "Error":  ""
+    },
+    {
+        "Variant":  "Reverse",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Filter":  "(member:1.2.840.113556.1.4.1941:=CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)",
+        "Count":  1,
+        "Error":  ""
+    }
+]

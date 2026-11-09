@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "kind": "consumer",
+  "product": "pesto",
+  "adoption": "partial",
+  "canonical": {
+    "repository": "M4D135/domenia-d120",
+    "commit": "75778d1df7777e601fe9179d2d075e19d7d9644c"
+  },
+  "files": [
+    {
+      "path": "v2/web/css/base.css",
+      "sha256": "c4b0516545eec64978cda9c92a115bc5cf058da567b6521d0119fedabe84450f",
+      "upstreamPath": "v2/web/css/base.css",
+      "upstreamSha256": "c4b0516545eec64978cda9c92a115bc5cf058da567b6521d0119fedabe84450f"
+    },
+    {
+      "path": "v2/web/css/components.css",
+      "sha256": "225f20523043c3fe1f0a653f7335136245c032cc167eb21ad4311b2924f7b101",
+      "upstreamPath": "v2/web/css/components.css",
+      "upstreamSha256": "517b4f6934951dde1f11f5d7eebc229b6cecdc1b74626ac2fc96e0473dc3b7e4",
+      "adaptation": "Animations Pesto existantes conservées ; retour à la ligne des identifiants longs déjà repris de Domenia."
+    },
+    {
+      "path": "v2/web/css/kit.css",
+      "sha256": "12437533ab6040cb5069e487cac3a4ccd7a44ab7a754ba3423a61608a1661c4c",
+      "upstreamPath": "v2/web/css/kit.css",
+      "upstreamSha256": "959f12442b691b16ca5196b43ca40cc4322913662ca1277bb9007a57e7aa5e6a",
+      "adaptation": "Animation existante des états de grille Pesto conservée ; Formulaire du kit masqué quand il porte lui-même l’attribut hidden (29/10/2026)."
+    },
+    {
+      "path": "v2/web/css/layout.css",
+      "sha256": "26f597cbeaffb7c1f2fde462b515d5d144b97ef20e2debd082dcfc27c2049f1d",
+      "upstreamPath": "v2/web/css/layout.css",
+      "upstreamSha256": "6080edf05ca10465642bf18c2405edd1dbe26e93b8238eafb34795dddc4f2277",
+      "adaptation": "Animation existante de la marque Pesto conservée ; Poignée de largeur du menu replacée au bord du rail (spécificité au-dessus de [data-tip]) (29/10/2026)."
+    },
+    {
+      "path": "v2/web/css/motion.css",
+      "sha256": "478f2785ca749b792b69a7d8a246b8e2550f29aaa58762103cc58bbe33645a3e",
+      "upstreamPath": "v2/web/css/motion.css",
+      "upstreamSha256": "a1b1c3e74e6f45010b9f713afe1e168efc24fb7cefd29965e01773eb2fff7c51",
+      "adaptation": "Les animations décoratives de Pesto se mettent en pause quand sa fenêtre est inactive."
+    },
+    {
+      "path": "v2/web/css/shell.css",
+      "sha256": "55409f6477a3e4e8d0dbc33353f0c4f29f4a27ba611be621a09a94f68fa38ea4",
+      "upstreamPath": "v2/web/css/shell.css",
+      "upstreamSha256": "e2fe161b0ba16b4b3ce0db7caf86fa2a0aeae30f5d748438dda007ffdfbdff9c",
+      "adaptation": "Styles métier Pesto (noms, reçus, confirmations, configuration, démonstration et jonction hors ligne), animations existantes et marque Pesto conservés ; dimensions du logo propres à Pesto et bordures alignées sur le token commun --border ; bouton de repli du menu en icône seule tout en bas, comme le bouton de barre latérale Domenia ; Défilement du rail réservé sous le pied, infobulles flottantes du rail et poignée masquée en rail forcé (29/10/2026). ; Bouton de repli harmonisé avec Domenia, FILPRO et GLPI : ligne avec libellé en déplié, icône seule en replié (29/10/2026). Coche, point des cases et cadre des boutons pleins visibles en contraste élevé (30/10/2026)."
+    },
+    {
+      "path": "v2/web/css/tokens.css",
+      "sha256": "15dd927dec2acca6dc1d882dd41475180b37a278379ed7fba82fb0e0d4a4fc10",
+      "upstreamPath": "v2/web/css/tokens.css",
+      "upstreamSha256": "15dd927dec2acca6dc1d882dd41475180b37a278379ed7fba82fb0e0d4a4fc10"
+    },
+    {
+      "path": "v2/web/js/kit/breadcrumb.js",
+      "sha256": "febe30b2f9363f1140b81f827a268f07593a239d5068dc3ad558abdd5beb8b36",
+      "upstreamPath": "v2/web/js/kit/breadcrumb.js",
+      "upstreamSha256": "febe30b2f9363f1140b81f827a268f07593a239d5068dc3ad558abdd5beb8b36"
+    },
+    {
+      "path": "v2/web/js/kit/commandbar.js",
+      "sha256": "04a903fb55a871fd7c7ad18a4b0355b1da3952f702fa2185cb578e819c2cf958",
+      "upstreamPath": "v2/web/js/kit/commandbar.js",
+      "upstreamSha256": "04a903fb55a871fd7c7ad18a4b0355b1da3952f702fa2185cb578e819c2cf958"
+    },
+    {
+      "path": "v2/web/js/kit/copy.js",
+      "sha256": "d40f6e06d70b936c14a2309720ffeb591e5e1c3d90becd3472b96c0c354768cf",
+      "upstreamPath": "v2/web/js/kit/copy.js",
+      "upstreamSha256": "d40f6e06d70b936c14a2309720ffeb591e5e1c3d90becd3472b96c0c354768cf"
+    },
+    {
+      "path": "v2/web/js/kit/dialog.js",
+      "sha256": "7fbffa623631a8d62e57ee05bb19585f8ad137aacbef586ce532b1b2570ecf41",
+      "upstreamPath": "v2/web/js/kit/dialog.js",
+      "upstreamSha256": "195383765fa9ed5e73cece0e2ee6517200d9903d89b0feae7405f91e5e7e2b24",
+      "adaptation": "Confirmations Pesto avec avertissements, consentements et motif borné, requis avant validation clavier ou bouton."
+    },
+    {
+      "path": "v2/web/js/kit/drawer.js",
+      "sha256": "4b093aaff0c0b18fa95139bce63c0327373c1d07b2f248a4f0de66695669257c",
+      "upstreamPath": "v2/web/js/kit/drawer.js",
+      "upstreamSha256": "4b093aaff0c0b18fa95139bce63c0327373c1d07b2f248a4f0de66695669257c"
+    },
+    {
+      "path": "v2/web/js/kit/filterbar.js",
+      "sha256": "2abbaf13c077732e7cf8538bb0f402cec4f2e7d453691c0946ef8ac2432725df",
+      "upstreamPath": "v2/web/js/kit/filterbar.js",
+      "upstreamSha256": "2abbaf13c077732e7cf8538bb0f402cec4f2e7d453691c0946ef8ac2432725df"
+    },
+    {
+      "path": "v2/web/js/kit/form.js",
+      "sha256": "ea674360e8d7b7ba19e9e1065e82e2c2eb249499ab159258b81c3427f344876f",
+      "upstreamPath": "v2/web/js/kit/form.js",
+      "upstreamSha256": "ea674360e8d7b7ba19e9e1065e82e2c2eb249499ab159258b81c3427f344876f"
+    },
+    {
+      "path": "v2/web/js/kit/freshness.js",
+      "sha256": "b2556bdc6b839d20b7664b53c3d10a2dd1f209418e72d14cccea2af64ac15ba7",
+      "upstreamPath": "v2/web/js/kit/freshness.js",
+      "upstreamSha256": "b2556bdc6b839d20b7664b53c3d10a2dd1f209418e72d14cccea2af64ac15ba7"
+    },
+    {
+      "path": "v2/web/js/kit/gauge.js",
+      "sha256": "0297813e83b110470309bf548f4168f3da49daa965db02b8ba1e5bcd6cd4bed0",
+      "upstreamPath": "v2/web/js/kit/gauge.js",
+      "upstreamSha256": "0297813e83b110470309bf548f4168f3da49daa965db02b8ba1e5bcd6cd4bed0"
+    },
+    {
+      "path": "v2/web/js/kit/glyphs.js",
+      "sha256": "a0d9f12798055bf12fa2330d8da0d2e0466060b3a8146842a2d306bead0d928b",
+      "upstreamPath": "v2/web/js/kit/glyphs.js",
+      "upstreamSha256": "a0d9f12798055bf12fa2330d8da0d2e0466060b3a8146842a2d306bead0d928b"
+    },
+    {
+      "path": "v2/web/js/kit/grid.js",
+      "sha256": "ae83951457ee2b70c6103b2824a50c3ee23070cd5dd39a1ecff1ac192fef218c",
+      "upstreamPath": "v2/web/js/kit/grid.js",
+      "upstreamSha256": "ae83951457ee2b70c6103b2824a50c3ee23070cd5dd39a1ecff1ac192fef218c"
+    },
+    {
+      "path": "v2/web/js/kit/index.js",
+      "sha256": "fc149a622eb71315ccd37dbc95b4ad64275e073a773da35bb2ef6e7a5d7f438a",
+      "upstreamPath": "v2/web/js/kit/index.js",
+      "upstreamSha256": "fc149a622eb71315ccd37dbc95b4ad64275e073a773da35bb2ef6e7a5d7f438a"
+    },
+    {
+      "path": "v2/web/js/kit/infinite.js",
+      "sha256": "fc49cba716e79fb83829f7a1232e45950b31d31a14c4bac5bd7ac9655a13273d",
+      "upstreamPath": "v2/web/js/kit/infinite.js",
+      "upstreamSha256": "fc49cba716e79fb83829f7a1232e45950b31d31a14c4bac5bd7ac9655a13273d"
+    },
+    {
+      "path": "v2/web/js/kit/kv.js",
+      "sha256": "15019f23ad40013e16efa799139d4025988d7bf008868e73a67cc2e9c807a635",
+      "upstreamPath": "v2/web/js/kit/kv.js",
+      "upstreamSha256": "15019f23ad40013e16efa799139d4025988d7bf008868e73a67cc2e9c807a635"
+    },
+    {
+      "path": "v2/web/js/kit/menu.js",
+      "sha256": "221294cac95778f32dd03907494720f94ebc79a957c46bd9bd668890f65ab301",
+      "upstreamPath": "v2/web/js/kit/menu.js",
+      "upstreamSha256": "221294cac95778f32dd03907494720f94ebc79a957c46bd9bd668890f65ab301"
+    },
+    {
+      "path": "v2/web/js/kit/split.js",
+      "sha256": "e8f14ddc3394fe15a3c02ed0ace47f54cb8cfcaf52ff219cd011fa665d4bf4c5",
+      "upstreamPath": "v2/web/js/kit/split.js",
+      "upstreamSha256": "e8f14ddc3394fe15a3c02ed0ace47f54cb8cfcaf52ff219cd011fa665d4bf4c5"
+    },
+    {
+      "path": "v2/web/js/kit/status.js",
+      "sha256": "a1418a04996e23b2eb8f5f2e5988bd776ca99732b8ae05611ea9c2d9639b71e7",
+      "upstreamPath": "v2/web/js/kit/status.js",
+      "upstreamSha256": "a1418a04996e23b2eb8f5f2e5988bd776ca99732b8ae05611ea9c2d9639b71e7"
+    },
+    {
+      "path": "v2/web/js/kit/tabs.js",
+      "sha256": "0412fd9e12c5a5fdb0692d8d09a33d0d307d3d369ddda27200a97fc4d1b524df",
+      "upstreamPath": "v2/web/js/kit/tabs.js",
+      "upstreamSha256": "0412fd9e12c5a5fdb0692d8d09a33d0d307d3d369ddda27200a97fc4d1b524df"
+    },
+    {
+      "path": "v2/web/js/kit/timeline.js",
+      "sha256": "edabcae6705f2055d1643814f1ef1f67288a849f3d5fe68f7e462405edee2ca7",
+      "upstreamPath": "v2/web/js/kit/timeline.js",
+      "upstreamSha256": "edabcae6705f2055d1643814f1ef1f67288a849f3d5fe68f7e462405edee2ca7"
+    },
+    {
+      "path": "v2/web/js/kit/tree.js",
+      "sha256": "283acff5871d465e322092869fb6619a3cc0e22d8ffff843db7768aee020fe4d",
+      "upstreamPath": "v2/web/js/kit/tree.js",
+      "upstreamSha256": "283acff5871d465e322092869fb6619a3cc0e22d8ffff843db7768aee020fe4d"
+    },
+    {
+      "path": "v2/web/js/kit/util.js",
+      "sha256": "9ccc2d0225ef7a05c6f9f8e2b408f807f5dc52fa021378bae908fc75efcc4f48",
+      "upstreamPath": "v2/web/js/kit/util.js",
+      "upstreamSha256": "9ccc2d0225ef7a05c6f9f8e2b408f807f5dc52fa021378bae908fc75efcc4f48"
+    }
+  ]
+}

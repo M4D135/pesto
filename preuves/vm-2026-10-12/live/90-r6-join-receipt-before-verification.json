@@ -1,0 +1,17 @@
+{
+    "Schema":  1,
+    "Version":  "1.0",
+    "OperationId":  "5f0eee7279bb459c93b9d9939e7caf11",
+    "Phase":  "PendingRestart",
+    "Utc":  "2026-10-12T19:51:55.0437515Z",
+    "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+    "BootUtc":  "2026-10-12T19:33:31.5000000Z",
+    "Computer":  "P111301VA765172",
+    "NewName":  "P111301LY765128",
+    "Domain":  "labo.local",
+    "OU":  "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+    "DC":  "dc01.labo.local",
+    "Reference":  "",
+    "Account":  "administrateur@labo.local",
+    "Message":  "\"P111301VA765172\" ajouté au domaine \"labo.local\" → nom \"P111301LY765128\" / OU \"OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local\""
+}

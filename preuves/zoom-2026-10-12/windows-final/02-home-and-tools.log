@@ -1,0 +1,16 @@
+clic : #NavHome (Accueil)
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+capture C:\PestoZoom20261012\preuves-ui-final\\02-accueil-100.png 1920x1160
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #SuiteNavToggle (Déployer le menu : icônes et libellés.)
+capture C:\PestoZoom20261012\preuves-ui-final\\03-menu-zoom-120.png 1920x1160
+clic : #SuiteNavToggle (Réduire le menu : conserver uniquement les icônes.)
+clic : #WorkspaceButton (Palette de commandes)
+clic : Préparer
+capture C:\PestoZoom20261012\preuves-ui-final\\04-outils-preparer-120.png 1920x1160
+clic : #PanelCancel (Annuler)
+clic : #NavSettings (Paramètres)
+clic : #SetTabFiles (Fichiers de configuration)
+capture C:\PestoZoom20261012\preuves-ui-final\\05-parametres-fichiers-120.png 1920x1160
+clic : #NavHome (Accueil)

@@ -1,0 +1,2482 @@
+{
+  "Application": "Pesto",
+  "Version": "17.0-RC18",
+  "Source": "GP 17.0-RC17 R1 DEV, upload received in this conversation",
+  "Method": "Exact function text after identifier, branding and version substitutions; no PowerShell execution. Compatibility strings kept.",
+  "Functions": [
+    {
+      "Name": "Test-PestoAppearanceSid",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "fee77ffd1c8de3ef1d21f8f49cf50eec771154fbd6591a98912c5f37bde0868a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoAppearanceValue",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "0255fe3c7586b50ad334506a198581c79d69a9b41c89632e7384cfa0cd532f04",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoAppearanceValue",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "1aa5dc85d38b2b188171a0533ec15312d889e90662944b808693cbf0d8fa0631",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoLayoutPreference",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "bff7c6304229f3db5dde7b98cec733852c56f69546d6fe6fcc0bd56484ff41d3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Resolve-PestoTheme",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "4cdd43432c8062a8066554be2d6a3a2d49976d476b5a79c40d6cf0661b774fad",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-PestoAppearance",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "1113227b67e8b603c3d9e1e084e2bcda6994217448a33f31829e726e3a5b0c16",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoThemeMode",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "20d5a2fa4d54d411f58eb80fafe93a6c13cd3e3cf23535943a5b4bf01a276c90",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Sync-PestoAppearanceControls",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "eca681a2f18a2f2e8136845529817c4c1e609812a42ba7a182ba753768758ece",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoThemeToggle",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "3d9f622ee5505d3e2078fc93ecfe244fb4328517687e8a13ea9d10227ed5163b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoAppearanceChoice",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "311c2294d3dc5534f0489c3c90a28c392960fe4eb00dd2379879c2114d5c8ddf",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-Prefs",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "e7d7bb151655301782757db9898c9fb2c482981e0a8f0d8ecd3919cf36ccbff7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Load-Prefs",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "f3bf660903bee5c63d5852746a188ed29161a50362cfbacfeeca711b34f2b878",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoAppearancePulse",
+      "File": "wad/Pesto-Appearance.ps1",
+      "ExpectedSHA256": "71b786d1e34978e7afd62bc32000a54ce9098ef8906d83b84aa4f55ca6f67165",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoQueueMonitor",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "c533e5beb6035502e688b5d4f8b9c502373d07f6667a5bb872c2a9521e460691",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Publish-PestoWorkerLog",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "0a3a4bd31fec4e43cdc227c17852790e586c2fd066967367b48c402345120d30",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoWorkerStage",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "ea1ff4e2b2ddba5edf4230a8fcecaa99bbcb7e5d8fe69207a421eeca693a794a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Assert-PestoWorkerMayContinue",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "d73534085c545e721f6b8b6fa7139b24d6e8b55003b8b9b075cb16d2ebccebc9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoQueueCancellationFence",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "92cba04c314116778a469fa130de2b6d171eafdfd51f9451004909d326ef4b40",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Receive-PestoQueueEvents",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "fddeda6a34e713118de0619f3275b2f6548fcf5cd4253e3d6305e71cb8242209",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoQueueActivityText",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "32d376c14e5865e13b591012e6f8235c33ded53a6f698b5f6bd5ea549292ed58",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoQueueWorkerStillActive",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "e4d6d705629dd665e1ae87816aadd7dfc954dce1237c793ff9b7ae17ca4ffa68",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoAsyncOperationRunning",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "00f878effacd853c0e81ef1af92ea791204e11727153215654caeb9623583d5b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoAsyncOperation",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "a9b428f61127ae44c59695d6488d5ab537a761b373157627e67ef2ed6a30e9bf",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoAsyncCallback",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "7e7418cf8cbb803f783d45dcc874b69368ac0e392cb66aa094f5ff453631e632",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoAsyncOperation",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "f4e7b0cdc46a3b070f0f64aaa39975876b1202891b5e8e3d1267a8deda243874",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoAsyncTimerTick",
+      "File": "wad/Pesto-Async.ps1",
+      "ExpectedSHA256": "521aa3ef930705c7f2c1071afadb2a9379529aa6b0031205e856467da26ef1e2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoIdentityChangeReason",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "23435b61c4c3e98bb99c5f1e82b482ac3d173acb8d5d008d3db46766872cfa26",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoWindowsAuthIdentity",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "64755ff256ca99c2e4fd25278fbe3a50e15ecfef4baf8ac94e2568cdaef6fa86",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoExplicitCredentialRequirement",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "0878c697ca44e3dcd24d97f92ff97cac9422b2ab46324de01c98ef98343a6a7d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoAuthenticatedSnapshot",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "048e6748fa6cb55800c6e904f031e488103e4d8d334d6cabe64c8a3fac32deba",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoWindowsConnectionError",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "cef5dfede487077fd4816b8774df5d54ecb3c56ed433990c09f6842cb4b52876",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoWindowsConnectionSuccess",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "4ec6c4488c1c462fb2c4f9e73a4c44091e072aef53f74c30839110d030905633",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoWindowsConnection",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "09e55ed974de75a5f74ec87821e0928130c1ac8047dafac784dbcc7ac7e44ae9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoWindowsConnectionWindow",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "f1c317231e20f413edece5608fd3c71f84bcd3c06e036bf8b162dd3c327bd5ba",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoLoginPreferencePath",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "70d4205ef2154557a00fe16121ea47f106017f069ba283131a7b099c575f44fe",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertFrom-PestoLoginPreference",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "b3799b978162ab51c0b21d698af09b268a77c90483df22c4ad4d47e4f8465def",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoLoginPreference",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "d23522087747ad54479c5afb7bef6b63d71d6fd61302011dc876109cce46b2d5",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-PestoLoginPreference",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "77a536b329cd46f54ae9afff58722d40cb0698620d7f9d9ddc2b877d0a28c044",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoLoginFeedback",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "c09b53a81a1a1ccbb05d30e7b98669484647e6b6a7671a5732a83cd195688429",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoLoginForget",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "3f6e584180c98bbdf75b57c3ef147ba5fd47edd210cfbdbed1a80bc07d75f10d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoLoginWindowBounds",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "4d61e87ad2f3586559b66c803d8fc24759cab34a84eebe5b58558cdef1f08640",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoLoginBusy",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "678c38224e1a3251c07c0311197bd6f91581ce4ef3b894356b1ca90a77f593e3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoLoginError",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "2e7c0722138884bae8c3a712cf2371289f392cc13a936efdb702071b8d97fc16",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoLoginSuccess",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "e6fffd6dc94e68889d9f9c5c918b16d53ad2261d8fa0c9f0ff62aaac292dada1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoLoginAttempt",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "4f5b5cebb0dd7ee28a7f13c45094b6c0ae5cad2ee147ae9e25cc1d09ec22c463",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-LoginWindow",
+      "File": "wad/Pesto-Authentication.ps1",
+      "ExpectedSHA256": "77b654ee6898dbcb169fd7073c33054e035c26e372ccec5998334bd4c3a3be1e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoCanonicalValue",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "80d5c5f2f86b29b56c0f909f1eeec421701afa7600e9f30e7777faaaf58dc603",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoConfigurationSignature",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "1483ef453cde0e8384f61e7b669bd88b69fac0e8150ab37f7c135d2170bff1fd",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invalidate-PestoConfigurationPlans",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "89f4d97692e45a66ca05a6ef94cf87ef0c2da05a0ae88e21951100e9981b8bbb",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoConfigRepairSave",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "ec9b7ee523fb0ac570eb4929aa72eda73411972b14d22b120e38c63db5f19c41",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoConfigRepair",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "27db2060f2945140d30fda3cc7d414f52bcf11aaa06327e9a1de76e12b274453",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Read-PestoStartupConfig",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "4dc64c785dcc90e93eaeb8c1d06e8535de62a50f63442952de04b9027045ac60",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-CfgValid",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "1aa4634f49d723267a99e632ec479df4131484eb87d10928e789801acb9b2642",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Load-SettingsUI",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "aae6f9385287a1793e1e421ca656255a2b67ec2cab2e1b3089c398b82add9cac",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Build-CfgFromUI",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "ca2005d45e7ddd4d29c39ea06b24a91ba4399349307b45d6677ff4f56e285467",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-Cfg",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "6366357d6959455efd7a33dd3b92afc72f45392f9d325b7d665f4219dca36335",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-CfgHot",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "5f4f9b810ce2a48b4a63adae149475ebab6c249eb9238433370c96bfabe6d7a4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Reload-CfgFromDisk",
+      "File": "wad/Pesto-Configuration.ps1",
+      "ExpectedSHA256": "5e1346ce58887919bac72d470d643e59b59bf34f360703d0bdebaed32324c27e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoRdnValue",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3f99ea734c05028ad12f8ed5790b91698ff5ba9fbc71115897b6d10dea13991f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-PestoAtomicText",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6381c1045180f5e5ac5d8c372792577c8777e85ea8da2bd15033330ec0fc1e2a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoStateDirectory",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "945e6ffbed83880979175fb7efd7715472b80c6bdc6b4a48a9354d9194065980",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-PestoQueueCheckpoint",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "98f3c311cd0aa85a4ed90b66f73a72194b5685b627860c0cfcce5a40fa48b16c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-PestoQueueCheckpointSafe",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "b587d1f63817265eae8ca74ffa7af50923f170c919713bc88de2db01d77d2ee7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Request-PestoQueuePump",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "53e59b52b9c588c31f9977f86a029f228b9cbbc9fad411bfd5065f154943417e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoTextReport",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bf4d9128c8003cfa76e6986e561a902db5ae6a2bbeefb2f72c39281e51513c61",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoQueueRenamePlan",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8fa18559ed4e43842f28fecbfaeda714ad67e6cd8a1ea4e6a49732df99fb82b0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoQueuePreview",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3760e89bf517556218b1ea357853426db202bf872ef63d01a7682752ee2a6964",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoSelectedResult",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "743d6c2a011d822edb9d24fff37953f2d6ba1a24fb367a9126cb903345da6ba4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Request-PestoQueueStop",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ea59bee077294a314825536505a282e80039db6da078473048cd9b36bb1aa924",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Reset-PestoSafetyLock",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "0e823c7abc1c7cb8f6aca4a87eb84f1e01216ce83714b31ab543bbfca25bd06f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Prepare-PestoMoveRetry",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "579511b3f4bd696a17decb030c7a6168c761dd2ebaabeefb99168b31247517a2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Restore-PestoQueueCheckpoint",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "b124025f7946f29320340d37bd9e3d97a40dcea1c58a1d838c7782f1b76dae0a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoQueueRowResult",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a9e72dfd83e86c8ff59699fb57e766910a82a52e95f201301003d550ef52af64",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoQueueNotStarted",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "53456279d5648b3200feac31b783dd28d8fea488f61ae44d9e599ce4445f3ad9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoQueueItem",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "658e2e53545176a947a1ec4f721768f80308d5c867975fdc291ce070696236f5",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Fail-PestoQueueCallback",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bbe49a18c9bccb2bc4fe5a09f87dc41f386dc7d637f71956e4f9066dab68938d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoComputerProbeSuccess",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "d2cad9c04dd199a5723a4c5c4d446274a443ea441ab775950950ca548a36d91f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoComputerProbeError",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e56314318edec426bf6a026151871d6664b7514aff86994d10906a70ab6dccfc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoSafeCsvCell",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bcbe010b69aa889c67a39d6643efb9c8da5bdf9c802afc2355866a0b507c4b5f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoRowPlanText",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "261630810a130a0c60e05cbf6ab61adba8327b79cd480c247fe4c56bea07d831",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoPlanSignature",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "c10460cbfa0241ff89e9c118ff99c59b79670dd7519210c88cd184838bd2479b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoQueueFilterExpression",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "c882304ae530815a10fcb6138f26af25e429191433f849f09d2c38b3e62c6108",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertFrom-PestoComputerList",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "2d14db029e5afd8a72cafa1eb997e13eebff3c4b366f683a37c8c03788ccb471",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoBulkPlan",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f9bb487cac680b5ad3b0b1f424e52c12cde38c9b47ca21e65bb47aa00339e2c6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoPreflightSource",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8c9865e83e8470f98423d2d1485a37c3613f56227ed037fc081006e7f06fae5c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoReadOnlyPreflight",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "073de422b09dcb3112e709118d611d03adea7376657d40efa915a0d0fea64b51",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoResultGuidance",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8fd213727913c02c65013c0d67478f77453e7549b60f311e268eafbc406ca4ab",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoQueueReportHtml",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "be0f63c749fa3c0f4e2c451057683da4699ec7fddefaf4b5b960983e672754a2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Reset-PestoRowPreflight",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "c65a790764907a53e544a593516af5a3410677781113abd72d6e99ae03cd13bc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoSelectedQueueIndex",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "4714dd0254c0de219079efe859ac34c82a2610b284e3836823ed331d0e2d3915",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoQueueFilter",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "b740f71341dd612116943691d9bb74b8aa73ea4b2e542d6768f90871f1582367",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoQueueSearchTick",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6c536a0e7788ec04a176bc1937223b4371e6dba7b5f329d9308d34b11cacf71c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoVisibleSelection",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "dbb436db4e9a92eafef316e0a5e21d47e4a6a5feaf196a025570471cd6fbbc31",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoPilotage",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "56b86d03ceafbdf7e82c5e61a8b7328cad86861ff6d54637ccfccb1f3379829f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoPreflightFreshness",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e0d1ae5c332e16d7ab2550ac83f7006fe76bc9933ecaa4e528a03d5dfc071b0f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoPreflightRunIssues",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ccf14b5669b29e79015f44b286c702a2f66bb7d246448f01d7caaacfcf405cfc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoPreflightConfirmationText",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6143bffce8d268c0128a3ac87034139e7a06283485af7260b83afc6a84053a30",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoQueuePreflight",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "eb20113aefc57240a5a0811ba53da5a3d0181c78735c3e56908587e4cf63665c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoQueuePreflight",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "9b60fec7feffc37b6f3799e219c430b4926f2d50a506c7d7e0e747da27b49e40",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoQueuePreflight",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8557082acc5e5eb31b1bacaee7e4f84e16f86c5e2c473f600559c48515910ad6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoPilotagePulse",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "86eb7e5983ddf359b117aec43af719b00095e42df7d6c62d2d69e063a94d9338",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoPilotagePulse",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ef8e4a14a81e2eb8515b5394682340a2fe5d9400770f6f7cdc1185ec5a57c693",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoPilotagePulse",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "7baa8ba2b9e98cbec041ccdbd6f1329330a15d967e3311d9b0a191815a9e8778",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoBulkPlanner",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a8f96bcd02435e015eafbf32b6cbea9b4ac20a145ce5964b458ded9c09ffab51",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invalidate-PestoBulkPreview",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "91723fe44a37355309152770e6a140db2d399a73226ad3668691cb9a652e89c7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoBulkPrepare",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "33fe8a0622dbd30ba8f2d0b17288aaa2c5ac0b195e19752f6715b194fed35e4f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoBulkApply",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f20fa3461a4a489faeb2ccb6e982e48d0a6d38d0299b991a8ca1246dfe52efb6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Export-PestoHtmlReport",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ec638613eb43c228bc35f8bca7cbd4b324769a39b910cba3f083963be94b5289",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-PestoRunHistory",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "4556d2685aaf6bfae25836bab817f9573be1ac5c22101790e76783b64765cb15",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoRunHistory",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "d354d2883aaa34e45938768de355dd8309af31f15a4969c31e016925e14df35e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-RootDir",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "0d09f287453520f3928f41f3804478efc2f203e575ca18b9633d784c76d1d01c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Remove-ADModuleSafe",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3ab1c95a0c141e54a281d112b83a2688e636cc85273a0e43df8ac98a710632ff",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Quit",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e1a8d1f8afbd87c20e6909377c323dced94c96d8af94207559d55d7543a7bc40",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Convert-Value-TF",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6a0139463f3ec96afd6fd9f7bacdab26910bb762dd473f71641dfb47ae37e998",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-MsgError",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "44e4a8584155e950465591e3b76bce6380f787409555ed62f167859b699b682c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-MsgWarning",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "cae744c7d63e3d65ccf9de25ab4603cbceb86c305ca20f84304899c1fd85c928",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-MsgInfo",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bf6ca395261a3604406e3fb82b9ea14176d41875781071f46afad7afa62d077c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Confirm-YesNo",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "1856258f7834a0aad068162cf32b93cd3773f14d904761e4db4cd8d862071851",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-DoEvents",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bd9b8397617deae0544b34a4f050f2aa54a18f6f91c981f1eb9dbbbca2789a91",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Wait-Pumped",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "54795f143c783df6896bef4a0d411a125a094df397abbc2c2d158d5c0a549442",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-BusyState",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "4482d83e0f435c52b928d78fd98baa16cbc25997acf8f354adc5c1923f84d5a6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PrefsFile",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "d33060acd695b5a3dc5a057338540cea09e3fdb0e5eee827e9e39d577c37d70b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-SiteTag",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "4a6b34add91a7e85727db7c520f91b549ed6332ce694b85822ee4006828a9db3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-AvailableMachines",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f5bb5d2157a6e0d00a22e7373adaeb9e1577864aebdd31483b52646b048e5b7f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-NameList",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "221826dc44c8b38cac3122b8a5f537240f61164a37341f07d322a7d7a3db9549",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-CityCodeFromComputerName",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "cc3b895faaefe5998a0653ed359141fbfe78038ae227b5608d1b859e690004ee",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Find-TargetOU",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "240a26dbba886da8f4b5e0246f52612c9d9fb61743e9f3150012305b4331ec33",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ComputerNameVSCityCode",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "23968c2a38cea878a0ee65937ddfd49c8a36ed06254d0d1830ad26099480c927",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-Brush",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a57b62ae267beefcb1f8db520daf19edef47ec41d1ef392efd7ead9ab576f993",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-ThemeIcon",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3f4e0d527ec83dcd175b635d44203bda3b0b23cde2ae587e88175191594cf6e9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-Theme",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "b327221a026c5fddbf8a75a7352af1ce1ed3dc1093a602c1cc364f3d34fd3246",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-Chip",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8631d51ce5be293a92975e3df70fc1ad3989e57253a3d1cf6aed67f18d3b7cd9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Restyle-OneChip",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "5701f1a7a48c99b60122d79cb35498d6c4aaa4396ec0e4bfe5f5f607c97b870f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Restyle-Chips",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "9527345795d2709ddb64ff4c06fa1df68fc08d2e35368e26c372409bb731285d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-ErrorDetail",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ae55eeac06fe91783726301874024945c1afbb610f7f123530e5a8d7103a3d09",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-AppIcon",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "579ba211aa3573fe81979e4a9b5f00ec5c51634024f92c244858b895e4344edb",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-WindowIcon",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8b3011a7b9f1c7d1cc59abd521123c7a4417efe26cacfbb4c9bd9b134f7a6d7c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoStartupWindow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "71ec108804d50de26dd15042d0437c5730bcc960a36f10e392abf2a9fe44c804",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoStartupStage",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "d76e3df36a320269a1b11a991205a26b3d4e08a35c9917285e4f513b5ef2348b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Close-PestoStartupWindow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a8a8559dea16f86c8f534373b8af804bb85638474ccc8ebbaedf49e62de4f393",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-QueueTable",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ac53e04fba17b731d1c116dedf59b73a13d961e2868ea82f0e571f2dbf00c809",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Ensure-Table",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6390e8e60dddc38e7ef9795d8bb51ca42f5914d20526fd68a0d4508ad17686fb",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-QueueButtons",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "b76e966fa94ac12733df5a8c1e898e1f9daf682acc9d595ac2a118f4aac88498",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Sync-Grid",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "691a8f0cdc2a9d2e04f00ab01de84a74917ad7bf176cc31c7895c4d76f1e9761",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Format-OUPath",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "d30ce8c78ea14957dcae7c4cf28880f50809c28ecf774dd55fa5cb17dcb8b700",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-OULabel",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a9271444a09ad0331c8a33f19002c84e30b8f83005c91400bb03f62b3172b469",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Reset-ConfigFields",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "4a7de2e002561930f245f3598b9213d7f9cda7682806d081a145429528ca26c7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-FieldColor",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a1ace385760577305f3a667e158de554cb8c16f0ba29c1b768f7a31278b7c6f4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PCInfo",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ea3ff89adc8c96923033315c41fce66b19122bac32f4e4e978c1779fb3c15c74",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-ModeLocal",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bea1d2975dcc48257eee31e93a4fa1752824fa653fe0ccd70bcfd51cf53d7fd9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "On-RemoteToggle",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "30e9aef34ec8625601a2f87df4c8cef966703fc1dc423185c0feb9dfabf8a849",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoComputerIndex",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "0c5858e70cfad8f46ee2a6fb0ad70a6fdbee5dbeaefdb6f5e524b24739905196",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoCachedComputerProbe",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8d6ba2c41f6c6d6bff605f9dee2da9eff81434b5b1bc863115861d5b731c692d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-PestoComputerProbeResult",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f8a9c397e1c67d11396e17701105baf8af48ec6c099b6b576f33edf8ffc90489",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Select-PCName",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "4493b22c431ab75d45ae057c1dcd22944f03b28d64cb0b1db981a17d8ac9aa3d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Setup-HorsDomaineUI",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "9f772c208bb92299eaa3fce5c06fb0603bd78b49670b854d11d77c575dafd7f1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-PestoHorsDomainUI",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3f59a9ca886d6c2f230917f2382cee40458f258c03b2fa3704e7acbd44d1b49c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-InfoComputer",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "2ac196bc0e33f9042ba7231a7c3a2dfd498dbabb0e84c0a5cb2b9934782c1254",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-OrganismeSelection",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "5d99b7831d9af5127b270b21d21969579c91eafcf3c01a77c40a5c4008e58afc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-SiteSelection",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ef0688aa2cd825756480726849003eee4f72d24d5db145428f889c2e281d922c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Check-SameOU",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "2418052531ae8d6181cf0d6e48467f3d8c0bab5e8e0aa314fb11cdd179049dcc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-ComputersForNameGeneration",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e4b52788c4fb46ec66f8dfc3c2f39750ecd46eb89418d43b0f07f2116b2f8c04",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-NameList",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "bb611bfa14eda48c3e53132a0eff11fe83130a17e3a548aaebb06b1c9067f183",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Select-NewName",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "652792587688c7c5f06ad277afa222a5afe0b00f478186d65ec20544dd05eab8",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-RebootOption",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "07422fc7a17364f07a2e34447d8f93f671ca2f9a532461751a004077da0e772f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-AddButton",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "c55cf29ee6af6c81ac251ea8c9e48e39fc3a024cee336929e553f845c3fcff3a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Add-Or-UpdateRow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a47a66a0e8d8c9cb8bf62ed09fadf0e2ef20ac347671dc3c8c35559ccb060bd7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Enter-EditMode",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f76ce88fe782d952a1fcdb8d44840c485c72644920c617e9d7fcc112b4b98069",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Exit-EditMode",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "75d3efd90004441e04620d26a378d0630dc60a28f3cfa82e72cc4a58c89b6cb5",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoQueueRemovalState",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f7baf2a8c9cc98fe7ed40edd5342f83134ad65055048320094b7c706351db271",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Remove-PestoQueueRow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "9f87b2d2ec253e8523a5815116524df5b7590867ce81c6e673ac3633edc18791",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Delete-SelectedRow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "78bbc9531c8a6623f14e96c42ac37b6fa51ef4dc3ce43390f18b849434c712fd",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoWorkerCoreSource",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "1d7682c8033d682dc35563e8017e9d723b5426d941d9f171c8c605e3f403fba7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoQueueUiLocked",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "208e751acfecd5a38d108b93cd8bf7850e4304ef5ce2876a027dcce18095a9c3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoQueueRemainingForSafety",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "50bceef8c96d42d330bfdf6242b607caef09ced74eeda557b45ba9a1ac4fbaca",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoQueueRun",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6c2138d01639efaab7d02b31f0ddbff1f60b237f3904d4a0c9ea8081d405734d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoNextQueueTask",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "cd8e295e5a0a883ebf27924b281fce8036f584e294843e574536930881c35be0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Run-Queue",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "140ce594acecf030b7d0b4d1c87db2d69ad4d3d4261b8481c590cab4f2ff9499",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Export-Queue",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "a5c28408ef11fdd88df1d1e3ba9c5a80bdb6dcfb9b7245ec9b6d72363e384fd9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Import-Queue",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6d25ad431466ba0a3fa49b000e160e04472b9a83defe18c401618c5e6e605216",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-NameParts",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "275c056643462aeae7f93b34108fd0850dc87a82d5e3ffb3505d3b91926a43c4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-DemoComputers",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8b446903f1966b07be791fd8135ebab98a36d5a2327c88cbfa3cb222c8ae0bee",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Build-NmIndex",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "0732bba2113c0acd0ab2d226b871f07f768bea7fed32f102912e70b554391988",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Populate-NmFilters",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6aed8355b1e0d6b8a1bb12569295ef3b8088185210676d830a7c0cee4c1e42b1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-NmUsedMap",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "ec68c32d039a2ee7a9dffbaa49ded864ab07613818d1587835675983aaabc1d8",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-NameGrid",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "1f1a3ae06b46890ba58da99c52e6fef4064633746f127ebbab7fbd03803d46c0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-NmNextButtons",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8ffe57c9356155ff6b2a9cb54d74da45c90534b5df7dff9f271ffa4496720ea0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Copy-NmName",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "87d6d23a0870e2b995973b869077912bb40efff769241fdd14b2c8ce557dd255",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Export-NameView",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "c7c6afff2a417df0be2c22754e9ecadf532d44608b273cbea999d1a5b661a180",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ToTF",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "07c51f286b44f288f1d4cdf009e69c0fc00ba2865048b369584b1b7f4241d405",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-KvTable",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "9c34926f980c71c0719b3c26b46c4e6497961ed4bdb173b471b79fe9de01b1da",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoOrderedMap",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "76c1c03f8db49241e36750a4ba66c6f9d91b0b1b0cc8f750f07150f168214cbb",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoMapValue",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e1d9ce2873e003a0dab84afc98ec991a3d4c44bb3035c3e7a76f452cb888704d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Add-CfgRow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e2ce124dd4786a1f87af8129d9026532f7cbc9919137e9eafc36c121753b84f9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Remove-CfgRow",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "d3589cd167545bcc5facd00f09257ca20e4b7465a266045fb902af821883064d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Browse-OUForGrid",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e9d45f8e928e450603957c6420455e167bda7c6aab9f9ca0a4d7ae3eb701d25b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-DomainDN",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "88aea4a15294ab3ebf67815bc290371a8715b84707aec1479edfbe5119951bea",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Load-OUChildren",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f7b1efa2ccaaf348556a8e510342a57390c6a5e83b3c42b7e4e257c6586381b1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-OUBrowser",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e30397645ed8cff2846e25f762189fc3ccd02023491c8136ab0f054592813e82",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoUxSnapshot",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "8048c41caaa910064858bb7f9447a399dd60c59ab3770ecd036dddfaaa5700cb",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Request-PestoUxRefresh",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "c204c65546943c266eefffadfa7c2338ccad09f177efa6e2b1592b630b9f14ae",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxRefreshTick",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "f6f2bc7d01f917087be13dcc0a320bb09f80d94727cf075568c75684b267ef02",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxInputChanged",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "056ee83640ebda94147e5d5025f6cfca4b55b55ecedd65e8686f40d514ba0dfc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoUx",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "644ea00aafa3662934f1b49b66f3adfc652912100f4673771aa22e2bc4b9e1d0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoUxLayout",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6c2874f7e2b4fded020f6c6bc5a7034641a6a2cc3092659d94bd047e210d9c68",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxSizeChanged",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "1e97225c7c29b9240f10b1e739c84d44bed4f888195bdf97ec036a73d7584e8e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoUxPage",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "08a405119f55a22b0fca04e96df5323de576536051ab779b8762bc64ab76d550",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Sync-PestoUxNavigation",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "71f61f87d6cfdfcae163f64ca881aa74da0d7011cb9b2a6c181dd764162198d5",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxNavigate",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "e735503ad1acf58be185a69d335b69fa041aaf78ccc28d21e5494bdbf04903ba",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxPageChanged",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "7b053fcaf52c2d57838c092e038ab7a25867892384527141b41ba34376031da9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoUxHistory",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "6487871051a14a132514dc9012b4997a410e57eb71232bbe2c4758e6149e9157",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxHistoryRefresh",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "7c0003368fb0b17819dc490c8e9db228f18f93c65f509be0063df0ab4acd2f8c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoUxTechnicalColumns",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3a7ff5f31a30297fa1dd0732b5ebfeffbf1e6143586d53331982953904c2f4bc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxTechnicalChanged",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "1b81ae6f759ed203b546ab304dcd0a5e0d50ff66ef0c46f255b645a020a17e8b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxCopyName",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "9750f52bc527699047be740cf3fb31a6fce0807d15a644bf5499c461ac94649e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Request-PestoUxComputerLookup",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "87693e56ac05f3b15ff55da0da0bb5e7086ca411631c157f67a443c499464a5f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxComputerLookupTick",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "25602c07b901904e1755707453887c472e06e0efaa879d05c6e83fe35dedd6d4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxReadComputer",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "22155b9b11766189f27b683992e69ca06e37846f11beb8deb8f31642ff956f41",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxSourceKey",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "239ea2eec9e30a6d037b2510c2eff8938ce92143faee3e19dee531e2c54ab1d8",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoUxKey",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "fc25f712abba204cdaa8cd680aba485b06ddbe1b833a1ddbf8d63c7c0674f475",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-PestoUx",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "2fb2852eefc9a4e0aa4e15fafe691b49e7011d2e486a7d272d96a07d2671d262",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoUx",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "3c3d531e33d39bbba20d2b296bfd725d92590b24a1b18eb18a39449c2cf43fb8",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoAuthenticationRoute",
+      "File": "wad/Pesto-Core.ps1",
+      "ExpectedSHA256": "673a4b34f481afa0c173c7ac31e405c2f573a8b3e8d754c2f3586434cea349c7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDirectStatePath",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "e99453551a337b26ded272f945fcb6f8e8a268e98ad94a68ccacabff5d9ef261",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Read-PestoDirectReceipt",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "d0cffda3a63a304c40e2e19586d81ed888b7d3c1de30731236254be0b3a27929",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-PestoDirectReceipt",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "6d965fbf15c20292b299879a336ae1e5dbf621adae92c3b88a7ae6a49a53391b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDirectPhase",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "c3e4157a727546f1d06a2db971eb9cfbfd74e71b693b42d84d27c19b4ea1772e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoDirectResumePlan",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "febb56828c80bfdf517796029a2833ca1190ae379c1892523fde68d2cb25938a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDirectSupportSource",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "6024396eba8bf559ec17aff04b4047ffa2533ab9fd815b8126d315900668872e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDirectFormPlan",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "b8dd4d039d2a0e0cabbfdf79c952e191fa807766eef260ce0868cd82b2e7346b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDirectPlanErrors",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "cf12c5ca48f58b9dbd962e9cb1646a70dbd304e4415d78852aac7e53baf4074d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoDirectBusy",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "65295cfecd48268454381bf1b0f4cc36d24110af7486134f3b48b7f863ff5375",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoDirectPreflight",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "63322dae6e8a0b23f623c61f1a4702311bf599b0f96a1c7a9f263cbb49124fab",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoDirectPreflight",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "7779fa473ed37212ce755d681ea071b38b26bf9930a44846f514ae0c5968274d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoDirectPreflight",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "2f53d31c724b35781595c069e5db08a8c62eac9fbca44b843207438a391f6978",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoDirectAction",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "eda86b958a7283616064e7c22fb0189fb74d084a07fc42cdf5f236eddb748703",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoDirectAction",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "06b08c3a8f081b8c620d42af950fec4e4d374c5858a030734adbe78534f3f642",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-PestoDirectState",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "ebdcb2604350d12e6ddd6085d2ac42759e1fed8d69ee1b9f9b0f7d4929ce469e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoDirectDetails",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "89257c0c3dac516979f2c8d4e0c16acd8b2c9d0f390343c1073388b16053125a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-PestoDirectObservation",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "f1a4843e571ae64b653280d894c39075c10794539bae6e872a9d36be36170eff",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Assert-PestoStoredMutationReady",
+      "File": "wad/Pesto-Direct.ps1",
+      "ExpectedSHA256": "9ba6d418793e535a3c07cb413dbb2e302eefa105d7b1a3b1cebc1ad99d0eea8c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Ensure-ADModule",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "32ca4ab3206d20b8d7dbcff9e3234edfb228827b28932114851da24e77e6e46e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "CheckDomainWMI",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "ccca7953ab4fe2a685d6774be117a1b8799f907fef29de206dedfcdbecf75951",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-DomainController",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "38b448f149a0c0652b5de95b7504239db48c13b1a03d5959c8e24a99b102089b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-ADParams",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "3a68206208711278860f5cc8a80bf311002db5eebf3e020421b69f9c6f964088",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Find-ADComputerByName",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "53a68ae8170ff10a5a979d2c55241082b3b52c050cee472f1ed2b2563802a519",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-ComputerOU",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "1cff0777613106395299e83fba54c4bb2926c0a09634d481f5fa678cd068579f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-AllComputersInOU",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "ec2fc4d66dfef2106c4d3462f59177133c261b24219a6541b395f9cd5ceefa9e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-ComputersNoms",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "be266b2c1b73295bd53c92cbeb6fb96131baad058753f73b8f4c9eab706220a6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoDirectorySnapshotRequest",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "1d2db9c5595cd350d35f3c3e4a013e8902b37537ba0ca1960bfa59dad2fbc78d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoDirectoryRefresh",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "305f2a3b029c263afde943a4eaa709740086a7919b6a81dea8c759c2b7ebe029",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Refresh-Names",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "8ef484fdab4c6061a210d5ff11d7529c1c234cb926b20c160b3f3919021c2645",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PCType",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "fabeab724e46e2f9e00cbcdba1acec4346b8999db10a655db2267234d7d0bc15",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Extract-Site",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "00c9b6752f002b2d70277950287d7408da17c9b39507fedf62ed1720e6df18a7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Extract-Equipe",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "d0c010fe1f4b6ccd49a05c360d41e979a3fb1ce418b9705a086565b21a8d9dda",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "CheckOU",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "dbcebcbd369188280423376fa32b93468b758facfdd762ddf175a8c924adef0e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoParentDN",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "4a6554545f173080f23511ea6638f21698effbc4028e6bd0173bd855d70e162d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDomainFromDN",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "65eee35165d6e0da1c61655b8a0e3634632980eddd930347c4ac15c39e067b6d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Split-PestoDistinguishedName",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "b84cb8066e53eca665f974ab21205cdd953ddf6feed6210242cc526e189fdc8e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoFilterLiteral",
+      "File": "wad/Pesto-Directory.ps1",
+      "ExpectedSHA256": "8510e7b457b8ac4e9741eb385298f709203e3244df0934a221321c4ab03d1843",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoPostObservation",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "578bae7cfe90dbf3a5001c1bc7f0cc481b2034a5009b183eab1727cb7de2f534",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoObservationDecision",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "a7616b37c3604e9bae40634f8cde82729b7b7ecdd4b94d696b46fa3ba9af4518",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoInspectionSource",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "2ce63752aee6edb7515ff2ab0f92561113890c943bce36d4aeb6cf18cfc6380f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Format-PestoPostObservation",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "b38a54b6bc848cf20ffa4275d318db993e289b124a5650f1ddfd35bf3c9abc92",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoPostState",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "ee6235f4ad0ef744079c9f2cd73e8e66729075157e8d0448e797429df11d55bd",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoStateFirstRead",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "8b9ab6e04795c4581aafdb171fd0cbd6dec35639d8fc0d74f919baf56fdac0d5",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Close-PestoStateWindow",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "a49fd062812db2436b32830efa61eda15c7daa92292df3adc0508dd3da9a9564",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoStateCommand",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "f1a833a10a5fda81ddc5fd4f10ccd4b30e712e810840bfe9746820de657876f0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoPostStateRead",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "a35f82cf457aec67806bb7db4a26035c60a765727ee0df06145ff9cc4f4961e7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoPostStateRead",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "fed70feb175e0c90644aec76d8fe1f843cd7e9e2e66115484f8905f16e26236c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-PestoStateNextStep",
+      "File": "wad/Pesto-Inspection.ps1",
+      "ExpectedSHA256": "65bb7be9fe5999dc0cdd977818095c19a8bdab904022737535534358fd6d4284",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoRuntimeFiles",
+      "File": "wad/Pesto-Integrity.ps1",
+      "ExpectedSHA256": "59721837cbc605e0688a1adfec1d56bb7634d7814244d0ce689bfa371af2a902",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoPackage",
+      "File": "wad/Pesto-Integrity.ps1",
+      "ExpectedSHA256": "34536d2a4dd7d574c2e1f12bd4587412af69da923972381c6e476509f23e1ae6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinPlanErrors",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "ef0ed9351a725b3a8698bc4d11effcd1e629e78310c9568b28905919393191b7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinPlanKey",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "fb2337404eee8906959e90ccba9275b577c317300e7a11367b200fcba2ab37ca",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinLocalStatus",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "930e4892e5480f213ec53bfe190817b5aa11630c2b2faafc030ecfd08e22b22a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinStatePath",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "bb8f28bf3a456e9ae4ce5a0a331656f52412e48c237907e00bf4f08bd8b1a975",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Read-PestoJoinReceipt",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "88fc953c1b1ddf3f99a281b08b5d7294c939c037b587a2be84eaacb9568c092d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-PestoJoinReceipt",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "6509b9fbbc32af706e42bcaaf13c8c342ac411c2c0183b553057fccebc3eeb5e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinReceiptDecision",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "1ac78561249d467fc8ceb1f6b487b11ac67b53f7565631fde5013a1582e6f406",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinGuidance",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "922ea483cc8ad5ab6284c9d03adf7346e44efae74cb9c6b67ec342ba9076e4f3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinPreflight",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "cf4c60377f03e7fcc1c495c421a5bfc2ab51081c620693fbe7f23b9af05b2fb4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinExecuteLocked",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "67ecadaba7e7684c761446a560a6ef8d391c55d6e8dfdf0b808c50c4cef14780",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinExecute",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "f86d92503085c3485fc9ecea7acd6e4cb086359a317fdcd5fc1b6a8366d647f9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinWorkerSource",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "d61d4c72dbc6d72ac5fabab6204d4bf1b499f1324dd01d079abb60cdd0b46537",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoJoinPlanFromUI",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "6ec9f5bdcd4924a61398036d35ee8e47038161043dd98852fc27b6ece037bac2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoJoinRequest",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "a98565ec5977eb6a47046ac457007be0dfb2ded8b1b6e532599ee4596fc618f2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoJoinMessage",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "25e11aa7df60531bc142a73a8fb12956fbd098a7ffc4713d6f31dd8143443d96",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoJoinBusy",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "ad6a51f56ccf3daf63ac9d4536fc98f801fc802ea56e735646330c2e09c4b358",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoJoinUI",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "5042bd9c6bb0f369b491ec17903ca9ad0f6d14071c7292563f62b150a74fd71f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoJoinNameCandidates",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "790aa8f3bdbf31a9619b046665c236311cb3e4b7f8fe629abfd6997347ca1d8c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoJoinNames",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "ac69042b78ba5fc98435c3f601322b5a230b5e6d86859d9b2ef641ad93972b3d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinInputTick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "0df06e4c217b18538ad5a19a38ce2481d1b367544778ed1f3c10c97b415b8363",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinInputChanged",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "895d5f6ce7e61f067916b588eda35c48690ef4784df65b89d77ea3aa7533aab6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoJoinCheck",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "39511627463fe4f8a27b543fd8fa3eb738025cfd85719e6724635c835d570d2c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoJoinCheck",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "3523da982d9c6f7efa1ade04f8cedcac4d930866d0fb1d8eb402d80c02490f97",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoJoinReadError",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "3ccb2e3cc94cc8465a772775105c9c02607213dfe9171c9f0f46dd7a65be4de4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-PestoJoinHistory",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "7c40a4dce93eeb7d1c84f088021d34fe723029de228985f5dc464f725c4a6106",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoJoinExecution",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "8c313e3f5a8edc00a4933d31d9c7788048ca32a29b75f8e03159e5299a543623",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoJoinExecutionError",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "72288357f930a44c5a31c7dca30b8cfa53e7e15c6c5c7549650e0abf1a3c2e63",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Start-PestoJoinStatus",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "8d76741087286442bd7bae7088d176ec61a502d7f3ba8c6de9d0f5272effc21b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Complete-PestoJoinStatus",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "9b3de4894987c843964db3700b0f919f4a016cd9cd5afd39e437fbc27e659242",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinPulse",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "f31c008a535c73b1cb9d8b861c1255fca4685a2198e5df010ff2eab0514c6720",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinCancelReadClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "00e6b19d376902145c4e1e903df92b7e09db0a0bdcad50b4ae96adf3994f4511",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinCheckClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "0ad9840091a984b63090be11ebbc086767a353b8ee561a54b27aacd8f531e3a3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinStartClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "bcf67d45869afb365f14d57e39bcc23799d38bdcfdeb8672f0aa5558357512f3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinStatusClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "0b27d7e938ec87b54bb161708ba70092983cf47f31f1baba8ee898f59e1750d6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinLogClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "104f777cceba26e438dd6fd163aacf6e0c9c8d8a0ebd30d30ff91f9c10bb8a97",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinRenameClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "9ac53252c81f9b0fc96dd46927166126d03fd18f83f9a50d916a1d81c668fa0d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinLaterClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "3ad78951a8e8715bdb18a3d9196fa917ac30b54bb925e34b0583f52cfe13b15c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinCopyClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "8c1291960f3fa98463843559b8221d0f28e9e68ebd1cae16bb124bbb932ce9c3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinRestartClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "cb19dfd59e3b282ceadd1ef7a0d351400a1078530b3e8754a13e82f0b21b60fc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoJoinExportClick",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "1105fdd5afe8b64bcd1c41197dac1af62af79e2d0994d9002d3aa4bbfdb58fff",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-PestoJoinUI",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "32122bd30084b0dd45e07eaa2df4be4f22d3865b88e6ec6ea9d6c39269475663",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Stop-PestoJoinUI",
+      "File": "wad/Pesto-Join.ps1",
+      "ExpectedSHA256": "2baac982d888067dccbaf913139dbb9d66f5c9e63bb6e018817a0ca768a127b1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Protect-PestoLogText",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "606ce15c2a0707aa156ded50dc62f7896ccb00212030a545167ad9058d464fd3",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoRemoteTaskLogTail",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "6fe1f8f4b034cd676738091f248a6f47dd28f2054f93e0d00ea57e58a909d110",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-AuditLog",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "4f88784d49ed919314e8b8ec86491e326fcc4b0639b7ed17327e7dd017857b86",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoAuditWritable",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "fa9b8d0a5386c53203791a6bf9fe777785b489f9a2f5da6ae54b11d8f0538126",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-AuditLine",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "3ed7a4dcd36281c1bda8bfd66d6b740d1b1d51f9683ff881bd152299b5481007",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-Log",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "8c68c1ad5157e1405052aee1185bedc08266fca0c89cbec141b5470d9164196e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Open-AuditLog",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "2791304ad8d1125469cc518b228a3dfb9d72a77c1c165ab1d641138f7f36c0e0",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-LogBrush",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "7d531fc7024431965d68e441827f68269aba8f489459cfc4af262d168c9a1725",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-LogParagraph",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "090075adae53698da81419f1b6fd6ae4639aca38f1b8c6950c581e11840493ef",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Add-LogLine",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "ade383864aca10ba9c2b17d7b7cbdacecefb214473235b4a39eecc5e5a8e7cb1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Add-LogSeparator",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "5535ba333a836931b38338fa6bb5450aab63fccaaa8b7dfd48ebc0a1a71e582c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Render-Log",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "efe643d48b4b8e977c48d94c31179aa97a2f43764de5934c7fc94044a99c8dfc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Clear-Log",
+      "File": "wad/Pesto-Journal.ps1",
+      "ExpectedSHA256": "40d6073d480144958ada09cf77cd8f85213d55cdde55c79213d9c9f1704b6773",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoWindowsLocalRename",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "251c8ab8e00f29f4c5b2f691bb2b9d4cad9d3ad226f2c65288b44eeebc524581",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoNameSiteCode",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "f3bba47cbd722b8c60ea49fc7952a8c534ba840227ddb91d52c849f64a081a28",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoSiteContainerDN",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "926d252d48b62b458ac39c4e278ab1dd6ac6fb8b652cc9374c60b66f81e836ab",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoRenameMoveDecision",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "34eaf9264717797b0ab9815d489b8a20964959215ca9c9680cbab4ab543ac0f6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoDnsName",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "9d646e8e17339fb5c147d9cc6e0fbef178e0d097ae7186ed497024bbca705690",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoDNWithinScope",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "af77becc9f78a2ffea6937df9db34a4aac090c817274535835905d7e8dc64eff",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoOUInConfiguredScope",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "1ddd7d411d7d11272c943f37314f9bd97b619436564f82bdd2cebe28a57d136f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-QueueRowSafe",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "477d2cbfbeb7d6b46ebd3bc7b750b952965f15df87abb6acc4dd5bac4eb42182",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoConfirmedChange",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "8641ac1e24c2d0a93d7b1c5db09fe838d4896b9d41dc55d47addb9485c274c4d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoTaskService",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "ecac3ce1856f40a3e07e6e8e94b7a95a8f594c8c9228c9bfb5ecec3131a93426",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Release-PestoComObject",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "8ce842089ab47727f392933f243d0f27e81d7d6cc6ee7ee4aebf5838e01c612a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoTaskArgument",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "f5065fef61d49e6d4553309be95ee46d6978b1580818d1b42afa835ed03f5bff",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoPipeClient",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "c271b9f2219f66f0c785adf4828aa2571ee9745d759218e56084b2cb015179c9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoElevatedLocalChange",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "8946477cfa16e835df2aa319e01300ea9e3875f55757ff96cbad3ab76376f932",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoComputerName",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "0eb6209e273e9929bab1fc88dd72f30036ec61e4cb053d70a83705cf03a48136",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoGeneratedComputerName",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "ecf3b1ec4ca87ef8e85f5914005a694c01e4934d5f5fee04a347e4b6f981be55",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoOUPath",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "e98ae756a74d24181b4ffbf77038f25ed893d18df5da1bdf257bc5b0a1796a32",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-ActionResult",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "fc275e31c8bab3357742f6ed3c0727d4a946eb983ba4b3e027ab13734410303a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoQuotedArg",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "6c2019587f74532067530b0d1fec34ff1c01c5ecefcd79f7e7b5b9d145ef2c7f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoSecretArgIndexes",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "41af76c5eb7893f1e2ba0d8bcdfef43e14798613f607f6969a49f11ac230a309",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoProcess",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "69a9a84158407b490d5f4cbc1820f15d784e13162fd8d3fab63ecd1ca5f53bdc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoSchtasks",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "995b52d1d988b3c145da8005cde2d2d0db0006ba3af22de3322760e2f5ff3864",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoSchtasksTransportArgs",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "9839d7efe73d6c5f2e90bf4f7ea723b7dc3a5fe8bc8883efad4a1b9d3dfd7e93",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoSchtasksHint",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "022264ef1d9609a150d05537c9e3abf3e44f263ffce74180deef2aa9d78dacfe",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoIsAdministrator",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "d8b5b2e76610179fdf9482c21fdfab8337a9e6b930fdf2e22991182405c86840",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoRunOnceTaskXml",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "9f7326e75fae8d0b1feb9e858cc03c9e3732cd373c272717c26f985d057623f7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoPowerShellLiteral",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "05c492eba411ddfdf1af2668178e45fcbe915b8bace481b8f2d83f5b36788a2f",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoTaskRunResult",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "8d70fc776b704351c07ca9f7f7703303686db70ce9fe312acb916e6e72f9e21b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoSystemTaskScript",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "ea9b2fe7057c26ce5013c3c842606bfd2e1797feeeffecd0ed78eacd1ead8c90",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoDsregLeaveLocal",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "96a4c4ea07bdbb8ce5c9baf93b1de1163695eac7df02ce36d3b9ef975db81bfd",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoDsregLeaveBeforeRename",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "f3d523b9c2acb0cd494536f141c11d85062a3e231f92afd8f54ac2ce706e3393",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-RenameComputerTaskFallback",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "1ce49a6a9529c119ef2bc313500d3b79bce8841b17761ac2ef464c3f75dcbdd1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Request-ComputerReboot",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "f1a224935c0c2603ad08e243260147a62b31f2ddaeeec1b28ccf8877173ffa3d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoElevatedDomainJoin",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "4f5f9a03b3566931613e46197f98355b20d6103009ec30a907e9a1348faade22",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "AddToDomain",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "4435d4e5e7730c01f87974c79e69d8c4b911ebddd1c240874c13149d85ae3312",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "RenameComputer",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "e0452d2185d67da95c04459b1d81cc1c6b7d68749256e0cfcb132408f3dbade4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "MoveComputer",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "e8a242aea6a7621600e058ac1dfd62d54f2e29db6ab0b2916bc17a0710e6c2a6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "GoJoinDomain",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "f4bb780d147406d46f436272d8bbeaf3bdea89ac1aec8a87e396a59d745d95fb",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "GoRenameOnly",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "13232da6f62d3d759ff0fecbc29134f7f3062e9bd74cae1429b0cdb0c8118330",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "GoMoveOnly",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "5e9a14edae7043680d20851b04128ec1ad58655897eb6e96725b22aa1c100ece",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Wait-ADComputerVisible",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "ddaf0eefa71083634dd379b1f77767424a913b826f56aee7d54fdad34118a1f4",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "GoRenameAndMove",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "bfd43f4f99d5c0af98548678e4c14c0a31cab0da0a24c2f28290690767f63217",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Go",
+      "File": "wad/Pesto-Operations.ps1",
+      "ExpectedSHA256": "33b236818f6300d5a79804810258ab6f4e0898cabfbc75d1311393e236b1ee10",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoStartupIdentity",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "1a35a9ad72d0c83a3c752331cfeaf7195eba1dab7a3cdb962246592fed251064",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoStartupAdministrator",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "03c70dd642281f695251696d2badf2d70c5e75d83eff2801f7533475bf40dca6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoStartupRoute",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "c886a9b1fa31801473bfc50452598814e3ee66da43d888038790a79fdd37cddc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "ConvertTo-PestoStartupArgument",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "89ba0cf28ad2c0015bbccdd6cdec9290716d63c3f08462c8546c359561b09fce",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "New-PestoStartupArgumentLine",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "0dc8a41b1ec91d1bb43b221bb73a476d012de3e512c19c75eafb240638e80673",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoStartupCancellation",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "caaff863b1767bfd4e118c18ade1037cd59449ccfc90d570646509d4bc85fe75",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-PestoStartupLog",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "94a504cdb49b3733a380dd2bcf54a1d15a7359be2829fa0ffecf50f674afb5bf",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoStartupElevation",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "9b3b9fd29a773bced31cf7dcbbfeb8f4215c6836e79f1f34e74864f910ff4927",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoStartupStateId",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "3271b0edf0563d723e5e8ed79f0448dae044225ab70401fedd9219cab7dbc6a9",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Assert-PestoStartupLocalPath",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "86956f75873479f61fced9795de7a0d9e8e2f78c21e06a84801b6ea522745c8b",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Read-PestoStartupStateFile",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "16ab5b4f972f1a58d0e116821cfd692e496739862bd7dc371b1dc47cf67a0914",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Write-PestoStartupNewFile",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "f98dfd122c4caa1a801d8899753fb04656a02c7810d679a4fd71368fe3df71f2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Import-PestoStartupState",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "49ad6329272d9af17c2e386766963fe9a0386428bc960c79a7dc9d6fead76723",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoStartupLayout",
+      "File": "wad/Pesto-Startup.ps1",
+      "ExpectedSHA256": "28025d6ff63c2373d54feaba0dacb6033a499726e2893200cb6d45b4244a9bc7",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoSuiteMode",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "a1667817859085c14a514e1758d83575bc3283c9360ac93a6415022e9cdd13ff",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Set-PestoSuiteHelp",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "1d602fd23b27c8fcca0499b5356db76b5bd90a04fc3f26b982eacc7c7b2f972c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoSuiteCommand",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "44f31c48e254dfadef25dee77db3ec19b5f1a791e364d20f6b8fb485fa72515c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoSuiteLayout",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "bd89df0edc543a81e149bed8f832287532e5ac06d405553204e79c11bb3c8870",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoSuiteHelp",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "274f1b7d2440dbfbf3c9f5df340e2da9b95c82d9fb3acd0a3142445f35fd7676",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoSuiteUI",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "309fd8dc89f03199a238801975167c42b59f274b0cf9d50c3830e907b8fdd35c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Test-PestoSiteFilter",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "b0ed5559bbd4e7117532ccf6d7d0152c94fd04d2fb6fd896477cfe041ef23480",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoSiteSearch",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "3a0f584c8781a83a4d1e4d5944e8d33d217530ec566e7f7ff6d20845a813623a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoLogOption",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "55effab24a155b039c4a5139f36ae79be796595aca925f9d2d334583e75cd035",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoLogSearch",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "fdab5e82208551d33327bbbe016049ec636f4c13eb964e9b8537d88921f047d2",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Invoke-PestoSuitePulse",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "6a97a2839c5fc653a031c93db9b795cfeeff9e35ba1e5665eba19e2d3485af77",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Initialize-PestoSuiteUI",
+      "File": "wad/Pesto-SuiteUI.ps1",
+      "ExpectedSHA256": "ba2d811e6d761312f04c57d6b7aadcfc1dddac693297db7e24ab8e52a857c19c",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoErrorExplanation",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "aa3f8f6c97e3e68706d6260786c3e7ea49c8aa084194488ae74ec4215f9256b1",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Show-PestoUsefulError",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "1876fe7012bb72549ec8bef67868170d84460718c8bce3928b8427affaa019c6",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDiagnosticEventClass",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "5ce8c3dd2ec5a7650db8debb90a8bfb4c799df3bb7aa2073510d0e737c391d5a",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Get-PestoDiagnosticText",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "08379bec2196416023b3c670b565dfa69e159f2c52b2114b518075724410e5bc",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Export-Diagnostics",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "8c40dc268899a44160ade8f052158eccc3f37dc984bda1c59471006242c80a73",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Update-PestoDiagnosticPreview",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "86c4f51e7a99cff0e53c284a9ee86cc358ec040e8482d4c415e622ac71f3165d",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Save-PestoDiagnosticPreview",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "fcbfc551bc2eed58d6fe25847f72d916dc8a1809108c7fe1482dc76e7bcf272e",
+      "PreservedAfterNamingChanges": true
+    },
+    {
+      "Name": "Apply-PestoQueueObservation",
+      "File": "wad/Pesto-Support.ps1",
+      "ExpectedSHA256": "0757784a07ca2a5eab0f397e82cb4387e339c61e1aa82c42fe0c45896104bbad",
+      "PreservedAfterNamingChanges": true
+    }
+  ],
+  "PreservedAssets": [
+    {
+      "Path": "wad/ActiveDirectory.Format.ps1xml",
+      "SHA256": "ffefd16b151f10ea80b603f3acba3c361055314bb6b54f8f8f3f0b21e2ae3996"
+    },
+    {
+      "Path": "wad/ActiveDirectory.Types.ps1xml",
+      "SHA256": "3cb55021534ec67fa81d7981ee4b3364eea3ba79ebe61667ee44e14b7a668b3a"
+    },
+    {
+      "Path": "wad/ActiveDirectory.psd1",
+      "SHA256": "96e41708524316cb13a0d71d36a905f5d530e57e1714a12c3e5b30189a4c83eb"
+    },
+    {
+      "Path": "wad/ActiveDirectoryPowerShellResources.dll",
+      "SHA256": "e233d92238aa31ea1b3c60145d8811edb2e517e1b9b53f4bc496883ee5d9973b"
+    },
+    {
+      "Path": "wad/Microsoft.ActiveDirectory.Management.dll",
+      "SHA256": "1a6af7b8f8bce5b35ff873e2528746480c980526d86e38ca5acd04c2e9037157"
+    },
+    {
+      "Path": "wad/cfg.demo.json",
+      "SHA256": "f1b14cba8e4695463779f8a424ea82ced2b9dcc89a5c61c89a8a75cf17fb8564"
+    },
+    {
+      "Path": "wad/cfg.example.json",
+      "SHA256": "dbc1927de12736192db1b89b2df9e29d7393dad769c32b0552a6d42b008342de"
+    },
+    {
+      "Path": "wad/cfg.json",
+      "SHA256": "b2a5726f826391e637de25804fd22904b19cbdf7039db227f185086c18bb386c"
+    },
+    {
+      "Path": "wad/fr-FR/ActiveDirectoryPowerShellResources.dll.mui",
+      "SHA256": "bee3c0b2beeb6d5e5600e840e57c7361ef77aabd44006fd7d82f7fcbbfb8541e"
+    },
+    {
+      "Path": "wad/Pesto.ico",
+      "SHA256": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a"
+    }
+  ],
+  "UnexpectedChanges": [],
+  "WindowsExecuted": false
+}

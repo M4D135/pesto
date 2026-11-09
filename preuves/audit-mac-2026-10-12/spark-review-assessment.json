@@ -1,0 +1,45 @@
+{
+  "reviewer": "Spark, gateway spark-local",
+  "source_commit": "af555e5897945a9cdd00eb039ba5e6f47cf441fd",
+  "response_sha256": "3f55b75b1e4a3833160b64c8193cc9a8b9c665ac7f91ec8eb8ba7fadd75259aa",
+  "scope": "Relecture statique des fichiers complets. Aucun code proposé accepté sans vérification.",
+  "findings": [
+    {
+      "id": 1,
+      "subject": "Faux diagnostic AD avec credential explicite",
+      "decision": "CONFIRMED_FIXED",
+      "evidence": "783625e ; tests/test_worker_runspace.py ; Run-StabilisationTests.ps1 ajouté mais non exécuté sur Mac."
+    },
+    {
+      "id": 2,
+      "subject": "Ajouter Credential à Get-ADDomainController -Discover",
+      "decision": "REJECTED",
+      "reason": "Credential existe dans Identity et Filter, pas DiscoverByService. Le patch suggéré introduirait une combinaison de paramètres invalide. Découverte inchangée.",
+      "source": "https://learn.microsoft.com/en-us/powershell/module/activedirectory/get-addomaincontroller?view=windowsserver2025-ps"
+    },
+    {
+      "id": 3,
+      "subject": "Statut SSH et diagnostics filtrés",
+      "decision": "CONFIRMED_FIXED",
+      "evidence": "783625e ; six tests locaux avec faux ssh, quatre rouges avant."
+    },
+    {
+      "id": 4,
+      "subject": "pytest.ini absent du DEV",
+      "decision": "CONFIRMED_FIXED",
+      "evidence": "783625e ; test_distribution.py. Nuance : historique_rc18 était déjà exclu du générateur avant cette passe ; les ZIP suivis étaient périmés."
+    },
+    {
+      "id": 5,
+      "subject": "Entrées JSON mal typées",
+      "decision": "CONFIRMED_FIXED",
+      "evidence": "Huit tests avant/après, types validés dans update_installation.py et verify_runtime ; 46 tests updater et 26 distribution passent."
+    },
+    {
+      "id": 6,
+      "subject": "Contrôle manquant du dot-source",
+      "decision": "CONFIRMED_FIXED",
+      "evidence": "783625e ; analyse lexicale, vérification ordre et dépendances ; sept défauts injectés détectés."
+    }
+  ]
+}

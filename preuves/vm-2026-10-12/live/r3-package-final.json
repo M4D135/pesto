@@ -1,0 +1,12 @@
+﻿{
+    "Utc":  "2026-10-12T18:27:44.7480494Z",
+    "OS":  "Windows 11 Enterprise Evaluation",
+    "PowerShell":  "5.1.26100.6584",
+    "ExeSha256":  "bcffecdc3d831ff6edccb0e979f3f4caa592092e6edf7b51c10832a76173eb80",
+    "UiPresentationPassed":  27,
+    "UiPresentationFailed":  0,
+    "SettingsPassed":  26,
+    "SettingsFailed":  0,
+    "WpfMainWindowStarted":  true,
+    "PreviousTestSetupIssue":  "Missing cfg.template.json test fixture copied before rerun"
+}

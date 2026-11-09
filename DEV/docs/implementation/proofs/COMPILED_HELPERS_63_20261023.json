@@ -1,0 +1,95 @@
+{
+  "Schema": 1,
+  "Section": "CompiledHelpers",
+  "Utc": "2026-10-23T15:08:19.4727731Z",
+  "Platform": "Unix 6.17.0.1026",
+  "PowerShell": "7.4.6",
+  "CLR": "8.0.10",
+  "RuntimeModuleSHA256": "a948d92aa147f2566c2840305a2a0a47a03655b56e9fcb67aa047429a7f9fd28",
+  "Iterations": 3,
+  "CompiledHelpers": [
+    {
+      "Mode": "AddType",
+      "Samples": 3,
+      "Rows": 2000,
+      "MedianMs": 466.397,
+      "P95Ms": 540.315,
+      "Assemblies": 4,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    },
+    {
+      "Mode": "Precompiled",
+      "Samples": 3,
+      "Rows": 2000,
+      "MedianMs": 85.689,
+      "P95Ms": 103.274,
+      "Assemblies": 1,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    }
+  ],
+  "CompiledHelpersSamples": [
+    {
+      "Mode": "AddType",
+      "Temperature": "Cold",
+      "SetupMs": 540.315,
+      "Rows": 2000,
+      "Assemblies": 4,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    },
+    {
+      "Mode": "AddType",
+      "Temperature": "Warm",
+      "SetupMs": 379.58,
+      "Rows": 2000,
+      "Assemblies": 4,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    },
+    {
+      "Mode": "AddType",
+      "Temperature": "Warm",
+      "SetupMs": 466.397,
+      "Rows": 2000,
+      "Assemblies": 4,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    },
+    {
+      "Mode": "Precompiled",
+      "Temperature": "Cold",
+      "SetupMs": 103.274,
+      "Rows": 2000,
+      "Assemblies": 1,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    },
+    {
+      "Mode": "Precompiled",
+      "Temperature": "Warm",
+      "SetupMs": 76.536,
+      "Rows": 2000,
+      "Assemblies": 1,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    },
+    {
+      "Mode": "Precompiled",
+      "Temperature": "Warm",
+      "SetupMs": 85.689,
+      "Rows": 2000,
+      "Assemblies": 1,
+      "NativeEntries": 4,
+      "Digest": "b32b06796840b5f197fc278f4d1070ef0b0536e13caf93c0b347a785e185ea94"
+    }
+  ],
+  "WindowsADExecuted": false,
+  "UIExecuted": false,
+  "ProductionAlgorithmChanged": false,
+  "Limits": [
+    "Cout local, sous un hote non produit, de la compilation a froid des quatre sources C# livrees par Add-Type site par site contre le chargement verifie de Pesto.Runtime.dll par le chargeur livre ; les quatre entrees DllImport ne sont pas executees ici (kernel32, shell32, user32 absents d une machine Linux) et restent a qualifier sur Windows reel.",
+    "CompiledHelpers : la comparaison des couts est publiee ; la suite 63 en asserte la conclusion (le chemin livre reste au moins deux fois moins couteux) sans imposer de reglage de performance."
+  ]
+}

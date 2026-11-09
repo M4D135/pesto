@@ -1,0 +1,68 @@
+[
+    {
+        "Path":  "C:\\ProgramData\\GP\\Interventions\\7a31220e001e40a6a7e62e3ca8e8869b.json",
+        "Phase":  "Failed",
+        "Computer":  null,
+        "OldName":  "PESTO-W11-TEST",
+        "NewName":  "V999004AAQA1006",
+        "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+        "Action":  null,
+        "Updated":  "2026-10-04T20:42:42.1840741Z"
+    },
+    {
+        "Path":  "C:\\ProgramData\\GP\\Interventions\\aec98b16b6774511927ccb5e9a48de99.json",
+        "Phase":  "Failed",
+        "Computer":  null,
+        "OldName":  "P111301VA765480",
+        "NewName":  "V111301LY765664",
+        "MachineId":  "",
+        "Action":  null,
+        "Updated":  "2026-10-16T07:43:49.5079112Z"
+    },
+    {
+        "Path":  "C:\\ProgramData\\GP\\Interventions\\cd9f2618aa8a4add9315ec2ef1275613.json",
+        "Phase":  "Verified",
+        "Computer":  null,
+        "OldName":  "PESTO-REMOTE",
+        "NewName":  "V111301VA765183",
+        "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+        "Action":  null,
+        "Updated":  "2026-10-16T07:40:49.4774738Z"
+    },
+    {
+        "Path":  "C:\\ProgramData\\GP\\Join\\receipt.json",
+        "Phase":  "Verified",
+        "Computer":  null,
+        "OldName":  null,
+        "NewName":  null,
+        "MachineId":  null,
+        "Action":  null,
+        "Updated":  null
+    },
+    {
+        "Path":  "C:\\ProgramData\\GP\\Operations\\direct.json",
+        "Phase":  "NotStarted",
+        "Computer":  null,
+        "OldName":  "P111301VA765480",
+        "NewName":  "V111301LY765664",
+        "MachineId":  "",
+        "Action":  null,
+        "Updated":  null
+    }
+]
+2026-10-18 15:13:36 [HEAD] Pesto 1.0 démarré — HORS DOMAINE · domaine labo.local.
+2026-10-18 15:13:36 [INFO] Connexion prête : 1 organisme(s) / 2 site(s). Inventaire complet chargé à la demande, pas pendant le login.
+2026-10-18 15:13:36 [INFO] Périmètre onglet Noms (ADCC-Lab › Departement 111301 › Postes) : 0 poste(s).
+2026-10-18 15:13:36 [INFO] Journal d'audit : C:\PestoQual_20261018\candidate-final\PROD\wad\logs\Pesto_2026-10-18.log
+2026-10-18 15:13:36 [INFO] Jonction au domaine prévue vers : production directe.
+2026-10-18 15:13:37 [ERROR] [direct] Reprise unitaire verrouillée.
+    Type      : System.Management.Automation.RuntimeException
+    Message   : Reçu provenant d'un autre poste opérateur.
+    Categorie : OperationStopped: (Reçu provenant ...oste opérateur.:String) [], RuntimeException
+    ErrorId   : Reçu provenant d'un autre poste opérateur.
+    pos> At C:\PestoQual_20261018\candidate-final\PROD\wad\Pesto-Direct.ps1:470 char:61
+    pos> + ... t:HostMachineId){throw 'Reçu provenant d''un autre poste opérateur.'}
+    pos> +                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    stk> at Initialize-PestoDirectState, C:\PestoQual_20261018\candidate-final\PROD\wad\Pesto-Direct.ps1: line 470
+    stk> at <ScriptBlock>, C:\PestoQual_20261018\candidate-final\PROD\wad\Pesto-Core.ps1: line 5561
+    stk> at <ScriptBlock>, C:\PestoQual_20261018\candidate-final\PROD\wad\Pesto-Startup.ps1: line 521

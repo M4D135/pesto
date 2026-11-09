@@ -1,0 +1,81 @@
+
+
+```xml
+<!-- Correctif minimal exact dans Pesto-Join.xaml : remplacer la ligne de JnServiceState -->
+<TextBlock x:Name="JnServiceState" Grid.Row="3" Grid.Column="2" VerticalAlignment="Top" TextWrapping="Wrap" FontSize="11" Foreground="{DynamicResource FgMuted}" Margin="0,42,0,0"/>
+```
+
+```powershell
+# Assertion WPF non-régression (STA) — page Join active, Set-PestoResponsiveFieldPairs chargé.
+function Get-WpfBounds([Windows.UIElement]$element) {
+    if (-not $element) { return $null }
+    $root = [Windows.Media.VisualTreeHelper]::GetRoot($element)
+    if (-not $root) { return $null }
+    $bounds = [Windows.Media.VisualTreeHelper]::GetDescendantBounds($element)
+    $transform = $element.TransformToVisual($root)
+    $p1 = $transform.Transform([Windows.Point]::new($bounds.X, $bounds.Y))
+    $p2 = $transform.Transform([Windows.Point]::new($bounds.Right, $bounds.Bottom))
+    [Windows.Rect]::new(
+        [Math]::Min($p1.X, $p2.X),
+        [Math]::Min($p1.Y, $p2.Y),
+        [Math]::Abs($p2.X - $p1.X),
+        [Math]::Abs($p2.Y - $p1.Y)
+    )
+}
+
+function Get-WpfLabelByContent([Windows.DependencyObject]$root, [string]$content) {
+    $queue = [System.Collections.Generic.Queue[Windows.DependencyObject]]::new()
+    $queue.Enqueue($root)
+    while ($queue.Count) {
+        $obj = $queue.Dequeue()
+        if ($obj -is [Windows.Controls.Label] -and [string]$obj.Content -eq $content) { return $obj }
+        $count = [Windows.Media.VisualTreeHelper]::GetChildrenCount($obj)
+        for ($i = 0; $i -lt $count; $i++) {
+            $queue.Enqueue([Windows.Media.VisualTreeHelper]::GetChild($obj, $i))
+        }
+    }
+    return $null
+}
+
+if ($script:PestoFieldLayouts -and $script:PestoFieldLayouts.ContainsKey('JnFields')) {
+    [void]$script:PestoFieldLayouts.Remove('JnFields')
+}
+
+foreach ($case in @(
+    @{ Width = 1920; SingleColumn = $false },
+    @{ Width = 600;  SingleColumn = $true  }
+)) {
+    $Win.Width = $case.Width
+    $fields = $Win.FindName('JnFields')
+    $state = $Win.FindName('JnServiceState')
+    $service = $Win.FindName('JnService')
+    $label = Get-WpfLabelByContent $Win 'Type de poste'
+    $state.Text = 'État service test'
+
+    Set-PestoResponsiveFieldPairs $fields $case.SingleColumn
+    $Win.UpdateLayout()
+
+    if (
+        [Windows.Controls.Grid]::GetRow($state) -ne [Windows.Controls.Grid]::GetRow($service) -or
+        [Windows.Controls.Grid]::GetColumn($state) -ne [Windows.Controls.Grid]::GetColumn($service)
+    ) {
+        throw 'Régression responsive: JnServiceState doit partager la cellule de JnService.'
+    }
+
+    $stateRect = Get-WpfBounds $state
+    $serviceRect = Get-WpfBounds $service
+    $labelRect = Get-WpfBounds $label
+
+    if (-not $stateRect -or -not $serviceRect -or -not $labelRect) {
+        throw 'Contrôles introuvables pour l''assertion WPF.'
+    }
+
+    if ($stateRect.IntersectsWith($labelRect)) {
+        throw 'Régression visuelle: JnServiceState chevauche le libellé Type de poste.'
+    }
+
+    if ($stateRect.Top -lt ($serviceRect.Bottom - 1)) {
+        throw 'Régression visuelle: JnServiceState doit être sous JnService.'
+    }
+}
+```

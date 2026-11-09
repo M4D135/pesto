@@ -1,0 +1,102 @@
+﻿[
+    {
+        "Cycle":  1,
+        "Utc":  "2026-10-18T16:11:14.9702426Z",
+        "ElapsedSeconds":  22.76,
+        "PrivateBytes":  393920512,
+        "Handles":  1160,
+        "Threads":  21,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  2,
+        "Utc":  "2026-10-18T16:11:58.7206103Z",
+        "ElapsedSeconds":  83.53,
+        "PrivateBytes":  402956288,
+        "Handles":  1186,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  3,
+        "Utc":  "2026-10-18T16:12:54.7027702Z",
+        "ElapsedSeconds":  143.67,
+        "PrivateBytes":  410873856,
+        "Handles":  1196,
+        "Threads":  22,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  4,
+        "Utc":  "2026-10-18T16:14:16.9041107Z",
+        "ElapsedSeconds":  203.89,
+        "PrivateBytes":  418377728,
+        "Handles":  1211,
+        "Threads":  23,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  5,
+        "Utc":  "2026-10-18T16:15:06.6553174Z",
+        "ElapsedSeconds":  262.77,
+        "PrivateBytes":  426008576,
+        "Handles":  1238,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  6,
+        "Utc":  "2026-10-18T16:15:52.4352207Z",
+        "ElapsedSeconds":  322.88,
+        "PrivateBytes":  435511296,
+        "Handles":  1253,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  7,
+        "Utc":  "2026-10-18T16:17:12.4104407Z",
+        "ElapsedSeconds":  383.2,
+        "PrivateBytes":  444325888,
+        "Handles":  1263,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  8,
+        "Utc":  "2026-10-18T16:18:08.9973157Z",
+        "ElapsedSeconds":  443.42,
+        "PrivateBytes":  449175552,
+        "Handles":  1293,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  9,
+        "Utc":  "2026-10-18T16:18:59.3009453Z",
+        "ElapsedSeconds":  503.39,
+        "PrivateBytes":  366186496,
+        "Handles":  885,
+        "Threads":  20,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  10,
+        "Utc":  "2026-10-18T16:20:18.1340630Z",
+        "ElapsedSeconds":  563.72,
+        "PrivateBytes":  370270208,
+        "Handles":  816,
+        "Threads":  21,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    }
+]

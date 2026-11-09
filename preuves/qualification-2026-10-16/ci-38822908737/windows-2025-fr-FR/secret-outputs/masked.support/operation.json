@@ -1,0 +1,22 @@
+{
+    "Schema":  1,
+    "GeneratedUtc":  "2026-10-15T23:29:58.6077432+00:00",
+    "Redacted":  true,
+    "OperationId":  "603d5adf-5fe7-4cc8-8131-538a0186af5c",
+    "Phase":  "Verified",
+    "ResultCode":  20,
+    "Rename":  "Confirmed",
+    "Move":  "NotRequested",
+    "Protection":  "NotChanged",
+    "Entra":  "NotRequested",
+    "UpdatedUtc":  "2026-10-16T00:00:00Z",
+    "Computer":  "[POSTE]",
+    "NewName":  "[NOM CIBLE]",
+    "Domain":  "[DOMAINE]",
+    "Reference":  "[RÉFÉRENCE MASQUÉE]",
+    "Summary":  "PESTO | Compte rendu d\u0027intervention\r\nVersion : 1.0\r\nRésultat connu : ✓ Windows / AD vérifié\r\nCode : 20\r\nRéférence : [MASQUÉ]\r\nPoste : [MASQUÉ]\r\nNom prévu : [MASQUÉ]\r\nDomaine : [MASQUÉ]\r\nOU : [MASQUÉ]\r\nContrôleur : [MASQUÉ]\r\nVérificateur : [MASQUÉ]\r\nDébut : 16/10/2026 00:00\r\nFin : 16/10/2026 00:00\r\nEntra : Non demandé | Renommage : Confirmé | Déplacement : Non demandé | Protection : Inchangée\r\n16/10/2026 00:00:00 | Détails dans le reçu | État technique à consulter\r\nVérifier l\u0027étape intervention et le résultat observé. Code natif : 20. Aucune réparation automatique.\r\nUne réponse tardive ou un délai dépassé ne prouve pas l\u0027annulation de Windows.",
+    "ReconciliationAudit":  [
+
+                            ],
+    "ReconciliationAuditScope":  "BoundedReceiptTimeline"
+}

@@ -1,0 +1,382 @@
+{
+  "version": "1.0",
+  "utc": "2026-10-12T17:55:28.872257+00:00",
+  "source_sha256": "75b09ab02c2717f7cf4c493f5afc43b10084a6f543cf26ccfcddabdd0c35df62",
+  "shell_sha256": "31ae8aa314027eac4042988fa389ed8bce9c7b7a0f79a2297d93f238323d5fc0",
+  "scope": "STATIC SOURCE ONLY. No native PowerShell parsing, WPF loading, screenshots, Windows testing or AD execution.",
+  "totals": {
+    "checks": 50,
+    "passed": 50,
+    "failed": 0
+  },
+  "metrics": {
+    "public_names": 298,
+    "ui_functions": 24,
+    "xml_templates": 15,
+    "engine_files": 27,
+    "interactive_elements_with_help": 217,
+    "queue_columns": 17
+  },
+  "checks": [
+    {
+      "name": "Engine components are present and define each function once",
+      "status": "PASS",
+      "detail": {
+        "files": [
+          "Pesto-Appearance.ps1",
+          "Pesto-Async.ps1",
+          "Pesto-Authentication.ps1",
+          "Pesto-Common.ps1",
+          "Pesto-Configuration.ps1",
+          "Pesto-Contracts.ps1",
+          "Pesto-Core.ps1",
+          "Pesto-Direct.ps1",
+          "Pesto-Directory.ps1",
+          "Pesto-Inspection.ps1",
+          "Pesto-Integrity.ps1",
+          "Pesto-Interventions.ps1",
+          "Pesto-Join.ps1",
+          "Pesto-JoinRecovery.ps1",
+          "Pesto-Journal.ps1",
+          "Pesto-Names.ps1",
+          "Pesto-Operations.ps1",
+          "Pesto-Policy.ps1",
+          "Pesto-Preparation.ps1",
+          "Pesto-Recovery.ps1",
+          "Pesto-Review.ps1",
+          "Pesto-Safety.ps1",
+          "Pesto-SuiteUI.ps1",
+          "Pesto-Support.ps1",
+          "Pesto-Tables.ps1",
+          "Pesto-UXFlow.ps1",
+          "Pesto-Workspace.ps1"
+        ],
+        "functions": 632
+      }
+    },
+    {
+      "name": "Engine version is declared once and shown in the main window title",
+      "status": "PASS",
+      "detail": {
+        "version": "1.0",
+        "title": "Pesto 1.0"
+      }
+    },
+    {
+      "name": "XML templates are present and well formed",
+      "status": "PASS",
+      "detail": {
+        "templates": [
+          "Pesto-Authentication.ps1:169:$wxaml",
+          "Pesto-Authentication.ps1:411:$lxaml",
+          "Pesto-Configuration.ps1:530:$x",
+          "Pesto-Configuration.ps1:84:$cx",
+          "Pesto-Core.ps1:1125:$bulkXaml",
+          "Pesto-Core.ps1:1307:$x",
+          "Pesto-Core.ps1:2337:$sxaml",
+          "Pesto-Core.ps1:239:$rx",
+          "Pesto-Inspection.ps1:220:$x",
+          "Pesto-Interventions.ps1:88:$x",
+          "Pesto-Join.xaml",
+          "Pesto-Shell.xaml",
+          "Pesto-Support.ps1:146:$x",
+          "Pesto-Support.ps1:47:$x",
+          "Pesto-Workspace.ps1:45:$x"
+        ]
+      }
+    },
+    {
+      "name": "Public XAML names are unique",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Every bound control is a public main window element, without template-part confusion",
+      "status": "PASS",
+      "detail": {
+        "bound_core": 186,
+        "bound_suite": 46,
+        "literal_lookups": 24,
+        "public": 298
+      }
+    },
+    {
+      "name": "All referenced explicit style and brush keys exist",
+      "status": "PASS",
+      "detail": {
+        "explicit_keys": 67
+      }
+    },
+    {
+      "name": "No forward StaticResource lookup in the resource dictionary",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Explicit styles match their target element types",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Interactive elements of the main window, core and login dialogs have tooltips, HelpText and disabled help",
+      "status": "PASS",
+      "detail": {
+        "controls": 217,
+        "templates": 7,
+        "scope": "Explicit source metadata, not runtime accessibility certification"
+      }
+    },
+    {
+      "name": "Tooltip style wraps and lasts 30 seconds on controls",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract ComboBox/PART_Popup",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract ComboBox/PART_EditableTextBox",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract TextBox/PART_ContentHost",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract PasswordBox/PART_ContentHost",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract TabControl/PART_SelectedContentHost",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Editable ComboBox retains its textbox visibility trigger",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "ComboBox and queue retain virtualization settings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Both complete color palettes match the core and the main window resources",
+      "status": "PASS",
+      "detail": {
+        "themes": [
+          "Dark",
+          "Light"
+        ],
+        "colors_per_theme": 49,
+        "source": "$script:Themes in Pesto-Core.ps1 (text, not executed)"
+      }
+    },
+    {
+      "name": "High-contrast state rings (X5): transparent overlays in Light/Dark, selection colours only in high contrast",
+      "status": "PASS",
+      "detail": {
+        "states": 4,
+        "brushes": [
+          "HcSelStateRing",
+          "HcStateRing"
+        ],
+        "scope": "Static source; the visible result needs a Windows high-contrast capture"
+      }
+    },
+    {
+      "name": "Theme preference is loaded and applied before the login call",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Login and programmatic OU dialog inherit the main theme resources",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Login error and progress have flexible heights",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "OU tree and selection buttons expose explicit help",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Interface projection calls the canonical rename/site rule",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Same-site preview keeps current OU instead of proposed OU",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Preview distinguishes draft from execution results",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Operation mode and reboot intent are explicit",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "UI projection never writes safety flags or enables execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "New presentation functions do not call mutation entry points",
+      "status": "PASS",
+      "detail": {
+        "functions_audited": 24,
+        "scope": "Direct lexical calls only, not a runtime information-flow proof"
+      }
+    },
+    {
+      "name": "UI timers use named script-bound delegates",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "No private closure module in the new UI functions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "All named UI event delegates exist",
+      "status": "PASS",
+      "detail": {
+        "delegate_references": 15
+      }
+    },
+    {
+      "name": "Typing invalidates the source identity before any read",
+      "status": "PASS",
+      "detail": {
+        "automatic_read": false
+      }
+    },
+    {
+      "name": "Lookup immediately disables adding and cancels stale probe generation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Enter reads a computer, never executes or adds",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "TextChanged is wired to source invalidation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "F1/Ctrl navigation shortcuts never execute a queue",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Closing the main window stops both UI timers",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Compact/wide layout reuses existing controls",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Original navigation indexes preserved and mapped to the right main window tabs",
+      "status": "PASS",
+      "detail": {
+        "pages": 8,
+        "tabs": 8
+      }
+    },
+    {
+      "name": "Queue starts with six columns and retains the technical columns",
+      "status": "PASS",
+      "detail": {
+        "visible": 6,
+        "retained": 17
+      }
+    },
+    {
+      "name": "Technical column toggle changes visibility, not queue contents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "History read is local, bounded and domain-scoped",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "History page cannot relaunch a completed action",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "tests/Run-UxTests.ps1 encoding and conservative lexical structure",
+      "status": "PASS",
+      "detail": {
+        "lexical_tokens": 3648,
+        "native_execution": false
+      }
+    },
+    {
+      "name": "tests/Run-AllTests.ps1 encoding and conservative lexical structure",
+      "status": "PASS",
+      "detail": {
+        "lexical_tokens": 132,
+        "native_execution": false
+      }
+    },
+    {
+      "name": "Native UI fixture has complete lexical function dependencies",
+      "status": "PASS",
+      "detail": {
+        "loaded_engine_functions": 49,
+        "files": [
+          "Pesto-Appearance.ps1",
+          "Pesto-Contracts.ps1",
+          "Pesto-Core.ps1",
+          "Pesto-Directory.ps1",
+          "Pesto-Inspection.ps1",
+          "Pesto-Operations.ps1",
+          "Pesto-SuiteUI.ps1",
+          "Pesto-UXFlow.ps1"
+        ],
+        "windows_test_cases": 44,
+        "executed": false
+      }
+    },
+    {
+      "name": "UI test runner launches STA and preserves failure status",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Master runner includes the new isolated UI suite",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "DEV pack ships the UI suite and its launcher",
+      "status": "PASS",
+      "detail": null
+    }
+  ]
+}

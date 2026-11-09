@@ -1,0 +1,7 @@
+﻿Cette étape n'a pas abouti.
+
+Aucune relance automatique. Vérifiez le résultat connu avant d'engager une nouvelle écriture.
+Consultez les détails et le journal, puis corrigez la cause avant un nouvel essai.
+
+Détails :
+Relisez l'état avant de le consigner.

@@ -1,0 +1,123 @@
+{
+    "Suite":  "BatchNames120",
+    "Wpf":  true,
+    "Passed":  23,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "CSV quoted delimiters and escaped quotes preserve cells",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Excel tabs and Unicode survive without executing formulas",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Duplicate headers rejected case-insensitively",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Broken quoting and row width are rejected",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Multiline quoted cells remain data until field validation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Maximum row limit includes final line without newline",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Mapping defaults command flags to false and never imports consent or reboot",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Valid import produces DataTable unchecked and no restart with fresh checks",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "All row problems are retained and no partial candidate escapes",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Duplicates among import rows and existing queue are rejected",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Capacity sorts most exhausted first and respects threshold",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Exclusions distinguish AD queue personal and shared expiry without invented timestamps",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Unknown provenance never promises availability",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Hardware suggestions distinguish mobile fixed virtual and unknown",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Hardware reads are bounded local-only and suggestions require explicit acceptance",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Standalone bulk planner no longer requires remote toggle or source form selection",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Published preparation creates undo; undo restores unchecked without receipt changes",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Publication conflict preserves current table and rejects stale preview",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Failed checkpoint publication rolls back table reference",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Undo refuses after table result changes and never clears results",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Multi-edit preserves original execution order even after table selection sorting",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Undo hooks cover local add remove clear classic import and bulk additions",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WPF editable import grid loads with fixed result footer",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

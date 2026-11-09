@@ -1,0 +1,12 @@
+Contrôle préalable : composants acceptés par Pesto.exe, sonde reçue par Pesto-Startup.ps1.
+Compte de départ (non élevé) : PESTO-W11-TEST\labadmin
+Windows va demander une autorisation UAC pour « Windows PowerShell » (éditeur Microsoft Windows).
+Accepter pour le test complet ; refuser pour vérifier l'annulation (code 1223). Le relais affiche ensuite
+une fenêtre « Pesto - sonde UAC » : aucun moteur chargé, aucune connexion AD, aucune action.
+
+Code de Pesto.exe : 1
+Journaux : wad\logs\Pesto-demarrage.log, wad\logs\Pesto-lanceur.log ; contrôle préalable : C:\Users\labadmin\AppData\Local\Temp\Pesto-sonde-uac-35963c51b9cd4ebdb2d1957d60786776-check.json
+ECHEC : relais élevé non prouvé. Voir le reçu et les journaux ci-dessus.
+
+Resultat : code 1 (1223 = UAC annulee, 2 = invite non vue, 1 = echec). Aucun moteur ni action AD lances par ce test.
+Press any key to continue . . . 

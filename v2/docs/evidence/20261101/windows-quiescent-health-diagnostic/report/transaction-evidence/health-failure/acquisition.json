@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "sourceKind": "directory",
+  "inspectedFingerprint": "6b8686cdf6483e3d9105f8fc55a4dcb63108902e1f49463d16a77541bcbd53b8",
+  "preparedFingerprint": "6b8686cdf6483e3d9105f8fc55a4dcb63108902e1f49463d16a77541bcbd53b8",
+  "version": "2.0.9",
+  "archiveSha256": null,
+  "candidateSourceCommit": "ad0f78935b24281dce91f038d478b4516c7bee20",
+  "syntheticFault": true,
+  "syntheticVersion": false,
+  "installationPreservedBeforeConfirmation": true,
+  "directoryFallback": false
+}

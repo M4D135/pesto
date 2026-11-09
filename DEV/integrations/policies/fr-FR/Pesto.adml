@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <displayName>Pesto</displayName><description>Restrictions ordinateur Pesto 1.0</description>
+  <resources><stringTable>
+    <string id="Pesto">Pesto</string>
+    <string id="SupportedWindows">Windows avec Windows PowerShell 5.1 x64</string>
+    <string id="Restrictions">Cette restriction ne peut pas être assouplie par la configuration locale. Désactiver cette stratégie ne force jamais l’activation de la fonctionnalité dans Pesto. Aucune mutation en cours n’est annulée.</string>
+    <string id="MaxBatch">Limiter le nombre de postes dans un lot</string>
+    <string id="MaxBatchHelp">La limite effective est la plus petite entre cette valeur et le réglage local (1 à 200).</string>
+    <string id="IncidentMode">Suspendre les nouvelles mutations</string>
+    <string id="DisableUnattendedJoin">Interdire la jonction silencieuse</string>
+    <string id="DisableUnattendedOperations">Interdire renommage et déplacement silencieux</string>
+  </stringTable><presentationTable><presentation id="MaxBatch"><decimalTextBox refId="Limit" defaultValue="200">Nombre maximal de postes</decimalTextBox></presentation></presentationTable></resources>
+</policyDefinitionResources>

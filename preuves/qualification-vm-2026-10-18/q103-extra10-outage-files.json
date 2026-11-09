@@ -1,0 +1,33 @@
+{
+  "ShareRemoved": true,
+  "LeaseFilesUnchanged": true,
+  "Before": [
+    {
+      "Path": "C:\\PestoQual_20261018_SMB\\extra10\\reservations\\CRASH01.json",
+      "Hash": "393DAC30EDF9BA1F9B43BF76FC5AF1B7868980950FB7095DD311FC1B68B55405"
+    },
+    {
+      "Path": "C:\\PestoQual_20261018_SMB\\extra10\\reservations\\DIST0.json",
+      "Hash": "9940D07E168645ABAEADAAC6F1711FF0E870502D69327C442184A6028BF0BEC7"
+    },
+    {
+      "Path": "C:\\PestoQual_20261018_SMB\\extra10\\reservations\\DIST1.json",
+      "Hash": "11A8A0FC5D1F0BAEBA9D1625C390FDB30883561CBEFB4C28DF001DE41050F19F"
+    }
+  ],
+  "After": [
+    {
+      "Path": "C:\\PestoQual_20261018_SMB\\extra10\\reservations\\CRASH01.json",
+      "Hash": "393DAC30EDF9BA1F9B43BF76FC5AF1B7868980950FB7095DD311FC1B68B55405"
+    },
+    {
+      "Path": "C:\\PestoQual_20261018_SMB\\extra10\\reservations\\DIST0.json",
+      "Hash": "9940D07E168645ABAEADAAC6F1711FF0E870502D69327C442184A6028BF0BEC7"
+    },
+    {
+      "Path": "C:\\PestoQual_20261018_SMB\\extra10\\reservations\\DIST1.json",
+      "Hash": "11A8A0FC5D1F0BAEBA9D1625C390FDB30883561CBEFB4C28DF001DE41050F19F"
+    }
+  ],
+  "CommandExit": 1
+}

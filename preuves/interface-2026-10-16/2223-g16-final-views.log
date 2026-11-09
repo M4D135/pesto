@@ -1,0 +1,6 @@
+capture C:\PestoVM_20261016\desktop-tests\visible-final\desktop.png 1730x960
+PASS pilote de recette : Visible
+Pesto lancé depuis C:\PestoVM_20261016\candidate\PROD (pid 4504), EXE A59648942B80597B
+clic : #NavJoin (Ajouter au domaine)
+capture C:\PestoVM_20261016\preuves\g16-join-wide.png 1730x960
+

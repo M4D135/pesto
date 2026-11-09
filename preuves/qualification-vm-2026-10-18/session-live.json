@@ -1,0 +1,1643 @@
+{
+    "Schema":  2,
+    "ProcessId":  6152,
+    "ProcessStartUtc":  "2026-10-18T10:39:23.8595230Z",
+    "StartedUtc":  "2026-10-18T10:46:49.9760542Z",
+    "ToolSha256":  "EC86608D1F812F5A857A1890C1EFF1F9259E5BA3C4363823F2ADE58D4D9D72EE",
+    "PowerShell":  "5.1.26100.6584",
+    "Culture":  "fr-FR",
+    "OperatingSystem":  "Microsoft Windows NT 10.0.26200.0",
+    "Platform":  "Win32NT",
+    "CounterAvailability":  "PrivateBytes and Handles may be zero when the platform does not expose these counters.",
+    "FinishedUtc":  "2026-10-18T11:01:49.0605103Z",
+    "RequestedSamples":  180,
+    "IntervalSeconds":  5,
+    "MaxDurationSeconds":  960,
+    "ElapsedSeconds":  897.126,
+    "StopReason":  "SamplesCollected",
+    "CounterErrorType":  null,
+    "Samples":  [
+                    {
+                        "Utc":  "2026-10-18T10:46:50.0228057Z",
+                        "ElapsedSeconds":  0.053,
+                        "PrivateBytes":  295231488,
+                        "WorkingSet":  298061824,
+                        "Handles":  1277,
+                        "Threads":  33,
+                        "CpuSeconds":  40.171875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:46:54.4341764Z",
+                        "ElapsedSeconds":  5.157,
+                        "PrivateBytes":  295428096,
+                        "WorkingSet":  293916672,
+                        "Handles":  1277,
+                        "Threads":  33,
+                        "CpuSeconds":  40.328125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:46:59.1602218Z",
+                        "ElapsedSeconds":  10.165,
+                        "PrivateBytes":  295116800,
+                        "WorkingSet":  291233792,
+                        "Handles":  1277,
+                        "Threads":  26,
+                        "CpuSeconds":  40.390625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:03.9324256Z",
+                        "ElapsedSeconds":  15.183,
+                        "PrivateBytes":  295120896,
+                        "WorkingSet":  288440320,
+                        "Handles":  1277,
+                        "Threads":  26,
+                        "CpuSeconds":  40.5
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:09.1312538Z",
+                        "ElapsedSeconds":  20.19,
+                        "PrivateBytes":  295157760,
+                        "WorkingSet":  284979200,
+                        "Handles":  1282,
+                        "Threads":  27,
+                        "CpuSeconds":  40.578125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:14.3686460Z",
+                        "ElapsedSeconds":  25.196,
+                        "PrivateBytes":  295202816,
+                        "WorkingSet":  281276416,
+                        "Handles":  1287,
+                        "Threads":  28,
+                        "CpuSeconds":  40.65625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:20.0820641Z",
+                        "ElapsedSeconds":  30.198,
+                        "PrivateBytes":  294408192,
+                        "WorkingSet":  276590592,
+                        "Handles":  1287,
+                        "Threads":  28,
+                        "CpuSeconds":  40.765625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:25.8520363Z",
+                        "ElapsedSeconds":  35.211,
+                        "PrivateBytes":  294379520,
+                        "WorkingSet":  272683008,
+                        "Handles":  1284,
+                        "Threads":  27,
+                        "CpuSeconds":  40.859375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:32.1576319Z",
+                        "ElapsedSeconds":  40.229,
+                        "PrivateBytes":  294301696,
+                        "WorkingSet":  262922240,
+                        "Handles":  1274,
+                        "Threads":  25,
+                        "CpuSeconds":  40.96875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:38.5012947Z",
+                        "ElapsedSeconds":  45.24,
+                        "PrivateBytes":  295366656,
+                        "WorkingSet":  249397248,
+                        "Handles":  1290,
+                        "Threads":  27,
+                        "CpuSeconds":  41.296875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:44.2616015Z",
+                        "ElapsedSeconds":  50.257,
+                        "PrivateBytes":  298311680,
+                        "WorkingSet":  251994112,
+                        "Handles":  1303,
+                        "Threads":  27,
+                        "CpuSeconds":  42.515625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:49.9775495Z",
+                        "ElapsedSeconds":  55.274,
+                        "PrivateBytes":  300380160,
+                        "WorkingSet":  250187776,
+                        "Handles":  1310,
+                        "Threads":  27,
+                        "CpuSeconds":  43.390625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:47:55.1511931Z",
+                        "ElapsedSeconds":  60.28,
+                        "PrivateBytes":  301486080,
+                        "WorkingSet":  245972992,
+                        "Handles":  1321,
+                        "Threads":  28,
+                        "CpuSeconds":  43.640625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:00.2929062Z",
+                        "ElapsedSeconds":  65.295,
+                        "PrivateBytes":  305778688,
+                        "WorkingSet":  249917440,
+                        "Handles":  1331,
+                        "Threads":  29,
+                        "CpuSeconds":  47.140625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:04.9475896Z",
+                        "ElapsedSeconds":  70.302,
+                        "PrivateBytes":  305508352,
+                        "WorkingSet":  246841344,
+                        "Handles":  1329,
+                        "Threads":  29,
+                        "CpuSeconds":  47.28125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:09.5621363Z",
+                        "ElapsedSeconds":  75.305,
+                        "PrivateBytes":  304640000,
+                        "WorkingSet":  265232384,
+                        "Handles":  1228,
+                        "Threads":  29,
+                        "CpuSeconds":  48.671875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:13.7501213Z",
+                        "ElapsedSeconds":  80.31,
+                        "PrivateBytes":  302108672,
+                        "WorkingSet":  260468736,
+                        "Handles":  1222,
+                        "Threads":  29,
+                        "CpuSeconds":  49.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:17.9182221Z",
+                        "ElapsedSeconds":  85.327,
+                        "PrivateBytes":  303005696,
+                        "WorkingSet":  259837952,
+                        "Handles":  1217,
+                        "Threads":  25,
+                        "CpuSeconds":  49.59375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:21.6885816Z",
+                        "ElapsedSeconds":  90.337,
+                        "PrivateBytes":  306274304,
+                        "WorkingSet":  260214784,
+                        "Handles":  1217,
+                        "Threads":  25,
+                        "CpuSeconds":  49.78125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:25.4362653Z",
+                        "ElapsedSeconds":  95.35,
+                        "PrivateBytes":  305401856,
+                        "WorkingSet":  258326528,
+                        "Handles":  1217,
+                        "Threads":  25,
+                        "CpuSeconds":  49.921875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:29.5299861Z",
+                        "ElapsedSeconds":  100.358,
+                        "PrivateBytes":  304717824,
+                        "WorkingSet":  255258624,
+                        "Handles":  1222,
+                        "Threads":  26,
+                        "CpuSeconds":  50.140625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:33.6526843Z",
+                        "ElapsedSeconds":  105.373,
+                        "PrivateBytes":  304848896,
+                        "WorkingSet":  249700352,
+                        "Handles":  1222,
+                        "Threads":  26,
+                        "CpuSeconds":  50.296875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:38.1664274Z",
+                        "ElapsedSeconds":  110.389,
+                        "PrivateBytes":  304779264,
+                        "WorkingSet":  238112768,
+                        "Handles":  1220,
+                        "Threads":  26,
+                        "CpuSeconds":  50.453125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:42.7049880Z",
+                        "ElapsedSeconds":  115.408,
+                        "PrivateBytes":  303689728,
+                        "WorkingSet":  226574336,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  50.640625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:47.6658793Z",
+                        "ElapsedSeconds":  120.417,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  216027136,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  50.796875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:52.6591293Z",
+                        "ElapsedSeconds":  125.436,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  207499264,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  50.921875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:48:58.1121138Z",
+                        "ElapsedSeconds":  130.454,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  198803456,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  51.0625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:03.1294890Z",
+                        "ElapsedSeconds":  135.472,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  189685760,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  51.1875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:08.6106529Z",
+                        "ElapsedSeconds":  140.474,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  181051392,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  51.328125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:14.1230650Z",
+                        "ElapsedSeconds":  145.486,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  173043712,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  51.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:20.1726995Z",
+                        "ElapsedSeconds":  150.505,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  165146624,
+                        "Handles":  1215,
+                        "Threads":  25,
+                        "CpuSeconds":  51.578125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:26.2405593Z",
+                        "ElapsedSeconds":  155.518,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  158416896,
+                        "Handles":  1214,
+                        "Threads":  25,
+                        "CpuSeconds":  51.703125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:32.8879046Z",
+                        "ElapsedSeconds":  160.531,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  150626304,
+                        "Handles":  1214,
+                        "Threads":  25,
+                        "CpuSeconds":  51.859375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:39.5544259Z",
+                        "ElapsedSeconds":  165.538,
+                        "PrivateBytes":  304623616,
+                        "WorkingSet":  143163392,
+                        "Handles":  1214,
+                        "Threads":  25,
+                        "CpuSeconds":  51.90625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:45.5819395Z",
+                        "ElapsedSeconds":  170.551,
+                        "PrivateBytes":  304701440,
+                        "WorkingSet":  135831552,
+                        "Handles":  1224,
+                        "Threads":  27,
+                        "CpuSeconds":  52
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:51.5823326Z",
+                        "ElapsedSeconds":  175.561,
+                        "PrivateBytes":  303677440,
+                        "WorkingSet":  129843200,
+                        "Handles":  1224,
+                        "Threads":  27,
+                        "CpuSeconds":  52.15625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:49:57.0137825Z",
+                        "ElapsedSeconds":  180.58,
+                        "PrivateBytes":  303677440,
+                        "WorkingSet":  128933888,
+                        "Handles":  1224,
+                        "Threads":  27,
+                        "CpuSeconds":  52.28125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:02.4169957Z",
+                        "ElapsedSeconds":  185.592,
+                        "PrivateBytes":  305127424,
+                        "WorkingSet":  144007168,
+                        "Handles":  1221,
+                        "Threads":  26,
+                        "CpuSeconds":  52.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:07.2907008Z",
+                        "ElapsedSeconds":  190.601,
+                        "PrivateBytes":  305025024,
+                        "WorkingSet":  139333632,
+                        "Handles":  1211,
+                        "Threads":  24,
+                        "CpuSeconds":  52.578125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:12.1561934Z",
+                        "ElapsedSeconds":  195.616,
+                        "PrivateBytes":  305025024,
+                        "WorkingSet":  134459392,
+                        "Handles":  1211,
+                        "Threads":  24,
+                        "CpuSeconds":  52.671875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:16.5384282Z",
+                        "ElapsedSeconds":  200.623,
+                        "PrivateBytes":  305090560,
+                        "WorkingSet":  129163264,
+                        "Handles":  1210,
+                        "Threads":  24,
+                        "CpuSeconds":  52.796875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:20.9082367Z",
+                        "ElapsedSeconds":  205.626,
+                        "PrivateBytes":  305680384,
+                        "WorkingSet":  149168128,
+                        "Handles":  1226,
+                        "Threads":  26,
+                        "CpuSeconds":  53.296875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:24.8546445Z",
+                        "ElapsedSeconds":  210.635,
+                        "PrivateBytes":  308252672,
+                        "WorkingSet":  155070464,
+                        "Handles":  1224,
+                        "Threads":  26,
+                        "CpuSeconds":  54.21875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:28.7927413Z",
+                        "ElapsedSeconds":  215.645,
+                        "PrivateBytes":  308219904,
+                        "WorkingSet":  151961600,
+                        "Handles":  1225,
+                        "Threads":  26,
+                        "CpuSeconds":  54.515625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:32.3506643Z",
+                        "ElapsedSeconds":  220.664,
+                        "PrivateBytes":  307585024,
+                        "WorkingSet":  148058112,
+                        "Handles":  1223,
+                        "Threads":  26,
+                        "CpuSeconds":  56.0625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:35.8934374Z",
+                        "ElapsedSeconds":  225.672,
+                        "PrivateBytes":  307494912,
+                        "WorkingSet":  229527552,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  56.671875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:39.7838275Z",
+                        "ElapsedSeconds":  230.678,
+                        "PrivateBytes":  307625984,
+                        "WorkingSet":  223698944,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  56.8125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:43.6766476Z",
+                        "ElapsedSeconds":  235.682,
+                        "PrivateBytes":  307691520,
+                        "WorkingSet":  216690688,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  56.96875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:47.9602330Z",
+                        "ElapsedSeconds":  240.693,
+                        "PrivateBytes":  307691520,
+                        "WorkingSet":  215183360,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  57.078125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:52.2422790Z",
+                        "ElapsedSeconds":  245.696,
+                        "PrivateBytes":  307691520,
+                        "WorkingSet":  213639168,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  57.203125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:50:56.9489451Z",
+                        "ElapsedSeconds":  250.7,
+                        "PrivateBytes":  307691520,
+                        "WorkingSet":  212086784,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  57.328125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:01.6633161Z",
+                        "ElapsedSeconds":  255.707,
+                        "PrivateBytes":  307691520,
+                        "WorkingSet":  210915328,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  57.484375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:06.8421624Z",
+                        "ElapsedSeconds":  260.714,
+                        "PrivateBytes":  307691520,
+                        "WorkingSet":  209739776,
+                        "Handles":  1193,
+                        "Threads":  24,
+                        "CpuSeconds":  57.625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:12.0364351Z",
+                        "ElapsedSeconds":  265.729,
+                        "PrivateBytes":  305958912,
+                        "WorkingSet":  209719296,
+                        "Handles":  1198,
+                        "Threads":  24,
+                        "CpuSeconds":  57.96875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:17.7414701Z",
+                        "ElapsedSeconds":  270.741,
+                        "PrivateBytes":  314249216,
+                        "WorkingSet":  259039232,
+                        "Handles":  1229,
+                        "Threads":  29,
+                        "CpuSeconds":  59.65625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:23.4439366Z",
+                        "ElapsedSeconds":  275.747,
+                        "PrivateBytes":  309211136,
+                        "WorkingSet":  258306048,
+                        "Handles":  1230,
+                        "Threads":  27,
+                        "CpuSeconds":  60.359375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:29.7271587Z",
+                        "ElapsedSeconds":  280.766,
+                        "PrivateBytes":  309829632,
+                        "WorkingSet":  259117056,
+                        "Handles":  1223,
+                        "Threads":  27,
+                        "CpuSeconds":  61.765625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:36.0190713Z",
+                        "ElapsedSeconds":  285.786,
+                        "PrivateBytes":  311001088,
+                        "WorkingSet":  259018752,
+                        "Handles":  1218,
+                        "Threads":  26,
+                        "CpuSeconds":  62
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:42.9192735Z",
+                        "ElapsedSeconds":  290.794,
+                        "PrivateBytes":  309211136,
+                        "WorkingSet":  258232320,
+                        "Handles":  1218,
+                        "Threads":  26,
+                        "CpuSeconds":  62.28125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:49.8188955Z",
+                        "ElapsedSeconds":  295.798,
+                        "PrivateBytes":  308912128,
+                        "WorkingSet":  258002944,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  62.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:51:56.0328945Z",
+                        "ElapsedSeconds":  300.807,
+                        "PrivateBytes":  308895744,
+                        "WorkingSet":  258039808,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  62.859375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:02.2597200Z",
+                        "ElapsedSeconds":  305.825,
+                        "PrivateBytes":  308662272,
+                        "WorkingSet":  257785856,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  63.15625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:07.8569034Z",
+                        "ElapsedSeconds":  310.838,
+                        "PrivateBytes":  308736000,
+                        "WorkingSet":  255864832,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  63.359375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:13.4528255Z",
+                        "ElapsedSeconds":  315.852,
+                        "PrivateBytes":  308355072,
+                        "WorkingSet":  254222336,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  63.625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:18.4870184Z",
+                        "ElapsedSeconds":  320.862,
+                        "PrivateBytes":  309223424,
+                        "WorkingSet":  251367424,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  63.84375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:23.5210536Z",
+                        "ElapsedSeconds":  325.877,
+                        "PrivateBytes":  308047872,
+                        "WorkingSet":  248152064,
+                        "Handles":  1218,
+                        "Threads":  24,
+                        "CpuSeconds":  64.09375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:28.0539051Z",
+                        "ElapsedSeconds":  330.887,
+                        "PrivateBytes":  307933184,
+                        "WorkingSet":  245178368,
+                        "Handles":  1216,
+                        "Threads":  24,
+                        "CpuSeconds":  64.28125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:32.5754829Z",
+                        "ElapsedSeconds":  335.892,
+                        "PrivateBytes":  308985856,
+                        "WorkingSet":  242475008,
+                        "Handles":  1216,
+                        "Threads":  24,
+                        "CpuSeconds":  64.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:36.6706373Z",
+                        "ElapsedSeconds":  340.923,
+                        "PrivateBytes":  307736576,
+                        "WorkingSet":  239570944,
+                        "Handles":  1216,
+                        "Threads":  24,
+                        "CpuSeconds":  64.796875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:40.7468726Z",
+                        "ElapsedSeconds":  345.939,
+                        "PrivateBytes":  311009280,
+                        "WorkingSet":  237076480,
+                        "Handles":  1220,
+                        "Threads":  24,
+                        "CpuSeconds":  65.40625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:44.4142940Z",
+                        "ElapsedSeconds":  350.945,
+                        "PrivateBytes":  438669312,
+                        "WorkingSet":  361385984,
+                        "Handles":  1304,
+                        "Threads":  36,
+                        "CpuSeconds":  68.59375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:48.0732366Z",
+                        "ElapsedSeconds":  355.95,
+                        "PrivateBytes":  332124160,
+                        "WorkingSet":  269455360,
+                        "Handles":  1303,
+                        "Threads":  34,
+                        "CpuSeconds":  69.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:51.3749771Z",
+                        "ElapsedSeconds":  360.956,
+                        "PrivateBytes":  332451840,
+                        "WorkingSet":  263385088,
+                        "Handles":  1303,
+                        "Threads":  34,
+                        "CpuSeconds":  69.625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:54.6841332Z",
+                        "ElapsedSeconds":  365.965,
+                        "PrivateBytes":  332972032,
+                        "WorkingSet":  254578688,
+                        "Handles":  1302,
+                        "Threads":  34,
+                        "CpuSeconds":  70.3125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:52:58.3260189Z",
+                        "ElapsedSeconds":  370.987,
+                        "PrivateBytes":  332914688,
+                        "WorkingSet":  293126144,
+                        "Handles":  1260,
+                        "Threads":  34,
+                        "CpuSeconds":  70.8125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:01.9660204Z",
+                        "ElapsedSeconds":  375.993,
+                        "PrivateBytes":  333262848,
+                        "WorkingSet":  292253696,
+                        "Handles":  1260,
+                        "Threads":  24,
+                        "CpuSeconds":  70.953125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:05.9594645Z",
+                        "ElapsedSeconds":  381,
+                        "PrivateBytes":  333459456,
+                        "WorkingSet":  290054144,
+                        "Handles":  1260,
+                        "Threads":  24,
+                        "CpuSeconds":  71.109375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:09.9685088Z",
+                        "ElapsedSeconds":  386.01,
+                        "PrivateBytes":  333279232,
+                        "WorkingSet":  285736960,
+                        "Handles":  1260,
+                        "Threads":  24,
+                        "CpuSeconds":  71.203125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:14.3606804Z",
+                        "ElapsedSeconds":  391.016,
+                        "PrivateBytes":  333320192,
+                        "WorkingSet":  281673728,
+                        "Handles":  1266,
+                        "Threads":  26,
+                        "CpuSeconds":  71.328125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:18.7772368Z",
+                        "ElapsedSeconds":  396.035,
+                        "PrivateBytes":  333492224,
+                        "WorkingSet":  275337216,
+                        "Handles":  1265,
+                        "Threads":  25,
+                        "CpuSeconds":  71.484375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:23.6263500Z",
+                        "ElapsedSeconds":  401.056,
+                        "PrivateBytes":  333393920,
+                        "WorkingSet":  270725120,
+                        "Handles":  1265,
+                        "Threads":  25,
+                        "CpuSeconds":  71.59375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:28.4789726Z",
+                        "ElapsedSeconds":  406.067,
+                        "PrivateBytes":  333369344,
+                        "WorkingSet":  266911744,
+                        "Handles":  1260,
+                        "Threads":  24,
+                        "CpuSeconds":  71.734375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:33.7941614Z",
+                        "ElapsedSeconds":  411.073,
+                        "PrivateBytes":  333295616,
+                        "WorkingSet":  263032832,
+                        "Handles":  1257,
+                        "Threads":  24,
+                        "CpuSeconds":  71.828125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:39.1331653Z",
+                        "ElapsedSeconds":  416.082,
+                        "PrivateBytes":  333426688,
+                        "WorkingSet":  259182592,
+                        "Handles":  1257,
+                        "Threads":  24,
+                        "CpuSeconds":  71.9375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:44.9783075Z",
+                        "ElapsedSeconds":  421.087,
+                        "PrivateBytes":  333299712,
+                        "WorkingSet":  255033344,
+                        "Handles":  1257,
+                        "Threads":  24,
+                        "CpuSeconds":  72.078125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:50.8617477Z",
+                        "ElapsedSeconds":  426.104,
+                        "PrivateBytes":  333144064,
+                        "WorkingSet":  250662912,
+                        "Handles":  1244,
+                        "Threads":  21,
+                        "CpuSeconds":  72.1875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:53:57.0729027Z",
+                        "ElapsedSeconds":  431.121,
+                        "PrivateBytes":  333275136,
+                        "WorkingSet":  246697984,
+                        "Handles":  1244,
+                        "Threads":  21,
+                        "CpuSeconds":  72.3125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:02.1012482Z",
+                        "ElapsedSeconds":  436.129,
+                        "PrivateBytes":  333197312,
+                        "WorkingSet":  242647040,
+                        "Handles":  1244,
+                        "Threads":  21,
+                        "CpuSeconds":  72.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:07.6173272Z",
+                        "ElapsedSeconds":  441.144,
+                        "PrivateBytes":  333328384,
+                        "WorkingSet":  239435776,
+                        "Handles":  1244,
+                        "Threads":  21,
+                        "CpuSeconds":  72.546875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:13.1565415Z",
+                        "ElapsedSeconds":  446.16,
+                        "PrivateBytes":  333209600,
+                        "WorkingSet":  235675648,
+                        "Handles":  1246,
+                        "Threads":  21,
+                        "CpuSeconds":  72.75
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:19.2577532Z",
+                        "ElapsedSeconds":  451.205,
+                        "PrivateBytes":  331358208,
+                        "WorkingSet":  230797312,
+                        "Handles":  1244,
+                        "Threads":  21,
+                        "CpuSeconds":  72.9375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:25.3676417Z",
+                        "ElapsedSeconds":  456.219,
+                        "PrivateBytes":  331874304,
+                        "WorkingSet":  224026624,
+                        "Handles":  1248,
+                        "Threads":  21,
+                        "CpuSeconds":  73.171875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:32.0474346Z",
+                        "ElapsedSeconds":  461.24,
+                        "PrivateBytes":  332136448,
+                        "WorkingSet":  220925952,
+                        "Handles":  1248,
+                        "Threads":  21,
+                        "CpuSeconds":  73.359375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:38.6672348Z",
+                        "ElapsedSeconds":  466.241,
+                        "PrivateBytes":  331976704,
+                        "WorkingSet":  218406912,
+                        "Handles":  1248,
+                        "Threads":  21,
+                        "CpuSeconds":  73.640625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:44.6628645Z",
+                        "ElapsedSeconds":  471.246,
+                        "PrivateBytes":  331091968,
+                        "WorkingSet":  215195648,
+                        "Handles":  1246,
+                        "Threads":  21,
+                        "CpuSeconds":  73.78125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:50.6179730Z",
+                        "ElapsedSeconds":  476.251,
+                        "PrivateBytes":  331145216,
+                        "WorkingSet":  212213760,
+                        "Handles":  1246,
+                        "Threads":  21,
+                        "CpuSeconds":  73.890625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:54:56.0149984Z",
+                        "ElapsedSeconds":  481.256,
+                        "PrivateBytes":  331046912,
+                        "WorkingSet":  201711616,
+                        "Handles":  1246,
+                        "Threads":  21,
+                        "CpuSeconds":  74
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:01.3794044Z",
+                        "ElapsedSeconds":  486.262,
+                        "PrivateBytes":  331075584,
+                        "WorkingSet":  193613824,
+                        "Handles":  1246,
+                        "Threads":  21,
+                        "CpuSeconds":  74.15625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:06.2354901Z",
+                        "ElapsedSeconds":  491.268,
+                        "PrivateBytes":  330989568,
+                        "WorkingSet":  182091776,
+                        "Handles":  1246,
+                        "Threads":  21,
+                        "CpuSeconds":  74.28125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:11.0665781Z",
+                        "ElapsedSeconds":  496.278,
+                        "PrivateBytes":  331030528,
+                        "WorkingSet":  182153216,
+                        "Handles":  1241,
+                        "Threads":  20,
+                        "CpuSeconds":  74.390625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:15.4385358Z",
+                        "ElapsedSeconds":  501.285,
+                        "PrivateBytes":  331116544,
+                        "WorkingSet":  178384896,
+                        "Handles":  1239,
+                        "Threads":  20,
+                        "CpuSeconds":  74.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:19.7791936Z",
+                        "ElapsedSeconds":  506.289,
+                        "PrivateBytes":  331378688,
+                        "WorkingSet":  172216320,
+                        "Handles":  1239,
+                        "Threads":  20,
+                        "CpuSeconds":  74.671875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:23.7133885Z",
+                        "ElapsedSeconds":  511.295,
+                        "PrivateBytes":  331378688,
+                        "WorkingSet":  163807232,
+                        "Handles":  1239,
+                        "Threads":  20,
+                        "CpuSeconds":  74.78125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:27.6909195Z",
+                        "ElapsedSeconds":  516.319,
+                        "PrivateBytes":  330973184,
+                        "WorkingSet":  159805440,
+                        "Handles":  1239,
+                        "Threads":  20,
+                        "CpuSeconds":  74.96875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:32.0239893Z",
+                        "ElapsedSeconds":  521.332,
+                        "PrivateBytes":  332050432,
+                        "WorkingSet":  156995584,
+                        "Handles":  1241,
+                        "Threads":  20,
+                        "CpuSeconds":  76.90625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:36.3833253Z",
+                        "ElapsedSeconds":  526.339,
+                        "PrivateBytes":  332181504,
+                        "WorkingSet":  151928832,
+                        "Handles":  1241,
+                        "Threads":  20,
+                        "CpuSeconds":  77.046875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:41.1694494Z",
+                        "ElapsedSeconds":  531.371,
+                        "PrivateBytes":  333000704,
+                        "WorkingSet":  148258816,
+                        "Handles":  1241,
+                        "Threads":  20,
+                        "CpuSeconds":  77.3125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:45.9881519Z",
+                        "ElapsedSeconds":  536.397,
+                        "PrivateBytes":  332877824,
+                        "WorkingSet":  194842624,
+                        "Handles":  1251,
+                        "Threads":  24,
+                        "CpuSeconds":  78.671875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:51.2249671Z",
+                        "ElapsedSeconds":  541.404,
+                        "PrivateBytes":  332374016,
+                        "WorkingSet":  192233472,
+                        "Handles":  1248,
+                        "Threads":  23,
+                        "CpuSeconds":  79.375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:55:56.5046248Z",
+                        "ElapsedSeconds":  546.41,
+                        "PrivateBytes":  333225984,
+                        "WorkingSet":  265371648,
+                        "Handles":  1186,
+                        "Threads":  23,
+                        "CpuSeconds":  80.359375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:02.2603867Z",
+                        "ElapsedSeconds":  551.411,
+                        "PrivateBytes":  333316096,
+                        "WorkingSet":  262221824,
+                        "Handles":  1186,
+                        "Threads":  23,
+                        "CpuSeconds":  80.515625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:08.0156735Z",
+                        "ElapsedSeconds":  556.429,
+                        "PrivateBytes":  333643776,
+                        "WorkingSet":  260276224,
+                        "Handles":  1186,
+                        "Threads":  23,
+                        "CpuSeconds":  80.625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:12.9338433Z",
+                        "ElapsedSeconds":  561.475,
+                        "PrivateBytes":  333840384,
+                        "WorkingSet":  260374528,
+                        "Handles":  1186,
+                        "Threads":  23,
+                        "CpuSeconds":  80.78125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:17.8570032Z",
+                        "ElapsedSeconds":  566.479,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  260382720,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  80.9375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:23.2226654Z",
+                        "ElapsedSeconds":  571.485,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  260009984,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  81.0625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:28.5388534Z",
+                        "ElapsedSeconds":  576.49,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  259674112,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  81.15625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:33.3670911Z",
+                        "ElapsedSeconds":  581.495,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  259051520,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  81.265625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:38.2227292Z",
+                        "ElapsedSeconds":  586.508,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  258080768,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  81.390625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:43.2310625Z",
+                        "ElapsedSeconds":  591.517,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  255348736,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  81.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:48.2389319Z",
+                        "ElapsedSeconds":  596.524,
+                        "PrivateBytes":  333778944,
+                        "WorkingSet":  252203008,
+                        "Handles":  1186,
+                        "Threads":  22,
+                        "CpuSeconds":  81.6875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:53.2498822Z",
+                        "ElapsedSeconds":  601.536,
+                        "PrivateBytes":  333750272,
+                        "WorkingSet":  249937920,
+                        "Handles":  1182,
+                        "Threads":  21,
+                        "CpuSeconds":  81.796875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:56:58.2523137Z",
+                        "ElapsedSeconds":  606.539,
+                        "PrivateBytes":  333750272,
+                        "WorkingSet":  247312384,
+                        "Handles":  1182,
+                        "Threads":  21,
+                        "CpuSeconds":  81.953125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:03.2754863Z",
+                        "ElapsedSeconds":  611.562,
+                        "PrivateBytes":  333750272,
+                        "WorkingSet":  244416512,
+                        "Handles":  1182,
+                        "Threads":  21,
+                        "CpuSeconds":  82.125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:08.2919093Z",
+                        "ElapsedSeconds":  616.578,
+                        "PrivateBytes":  333815808,
+                        "WorkingSet":  241094656,
+                        "Handles":  1182,
+                        "Threads":  21,
+                        "CpuSeconds":  82.21875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:13.2946630Z",
+                        "ElapsedSeconds":  621.581,
+                        "PrivateBytes":  333815808,
+                        "WorkingSet":  237535232,
+                        "Handles":  1182,
+                        "Threads":  21,
+                        "CpuSeconds":  82.328125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:18.2984614Z",
+                        "ElapsedSeconds":  626.584,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  234708992,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  82.453125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:23.3027360Z",
+                        "ElapsedSeconds":  631.591,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  232284160,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  82.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:28.3123752Z",
+                        "ElapsedSeconds":  636.597,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  229081088,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  82.6875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:33.3240269Z",
+                        "ElapsedSeconds":  641.61,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  221802496,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  82.828125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:38.3357993Z",
+                        "ElapsedSeconds":  646.621,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  209223680,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  82.921875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:43.3407203Z",
+                        "ElapsedSeconds":  651.626,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  201199616,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.078125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:48.3438032Z",
+                        "ElapsedSeconds":  656.63,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  196321280,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.1875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:53.3472249Z",
+                        "ElapsedSeconds":  661.634,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  188448768,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.296875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:57:58.3562917Z",
+                        "ElapsedSeconds":  666.643,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  177070080,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.421875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:03.3655019Z",
+                        "ElapsedSeconds":  671.652,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  167575552,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:08.3740685Z",
+                        "ElapsedSeconds":  676.659,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  158777344,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.71875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:13.3767252Z",
+                        "ElapsedSeconds":  681.663,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  150351872,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.84375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:18.3848917Z",
+                        "ElapsedSeconds":  686.671,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  141942784,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  83.9375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:23.3886941Z",
+                        "ElapsedSeconds":  691.674,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  133976064,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.078125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:28.3937792Z",
+                        "ElapsedSeconds":  696.68,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  126685184,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.21875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:33.4000017Z",
+                        "ElapsedSeconds":  701.685,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  119291904,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:38.4046156Z",
+                        "ElapsedSeconds":  706.691,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  112660480,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.5
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:43.4123511Z",
+                        "ElapsedSeconds":  711.698,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  106180608,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.65625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:48.4217790Z",
+                        "ElapsedSeconds":  716.708,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  99573760,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.78125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:53.4395510Z",
+                        "ElapsedSeconds":  721.725,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  93270016,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  84.90625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:58:58.4447300Z",
+                        "ElapsedSeconds":  726.731,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  87572480,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  85.046875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:03.4484549Z",
+                        "ElapsedSeconds":  731.734,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  82014208,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  85.1875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:08.4570492Z",
+                        "ElapsedSeconds":  736.744,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  76779520,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  85.265625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:13.4643949Z",
+                        "ElapsedSeconds":  741.75,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  71938048,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  85.375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:18.4727593Z",
+                        "ElapsedSeconds":  746.758,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  69222400,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  85.46875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:23.4761799Z",
+                        "ElapsedSeconds":  751.761,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  69226496,
+                        "Handles":  1171,
+                        "Threads":  16,
+                        "CpuSeconds":  85.578125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:28.4797947Z",
+                        "ElapsedSeconds":  756.766,
+                        "PrivateBytes":  333635584,
+                        "WorkingSet":  69443584,
+                        "Handles":  1176,
+                        "Threads":  17,
+                        "CpuSeconds":  85.734375
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:33.4869232Z",
+                        "ElapsedSeconds":  761.772,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  70664192,
+                        "Handles":  1174,
+                        "Threads":  17,
+                        "CpuSeconds":  85.875
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:38.4950888Z",
+                        "ElapsedSeconds":  766.78,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  69042176,
+                        "Handles":  1174,
+                        "Threads":  17,
+                        "CpuSeconds":  86
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:43.4983624Z",
+                        "ElapsedSeconds":  771.785,
+                        "PrivateBytes":  333594624,
+                        "WorkingSet":  66297856,
+                        "Handles":  1174,
+                        "Threads":  17,
+                        "CpuSeconds":  86.140625
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:48.5176632Z",
+                        "ElapsedSeconds":  776.805,
+                        "PrivateBytes":  333553664,
+                        "WorkingSet":  63102976,
+                        "Handles":  1169,
+                        "Threads":  16,
+                        "CpuSeconds":  86.25
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:53.5304102Z",
+                        "ElapsedSeconds":  781.817,
+                        "PrivateBytes":  353984512,
+                        "WorkingSet":  225828864,
+                        "Handles":  1205,
+                        "Threads":  23,
+                        "CpuSeconds":  88.203125
+                    },
+                    {
+                        "Utc":  "2026-10-18T10:59:58.5455733Z",
+                        "ElapsedSeconds":  786.833,
+                        "PrivateBytes":  348475392,
+                        "WorkingSet":  222928896,
+                        "Handles":  1205,
+                        "Threads":  23,
+                        "CpuSeconds":  89.875
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:03.5603270Z",
+                        "ElapsedSeconds":  791.846,
+                        "PrivateBytes":  341000192,
+                        "WorkingSet":  220696576,
+                        "Handles":  1200,
+                        "Threads":  23,
+                        "CpuSeconds":  90.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:08.5789997Z",
+                        "ElapsedSeconds":  796.864,
+                        "PrivateBytes":  341262336,
+                        "WorkingSet":  220983296,
+                        "Handles":  1200,
+                        "Threads":  23,
+                        "CpuSeconds":  90.5625
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:13.5824381Z",
+                        "ElapsedSeconds":  801.869,
+                        "PrivateBytes":  341336064,
+                        "WorkingSet":  221114368,
+                        "Handles":  1200,
+                        "Threads":  20,
+                        "CpuSeconds":  90.75
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:18.6053562Z",
+                        "ElapsedSeconds":  806.891,
+                        "PrivateBytes":  341405696,
+                        "WorkingSet":  221159424,
+                        "Handles":  1200,
+                        "Threads":  19,
+                        "CpuSeconds":  90.96875
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:23.6071178Z",
+                        "ElapsedSeconds":  811.894,
+                        "PrivateBytes":  341405696,
+                        "WorkingSet":  221122560,
+                        "Handles":  1200,
+                        "Threads":  19,
+                        "CpuSeconds":  91.15625
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:28.6291190Z",
+                        "ElapsedSeconds":  816.916,
+                        "PrivateBytes":  341405696,
+                        "WorkingSet":  219803648,
+                        "Handles":  1200,
+                        "Threads":  19,
+                        "CpuSeconds":  91.3125
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:33.6383475Z",
+                        "ElapsedSeconds":  821.925,
+                        "PrivateBytes":  341405696,
+                        "WorkingSet":  217956352,
+                        "Handles":  1200,
+                        "Threads":  19,
+                        "CpuSeconds":  91.453125
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:38.6678137Z",
+                        "ElapsedSeconds":  826.955,
+                        "PrivateBytes":  341471232,
+                        "WorkingSet":  215769088,
+                        "Handles":  1202,
+                        "Threads":  19,
+                        "CpuSeconds":  91.578125
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:43.6915763Z",
+                        "ElapsedSeconds":  831.978,
+                        "PrivateBytes":  366628864,
+                        "WorkingSet":  270073856,
+                        "Handles":  1266,
+                        "Threads":  26,
+                        "CpuSeconds":  92.6875
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:48.7020739Z",
+                        "ElapsedSeconds":  836.987,
+                        "PrivateBytes":  352018432,
+                        "WorkingSet":  264196096,
+                        "Handles":  1280,
+                        "Threads":  29,
+                        "CpuSeconds":  93.25
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:53.7059364Z",
+                        "ElapsedSeconds":  841.993,
+                        "PrivateBytes":  352018432,
+                        "WorkingSet":  263888896,
+                        "Handles":  1280,
+                        "Threads":  29,
+                        "CpuSeconds":  93.78125
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:00:58.7251710Z",
+                        "ElapsedSeconds":  847.011,
+                        "PrivateBytes":  352047104,
+                        "WorkingSet":  263368704,
+                        "Handles":  1275,
+                        "Threads":  28,
+                        "CpuSeconds":  94.4375
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:03.7371937Z",
+                        "ElapsedSeconds":  852.024,
+                        "PrivateBytes":  352063488,
+                        "WorkingSet":  310722560,
+                        "Handles":  1226,
+                        "Threads":  28,
+                        "CpuSeconds":  95.296875
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:08.7465490Z",
+                        "ElapsedSeconds":  857.032,
+                        "PrivateBytes":  351879168,
+                        "WorkingSet":  309686272,
+                        "Handles":  1221,
+                        "Threads":  22,
+                        "CpuSeconds":  95.96875
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:13.7558409Z",
+                        "ElapsedSeconds":  862.043,
+                        "PrivateBytes":  351940608,
+                        "WorkingSet":  309133312,
+                        "Handles":  1217,
+                        "Threads":  22,
+                        "CpuSeconds":  96.390625
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:18.7592994Z",
+                        "ElapsedSeconds":  867.047,
+                        "PrivateBytes":  351846400,
+                        "WorkingSet":  308977664,
+                        "Handles":  1217,
+                        "Threads":  22,
+                        "CpuSeconds":  96.5
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:23.7689551Z",
+                        "ElapsedSeconds":  872.056,
+                        "PrivateBytes":  351842304,
+                        "WorkingSet":  307740672,
+                        "Handles":  1217,
+                        "Threads":  22,
+                        "CpuSeconds":  96.640625
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:28.7712199Z",
+                        "ElapsedSeconds":  877.058,
+                        "PrivateBytes":  352014336,
+                        "WorkingSet":  305463296,
+                        "Handles":  1222,
+                        "Threads":  23,
+                        "CpuSeconds":  96.765625
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:33.7825419Z",
+                        "ElapsedSeconds":  882.069,
+                        "PrivateBytes":  351899648,
+                        "WorkingSet":  304177152,
+                        "Handles":  1222,
+                        "Threads":  23,
+                        "CpuSeconds":  96.875
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:38.7972682Z",
+                        "ElapsedSeconds":  887.083,
+                        "PrivateBytes":  352096256,
+                        "WorkingSet":  301604864,
+                        "Handles":  1222,
+                        "Threads":  23,
+                        "CpuSeconds":  97
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:43.7984073Z",
+                        "ElapsedSeconds":  892.086,
+                        "PrivateBytes":  351928320,
+                        "WorkingSet":  292945920,
+                        "Handles":  1222,
+                        "Threads":  23,
+                        "CpuSeconds":  97.15625
+                    },
+                    {
+                        "Utc":  "2026-10-18T11:01:48.8305863Z",
+                        "ElapsedSeconds":  897.118,
+                        "PrivateBytes":  351870976,
+                        "WorkingSet":  282255360,
+                        "Handles":  1219,
+                        "Threads":  22,
+                        "CpuSeconds":  97.3125
+                    }
+                ],
+    "Verdict":  "MEASURED_ONLY",
+    "Limit":  "Counters only; no leak diagnosis, no event-subscription inventory. Compare identical workloads after warm-up. Partial samples are preserved when the process exits."
+}

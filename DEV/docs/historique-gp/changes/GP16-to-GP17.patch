@@ -1,0 +1,2710 @@
+--- GP16/GP.ps1
++++ GP17/GP.ps1
+@@ -1,14 +1,16 @@
+ #requires -version 5.1
++[CmdletBinding()]
++param([switch]$Demo,[string]$ConfigPath)
+ ###############################################################################
+ #  GP - Gestion des Postes   (interface WPF, Active Directory)
+ #  Jonction au domaine / Renommage / Déplacement / File d'actions
+ #
+-#  Version 16.0 HD — correctif hors domaine auto-vérifié / login ADCC / loading / runspaces / jonction / rename / Entra :
++#  Version 17.0 RC1 — renforcement du moteur, de la file et des contrôles ; recette Windows requise :
+ #    - Moteur AD entièrement découplé de l'interface (aucun appel UI dans le
+ #      moteur : les fonctions renvoient un résultat { ExitCode, ExitMsg }).
+ #    - Interface WPF moderne, thème clair / sombre commutable à chaud (soleil / lune).
+ #    - File d'actions (DataGrid) + journal couleur + barre de statut.
+-#    - 100 % compatible avec le cfg.json existant (même contrat de config).
++#    - Schéma cfg.json conservé, avec validation plus stricte et nouvelles options explicites.
+ #
+ #  MODES (cfg.json > Debug / Conf) :
+ #    $GUI  : interface seule, aucun appel AD réel (test visuel / logique UI)
+@@ -22,7 +24,8 @@
+ #  CODES DE SORTIE (renvoyés par les fonctions Go*) :
+ #    10 AddDomain OK   11 AddDomain KO   13 Compte AD déjà existant
+ #    20 Rename OK      21 Rename KO      69 Nom déjà pris (rename seul)
+-#    30 Move OK        31 Move KO        33 Déjà dans l'OU cible
++#    30 Move OK        31 Move KO        32 Protection non rétablie / arrêt sécurité
++#    33 Déjà dans l'OU cible
+ #    40 Reboot demandé 41 Reboot KO (journal seul, ne change pas le statut AD)
+ #    77 Move+Rename OK 88 Nom déjà pris (rename+move)
+ #    89 Renommage réussi, déplacement à reprendre   91 Réservé compatibilité
+@@ -32,8 +35,12 @@
+ 
+ Set-StrictMode -Off
+ $ErrorActionPreference = 'Stop'
+-$script:GP_VERSION = '16.0-HD'
+-
++$script:GP_VERSION = '17.0-RC1'
++
++if ($env:OS -ne 'Windows_NT') { throw "GP nécessite Windows PowerShell 5.1 x64 sous Windows." }
++if ([Threading.Thread]::CurrentThread.ApartmentState -ne 'STA') {
++    throw "GP nécessite un thread STA. Lancez powershell.exe -STA ou compilez GP en STA."
++}
+ Add-Type -AssemblyName PresentationFramework
+ Add-Type -AssemblyName PresentationCore
+ Add-Type -AssemblyName WindowsBase
+@@ -54,6 +61,629 @@
+ ###############################################################################
+ #  SECTION 1 — UTILITAIRES (purs, sans dépendance UI)
+ ###############################################################################
++
++function Test-GPDnsName {
++    param([AllowNull()][string]$Name)
++    $n = "$Name".Trim().TrimEnd('.')
++    if (-not $n -or $n.Length -gt 253) { return $false }
++    foreach ($label in ($n -split '\.')) {
++        if ($label -notmatch '^[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?$') { return $false }
++    }
++    return $true
++}
++
++function Split-GPDistinguishedName {
++    <# Sépare les RDN sans couper une virgule échappée. Profil DN AD simple,
++       pas un normaliseur RFC 4514 complet : un format non supporté est refusé. #>
++    param([AllowNull()][string]$Value)
++    $dn = "$Value".Trim()
++    if (-not $dn -or $dn -match '[\x00-\x1f\x7f]') { throw 'DN vide ou contenant un caractère de contrôle.' }
++    $parts = New-Object 'System.Collections.Generic.List[string]'
++    $sb = New-Object Text.StringBuilder
++    for ($i=0; $i -lt $dn.Length; $i++) {
++        $c = $dn[$i]
++        if ($c -eq '\') {
++            if ($i+1 -ge $dn.Length) { throw 'Échappement DN incomplet.' }
++            [void]$sb.Append($c); $i++; [void]$sb.Append($dn[$i]); continue
++        }
++        if ($c -eq '+') { throw 'RDN multivalué non pris en charge dans les périmètres GP.' }
++        if ($c -eq ',') {
++            if (-not $sb.Length) { throw 'Composant DN vide.' }
++            $parts.Add($sb.ToString().TrimStart()); [void]$sb.Clear()
++        } else { [void]$sb.Append($c) }
++    }
++    if (-not $sb.Length) { throw 'Composant DN final vide.' }
++    $parts.Add($sb.ToString().TrimStart())
++    foreach ($part in $parts) {
++        if ($part -notmatch '^(?i:OU|CN|DC)=(?:\\.|[^\\])+$') { throw "Composant DN non pris en charge : '$part'." }
++    }
++    return $parts.ToArray()
++}
++
++function Get-GPParentDN {
++    param([string]$DistinguishedName)
++    $p = @(Split-GPDistinguishedName $DistinguishedName)
++    if ($p.Count -lt 2) { throw 'Objet sans parent dans le DN.' }
++    return ($p[1..($p.Count-1)] -join ',')
++}
++
++function Get-GPDomainFromDN {
++    param([string]$DistinguishedName)
++    $p = @(Split-GPDistinguishedName $DistinguishedName)
++    $labels = New-Object 'System.Collections.Generic.List[string]'; $inDomain=$false
++    foreach ($part in $p) {
++        if ($part -match '^(?i:DC)=(.+)$') { $inDomain=$true; $labels.Add($Matches[1]) }
++        elseif ($inDomain) { throw 'Un composant OU/CN ne peut pas suivre un composant DC.' }
++    }
++    if (-not $labels.Count) { throw 'Aucun composant DC dans le DN.' }
++    $dns = $labels -join '.'
++    if (-not (Test-GPDnsName $dns)) { throw 'Composants DC invalides.' }
++    return $dns.ToLowerInvariant()
++}
++
++function Test-GPDNWithinScope {
++    param([string]$DistinguishedName,[string[]]$Roots)
++    try {
++        $p = @(Split-GPDistinguishedName $DistinguishedName)
++        foreach ($root in @($Roots)) {
++            if ([string]::IsNullOrWhiteSpace($root)) { continue }
++            $r = @(Split-GPDistinguishedName $root)
++            if ($p.Count -lt $r.Count) { continue }
++            $same=$true; $offset=$p.Count-$r.Count
++            for ($i=0;$i -lt $r.Count;$i++) { if ($p[$i+$offset] -ine $r[$i]) { $same=$false; break } }
++            if ($same) { return $true }
++        }
++    } catch { return $false }
++    return $false
++}
++
++function ConvertTo-GPRdnValue {
++    param([string]$Value)
++    if ([string]::IsNullOrEmpty($Value) -or $Value -match '[\x00-\x1f\x7f]') { throw 'Nom OU vide ou contenant un caractère de contrôle.' }
++    $sb=New-Object Text.StringBuilder
++    for($i=0;$i -lt $Value.Length;$i++) {
++        $c=$Value[$i]
++        if ($c -in @(',','+','"','\','<','>',';','=') -or ($i -eq 0 -and $c -eq '#') -or ($c -eq ' ' -and ($i -eq 0 -or $i -eq $Value.Length-1))) { [void]$sb.Append('\') }
++        [void]$sb.Append($c)
++    }
++    return $sb.ToString()
++}
++
++function Test-GPConfirmedChange {
++    param([AllowNull()]$Change)
++    $items=@($Change)
++    return ($items.Count -eq 1 -and $null -ne $items[0] -and
++        $null -ne $items[0].PSObject.Properties['HasSucceeded'] -and
++        $items[0].HasSucceeded -is [bool] -and $items[0].HasSucceeded -eq $true)
++}
++
++function Protect-GPLogText {
++    param([AllowNull()][string]$Text)
++    if ($null -eq $Text) { return '' }
++    # Défense supplémentaire ; aucun secret ne doit être journalisé à la source.
++    return [regex]::Replace($Text, '(?i)(password|motdepasse|passwd|pwd)\s*[:=]\s*("[^"]*"|''[^'']*''|\S+)', '$1=********')
++}
++
++function Write-GPAtomicText {
++    param([Parameter(Mandatory)][string]$Path,[Parameter(Mandatory)][AllowEmptyString()][string]$Text,[switch]$Backup)
++    $full=[IO.Path]::GetFullPath($Path); $dir=[IO.Path]::GetDirectoryName($full)
++    [void][IO.Directory]::CreateDirectory($dir)
++    $tmp=$full+'.'+[Guid]::NewGuid().ToString('N')+'.tmp'
++    try {
++        $bytes=([Text.UTF8Encoding]::new($false)).GetBytes($Text)
++        $fs=[IO.File]::Open($tmp,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
++        try { $fs.Write($bytes,0,$bytes.Length); $fs.Flush($true) } finally { $fs.Dispose() }
++        if ([IO.File]::Exists($full)) {
++            $bak=if($Backup){$full+'.bak'}else{$null}
++            # Pas de fallback delete+move : un échec conserve le fichier précédent.
++            [IO.File]::Replace($tmp,$full,$bak)
++        } else { [IO.File]::Move($tmp,$full) }
++    } finally { if([IO.File]::Exists($tmp)){[IO.File]::Delete($tmp)} }
++}
++
++function Get-GPStateDirectory {
++    $base=[Environment]::GetFolderPath('LocalApplicationData')
++    if (-not $base) { throw 'Profil local indisponible.' }
++    # Sépare les installations/configurations : aucune reprise entre deux domaines.
++    $sha=[Security.Cryptography.SHA256]::Create()
++    try { $id=([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes([IO.Path]::GetFullPath($script:JsonFile).ToLowerInvariant())))).Replace('-','').Substring(0,16) }
++    finally { $sha.Dispose() }
++    $dir=Join-Path $base ("GP\State\$id")
++    [void][IO.Directory]::CreateDirectory($dir)
++    return $dir
++}
++
++function Save-GPQueueCheckpoint {
++    param([string]$Phase='Idle')
++    if ($script:GUI -or $script:SIM) { return }
++    if($script:MutationUncertain){$Phase='Uncertain'}
++    $rows=@(foreach($r in @($script:table.Rows)) {
++        $obj=[ordered]@{}
++        foreach($col in $script:table.Columns){$v=$r[$col.ColumnName];$obj[$col.ColumnName]=if($v -is [DBNull]){$null}else{$v}}
++        [pscustomobject]$obj
++    })
++    $data=[ordered]@{Schema=1;Version=$script:GP_VERSION;Domain=$script:DOMAINE;Host=$env:COMPUTERNAME;Mode='REEL';Phase=$Phase;Utc=[DateTime]::UtcNow.ToString('o');Rows=$rows}
++    Write-GPAtomicText -Path (Join-Path (Get-GPStateDirectory) 'queue.json') -Text ($data|ConvertTo-Json -Depth 8)
++}
++
++function Save-GPQueueCheckpointSafe {
++    param([string]$Phase='Idle')
++    try { Save-GPQueueCheckpoint -Phase $Phase }
++    catch { Write-Log 'Sauvegarde de la file impossible.' 'WARN' $_ 'checkpoint' }
++}
++
++function Request-GPQueuePump {
++    # Évite les appels récursifs pour 1 000 simulations/annulations successives.
++    if ($script:QueuePumpScheduled) { return }
++    $script:QueuePumpScheduled=$true
++    [void]$Win.Dispatcher.BeginInvoke([Action]{
++        $script:QueuePumpScheduled=$false
++        try { Start-GPNextQueueTask }
++        catch {
++            $script:MutationUncertain=$true
++            Write-Log 'Erreur de pilotage de la file : arrêt de sécurité.' 'ERROR' $_ 'queue'
++            if($script:QueueRunState){Fail-GPQueueCallback -Failure $_}
++        }
++    },[Windows.Threading.DispatcherPriority]::Background)
++}
++
++function New-GPTaskService {
++    <# Authentification COM en mémoire. Jamais /p, /rp ou secret dans un processus. #>
++    param([string]$ComputerName)
++    $service=New-Object -ComObject 'Schedule.Service'
++    try {
++        if($script:cred) {
++            $nc=$script:cred.GetNetworkCredential()
++            $user=$nc.UserName; $domain=$nc.Domain
++            if(-not $domain -and $user -match '^([^@]+)@(.+)$') { $user=$Matches[1]; $domain=$Matches[2] }
++            if(-not $domain){$domain=$script:DOMAINE}
++            $service.Connect($ComputerName,$user,$domain,$nc.Password)
++            $nc=$null
++        } else { $service.Connect($ComputerName) }
++        return $service
++    } catch { Release-GPComObject $service; throw }
++}
++
++function Release-GPComObject {
++    param([AllowNull()]$Value)
++    if($null -ne $Value -and [Runtime.InteropServices.Marshal]::IsComObject($Value)) {
++        try{[void][Runtime.InteropServices.Marshal]::FinalReleaseComObject($Value)}catch{}
++    }
++}
++
++function Get-GPTaskArgument {
++    param([string[]]$Arguments,[string]$Key)
++    for($i=0;$i -lt $Arguments.Count-1;$i++){if($Arguments[$i] -ieq $Key){return $Arguments[$i+1]}}
++    return ''
++}
++
++function Test-GPPipeClient {
++    param($Pipe,[int]$ExpectedProcessId)
++    if(-not ('GP.NativePipe17' -as [type])) {
++        Add-Type -TypeDefinition @'
++using System;
++using System.Runtime.InteropServices;
++using Microsoft.Win32.SafeHandles;
++namespace GP {
++ public static class NativePipe17 {
++  [DllImport("kernel32.dll", SetLastError=true)]
++  [return: MarshalAs(UnmanagedType.Bool)]
++  public static extern bool GetNamedPipeClientProcessId(SafePipeHandle pipe, out uint pid);
++ }
++}
++'@
++    }
++    [uint32]$actual=0
++    if(-not [GP.NativePipe17]::GetNamedPipeClientProcessId($Pipe.SafePipeHandle,[ref]$actual)) {throw 'Impossible de vérifier le processus connecté au canal élevé.'}
++    if($actual -ne [uint32]$ExpectedProcessId){throw 'Processus inattendu connecté au canal élevé. Aucun secret transmis.'}
++}
++
++function Invoke-GPElevatedLocalChange {
++    <# UAC pour une seule mutation locale. Paramètres non secrets dans le helper ;
++       credential transmis uniquement au PID attendu par un pipe ACLé. #>
++    param([ValidateSet('Join','Rename')][string]$Action='Join',
++          [string]$Domain,[string]$OUPath,[string]$NewName,[string]$DC,[AllowNull()]$Credential)
++    $ko=if($Action -eq 'Join'){11}else{21};$ok=if($Action -eq 'Join'){10}else{20}
++    if($script:SIM -or $script:GUI){return New-ActionResult $ok "SIMULATION : $Action local, aucune élévation."}
++    if(-not $Credential){return New-ActionResult $ko "Un credential de domaine explicite est requis pour cette élévation."}
++    if(-not (Test-GPGeneratedComputerName $NewName)){return New-ActionResult $ko "Nouveau nom invalide : '$NewName'."}
++    if($Action -eq 'Join' -and (-not (Test-GPOUPath $OUPath) -or -not (Test-GPDnsName $DC) -or $DC -notmatch '\.' -or $DC -ieq $Domain)){
++        return New-ActionResult $ko "Jonction bloquée : OU ou contrôleur de domaine FQDN invalide."
++    }
++    $pipe=$null;$reader=$null;$writer=$null;$proc=$null;$credentialSent=$false;$wait=$null
++    try {
++        $pipeName='GP_Change_'+[Guid]::NewGuid().ToString('N')
++        $acl=[IO.Pipes.PipeSecurity]::new();$acl.SetAccessRuleProtection($true,$false)
++        $allow=[Security.AccessControl.AccessControlType]::Allow
++        foreach($sid in @([Security.Principal.WindowsIdentity]::GetCurrent().User,[Security.Principal.SecurityIdentifier]::new('S-1-5-32-544'))){
++            $acl.AddAccessRule([IO.Pipes.PipeAccessRule]::new($sid,[IO.Pipes.PipeAccessRights]::ReadWrite,$allow))
++        }
++        $pipe=[IO.Pipes.NamedPipeServerStream]::new($pipeName,[IO.Pipes.PipeDirection]::InOut,1,[IO.Pipes.PipeTransmissionMode]::Byte,[IO.Pipes.PipeOptions]::Asynchronous,4096,4096,$acl)
++        $settings=[ordered]@{Action=$Action;Domain=$Domain;OU=$OUPath;NewName=$NewName;DC=$DC;Pipe=$pipeName}
++        $settingsB64=[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(($settings|ConvertTo-Json -Compress)))
++        $helper=@'
++$ErrorActionPreference='Stop'
++$s=[Text.Encoding]::UTF8.GetString([Convert]::FromBase64String('__SETTINGS__'))|ConvertFrom-Json
++$client=$null;$reader=$null;$writer=$null;$started=$false
++$result=[ordered]@{Ok=$false;HasSucceeded=$false;Indeterminate=$false;Message=''}
++try {
++    $client=[IO.Pipes.NamedPipeClientStream]::new('.',[string]$s.Pipe,[IO.Pipes.PipeDirection]::InOut)
++    $client.Connect(120000)
++    $utf8=[Text.UTF8Encoding]::new($false)
++    $reader=[IO.StreamReader]::new($client,$utf8,$false,4096,$true)
++    $writer=[IO.StreamWriter]::new($client,$utf8,4096,$true);$writer.AutoFlush=$true
++    $read=$reader.ReadLineAsync()
++    if(-not $read.Wait(30000)){throw 'Aucun credential reçu dans le délai imparti.'}
++    $payload=$read.Result|ConvertFrom-Json -ErrorAction Stop
++    if([string]::IsNullOrWhiteSpace([string]$payload.UserName)){throw 'Identifiant vide.'}
++    $secure=ConvertTo-SecureString ([string]$payload.Password) -AsPlainText -Force
++    $credential=[Management.Automation.PSCredential]::new([string]$payload.UserName,$secure)
++    $payload=$null;$read=$null
++    $common=@{NewName=[string]$s.NewName;PassThru=$true;Force=$true;ErrorAction='Stop';WarningAction='SilentlyContinue'}
++    $started=$true
++    if($s.Action -eq 'Join'){
++        $common.DomainName=[string]$s.Domain;$common.OUPath=[string]$s.OU
++        $common.Server=[string]$s.DC;$common.Credential=$credential
++        $change=@(Add-Computer @common)
++    } elseif($s.Action -eq 'Rename'){
++        # Appel LOCAL : ne jamais fournir ComputerName/LocalCredential.
++        $common.DomainCredential=$credential;$change=@(Rename-Computer @common)
++    } else {throw 'Action interdite.'}
++    if($change.Count -ne 1 -or -not $change[0].PSObject.Properties['HasSucceeded'] -or $change[0].HasSucceeded -isnot [bool]){
++        $result.Indeterminate=$true;$result.Message='Retour de mutation inexploitable : vérification manuelle requise.'
++    } elseif($change[0].HasSucceeded){
++        $result.Ok=$true;$result.HasSucceeded=$true;$result.Message='La commande a confirmé HasSucceeded=True ; redémarrage requis.'
++    } else {$result.Message='La commande a confirmé HasSucceeded=False.'}
++} catch {
++    $result.Message=[string]$_.Exception.Message
++    # Une exception RPC/transport après appel peut cacher une écriture réussie.
++    if($started -and $result.Message -match '(?i)(RPC|0x800706ba|timed?\s*out|d.lai|transport|connexion.*(perd|ferm))'){$result.Indeterminate=$true}
++} finally {
++    try{if($writer){$writer.WriteLine(($result|ConvertTo-Json -Compress));$writer.Flush()}}catch{}
++    foreach($o in @($writer,$reader,$client)){try{if($o){$o.Dispose()}}catch{}}
++    $credential=$null;$secure=$null
++}
++if($result.Ok){exit 0}else{exit 1}
++'@
++        $helper=$helper.Replace('__SETTINGS__',$settingsB64)
++        $encoded=[Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($helper))
++        $exe=Join-Path $PSHOME 'powershell.exe'
++        try{$proc=Start-Process -FilePath $exe -Verb RunAs -ArgumentList @('-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-EncodedCommand',$encoded) -PassThru -ErrorAction Stop}
++        catch{return New-ActionResult $ko "Élévation UAC annulée ou impossible : $($_.Exception.Message)"}
++        $wait=$pipe.BeginWaitForConnection($null,$null)
++        if(-not $wait.AsyncWaitHandle.WaitOne(120000)){
++            try{if(-not $proc.HasExited){$proc.Kill()}}catch{}
++            return New-ActionResult $ko "Le helper élevé n'a pas établi la communication ; aucune commande transmise."
++        }
++        $pipe.EndWaitForConnection($wait)
++        [void](Test-GPPipeClient -Pipe $pipe -ExpectedProcessId $proc.Id)
++        $utf8=[Text.UTF8Encoding]::new($false)
++        $reader=[IO.StreamReader]::new($pipe,$utf8,$false,4096,$true)
++        $writer=[IO.StreamWriter]::new($pipe,$utf8,4096,$true);$writer.AutoFlush=$true
++        $password=$Credential.GetNetworkCredential().Password
++        $payloadJson=([ordered]@{UserName=[string]$Credential.UserName;Password=$password}|ConvertTo-Json -Compress)
++        # Dès le début de WriteLine, une transmission partielle est possible.
++        $credentialSent=$true;$writer.WriteLine($payloadJson);$writer.Flush()
++        $password=$null;$payloadJson=$null
++        $readTask=$reader.ReadLineAsync()
++        if(-not $readTask.Wait(600000)){return New-ActionResult 97 "État indéterminé : le helper $Action peut encore travailler. Ne relancez pas la mutation."}
++        $response=$readTask.Result|ConvertFrom-Json -ErrorAction Stop
++        if($response.Indeterminate -eq $true){return New-ActionResult 97 ([string]$response.Message)}
++        if($response.Ok -is [bool] -and $response.Ok -and $response.HasSucceeded -is [bool] -and $response.HasSucceeded){
++            return New-ActionResult $ok "$Action local confirmé : '$env:COMPUTERNAME' vers '$NewName'. Redémarrage requis."
++        }
++        if($response.Ok -is [bool] -and -not $response.Ok){return New-ActionResult $ko ("$Action élevé : "+[string]$response.Message)}
++        return New-ActionResult 97 "État indéterminé : réponse du helper invalide après transmission."
++    } catch {
++        if($credentialSent){return New-ActionResult 97 "État indéterminé après transmission au helper : $($_.Exception.Message)"}
++        return New-ActionResult $ko "Préparation de l'élévation impossible : $($_.Exception.Message)"
++    } finally {
++        $password=$null;$payloadJson=$null
++        try{if($wait){$wait.AsyncWaitHandle.Dispose()}}catch{}
++        foreach($o in @($writer,$reader,$pipe,$proc)){try{if($o){$o.Dispose()}}catch{}}
++    }
++}
++
++function Show-GPTextReport {
++    param([string]$Title,[string]$Text)
++    [xml]$rx=@'
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="930" Height="650" MinWidth="620" MinHeight="400" WindowStartupLocation="CenterOwner" Background="#111827" Foreground="#F3F4F6">
++ <Grid Margin="18"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
++  <TextBlock x:Name="Heading" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,12" TextWrapping="Wrap"/>
++  <TextBox x:Name="Report" Grid.Row="1" IsReadOnly="True" AcceptsReturn="True" TextWrapping="NoWrap" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="#1F2937" Foreground="#F3F4F6" FontFamily="Consolas" Padding="12"/>
++  <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
++   <Button x:Name="Copy" Content="Copier" Padding="18,7" Margin="0,0,8,0"/>
++   <Button x:Name="Close" Content="Fermer" Padding="18,7" IsCancel="True"/>
++  </StackPanel>
++ </Grid>
++</Window>
++'@
++    $w=[Windows.Markup.XamlReader]::Load([Xml.XmlNodeReader]::new($rx))
++    $w.Title=$Title;$w.FindName('Heading').Text=$Title;$box=$w.FindName('Report');$box.Text=Protect-GPLogText $Text
++    if($Win -and $Win.IsVisible){$w.Owner=$Win}
++    $w.FindName('Copy').Add_Click({try{[Windows.Clipboard]::SetText($box.Text)}catch{[Windows.MessageBox]::Show('Presse-papiers indisponible.')|Out-Null}}.GetNewClosure())
++    [void]$w.ShowDialog()
++}
++
++function Show-GPQueuePreview {
++    if($script:Running){return}
++    [void]$Grid.CommitEdit([Windows.Controls.DataGridEditingUnit]::Cell,$true)
++    [void]$Grid.CommitEdit([Windows.Controls.DataGridEditingUnit]::Row,$true)
++    $lines=[Collections.Generic.List[string]]::new()
++    $mode=if($script:GUI){'DÉMONSTRATION — aucun accès AD'}elseif($script:SIM){'SIMULATION — lectures AD seulement'}else{'RÉEL — écritures après confirmation'}
++    $lines.Add("GP $script:GP_VERSION | $mode")
++    $lines.Add("Domaine : $script:DOMAINE | DC : $script:DC")
++    $lines.Add("Prévisualisation locale : disponibilité, délégation et état réel AD restent à vérifier lors de l'exécution.")
++    $lines.Add("Réparation Entra autorisée : $([bool]$script:ALLOW_HYBRID_REPAIR)")
++    $lines.Add('')
++    $i=0
++    foreach($r in @($script:table.Rows|Where-Object{$_.Traiter -eq $true})){
++        $i++;$ops=@()
++        if(-not $script:INDOMAIN){$ops+='JONCTION LOCALE'}else{
++            if($r.Renommer){$ops+='RENOMMER'};if($r.Deplacer){$ops+='DÉPLACER'}
++        }
++        $lines.Add("[$i] $($r.Nom_du_PC) | $($ops -join ' puis ')")
++        if($r.Renommer){$lines.Add("    Nom cible : $($r.Nouveau_Nom)")}
++        if($r.Deplacer){$lines.Add("    OU cible  : $($r.OU_Destination)")}
++        $lines.Add("    Redémarrage demandé : $($r.Reboot) | Dernier statut : $($r.Statut)")
++        $errors=@(Test-QueueRowSafe -Nom $r.Nom_du_PC -NewName $r.Nouveau_Nom -OU $r.OU_Destination -Ren $r.Renommer -Move $r.Deplacer)
++        foreach($e in $errors){$lines.Add("    BLOQUANT : $e")}
++        $lines.Add('')
++    }
++    if(-not $i){$lines.Add('Aucune ligne cochée.')}
++    Show-GPTextReport 'Prévisualisation de la file — aucune écriture' ($lines -join "`r`n")
++}
++
++function Show-GPSelectedResult {
++    $r=$Grid.SelectedItem;if(-not $r){return}
++    $text="Poste : $($r.Nom_du_PC)`r`nNouveau nom : $($r.Nouveau_Nom)`r`nOU cible : $($r.OU_Destination)`r`nStatut : $($r.Statut)`r`nCode : $($r.Code)`r`nDurée : $($r.Duree)`r`nHorodatage UTC : $($r.Horodatage)`r`n`r`n$($r.Message)"
++    Show-GPTextReport 'Résultat détaillé du poste' $text
++}
++
++function Request-GPQueueStop {
++    if(-not $script:Running){return}
++    $script:QueueStopRequested=$true;$BtnStop.IsEnabled=$false
++    $LblStatus.Text="Arrêt demandé : attente de la fin de l'action en cours. Les suivantes ne seront pas lancées."
++    Write-AuditLine "Arrêt coopératif demandé par l'opérateur." 'warn'
++    # Ne jamais interrompre une écriture distante dont l'état deviendrait inconnu.
++}
++
++function Reset-GPSafetyLock {
++    if($script:Running -or -not $script:MutationUncertain){return}
++    $msg="Ce verrou signale une mutation incertaine, un défaut de protection ou une erreur technique.`n`nAvant de continuer, contrôlez les postes concernés dans AD, le nom local, les éventuelles tâches GP_ et la protection anti-suppression. Une tâche distante peut encore travailler.`n`nConfirmez-vous avoir vérifié l'état réel et terminé les actions résiduelles ? Les lignes incertaines resteront décochées."
++    if([Windows.MessageBox]::Show($msg,'Vérification manuelle obligatoire','YesNo','Warning','No') -ne 'Yes'){return}
++    $script:MutationUncertain=$false
++    foreach($r in @($script:table.Rows|Where-Object{$_.Statut -in @('INCERTAIN','TECHNIQUE','PROTECTION','EN COURS')})){$r.Traiter=$false}
++    Write-AuditLine 'Verrou levé par confirmation MANUELLE de l''opérateur ; aucune validation automatique de l''AD.' 'warn'
++    Save-GPQueueCheckpointSafe -Phase 'Reviewed';Update-QueueButtons;Update-AddButton
++}
++
++function Prepare-GPMoveRetry {
++    if($script:Running -or $script:MutationUncertain){return}
++    $view=$Grid.SelectedItem;if(-not $view -or [string]$view.Code -ne '89'){return}
++    $r=$view.Row
++    if([Windows.MessageBox]::Show("Préparer un déplacement seul de '$($r.Nouveau_Nom)' vers l'OU prévue ?`nLe renommage ne sera PAS rejoué. La file ne sera pas lancée automatiquement.",'Reprendre uniquement le déplacement','YesNo','Question','No') -ne 'Yes'){return}
++    $r.Nom_du_PC=$r.Nouveau_Nom;$r.Renommer=$false;$r.Deplacer=$true;$r.Reboot=$false
++    $r.Statut='';$r.Code='';$r.Message='Déplacement seul préparé après renommage confirmé (ancien code 89).'
++    $r.Duree='';$r.Horodatage='';$r.Traiter=$true
++    Write-AuditLine "Reprise déplacement seul préparée pour '$($r.Nom_du_PC)' ; renommage exclu." 'info'
++    Save-GPQueueCheckpointSafe;Sync-Grid;Update-QueueButtons
++}
++
++function Restore-GPQueueCheckpoint {
++    if($script:QueueRestoreChecked){return};$script:QueueRestoreChecked=$true
++    if($script:SIM -or $script:GUI){return}
++    try{
++        $path=Join-Path (Get-GPStateDirectory) 'queue.json'
++        if(-not (Test-Path -LiteralPath $path)){return}
++        if((Get-Item -LiteralPath $path).Length -gt 4MB){throw 'Sauvegarde de file trop volumineuse (> 4 Mio).'}
++        $state=Get-Content -LiteralPath $path -Raw -Encoding UTF8|ConvertFrom-Json
++        if($state.Schema -ne 1 -or $state.Mode -ne 'REEL' -or $state.Host -ine $env:COMPUTERNAME -or $state.Domain -ine $script:DOMAINE){throw 'Sauvegarde incompatible avec ce poste/domaine.'}
++        $rows=@($state.Rows);if(-not $rows.Count){return}
++        if($rows.Count -gt 5000){throw 'Trop de lignes dans la sauvegarde.'}
++        $uncertain=$state.Phase -in @('Active','Uncertain') -or @($rows|Where-Object{$_.Statut -eq 'EN COURS'}).Count -gt 0
++        # Une sauvegarde déjà relue et acceptée n'impose pas une nouvelle incertitude.
++        $script:MutationUncertain=[bool]$uncertain
++        $answer=[Windows.MessageBox]::Show("Une file sauvegardée existe ($($rows.Count) ligne(s), état $($state.Phase), UTC $($state.Utc)).`nLa restaurer pour consultation ? Toutes les actions resteront décochées.`nUne interruption pendant une mutation active le verrou de sécurité, même sans restauration.",'Reprise de la file GP','YesNo','Question','No')
++        if($answer -eq 'Yes'){
++            $candidate=New-QueueTable
++            foreach($entry in $rows){
++                if(-not (Test-GPComputerName ([string]$entry.Nom_du_PC))){throw 'Nom de poste invalide dans la sauvegarde.'}
++                $r=$candidate.NewRow()
++                foreach($col in $candidate.Columns){
++                    if($entry.PSObject.Properties[$col.ColumnName] -and $null -ne $entry.($col.ColumnName)){
++                        if($col.DataType -eq [bool]){$r[$col.ColumnName]=Convert-Value-TF $entry.($col.ColumnName) -Strict}
++                        else{$r[$col.ColumnName]=[string]$entry.($col.ColumnName)}
++                    }
++                }
++                $r.Traiter=$false
++                if($r.Statut -eq 'EN COURS'){$r.Statut='INCERTAIN';$r.Code='97';$r.Message='Interruption durant une action : état réel à vérifier, aucune relance automatique.'}
++                [void]$candidate.Rows.Add($r)
++            }
++            $script:table=$candidate;$Grid.ItemsSource=$candidate.DefaultView
++            Add-LogLine 'File restaurée pour consultation ; toutes les lignes sont décochées.' 'warn'
++        }
++        Update-QueueButtons;Update-AddButton
++        if($script:MutationUncertain){$LblStatus.Text='VERROU DE SÉCURITÉ : une ancienne exécution doit être vérifiée.'}
++    }catch{
++        $script:MutationUncertain=$true
++        Write-Log "Sauvegarde illisible ; verrou de sécurité activé." 'ERROR' $_ 'recovery'
++        Show-MsgWarning "La sauvegarde de file ne peut pas être validée. Contrôlez les dernières actions avant de lever le verrou :`n$($_.Exception.Message)"
++        Update-QueueButtons
++    }
++}
++
++function Show-GPConfigRepair {
++    param([string]$Path,[string]$Text,[string[]]$Errors)
++    [xml]$cx=@'
++<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="GP — corriger la configuration avant connexion" Width="1050" Height="780" MinWidth="700" MinHeight="500" WindowStartupLocation="CenterScreen" Background="#111827" Foreground="#F9FAFB">
++ <Grid Margin="20"><Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
++  <StackPanel><TextBlock Text="Configuration à corriger" FontSize="24" FontWeight="SemiBold"/><TextBlock x:Name="PathLabel" TextWrapping="Wrap" Margin="0,5,0,12" Foreground="#9CA3AF"/></StackPanel>
++  <TextBox Grid.Row="1" x:Name="Errors" IsReadOnly="True" TextWrapping="Wrap" MaxHeight="160" VerticalScrollBarVisibility="Auto" Background="#451A03" Foreground="#FDE68A" Padding="10" Margin="0,0,0,12"/>
++  <TextBox Grid.Row="2" x:Name="Json" AcceptsReturn="True" AcceptsTab="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" TextWrapping="NoWrap" FontFamily="Consolas" FontSize="13" Background="#1F2937" Foreground="#F9FAFB" Padding="10"/>
++  <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0"><Button x:Name="Save" Content="Valider, sauvegarder et continuer" Padding="18,9" Margin="0,0,10,0"/><Button Content="Quitter" IsCancel="True" Padding="18,9"/></StackPanel>
++ </Grid>
++</Window>
++'@
++    $w=[Windows.Markup.XamlReader]::Load([Xml.XmlNodeReader]::new($cx))
++    $box=$w.FindName('Json');$errBox=$w.FindName('Errors');$box.Text=$Text
++    $errBox.Text=($Errors -join "`r`n");$w.FindName('PathLabel').Text="Aucun accès AD n'est lancé. Vérifiez vos valeurs réelles ; GP n'invente pas le domaine ni les OUs. Fichier : $Path"
++    $save=$w.FindName('Save')
++    $save.Add_Click({
++        try{
++            if($box.Text.Length -gt 1MB){throw 'Configuration trop volumineuse (> 1 Mio).'}
++            $cfg=$box.Text|ConvertFrom-Json -ErrorAction Stop
++            $errs=@(Test-CfgValid $cfg)
++            if($errs.Count){$errBox.Text=$errs -join "`r`n";return}
++            Write-GPAtomicText -Path $Path -Text $box.Text -Backup
++            $w.Tag=$cfg;$w.DialogResult=$true
++        }catch{$errBox.Text=[string]$_.Exception.Message}
++    }.GetNewClosure())
++    if($w.ShowDialog() -eq $true){return $w.Tag}
++    return $null
++}
++
++function Read-GPStartupConfig {
++    param([string]$Path)
++    $text='';$errors=@();$cfg=$null
++    try{
++        if(-not (Test-Path -LiteralPath $Path)){throw "Fichier absent : $Path"}
++        if((Get-Item -LiteralPath $Path).Length -gt 1MB){throw 'Configuration trop volumineuse (> 1 Mio).'}
++        $text=Get-Content -LiteralPath $Path -Raw -Encoding UTF8
++        $cfg=$text|ConvertFrom-Json -ErrorAction Stop;$errors=@(Test-CfgValid $cfg)
++    }catch{$errors=@([string]$_.Exception.Message)}
++    if(-not $errors.Count){return $cfg}
++    return Show-GPConfigRepair -Path $Path -Text $text -Errors $errors
++}
++
++function Set-GPQueueRowResult {
++    param($Row,[int]$Code,[string]$Message,[double]$Duration)
++    $Row.Code=[string]$Code;$Row.Message=Protect-GPLogText $Message
++    $Row.Duree=[Math]::Round($Duration,2).ToString('0.00',[Globalization.CultureInfo]::InvariantCulture)+' s'
++    $Row.Horodatage=[DateTime]::UtcNow.ToString('o');$Row.Traiter=$false
++    $Row.Statut=switch($Code){
++        89 {'PARTIEL'}
++        32 {'PROTECTION'}
++        97 {'INCERTAIN'}
++        98 {'TECHNIQUE'}
++        default {if($Code -in $script:OK_CODES){if($script:SIM -or $script:GUI){'SIMULÉ'}else{'OK'}}else{'KO'}}
++    }
++}
++
++function Complete-GPQueueItem {
++    param([AllowNull()]$WorkerResult,[AllowNull()]$Failure)
++    $ticket=$script:QueueCurrentTicket;$st=$script:QueueRunState
++    if(-not $ticket -or -not $st -or $ticket.Completed){return}
++    $ticket.Completed=$true
++    $row=$ticket.Item.Row; $code=98;$message='Worker terminé sans résultat exploitable.'
++    if($Failure){$message="Worker interrompu : $($Failure.Exception.Message)"}
++    elseif($WorkerResult) {
++        foreach($lg in @($WorkerResult.Logs)) {
++            if(-not $lg.Text){continue}
++            $kind=if($lg.Level -match 'ERR|FATAL'){'err'}elseif($lg.Level -match 'WARN'){'warn'}else{'info'}
++            Write-AuditLine ("WORKER [{0}] {1} {2}" -f $lg.Context,$lg.Text,$lg.Detail) $kind
++            if($kind -ne 'info'){Add-LogLine ([string]$lg.Text) $kind}
++        }
++        $a=$WorkerResult.Action
++        if($a -and $a.PSObject.Properties['ExitCode'] -and $a.PSObject.Properties['ExitMsg']) {
++            $parsed=0
++            if([int]::TryParse([string]$a.ExitCode,[ref]$parsed)){$code=$parsed;$message=[string]$a.ExitMsg}
++        }
++    }
++    $known=($code -in $script:OK_CODES -or $code -in $script:NOK_CODES)
++    if(-not $known){$message="Résultat inconnu ($code). $message";$code=98}
++    Set-GPQueueRowResult -Row $row -Code $code -Message $message -Duration ((Get-Date)-$ticket.Started).TotalSeconds
++    if($code -in $script:OK_CODES){$st.OkCount++}else{$st.KoCount++}
++    if(-not($script:SIM -or $script:GUI) -and $code -in @(10,20,77,89)){$st.RestartNeeded=$true}
++    $kind=if($code -in $script:OK_CODES){'ok'}else{'err'}
++    Add-LogLine $message $kind
++    Write-AuditLine ("ACTION run={0} mode={1} poste={2} nom={3} ou={4} code={5} durée={6}" -f $st.RunId,$st.Mode,$ticket.Item.Computer,$ticket.Item.NewName,$ticket.Item.TargetOU,$code,$row.Duree) $kind
++    if($WorkerResult -and $WorkerResult.Reboot) {
++        $rb=$WorkerResult.Reboot
++        Add-LogLine ([string]$rb.ExitMsg) $(if($rb.ExitCode -eq 40){'ok'}else{'warn'})
++        $row.Message+=" | REDÉMARRAGE : $($rb.ExitMsg)"
++        Write-AuditLine ("REBOOT poste={0} code={1} : {2}" -f $ticket.Item.Computer,$rb.ExitCode,$rb.ExitMsg) 'info'
++    }
++    $Progress.Value=$st.Index;$script:QueueCurrentTicket=$null
++    Sync-Grid
++    if($code -in @(32,97,98)) {
++        Stop-GPQueueRemainingForSafety -State $st -Reason $message
++        Complete-GPQueueRun
++    } else {
++        Save-GPQueueCheckpointSafe -Phase 'BetweenActions'
++        Request-GPQueuePump
++    }
++}
++
++function Fail-GPQueueCallback {
++    param($Failure)
++    if(-not $script:QueueRunState){return}
++    $st=$script:QueueRunState;$script:MutationUncertain=$true
++    $detail="Erreur de pilotage : $($Failure.Exception.Message)"
++    if($st.Index -gt 0 -and $st.Index -le $st.Items.Count){
++        $r=$st.Items[$st.Index-1].Row
++        if($r.Statut -notin @('ANNULÉ','NON LANCÉ')){Set-GPQueueRowResult -Row $r -Code 98 -Message $detail -Duration 0}
++    }
++    Stop-GPQueueRemainingForSafety -State $st -Reason $detail
++    $st.OkCount=0;$st.KoCount=0;$st.CancelCount=0
++    foreach($it in $st.Items){
++        if($it.Row.Statut -in @('ANNULÉ','NON LANCÉ')){$st.CancelCount++}
++        elseif([string]$it.Row.Code -match '^\d+$' -and [int]$it.Row.Code -in $script:OK_CODES){$st.OkCount++}
++        else{$st.KoCount++}
++    }
++    Complete-GPQueueRun
++}
++
++function Complete-GPComputerProbeSuccess {
++    param($Result,[string]$Name,[int]$Generation)
++    if($Generation -ne [int]$script:PCProbeGeneration){return}
++    [void](Apply-GPComputerProbeResult -Result $Result -Name $Name -Generation $Generation)
++    if($script:GPStartupClosePending){
++        $script:GPStartupClosePending=$false
++        try{Set-GPStartupStage -Stage 'Prêt' -Detail 'Poste identifié.';Close-GPStartupWindow}catch{}
++    }
++}
++
++function Complete-GPComputerProbeError {
++    param($Failure,[string]$Name,[int]$Generation)
++    if($Generation -ne [int]$script:PCProbeGeneration){return}
++    Reset-ConfigFields -KeepName
++    Set-PCInfo "Poste introuvable dans l'AD ou contrôleur indisponible : $($Failure.Exception.Message)" 'err'
++    Write-Log "Lecture du poste '$Name' impossible." 'ERROR' $Failure 'AD'
++    if($script:GPStartupClosePending){$script:GPStartupClosePending=$false;try{Close-GPStartupWindow}catch{}}
++}
++
++function Complete-GPDirectoryRefresh {
++    param([AllowNull()]$Snapshot,[bool]$LockMain,[AllowNull()]$Failure)
++    try {
++        if($Failure){throw $Failure.Exception}
++        if(-not $Snapshot -or -not $Snapshot.DC){throw 'Snapshot AD absent ou incomplet.'}
++        # Fonction nommée liée au script GP, et non au module privé GetNewClosure.
++        $script:DC=[string]$Snapshot.DC;$script:Sites=$Snapshot.Sites
++        $script:Computers=@($Snapshot.Root);$script:ComputersNoms=@($Snapshot.Names);$script:NmUsedSrc=$null
++        if($Snapshot.LocalComputer){$script:LocalComputerSnapshot=$Snapshot.LocalComputer}
++        Update-GPComputerIndex;Build-NmIndex;Populate-NmFilters;Update-NameGrid
++        $msg="Annuaire actualisé : $(@($script:ComputersNoms).Count) noms / $(@($script:Computers).Count) postes."
++        Add-LogLine $msg 'info';$LblStatus.Text=$msg
++    }catch{
++        $msg="Rafraîchissement AD échoué : $($_.Exception.Message)"
++        Add-LogLine $msg 'err';Write-Log $msg 'ERROR' $_ 'AD';$LblStatus.Text=$msg
++    }finally{
++        if($NmBtnRefresh){$NmBtnRefresh.IsEnabled=-not $script:Running}
++        if($LockMain -and -not $script:Running){
++            $CbOrg.IsEnabled=$true
++            try{if("$($CbOrg.SelectedItem)".Trim()){Apply-OrganismeSelection}else{Update-AddButton}}catch{}
++        }
++        Update-QueueButtons;Update-AddButton
++    }
++}
++
++function ConvertTo-GPSafeCsvCell {
++    param([AllowNull()][string]$Value)
++    # Les exports sont souvent ouverts dans Excel : neutraliser une formule CSV.
++    if($Value -match '^\s*[=+@-]' -or $Value -match '^[\t\r\n]'){return "'"+$Value}
++    return $Value
++}
+ 
+ function Get-RootDir {
+     <# Racine du script (.ps1) ou de l'exécutable compilé (.exe / PS2EXE). #>
+@@ -201,6 +831,7 @@
+         $cbArgs[0] = $Argument
+         [void]$Callback.InvokeReturnAsIs($cbArgs)
+     } catch {
++        if($OperationName -eq "QueueAction"){try{Fail-GPQueueCallback -Failure $_}catch{$script:MutationUncertain=$true;$script:QueueStopRequested=$true}}
+         $msg = "Erreur dans le $CallbackKind de l'opération '$OperationName' : $($_.Exception.Message)"
+         try { Write-Log $msg 'ERROR' $_ 'async-callback' } catch {}
+         try { Show-MsgError $msg 'GP — erreur asynchrone' } catch {}
+@@ -260,7 +891,7 @@
+         if ($op.Completed) { return }
+ 
+         if (-not $op.Async.IsCompleted) {
+-            if ([int]$op.TimeoutSec -gt 0 -and -not $op.TimeoutReported -and
++            if (-not $op.Cancelled -and [int]$op.TimeoutSec -gt 0 -and -not $op.TimeoutReported -and
+                 ((Get-Date) - $op.Started).TotalSeconds -ge [int]$op.TimeoutSec) {
+                 $op.TimeoutReported = $true
+                 try {
+@@ -609,14 +1240,17 @@
+     $p = "$Prefix".Trim()
+     if ($n.Length -ne 15 -or $p.Length -ne 6) { return $false }
+     $rx = '^[PS]' + [regex]::Escape($p) + '[A-Za-z]{2}[A-Za-z0-9]{3}\d{3}$'
+-    return ($n -match $rx)
++    return ($n -match $rx -and $n.Substring(12,3) -ne '000')
+ }
+ function Test-GPOUPath {
+-    <# Validation structurelle minimale d'un DN d'OU. Accepte aussi un domaine
+-       à un seul composant DC, sans sur-restreindre les DN historiques. #>
+     param([AllowNull()][string]$DistinguishedName)
+-    $dn = "$DistinguishedName".Trim()
+-    return ($dn -match '(?i)^OU=.+,(?:OU=.+,)*DC=[^,]+(?:,DC=[^,]+)*$')
++    try {
++        $parts=@(Split-GPDistinguishedName $DistinguishedName)
++        if($parts.Count -lt 2 -or $parts[0] -notmatch '^(?i:OU)='){return $false}
++        foreach($p in $parts){if($p -notmatch '^(?i:OU|DC)='){return $false}}
++        [void](Get-GPDomainFromDN $DistinguishedName)
++        return $true
++    } catch {return $false}
+ }
+ function Find-ADComputerByName {
+     <# Recherche le CN ou le sAMAccountName. Une vraie panne AD reste terminante,
+@@ -642,7 +1276,7 @@
+     }
+     return [PSCustomObject]@{
+         Name = $pc.Name
+-        OU   = $pc.DistinguishedName -replace '^CN=.*?,', ''
++        OU   = Get-GPParentDN ([string]$pc.DistinguishedName)
+         DN   = $pc.DistinguishedName
+     }
+ }
+@@ -993,18 +1627,54 @@
+ }
+ 
+ function Invoke-GPSchtasks {
+-    param([string[]]$ArgList, [int[]]$MaskIndexes = @())
+-    $exe = Join-Path $env:SystemRoot 'System32\schtasks.exe'
+-    Invoke-GPProcess -FilePath $exe -ArgList $ArgList -MaskIndexes $MaskIndexes -DisplayName 'schtasks' -Context 'task'
++    <# Adaptateur du contrat historique : utilise désormais Task Scheduler COM.
++       Les commandes de création/lancement/suppression sont les seules autorisées. #>
++    param([string[]]$ArgList,[int[]]$MaskIndexes=@())
++    $service=$null;$folder=$null;$task=$null;$instance=$null;$runAttempted=$false
++    try {
++        if($script:SIM -or $script:GUI -or $script:SimOn){throw 'Planificateur réel interdit en simulation.'}
++        if(@($ArgList|Where-Object{$_ -iin @('/p','/rp','/u')}).Count){throw 'Ancien transport avec secret explicitement interdit.'}
++        $computer=Get-GPTaskArgument $ArgList '/s'; $name=Get-GPTaskArgument $ArgList '/tn'
++        if(-not $computer){$computer=$env:COMPUTERNAME}
++        if(-not (Test-GPComputerName $computer)){throw 'Cible de tâche invalide.'}
++        if($name -notmatch '^\\GP_[A-Za-z0-9_]+$'){throw 'Nom de tâche hors espace GP.'}
++        $service=New-GPTaskService $computer; $folder=$service.GetFolder('\')
++        switch($ArgList[0].ToLowerInvariant()) {
++            '/create' {
++                $path=Get-GPTaskArgument $ArgList '/xml'
++                $xmlText=[IO.File]::ReadAllText($path,[Text.Encoding]::Unicode)
++                # XML produit par GP, jamais du XML fourni par le CSV.
++                [xml]$doc=$xmlText
++                $principal=[string]$doc.Task.Principals.Principal.UserId
++                if($principal -eq 'S-1-5-18') {
++                    $task=$folder.RegisterTask($name,$xmlText,2,'SYSTEM',$null,5,$null)
++                } else {
++                    if(-not $script:cred -or $principal -ine $script:cred.UserName){throw 'Principal de tâche différent du compte GP.'}
++                    $task=$folder.RegisterTask($name,$xmlText,2,$script:cred.UserName,$script:cred.GetNetworkCredential().Password,1,$null)
++                }
++            }
++            '/run' {$task=$folder.GetTask($name);$runAttempted=$true;$instance=$task.Run($null)}
++            '/delete' {$folder.DeleteTask($name,0)}
++            default {throw 'Opération du Planificateur non autorisée.'}
++        }
++        return [pscustomobject]@{ExitCode=0;Output='Task Scheduler COM : demande acceptée.'}
++    } catch {
++        $ex=$_.Exception;while($ex.InnerException){$ex=$ex.InnerException}
++        $code=[int]($ex.HResult -band 65535)
++        if($code -eq 0){$code=999}
++        # Une perte de réponse à Run ne prouve pas que la tâche n'a pas démarré.
++        if($runAttempted -and $code -notin @(2,5,1326)){$code=1460}
++        Write-Log "Planificateur COM en échec (code $code)." 'ERROR' $_ 'task'
++        return [pscustomobject]@{ExitCode=$code;Output=(Protect-GPLogText $ex.Message)}
++    } finally {
++        Release-GPComObject $instance;Release-GPComObject $task
++        Release-GPComObject $folder;Release-GPComObject $service
++    }
+ }
+ 
+ function Get-GPSchtasksTransportArgs {
+     param([string]$ComputerName)
+-    $a = @('/s', $ComputerName)
+-    if ($script:cred) {
+-        $a += @('/u', $script:cred.UserName, '/p', $script:cred.GetNetworkCredential().Password)
+-    }
+-    return $a
++    return @('/s',$ComputerName)
+ }
+ 
+ function Get-GPSchtasksHint([int]$Code) {
+@@ -1042,6 +1712,7 @@
+         [string]$TaskPrefix='GP_System',
+         [int]$TimeoutSec=35
+     )
++    if($script:SIM -or $script:GUI){return New-ActionResult 20 'SIMULATION : aucune tâche SYSTEM.'}
+     $taskId=[guid]::NewGuid().ToString('N').Substring(0,12)
+     $taskName="\${TaskPrefix}_$taskId"
+     $encoded=[Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($InnerScript))
+@@ -1050,13 +1721,14 @@
+         -UserId 'S-1-5-18' -LogonType 'ServiceAccount' -RunLevel 'HighestAvailable' -Description "GP - $TaskPrefix"
+     $xmlPath=Join-Path $env:TEMP ("gp_{0}_{1}.xml" -f $TaskPrefix,$taskId)
+     $transport=Get-GPSchtasksTransportArgs -ComputerName $ComputerName
+-    $keepTask=$false
++    $keepTask=$false;$runRequested=$false
+     try {
+         [IO.File]::WriteAllText($xmlPath,$xml,[Text.Encoding]::Unicode)
+         $create=@('/create')+$transport+@('/tn',$taskName,'/xml',$xmlPath,'/f')
+         $r=Invoke-GPSchtasks -ArgList $create -MaskIndexes (Get-GPSecretArgIndexes $create)
+         if($r.ExitCode -ne 0){ return New-ActionResult 21 ("Tâche SYSTEM : création KO (code {0}, {1}) : {2}" -f $r.ExitCode,(Get-GPSchtasksHint $r.ExitCode),$r.Output) }
+         $run=@('/run')+$transport+@('/tn',$taskName)
++        $runRequested=$true
+         $r2=Invoke-GPSchtasks -ArgList $run -MaskIndexes (Get-GPSecretArgIndexes $run)
+         if($r2.ExitCode -eq 1460){
+             $keepTask=$true
+@@ -1077,6 +1749,7 @@
+         $keepTask=$true
+         return New-ActionResult 97 "ÉTAT INDÉTERMINÉ : tâche SYSTEM '$taskName' lancée, mais résultat impossible à confirmer. La tâche est conservée pour diagnostic."
+     } catch {
++        if($runRequested){$keepTask=$true;return New-ActionResult 97 "Résultat inconnu après lancement SYSTEM : $($_.Exception.Message)"}
+         return New-ActionResult 21 "Tâche SYSTEM : $($_.Exception.Message)"
+     } finally {
+         if(-not $keepTask){
+@@ -1092,12 +1765,14 @@
+        Entra QUE si dsregcmd confirme simultanément AzureAdJoined=YES et
+        DomainJoined=YES. Le /leave n'est plus exécuté lors d'un simple Move-ADObject. #>
+     param([string]$ComputerName)
++    if($script:SIM -or $script:GUI){return New-ActionResult 33 "SIMULATION : aucune réparation Entra."}
++    if(-not $script:ALLOW_HYBRID_REPAIR){return New-ActionResult 21 "Réparation Entra non autorisée dans la configuration."}
+     $logLocal='C:\ProgramData\GP\entra_rename_repair.log'
+     $logLit=ConvertTo-GPPowerShellLiteral $logLocal
+     $inner=@"
+ `$ErrorActionPreference='Stop'
+ `$log=$logLit
+-New-Item -ItemType Directory -Path (Split-Path -LiteralPath `$log -Parent) -Force | Out-Null
++New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName(`$log)) -Force | Out-Null
+ `$status=(& `$env:SystemRoot\System32\dsregcmd.exe /status 2>&1 | Out-String)
+ `$aad=[regex]::IsMatch(`$status,'(?im)^\s*AzureAdJoined\s*:\s*YES\s*$')
+ `$dom=[regex]::IsMatch(`$status,'(?im)^\s*DomainJoined\s*:\s*YES\s*$')
+@@ -1126,7 +1801,7 @@
+ }
+ 
+ function New-GPRunOnceTaskXml {
+-    <# Tâche volontairement SANS trigger : elle n'est lancée que par schtasks /run.
++    <# Tâche volontairement SANS trigger : seul un appel COM Run explicite la lance.
+        Un ancien TimeTrigger placé dans le passé pouvait être considéré comme manqué
+        et provoquer un démarrage automatique en plus du /run explicite. #>
+     param(
+@@ -1185,44 +1860,25 @@
+ }
+ 
+ function Get-GPTaskRunResult {
+-    param([string]$TaskName, [string[]]$Transport, [int]$TimeoutSec = 30)
+-    $deadline = (Get-Date).AddSeconds($TimeoutSec)
+-    $last = $null
++    <# Lecture numérique, indépendante de la langue de Windows.
++       Result=0 n'est un succès qu'après une exécution effectivement terminée. #>
++    param([string]$TaskName,[string[]]$Transport,[int]$TimeoutSec=30)
++    $computer=Get-GPTaskArgument $Transport '/s'
++    $deadline=[DateTime]::UtcNow.AddSeconds([Math]::Max(1,$TimeoutSec))
++    $last=[pscustomobject]@{State='UNKNOWN';ResultRaw='267009';ResultNum=267009;Hint='exécution non confirmée'}
+     do {
+-        Wait-Pumped -Seconds 1
+-        $queryArgs = @('/query') + $Transport + @('/tn', $TaskName, '/v', '/fo', 'LIST')
+-        $q = Invoke-GPSchtasks -ArgList $queryArgs -MaskIndexes (Get-GPSecretArgIndexes $queryArgs)
+-        if ($q.ExitCode -ne 0 -or -not $q.Output) { continue }
+-
+-        $state = ''
+-        $resultRaw = ''
+-        $resultNum = $null
+-        foreach ($ln in ($q.Output -split "`r?`n")) {
+-            $idx = $ln.IndexOf(':')
+-            if ($idx -lt 1) { continue }
+-            $label = $ln.Substring(0, $idx).Trim().ToLowerInvariant()
+-            $val   = $ln.Substring($idx + 1).Trim()
+-            if (($label -match 'status|etat|état') -and $val -and -not $state) { $state = $val }
+-            if (($label -match 'result|résultat|resultat|sul|dernier') -and $val -match '0x[0-9A-Fa-f]+|-?\d+') {
+-                $resultRaw = $val
+-                $m = [regex]::Match($val, '0x[0-9A-Fa-f]+|-?\d+').Value
+-                try { $resultNum = if ($m -like '0x*') { [Convert]::ToInt64(($m -replace '^0x',''), 16) } else { [int64]$m } } catch { $resultNum = $null }
++        $service=$null;$folder=$null;$task=$null
++        try {
++            $service=New-GPTaskService $computer;$folder=$service.GetFolder('\');$task=$folder.GetTask($TaskName)
++            $state=[int]$task.State; $result=[int64]$task.LastTaskResult; $lastRun=[DateTime]$task.LastRunTime
++            if($state -eq 3 -and $lastRun.Year -ge 2000 -and $result -notin @(267008,267009,267011)) {
++                return [pscustomobject]@{State='READY';ResultRaw=[string]$result;ResultNum=$result;Hint=$(if($result -eq 0){'terminée, succès confirmé'}else{'terminée avec code non nul'})}
+             }
+-        }
+-
+-        if ($null -ne $resultNum) {
+-            $hint = 'code non nul'
+-            switch ($resultNum) {
+-                0      { $hint = 'OK'; break }
+-                267008 { $hint = 'prête / pas encore exécutée'; break }
+-                267009 { $hint = 'en cours'; break }
+-                267011 { $hint = 'jamais exécutée'; break }
+-                267014 { $hint = 'expirée / terminée'; break }
+-            }
+-            $last = [PSCustomObject]@{ State = $(if ($state) { $state } else { '?' }); ResultRaw = $resultRaw; ResultNum = $resultNum; Hint = $hint }
+-            if ($resultNum -notin @(267008,267009,267011)) { return $last }
+-        }
+-    } while ((Get-Date) -lt $deadline)
++            $last=[pscustomobject]@{State=[string]$state;ResultRaw='267009';ResultNum=267009;Hint='en attente / en cours / fin non confirmée'}
++        } catch { Write-Log 'Résultat de tâche momentanément inaccessible.' 'WARN' $_ 'task' }
++        finally {Release-GPComObject $task;Release-GPComObject $folder;Release-GPComObject $service}
++        if([DateTime]::UtcNow -lt $deadline){Start-Sleep -Milliseconds 500}
++    } while([DateTime]::UtcNow -lt $deadline)
+     return $last
+ }
+ 
+@@ -1250,6 +1906,8 @@
+     if (-not $script:cred) {
+         return New-ActionResult 21 'Fallback tâche planifiée indisponible en mode Compte Windows sans élévation suffisante.'
+     }
++    if($script:SIM -or $script:GUI){return New-ActionResult 20 "SIMULATION : aucune tâche de renommage créée."}
++    if(-not (Test-GPComputerName $Computername) -or -not (Test-GPGeneratedComputerName $NewName)){return New-ActionResult 21 "Paramètres du renommage invalides."}
+     $taskId=[guid]::NewGuid().ToString('N').Substring(0,12)
+     $taskName="\GP_Rename_$taskId"
+     $logLocal="C:\ProgramData\GP\rename_$taskId.log"
+@@ -1260,7 +1918,7 @@
+ `$new=$newLit
+ `$log=$logLit
+ try {
+-  New-Item -ItemType Directory -Path (Split-Path -LiteralPath `$log -Parent) -Force | Out-Null
++  New-Item -ItemType Directory -Path ([IO.Path]::GetDirectoryName(`$log)) -Force | Out-Null
+   ("START {0} {1} -> {2}" -f (Get-Date).ToString('o'),`$env:COMPUTERNAME,`$new) | Set-Content -LiteralPath `$log -Encoding UTF8
+ 
+   # La tâche tourne déjà sous le compte AD saisi dans GP avec RunLevel=Highest.
+@@ -1270,6 +1928,7 @@
+   if(`$null -eq `$cs){ throw 'Win32_ComputerSystem introuvable.' }
+   `$ret=`$cs.Rename(`$new,`$null,`$null)
+   `$rv=if(`$ret -and `$ret.PSObject.Properties['ReturnValue']){[uint32]`$ret.ReturnValue}else{[uint32]4294967295}
++  if(`$rv -eq [uint32]4294967295){ exit 97 }
+   if(`$rv -ne 0){
+     `$rvText=try{(New-Object ComponentModel.Win32Exception([int]`$rv)).Message}catch{'erreur Windows/WMI non traduite'}
+     throw "Win32_ComputerSystem.Rename a renvoyé le code `$rv (`$rvText)."
+@@ -1284,6 +1943,7 @@
+     "ENTRA_RENAME_BLOCK" | Add-Content -LiteralPath `$log -Encoding UTF8
+     exit 43
+   }
++  if(`$m -match '(?i)(RPC|0x800706ba|timed?\s*out|d.lai|transport)'){exit 97}
+   exit 1
+ }
+ "@
+@@ -1291,14 +1951,14 @@
+     $xml=New-GPRunOnceTaskXml -Command '%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe' -Arguments "-NoProfile -ExecutionPolicy Bypass -EncodedCommand $encoded" -UserId $script:cred.UserName -Description 'GP - fallback RenameComputer'
+     $xmlPath=Join-Path $env:TEMP ("gp_rename_{0}.xml" -f $taskId)
+     $transport=Get-GPSchtasksTransportArgs -ComputerName $Computername
+-    $password=$script:cred.GetNetworkCredential().Password
+-    $keepTask=$false
++    $keepTask=$false;$runRequested=$false
+     try {
+       [IO.File]::WriteAllText($xmlPath,$xml,[Text.Encoding]::Unicode)
+-      $create=@('/create')+$transport+@('/tn',$taskName,'/xml',$xmlPath,'/f','/ru',$script:cred.UserName,'/rp',$password)
++      $create=@('/create')+$transport+@('/tn',$taskName,'/xml',$xmlPath)
+       $r=Invoke-GPSchtasks -ArgList $create -MaskIndexes (Get-GPSecretArgIndexes $create)
+       if($r.ExitCode -ne 0){ return New-ActionResult 21 ("Fallback tâche planifiée : création KO (code {0}, {1}) : {2}" -f $r.ExitCode,(Get-GPSchtasksHint $r.ExitCode),$r.Output) }
+       $run=@('/run')+$transport+@('/tn',$taskName)
++      $runRequested=$true
+       $r2=Invoke-GPSchtasks -ArgList $run -MaskIndexes (Get-GPSecretArgIndexes $run)
+       if($r2.ExitCode -eq 1460){
+         $keepTask=$true
+@@ -1309,6 +1969,7 @@
+       $tail=Get-GPRemoteTaskLogTail -ComputerName $Computername -LocalLogPath $logLocal
+       $tailMsg=if($tail){" | log cible : $tail"}else{''}
+       if($probe -and $probe.ResultNum -eq 0){ return New-ActionResult 20 "`"$Computername`" renommé en `"$NewName`" via tâche élevée$tailMsg" }
++      if($probe -and $probe.ResultNum -eq 97){return New-ActionResult 97 'La tâche ne peut pas confirmer le résultat WMI.'}
+       if($probe -and $probe.ResultNum -eq 43){ return New-ActionResult 21 "Microsoft Entra/Azure AD bloque la mise à jour du nom d'hôte pendant le renommage élevé.$tailMsg" }
+       if($probe -and $probe.ResultNum -in @(267008,267009,267011)){
+         $keepTask=$true
+@@ -1319,6 +1980,7 @@
+       return New-ActionResult 97 "ÉTAT INDÉTERMINÉ : tâche de renommage '$taskName' lancée, mais aucun résultat n'a pu être lu. Vérifiez le poste avant toute autre action ; la tâche est conservée pour diagnostic.$tailMsg"
+     } catch {
+       Write-Log "Fallback tâche planifiée a échoué ('$Computername' -> '$NewName')." 'ERROR' $_ 'rename-task'
++      if($runRequested){$keepTask=$true;return New-ActionResult 97 "Résultat de la tâche inconnu après lancement : $($_.Exception.Message)"}
+       return New-ActionResult 21 "Fallback tâche planifiée : $($_.Exception.Message)"
+     } finally {
+       if(-not $keepTask){
+@@ -1391,166 +2053,8 @@
+     }
+ }
+ function Invoke-GPElevatedDomainJoin {
+-    <# Elève UNIQUEMENT Add-Computer. Le credential de domaine n'est jamais écrit
+-       sur disque et n'est jamais placé dans la ligne de commande. GP crée un pipe
+-       nommé ACLé pour l'utilisateur courant + Administrateurs ; le helper élevé
+-       reçoit le credential en mémoire, exécute Add-Computer, puis renvoie un JSON
+-       minimal sur le même pipe. Cette méthode reste valide si l'UAC utilise un
+-       AUTRE compte administrateur local, contrairement à Export-Clixml/DPAPI. #>
+-    param(
+-        [Parameter(Mandatory)][string]$Domain,
+-        [Parameter(Mandatory)][string]$OUPath,
+-        [Parameter(Mandatory)][string]$NewName,
+-        [AllowNull()][string]$DC,
+-        [AllowNull()]$Credential
+-    )
+-
+-    if (-not $Credential) {
+-        return New-ActionResult 11 'Jonction impossible : aucun credential de domaine n''est disponible.'
+-    }
+-    $dcFqdn = "$DC".Trim().TrimEnd('.')
+-    if ([string]::IsNullOrWhiteSpace($dcFqdn) -or $dcFqdn -ieq "$Domain".Trim().TrimEnd('.') -or $dcFqdn -notmatch '^[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)+$') {
+-        return New-ActionResult 11 "Jonction bloquée : contrôleur de domaine FQDN invalide ou non résolu ('$DC'). Rafraîchissez la connexion AD avant de réessayer."
+-    }
+-
+-    $pipe = $null; $reader = $null; $writer = $null; $proc = $null; $credentialSent = $false
+-    try {
+-        $pipeName = 'GP_Join_' + [Guid]::NewGuid().ToString('N')
+-        $pipeSecurity = [System.IO.Pipes.PipeSecurity]::new()
+-        $allow = [System.Security.AccessControl.AccessControlType]::Allow
+-        $rights = [System.IO.Pipes.PipeAccessRights]::ReadWrite
+-        $currentSid = [System.Security.Principal.WindowsIdentity]::GetCurrent().User
+-        $adminsSid = [System.Security.Principal.SecurityIdentifier]::new('S-1-5-32-544')
+-        $pipeSecurity.AddAccessRule([System.IO.Pipes.PipeAccessRule]::new($currentSid,$rights,$allow))
+-        $pipeSecurity.AddAccessRule([System.IO.Pipes.PipeAccessRule]::new($adminsSid,$rights,$allow))
+-        $pipe = [System.IO.Pipes.NamedPipeServerStream]::new(
+-            $pipeName,[System.IO.Pipes.PipeDirection]::InOut,1,
+-            [System.IO.Pipes.PipeTransmissionMode]::Byte,[System.IO.Pipes.PipeOptions]::Asynchronous,
+-            4096,4096,$pipeSecurity)
+-
+-        $pipeLit   = ConvertTo-GPPowerShellLiteral $pipeName
+-        $domainLit = ConvertTo-GPPowerShellLiteral $Domain
+-        $ouLit     = ConvertTo-GPPowerShellLiteral $OUPath
+-        $nameLit   = ConvertTo-GPPowerShellLiteral $NewName
+-        $server = $dcFqdn
+-        $serverLit = ConvertTo-GPPowerShellLiteral $server
+-
+-        $helperCode = @'
+-$ErrorActionPreference = 'Stop'
+-$pipeName = __PIPE__
+-$domain = __DOMAIN__
+-$ouPath = __OU__
+-$newName = __NAME__
+-$server = __SERVER__
+-$client = $null; $reader = $null; $writer = $null
+-$result = [ordered]@{ Ok=$false; HasSucceeded=$false; Message='' }
+-try {
+-    $client = [System.IO.Pipes.NamedPipeClientStream]::new('.', $pipeName, [System.IO.Pipes.PipeDirection]::InOut)
+-    $client.Connect(120000)
+-    $utf8 = [System.Text.UTF8Encoding]::new($false)
+-    $reader = [System.IO.StreamReader]::new($client,$utf8,$false,4096,$true)
+-    $writer = [System.IO.StreamWriter]::new($client,$utf8,4096,$true)
+-    $writer.AutoFlush = $true
+-
+-    $line = $reader.ReadLine()
+-    if ([string]::IsNullOrWhiteSpace($line)) { throw 'Aucun credential reçu depuis GP.' }
+-    $payload = $line | ConvertFrom-Json -ErrorAction Stop
+-    if ([string]::IsNullOrWhiteSpace([string]$payload.UserName)) { throw 'Identifiant de domaine vide.' }
+-    $secure = ConvertTo-SecureString ([string]$payload.Password) -AsPlainText -Force
+-    $cred = New-Object System.Management.Automation.PSCredential([string]$payload.UserName,$secure)
+-
+-    $ac = @{
+-        DomainName=$domain; OUPath=$ouPath; NewName=$newName; Credential=$cred
+-        PassThru=$true; Force=$true; ErrorAction='Stop'; WarningAction='SilentlyContinue'
+-    }
+-    if (-not [string]::IsNullOrWhiteSpace($server)) { $ac.Server = $server }
+-    $change = Add-Computer @ac
+-    if ($null -eq $change) { throw 'Add-Computer n''a retourné aucun résultat.' }
+-    if ($change.PSObject.Properties['HasSucceeded'] -and -not [bool]$change.HasSucceeded) {
+-        throw 'Add-Computer a retourné HasSucceeded=False.'
+-    }
+-    $result.Ok = $true
+-    $result.HasSucceeded = $true
+-    $result.Message = 'Add-Computer a confirmé la jonction au domaine.'
+-}
+-catch {
+-    $result.Ok = $false
+-    $result.Message = [string]$_.Exception.Message
+-}
+-finally {
+-    try { if ($writer) { $writer.WriteLine(($result | ConvertTo-Json -Compress)); $writer.Flush() } } catch {}
+-    try { if ($writer) { $writer.Dispose() } } catch {}
+-    try { if ($reader) { $reader.Dispose() } } catch {}
+-    try { if ($client) { $client.Dispose() } } catch {}
+-}
+-if ($result.Ok) { exit 0 } else { exit 1 }
+-'@
+-        $helperCode = $helperCode.Replace('__PIPE__',$pipeLit).Replace('__DOMAIN__',$domainLit).Replace('__OU__',$ouLit).Replace('__NAME__',$nameLit).Replace('__SERVER__',$serverLit)
+-        $encoded = [Convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($helperCode))
+-        $psExe = Join-Path $PSHOME 'powershell.exe'
+-        if (-not (Test-Path -LiteralPath $psExe)) { $psExe = 'powershell.exe' }
+-
+-        try {
+-            $proc = Start-Process -FilePath $psExe -Verb RunAs -ArgumentList @(
+-                '-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-EncodedCommand',$encoded
+-            ) -PassThru -ErrorAction Stop
+-        } catch {
+-            return New-ActionResult 11 "Élévation UAC annulée ou impossible : $($_.Exception.Message)"
+-        }
+-
+-        $wait = $pipe.BeginWaitForConnection($null,$null)
+-        if (-not $wait.AsyncWaitHandle.WaitOne(120000)) {
+-            try { if ($proc -and -not $proc.HasExited) { $proc.Kill() } } catch {}
+-            return New-ActionResult 11 'Le helper élevé n''a pas établi la communication avec GP dans les 120 s.'
+-        }
+-        $pipe.EndWaitForConnection($wait)
+-
+-        $utf8 = [System.Text.UTF8Encoding]::new($false)
+-        $reader = [System.IO.StreamReader]::new($pipe,$utf8,$false,4096,$true)
+-        $writer = [System.IO.StreamWriter]::new($pipe,$utf8,4096,$true)
+-        $writer.AutoFlush = $true
+-        $password = $Credential.GetNetworkCredential().Password
+-        $payloadJson = ([ordered]@{UserName=[string]$Credential.UserName;Password=[string]$password} | ConvertTo-Json -Compress)
+-        $writer.WriteLine($payloadJson)
+-        $writer.Flush()
+-        $credentialSent = $true
+-        $password = $null; $payloadJson = $null
+-
+-        # Après l'envoi du credential, Add-Computer peut déjà modifier l'état local.
+-        # On attend longtemps, mais pas indéfiniment. En cas de perte du canal ou
+-        # de dépassement, le statut devient INDETERMINE (97) : la file s'arrête et
+-        # aucune autre mutation n'est lancée, même si le helper termine plus tard.
+-        $readTask = $reader.ReadLineAsync()
+-        if (-not $readTask.Wait(600000)) {
+-            return New-ActionResult 97 'ÉTAT INDÉTERMINÉ : la jonction élevée n''a pas renvoyé de résultat dans les 10 minutes. Add-Computer a pu continuer ; vérifiez l''appartenance au domaine avant toute nouvelle action.'
+-        }
+-        $resultLine = [string]$readTask.Result
+-        $payload = $null
+-        if (-not [string]::IsNullOrWhiteSpace($resultLine)) {
+-            try { $payload = $resultLine | ConvertFrom-Json -ErrorAction Stop } catch {}
+-        }
+-        try { if ($proc -and -not $proc.HasExited) { [void]$proc.WaitForExit(5000) } } catch {}
+-
+-        if ($payload -and [bool]$payload.Ok) {
+-            return New-ActionResult 10 "`"$env:COMPUTERNAME`" ajouté au domaine `"$Domain`" -> nom `"$NewName`" / OU `"$OUPath`" (élévation UAC)."
+-        }
+-        if ($payload -and $payload.PSObject.Properties['Ok']) {
+-            $detail = if ($payload.Message) { [string]$payload.Message } else { 'Add-Computer a signalé un échec sans détail.' }
+-            return New-ActionResult 11 "Erreur Add-Computer élevé : $detail"
+-        }
+-        return New-ActionResult 97 'ÉTAT INDÉTERMINÉ : le helper élevé a terminé le canal sans résultat exploitable après démarrage possible de Add-Computer. Vérifiez l''appartenance au domaine avant toute nouvelle action.'
+-    } catch {
+-        Write-Log 'Jonction élevée au domaine impossible.' 'ERROR' $_ 'join'
+-        if($credentialSent){
+-            return New-ActionResult 97 "ÉTAT INDÉTERMINÉ : communication perdue après transmission du credential de jonction. Add-Computer a pu démarrer : $($_.Exception.Message)"
+-        }
+-        return New-ActionResult 11 "Erreur lors de la préparation de la jonction élevée : $($_.Exception.Message)"
+-    } finally {
+-        try { if ($writer) { $writer.Dispose() } } catch {}
+-        try { if ($reader) { $reader.Dispose() } } catch {}
+-        try { if ($pipe) { $pipe.Dispose() } } catch {}
+-        try { if ($proc) { $proc.Dispose() } } catch {}
+-    }
++    param([string]$Domain,[string]$OUPath,[string]$NewName,[string]$DC,$Credential)
++    return Invoke-GPElevatedLocalChange -Action Join -Domain $Domain -OUPath $OUPath -NewName $NewName -DC $DC -Credential $Credential
+ }
+ 
+ 
+@@ -1565,7 +2069,7 @@
+     if (-not (Test-GPGeneratedComputerName $NEWNAME)) {
+         return New-ActionResult 11 "Nom de jonction invalide ou hors convention : '$NEWNAME'."
+     }
+-    if (-not (Test-GPOUPath $OU)) {
++    if (-not (Test-GPOUPath $OU) -or -not (Test-GPOUInConfiguredScope $OU) -or (Get-GPDomainFromDN $OU) -ine $DOMAINE.TrimEnd('.')) {
+         return New-ActionResult 11 "OU de jonction invalide : '$OU'."
+     }
+     if (-not $CRED) {
+@@ -1576,7 +2080,7 @@
+         return New-ActionResult 11 "Jonction bloquée : contrôleur de domaine FQDN invalide ou non résolu ('$DC')."
+     }
+ 
+-    if ($script:SIM) {
++    if ($script:SIM -or $script:GUI) {
+         Show-MsgWarning "SIMU AddToDomain`nAdd-Computer -DomainName $DOMAINE -Server $dcFqdn -OUPath `"$OU`" -NewName $NEWNAME -Credential <cred> -PassThru" 'Add-Computer (SIMU)'
+         return New-ActionResult 10 "SIMU - `"$env:COMPUTERNAME`" → domaine `"$DOMAINE`" / nom `"$NEWNAME`" / OU `"$OU`""
+     }
+@@ -1607,229 +2111,132 @@
+             WarningAction = 'SilentlyContinue'
+         }
+         $ac.Server = $dcFqdn
+-        $change = Add-Computer @ac
+-        if ($null -eq $change) {
+-            return New-ActionResult 11 'Add-Computer n''a retourné aucun résultat : jonction non confirmée.'
+-        }
+-        if ($change.PSObject.Properties['HasSucceeded'] -and -not [bool]$change.HasSucceeded) {
+-            return New-ActionResult 11 'Add-Computer a répondu, mais HasSucceeded=False : jonction non effectuée.'
++        $change = @(Add-Computer @ac)
++        if (-not (Test-GPConfirmedChange $change)) {
++            if($change.Count -eq 1 -and $change[0].HasSucceeded -is [bool] -and -not $change[0].HasSucceeded){
++                return New-ActionResult 11 "Add-Computer a confirmé HasSucceeded=False."
++            }
++            return New-ActionResult 97 "Jonction indéterminée : Add-Computer n'a pas renvoyé de confirmation fiable."
+         }
+         return New-ActionResult 10 "`"$env:COMPUTERNAME`" ajouté au domaine `"$DOMAINE`" → nom `"$NEWNAME`" / OU `"$OU`""
+     } catch {
+         Write-Log "Add-Computer a échoué (jonction de '$env:COMPUTERNAME' au domaine '$DOMAINE', nom '$NEWNAME', OU '$OU')." 'ERROR' $_ 'AD'
++        if($_.Exception.Message -match '(?i)(RPC|0x800706ba|timed?\s*out|d.lai|transport)'){
++            return New-ActionResult 97 "Jonction indéterminée après erreur de transport : $($_.Exception.Message)"
++        }
+         return New-ActionResult 11 "Erreur Add-Computer : $($_.Exception.Message)"
+     }
+ }
+ function RenameComputer {
+-    <# Renomme local ou distant sans exiger que GP lui-même soit élevé.
+-       Avec un login explicite, le même PSCredential sert à la fois de
+-       LocalCredential et de DomainCredential. Pour le poste local on force
+-       ComputerName=localhost afin d'utiliser le chemin d'administration distante
+-       avec le credential déjà saisi, puis on dispose d'un fallback tâche élevée. #>
+     param([string]$Computername,[string]$NewName)
+-    $Computername="$Computername".Trim(); $NewName="$NewName".Trim().ToUpperInvariant()
+-    if(-not (Test-GPComputerName $Computername)){ return New-ActionResult 21 "Nom source invalide : '$Computername'." }
+-    if(-not (Test-GPGeneratedComputerName $NewName)){ return New-ActionResult 21 "Nouveau nom invalide ou hors convention : '$NewName'." }
+-    if($Computername -ieq $NewName){ return New-ActionResult 20 "`"$Computername`" porte déjà le nom demandé" }
+-
+-    try { $taken=Find-ADComputerByName -Name $NewName }
+-    catch { return New-ActionResult 21 "Vérification du nouveau nom impossible : $($_.Exception.Message)" }
+-    if($taken){ return New-ActionResult 69 "Le nom `"$NewName`" est déjà utilisé" }
+-
+-    $isLocal=($Computername -ieq $env:COMPUTERNAME -or $Computername -ieq 'localhost' -or $Computername -eq '.')
+-    $target=if($isLocal){'localhost'}else{$Computername}
+-    if($script:SIM){
+-      $mode=if($script:cred){'LocalCredential + DomainCredential = credential GP'}else{'identité Windows courante'}
+-      Show-MsgWarning "SIMU RenameComputer`nRename-Computer -ComputerName $target -NewName $NewName ($mode)" 'Rename-Computer (SIMU)'
+-      return New-ActionResult 20 "SIMU - `"$Computername`" renommé en `"$NewName`""
+-    }
+-
+-    $invokeRename = {
+-      $rc=@{ComputerName=$target;NewName=$NewName;Force=$true;PassThru=$true;ErrorAction='Stop'}
+-      if($script:cred){ $rc.LocalCredential=$script:cred; $rc.DomainCredential=$script:cred }
+-      $change=Rename-Computer @rc
+-      if($null -eq $change){ throw 'Rename-Computer n''a retourné aucun résultat avec -PassThru.' }
+-      if($change.PSObject.Properties['HasSucceeded'] -and -not [bool]$change.HasSucceeded){
+-        throw 'Rename-Computer a retourné HasSucceeded=False.'
+-      }
+-      return $change
+-    }
+-
+-    $directErr=$null
++    $Computername=$Computername.Trim();$NewName=$NewName.Trim().ToUpperInvariant()
++    if(-not (Test-GPComputerName $Computername)){return New-ActionResult 21 "Nom source invalide : '$Computername'."}
++    if(-not (Test-GPGeneratedComputerName $NewName)){return New-ActionResult 21 "Nouveau nom hors convention : '$NewName'."}
++    if($Computername -ieq $NewName){return New-ActionResult 20 "Le poste porte déjà le nom demandé."}
++    if($script:GUI){return New-ActionResult 20 "DÉMO : '$Computername' renommé en '$NewName'."}
++    try{
++        $source=Find-ADComputerByName -Name $Computername
++        if(-not $source){return New-ActionResult 99 "Poste source absent de l'AD : '$Computername'."}
++        if(-not (Test-GPOUInConfiguredScope (Get-GPParentDN ([string]$source.DistinguishedName)))){
++            return New-ActionResult 21 "Poste source hors périmètre configuré : '$Computername'."
++        }
++        if(Find-ADComputerByName -Name $NewName){return New-ActionResult 69 "Le nom '$NewName' est déjà utilisé."}
++    }catch{return New-ActionResult 21 "Précontrôle AD impossible : $($_.Exception.Message)"}
++    $local=$Computername -ieq $env:COMPUTERNAME
++    if($script:SIM){return New-ActionResult 20 "SIMULATION : renommage '$Computername' vers '$NewName', aucune écriture."}
++    if($local -and -not (Test-GPIsAdministrator)){
++        return Invoke-GPElevatedLocalChange -Action Rename -Domain $script:DOMAINE -NewName $NewName -Credential $script:cred
++    }
++    $argsRename=@{NewName=$NewName;Force=$true;PassThru=$true;ErrorAction='Stop';WarningAction='SilentlyContinue'}
++    if(-not $local){$argsRename.ComputerName=$Computername;if($script:cred){$argsRename.LocalCredential=$script:cred}}
++    if($script:cred){$argsRename.DomainCredential=$script:cred}
++    $message='';$entraPattern='(?i)(Azure\s*AD|Microsoft\s*Entra|hostname.*Azure|nom d.?h[oô]te.*Azure)'
++    try{
++        $change=@(Rename-Computer @argsRename)
++        if(Test-GPConfirmedChange $change){return New-ActionResult 20 "'$Computername' renommé en '$NewName' ; redémarrage requis."}
++        if($change.Count -eq 1 -and $change[0].HasSucceeded -is [bool] -and -not $change[0].HasSucceeded){
++            return New-ActionResult 21 "Rename-Computer a confirmé HasSucceeded=False."
++        }
++        return New-ActionResult 97 "Rename-Computer n'a pas renvoyé de résultat fiable ; aucun repli automatique."
++    }catch{
++        $message=[string]$_.Exception.Message;Write-Log "Renommage direct refusé pour '$Computername'." 'ERROR' $_ 'rename'
++        if($message -match '(?i)(RPC|0x800706ba|timed?\s*out|d.lai|transport|connexion.*(perd|ferm))'){
++            return New-ActionResult 97 "État de renommage incertain après erreur de transport : $message"
++        }
++    }
++    if($message -match $entraPattern){
++        if(-not $script:ALLOW_HYBRID_REPAIR){
++            return New-ActionResult 21 "Renommage refusé par Entra. Aucun dsregcmd /leave exécuté (réparation désactivée). Détail : $message"
++        }
++        $repair=Invoke-GPHybridRenameRepair -ComputerName $Computername
++        if($repair.ExitCode -eq 97){return $repair}
++        if($repair.ExitCode -ne 20){return New-ActionResult 21 "Réparation Entra échouée : $($repair.ExitMsg)"}
++        $fb=Invoke-RenameComputerTaskFallback -Computername $Computername -NewName $NewName
++        $fb.ExitMsg+=" | Jointure Entra retirée sur autorisation explicite : contrôler la réinscription après redémarrage."
++        return $fb
++    }
++    # Repli unique sur un refus d'accès/élévation explicite, jamais sur une erreur ambiguë.
++    if(-not $local -and $script:cred -and $message -match '(?i)(access.*denied|acc.s refus|0x80070005|elevat|.l.vation|privil.ge)'){
++        return Invoke-RenameComputerTaskFallback -Computername $Computername -NewName $NewName
++    }
++    return New-ActionResult 21 "Renommage refusé ; aucun repli non justifié : $message"
++}
++
++function MoveComputer {
++    param([string]$ComputerName,[string]$OU_Destination)
++    $ComputerName=$ComputerName.Trim();$OU_Destination=$OU_Destination.Trim()
++    if(-not (Test-GPComputerName $ComputerName)){return New-ActionResult 99 "Nom source invalide."}
++    if(-not (Test-GPOUPath $OU_Destination) -or -not (Test-GPOUInConfiguredScope $OU_Destination)){
++        return New-ActionResult 31 "OU cible invalide ou hors périmètre."
++    }
++    if($script:GUI){return New-ActionResult 30 "DÉMO : déplacement de '$ComputerName'."}
++    $adp=Get-ADParams
++    try{
++        $pc=Get-ADComputer -Identity $ComputerName -Properties DistinguishedName,ObjectGUID,ProtectedFromAccidentalDeletion -ErrorAction Stop @adp
++        $srcOU=Get-GPParentDN ([string]$pc.DistinguishedName)
++        if(-not (Test-GPOUInConfiguredScope $srcOU)){return New-ActionResult 31 "Objet source hors périmètre : '$srcOU'."}
++        # Vérifie l'existence réelle de la cible sur le même DC avant de modifier la protection.
++        [void](Get-ADOrganizationalUnit -Identity $OU_Destination -ErrorAction Stop @adp)
++        $id=[Guid]$pc.ObjectGUID
++        if($id -eq [Guid]::Empty){throw 'ObjectGUID manquant.'}
++    }catch{return New-ActionResult 99 "Précontrôle du déplacement impossible : $($_.Exception.Message)"}
++    if($srcOU -ieq $OU_Destination){return New-ActionResult 33 "'$ComputerName' est déjà dans l'OU cible."}
++    if($script:SIM){return New-ActionResult 30 "SIMULATION : déplacement de '$ComputerName' vers '$OU_Destination', aucune écriture."}
++    $protected=[bool]$pc.ProtectedFromAccidentalDeletion
++    if($protected -and -not $script:CLEAR_PROTECTION){return New-ActionResult 31 "Objet protégé ; levée temporaire interdite par la configuration."}
++    $restoreRequired=$false;$moveStarted=$false;$moveError='';$protectionError='';$after=$null
+     try {
+-      [void]$invokeRename.Invoke()
+-      return New-ActionResult 20 "`"$Computername`" renommé en `"$NewName`""
+-    } catch { $directErr=$_; Write-Log "Rename-Computer direct a échoué ('$Computername' -> '$NewName', local=$isLocal)." 'ERROR' $_ 'AD' }
+-
+-    # Windows 11 / Hybrid Join : certains postes refusent le changement de nom
+-    # en indiquant explicitement que le nom d'hôte Azure AD/Entra ne peut pas être
+-    # mis à jour. Réparation seulement dans CE cas, jamais lors d'un simple move.
+-    $msg="$($directErr.Exception.Message)"
+-    $entraRepairApplied=$false
+-    $lastFallback=$null
+-    $entraOperatorNote=' | ATTENTION : la jointure Entra hybride a été retirée temporairement. Après redémarrage/ouverture de session, vérifiez la réinscription avec dsregcmd /status.'
+-    if($msg -match '(?i)(Azure\s*AD|Microsoft\s*Entra|nom d.?h[oô]te.*Azure|hostname.*Azure|update.*host.*Entra)'){
+-      $repair=Invoke-GPHybridRenameRepair -ComputerName $Computername
+-      Write-Log "Réparation Entra ciblée pour '$Computername' : $($repair.ExitMsg)" $(if($repair.ExitCode -eq 20){'WARN'}else{'INFO'}) $null 'rename'
+-      if($repair.ExitCode -eq 97){ return New-ActionResult 97 $repair.ExitMsg }
+-      if($repair.ExitCode -eq 20){
+-        $entraRepairApplied=$true
+-        Start-Sleep -Seconds 2
+-        if($script:cred){
+-          $lastFallback=Invoke-RenameComputerTaskFallback -Computername $Computername -NewName $NewName
+-          # Une tâche de renommage possiblement encore active est un état de sécurité :
+-          # surtout ne pas la convertir en simple code 21, sinon la file pourrait enchaîner.
+-          if($lastFallback -and [int]$lastFallback.ExitCode -eq 97){ return $lastFallback }
+-          if($lastFallback -and $lastFallback.ExitCode -eq 20){
+-            return New-ActionResult 20 "`"$Computername`" renommé en `"$NewName`" après réparation Entra hybride via tâche élevée ; redémarrage requis.$entraOperatorNote"
+-          }
+-          if($lastFallback){ $msg="Après réparation Entra : $($lastFallback.ExitMsg)" }
+-        } else {
+-          try {
+-            [void]$invokeRename.Invoke()
+-            return New-ActionResult 20 "`"$Computername`" renommé en `"$NewName`" après retrait temporaire de la jointure Entra hybride ; redémarrage requis.$entraOperatorNote"
+-          } catch { $directErr=$_; $msg="$($_.Exception.Message)" }
+-        }
+-      }
+-    }
+-
+-    # Fallback également pour le poste LOCAL : avec /s localhost + /u /p,
+-    # schtasks réutilise le compte déjà saisi dans GP et lance l'action au niveau
+-    # le plus élevé, ce qui évite le double login/UAC au démarrage de GP.
+-    if($script:cred){
+-      # Si un fallback vient déjà d'être tenté juste après une réparation Entra,
+-      # ne pas rejouer exactement la même mutation une deuxième fois.
+-      $fb=if($lastFallback){$lastFallback}else{Invoke-RenameComputerTaskFallback -Computername $Computername -NewName $NewName}
+-      if($fb -and [int]$fb.ExitCode -eq 97){ return $fb }
+-      if($fb -and $fb.ExitCode -eq 20){
+-        $okMsg=[string]$fb.ExitMsg
+-        if($entraRepairApplied){$okMsg+=$entraOperatorNote}
+-        return New-ActionResult 20 $okMsg
+-      }
+-      if(-not $entraRepairApplied -and $fb -and $fb.ExitMsg -match '(?i)(Azure\s*AD|Microsoft\s*Entra|hostname|nom d.?h[oô]te)'){
+-        $repair2=Invoke-GPHybridRenameRepair -ComputerName $Computername
+-        if($repair2.ExitCode -eq 97){ return New-ActionResult 97 $repair2.ExitMsg }
+-        if($repair2.ExitCode -eq 20){
+-          $entraRepairApplied=$true
+-          $fb2=Invoke-RenameComputerTaskFallback -Computername $Computername -NewName $NewName
+-          if($fb2 -and [int]$fb2.ExitCode -eq 97){ return $fb2 }
+-          if($fb2 -and $fb2.ExitCode -eq 20){ return New-ActionResult 20 ("$($fb2.ExitMsg)$entraOperatorNote") }
+-          $fb=$fb2
+-        }
+-      }
+-      $fbMsg=if($fb){" | Fallback élevé KO : $($fb.ExitMsg)"}else{''}
+-      $repairWarn=if($entraRepairApplied){$entraOperatorNote}else{''}
+-      return New-ActionResult 21 "Erreur Rename-Computer : $msg$fbMsg$repairWarn"
+-    }
+-
+-    $hint=''
+-    if($isLocal -and -not (Test-GPIsAdministrator)){
+-      $hint=' | Mode Compte Windows : la session courante ne possède pas de jeton administrateur local utilisable. Utilisez le login explicite GP avec un compte administrateur du poste, ou lancez GP depuis une session déjà élevée.'
+-    }
+-    return New-ActionResult 21 "Erreur Rename-Computer : $msg$hint"
+-}
+-
+-function MoveComputer {
+-    <# Déplace un objet ordinateur vers une OU cible.
+-       Gère la « protection contre la suppression accidentelle » (ProtectedFromAccidentalDeletion) :
+-       un objet protégé porte un refus explicite (Deny Delete/DeleteTree). Or déplacer un objet
+-       en AD revient à le retirer de son conteneur source : la protection bloque donc Move-ADObject
+-       avec « Accès refusé » ALORS QUE le renommage, qui ne touche pas au parent, passe sans souci.
+-       C'est LA cause classique du symptôme « je peux renommer mais pas déplacer ». On lève la
+-       protection le temps du déplacement puis on la rétablit dans l'OU cible.
+-       Pilotable via cfg.json Conf.ClearProtectionOnMove (défaut activé). #>
+-    param([string]$ComputerName,[string]$OU_Destination)
+-
+-    $ComputerName = "$ComputerName".Trim(); $OU_Destination = "$OU_Destination".Trim()
+-    if (-not (Test-GPComputerName $ComputerName)) { return New-ActionResult 99 "Nom source invalide : '$ComputerName'." }
+-    if (-not (Test-GPOUPath $OU_Destination)) { return New-ActionResult 31 "OU de destination invalide : '$OU_Destination'." }
+-    $adp = Get-ADParams
+-    # Lecture protégée + propriété de protection en un seul appel (poste absent / DC injoignable -> code 99).
+-    $pc = try { Get-ADComputer -Identity $ComputerName -Properties DistinguishedName,ProtectedFromAccidentalDeletion -ErrorAction Stop @adp }
+-          catch { return New-ActionResult 99 "Poste `"$ComputerName`" introuvable dans l'AD ou contrôleur de domaine injoignable (déplacement annulé) : $($_.Exception.Message)" }
+-    $srcDN = "$($pc.DistinguishedName)"
+-    $curOU = $srcDN -replace '^CN=.*?,', ''
+-    if ($curOU -ieq $OU_Destination) { return New-ActionResult 33 "`"$ComputerName`" est déjà dans `"$OU_Destination`"" }
+-
+-    if ($script:SIM) {
+-        $prot = if ([bool]$pc.ProtectedFromAccidentalDeletion) { "`n(protection anti-suppression détectée : serait levée puis rétablie)" } else { '' }
+-        Show-MsgWarning "SIMU MoveComputer`nMove-ADObject -Identity `"$srcDN`" -TargetPath `"$OU_Destination`"$prot" 'Move-ADObject (SIMU)'
+-        return New-ActionResult 30 "SIMU - `"$ComputerName`" déplacé dans `"$OU_Destination`""
+-    }
+-
+-    # Le déplacement AD ne touche plus à l'inscription Entra. dsregcmd /leave est
+-    # réservé au retry ciblé d'un renommage qui remonte explicitement l'erreur Azure/Entra.
+-    # Lève la protection anti-suppression si présente (sinon Move-ADObject -> « Accès refusé »).
+-    $wasProtected = [bool]$pc.ProtectedFromAccidentalDeletion
+-    $unprotected  = $false
+-    if ($wasProtected -and $script:CLEAR_PROTECTION) {
+-        try {
+-            Set-ADObject -Identity $srcDN -ProtectedFromAccidentalDeletion:$false -ErrorAction Stop @adp
+-            $unprotected = $true
+-        } catch {
+-            Write-Log "Levée de la protection anti-suppression impossible sur '$srcDN' (déplacement probablement voué à l'échec)." 'ERROR' $_ 'AD'
+-        }
+-    }
+-
+-    # Déplacement proprement dit (plus de 2>$null : il masquait l'enregistrement d'erreur).
+-    $moveErr = $null
+-    try {
+-        Move-ADObject -Identity $srcDN -TargetPath $OU_Destination -ErrorAction Stop @adp
+-    } catch {
+-        $moveErr = $_
+-    }
+-
+-    if ($moveErr) {
+-        # Rétablit la protection sur l'objet resté en place (best-effort, ne masque pas l'erreur).
+-        if ($unprotected) {
+-            try { Set-ADObject -Identity $srcDN -ProtectedFromAccidentalDeletion:$true -ErrorAction Stop @adp }
+-            catch { Write-Log "Échec du rétablissement de la protection après Move-ADObject KO sur '$srcDN'." 'WARN' $_ 'AD' }
+-        }
+-        Write-Log "Move-ADObject a échoué ('$srcDN' -> '$OU_Destination')." 'ERROR' $moveErr 'AD'
+-        $ex   = $moveErr.Exception
+-        $deny = ($ex -is [System.UnauthorizedAccessException]) -or ("$($ex.Message)" -match 'Access is denied|Acc.s refus|0x80070005')
+-        $hint = if ($deny) {
+-                    if ($wasProtected -and -not $unprotected) {
+-                        " | Cause probable : objet PROTÉGÉ contre la suppression accidentelle et protection non levée. Décochez « Protéger l'objet contre la suppression accidentelle » (ou accordez le droit d'écriture sur l'objet), puis réessayez."
+-                    } else {
+-                        " | Cause probable : le compte utilisé n'a pas le droit « Supprimer » sur l'OU source et/ou « Créer des objets ordinateur » sur l'OU cible (délégation AD manquante)."
+-                    }
+-                } else { '' }
+-        return New-ActionResult 31 "Erreur Move-ADObject : $($ex.Message)$hint"
+-    }
+-
+-    # Rétablit la protection dans l'OU de destination. Un échec de reprotection
+-    # n'annule pas le déplacement réussi, mais doit être visible à l'opérateur.
+-    $protectionNote = ''
+-    if ($wasProtected -and $script:CLEAR_PROTECTION) {
+-        $moved = try { Get-ADComputer -Identity $ComputerName -ErrorAction Stop @adp } catch {
+-            Write-Log "Objet déplacé mais protection non rétablie : '$ComputerName' introuvable après déplacement." 'WARN' $_ 'AD'
+-            $protectionNote = ' | ATTENTION : protection anti-suppression non confirmée après déplacement.'
+-            $null
+-        }
+-        if ($moved) {
+-            try { Set-ADObject -Identity $moved.DistinguishedName -ProtectedFromAccidentalDeletion:$true -ErrorAction Stop @adp }
+-            catch {
+-                Write-Log "Protection anti-suppression non rétablie sur '$($moved.DistinguishedName)' (à re-cocher manuellement)." 'WARN' $_ 'AD'
+-                $protectionNote = ' | ATTENTION : protection anti-suppression non rétablie ; action manuelle requise.'
+-            }
+-        }
+-    }
+-
+-    # Vérif post-déplacement non bloquante (absorbe la latence de réplication).
+-    $confirmed = $false
+-    for ($i = 0; $i -lt 3 -and -not $confirmed; $i++) {
+-        Wait-Pumped -Seconds 2
+-        $after = try { Get-ComputerOU -Identity $ComputerName } catch { $null }
+-        if ($after -and $after.OU -ieq $OU_Destination) { $confirmed = $true }
+-    }
+-    if (-not $confirmed) {
+-        # Move-ADObject a déjà été accepté par AD : l'échec de lecture qui suit ne permet
+-        # plus d'affirmer si l'objet est resté dans l'OU source ou a réellement bougé.
+-        # Code 97 => arrêt de sécurité de la file, aucune mutation suivante n'est lancée.
+-        return New-ActionResult 97 "ÉTAT INDÉTERMINÉ : Move-ADObject a répondu sans erreur, mais le déplacement de `"$ComputerName`" vers `"$OU_Destination`" n'a pas pu être confirmé sur le DC $($script:DC). Vérifiez l'AD avant toute relance.$protectionNote"
+-    }
+-    return New-ActionResult 30 "`"$ComputerName`" déplacé dans `"$OU_Destination`"$protectionNote"
++        if($protected){
++            # Même si cet appel lève une exception, tenter de restaurer le droit original.
++            $restoreRequired=$true
++            Set-ADObject -Identity $id -ProtectedFromAccidentalDeletion:$false -ErrorAction Stop @adp
++        }
++        $moveStarted=$true
++        Move-ADObject -Identity $id -TargetPath $OU_Destination -ErrorAction Stop @adp
++    }catch{$moveError=[string]$_.Exception.Message}
++    finally {
++        if($restoreRequired){
++            try{Set-ADObject -Identity $id -ProtectedFromAccidentalDeletion:$true -ErrorAction Stop @adp}
++            catch{$protectionError=[string]$_.Exception.Message}
++        }
++    }
++    for($i=0;$i -lt 3;$i++){
++        try{$after=Get-ADComputer -Identity $id -Properties DistinguishedName,ProtectedFromAccidentalDeletion -ErrorAction Stop @adp;break}
++        catch{if($i -lt 2){Start-Sleep -Milliseconds 700}}
++    }
++    if(-not $after){return New-ActionResult 97 "État indéterminé : lecture finale par GUID impossible. Déplacement : $moveError. Protection : $protectionError"}
++    $actualOU=Get-GPParentDN ([string]$after.DistinguishedName)
++    if($restoreRequired -and -not [bool]$after.ProtectedFromAccidentalDeletion){
++        return New-ActionResult 32 "Protection NON RÉTABLIE. OU observée : '$actualOU'. Vérification et réparation manuelles requises. $protectionError"
++    }
++    if($actualOU -ieq $OU_Destination){return New-ActionResult 30 "Déplacement confirmé par GUID vers '$OU_Destination' ; protection d'origine vérifiée."}
++    if($moveStarted -and $moveError -match '(?i)(RPC|0x800706ba|timed?\s*out|d.lai|transport|connexion.*(perd|ferm))'){
++        return New-ActionResult 97 "Déplacement non confirmé après erreur de transport. OU actuellement observée : '$actualOU'. Un effet différé reste possible ; vérifier avant relance. $moveError"
++    }
++    if($actualOU -ieq $srcOU -and ($moveError -or -not $moveStarted)){
++        return New-ActionResult 31 "Déplacement refusé ; objet confirmé dans l'OU source et protection d'origine conservée. $moveError"
++    }
++    return New-ActionResult 97 "Résultat du déplacement incohérent : OU observée '$actualOU'. Ne relancez pas sans contrôle AD."
+ }
+ 
+ ###############################################################################
+@@ -1894,14 +2301,9 @@
+ }
+ 
+ function GoRenameAndMove {
+-    <# Renommage D'ABORD, puis déplacement EN DERNIER sur le DC de l'outil.
+-       Ordre critique (corrige « renommé mais pas déplacé ») : Rename-Computer passe par la
+-       machine et écrit le compte sur le DC de la MACHINE — souvent différent du DC de l'outil.
+-       Si on déplaçait d'abord, le renommage (un modrdn sur un DC qui n'a pas encore vu le
+-       déplacement) ré-écrirait le parent d'origine avec un timestamp plus récent et ANNULERAIT
+-       le déplacement à la réplication. En renommant d'abord, en attendant que le nouveau nom
+-       soit visible sur le DC de l'outil, puis en déplaçant en dernier sur ce DC, le déplacement
+-       est la dernière écriture du parent → il gagne, et le nom est conservé. #>
++    <# Renommer puis attendre la visibilité du nouveau nom sur le DC sélectionné,
++       avant de déplacer. La réplication AD peut retarder cette observation ;
++       elle ne constitue jamais une garantie de convergence immédiate. #>
+     param($Nom_du_PC,$Nouveau_Nom,$OU_Destination,$OU_Actuelle,$Confirm)
+ 
+     try { $taken = Find-ADComputerByName -Name "$Nouveau_Nom" }
+@@ -1931,11 +2333,11 @@
+     if ($renameResult -and $renameResult.ExitCode -ne 20) {
+         return New-ActionResult $renameResult.ExitCode "Renommage échoué (code $($renameResult.ExitCode)) : $($renameResult.ExitMsg) | Poste NON déplacé."
+     }
+-    # $renameResult null = ancien nom == nouveau nom (no-op) : l'objet garde son nom courant.
+-    $moveName = if ($null -eq $renameResult) { $Nom_du_PC } else { $Nouveau_Nom }
++    if(-not $renameResult){return New-ActionResult 97 "Résultat de renommage absent ; déplacement non tenté."}
++    $moveName = if($script:SIM){$Nom_du_PC}else{$Nouveau_Nom}
+ 
+     # 2) Attendre que le NOUVEAU nom soit visible sur le DC de l'outil (réplication depuis le DC
+-    #    de la machine), sinon Move-ADObject ré-écrirait l'ANCIEN nom et annulerait le renommage.
++    #    de la machine). Cette attente facilite la résolution du nom ; le déplacement utilise ensuite le GUID.
+     if (($moveName -ieq $Nouveau_Nom) -and -not $script:SIM) {
+         try { $visible = Wait-ADComputerVisible -Identity $Nouveau_Nom -TimeoutSec 60 }
+         catch {
+@@ -1946,8 +2348,10 @@
+         }
+     }
+ 
+-    # 3) DÉPLACEMENT EN DERNIER, sur le DC de l'outil, avec le nom courant → dernière écriture, il gagne.
++    # 3) Déplacement sur le DC configuré, après confirmation du renommage.
+     $moveResult = MoveComputer -ComputerName $moveName -OU_Destination $OU_Destination
++    if(-not $moveResult){return New-ActionResult 97 "Renommage confirmé mais résultat de déplacement absent."}
++    if($moveResult.ExitCode -eq 32){return New-ActionResult 32 ("Renommage confirmé ; protection AD non rétablie : "+$moveResult.ExitMsg)}
+     if ($moveResult -and [int]$moveResult.ExitCode -eq 97) {
+         return New-ActionResult 97 "${suffix}`"$Nom_du_PC`" a été RENOMMÉ en `"$Nouveau_Nom`", mais l'état du DÉPLACEMENT est INDÉTERMINÉ : $($moveResult.ExitMsg) | ARRÊT DE SÉCURITÉ : vérifiez l'AD avant toute relance."
+     }
+@@ -2153,6 +2557,7 @@
+ function Write-AuditLine {
+     <# Ajoute une ligne horodatée au journal persistant (silencieux si indisponible). #>
+     param([string]$Text,[string]$Kind='info')
++    $Text=Protect-GPLogText $Text
+     if (-not $script:AuditFile) { return }
+     try {
+         $line = '{0} [{1}] {2}{3}' -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'),
+@@ -2210,7 +2615,7 @@
+         $sb  = New-Object System.Text.StringBuilder
+         [void]$sb.AppendLine(('{0} [{1}] {2}{3}' -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss'), $Level.PadRight(5), $ctx, $Message))
+         if ($Err) { $d = Get-ErrorDetail $Err; if ($d) { [void]$sb.AppendLine($d) } }
+-        [System.IO.File]::AppendAllText($script:AuditFile, $sb.ToString(), [System.Text.Encoding]::UTF8)
++        [System.IO.File]::AppendAllText($script:AuditFile, (Protect-GPLogText $sb.ToString()), [System.Text.Encoding]::UTF8)
+     } catch { }
+ }
+ 
+@@ -2286,6 +2691,7 @@
+ }
+ function Add-LogLine {
+     param([string]$Text,[string]$Kind='info')
++    $Text=Protect-GPLogText $Text
+     $entry = [PSCustomObject]@{ Time = (Get-Date -Format 'HH:mm:ss'); Text = $Text; Kind = $Kind }
+     # Une List vide est évaluée à $false : tester explicitement $null, sinon la
+     # toute première ligne n'était jamais mémorisée.
+@@ -2294,6 +2700,8 @@
+         [void]$LogBox.Document.Blocks.Add((New-LogParagraph $entry))
+         $LogBox.ScrollToEnd()
+     }
++    if($null -ne $script:LogEntries){while($script:LogEntries.Count -gt 1500){$script:LogEntries.RemoveAt(0)}}
++    if($LogBox){while($LogBox.Document.Blocks.Count -gt 1500){$LogBox.Document.Blocks.Remove($LogBox.Document.Blocks.FirstBlock)}}
+     Write-AuditLine $Text $Kind
+ }
+ function Add-LogSeparator {
+@@ -2719,7 +3127,7 @@
+ 
+         [xml]$sxaml = @"
+ <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+-        Title="GP 16.0-HD — Initialisation" Width="620" Height="330" ResizeMode="NoResize"
++        Title="GP 17.0-RC1 — Initialisation" Width="620" Height="330" ResizeMode="NoResize"
+         WindowStartupLocation="CenterScreen" Background="$bgWindow" FontFamily="Segoe UI" FontSize="12"
+         ShowInTaskbar="True" Topmost="True">
+   <Border Margin="18" Padding="22" CornerRadius="18" Background="$bgCard" BorderBrush="$border" BorderThickness="1">
+@@ -2824,7 +3232,7 @@
+ [xml]$xaml = @'
+ <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+-        Title="GP 16.0-HD — Gestion des Postes" Height="720" Width="1320"
++        Title="GP 17.0-RC1 — Gestion des Postes" Height="720" Width="1320"
+         MinHeight="680" MinWidth="1100" WindowStartupLocation="CenterScreen"
+         Background="{DynamicResource BgWindow}" FontFamily="Segoe UI" FontSize="13"
+         TextOptions.TextFormattingMode="Display" UseLayoutRounding="True">
+@@ -3111,7 +3519,7 @@
+       </Grid.ColumnDefinitions>
+ 
+       <!-- Carte configuration : Grid 3-rows = scroll (*)  |  bloc OU (Auto)  |  bouton (Auto) -->
+-      <Border Grid.Column="0" Style="{StaticResource Card}">
++      <Border x:Name="ConfigPanel" Grid.Column="0" Style="{StaticResource Card}">
+         <Grid>
+           <Grid.RowDefinitions>
+             <RowDefinition Height="*"/>
+@@ -3236,13 +3644,13 @@
+               <RowDefinition Height="Auto"/>
+               <RowDefinition Height="*"/>
+             </Grid.RowDefinitions>
+-            <DockPanel Grid.Row="0" Margin="2,0,2,8">
++            <StackPanel Grid.Row="0" Margin="2,0,2,8">
+               <TextBlock Text="File d'actions" FontSize="15" FontWeight="SemiBold" VerticalAlignment="Center"/>
+               <TextBlock x:Name="LblQueueCount" Text="" FontSize="12" Margin="10,0,0,0"
+                          VerticalAlignment="Center" Foreground="{DynamicResource FgMuted}"/>
+-              <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" DockPanel.Dock="Right">
++              <WrapPanel Orientation="Horizontal" Margin="-3,8,0,0">
+                 <Button x:Name="BtnCheckAll"   Content="&#x2611;" FontSize="14" Width="30" Style="{StaticResource Btn}" Margin="3,0" Padding="0,3" IsEnabled="False"
+-                        ToolTip="Tout cocher : marquer « à traiter » toutes les lignes de la file."/>
++                        ToolTip="Cocher uniquement les lignes en attente ou les échecs sans incertitude."/>
+                 <Button x:Name="BtnUncheckAll" Content="&#x2610;" FontSize="14" Width="30" Style="{StaticResource Btn}" Margin="3,0" Padding="0,3" IsEnabled="False"
+                         ToolTip="Tout décocher : retirer « à traiter » de toutes les lignes de la file."/>
+                 <Button x:Name="BtnEdit"   Content="Modifier"  Style="{StaticResource Btn}" Margin="3,0" Padding="8,5" IsEnabled="False"
+@@ -3252,22 +3660,27 @@
+                 <Button x:Name="BtnClear"  Content="Vider"     Style="{StaticResource Btn}" Margin="3,0" Padding="8,5" IsEnabled="False"
+                         ToolTip="Vider entièrement la file d'actions (avec confirmation)."/>
+                 <Button x:Name="BtnImport" Content="Importer"  Style="{StaticResource Btn}" Margin="3,0" Padding="8,5"
+-                        ToolTip="Importer une file depuis un fichier CSV (séparateur « ; », encodage UTF-8). Remplace les lignes du même poste."/>
++                        ToolTip="Importer une file depuis un fichier CSV (séparateur « ; », encodage UTF-8). Validation atomique ; refuse les doublons ; importe les lignes décochées."/>
+                 <Button x:Name="BtnExport" Content="Exporter"  Style="{StaticResource Btn}" Margin="3,0" Padding="8,5" IsEnabled="False"
+                         ToolTip="Exporter la file actuelle vers un fichier CSV (séparateur « ; »)."/>
+-              </StackPanel>
+-            </DockPanel>
++                <Button x:Name="BtnPreview" Content="Prévisualiser" Style="{StaticResource Btn}" Margin="3,4" Padding="8,5" IsEnabled="False"/>
++                <Button x:Name="BtnDetails" Content="Résultat" Style="{StaticResource Btn}" Margin="3,4" Padding="8,5" IsEnabled="False"/>
++                <Button x:Name="BtnRetryMove" Content="Reprendre déplacement" Style="{StaticResource Btn}" Margin="3,4" Padding="8,5" IsEnabled="False"/>
++                <Button x:Name="BtnSafetyReset" Content="Lever le verrou" Style="{StaticResource Btn}" Margin="3,4" Padding="8,5" Visibility="Collapsed"/>
++              </WrapPanel>
++            </StackPanel>
+             <Grid Grid.Row="1">
+               <DataGrid x:Name="Grid" AutoGenerateColumns="False" CanUserAddRows="False"
+                         CanUserDeleteRows="False" CanUserSortColumns="False" HeadersVisibility="Column" SelectionMode="Single"
+-                        IsReadOnly="False" FontFamily="Consolas" FontSize="12">
++                        IsReadOnly="False" FontFamily="Consolas" FontSize="12" EnableRowVirtualization="True" EnableColumnVirtualization="True" VirtualizingPanel.VirtualizationMode="Recycling">
++                <DataGrid.RowStyle><Style TargetType="DataGridRow"><Setter Property="ToolTip" Value="{Binding Message}"/></Style></DataGrid.RowStyle>
+                 <DataGrid.Columns>
+                   <DataGridCheckBoxColumn Binding="{Binding Traiter}" Width="30">
+                     <DataGridCheckBoxColumn.Header>
+                       <TextBlock Text="✓" FontWeight="SemiBold" ToolTip="Cochez les postes à inclure dans la prochaine exécution. Le compteur du bouton « Exécuter la file » reflète ce total."/>
+                     </DataGridCheckBoxColumn.Header>
+                   </DataGridCheckBoxColumn>
+-                  <DataGridTextColumn Binding="{Binding Statut}" IsReadOnly="True" Width="48">
++                  <DataGridTextColumn Binding="{Binding Statut}" IsReadOnly="True" Width="104">
+                     <DataGridTextColumn.Header>
+                       <TextBlock Text="Statut" FontWeight="SemiBold" ToolTip="Résultat de la dernière exécution : OK (réussi) ou KO (échoué). Vide tant que l'action n'a pas été lancée."/>
+                     </DataGridTextColumn.Header>
+@@ -3286,6 +3699,8 @@
+                       </Style>
+                     </DataGridTextColumn.CellStyle>
+                   </DataGridTextColumn>
++                  <DataGridTextColumn Binding="{Binding Code}" Header="Code" Width="45" IsReadOnly="True"/>
++                  <DataGridTextColumn Binding="{Binding Duree}" Header="Durée" Width="68" IsReadOnly="True"/>
+                   <DataGridCheckBoxColumn Binding="{Binding Renommer}" IsReadOnly="True" Width="40">
+                     <DataGridCheckBoxColumn.Header>
+                       <TextBlock Text="Ren." FontWeight="SemiBold" ToolTip="Renommage prévu pour ce poste."/>
+@@ -3352,9 +3767,12 @@
+                        Foreground="{DynamicResource RunBg}" Background="{DynamicResource BgInputRO}"
+                        BorderThickness="0" Visibility="Collapsed"/>
+         </StackPanel>
+-        <Button Grid.Column="2" x:Name="BtnRun" Content="Exécuter la file" Style="{StaticResource BtnRun}"
++        <StackPanel Grid.Column="2" Orientation="Horizontal">
++          <Button x:Name="BtnStop" Content="Arrêter après cette action" Style="{StaticResource Btn}" Margin="0,0,10,0" Padding="8,5" IsEnabled="False"/>
++        <Button x:Name="BtnRun" Content="Exécuter la file" Style="{StaticResource BtnRun}"
+                 Height="40" Width="190" IsEnabled="False"
+                 ToolTip="Lance toutes les actions cochées de la file. Le nombre entre parenthèses indique les postes à traiter."/>
++        </StackPanel>
+       </Grid>
+     </Border>
+ 
+@@ -3507,8 +3925,8 @@
+                         ToolTip="Parcourir l'arborescence Active Directory pour choisir l'OU."/>
+               </Grid>
+               <Border Height="1" Background="{DynamicResource Divider}" Margin="0,12,0,8"/>
+-              <CheckBox x:Name="SetChkDsreg" Visibility="Collapsed" Content="dsregcmd /leave au déplacement (obsolète — désactivé)"
+-                        ToolTip="Option conservée uniquement pour compatibilité de cfg.json. GP n'exécute plus dsregcmd /leave lors d'un simple déplacement d'OU." IsEnabled="False"/>
++              <CheckBox x:Name="SetChkDsreg" Content="Autoriser le retrait Entra après un refus de renommage (risqué)"
++                        ToolTip="Option désactivée par défaut. Autorise dsregcmd /leave uniquement après un refus Entra de renommage ; vérifier ensuite la réinscription. Jamais au déplacement seul."/>
+               <TextBlock x:Name="SetLblPrefixes" Text="—" FontFamily="Consolas" FontSize="11" Margin="0,10,0,0" Foreground="{DynamicResource FgMuted}"/>
+             </StackPanel>
+           </Border>
+@@ -3673,8 +4091,8 @@
+ 
+ # ── Adaptation aux petits écrans : la fenêtre ne dépasse jamais la zone de travail ──
+ $wa = [System.Windows.SystemParameters]::WorkArea
+-if ($Win.Width  -gt $wa.Width)  { $Win.Width  = [Math]::Max(1100, $wa.Width  - 20); if ($Win.MinWidth  -gt $Win.Width)  { $Win.MinWidth  = $Win.Width }  }
+-if ($Win.Height -gt $wa.Height) { $Win.Height = [Math]::Max(680,  $wa.Height - 20); if ($Win.MinHeight -gt $Win.Height) { $Win.MinHeight = $Win.Height } }
++if ($Win.Width -gt $wa.Width) { $target=[Math]::Max(400,$wa.Width-20);$Win.MinWidth=[Math]::Min($Win.MinWidth,$target);$Win.Width=$target }
++if ($Win.Height -gt $wa.Height) { $target=[Math]::Max(300,$wa.Height-20);$Win.MinHeight=[Math]::Min($Win.MinHeight,$target);$Win.Height=$target }
+ 
+ # ── Récupération des contrôles nommés ────────────────────────────────────────
+ $names = 'BtnTheme','BtnLog','ChipMember','ChipDomain','ChipJoin','ChipSim','ChipGui',
+@@ -3687,7 +4105,8 @@
+          'SetTabs','SetTxtDomaine','SetTxtADM','SetTxtPrefixe','SetTxtPreprod','SetTxtBuffer','SetTxtOUScan','SetBtnBrowseScan',
+          'SetChkDirectProd','SetChkDsreg','SetCmbDarkMode','SetLblPrefixes','SetGridTags','SetBtnTagAdd','SetBtnTagDel',
+          'SetGridOUBase','SetBtnBaseAdd','SetBtnBaseDel','SetBtnBaseBrowse','SetGridOUSite','SetBtnSiteAdd','SetBtnSiteDel','SetBtnSiteBrowse',
+-         'SetChkSim','SetChkODM','SetChkWOU','SetChkBVA','SetChkGOD','SetChkGUI','SetBtnSave','SetBtnReload','SetLblStatus','BodyGrid'
++         'SetChkSim','SetChkODM','SetChkWOU','SetChkBVA','SetChkGOD','SetChkGUI','SetBtnSave','SetBtnReload','SetLblStatus','BodyGrid',
++         'ConfigPanel','BtnPreview','BtnDetails','BtnRetryMove','BtnSafetyReset','BtnStop'
+ foreach ($n in $names) { Set-Variable -Name $n -Value $Win.FindName($n) -Scope Script }
+ 
+ # CbType peuplé en chaînes simples (évite les objets ComboBoxItem du XAML)
+@@ -3707,9 +4126,10 @@
+     [void]$t.Columns.Add('Renommer',[bool])
+     [void]$t.Columns.Add('Deplacer',[bool])
+     $colReboot = $t.Columns.Add('Reboot',[bool]); $colReboot.DefaultValue = $false
+-    foreach ($c in 'Nom_du_PC','Type_de_PC','Organisme','Site','Service','Nouveau_Nom','OU_Actuelle','OU_Destination') {
++    foreach ($c in 'Nom_du_PC','Type_de_PC','Organisme','Site','Service','Nouveau_Nom','OU_Actuelle','OU_Destination','Code','Message','Duree','Horodatage') {
+         [void]$t.Columns.Add($c,[string])
+     }
++    foreach($col in $t.Columns){if($col.DataType -eq [string]){$col.DefaultValue=''}elseif($col.DataType -eq [bool]){$col.DefaultValue=$false}}
+     return ,$t   # virgule = empêche PowerShell d'énumérer la DataTable (sinon une table vide -> $null)
+ }
+ $script:table = New-QueueTable
+@@ -3729,27 +4149,28 @@
+ }
+ function Update-QueueButtons {
+     Ensure-Table
+-    $total = $script:table.Rows.Count
+-    $has   = ($total -gt 0)
+-    $sel   = ($Grid.SelectedItem -ne $null)
+-    $toRun = @($script:table.Rows | Where-Object { $_.Traiter -eq $true -and ($_.Renommer -or $_.Deplacer) }).Count
+-    $editing = ($script:EDIT_ROW_INDEX -ge 0)
+-
+-    $BtnEdit.IsEnabled   = $sel -or $editing
+-    $BtnDelete.IsEnabled = $sel -and -not $editing
+-    $BtnClear.IsEnabled  = $has -and -not $editing
+-    $BtnImport.IsEnabled = -not $editing
+-    $BtnExport.IsEnabled = $has
+-    $BtnRun.IsEnabled    = ($toRun -gt 0) -and -not $editing
+-    if ($BtnCheckAll)   { $BtnCheckAll.IsEnabled   = $has -and -not $editing }
+-    if ($BtnUncheckAll) { $BtnUncheckAll.IsEnabled = $has -and -not $editing }
+-    $BtnRun.Content      = if ($toRun -gt 0) { "Exécuter la file ($toRun)" } else { 'Exécuter la file' }
+-
+-    if ($LblEmpty) { $LblEmpty.Visibility = if ($has) { 'Collapsed' } else { 'Visible' } }
+-    if ($LblQueueCount) {
+-        $LblQueueCount.Text = if ($has) { "$total poste$(if($total -gt 1){'s'}) • $toRun à traiter" } else { '' }
+-    }
+-    if ($script:INDOMAIN) { $ChkRemote.IsEnabled = -not $has }
++    $total=$script:table.Rows.Count; $has=$total -gt 0
++    $selected=$null -ne $Grid.SelectedItem; $editing=$script:EDIT_ROW_INDEX -ge 0
++    $toRun=@($script:table.Rows|Where-Object{$_.Traiter -eq $true -and ($_.Renommer -or $_.Deplacer)}).Count
++    $locked=[bool]$script:Running
++    $BtnEdit.IsEnabled=(-not $locked -and ($selected -or $editing))
++    $BtnDelete.IsEnabled=(-not $locked -and $selected -and -not $editing)
++    $BtnClear.IsEnabled=(-not $locked -and $has -and -not $editing)
++    $BtnImport.IsEnabled=(-not $locked -and -not $editing)
++    $BtnExport.IsEnabled=(-not $locked -and $has)
++    $BtnCheckAll.IsEnabled=(-not $locked -and $has -and -not $editing)
++    $BtnUncheckAll.IsEnabled=$BtnCheckAll.IsEnabled
++    $BtnPreview.IsEnabled=(-not $locked -and $toRun -gt 0)
++    $BtnDetails.IsEnabled=$selected
++    $BtnRetryMove.IsEnabled=(-not $locked -and $selected -and [string]$Grid.SelectedItem.Code -eq '89' -and -not $script:MutationUncertain)
++    $BtnSafetyReset.Visibility=if($script:MutationUncertain){'Visible'}else{'Collapsed'}
++    $BtnSafetyReset.IsEnabled=(-not $locked)
++    $BtnStop.IsEnabled=($locked -and -not $script:QueueStopRequested)
++    $BtnRun.IsEnabled=(-not $locked -and $toRun -gt 0 -and -not $editing -and -not $script:MutationUncertain -and -not $script:CfgRestartRequired -and -not (Test-GPAsyncOperationRunning 'DirectoryRefresh'))
++    $BtnRun.Content=if($toRun -gt 0){"Exécuter la file ($toRun)"}else{'Exécuter la file'}
++    $LblEmpty.Visibility=if($has){'Collapsed'}else{'Visible'}
++    $LblQueueCount.Text=if($has){"$total poste(s) • $toRun à traiter"}else{''}
++    if($script:INDOMAIN){$ChkRemote.IsEnabled=(-not $locked -and -not $has)}
+ }
+ 
+ function Sync-Grid {
+@@ -3976,7 +4397,7 @@
+         if($CbType.SelectedItem -in @('Portable','Fixe')){Update-NameList}
+         return
+     }
+-    if(-not (Test-GPComputerName $name)-or $name.Length -ne 15){Reset-ConfigFields;return}
++    if(-not (Test-GPComputerName $name)){Reset-ConfigFields;return}
+     if($name -ieq $env:COMPUTERNAME -and -not $script:LOCALHOST){Set-ModeLocal;return}
+     if($name -ieq $env:COMPUTERNAME){$script:LOCALHOST=$true}
+ 
+@@ -4006,24 +4427,8 @@
+         Name=$name;Local=[bool]$script:LOCALHOST;DC=$script:DC;Credential=$script:cred
+         ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')
+     }
+-    $ok={param($r)
+-        [void](Apply-GPComputerProbeResult -Result $r -Name $name -Generation $gen)
+-        if($script:GPStartupClosePending){
+-            $script:GPStartupClosePending=$false
+-            try{Set-GPStartupStage -Stage 'Prêt' -Detail 'Poste identifié.'}catch{}
+-            try{Close-GPStartupWindow}catch{}
+-        }
+-    }.GetNewClosure()
+-    $err={param($e)
+-        if($gen -ne [int]$script:PCProbeGeneration){return}
+-        Reset-ConfigFields -KeepName
+-        Set-PCInfo "Poste introuvable dans l'AD ou contrôleur indisponible : $($e.Exception.Message)" 'err'
+-        Write-Log "Lecture du poste '$name' impossible." 'ERROR' $e 'AD'
+-        if($script:GPStartupClosePending){
+-            $script:GPStartupClosePending=$false
+-            try{Close-GPStartupWindow}catch{}
+-        }
+-    }.GetNewClosure()
++    $ok={param($r) Complete-GPComputerProbeSuccess -Result $r -Name $name -Generation $gen}.GetNewClosure()
++    $err={param($e) Complete-GPComputerProbeError -Failure $e -Name $name -Generation $gen}.GetNewClosure()
+     [void](Start-GPAsyncOperation -Name 'PCProbe' -ScriptBlock $script:GPComputerProbeWorker -ArgumentList @($request) -OnSuccess $ok -OnError $err -Replace -TimeoutSec 75)
+ }
+ function Setup-HorsDomaineUI {
+@@ -4245,7 +4650,7 @@
+         } elseif(-not (Test-GPOUPath $script:OU_ORGANISME)){
+             Set-PCInfo "OU d'organisme invalide pour '$site'."
+         } else {
+-            $script:OU_FINAL="OU=$site,$($script:OU_ORGANISME)"
++            $script:OU_FINAL="OU=$(ConvertTo-GPRdnValue $site),$($script:OU_ORGANISME)"
+             Set-OULabel $LblTargetOU 'OU cible     :' $script:OU_FINAL
+             if($script:INDOMAIN){$ChkMove.IsEnabled=$true;$ChkMove.IsChecked=$true;$needSameOU=$true}
+             if((-not $script:LOCALHOST)-and($script:PING -eq $false)){
+@@ -4254,7 +4659,7 @@
+             } else {
+                 # Le cache ROOT contient déjà DistinguishedName par défaut. On en
+                 # déduit les équipes localement : aucun nouvel aller-retour AD.
+-                $prefix=("OU=$site,$($script:OU_ORGANISME)").ToLowerInvariant()
++                $prefix=("OU=$(ConvertTo-GPRdnValue $site),$($script:OU_ORGANISME)").ToLowerInvariant()
+                 $comp=@($script:Computers | Where-Object {
+                     $dn="$($_.DistinguishedName)".ToLowerInvariant()
+                     $dn -and ($dn -like "*,$prefix")
+@@ -4357,6 +4762,7 @@
+ }
+ function Update-AddButton {
+     <# Active « Ajouter » uniquement avec une action et des données entièrement valides. #>
++    if($script:Running -or $script:MutationUncertain -or $script:CfgRestartRequired){$BtnAdd.IsEnabled=$false;return}
+     Update-RebootOption
+     $source = "$($TxtPCName.Text)".Trim()
+     $newName = "$($CbName.SelectedItem)".Trim()
+@@ -4383,6 +4789,7 @@
+ #  SECTION 10 — AJOUT / ÉDITION DE LIGNES
+ ###############################################################################
+ function Add-Or-UpdateRow {
++    if($script:Running -or $script:MutationUncertain -or $script:CfgRestartRequired){return}
+     Ensure-Table
+     $NomPC   = "$($TxtPCName.Text)".Trim().ToUpperInvariant()
+     $NewName = "$($CbName.SelectedItem)".Trim().ToUpperInvariant()
+@@ -4419,11 +4826,12 @@
+ 
+     # Une seule ligne par poste, y compris si le nom source est modifié en édition.
+     $dupes = @($script:table.Rows | Where-Object { $_ -ne $row -and "$($_.Nom_du_PC)".Trim() -ieq $NomPC })
+-    foreach ($d in $dupes) { $script:table.Rows.Remove($d) }
++    if($dupes.Count){Show-MsgWarning "Ce poste possède déjà une ligne. Modifiez ou supprimez explicitement cette ligne.";return}
+     if (-not $row) { $row = $script:table.NewRow(); [void]$script:table.Rows.Add($row) }
+ 
+     $row.Traiter        = $true
+     $row.Statut         = ''
++    foreach($field in @('Code','Message','Duree','Horodatage')){$row[$field]=''}
+     $row.Renommer       = $Renommer
+     $row.Deplacer       = $Deplacer
+     $row.Reboot         = ($Reboot -and ($Renommer -or $Deplacer))
+@@ -4440,11 +4848,14 @@
+     Sync-Grid
+     Exit-EditMode
+     Update-QueueButtons
++    Save-GPQueueCheckpointSafe
+     Add-LogLine "File : $NomPC ajouté (Ren=$Renommer / Dépl=$Deplacer / Reboot=$($row.Reboot) → $NewName)" 'info'
+ }
+ function Enter-EditMode {
+     param([int]$Index)
++    if($script:Running){return}
+     if ($Index -lt 0 -or $Index -ge $script:table.Rows.Count) { return }
++    if($script:table.Rows[$Index].Statut -in @('OK','SIMULÉ','PARTIEL','PROTECTION','INCERTAIN','TECHNIQUE','EN COURS')){Show-MsgWarning "Cette ligne est un résultat historique : consultez le détail, ou utilisez Reprendre déplacement pour le code 89.";return}
+     $script:EDIT_ROW_INDEX = $Index
+     $row = $script:table.Rows[$Index]
+     $BtnAdd.Content = 'Mettre à jour'; $BtnEdit.Content = 'Annuler'
+@@ -4497,6 +4908,7 @@
+ }
+ 
+ function Delete-SelectedRow {
++    if($script:Running){return}
+     $rv = $Grid.SelectedItem
+     if (-not $rv) { return }
+     $nom = "$($rv.Row.Nom_du_PC)"; $new = "$($rv.Row.Nouveau_Nom)"
+@@ -4514,10 +4926,11 @@
+ ###############################################################################
+ 
+ $script:OK_CODES  = @(10,20,30,33,77)
+-$script:NOK_CODES = @(11,13,21,31,69,88,89,91,97,98,99)
++$script:NOK_CODES = @(11,13,21,31,32,69,88,89,91,97,98,99)
+ 
+ 
+ $script:GPWorkerCoreNames = @(
++ 'Test-GPDnsName','Split-GPDistinguishedName','Get-GPParentDN','Get-GPDomainFromDN','Test-GPDNWithinScope','Test-GPOUInConfiguredScope','Test-QueueRowSafe','Test-GPConfirmedChange','Protect-GPLogText','New-GPTaskService','Release-GPComObject','Get-GPTaskArgument','Test-GPPipeClient','Invoke-GPElevatedLocalChange',
+  'Test-GPComputerName','Test-GPGeneratedComputerName','Test-GPOUPath','Get-ADParams','Find-ADComputerByName','Get-ComputerOU','Get-AllComputersInOU','Update-ComputersNoms',
+  'New-ActionResult','ConvertTo-GPQuotedArg','Get-GPSecretArgIndexes','Invoke-GPProcess','Invoke-GPSchtasks','Get-GPSchtasksTransportArgs','Get-GPSchtasksHint',
+  'Test-GPIsAdministrator','New-GPRunOnceTaskXml','ConvertTo-GPPowerShellLiteral','Get-GPTaskRunResult','Get-GPRemoteTaskLogTail','Invoke-GPSystemTaskScript','Invoke-GPHybridRenameRepair',
+@@ -4548,7 +4961,7 @@
+       $detail=''
+       if($ErrorRecord){
+         try{$detail=[string]$ErrorRecord.Exception.Message}catch{}
+-        try{if($ErrorRecord.FullyQualifiedErrorId){$detail+=(if($detail){' | '}else{''})+[string]$ErrorRecord.FullyQualifiedErrorId}}catch{}
++        try{if($ErrorRecord.FullyQualifiedErrorId){$detail+=$(if($detail){' | '}else{''})+[string]$ErrorRecord.FullyQualifiedErrorId}}catch{}
+       }
+       [void]$script:WorkerLogs.Add([pscustomobject]@{Text=[string]$Message;Level=[string]$Level;Context=[string]$Context;Detail=$detail})
+     }
+@@ -4563,9 +4976,12 @@
+     $script:DC=[string]$Request.DC;$script:DOMAINE=[string]$Request.Domain;$script:cred=$Request.Credential
+     $script:PREFIXE=[string]$Request.Prefix;$script:SIM=[bool]$Request.SIM;$script:GUI=$false;$script:SimOn=$false;$script:INDOMAIN=[bool]$Request.InDomain;$script:PRD=[bool]$Request.PRD
+     $script:OU=$Request.OU;$script:OU_POSTES=[string]$Request.OUPostes;$script:OU_SCAN=[string]$Request.OUScan;$script:CLEAR_PROTECTION=[bool]$Request.ClearProtection;$script:DSREG_LEAVE=$false
++    $script:OUV=$Request.OUSite;$script:ALLOW_HYBRID_REPAIR=[bool]$Request.AllowHybridRepair
++    $errors=@(Test-QueueRowSafe -Nom $Request.Computer -NewName $Request.NewName -OU $Request.TargetOU -Ren $Request.Rename -Move $Request.Move)
++    if($errors.Count){throw ("Précontrôle worker refusé : "+($errors -join '; '))}
+     $script:Computers=@();$script:ComputersNoms=@()
+     $result=@(Go -Renommer ([bool]$Request.Rename) -Deplacer ([bool]$Request.Move) -Nom_du_PC ([string]$Request.Computer) -Nouveau_Nom ([string]$Request.NewName) -OU_Destination ([string]$Request.TargetOU) -OU_Actuelle ([string]$Request.CurrentOU) -Confirm $false)
+-    $action=if($result.Count){$result[-1]}else{$null}
++    $action=if($result.Count -eq 1){$result[0]}else{$null}
+ 
+     # Une action effectivement lancée ne peut jamais disparaître en "annulation".
+     # Absence de résultat ou résultat mal formé = échec technique explicite.
+@@ -4577,7 +4993,7 @@
+       $action=New-ActionResult 98 ("Résultat d''action incomplet (code {0})." -f [int]$action.ExitCode)
+     }
+     $reboot=$null
+-    if([bool]$Request.Reboot -and $action -and ([int]$action.ExitCode -in @(10,20,30,33,77,89))){
++    if([bool]$Request.Reboot -and $action -and ([int]$action.ExitCode -in @(10,20,30,33,77))){
+       $reboot=Request-ComputerReboot -ComputerName ([string]$Request.Computer) -DelaySeconds 120
+     }
+     [pscustomobject]@{Action=$action;Reboot=$reboot;Logs=$script:WorkerLogs.ToArray()}
+@@ -4585,212 +5001,162 @@
+ 
+ function Set-GPQueueUiLocked {
+     param([bool]$Locked)
+-    foreach($b in @($BtnRun,$BtnAdd,$BtnEdit,$BtnDelete,$BtnClear,$BtnImport,$BtnExport,$SetBtnSave,$SetBtnReload,$NmBtnRefresh)){if($b){$b.IsEnabled=-not $Locked}}
++    # Verrouillage de conteneurs : aucun handler enfant ne peut le contourner.
++    if($ConfigPanel){$ConfigPanel.IsEnabled=-not $Locked}
++    if($SetTabs){$SetTabs.IsEnabled=-not $Locked}
++    foreach($b in @($BtnRun,$BtnAdd,$BtnEdit,$BtnDelete,$BtnClear,$BtnImport,$BtnExport,$BtnCheckAll,$BtnUncheckAll,$SetBtnSave,$SetBtnReload,$NmBtnRefresh,$BtnPreview,$BtnRetryMove)){
++        if($b){$b.IsEnabled=-not $Locked}
++    }
+     $Grid.IsReadOnly=$Locked
++    $BtnStop.IsEnabled=$Locked
+     if(-not $Locked){Update-QueueButtons;Update-AddButton}
+ }
+ 
+ function Stop-GPQueueRemainingForSafety {
+-    <# Interrompt la file sans lancer les lignes restantes lorsqu'on ne sait plus
+-       avec certitude si la mutation précédente est terminée. #>
+     param($State,[string]$Reason)
+-    if($null -eq $State){return}
+-    $remaining=0
+-    for($i=[int]$State.Index;$i -lt $State.Items.Count;$i++){
+-      try{
+-        $rr=$State.Items[$i].Row
+-        if($rr){$rr.Statut='ANNULÉ';$rr.Traiter=$false}
+-      }catch{}
+-      $remaining++
+-    }
+-    if($remaining -gt 0){$State.CancelCount=[int]$State.CancelCount+$remaining}
++    if(-not $State){return}
++    $script:MutationUncertain=$true
++    for($i=[int]$State.Index;$i -lt $State.Items.Count;$i++) {
++        $r=$State.Items[$i].Row; $r.Statut='NON LANCÉ';$r.Message=$Reason;$r.Traiter=$false
++        $State.CancelCount++
++    }
+     $State.Index=$State.Items.Count
+-    $msg="ARRÊT DE SÉCURITÉ : $Reason"
+-    if($remaining -gt 0){$msg+=" | $remaining action(s) restante(s) non lancée(s)."}
+-    Add-LogLine $msg 'err'
+-    Write-AuditLine $msg 'err'
++    Add-LogLine "ARRÊT DE SÉCURITÉ : $Reason" 'err'
++    Write-AuditLine "ARRÊT DE SÉCURITÉ : $Reason" 'err'
++    Save-GPQueueCheckpointSafe -Phase 'Uncertain'
+ }
+ 
+ function Complete-GPQueueRun {
+     $st=$script:QueueRunState;if(-not $st){return}
+-    $Progress.Visibility='Collapsed';$script:Running=$false;Set-GPQueueUiLocked $false
+-
+-    # Invariant : chaque ligne sélectionnée doit être comptabilisée exactement une fois.
+-    # CancelCount couvre les confirmations refusées et les lignes restantes neutralisées
+-    # par un arrêt de sécurité AVANT leur lancement.
+-    $accounted=[int]$st.OkCount+[int]$st.KoCount+[int]$st.CancelCount
+-    if($accounted -lt [int]$st.Total){
+-      $missing=[int]$st.Total-$accounted
+-      $st.KoCount=[int]$st.KoCount+$missing
+-      Add-LogLine "$missing action(s) sans résultat ont été reclassées en échec technique." 'err'
+-    }
+-
+-    $cancelTxt=if($st.CancelCount){", $($st.CancelCount) annulée(s)"}else{''}
+-    $summary="Terminé : $($st.Total) action(s) — $($st.OkCount) réussie(s), $($st.KoCount) échouée(s)$cancelTxt."
+-    Add-LogSeparator;Add-LogLine $summary $(if($st.KoCount){'warn'}else{'ok'});$LblStatus.Text=$summary;$LblStatus.Foreground=$Win.Resources[$(if($st.KoCount){'WarnFg'}else{'OkFg'})]
+-    if($st.KoCount -gt 0 -and $MainTabs){$MainTabs.SelectedIndex=3}
+-
+-    $endMsg="Exécution terminée — $($st.OkCount) réussie(s), $($st.KoCount) échouée(s)"
+-    if($st.CancelCount){$endMsg+=", $($st.CancelCount) annulée(s)"}
+-    $endMsg+='.'
+-    if($st.RestartNeeded){$endMsg+="`nUn redémarrage est nécessaire pour appliquer les renommages/jonctions réussis."}
+-    $script:QueueRunState=$null
+-    Show-MsgInfo $endMsg 'Terminé'
+-    # Le rafraîchissement AD post-file part lui aussi en arrière-plan.
+-    Refresh-Names
++    $counted=[int]$st.OkCount+[int]$st.KoCount+[int]$st.CancelCount
++    if($counted -ne [int]$st.Total) {
++        $script:MutationUncertain=$true
++        Write-Log "Comptage incohérent : $counted / $($st.Total)." 'ERROR' $null 'queue'
++        if($counted -lt $st.Total){$st.KoCount+=($st.Total-$counted)}
++    }
++    $prefix=if($script:SIM -or $script:GUI){'SIMULATION'}else{'Terminé'}
++    $summary="${prefix} : $($st.Total) action(s) — $($st.OkCount) réussie(s), $($st.KoCount) échouée(s), $($st.CancelCount) non lancée(s)."
++    $script:Running=$false;$script:QueueRunState=$null;$script:QueueCurrentTicket=$null
++    $Progress.Visibility='Collapsed';Set-GPQueueUiLocked $false
++    Add-LogLine $summary $(if($st.KoCount){'warn'}else{'ok'})
++    $LblStatus.Text=$summary
++    if($script:MutationUncertain){$LblStatus.Text+=' VERROU DE SÉCURITÉ ACTIF.'}
++    Save-GPQueueCheckpointSafe -Phase $(if($script:MutationUncertain){'Uncertain'}else{'Idle'})
++    $endMsg=$summary
++    if($st.RestartNeeded){$endMsg+="`nRedémarrage nécessaire pour appliquer les changements de nom/jonctions."}
++    if($script:MutationUncertain){$endMsg+="`nVérifiez l'état réel des postes avant de lever le verrou de sécurité."}
++    Show-MsgInfo $endMsg 'Bilan GP'
++    if(-not $script:MutationUncertain){Refresh-Names}
+ }
+ 
+ function Start-GPNextQueueTask {
+-    $st=$script:QueueRunState;if(-not $st){return}
+-    # Invariant de production : une seule mutation de file à la fois. Ne jamais
+-    # remplacer/annuler un worker destructif déjà lancé, sinon deux écritures AD
+-    # pourraient se chevaucher si l'ancien runspace continue en arrière-plan.
+-    if(Test-GPAsyncOperationRunning 'QueueAction'){
+-      Write-Log 'Start-GPNextQueueTask ignoré : une mutation QueueAction est déjà active.' 'WARN' $null 'run-queue'
+-      return
++    $st=$script:QueueRunState
++    if(-not $st -or (Test-GPAsyncOperationRunning 'QueueAction')){return}
++    if($script:QueueStopRequested) {
++        for($i=$st.Index;$i -lt $st.Items.Count;$i++) {
++            $r=$st.Items[$i].Row;$r.Statut='NON LANCÉ';$r.Message='Arrêt demandé par l''opérateur avant lancement.';$r.Traiter=$false;$st.CancelCount++
++        }
++        $st.Index=$st.Items.Count
+     }
+     if($st.Index -ge $st.Items.Count){Complete-GPQueueRun;return}
+     $item=$st.Items[$st.Index];$st.Index++
+-    $row=$item.Row;$n=$st.Index
+-    $LblStatus.Text="Traitement $n / $($st.Total) — $($item.Computer)…";$LblStatus.Foreground=$Win.Resources['FgText'];$Progress.Value=$n-1
+-    Add-LogSeparator;Add-LogLine "Poste : $($item.Computer)" 'head'
+-
+-    if($st.Confirm){
+-      if(-not $script:INDOMAIN){
+-        $joinOU=if($script:PRD){$item.TargetOU}else{[string]$script:OU['PREPROD']}
+-        $q="Joindre le poste local `"$($item.Computer)`" au domaine `"$script:DOMAINE`" ?`n`nNouveau nom : `"$($item.NewName)`"`nOU : `"$joinOU`""
+-      } else {
+-        $q=if($item.Rename -and $item.Move){"Déplacer `"$($item.Computer)`" dans `"$($item.TargetOU)`" et le renommer en `"$($item.NewName)`" ?"}elseif($item.Rename){"Renommer `"$($item.Computer)`" en `"$($item.NewName)`" ?"}else{"Déplacer `"$($item.Computer)`" dans `"$($item.TargetOU)`" ?"}
+-      }
+-      if(-not(Confirm-YesNo -Msg $q -Confirm $true)){ $row.Statut='';$row.Traiter=$false;$st.CancelCount++;$Progress.Value=$n;Sync-Grid;Start-GPNextQueueTask;return }
+-    }
+-    if($script:GUI -or $script:SimOn){Add-LogLine "(simulation) action simulée pour $($item.Computer)" 'warn';$row.Statut='OK';$row.Traiter=$false;$st.OkCount++;$Progress.Value=$n;Sync-Grid;Start-GPNextQueueTask;return}
+-
+-    # Revalide le journal AVANT chaque écriture réelle : si le disque devient
+-    # indisponible en cours de file, on n'envoie pas la mutation suivante.
+-    if(-not $script:SIM -and -not (Test-GPAuditWritable)){
+-      $msg="Journal d'audit devenu indisponible avant '$($item.Computer)'. Aucune mutation n'a été lancée pour cette ligne."
+-      $row.Statut='KO';$row.Traiter=$false;$st.KoCount++;Add-LogLine $msg 'err';$Progress.Value=$n;Sync-Grid
+-      Stop-GPQueueRemainingForSafety -State $st -Reason $msg;Sync-Grid;Complete-GPQueueRun;return
+-    }
+-
+-    $req=[pscustomobject]@{Computer=$item.Computer;NewName=$item.NewName;TargetOU=$item.TargetOU;CurrentOU=$item.CurrentOU;Rename=[bool]$item.Rename;Move=[bool]$item.Move;Reboot=[bool]$item.Reboot;DC=$script:DC;Domain=$script:DOMAINE;Credential=$script:cred;Prefix=$script:PREFIXE;SIM=[bool]$script:SIM;InDomain=[bool]$script:INDOMAIN;PRD=[bool]$script:PRD;OU=$script:OU;OUPostes=$script:OU_POSTES;OUScan=$script:OU_SCAN;ClearProtection=[bool]$script:CLEAR_PROTECTION;ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')}
+-    $core=Get-GPWorkerCoreSource
+-    $ok={param($wr)
+-      $abortSafety=$false
+-      $abortReason=''
+-      if($null -eq $wr){
+-        $msg="Le worker de `"$($item.Computer)`" n'a retourné aucun objet de résultat."
+-        Add-LogLine $msg 'err';Write-AuditLine $msg 'err';$row.Statut='KO';$st.KoCount++
+-        $abortSafety=$true;$abortReason=$msg
+-      } else {
+-        foreach($lg in @($wr.Logs)){
+-          if($lg.Text){
+-            $lgKind=if($lg.Level -match 'ERR|FATAL'){'err'}elseif($lg.Level -match 'WARN'){'warn'}else{'info'}
+-            $lgDetail=if($lg.Detail){" | $($lg.Detail)"}else{''}
+-            Write-AuditLine ("WORKER [{0}] {1}{2}" -f $lg.Context,$lg.Text,$lgDetail) $lgKind
+-            if($lgKind -in @('warn','err')){Add-LogLine ("$($lg.Text)$lgDetail") $lgKind}
+-          }
+-        }
+-        $result=$wr.Action
+-        if($null -eq $result){
+-          $msg="Aucun résultat d'action pour `"$($item.Computer)`". L'action est classée en échec."
+-          Add-LogLine $msg 'err';Write-AuditLine $msg 'err';$row.Statut='KO';$st.KoCount++
+-          $abortSafety=$true;$abortReason=$msg
+-        } else {
+-          $code=[int]$result.ExitCode;$msg=[string]$result.ExitMsg
+-          $knownOk=($code -in $script:OK_CODES);$knownKo=($code -in $script:NOK_CODES)
+-          if(-not $knownOk -and -not $knownKo){
+-            $msg="Code résultat inattendu $code : $msg"
+-            $kind='err'
+-          } else {
+-            $kind=if($knownOk){'ok'}else{'err'}
+-          }
+-          if($code -in @(97,98) -or (-not $knownOk -and -not $knownKo)){
+-            $abortSafety=$true;$abortReason="Résultat non fiable pour '$($item.Computer)' (code $code) : $msg"
+-          }
+-          Add-LogLine $msg $kind
+-          if(-not $script:SIM -and $code -in @(10,20,77,89)){$st.RestartNeeded=$true}
+-          $auditMode=if($script:SIM){'SIM'}else{'REEL'};$auditWho=if($script:cred){$script:cred.UserName}else{$script:AuthUser}
+-          Write-AuditLine ("ACTION mode={0} par={1} poste={2} ren={3} move={4} reboot={5} nouveauNom={6} ouSrc={7} ouDst={8} code={9}" -f $auditMode,$auditWho,$item.Computer,$item.Rename,$item.Move,$item.Reboot,$item.NewName,$item.CurrentOU,$item.TargetOU,$code) $kind
+-          if($wr.Reboot){$rbKind=if([int]$wr.Reboot.ExitCode -eq 40){'ok'}else{'warn'};Add-LogLine ([string]$wr.Reboot.ExitMsg) $rbKind;Write-AuditLine ("REBOOT mode={0} par={1} poste={2} code={3}" -f $auditMode,$auditWho,$item.Computer,$wr.Reboot.ExitCode) $rbKind}
+-          if($knownOk){$row.Statut='OK';$st.OkCount++}
+-          else{$row.Statut='KO';$st.KoCount++}
+-        }
+-      }
+-      $row.Traiter=$false;$Progress.Value=$n;Sync-Grid
+-      if($abortSafety){Stop-GPQueueRemainingForSafety -State $st -Reason $abortReason;Sync-Grid;Complete-GPQueueRun}
+-      else{Start-GPNextQueueTask}
+-    }.GetNewClosure()
+-    $err={param($e)
+-      $msg="Erreur inattendue sur `"$($item.Computer)`" : $($e.Exception.Message)";Add-LogLine $msg 'err';Write-Log $msg 'ERROR' $e 'run-queue';$row.Statut='KO';$row.Traiter=$false;$st.KoCount++;$Progress.Value=$n;Sync-Grid
+-      Stop-GPQueueRemainingForSafety -State $st -Reason "Worker interrompu sans résultat fiable sur '$($item.Computer)'.";Sync-Grid;Complete-GPQueueRun
+-    }.GetNewClosure()
+-    $started=Start-GPAsyncOperation -Name 'QueueAction' -ScriptBlock $script:GPQueueWorker -ArgumentList @($req,$core) -OnSuccess $ok -OnError $err
+-    if(-not $started){
+-      $msg="Impossible de démarrer le worker de mutation pour `"$($item.Computer)`". Aucune action n'a été lancée."
+-      Add-LogLine $msg 'err';Write-Log $msg 'ERROR' $null 'run-queue'
+-      $row.Statut='KO';$row.Traiter=$false;$st.KoCount++;$Progress.Value=$n;Sync-Grid;Start-GPNextQueueTask
+-    }
++    if($st.Confirm) {
++        $verb=if(-not $script:INDOMAIN){'JONCTION'}elseif($item.Rename -and $item.Move){'RENOMMER puis DÉPLACER'}elseif($item.Rename){'RENOMMER'}else{'DÉPLACER'}
++        if(-not(Confirm-YesNo -Msg "$verb : $($item.Computer)`nNouveau nom : $($item.NewName)`nOU : $($item.TargetOU)" -Confirm $true)) {
++            $item.Row.Statut='ANNULÉ';$item.Row.Traiter=$false;$st.CancelCount++;Sync-Grid;Request-GPQueuePump;return
++        }
++    }
++    $script:QueueCurrentTicket=[pscustomobject]@{Item=$item;Started=Get-Date;Completed=$false}
++    $item.Row.Statut='EN COURS';$item.Row.Code='';$item.Row.Message='';$item.Row.Horodatage=[DateTime]::UtcNow.ToString('o')
++    $LblStatus.Text="$($st.Mode) — $($st.Index)/$($st.Total) : $($item.Computer)";Sync-Grid
++    if($script:GUI -or $script:SimOn) {
++        $code=if(-not $script:INDOMAIN){10}elseif($item.Rename -and $item.Move){77}elseif($item.Rename){20}else{30}
++        Complete-GPQueueItem -WorkerResult ([pscustomobject]@{Action=(New-ActionResult $code 'Démonstration : aucune commande Windows/AD exécutée.');Logs=@();Reboot=$null})
++        return
++    }
++    if(-not $script:SIM) {
++        try {
++            if(-not(Test-GPAuditWritable)){throw 'Journal indisponible avant mutation.'}
++            Save-GPQueueCheckpoint -Phase 'Active'
++        } catch {
++            # Aucun appel AD émis ; le verrou est néanmoins conservateur.
++            Complete-GPQueueItem -Failure $_;return
++        }
++    }
++    $ou=@{};foreach($k in $script:OU.Keys){$ou[$k]=$script:OU[$k]}
++    $ouv=@{};foreach($k in $script:OUV.Keys){$ouv[$k]=$script:OUV[$k]}
++    $req=[pscustomobject]@{
++        Computer=$item.Computer;NewName=$item.NewName;TargetOU=$item.TargetOU;CurrentOU=$item.CurrentOU
++        Rename=$item.Rename;Move=$item.Move;Reboot=$item.Reboot
++        DC=$script:DC;Domain=$script:DOMAINE;Credential=$script:cred;Prefix=$script:PREFIXE
++        SIM=[bool]$script:SIM;InDomain=[bool]$script:INDOMAIN;PRD=[bool]$script:PRD;OU=$ou;OUSite=$ouv
++        OUPostes=$script:OU_POSTES;OUScan=$script:OU_SCAN;ClearProtection=[bool]$script:CLEAR_PROTECTION
++        AllowHybridRepair=[bool]$script:ALLOW_HYBRID_REPAIR
++        ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')
++    }
++    # Callbacks nommés : pas de $script: capturé dans un module GetNewClosure.
++    [void](Start-GPAsyncOperation -Name 'QueueAction' -ScriptBlock $script:GPQueueWorker -ArgumentList @($req,(Get-GPWorkerCoreSource)) `
++        -OnSuccess {param($wr) Complete-GPQueueItem -WorkerResult $wr} `
++        -OnError {param($e) Complete-GPQueueItem -Failure $e})
+ }
+ 
+ function Run-Queue {
+     if($script:Running){return};Ensure-Table
+-    if(-not $script:SIM -and -not $script:GUI -and -not (Test-GPAuditWritable)){
+-      Show-MsgError 'Journal d''audit indisponible : les actions réelles sont bloquées par sécurité. Vérifiez les droits d''écriture du dossier GP/logs, du profil local ou de %TEMP%, puis relancez GP.' 'Audit indisponible'
+-      return
+-    }
+-    $rows=@($script:table.Rows|Where-Object{$_.Traiter -eq $true -and($_.Renommer -or $_.Deplacer)})
+-    if($rows.Count -eq 0){Show-MsgInfo 'Aucune tâche cochée à exécuter.';return}
+-    if(-not $script:INDOMAIN -and $rows.Count -ne 1){
+-      Show-MsgError "Hors domaine, GP n'autorise qu'une seule jonction locale par exécution. File sélectionnée : $($rows.Count) ligne(s)." 'File hors domaine invalide'
+-      return
+-    }
+-    $preErrors=New-Object Collections.Generic.List[string];$owners=@{}
+-    foreach($t in $rows){
+-      foreach($e in @(Test-QueueRowSafe -Nom "$($t.Nom_du_PC)" -NewName "$($t.Nouveau_Nom)" -OU "$($t.OU_Destination)" -Ren ([bool]$t.Renommer) -Move ([bool]$t.Deplacer))){[void]$preErrors.Add("$($t.Nom_du_PC) : $e")}
+-      if([bool]$t.Renommer){$target="$($t.Nouveau_Nom)".Trim().ToUpperInvariant();if($target){if($owners.ContainsKey($target)){[void]$preErrors.Add("Nom cible dupliqué '$target' pour '$($owners[$target])' et '$($t.Nom_du_PC)'.")}else{$owners[$target]="$($t.Nom_du_PC)"}}}
+-    }
+-    if($preErrors.Count){Show-MsgError("La file contient des erreurs et ne sera pas exécutée :`n`n- "+($preErrors -join "`n- ")) 'File invalide';return}
+-    $rebootCount=@($rows|Where-Object{$_.Reboot -eq $true}).Count;$confirmMsg="Exécuter $($rows.Count) action(s) ?";if($rebootCount){$confirmMsg+="`nRedémarrage demandé après succès pour $rebootCount poste(s)."}
+-    if(-not(Confirm-YesNo -Msg $confirmMsg -Confirm $true)){return}
+-
+-    $items=New-Object Collections.Generic.List[object]
+-    foreach($r in $rows){[void]$items.Add([pscustomobject]@{Row=$r;Computer="$($r.Nom_du_PC)";NewName="$($r.Nouveau_Nom)";TargetOU="$($r.OU_Destination)";CurrentOU="$($r.OU_Actuelle)";Rename=[bool]$r.Renommer;Move=[bool]$r.Deplacer;Reboot=[bool]$r.Reboot})}
+-    $script:QueueRunState=[pscustomobject]@{Items=$items.ToArray();Index=0;Total=$items.Count;OkCount=0;KoCount=0;CancelCount=0;RestartNeeded=$false;Confirm=[bool]$ChkConfirm.IsChecked}
+-    $script:Running=$true;Set-GPQueueUiLocked $true;Clear-Log;$Progress.Visibility='Visible';$Progress.Minimum=0;$Progress.Maximum=$items.Count;$Progress.Value=0
+-    Start-GPNextQueueTask
++    if($script:MutationUncertain){Show-MsgWarning 'Verrou de sécurité : vérifiez les opérations précédentes avant toute nouvelle écriture.';return}
++    if($script:CfgRestartRequired){Show-MsgWarning 'Configuration modifiée : redémarrez GP avant toute nouvelle exécution.';return}
++    if(Test-GPAsyncOperationRunning 'DirectoryRefresh'){Show-MsgWarning 'L''annuaire est en cours d''actualisation.';return}
++    try{[void]$Grid.CommitEdit([Windows.Controls.DataGridEditingUnit]::Cell,$true);[void]$Grid.CommitEdit([Windows.Controls.DataGridEditingUnit]::Row,$true)}catch{Show-MsgError 'Impossible de valider la cellule en cours.';return}
++    $rows=@($script:table.Rows|Where-Object{$_.Traiter -eq $true})
++    if(-not $rows.Count){Show-MsgInfo 'Aucune ligne cochée.';return}
++    $errors=New-Object 'System.Collections.Generic.List[string]';$sources=@{};$targets=@{}
++    if(-not $script:INDOMAIN -and $rows.Count -ne 1){$errors.Add('Hors domaine : une seule jonction locale autorisée.')}
++    foreach($r in $rows) {
++        foreach($e in @(Test-QueueRowSafe -Nom $r.Nom_du_PC -NewName $r.Nouveau_Nom -OU $r.OU_Destination -Ren $r.Renommer -Move $r.Deplacer)){$errors.Add("$($r.Nom_du_PC) : $e")}
++        if($r.Statut -in @('OK','SIMULÉ','PARTIEL','PROTECTION','INCERTAIN','TECHNIQUE','EN COURS')){$errors.Add("$($r.Nom_du_PC) : résultat précédent à examiner ($($r.Statut)). Recréez la ligne après vérification ; un succès/état incertain ne se rejoue pas.")}
++        $src=[string]$r.Nom_du_PC
++        if($sources.ContainsKey($src)){$errors.Add("Source dupliquée : $src")}else{$sources[$src]=$true}
++        if($r.Renommer){$target=[string]$r.Nouveau_Nom;if($targets.ContainsKey($target)){$errors.Add("Nom cible dupliqué : $target")}else{$targets[$target]=$true}}
++    }
++    foreach($target in $targets.Keys){if($sources.ContainsKey($target)){$errors.Add("Renommages dépendants/cycliques interdits : $target est aussi une source de la file.")}}
++    if($errors.Count){Show-MsgError ("File non exécutée :`n`n"+($errors -join "`n"));return}
++    $mode=if($script:SIM -or $script:GUI){'SIMULATION'}else{'RÉEL'}
++    $reboots=@($rows|Where-Object{$_.Reboot}).Count
++    if(-not(Confirm-YesNo -Msg "$mode : exécuter $($rows.Count) action(s) ?`nRedémarrages demandés : $reboots.`n`nUtilisez Prévisualiser pour examiner le plan sans exécuter." -Confirm $true)){return}
++    $items=@(foreach($r in $rows){[pscustomobject]@{Row=$r;Computer=[string]$r.Nom_du_PC;NewName=[string]$r.Nouveau_Nom;TargetOU=[string]$r.OU_Destination;CurrentOU=[string]$r.OU_Actuelle;Rename=[bool]$r.Renommer;Move=[bool]$r.Deplacer;Reboot=[bool]$r.Reboot}})
++    $script:QueueRunState=[pscustomobject]@{RunId=[Guid]::NewGuid().ToString('N');Mode=$mode;Items=$items;Index=0;Total=$items.Count;OkCount=0;KoCount=0;CancelCount=0;RestartNeeded=$false;Confirm=[bool]$ChkConfirm.IsChecked}
++    $script:Running=$true;$script:QueueStopRequested=$false;Set-GPQueueUiLocked $true
++    $Progress.Visibility='Visible';$Progress.Maximum=$items.Count;$Progress.Value=0
++    Add-LogLine "DÉBUT $mode — $($items.Count) action(s)." 'head'
++    Request-GPQueuePump
+ }
+ 
+ ###############################################################################
+ #  SECTION 12 — IMPORT / EXPORT CSV
+ ###############################################################################
+ function Export-Queue {
+-    Ensure-Table
+-    if ($script:table.Rows.Count -eq 0) { Show-MsgInfo 'La file est vide : rien à exporter.'; return }
+-    $dlg = New-Object Microsoft.Win32.SaveFileDialog
+-    $dlg.Filter = 'CSV (*.csv)|*.csv'; $dlg.FileName = 'GP_export.csv'
+-    if (-not $dlg.ShowDialog()) { return }
+-    @($script:table.Rows) | ForEach-Object {
+-        [PSCustomObject]@{
+-            Renommer=$_.Renommer; Deplacer=$_.Deplacer; Reboot=$_.Reboot; Nom_du_PC=$_.Nom_du_PC
+-            Type_de_PC=$_.Type_de_PC; Organisme=$_.Organisme; Site=$_.Site; Service=$_.Service
+-            Nouveau_Nom=$_.Nouveau_Nom; OU_Actuelle=$_.OU_Actuelle; OU_Destination=$_.OU_Destination; Statut=$_.Statut
+-        }
+-    } | Export-Csv $dlg.FileName -Delimiter ';' -NoTypeInformation -Encoding UTF8
+-    Add-LogLine "Export CSV : $($dlg.FileName)" 'info'
++    if($script:Running){return};Ensure-Table
++    if(-not $script:table.Rows.Count){Show-MsgInfo 'La file est vide.';return}
++    $dlg=[Microsoft.Win32.SaveFileDialog]::new();$dlg.Filter='CSV UTF-8 (*.csv)|*.csv';$dlg.FileName='GP_export_'+(Get-Date -Format 'yyyyMMdd_HHmmss')+'.csv'
++    if(-not $dlg.ShowDialog()){return}
++    try{
++        $rows=@(foreach($r in $script:table.Rows){
++            $o=[ordered]@{}
++            foreach($col in $script:table.Columns){
++                $value=$r[$col.ColumnName]
++                $o[$col.ColumnName]=if($col.DataType -eq [bool]){[bool]$value}else{ConvertTo-GPSafeCsvCell (Protect-GPLogText ([string]$value))}
++            }
++            [pscustomobject]$o
++        })
++        $text=($rows|ConvertTo-Csv -Delimiter ';' -NoTypeInformation)-join "`r`n"
++        # BOM facilite l'ouverture UTF-8 dans Excel ; les lectures GP tolèrent le BOM.
++        Write-GPAtomicText -Path $dlg.FileName -Text ([string][char]0xFEFF+$text+"`r`n")
++        Add-LogLine "Export de la file et de ses résultats : $($dlg.FileName)" 'info'
++    }catch{Write-Log 'Export CSV impossible.' 'ERROR' $_ 'csv';Show-MsgError $_.Exception.Message}
+ }
+ function Test-GPOUInConfiguredScope {
+     param([string]$OU)
+-    $dn = "$OU".Trim()
+-    if (-not (Test-GPOUPath $dn)) { return $false }
+-    $allowed = @((@($script:OU.Values) + @($script:OUV.Values)) |
+-                 Where-Object { -not [string]::IsNullOrWhiteSpace("$_") })
+-    foreach ($root in $allowed) {
+-        $r = "$root".Trim()
+-        if ($dn -ieq $r -or $dn.EndsWith(",$r", [System.StringComparison]::OrdinalIgnoreCase)) { return $true }
+-    }
+-    return $false
++    if(-not (Test-GPOUPath $OU)){return $false}
++    return Test-GPDNWithinScope -DistinguishedName $OU -Roots (@($script:OU.Values)+@($script:OUV.Values))
+ }
+ function Test-QueueRowSafe {
+     <# Validation mémoire complète d'une ligne avant toute écriture AD. #>
+@@ -4812,79 +5178,55 @@
+     return $errs.ToArray()
+ }
+ function Import-Queue {
++    if($script:Running -or $script:MutationUncertain -or $script:CfgRestartRequired){Show-MsgWarning 'Import interdit tant que le contexte est verrouillé.';return}
+     Ensure-Table
+-    $dlg = New-Object Microsoft.Win32.OpenFileDialog
+-    $dlg.Filter = 'CSV (*.csv)|*.csv'
+-    if (-not $dlg.ShowDialog()) { return }
+-    try {
+-        $rows = @(Import-Csv -LiteralPath $dlg.FileName -Delimiter ';' -Encoding UTF8)
+-        if ($rows.Count -eq 0) { Show-MsgInfo 'Le CSV ne contient aucune ligne.'; return }
+-        $required = @('Renommer','Deplacer','Nom_du_PC','Nouveau_Nom','OU_Destination')
+-        $headers = @($rows[0].PSObject.Properties.Name)
+-        $missing = @($required | Where-Object { $headers -notcontains $_ })
+-        if ($missing.Count) { throw "Colonnes obligatoires absentes : $($missing -join ', ')." }
+-
+-        $added = 0; $replaced = 0; $skipped = 0; $invalides = 0
+-        foreach ($e in $rows) {
+-            $nom = "$($e.Nom_du_PC)".Trim().ToUpperInvariant()
+-            if (-not $nom) { $skipped++; continue }
+-            try {
+-                $ren  = Convert-Value-TF $e.Renommer -Strict
+-                $move = Convert-Value-TF $e.Deplacer -Strict
+-                $reboot = if ($headers -contains 'Reboot' -and -not [string]::IsNullOrWhiteSpace("$($e.Reboot)")) {
+-                    Convert-Value-TF $e.Reboot -Strict
+-                } else { $false }
+-            } catch {
+-                $invalides++; Add-LogLine "Ligne ignorée ($nom) : $($_.Exception.Message)" 'warn'; continue
+-            }
+-            if (-not $ren -and -not $move) { $skipped++; continue }
+-
+-            $new = "$($e.Nouveau_Nom)".Trim().ToUpperInvariant()
+-            $dest = "$($e.OU_Destination)".Trim()
+-            $errs2 = @(Test-QueueRowSafe -Nom $nom -NewName $new -OU $dest -Ren $ren -Move $move)
+-            if ($errs2.Count) {
+-                $invalides++; Add-LogLine "Ligne ignorée ($nom) : $($errs2 -join ' ; ')" 'warn'; continue
+-            }
+-
+-            if ($ren) {
+-                $collision = @($script:table.Rows | Where-Object {
+-                    [bool]$_.Renommer -and "$($_.Nom_du_PC)".Trim() -ine $nom -and
+-                    "$($_.Nouveau_Nom)".Trim() -ieq $new
+-                } | Select-Object -First 1)
+-                if ($collision.Count) {
+-                    $invalides++
+-                    Add-LogLine "Ligne ignorée ($nom) : nom cible '$new' déjà réservé pour '$($collision[0].Nom_du_PC)'." 'warn'
+-                    continue
++    $dlg=[Microsoft.Win32.OpenFileDialog]::new();$dlg.Filter='CSV UTF-8 (*.csv)|*.csv'
++    if(-not $dlg.ShowDialog()){return}
++    try{
++        if((Get-Item -LiteralPath $dlg.FileName).Length -gt 8MB){throw 'CSV trop volumineux : maximum 8 Mio.'}
++        $entries=@(Import-Csv -LiteralPath $dlg.FileName -Delimiter ';' -Encoding UTF8)
++        if(-not $entries.Count){Show-MsgInfo 'Le CSV est vide.';return}
++        if($entries.Count -gt 5000){throw 'Maximum 5 000 lignes par import.'}
++        $headers=@($entries[0].PSObject.Properties.Name)
++        $missing=@(@('Renommer','Deplacer','Nom_du_PC','Nouveau_Nom','OU_Destination')|Where-Object{$_ -notin $headers})
++        if($missing.Count){throw "Colonnes absentes : $($missing -join ', ')."}
++        # Validation dans une table indépendante. Une erreur => aucun changement de file.
++        $candidate=$script:table.Copy();$errors=[Collections.Generic.List[string]]::new();$seen=@{};$index=1
++        foreach($e in $entries){
++            $index++;$nom=([string]$e.Nom_du_PC).Trim().ToUpperInvariant()
++            try{
++                if($seen.ContainsKey($nom)){throw "Source dupliquée dans le CSV : $nom"};$seen[$nom]=$true
++                if(@($candidate.Rows|Where-Object{[string]$_.Nom_du_PC -ieq $nom}).Count){throw "Le poste '$nom' est déjà dans la file : aucun remplacement implicite."}
++                $ren=Convert-Value-TF $e.Renommer -Strict;$move=Convert-Value-TF $e.Deplacer -Strict
++                $new=([string]$e.Nouveau_Nom).Trim().ToUpperInvariant();$dest=([string]$e.OU_Destination).Trim()
++                $problems=@(Test-QueueRowSafe -Nom $nom -NewName $new -OU $dest -Ren $ren -Move $move)
++                if($problems.Count){throw ($problems -join '; ')}
++                if($ren -and @($candidate.Rows|Where-Object{$_.Renommer -and [string]$_.Nouveau_Nom -ieq $new}).Count){throw "Nom cible réservé dans la file : $new"}
++                $r=$candidate.NewRow();$r.Nom_du_PC=$nom;$r.Nouveau_Nom=$new;$r.OU_Destination=$dest
++                $r.Renommer=$ren;$r.Deplacer=$move;$r.Traiter=$false
++                $r.Reboot=if($headers -contains 'Reboot') {Convert-Value-TF $e.Reboot -Strict}else{$false}
++                foreach($col in @('Type_de_PC','Organisme','Site','Service','OU_Actuelle')){
++                    if($headers -contains $col){$v=([string]$e.$col).Trim();if($v.Length -gt 2048){throw "Champ '$col' trop long."};$r[$col]=$v}
+                 }
+-            }
+-
+-            $dupes = @($script:table.Rows | Where-Object { "$($_.Nom_du_PC)".Trim() -ieq $nom })
+-            if ($dupes.Count) { $replaced++ } else { $added++ }
+-            foreach ($d in $dupes) { $script:table.Rows.Remove($d) }
+-
+-            $r = $script:table.NewRow()
+-            $r.Traiter = $true; $r.Statut = ''; $r.Renommer = $ren; $r.Deplacer = $move
+-            $r.Reboot = ($reboot -and ($ren -or $move)); $r.Nom_du_PC = $nom; $r.Nouveau_Nom = $new
+-            $r.OU_Destination = $dest
+-            foreach ($c in 'Type_de_PC','Organisme','Site','Service','OU_Actuelle') {
+-                if ($headers -contains $c) { $r.$c = "$($e.$c)".Trim() }
+-            }
+-            [void]$script:table.Rows.Add($r)
+-        }
+-        $script:NmUsedSrc = $null
+-        Sync-Grid; Update-QueueButtons
+-        $detail = "$added ajoutée(s)"
+-        if ($replaced) { $detail += ", $replaced remplacée(s)" }
+-        if ($skipped) { $detail += ", $skipped vide(s)/inerte(s)" }
+-        if ($invalides) { $detail += ", $invalides invalide(s)" }
+-        Add-LogLine "Import CSV : $detail." 'info'
+-        if ($invalides) {
+-            Show-MsgWarning "Import CSV : $detail.`nLes lignes invalides (détail dans le Journal) ont été ignorées." 'Import partiel'
+-        }
+-    } catch {
+-        Write-Log "Import CSV impossible ('$($dlg.FileName)')." 'ERROR' $_ 'CSV'
+-        Show-MsgError "Import impossible :`n$($_.Exception.Message)"
+-    }
++                # Un export historique reste historique ; ne transforme pas un succès en action neuve.
++                $oldStatus=([string]$e.Statut).Trim()
++                if($oldStatus -in @('OK','SIMULÉ','PARTIEL','PROTECTION','INCERTAIN','TECHNIQUE','EN COURS')){
++                    $r.Statut=$oldStatus
++                    foreach($col in @('Code','Message','Duree','Horodatage')){if($headers -contains $col){$r[$col]=[string]$e.$col}}
++                    if($oldStatus -eq 'EN COURS'){$r.Statut='INCERTAIN';$r.Code='97'}
++                }
++                [void]$candidate.Rows.Add($r)
++            }catch{$errors.Add("Ligne $index ($nom) : $($_.Exception.Message)")}
++        }
++        if($errors.Count){Show-GPTextReport 'Import refusé — file inchangée' ($errors -join "`r`n");return}
++        if($candidate.Rows.Count -gt 5000){throw 'La file totale dépasserait 5 000 lignes.'}
++        if([Windows.MessageBox]::Show("Importer $($entries.Count) ligne(s) ?`nElles seront toutes décochées. Vérifiez les actions avant sélection.",'Import validé','YesNo','Question','No') -ne 'Yes'){return}
++        $script:table=$candidate;$Grid.ItemsSource=$candidate.DefaultView;$script:NmUsedSrc=$null
++        if(@($candidate.Rows|Where-Object{$_.Statut -in @('INCERTAIN','TECHNIQUE','PROTECTION')}).Count){$script:MutationUncertain=$true}
++        Add-LogLine "Import CSV complet : $($entries.Count) ligne(s), aucune exécution automatique." 'info'
++        Save-GPQueueCheckpointSafe -Phase $(if($script:MutationUncertain){'Uncertain'}else{'Idle'})
++        Sync-Grid;Update-QueueButtons;Update-AddButton
++    }catch{Write-Log 'Import CSV refusé ; file inchangée.' 'ERROR' $_ 'csv';Show-MsgError $_.Exception.Message}
+ }
+ 
+ ###############################################################################
+@@ -5082,33 +5424,8 @@
+     $LblStatus.Text='Actualisation Active Directory…'
+     $request=New-GPDirectorySnapshotRequest -Credential $script:cred
+ 
+-    $ok=({param($snap)
+-      try {
+-        if($null -eq $snap){throw 'Aucun résultat retourné par le worker Active Directory.'}
+-        if($NmBtnRefresh){$NmBtnRefresh.IsEnabled=$true}
+-        $script:DC=[string]$snap.DC;$script:Sites=$snap.Sites;$script:Computers=@($snap.Root);$script:ComputersNoms=@($snap.Names);$script:NmUsedSrc=$null
+-        if($snap.LocalComputer){$script:LocalComputerSnapshot=$snap.LocalComputer}
+-        Update-GPComputerIndex
+-        Build-NmIndex;Populate-NmFilters;Update-NameGrid
+-        $msg="Noms rafraîchis : $(@($script:ComputersNoms).Count) poste(s) dans $(Format-OUPath $script:OU_SCAN) · $(@($script:Computers).Count) au total."
+-        Add-LogLine $msg 'info';$LblStatus.Text=$msg
+-      } finally {
+-        if($LockMain){
+-          try{$CbOrg.IsEnabled=$true}catch{}
+-          try{if("$($CbOrg.SelectedItem)".Trim()){Apply-OrganismeSelection}else{Update-AddButton}}catch{}
+-        }
+-      }
+-    }).GetNewClosure()
+-
+-    $err=({param($e)
+-      if($NmBtnRefresh){$NmBtnRefresh.IsEnabled=$true}
+-      if($LockMain){
+-        try{$CbOrg.IsEnabled=$true}catch{}
+-        try{if("$($CbOrg.SelectedItem)".Trim()){Apply-OrganismeSelection}else{Update-AddButton}}catch{}
+-      }
+-      $msg="Rafraîchissement AD échoué : $($e.Exception.Message)";Add-LogLine $msg 'err';Write-Log $msg 'ERROR' $e 'AD';$LblStatus.Text=$msg
+-    }).GetNewClosure()
+-
++    $ok={param($snap) Complete-GPDirectoryRefresh -Snapshot $snap -LockMain ([bool]$LockMain)}.GetNewClosure()
++    $err={param($e) Complete-GPDirectoryRefresh -Failure $e -LockMain ([bool]$LockMain)}.GetNewClosure()
+     $started=Start-GPAsyncOperation -Name 'DirectoryRefresh' -ScriptBlock $script:GPDirectorySnapshotWorker -ArgumentList @($request) -OnSuccess $ok -OnError $err -Replace:$Replace -TimeoutSec 180
+     if(-not $started){
+         if($NmBtnRefresh){$NmBtnRefresh.IsEnabled=$true}
+@@ -5159,10 +5476,7 @@
+     }
+     $conf = $confs[0]
+     $domain = "$($conf.Domaine)".Trim(); $prefix = "$($conf.Prefixe)".Trim(); $pre = "$($conf.PreprodSite)".Trim()
+-    if (-not $domain) { [void]$m.Add("'Domaine' absent ou vide.") }
+-    elseif ($domain -notmatch '^[A-Za-z0-9](?:[A-Za-z0-9.-]*[A-Za-z0-9])?$' -or $domain -match '\.\.') {
+-        [void]$m.Add("Domaine invalide : '$domain'.")
+-    }
++    if(-not (Test-GPDnsName $domain)){[void]$m.Add("Domaine DNS invalide : '$domain'.")}
+     if ($prefix -notmatch '^[A-Za-z0-9-]{6}$') {
+         [void]$m.Add('Préfixe invalide : exactement 6 caractères alphanumériques/tirets requis.')
+     }
+@@ -5172,20 +5486,22 @@
+     $darkMode = "$($conf.DarkMode)".Trim()
+     if ($darkMode -and $darkMode -notin @('0','1','2')) { [void]$m.Add('DarkMode : 0, 1 ou 2 requis.') }
+     $buffer = "$($conf.Buffer)".Trim()
+-    if ($buffer -and $buffer -notmatch '^\d+$') { [void]$m.Add('Buffer : entier compris entre 0 et 999 requis.') }
+-    elseif ($buffer -and ([int64]$buffer -gt 999)) { [void]$m.Add('Buffer : maximum 999.') }
++    $bufferValue=0
++    if($buffer -and (-not [int]::TryParse($buffer,[ref]$bufferValue) -or $bufferValue -lt 0 -or $bufferValue -gt 999)){
++        [void]$m.Add('Buffer : entier compris entre 0 et 999 requis.')
++    }
+     if ("$($conf.OUScanNoms)".Trim() -and -not (Test-GPOUPath "$($conf.OUScanNoms)")) {
+         [void]$m.Add('OUScanNoms doit être un DN d''OU valide ou rester vide.')
+     }
+ 
+-    foreach ($prop in @('DirectProd','DsregLeaveOnMove','ClearProtectionOnMove','MoveRollbackOnRenameFail')) {
+-        if ($conf.PSObject.Properties.Name -contains $prop -and -not [string]::IsNullOrWhiteSpace("$($conf.$prop)")) {
++    foreach ($prop in @('DirectProd','DsregLeaveOnMove','ClearProtectionOnMove','MoveRollbackOnRenameFail','AllowHybridRepair')) {
++        if ($null -ne $conf.$prop -and -not [string]::IsNullOrWhiteSpace("$($conf.$prop)")) {
+             try { [void](Convert-Value-TF $conf.$prop -Strict) }
+             catch { [void]$m.Add("$prop : valeur booléenne invalide.") }
+         }
+     }
+     foreach ($prop in @('Simulation','HorsDomaine','MauvaiseOU','BPVerifNomAD','ForceADM','GUI')) {
+-        if ($Cfg.DEBUG -and $Cfg.DEBUG.PSObject.Properties.Name -contains $prop -and
++        if ($Cfg.DEBUG -and $null -ne $Cfg.DEBUG.$prop -and
+             -not [string]::IsNullOrWhiteSpace("$($Cfg.DEBUG.$prop)")) {
+             try { [void](Convert-Value-TF $Cfg.DEBUG.$prop -Strict) }
+             catch { [void]$m.Add("DEBUG.$prop : valeur booléenne invalide.") }
+@@ -5257,6 +5573,18 @@
+     if (-not $direct -and -not $validPreprodTag) {
+         [void]$m.Add("Aucun TAGS valide ne couvre PREPROD / '$pre'.")
+     }
++    # Une chaîne syntaxiquement correcte peut désigner un AUTRE domaine.
++    $dnsExpected=$domain.TrimEnd('.')
++    $paths=@(@($Cfg.OUBase)+@($Cfg.OUSite))
++    foreach($entry in $paths){
++        if(Test-GPOUPath ([string]$entry.OU)){
++            $actual=Get-GPDomainFromDN ([string]$entry.OU)
++            if($actual -ine $dnsExpected){[void]$m.Add("OU '$($entry.Nom)' : domaine DN '$actual' différent de Domaine='$domain'.")}
++        }
++    }
++    if(Test-GPOUPath ([string]$conf.OUScanNoms)){
++        if((Get-GPDomainFromDN ([string]$conf.OUScanNoms)) -ine $dnsExpected){[void]$m.Add("OUScanNoms ne correspond pas au domaine '$domain'.")}
++    }
+     return $m.ToArray()
+ }
+ 
+@@ -5268,7 +5596,7 @@
+     $SetTxtPrefixe.Text = "$($conf.Prefixe)"; $SetTxtPreprod.Text = "$($conf.PreprodSite)"
+     $SetTxtBuffer.Text  = "$($conf.Buffer)";  $SetTxtOUScan.Text = "$($conf.OUScanNoms)"
+     $SetChkDirectProd.IsChecked = (Convert-Value-TF $conf.DirectProd)
+-    $SetChkDsreg.IsChecked = $false
++    $SetChkDsreg.IsChecked = Convert-Value-TF $conf.AllowHybridRepair
+     if ($SetCmbDarkMode.Items.Count -eq 0) { '0','1','2' | ForEach-Object { [void]$SetCmbDarkMode.Items.Add($_) } }
+     $dm = "$($conf.DarkMode)"; $SetCmbDarkMode.SelectedItem = if ($SetCmbDarkMode.Items.Contains($dm)) { $dm } else { '2' }
+     $SetChkSim.IsChecked = (Convert-Value-TF $script:CFG.Debug.Simulation)
+@@ -5304,7 +5632,7 @@
+     Set-GPMapValue $conf 'DarkMode' "$($SetCmbDarkMode.SelectedItem)"
+     Set-GPMapValue $conf 'Buffer' "$($SetTxtBuffer.Text)".Trim()
+     Set-GPMapValue $conf 'OUScanNoms' "$($SetTxtOUScan.Text)".Trim()
+-    Set-GPMapValue $conf 'DsregLeaveOnMove' (ToTF $SetChkDsreg)
++    Set-GPMapValue $conf 'AllowHybridRepair' (ToTF $SetChkDsreg)
+ 
+     $debug = ConvertTo-GPOrderedMap $script:CFG.DEBUG
+     Set-GPMapValue $debug 'Simulation' (ToTF $SetChkSim)
+@@ -5342,6 +5670,7 @@
+     if ($script:Running) { Show-MsgWarning 'Enregistrement impossible pendant l''exécution de la file.'; return }
+     if ($script:EDIT_ROW_INDEX -ge 0) { Show-MsgWarning 'Terminez ou annulez l''édition de la ligne avant de modifier la configuration.'; return }
+ 
++    if($script:table.Rows.Count -gt 0){Show-MsgWarning "Exportez puis videz la file avant de changer la configuration.";return}
+     $cfg = Build-CfgFromUI
+     $errs = @(Test-CfgValid $cfg)
+     if ($errs.Count) {
+@@ -5350,22 +5679,15 @@
+         return
+     }
+ 
+-    $tmp = "$($script:JsonFile).$PID.tmp"
+     try {
+-        $json = $cfg | ConvertTo-Json -Depth 20
+-        [System.IO.File]::WriteAllText($tmp, $json, (New-Object System.Text.UTF8Encoding($false)))
+-        if (Test-Path -LiteralPath $script:JsonFile) {
+-            Copy-Item -LiteralPath $script:JsonFile -Destination "$($script:JsonFile).bak" -Force -ErrorAction Stop
+-        }
+-        Move-Item -LiteralPath $tmp -Destination $script:JsonFile -Force -ErrorAction Stop
++        $json=$cfg|ConvertTo-Json -Depth 20
++        Write-GPAtomicText -Path $script:JsonFile -Text $json -Backup
+         Add-LogLine 'cfg.json enregistré (sauvegarde cfg.json.bak conservée).' 'ok'
+         $SetLblStatus.Text = "Enregistré à $(Get-Date -Format 'HH:mm:ss') — sauvegarde .bak conservée."
+         [void](Apply-CfgHot)
+     } catch {
+         Write-Log "Écriture de cfg.json impossible ('$script:JsonFile')." 'ERROR' $_ 'config'
+         Show-MsgError "Écriture de cfg.json impossible :`n$($_.Exception.Message)"
+-    } finally {
+-        Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue
+     }
+ }
+ function Apply-CfgHot {
+@@ -5385,7 +5707,7 @@
+     $newDomain = "$($newConf.Domaine)".Trim()
+     $newGUI = Convert-Value-TF $newCfg.Debug.GUI
+     $newODM = Convert-Value-TF $newCfg.Debug.HorsDomaine
+-    $restartRequired = ($newDomain -ine $script:DOMAINE -or $newGUI -ne $script:GUI -or $newODM -ne $script:ODM)
++    $restartRequired = ($newDomain -ine $script:DOMAINE -or $newGUI -ne $script:GUI -or $newODM -ne $script:ODM -or (Convert-Value-TF $newCfg.Debug.Simulation) -ne $script:SIM)
+     $script:CfgRestartRequired = $restartRequired
+ 
+     $dm = switch ("$($newConf.DarkMode)") {
+@@ -5396,10 +5718,11 @@
+     }
+ 
+     if ($restartRequired) {
++        Update-QueueButtons;Update-AddButton
+         $script:CFG = $newCfg
+         Set-Theme $(if ($dm) { 'Dark' } else { 'Light' })
+         $SetLblStatus.Text = 'Enregistré — domaine/mode à appliquer au prochain démarrage.'
+-        Show-MsgInfo 'Domaine, mode GUI ou mode HorsDomaine modifié : redémarrez GP pour appliquer ces changements de contexte.' 'Redémarrage requis'
++        Show-MsgInfo 'Domaine ou mode d''exécution (Simulation/GUI/HorsDomaine) modifié : redémarrez GP pour appliquer ces changements de contexte.' 'Redémarrage requis'
+         return $true
+     }
+ 
+@@ -5418,6 +5741,7 @@
+     $script:PREPRODSITE = "$($newConf.PreprodSite)".Trim().ToUpperInvariant()
+     $script:DEFAULTADM = "$($newConf.ADM)".Trim()
+     $script:PRD = Convert-Value-TF $newConf.DirectProd
++    $script:ALLOW_HYBRID_REPAIR = Convert-Value-TF $newConf.AllowHybridRepair
+     $script:DSREG_LEAVE = $false
+     $script:CLEAR_PROTECTION = if ($null -ne $newConf.ClearProtectionOnMove) { Convert-Value-TF $newConf.ClearProtectionOnMove } else { $true }
+     $script:MOVE_ROLLBACK = if ($null -ne $newConf.MoveRollbackOnRenameFail) { Convert-Value-TF $newConf.MoveRollbackOnRenameFail } else { $false }
+@@ -5465,6 +5789,7 @@
+     return $true
+ }
+ function Reload-CfgFromDisk {
++    if($script:table.Rows.Count -gt 0){Show-MsgWarning "Exportez puis videz la file avant de recharger la configuration.";return}
+     if ($script:Running) { Show-MsgWarning 'Rechargement impossible pendant l''exécution de la file.'; return }
+     if ($script:EDIT_ROW_INDEX -ge 0) { Show-MsgWarning 'Terminez ou annulez l''édition de la ligne avant de recharger la configuration.'; return }
+     if (Apply-CfgHot) {
+@@ -5534,7 +5859,7 @@
+     }
+     $wait=New-Object Windows.Controls.TreeViewItem;$wait.Header='Chargement…';$wait.IsEnabled=$false;[void]$item.Items.Add($wait)
+     $req=[pscustomobject]@{DN=$dn;DC=$script:DC;Credential=$script:cred;ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')}
+-    $opName='OU_'+([Math]::Abs($dn.GetHashCode()))
++    $opName='OU_'+[Guid]::NewGuid().ToString('N')
+     $ok={param($children)
+       $item.Items.Clear();$arr=@($children)
+       if($arr.Count -eq 0){$leaf=New-Object Windows.Controls.TreeViewItem;$leaf.Header='(aucune sous-OU)';$leaf.IsEnabled=$false;[void]$item.Items.Add($leaf);return}
+@@ -5680,6 +6005,7 @@
+ $BtnEdit.Add_Click({ if ($script:EDIT_ROW_INDEX -ge 0) { Exit-EditMode; Update-QueueButtons } elseif ($Grid.SelectedIndex -ge 0) { Enter-EditMode -Index $Grid.SelectedIndex } })
+ $BtnDelete.Add_Click({ Delete-SelectedRow })
+ $BtnClear.Add_Click({
++    if($script:Running){return}
+     if (Confirm-YesNo -Msg 'Vider toute la file ?' -Confirm $true) {
+         $script:table.Rows.Clear(); $script:NmUsedSrc = $null; Sync-Grid; Exit-EditMode; Update-QueueButtons
+     }
+@@ -5687,9 +6013,14 @@
+ $BtnImport.Add_Click({ Import-Queue })
+ $BtnExport.Add_Click({ Export-Queue })
+ $BtnRun.Add_Click({ Run-Queue })
+-
+-$BtnCheckAll.Add_Click({   Ensure-Table; try { [void]$Grid.CommitEdit() } catch {}; foreach ($r in @($script:table.Rows)) { $r.Traiter = $true };  Sync-Grid; Update-QueueButtons })
+-$BtnUncheckAll.Add_Click({ Ensure-Table; try { [void]$Grid.CommitEdit() } catch {}; foreach ($r in @($script:table.Rows)) { $r.Traiter = $false }; Sync-Grid; Update-QueueButtons })
++$BtnStop.Add_Click({ Request-GPQueueStop })
++$BtnPreview.Add_Click({ Show-GPQueuePreview })
++$BtnDetails.Add_Click({ Show-GPSelectedResult })
++$BtnRetryMove.Add_Click({ Prepare-GPMoveRetry })
++$BtnSafetyReset.Add_Click({ Reset-GPSafetyLock })
++
++$BtnCheckAll.Add_Click({   if($script:Running){return};Ensure-Table; try { [void]$Grid.CommitEdit() } catch {}; foreach ($r in @($script:table.Rows)) { $r.Traiter = ($r.Statut -in @('','KO','ANNULÉ','NON LANCÉ')) };  Sync-Grid; Update-QueueButtons })
++$BtnUncheckAll.Add_Click({ if($script:Running){return};Ensure-Table; try { [void]$Grid.CommitEdit() } catch {}; foreach ($r in @($script:table.Rows)) { $r.Traiter = $false }; Sync-Grid; Update-QueueButtons })
+ 
+ $LogMnuCopy.Add_Click({
+     try {
+@@ -5733,15 +6064,10 @@
+     exit 1
+ }
+ 
+-$script:JsonFile = Join-Path $BasePath 'cfg.json'
+-$JsonFile = $script:JsonFile
+-if (-not (Test-Path $JsonFile)) { Write-Log "cfg.json introuvable dans '$BasePath'." 'FATAL' $null 'init'; Show-MsgError "Fichier cfg.json manquant dans :`n$BasePath"; Quit 1 }
+-try   { $script:CFG = Get-Content $JsonFile -Raw -Encoding UTF8 | ConvertFrom-Json }
+-catch { Write-Log "Lecture / parsing de cfg.json impossible." 'FATAL' $_ 'init'; Show-MsgError "Erreur de lecture de cfg.json :`n$($_.Exception.Message)"; Quit 1 }
+-
+-# ── Validation AVANT toute conversion typée ──────────────────────────────────
+-$cfgErrs = @(Test-CfgValid $script:CFG)
+-if ($cfgErrs.Count) { Show-MsgError ("cfg.json :`n- " + ($cfgErrs -join "`n- ")); Quit 1 }
++$script:JsonFile = if($Demo){Join-Path $BasePath 'demo\cfg.demo.json'}elseif($ConfigPath){[IO.Path]::GetFullPath($ConfigPath)}else{Join-Path $BasePath 'cfg.json'}
++$JsonFile=$script:JsonFile
++$script:CFG=Read-GPStartupConfig -Path $script:JsonFile
++if(-not $script:CFG){Quit 1}
+ $conf = @($script:CFG.Conf)[0]
+ 
+ # ── Flags & paramètres ───────────────────────────────────────────────────────
+@@ -5750,8 +6076,9 @@
+ $script:BVA         = Convert-Value-TF $script:CFG.Debug.BPVerifNomAD
+ $script:WOU         = Convert-Value-TF $script:CFG.Debug.MauvaiseOU
+ $script:GOD         = Convert-Value-TF $script:CFG.Debug.ForceADM
+-$script:GUI         = Convert-Value-TF $script:CFG.Debug.GUI
++$script:GUI         = [bool]$Demo -or (Convert-Value-TF $script:CFG.Debug.GUI)
+ $script:PRD         = Convert-Value-TF $conf.DirectProd
++$script:ALLOW_HYBRID_REPAIR = Convert-Value-TF $conf.AllowHybridRepair
+ $script:DSREG_LEAVE = $false # obsolète : jamais de dsregcmd /leave lors d'un simple déplacement d'OU
+ $script:CLEAR_PROTECTION = if ($null -ne $conf.ClearProtectionOnMove) { Convert-Value-TF $conf.ClearProtectionOnMove } else { $true }
+ $script:MOVE_ROLLBACK = if ($null -ne $conf.MoveRollbackOnRenameFail) { Convert-Value-TF $conf.MoveRollbackOnRenameFail } else { $false }
+@@ -5804,6 +6131,7 @@
+         if(-not $msg){$msg='Erreur de connexion Active Directory.'}
+     }
+     try{Write-Log "Connexion AD échouée (mode $($state.PendingMode), compte '$($state.PendingUser)')." 'ERROR' $ErrorObject 'init'}catch{}
++    $state.PendingCredential=$null
+     Set-GPLoginBusy $false 'Connexion non établie.'
+     try{$ui.Error.Text="Échec de connexion : $msg";$ui.Error.Visibility='Visible'}catch{}
+     try{if($ui.Login.Text){[void]$ui.Password.Focus()}else{[void]$ui.Login.Focus()}}catch{}
+@@ -5827,6 +6155,8 @@
+         # permet d'initialiser le poste courant sans nouvel aller-retour AD.
+         Update-GPComputerIndex
+         $script:cred=$state.PendingCredential
++        $state.PendingCredential=$null
++        try{$ui.Password.Clear()}catch{}
+         $script:AuthMode=[string]$state.PendingMode
+         $script:AuthUser=[string]$state.PendingUser
+         $state.LoginOk=$true
+@@ -5895,7 +6225,7 @@
+ 
+     [xml]$lxaml=@"
+ <Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+-        Title="GP 16.0-HD — Connexion" Height="500" Width="470" MinHeight="500" MinWidth="470"
++        Title="GP 17.0-RC1 — Connexion" Height="500" Width="470" MinHeight="500" MinWidth="470"
+         WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="$($t['BgWindow'])"
+         FontFamily="Segoe UI" FontSize="13" ShowInTaskbar="True">
+   <Grid Margin="22">
+@@ -6153,6 +6483,7 @@
+         [System.Windows.Threading.DispatcherUnhandledExceptionEventHandler]{
+             param($s, $e)
+             $e.Handled = $true
++            if($script:Running){$script:MutationUncertain=$true;$script:QueueStopRequested=$true}
+             $ex  = $e.Exception
+             $pos = ''
+             try {
+@@ -6179,6 +6510,7 @@
+         Show-MsgWarning 'La fenêtre ne peut pas être fermée pendant l''exécution de la file.' 'Traitement en cours'
+         return
+     }
++    Save-GPQueueCheckpointSafe -Phase $(if($script:MutationUncertain){'Uncertain'}else{'Idle'})
+     Save-Prefs
+ })
+ # Focus initial : sur le champ « Nom du poste » (TxtPCName), qu'il soit saisissable
+@@ -6191,7 +6523,7 @@
+     if(-not $script:INDOMAIN){
+         try {
+             if(-not (Initialize-GPHorsDomainUI)){
+-                Show-MsgError 'Le mode hors domaine n''a pas pu être réparé à l''événement Loaded. Consultez le journal.' 'GP 16 - hors domaine'
++                Show-MsgError 'Le mode hors domaine n''a pas pu être réparé à l''événement Loaded. Consultez le journal.' 'GP 17 - hors domaine'
+             }
+         } catch { Write-Log 'Réparation hors domaine au Loaded impossible.' 'ERROR' $_ 'hd-ui' }
+     }
+@@ -6202,6 +6534,9 @@
+ # Le loading reste au premier plan jusqu'au PREMIER rendu réel du GUI.
+ $script:GPStartupClosePending = $true
+ $Win.Add_ContentRendered({
++    if(-not $script:QueueRestoreChecked){
++        [void]$Win.Dispatcher.BeginInvoke([Action]{Restore-GPQueueCheckpoint},[Windows.Threading.DispatcherPriority]::ApplicationIdle)
++    }
+     # Dernier passage APRÈS le rendu WPF : élimine un éventuel IsEnabled différé
+     # provenant d'un événement de chargement/style. Ce passage est purement local.
+     if(-not $script:INDOMAIN){

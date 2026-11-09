@@ -1,0 +1,8 @@
+{"Utc":"2026-10-12T18:45:29.9898490Z","VM":"PESTO-W11-TEST","Action":"Power off after blocked Windows restart and unanswered ACPI; preserve current disk; no snapshot restore"}
+
+VMState="poweroff"
+
+
+Waiting for VM "PESTO-W11-TEST" to power on...
+VM "PESTO-W11-TEST" has been successfully started.
+{"Utc":"2026-10-12T18:45:39.7002399Z","VM":"PESTO-W11-TEST","Action":"Cold start on current disk"}

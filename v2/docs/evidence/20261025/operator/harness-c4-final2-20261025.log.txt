@@ -1,0 +1,7 @@
+{
+  "success": true,
+  "checks": 10,
+  "nativeWindowsExecuted": false,
+  "adExecuted": false,
+  "fixtureRuntimeOnly": true
+}

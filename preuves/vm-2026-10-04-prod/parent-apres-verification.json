@@ -1,0 +1,232 @@
+﻿{
+    "Date":  "2026-10-04T21:14:39.6744809+02:00",
+    "Parent":  {
+                   "Schema":  2,
+                   "Version":  "1.0",
+                   "OperationId":  "df3e5d821d4b45f5bc5f17d00401844e",
+                   "Plan":  {
+                                "Nom_du_PC":  "V999004AAQA1002",
+                                "Nouveau_Nom":  "V999004BBQA1003",
+                                "OU_Actuelle":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                "OU_Destination":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                "Objet_GUID":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                "Domain":  "labo.local",
+                                "DC":  "dc01.labo.local",
+                                "ConfigStamp":  "4928F1F81841BD7B338D178B1349BFCFDFCFE9CDB7D003D36DAABDC26C53233E",
+                                "TargetOUGuid":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35",
+                                "Renommer":  true,
+                                "Deplacer":  true,
+                                "Reboot":  false
+                            },
+                   "StartedUtc":  "2026-10-04T18:50:15.8543649Z",
+                   "UpdatedUtc":  "2026-10-04T18:57:07.3870536Z",
+                   "Phase":  "PendingRestart",
+                   "InitialProtection":  false,
+                   "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                   "TargetOUGuid":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35",
+                   "Entra":  "Skipped",
+                   "Protection":  "NotChanged",
+                   "Rename":  "Confirmed",
+                   "Move":  "Confirmed",
+                   "ResultCode":  97,
+                   "ResultMessage":  "\"V999004AAQA1002\" a été RENOMMÉ en \"V999004BBQA1003\", mais l\u0027état du DÉPLACEMENT est INDÉTERMINÉ : Déplacement non confirmé après erreur de transport. OU actuellement observée : \u0027OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local\u0027. Un effet différé reste possible ; vérifier avant relance. Access is denied | ARRÊT DE SÉCURITÉ : vérifiez l\u0027AD avant toute relance.",
+                   "LastStage":  "Move confirmed by cd74bb16ed8a49a8af389bff280ac7c6",
+                   "VerifiedUtc":  "2026-10-04T18:51:42.3827264Z",
+                   "VerifiedBy":  "LABO\\pesto-qualif",
+                   "ResumeFrom":  "",
+                   "PlanFingerprint":  "5917be891196b63a84234d47e9ba30f94bacb9d52a12c014a1bb0406bb7d52d1",
+                   "Coordination":  {
+                                        "Enabled":  false,
+                                        "Keys":  [
+
+                                                 ],
+                                        "Owner":  "df3e5d821d4b45f5bc5f17d00401844e"
+                                    },
+                   "Baseline":  {
+                                    "Schema":  1,
+                                    "CapturedUtc":  "2026-10-04T18:50:16.8494508Z",
+                                    "ADUtc":  "2026-10-04T18:50:16.6939658Z",
+                                    "WindowsUtc":  "2026-10-04T18:50:16.8494508Z",
+                                    "HealthUtc":  "",
+                                    "AD":  {
+                                               "Name":  "V999004AAQA1002",
+                                               "Guid":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                               "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                               "Protected":  false
+                                           },
+                                    "Windows":  {
+                                                    "ActiveName":  "V999004AAQA1002",
+                                                    "ConfiguredName":  "V999004AAQA1002",
+                                                    "Domain":  "labo.local",
+                                                    "PartOfDomain":  true,
+                                                    "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                                    "BootUtc":  "2026-10-04T18:38:32.5000000Z",
+                                                    "DomainRole":  1
+                                                },
+                                    "Health":  null
+                                },
+                   "Sequence":  10,
+                   "Timeline":  [
+                                    {
+                                        "Sequence":  1,
+                                        "Utc":  "2026-10-04T18:50:16.8645168Z",
+                                        "Stage":  "Observation",
+                                        "State":  "Initial"
+                                    },
+                                    {
+                                        "Sequence":  2,
+                                        "Utc":  "2026-10-04T18:50:17.0241968Z",
+                                        "Stage":  "TargetMachineId",
+                                        "State":  "81387449-2dd8-4bd9-8059-f868a5b8ec68"
+                                    },
+                                    {
+                                        "Sequence":  3,
+                                        "Utc":  "2026-10-04T18:50:17.1026073Z",
+                                        "Stage":  "Entra",
+                                        "State":  "Requested"
+                                    },
+                                    {
+                                        "Sequence":  4,
+                                        "Utc":  "2026-10-04T18:50:18.8778190Z",
+                                        "Stage":  "Entra",
+                                        "State":  "Skipped"
+                                    },
+                                    {
+                                        "Sequence":  5,
+                                        "Utc":  "2026-10-04T18:50:18.9352566Z",
+                                        "Stage":  "Rename",
+                                        "State":  "Requested"
+                                    },
+                                    {
+                                        "Sequence":  6,
+                                        "Utc":  "2026-10-04T18:50:19.5180821Z",
+                                        "Stage":  "Rename",
+                                        "State":  "Confirmed"
+                                    },
+                                    {
+                                        "Sequence":  7,
+                                        "Utc":  "2026-10-04T18:50:19.9000697Z",
+                                        "Stage":  "InitialProtection",
+                                        "State":  "False"
+                                    },
+                                    {
+                                        "Sequence":  8,
+                                        "Utc":  "2026-10-04T18:50:19.9567217Z",
+                                        "Stage":  "TargetOUGuid",
+                                        "State":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35"
+                                    },
+                                    {
+                                        "Sequence":  9,
+                                        "Utc":  "2026-10-04T18:50:20.0035970Z",
+                                        "Stage":  "Move",
+                                        "State":  "Requested"
+                                    },
+                                    {
+                                        "Sequence":  10,
+                                        "Utc":  "2026-10-04T18:50:20.3428149Z",
+                                        "Stage":  "Result",
+                                        "State":  "Uncertain"
+                                    }
+                                ],
+                   "LastObservation":  {
+                                           "Schema":  1,
+                                           "CapturedUtc":  "2026-10-04T18:51:42.3827264Z",
+                                           "ADUtc":  "2026-10-04T18:51:41.4495625Z",
+                                           "WindowsUtc":  "2026-10-04T18:51:41.5422441Z",
+                                           "HealthUtc":  "2026-10-04T18:51:41.5422441Z",
+                                           "AD":  {
+                                                      "Name":  "V999004BBQA1003",
+                                                      "Guid":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                                      "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                                      "Protected":  false
+                                                  },
+                                           "Windows":  {
+                                                           "ActiveName":  "V999004AAQA1002",
+                                                           "ConfiguredName":  "V999004BBQA1003",
+                                                           "Domain":  "labo.local",
+                                                           "PartOfDomain":  true,
+                                                           "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                                           "BootUtc":  "2026-10-04T18:38:32.5000000Z",
+                                                           "DomainRole":  1
+                                                       },
+                                           "Health":  {
+                                                          "Scope":  "Appareil local, compte du processus ; pas SSO utilisateur",
+                                                          "AzureAdJoined":  "NO",
+                                                          "DomainJoined":  "YES",
+                                                          "SecureChannel":  true
+                                                      }
+                                       }
+               },
+    "Direct":  {
+                   "Schema":  1,
+                   "Version":  "1.0",
+                   "OperationId":  "cd74bb16-ed8a-49a8-af38-9bff280ac7c6",
+                   "OperatorMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                   "LocalSource":  false,
+                   "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                   "Phase":  "Verified",
+                   "StartedUtc":  "2026-10-04T18:57:06.3281969Z",
+                   "FinishedUtc":  "2026-10-04T18:57:07.4304617Z",
+                   "ObservedUtc":  "",
+                   "Plan":  {
+                                "Nom_du_PC":  "V999004BBQA1003",
+                                "Nouveau_Nom":  "V999004BBQA1003",
+                                "OU_Actuelle":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                "OU_Destination":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                "Objet_GUID":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                "Renommer":  false,
+                                "Deplacer":  true,
+                                "Reboot":  false,
+                                "Domain":  "labo.local",
+                                "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                "ConfigStamp":  "4928F1F81841BD7B338D178B1349BFCFDFCFE9CDB7D003D36DAABDC26C53233E",
+                                "DC":  "dc01.labo.local",
+                                "TargetOUGuid":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35",
+                                "PlanFingerprint":  "8fb80423137b696f1545e3fcde9965e7b81ce3cf1ec4786bd8475f1a4e14685b",
+                                "InitialProtection":  false
+                            },
+                   "ResultCode":  30,
+                   "ResultMessage":  "Déplacement confirmé par GUID vers \u0027OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local\u0027 ; protection d\u0027origine vérifiée.",
+                   "ResumeFrom":  "df3e5d82-1d4b-45f5-bc5f-17d00401844e"
+               },
+    "DirectSHA256":  "BCE652D57DBFA9BB6CA53B7B8EB5804BD6C206C0E104EB37C74745801EE21A73",
+    "Observation":  {
+                        "ObservedUtc":  "2026-10-04T19:14:39.6723922Z",
+                        "ADUtc":  "2026-10-04T19:14:38.1970037Z",
+                        "WindowsUtc":  "2026-10-04T19:14:38.4248194Z",
+                        "RequestedComputer":  "V999004BBQA1003",
+                        "AD":  {
+                                   "Name":  "V999004BBQA1003",
+                                   "Guid":  "568e0d9b-8bf4-49c5-ab61-fbdb4cdfa81b",
+                                   "DN":  "CN=V999004BBQA1003,OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                   "OU":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                   "Enabled":  true,
+                                   "Protected":  false
+                               },
+                        "Windows":  {
+                                        "ActiveName":  "V999004BBQA1003",
+                                        "ConfiguredName":  "V999004BBQA1003",
+                                        "Domain":  "labo.local",
+                                        "PartOfDomain":  true,
+                                        "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                        "BootUtc":  "2026-10-04T19:11:40.5000000Z",
+                                        "Transport":  "Local",
+                                        "DomainRole":  1,
+                                        "QueriedHost":  "V999004BBQA1003"
+                                    },
+                        "Health":  {
+                                       "Utc":  "2026-10-04T19:14:38.4349353Z",
+                                       "Scope":  "Appareil local, compte du processus ; pas SSO utilisateur",
+                                       "AzureAdJoined":  "NO",
+                                       "DomainJoined":  "YES",
+                                       "SecureChannel":  "Conforme",
+                                       "Errors":  [
+
+                                                  ]
+                                   },
+                        "JoinDestinationGuid":  "",
+                        "Errors":  [
+
+                                   ]
+                    }
+}

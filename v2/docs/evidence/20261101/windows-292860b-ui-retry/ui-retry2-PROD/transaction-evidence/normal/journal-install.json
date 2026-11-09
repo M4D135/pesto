@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "bc29fd100f0847f1a0e0b1ff834b1248",
+  "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-504135d063514b23b5c10f4f96ebbb62\\cases\\normal\\installation",
+  "channel": "PROD",
+  "currentFingerprint": "0b53ca74a6d585efa909eef0836e48e83c82a1ae5862894a56f52a43e9773ee0",
+  "nextFingerprint": "a2f740aababc938848053322e53cbdccf5734d9f46f5bbf5649a180f529ab48c",
+  "currentExecutableHash": "2aa0b2458115aa6bfd9a364137f4826ea3c16f32cfde4d28a0d84a844659c4bf",
+  "nextExecutableHash": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+  "helperHash": "2aa0b2458115aa6bfd9a364137f4826ea3c16f32cfde4d28a0d84a844659c4bf",
+  "currentVersion": "2.0.8",
+  "nextVersion": "2.0.9",
+  "action": "install",
+  "status": "completed",
+  "createdUtc": "2026-11-01T04:46:15.1254295\u002B00:00",
+  "parentProcessId": 2296,
+  "parentStartUtc": "2026-11-01T04:44:59.1080078\u002B00:00",
+  "failure": null
+}

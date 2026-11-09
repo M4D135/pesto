@@ -1,0 +1,202 @@
+﻿{
+    "Version":  "1.0",
+    "Kind":  "Windows isolated tests, no real AD or join",
+    "Failed":  0,
+    "Tests":  [
+                  {
+                      "Name":  "Formulaire valide",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Cible distante refusee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Nom hors convention refuse",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Domaine incompatible avec OU refuse",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Production ne contourne pas le transit impose",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Production directe explicite dans le perimetre",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Reference multiligne refusee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Toute modification de plan invalide sa signature",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Lecture seule ne joint pas le PC",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "PC deja dans un domaine bloque",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Absence elevation bloque avant ecriture",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Redemarrage nom en attente bloque",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Absence credential bloque sans prompt",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Collision de nom bloque sans supprimer objet",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Panne AD reste une erreur",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Controleur explicite requis",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Recu Running bloque une nouvelle jonction",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Recu incertain reste bloque",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Un recu d une autre machine est refuse",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Succession recu / appel Windows / recu confirme",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Aucun parametre Restart ni cible distante",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Le recu ne contient pas de credential",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Recu initial impossible : aucune mutation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Recu final impossible : resultat incertain",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Etat local change pendant controle : non lance",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "HasSucceeded faux apres preparation locale : incertain sans reprise",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Renommage local false : jonction jamais lancee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Renommage local throw : jonction jamais lancee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retour Windows empty : incertain",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retour Windows string : incertain",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retour Windows rpc : incertain",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retour Windows late : incertain",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Annulation avant appel : aucune mutation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Sans reboot le succes reste en attente",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Apres reboot sans canal confirme : pas de verification inventee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Reboot + nom + domaine + canal : pret a observer, verification AD jamais auto-certifiee",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Virgule echappee preservee dans le chemin lisible",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Noms generes : chaines distinctes, pas tableau dans la ComboBox",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Noms generes : reservations ecartees",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

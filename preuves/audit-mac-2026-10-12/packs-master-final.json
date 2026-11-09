@@ -1,0 +1,20 @@
+[
+  {
+    "channel": "PROD",
+    "files": 41,
+    "SHA256": "0aa74d2109ef6875ef8083e138bc385f51d301cda7efd8a6826e0ca029d116e3",
+    "previous_SHA256": "0aa74d2109ef6875ef8083e138bc385f51d301cda7efd8a6826e0ca029d116e3",
+    "matches_source": "PASS",
+    "CRC": "PASS",
+    "runtimeFiles": 38
+  },
+  {
+    "channel": "DEV",
+    "files": 391,
+    "SHA256": "798e313fe491c476e56c3ba3135754727ce46df4d5993638404b2897d5358dae",
+    "previous_SHA256": "d76ba525341d41177f1e63dab9cf82ad5b02c6c07637834fad5c8c7efc20db44",
+    "matches_source": "PASS",
+    "CRC": "PASS",
+    "runtimeFiles": 38
+  }
+]

@@ -409,7 +409,7 @@ et canari AD restent des qualifications séparées.
 ### Qualification CI et recette sur banc (2.0.10)
 
 - **CI Windows** (Evergreen installé sur le runner) : qualification native du pack LIGHT, avec `runtimeSource == 'evergreen'` ; le pack DEV est assemblé et vérifié ;
-- mise à jour inter-builds depuis une base LIGHT reconstruite au commit `ef759f6a`, puis interface de mise à jour depuis cette base ;
+- mise à jour inter-builds depuis une base LIGHT reconstruite au commit `962f3ba` (2.0.10 ; `ef759f6a` jusqu’à la recréation du dépôt le 9 novembre 2026), puis interface de mise à jour depuis cette base ;
 - sur le runner, une copie exacte du Socle est acceptée sans changer l’empreinte, et une copie altérée est refusée (`package.socle`). La recopie du Socle à la mise à jour et au retour arrière est couverte par les tests Engine sur le runner ;
 - **non qualifié en CI** : le démarrage sur le Socle sans Evergreen. Il est qualifié par la recette sur banc (VM recréée, Evergreen désinstallé, message clair, extraction du Socle, démarrage) ;
 - la mise à jour en place depuis 2.0.9 PROD n’est pas qualifiée, puisqu’elle est impossible par construction.

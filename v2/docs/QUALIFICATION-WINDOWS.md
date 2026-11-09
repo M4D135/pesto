@@ -257,8 +257,8 @@ et exige un jeton déjà administrateur ; une demande UAC bloquée n’est pas a
 comme un succès.
 
 La baseline **A** est reconstruite à chaque CI depuis le commit épinglé
-`ef759f6a3f7771d3a3321b73c3bb083f1aa5d282` (pack LIGHT, canal PROD seulement : ce commit ne sait pas
-fabriquer un DEV LIGHT), avec le SDK de la campagne. Avant la 2.0.10, la baseline était `de527313`, en PROD fixe. Son propre
+`962f3ba0826730077b2ccd918e0f8415870646bb` (2.0.10, pack LIGHT, canal PROD seulement), avec le SDK de la campagne.
+Le dépôt recréé le 9 novembre 2026 n’a plus `ef759f6a`, la baseline précédente ; avant la 2.0.10, c’était `de527313`, en PROD fixe. Son propre
 script de packaging fournit son interface et ses fichiers sources. **B** est la compilation du nouveau
 commit testé. Le banc exige des commits et SHA-256 de `Pesto.exe` distincts ; leurs valeurs effectivement
 produites sont consignées. Il ne dépend ni des anciens artefacts à durée de rétention limitée ni de la

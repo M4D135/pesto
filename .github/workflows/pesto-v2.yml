@@ -53,7 +53,7 @@ jobs:
       WEBVIEW2_VERSION: '156.0.4314.42'
       WEBVIEW2_CAB_SHA256: cb4612ce79a62a0be094301a72f73cf91bb250f5e83dc51886f66a083fc0694f
       WEBVIEW2_EXE_SHA256: 337a496fffec9940ef7142e67162f80e40c878cb8fc2af66e5bd9aa75ffcdbae
-      UPDATE_BASELINE_COMMIT: ef759f6a3f7771d3a3321b73c3bb083f1aa5d282
+      UPDATE_BASELINE_COMMIT: 962f3ba0826730077b2ccd918e0f8415870646bb
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
@@ -107,7 +107,7 @@ jobs:
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           repository: M4D135/pesto
-          ref: ef759f6a3f7771d3a3321b73c3bb083f1aa5d282
+          ref: 962f3ba0826730077b2ccd918e0f8415870646bb
           path: baseline
           persist-credentials: false
           sparse-checkout: |
@@ -229,7 +229,7 @@ jobs:
           if ($oldExe -eq $newExe) { throw 'Cross-build qualification requires two different executable hashes' }
           [ordered]@{ sourceCommit=$env:UPDATE_BASELINE_COMMIT; build='rebuilt-from-pinned-source-in-this-run'; channel='PROD';
             executableSha256=$oldExe; candidateExecutableSha256=$newExe;
-            note='La base ef759f6a ne sait pas fabriquer un DEV LIGHT ; aucune base DEV ni mise a jour inter-builds DEV n est qualifiee.' } |
+            note='La base 962f3ba ne sait pas fabriquer un DEV LIGHT ; aucune base DEV ni mise a jour inter-builds DEV n est qualifiee.' } |
             ConvertTo-Json | Set-Content -Encoding utf8 out/evidence/update-baseline-PROD-LIGHT.json
           Compress-Archive -Path out/baseline-PROD-LIGHT -DestinationPath out/Pesto_V2_baseline-PROD-LIGHT.zip -CompressionLevel Optimal
       - name: Record Windows desktop context before native qualification

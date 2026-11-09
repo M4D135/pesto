@@ -551,7 +551,8 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         var listing = adapter.ReadSiteOus(read.Domain, DcOrNull(), read.ExplicitSites.Select(site => site.Ou).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(), parents);
         foreach (var site in read.ExplicitSites)
         {
-            if (!listing.Explicit.Contains(site.Ou)) continue;
+            // The batched LDAP read can miss a DN that the exact OU lookup used up to 2.0.9 still confirms.
+            if (!listing.Explicit.Contains(site.Ou) && !ConfirmedOu(read, adapter, site.Ou)) continue;
             list.Add(new(site.Id, site.Name, site.Code, site.Ou));
             seenIds.Add(site.Id);
             added.Add(site.Ou);
@@ -571,16 +572,25 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         return list;
     }
 
-    // V1 Get-SiteTag: an exact site wins over wildcards. An ambiguous wildcard never supplies a code.
+    private bool ConfirmedOu(V1Config read, IDirectoryGateway adapter, string dn)
+    {
+        try { return adapter.FindOrganizationalUnit(read.Domain, DcOrNull(), dn)?.DistinguishedName.Equals(dn, StringComparison.OrdinalIgnoreCase) == true; }
+        catch (PestoException) { return false; }
+    }
+
+    // An exact site wins over wildcards, then the most specific wildcard (most literal characters), then the first
+    // declared TAGS entry. Up to 2.0.9 every matching pattern listed the OU; dropping OUs that a broad pattern also
+    // matched emptied real site lists in 2.0.10, so an OU matched by any pattern always keeps one code.
     private static V1Config.DeclaredSite? MatchSiteTag(V1Config read, string name)
     {
         var exact = read.DeclaredSites.FirstOrDefault(site => site.Pattern.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (exact is not null) return exact;
         V1Config.DeclaredSite? match = null;
+        var best = -1;
         foreach (var site in read.DeclaredSites.Where(site => V1Config.MatchesWildcard(site.Pattern, name)))
         {
-            if (match is not null && !match.Tag.Equals(site.Tag, StringComparison.OrdinalIgnoreCase)) return null;
-            match ??= site;
+            var literals = site.Pattern.Count(c => c is not ('*' or '?'));
+            if (literals > best) (match, best) = (site, literals);
         }
         return match;
     }

@@ -232,6 +232,30 @@ internal sealed class LiveReadTests
     }
 
     [Test]
+    public void ABroadPatternNeverHidesSitesThatAMoreSpecificPatternNames()
+    {
+        // 2.0.10 dropped every OU matched by two codes: with a catch-all PREPROD pattern only PR sites were left.
+        var cfg = JsonNode.Parse(LiveTestConfig.NoRandom)!.AsObject();
+        cfg["TAGS"] = JsonNode.Parse("""
+            [ { "Site": "*", "Tag": "PR" }, { "Site": "Paris*", "Tag": "PA" }, { "Site": "*-Nord", "Tag": "NO" }, { "Site": "Lyon*", "Tag": "LY" } ]
+            """);
+        var root = LiveTestConfig.Write(cfg.ToJsonString());
+        try
+        {
+            var gateway = new FakeGateway { ChildOus = { [Container] = ["765_PREPROD", "Paris-Nord", "Lyon"] },
+                ScopeNames = ["P111301PAINF001"], DomainNames = [],
+                FindOu = dn => new(dn, Guid.NewGuid().ToString(), dn.Split(',')[0][3..]) };
+            var backend = Harness.Live(root, gateway);
+            var items = Harness.Arr(Harness.Call(backend, "directory.sites"), "items");
+            Check.Equal("765_PREPROD:PR,Paris-Nord:PA,Lyon:LY", string.Join(',', items.Select(item => Harness.Str(item!, "name") + ":" + Harness.Str(item!, "code"))),
+                "Chaque OU reste listée avec le motif le plus précis ; à précision égale, le premier TAGS déclaré");
+            var services = Harness.Arr(Harness.Call(backend, "directory.services", new { site = Harness.Str(items[1]!, "selector") }), "items");
+            Check.Equal("INF", string.Join(',', services.Select(item => Harness.Str(item!, "code"))), "Le site choisi garde le même code pour ses services");
+        }
+        finally { Directory.Delete(root, true); }
+    }
+
+    [Test]
     public void SitePatternsShareOneFreshReadPerContainerWithoutChangingOrder()
     {
         const string secondContainer = "OU=AutresSites,OU=Postes,DC=example,DC=local";

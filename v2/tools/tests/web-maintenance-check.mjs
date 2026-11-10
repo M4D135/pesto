@@ -37,7 +37,7 @@ const check = async (label, run) => {
 
 try {
   browser = await chromium.launch({ headless: true, executablePath });
-  async function makePage({ fresh = false, distribution = false, local = false, invalid = false, pendingSettings = false } = {}) {
+  async function makePage({ fresh = false, distribution = false, local = false, invalid = false, pendingSettings = false, session = {} } = {}) {
     const page = await browser.newPage({ viewport: { width: 1500, height: 1100 } });
     page.setDefaultTimeout(6000);
     page.on('pageerror', (error) => errors.push(error.message));
@@ -48,7 +48,7 @@ try {
       if (route.request().url().startsWith(origin + '/')) await route.continue();
       else { errors.push('Unexpected external request: ' + route.request().url()); await route.abort(); }
     });
-    await page.addInitScript(({ fresh, distribution, local, invalid, pendingSettings }) => {
+    await page.addInitScript(({ fresh, distribution, local, invalid, pendingSettings, session }) => {
       localStorage.setItem('pesto.prefs.v1', JSON.stringify({ theme: 'light', motion: 'reduced' }));
       const saved = {
         configured: true, configurationExists: true, configurationState: 'valid', diagnostic: null,
@@ -85,7 +85,7 @@ try {
               case 'session.info': data = { version: '2.0.0-dev', mode: 'live', configurationOnly: local,
                 domain: fresh || invalid || local ? null : 'example.local', dc: fresh || invalid || local ? null : 'dc01.example.local',
                 account: 'EXAMPLE\\operateur', computer: 'POSTE-TEST', readOnly: fresh || invalid || local,
-                capabilities: ['join', 'rename', 'move', 'renameMove', 'queue'].map((id) => ({ id, enabled: !fresh && !invalid && !local, reason: local ? 'Aucun annuaire connecté.' : fresh ? 'Configuration initiale requise.' : null })) }; break;
+                capabilities: ['join', 'rename', 'move', 'renameMove', 'queue'].map((id) => ({ id, enabled: !fresh && !invalid && !local, reason: local ? 'Aucun annuaire connecté.' : fresh ? 'Configuration initiale requise.' : null })), ...session }; break;
               case 'configuration.settings': data = structuredClone(state.settings); break;
               case 'coordination.status': data = { configured: !!state.settings.coordinationRoot, root: state.settings.coordinationRoot,
                 domain: state.settings.domain, required: state.settings.coordinationRequired, message: 'Paramètres locaux ; aucun registre contacté.' }; break;
@@ -140,7 +140,7 @@ try {
           } catch (error) { receive({ data: { id: request.id, kind: 'error', error: { code: error.code || 'fixture', message: error.message } } }); }
         },
       };
-    }, { fresh, distribution, local, invalid, pendingSettings });
+    }, { fresh, distribution, local, invalid, pendingSettings, session });
     await page.goto(origin + (local ? '/?configuration=local#/parametres' : '/#/parametres'));
     if (pendingSettings) await page.waitForFunction(() => window.fixture.releases.length === 1);
     else await page.waitForFunction(() => document.documentElement.dataset.ready === 'parametres');
@@ -165,6 +165,48 @@ try {
     if (discard) { await dialog(page).waitFor(); await closeDialog(page, 'ok'); }
     await page.locator('main[data-page="aide"]').waitFor();
   };
+
+  await check('Session : un seul indicateur, cible et contrôleur distingués, détails réunis', async () => {
+    for (const dc of ['dc01.labo.local', null]) {
+      const page = await makePage({ session: { domain: 'labo.local', dc, account: 'LABO\\operateur' } });
+      try {
+        assert.equal(await page.locator('.topbar .live').count(), 0);
+        const chip = page.locator('.mode-chip');
+        assert.equal(await chip.count(), 1);
+        assert.equal(await chip.getAttribute('data-mode'), 'live');
+        assert.equal(await chip.getAttribute('data-state'), dc ? 'discovered' : 'targeted');
+        await chip.locator('.txt').waitFor({ state: 'visible' });
+        assert.equal(await chip.locator('.txt').innerText(), 'Annuaire · labo.local');
+        assert.match(await chip.getAttribute('data-tip'), dc ? /Contrôleur découvert/ : /Contrôleur non confirmé/);
+        assert.equal(await chip.isEnabled(), true);
+        await chip.click();
+        const menu = page.getByRole('menu', { name: 'Session', exact: true });
+        for (const label of ['Mode', 'Domaine', 'Contrôleur', 'Écritures', 'Compte', 'Poste', 'Version du moteur'])
+          assert.match(await menu.innerText(), new RegExp(label));
+        await page.keyboard.press('Escape');
+        await page.evaluate(() => { window.fixture.fail = 'configuration.settings'; window.fixture.failCode = 'bridge.unavailable'; });
+        await page.locator('[data-act="reload"]').click();
+        await page.waitForFunction(() => document.querySelector('.mode-chip .txt').textContent === 'Moteur injoignable');
+        assert.equal(await chip.getAttribute('data-state'), 'offline');
+        await page.evaluate(() => { window.fixture.fail = null; });
+        await page.locator('[data-act="reload"]').click();
+        await page.waitForFunction(() => document.querySelector('.mode-chip .txt').textContent.startsWith('Annuaire ·'));
+      } finally { await page.close(); }
+    }
+  });
+
+  await check('Session : lecture seule et actions suspendues restent explicites', async () => {
+    for (const suspended of [false, true]) {
+      const page = await makePage({ session: { domain: 'labo.local', readOnly: true,
+        capabilities: [{ id: 'acknowledge', enabled: suspended }] } });
+      try {
+        const chip = page.locator('.mode-chip');
+        assert.equal(await chip.getAttribute('data-mode'), 'readonly');
+        assert.equal(await chip.locator('.txt').innerText(), `${suspended ? 'Actions AD suspendues' : 'Lecture seule'} · labo.local`);
+        assert.equal(await chip.isEnabled(), true);
+      } finally { await page.close(); }
+    }
+  });
 
   await check('Première lecture lente : une commande Enregistrer prématurée ne supprime pas la réponse attendue', async () => {
     const page = await makePage({ local: true, pendingSettings: true });

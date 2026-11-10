@@ -44,10 +44,10 @@
     },
     {
       "path": "v2/web/css/shell.css",
-      "sha256": "55409f6477a3e4e8d0dbc33353f0c4f29f4a27ba611be621a09a94f68fa38ea4",
+      "sha256": "f0e55c385cc184e820069f7c89ed261292cb4ba5282085d112f9465a0d2db8d7",
       "upstreamPath": "v2/web/css/shell.css",
       "upstreamSha256": "e2fe161b0ba16b4b3ce0db7caf86fa2a0aeae30f5d748438dda007ffdfbdff9c",
-      "adaptation": "Styles métier Pesto (noms, reçus, confirmations, configuration, démonstration et jonction hors ligne), animations existantes et marque Pesto conservés ; dimensions du logo propres à Pesto et bordures alignées sur le token commun --border ; bouton de repli du menu en icône seule tout en bas, comme le bouton de barre latérale Domenia ; Défilement du rail réservé sous le pied, infobulles flottantes du rail et poignée masquée en rail forcé (29/10/2026). ; Bouton de repli harmonisé avec Domenia, FILPRO et GLPI : ligne avec libellé en déplié, icône seule en replié (29/10/2026). Coche, point des cases et cadre des boutons pleins visibles en contraste élevé (30/10/2026)."
+      "adaptation": "Styles métier Pesto (noms, reçus, confirmations, configuration, démonstration et jonction hors ligne), animations existantes et marque Pesto conservés ; dimensions du logo propres à Pesto et bordures alignées sur le token commun --border ; bouton de repli du menu en icône seule tout en bas, comme le bouton de barre latérale Domenia ; Défilement du rail réservé sous le pied, infobulles flottantes du rail et poignée masquée en rail forcé (29/10/2026). ; Bouton de repli harmonisé avec Domenia, FILPRO et GLPI : ligne avec libellé en déplié, icône seule en replié (29/10/2026). Coche, point des cases et cadre des boutons pleins visibles en contraste élevé (30/10/2026). Indicateur de session unique : annuaire réel distinct de la lecture seule, domaine et état réunis, détails accessibles dans un seul menu (10/11/2026)."
     },
     {
       "path": "v2/web/css/tokens.css",

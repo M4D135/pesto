@@ -38,6 +38,11 @@ internal static class DirectoryReadPowerShellValidation
             Check.Equal(3, exactOu.GetProperty("limit").GetInt32(), "Borne du lot explicite");
             Check.Equal(Parent, Text(sites.Calls[1], "base"), "OU source des enfants"); Check.Equal("OneLevel", Text(sites.Calls[1], "scope"), "Enfants directs seulement");
             Check.Equal(20001, sites.Calls[1].GetProperty("limit").GetInt32(), "Une ligne supplémentaire pour détecter la limite des OU");
+            var v1Sites = await Invoke(module, "sites", new { Explicit = Array.Empty<string>(), Parents = new[] { Parent } }, "v1-sites");
+            var observed = Result(v1Sites).GetProperty("groups").EnumerateArray().Single().GetProperty("children")
+                .EnumerateArray().Select(item => item.GetString()!).ToArray();
+            Check.Equal(1, v1Sites.Calls.Length, "Sans sites explicites V2, une lecture OneLevel retrouve aussi les sites ordinaires");
+            AuditSiteCompatibilityTests.VerifyObservedSites(observed);
             EqualSet(serviceResult.GetProperty("inOu"), [Occupied[0], "OTHER002", "OTHER003", "P111301LY888001"]);
             EqualSet(serviceResult.GetProperty("withTag"), [Occupied[0], Occupied[3], Occupied[6], Occupied[9]]);
             Check.True(serviceResult.GetProperty("complete").GetBoolean(), "Inventaire des services complet");
@@ -103,7 +108,8 @@ internal static class DirectoryReadPowerShellValidation
                 powershell = "5.1", adExecuted = false, provider = "local synthetic module", scriptSha256 = Convert.ToHexStringLower(
                     SHA256.HashData(Encoding.UTF8.GetBytes(PowerShellDirectoryGateway.ConstantScript))),
                 nominalWorkers = nominal.Length, nominalDirectoryCalls = nominal.Sum(r => r.Calls.Length), seriesWorkers = 1, seriesDirectoryCalls = names.Calls.Length,
-                occupied = Occupied.Length, firstUnoccupiedFixtureMember = firstUnused, selectedOuRefusals = 4, incompleteAndFailureCases = 7 }));
+                occupied = Occupied.Length, firstUnoccupiedFixtureMember = firstUnused, selectedOuRefusals = 4, incompleteAndFailureCases = 7,
+                v1ObservedSites = observed.Length, v1ConfiguredPreproductionSites = 2, v1SuffixSites = 2 }));
             return 0;
         }
         catch (Exception e) { Console.Error.WriteLine("ECHEC lectures synthétiques PS5.1 : " + e.Message); return 1; }
@@ -165,6 +171,10 @@ function Get-ADOrganizationalUnit {
   }
   if($LDAPFilter){if($SearchBase -cne $root){throw 'Unexpected OU base'};if($LDAPFilter.Contains('OU=Paris\281\29,')){[pscustomobject]@{DistinguishedName=$site}};return}
   if($SearchBase -cne $parent -or $SearchScope -cne 'OneLevel'){throw 'Unexpected OU child scope'}
+  if($env:PESTO_FIXTURE_MODE -eq 'v1-sites'){
+    foreach($name in @('222_PROD_A_NOMMER','222_PREPROD','AgenceMN','SIEGE-XY')){[pscustomobject]@{Name=$name}}
+    return
+  }
   if($env:PESTO_FIXTURE_MODE -eq 'overflow'){for($i=0;$i -lt $ResultSetSize;$i++){[pscustomobject]@{Name="child$i"}};return}
   [pscustomobject]@{Name='Paris(1)'}
   if($env:PESTO_FIXTURE_MODE -eq 'partial'){throw 'fixture.partial'}

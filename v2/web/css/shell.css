@@ -126,25 +126,7 @@
 :root[data-theme="contrast"] .cursor-halo, :root[data-motion="reduced"] .cursor-halo { display: none; }
 @media (prefers-reduced-motion: reduce) { :root[data-motion="system"] .cursor-halo { display: none; } }
 
-/* ---------- Top bar: connection state and mode chip ---------- */
-button.live { border: 0; background: none; height: 30px; padding: 0 var(--s2); border-radius: var(--r-pill); cursor: pointer; font: inherit; font-size: var(--fs-caption); font-weight: 700; }
-button.live:hover { background: var(--bg-hover); }
-.live[data-state="connected"] { color: var(--ok); }
-.live[data-state="offline"] { color: var(--alert); }
-.live[data-state="offline"] .dot { --tone: var(--alert-mark); }
-.live[data-state="slow"] { color: var(--warn); }
-.live[data-state="slow"] .dot { --tone: var(--warn-mark); }
-.live[data-state="simulated"] { color: var(--info); }
-/* In simulation the mode chip already says it (its tip gives the detail) and the banner below explains it: the
-   connection indicator would say it a third time, so it steps aside. */
-.topbar .live[data-state="simulated"] { display: none; }
-.live[data-state="simulated"] .dot { --tone: var(--info-mark); }
-.live[data-state="disconnected"], .live[data-state="unknown"] { color: var(--text-faint); }
-.live[data-state="disconnected"] .dot, .live[data-state="unknown"] .dot { --tone: var(--off-mark); }
-.live[data-state="disconnected"] .pulse::after, .live[data-state="unknown"] .pulse::after { animation: none; opacity: 0; }
-.live .label { animation: fade-swap var(--t-slow) var(--ease-out); }
-@keyframes fade-swap { from { opacity: 0; transform: translateY(4px); } }
-
+/* ---------- Top bar: session indicator ---------- */
 .mode-chip {
   position: relative; isolation: isolate; overflow: hidden; border: 0; cursor: pointer; font: inherit;
   display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px 0 11px;
@@ -155,9 +137,9 @@ button.live:hover { background: var(--bg-hover); }
 .mode-chip[hidden] { display: none; }
 .demo-trigger[hidden], .demo-controls[hidden] { display: none; }
 .mode-chip:hover { filter: brightness(1.06) saturate(1.1); }
-/* The chip, the connection state and the shortcut keep their size; the search field shrinks first. The bar and the
+/* The session indicator and the shortcut keep their size; the search field shrinks first. The bar and the
    banner never widen the content column (zero minimum in the shell grid), so the window never scrolls sideways. */
-.mode-chip, .topbar .live, .topbar > .btn, .topbar > .segmented { flex: none; white-space: nowrap; }
+.mode-chip, .topbar > .btn, .topbar > .segmented { flex: none; white-space: nowrap; }
 .shell > .topbar, .shell > .sim-banner { min-width: 0; }
 .topbar .search-trigger { min-width: 0; }
 .topbar .search-trigger kbd { flex: none; white-space: nowrap; }
@@ -407,7 +389,7 @@ button.list-row { width: 100%; border: 0; background: none; text-align: left; cu
 .theme-switch button[aria-pressed="true"] svg { color: var(--accent-text); }
 /* Reserved layout of the top bar (TRV-053, TRV-092): narrower, the theme switch and the history go into « Plus ». */
 .topbar.compact .theme-switch, .topbar.compact .sh-history { display: none; }
-.topbar.tight .live .label, .topbar.tight .search-trigger kbd { display: none; }
+.topbar.tight .search-trigger kbd { display: none; }
 .topbar.tight .search-trigger span { display: none; }
 .topbar.tight .search-trigger { flex: none; width: 42px; justify-content: center; padding: 0; }
 
@@ -1146,9 +1128,17 @@ button.sh-hbar-row[aria-pressed="true"] { background: var(--accent-soft); }
 
 /* ---------- Reserved slots of the top bar (TRV-053): hidden, never removed, so nothing moves ---------- */
 .mode-chip.pending { visibility: hidden; }
-.mode-chip[data-mode="readonly"] { color: var(--off); background: var(--off-soft); }
-.mode-chip[data-mode="readonly"] .dot { --tone: var(--off-mark); }
+.mode-chip .txt { overflow: hidden; text-overflow: ellipsis; }
+.mode-chip { max-width: min(55vw, 540px); }
+.mode-chip[data-mode="live"] .glow-ring, .mode-chip[data-mode="live"]::after,
 .mode-chip[data-mode="readonly"] .glow-ring, .mode-chip[data-mode="readonly"]::after { display: none; }
+.mode-chip[data-mode="live"][data-state="discovered"] { color: var(--ok); background: var(--ok-soft); }
+.mode-chip[data-mode="live"][data-state="discovered"] .dot { --tone: var(--ok-mark); }
+.mode-chip[data-mode="readonly"] { color: var(--warn); background: var(--warn-soft); }
+.mode-chip[data-mode="readonly"] .dot { --tone: var(--warn-mark); }
+.mode-chip[data-state="offline"] { color: var(--alert); background: var(--alert-soft); }
+.mode-chip[data-state="offline"] .dot { --tone: var(--alert-mark); }
+.mode-chip[data-state="offline"] .glow-ring, .mode-chip[data-state="offline"]::after { display: none; }
 .mode-chip[data-mode="write"] { color: var(--warn); background: var(--warn-soft); }
 .mode-chip[data-mode="write"] .dot { --tone: var(--warn-mark); }
 .mode-chip[data-mode="write"] .glow-ring::before { background: conic-gradient(var(--warn-mark), transparent 28%, var(--alert-mark) 50%, transparent 72%, var(--warn-mark)); }

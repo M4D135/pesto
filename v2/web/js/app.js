@@ -113,8 +113,7 @@ function topbarMarkup() {
       ${icon('search')}<span>Aller à un écran, une commande…</span><kbd>Ctrl K</kbd>
     </button>
     <div class="topbar-spacer"></div>
-    <button class="mode-chip pending" type="button" aria-haspopup="menu"><span class="glow-ring" aria-hidden="true"></span><span class="dot pulse"></span><span class="txt">Mode…</span><span class="visually-hidden detail"></span></button>
-    <button class="live" type="button" data-state="unknown" aria-haspopup="menu"><span class="dot pulse"></span><span class="label">Connexion…</span></button>
+    <button class="mode-chip pending" type="button" aria-haspopup="menu"><span class="glow-ring" aria-hidden="true"></span><span class="dot pulse" aria-hidden="true"></span><span class="txt">Session…</span><span class="visually-hidden detail"></span></button>
     <div class="segmented theme-switch" role="group" aria-label="Thème"><span class="thumb" aria-hidden="true"></span>${themes}</div>
     <div class="busy-line" aria-hidden="true"></div>
   </header>`;
@@ -158,21 +157,14 @@ function modeState(info = state.session) {
   if (info.mode === 'simulation') return { id: 'simulation', text: 'Simulation', detail: `Annuaire fictif en mémoire${NBSP}: aucune écriture réelle, aucun contact réseau.` };
   if (info.configurationOnly) return { id: 'configuration', text: 'Configuration locale', detail: 'Paramètres du profil local ; aucun annuaire connecté dans cette fenêtre.' };
   if (info.mode === 'offline') return { id: 'offline', text: 'Jonction locale réelle', detail: writeAvailability(info).detail };
-  if (info.readOnly || info.mode === 'live') return { id: 'readonly', text: info.readOnly
-    ? (info.capabilities?.some(item => item.id === 'acknowledge' && item.enabled === true) ? 'Actions AD suspendues' : 'Lecture seule')
-    : 'Annuaire réel', detail: `Annuaire réel. ${writeAvailability(info).detail}` };
+  if (info.readOnly || info.mode === 'live') {
+    const label = info.readOnly
+      ? (info.capabilities?.some(item => item.id === 'acknowledge' && item.enabled === true) ? 'Actions AD suspendues' : 'Lecture seule')
+      : 'Annuaire';
+    return { id: info.readOnly ? 'readonly' : 'live', text: `${label} · ${info.domain || 'domaine non configuré'}`,
+      detail: `Annuaire réel. ${writeAvailability(info).detail}` };
+  }
   return null;
-}
-
-function paintMode() {
-  const chip = document.querySelector('.mode-chip');
-  const m = modeState();
-  if (!chip || !m) return;
-  chip.classList.remove('pending');
-  chip.querySelector('.txt').textContent = m.text;
-  chip.querySelector('.detail').textContent = `${NBSP}: ${m.detail}`;
-  chip.dataset.tip = `${m.detail} Cliquez pour le détail de la session.`;
-  chip.dataset.mode = m.id;
 }
 
 function paintBanner() {
@@ -210,41 +202,32 @@ function paintAccount() {
   if (brand && typeof s?.version === 'string' && s.version) brand.dataset.tip = `Pesto 2 · version ${s.version}`;
 }
 
-function paintLive() {
-  const live = document.querySelector('.live');
-  if (!live) return;
+function paintSession() {
+  const chip = document.querySelector('.mode-chip');
+  const mode = modeState() ?? (state.reach.offline ? { id: 'unavailable', text: 'Moteur injoignable', detail: '' } : null);
+  if (!chip || !mode) return;
   const s = state.session;
-  let stateName = 'unknown';
-  let label = 'Connexion…';
-  let tip = 'Session : domaine, contrôleur, compte, droits.';
+  let stateName = 'local';
+  let label = mode.text;
+  let tip = mode.detail;
   if (state.reach.offline) {
     stateName = 'offline';
     label = 'Moteur injoignable';
     tip = 'Le moteur n’a pas répondu à la dernière demande. Aucune relance automatique.';
-  } else if (s?.configurationOnly) {
-    stateName = 'unknown'; label = 'Configuration locale';
-    tip = 'Aucun lecteur Active Directory dans cette fenêtre. Reconnecter Pesto ouvre une session AD après votre demande.';
   } else if (s?.mode === 'simulation') {
     stateName = 'simulated';
-    label = `Simulation · ${s.domain || 'domaine fictif'}`;
-    tip = `Monde fictif en mémoire. Compte simulé${NBSP}: ${s.account || 'inconnu'}.`;
-  } else if (s?.mode === 'offline') {
-    stateName = 'unknown'; label = `Mode local · ${s.computer || 'poste à vérifier'}`;
-    tip = 'Aucune découverte du contrôleur au démarrage de cette fenêtre.';
-  } else if (s?.mode === 'live') {
-    stateName = s.dc ? 'connected' : 'unknown';
-    label = s.domain ? `Annuaire ciblé · ${s.domain}` : 'Domaine non configuré';
-    tip = `Poste ${s.computer || 'inconnu'}, compte ${s.account || 'inconnu'}.${s.dc ? ` Contrôleur découvert${NBSP}: ${s.dc}.` : ' Contrôleur non confirmé.'} Les droits et l’état de la cible sont vérifiés lors de chaque demande.`;
+    tip += ` Domaine fictif${NBSP}: ${s.domain || 'inconnu'}.`;
+  } else if (s?.mode === 'live' && !s.configurationOnly) {
+    stateName = s.dc ? 'discovered' : 'targeted';
+    tip += s.dc ? ` Contrôleur découvert${NBSP}: ${s.dc}.` : ' Contrôleur non confirmé : seul le domaine cible est configuré.';
+    tip += ' Les droits et l’état de la cible sont vérifiés lors de chaque demande.';
   }
-  live.dataset.state = stateName;
-  live.dataset.tip = tip;
-  const current = live.querySelector('.label');
-  if (current.textContent !== label) {
-    const next = document.createElement('span');
-    next.className = 'label';
-    next.textContent = label;
-    current.replaceWith(next);
-  }
+  chip.classList.remove('pending');
+  chip.dataset.mode = mode.id;
+  chip.dataset.state = stateName;
+  chip.dataset.tip = `${tip} Cliquez pour le détail de la session.`;
+  chip.querySelector('.txt').textContent = label;
+  chip.querySelector('.detail').textContent = `${NBSP}: ${tip}`;
 }
 
 // ---------- Boot ----------
@@ -273,12 +256,12 @@ function trackedCall(op, args) {
   notePending(op);
   setBusy(true);
   return call(op, args).then((data) => {
-    if (state.reach.offline) { state.reach = { offline: false, since: null }; paintLive(); }
+    if (state.reach.offline) { state.reach = { offline: false, since: null }; paintSession(); }
     return data;
   }, (err) => {
     if (err?.code === 'bridge.timeout' || err?.code === 'bridge.unavailable' || err?.code === 'bridge.closed') {
       state.reach = { offline: true, since: Date.now() };
-      paintLive();
+      paintSession();
     }
     throw err;
   }).finally(() => {
@@ -468,17 +451,11 @@ function boot() {
   topbar.querySelector('.mode-chip').addEventListener('click', (e) => {
     const s = state.session;
     openMenu(e.currentTarget, [
-      { heading: 'Mode de la session' },
+      { heading: 'Session' },
       { label: 'Mode', hint: s?.mode === 'simulation' ? 'Simulation' : s?.mode === 'offline' ? 'Jonction hors ligne locale' : s?.configurationOnly ? 'Configuration locale' : s ? 'Annuaire réel' : 'inconnu', run: () => {} },
       { label: 'Domaine', hint: s?.domain ?? 'inconnu', run: () => {} },
-      { label: 'Contrôleur', hint: s?.dc ?? 'inconnu', run: () => {} },
+      { label: 'Contrôleur', hint: s?.dc || 'non confirmé', run: () => {} },
       { label: 'Écritures', hint: writeAvailability(s).text, run: () => {} },
-    ], { label: 'Mode de la session' });
-  });
-  topbar.querySelector('.live').addEventListener('click', (e) => {
-    const s = state.session;
-    openMenu(e.currentTarget, [
-      { heading: 'Session' },
       { label: 'Compte', hint: s?.account ?? 'inconnu', run: () => {} },
       { label: 'Poste', hint: s?.computer ?? 'inconnu', run: () => {} },
       { label: 'Version du moteur', hint: s?.version ?? 'inconnue', run: () => {} },
@@ -544,10 +521,9 @@ function boot() {
     setCollapsed(state.prefs.navCollapsed, false);
     root.dataset.motion = state.prefs.motion;
     applyTheme();
-    paintMode();
     paintBanner();
     paintAccount();
-    paintLive();
+    paintSession();
     emit('session', info);
   }
 

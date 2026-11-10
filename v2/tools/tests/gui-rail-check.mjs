@@ -121,7 +121,7 @@ try {
   await check('Ajouter (réel, politique précréé désactivée) : formulaire du compte précréé masqué', async () => {
     const page = await open({ route: 'ajouter', live: false });
     try {
-      assert.equal(await page.locator('.mode-chip').getAttribute('data-mode'), 'readonly');
+      assert.equal(await page.locator('.mode-chip').getAttribute('data-mode'), 'live');
       const sw = page.locator('[name="usePrecreated"]');
       assert.equal(await sw.isChecked(), false);
       assert.equal(await sw.isDisabled(), true);

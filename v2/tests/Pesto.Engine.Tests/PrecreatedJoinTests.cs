@@ -155,6 +155,18 @@ internal sealed class PrecreatedJoinTests
     }
 
     [Test]
+    public void PreproductionAccountAlsoRequiresItsConfiguredSiteAndService()
+    {
+        using var w = new World(production: false);
+        w.Account = w.Account! with { Ou = "OU=Staging,OU=Postes,DC=example,DC=local" };
+        Check.Pesto(() => w.Preview(), "join.preprod", "The right OU alone cannot authorize a production name");
+        w.Account = w.Account with { Name = "P111301PR765001" };
+        var preview = Harness.Call(w.Backend, "join.precreated.preview", new { name = w.Account.Name });
+        Check.Equal(w.Account.Ou, Harness.Str(w.Plan(preview), "targetOU"), "A precreated staging account remains in the exact staging OU");
+        Check.Equal(0, w.Mutation.Sends, "Read and preparation do not create or join an account");
+    }
+
+    [Test]
     public void ChangedGuidOuIdentityAndDisappearanceInvalidateTheConfirmedPlan()
     {
         foreach (var change in new[] { "guid", "ou", "missing", "ouGuid" })

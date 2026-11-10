@@ -70,7 +70,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
             {
                 "session.info" => SessionInfo(),
                 "dashboard.read" => Dashboard(!args.TryGetProperty("inventory", out _) || Arguments.Flag(args, "inventory")),
-                "directory.sites" => DirectorySites(),
+                "directory.sites" => DirectorySites(args),
                 "directory.services" => DirectoryServices(args),
                 "directory.search" => DirectorySearch(args),
                 "computer.inspect" => ComputerInspect(args),
@@ -132,24 +132,30 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
             ? availability.UnavailableReason ?? "Adaptateur de mutation indisponible sur ce poste."
             : Policy(ConfigOrNull()!).BlockReason("queue") ?? CoordinationProviderRefusal(Policy(ConfigOrNull()!));
 
-    private string? CapabilityBlockReason(string action) => action == "acknowledge" ? AcknowledgementCapabilityBlockReason()
+    private string? CapabilityBlockReason(string action, bool? localJoined) =>
+        (action is "join" or "joinPrecreated") && WriteBlockReason is null && JoinMembershipBlockReason(localJoined) is { } membershipReason ? membershipReason
+        : action == "acknowledge" ? AcknowledgementCapabilityBlockReason()
         : action == "attributes" ? AttributesCapabilityBlockReason()
         : action == "joinPrecreated" ? PrecreatedJoinCapabilityBlockReason() : WriteBlockReason
         ?? (ConfigOrNull() is { } read ? Policy(read).BlockReason(action) : null)
         ?? (action == "join" && ConfigOrNull()?.OperationPolicy.ReserveNamesInAd == true && mutation is not IMutationJoinReservation
             ? "POLICY.ReserveNamesInAD : adaptateur de réservation AD absent, aucune jonction préparée sans ce parcours." : null);
 
-    private JsonObject SessionInfo() => Resp.Obj(
-        ("version", EngineVersion.Current),
-        ("mode", "live"),
-        ("domain", ConfigOrNull()?.Domain),
-        ("dc", DcOrNull()),
-        ("account", DirectoryAccount()),
-        ("computer", Environment.MachineName),
-        ("localJoined", gateway is ILocalDomainMembership membership ? membership.LocalComputerJoined : null),
-        ("readOnly", !WritesAvailable),
-        ("capabilities", Resp.Arr<string>(["join", "joinPrecreated", "rename", "move", "renameMove", "queue", "acknowledge", "attributes"],
-            id => Resp.Obj(("id", id), ("enabled", CapabilityBlockReason(id) is null), ("reason", CapabilityBlockReason(id))))));
+    private JsonObject SessionInfo()
+    {
+        var joined = LocalJoined;
+        return Resp.Obj(
+            ("version", EngineVersion.Current),
+            ("mode", "live"),
+            ("domain", ConfigOrNull()?.Domain),
+            ("dc", DcOrNull()),
+            ("account", DirectoryAccount()),
+            ("computer", Environment.MachineName),
+            ("localJoined", joined),
+            ("readOnly", !WritesAvailable),
+            ("capabilities", Resp.Arr<string>(["join", "joinPrecreated", "rename", "move", "renameMove", "queue", "acknowledge", "attributes"],
+                id => Resp.Obj(("id", id), ("enabled", CapabilityBlockReason(id, joined) is null), ("reason", CapabilityBlockReason(id, joined))))));
+    }
 
     /// <summary>
     /// Tableau de bord réel (constat 3 de la revue) : plus de null/listes constants. Les compteurs viennent de lectures
@@ -469,11 +475,13 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
     // ---- directory reads (portable guards from v1 readers) -------------------------
 
-    private JsonObject DirectorySites()
+    private JsonObject DirectorySites(JsonElement args)
     {
         var read = RequireConfig();
         var adapter = RequireGateway();
-        return Resp.Obj(("items", Resp.Arr(ResolveSites(read, adapter), s =>
+        var locked = ForJoin(args) && !read.Production;
+        var sites = locked ? [PreprodDestination(read, adapter)] : ResolveSites(read, adapter);
+        return Resp.Obj(("locked", locked), ("items", Resp.Arr(sites, s =>
             Resp.Obj(("id", s.Id), ("name", s.Name), ("code", s.Code), ("ou", s.Ou), ("selector", s.Ou)))));
     }
 
@@ -482,7 +490,10 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         var read = RequireConfig();
         var adapter = RequireGateway();
         var wanted = Arguments.Text(args, "site", true);
-        var (resolved, selection) = SiteForInventory(read, adapter, wanted);
+        var forJoin = ForJoin(args);
+        var (resolved, selection) = forJoin ? JoinSiteForInventory(read, adapter, wanted) : SiteForInventory(read, adapter, wanted);
+        if (forJoin && !read.Production)
+            return Resp.Obj(("locked", true), ("items", new JsonArray(Resp.Obj(("code", read.PreprodSite), ("name", read.PreprodSite)))));
 
         var convention = GetConvention(read);
         var patterns = convention.Types.Select(type => convention.SitePattern(type.ToString(), resolved.Code)).ToArray();
@@ -669,10 +680,13 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
     private JsonObject NamesPreview(JsonElement args)
     {
-        Arguments.Only(args, "type", "site", "service", "computer", "alternative");
+        Arguments.Only(args, "type", "site", "service", "computer", "alternative", "purpose");
+        var forJoin = ForJoin(args);
+        if (forJoin) RequireLocalJoinEligible();
         var type = Arguments.Text(args, "type", true);
         var service = Arguments.Text(args, "service", true).ToUpperInvariant();
         var computerName = Arguments.Text(args, "computer");
+        if (forJoin && computerName.Length > 0) throw new PestoException("invalid_arguments", "Un aperçu de jonction ne renomme pas un poste existant.");
         var alternative = Arguments.Flag(args, "alternative");
 
         // Les facettes sont validées par la convention réellement lue/enregistrée, jamais par le motif par défaut.
@@ -686,7 +700,8 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         var adapter = gateway ?? throw new PestoException("names.unavailable", NamesUnavailable);
         var wanted = Arguments.Text(args, "site", true);
         var dc = DcOrNull() ?? throw new PestoException("names.unavailable", "Impossible de joindre un contrôleur du domaine pour vérifier les noms.");
-        var (resolved, selection) = SiteForInventory(read, adapter, wanted);
+        var (resolved, selection) = forJoin ? JoinSiteForInventory(read, adapter, wanted) : SiteForInventory(read, adapter, wanted);
+        if (forJoin) RequireJoinDestination(read, convention.Format(type, resolved.Code, service, 1), resolved.Ou);
         if (!WithinScope(resolved.Ou, read.RootOu))
             throw new PestoException("names.unavailable", "La portée du site est hors de la racine gérée configurée : aucun nom n’est proposé dans une portée non gérée.");
 
@@ -863,6 +878,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         policy.RequireSupported(kind);
         if (kind == "join")
         {
+            RequireLocalJoinEligible();
             var precreatedCandidate = previewId is not null ? previews.GetValueOrDefault(previewId)?.PrecreatedJoin : null;
             if (policy.ReserveNamesInAd && mutation is not IMutationJoinReservation && precreatedCandidate is null)
                 throw new PestoException("reservation.unavailable", "POLICY.ReserveNamesInAD exige un adaptateur de réservation AD ; aucune jonction préparée sans ce parcours.");
@@ -919,6 +935,12 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         }
 
         var newName = kind == "move" ? computerName! : preview!.Name;
+        if (kind == "join")
+        {
+            RequireJoinDestination(read, newName, preview!.Ou);
+            if (targetArg is not null && !targetArg.Equals(preview.Ou, StringComparison.OrdinalIgnoreCase))
+                throw new PestoException("preview.changed", "La destination demandée ne correspond pas à l’aperçu de jonction.");
+        }
         if (newNameArg is not null && !newNameArg.Equals(newName, StringComparison.OrdinalIgnoreCase))
             throw new PestoException("preview.changed", "Le nom demandé ne correspond plus à l’aperçu.");
         if (kind != "move")
@@ -1067,6 +1089,11 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         if (!string.Equals(configStamp, plan.ConfigurationSha256, StringComparison.Ordinal))
             throw new PestoException("plan.stale", "La configuration du plan n’est plus celle de la session : préparez un nouvel aperçu.");
         var policy = Policy(read);
+        if (plan.Kind == "join")
+        {
+            RequireLocalJoinEligible();
+            RequireJoinDestination(read, plan.NewName, plan.TargetOu);
+        }
         ValidatePrecreatedJoinPlan(plan, read, policy);
         policy.AssertPlan(plan.Kind, plan.Computer, plan.NewName, plan.SourceOu, plan.TargetOu, GetConvention(read));
         if (plan.PrecreatedJoin is null) VerifyPreviewName(read, policy, plan.Kind, plan.NewName, plan.NameReservation, plan.ConfigurationSha256);
@@ -1521,7 +1548,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         MutationSessionGuard.RequireWritableSession();
         Arguments.Only(args, "id");
         var id = Arguments.Text(args, "id", true, 128);
-        if (CapabilityBlockReason("move") is { } unavailable)
+        if (CapabilityBlockReason("move", null) is { } unavailable)
             throw new PestoException("write.unavailable", unavailable);
         if (mutation is not IMutationMoveContinuation continuation)
             throw new PestoException("receipt.prepareMove_unavailable", "L’adaptateur ne permet pas de préparer le déplacement restant de ce reçu.");

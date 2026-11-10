@@ -83,7 +83,7 @@ internal sealed class MutationAdapterTests
             Check.Equal(MutationStatus.Failed, refused.Status, "Aucun résultat incertain sans envoi");
             return;
         }
-        var root = LiveTestConfig.Write(LiveTestConfig.NoRandom);
+        var root = LiveTestConfig.Write(LiveTestConfig.Production);
         var gateway = new FakeGateway
         {
             ChildOus = { [Container] = ["Paris-Nord"] },
@@ -106,7 +106,7 @@ internal sealed class MutationAdapterTests
     [Test]
     public void CapabilitiesReflectObservedAdapterAvailability()
     {
-        var root = LiveTestConfig.Write(LiveTestConfig.NoRandom);
+        var root = LiveTestConfig.Write(LiveTestConfig.Production);
         var gateway = new FakeGateway { ChildOus = { [Container] = ["Paris-Nord"] } };
         var adapter = new PowerShellMutationGateway(root);
         var backend = Harness.Live(root, gateway, adapter);
@@ -126,7 +126,7 @@ internal sealed class MutationAdapterTests
     {
         // Les entrées publiques de l'hôte (celle du pont avec lecteur annuaire, et celle sans lecteur) refusent
         // toute exécution : seule la surcharge de qualification accepte un adaptateur de mutation.
-        var root = LiveTestConfig.Write(LiveTestConfig.NoRandom);
+        var root = LiveTestConfig.Write(LiveTestConfig.Production);
         var gateway = new FakeGateway { ChildOus = { [Container] = ["Paris-Nord"] } };
         var host = PestoBackend.CreateLive(root, gateway);
         var preview = Harness.Call(host, "names.preview", new { type = "P", site = "PA", service = "INF" });

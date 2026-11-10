@@ -60,7 +60,7 @@ internal sealed class ReceiptAcknowledgementBackendTests
     private sealed class World : IDisposable
     {
         public readonly string Gp = Harness.IsolatedGpRoot();
-        public readonly string Config = LiveTestConfig.Write(LiveTestConfig.NoRandom);
+        public readonly string Config = LiveTestConfig.Write(LiveTestConfig.Production);
         public readonly FixedClock Clock = new();
         public readonly FakeGateway Directory = new() { ChildOus = { [Container] = ["Paris-Nord"] }, Find = _ => null };
         public readonly Adapter Mutation;

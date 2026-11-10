@@ -29,8 +29,9 @@ internal sealed class GroupExclusionTests
             return Change?.Invoke(observed) ?? observed;
         }
     }
-    private sealed class Directory(FakeGateway inner, Reader reader) : IDirectoryGateway, IAutomationNameInventory, IGroupExclusionReader
+    private sealed class Directory(FakeGateway inner, Reader reader) : IDirectoryGateway, IAutomationNameInventory, IGroupExclusionReader, ILocalDomainMembership
     {
+        public bool? LocalComputerJoined => inner.LocalComputerJoined;
         public string Description => "fixture groupes, aucun système";
         public string? DiscoverDomainController(string domain) => inner.DiscoverDomainController(domain);
         public DirectoryOrganizationalUnit? FindOrganizationalUnit(string domain, string? dc, string dn) => inner.FindOrganizationalUnit(domain, dc, dn);
@@ -49,7 +50,7 @@ internal sealed class GroupExclusionTests
     }
     private static string Configuration(bool enabled = true, bool fallback = false)
     {
-        var json = JsonNode.Parse(LiveTestConfig.NoRandom)!;
+        var json = JsonNode.Parse(LiveTestConfig.Production)!;
         json["POLICY"]!["ExcludedGroupGuids"] = enabled ? new JsonArray(Group, OtherGroup) : new JsonArray();
         json["POLICY"]!["AllowPasswordTaskFallback"] = fallback;
         return LiveTestConfig.Write(json.ToJsonString());

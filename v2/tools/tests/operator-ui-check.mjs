@@ -55,7 +55,7 @@ try {
       const f = window.fixture = { calls: [], receipt: { ...base, ...options.receipt }, planPatch: options.plan || {},
         resultPatch: options.result || {}, previewPatch: options.preview || {}, mode: options.mode || 'live', readOnly: options.readOnly === true,
         hold: options.hold, precreatedEnabled: options.precreated !== false, releases: {}, searches: {}, serial: 0, ...options.flags };
-      const session = () => ({ mode: f.mode, readOnly: f.readOnly, computer: 'LOCAL-CANARY', domain: 'example.local', account: 'EXAMPLE\\operator',
+      const session = () => ({ ...(kind === 'join' ? { localJoined: false } : {}), mode: f.mode, readOnly: f.readOnly, computer: 'LOCAL-CANARY', domain: 'example.local', account: 'EXAMPLE\\operator',
         capabilities: options.acknowledgeEnabled === undefined ? [] : [{ id: 'acknowledge', enabled: options.acknowledgeEnabled }] });
       const entra = { entraLeaveRequired: true, entraState: 'hybrid', entraPolicy: 'HybridOnly', entraObservedAt: '2026-10-25T17:00:00Z', entraExpiresAt: '2099-01-01T00:00:00Z' };
       const renamePlan = { planId: 'rename-plan', kind: 'rename', computer: 'PC-OLD', newName: 'PC-NEW', targetOU: ou,

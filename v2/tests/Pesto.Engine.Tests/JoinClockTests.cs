@@ -34,7 +34,7 @@ internal sealed class JoinClockTests
         var clock = new FixedClock();
         var reader = new Reader { Now = clock.GetUtcNow() };
         var mutation = new Mutation(reader);
-        var config = JsonNode.Parse(LiveTestConfig.NoRandom)!;
+        var config = JsonNode.Parse(LiveTestConfig.Production)!;
         config["POLICY"]!["BlockJoinOnClockSkew"] = enabled;
         var root = LiveTestConfig.Write(config.ToJsonString());
         var gateway = new FakeGateway { ChildOus = { ["OU=SITES,OU=Postes,DC=example,DC=local"] = ["Paris-Nord"] } };

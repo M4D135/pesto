@@ -21,7 +21,7 @@ internal sealed class LiveProductionSafetyTests
             Find = name => name == Computer ? Observed(name) : null,
         };
         var mutation = new FakeMutationGateway();
-        return (Harness.Live(LiveTestConfig.Write(LiveTestConfig.NoRandom), directory, mutation), directory, mutation);
+        return (Harness.Live(LiveTestConfig.Write(LiveTestConfig.Production), directory, mutation), directory, mutation);
     }
     private static JsonNode Prepare(IPestoBackend backend, string kind = "move")
     {
@@ -46,7 +46,7 @@ internal sealed class LiveProductionSafetyTests
     [Test]
     public void UnattendedAuthorizationDoesNotDisableConfirmedInteractiveJoinOrStartAnything()
     {
-        var root = LiveTestConfig.Write(LiveTestConfig.NoRandom.Replace("\"MaxBatch\": 50", "\"MaxBatch\": 50, \"UnattendedJoinEnabled\": true"));
+        var root = LiveTestConfig.Write(LiveTestConfig.Production.Replace("\"MaxBatch\": 50", "\"MaxBatch\": 50, \"UnattendedJoinEnabled\": true"));
         var directory = new FakeGateway { ChildOus = { ["OU=SITES,OU=Postes,DC=example,DC=local"] = ["Paris-Nord"] }, Find = _ => null };
         var mutation = new FakeMutationGateway();
         var backend = Harness.Live(root, directory, mutation);
@@ -133,7 +133,7 @@ internal sealed class LiveProductionSafetyTests
     {
         var directory = new FakeGateway { ChildOus = { [Container] = ["Paris-Nord", "Lyon-Sud"] }, Find = name => name == Computer ? Observed(name) : null };
         var mutation = new FakeMutationGateway();
-        var root = LiveTestConfig.Write(LiveTestConfig.NoRandom);
+        var root = LiveTestConfig.Write(LiveTestConfig.Production);
         var backend = Harness.Live(root, directory, mutation);
         var plan = Prepare(backend);
         File.AppendAllText(Path.Combine(root, "cfg.json"), " ");

@@ -19,6 +19,7 @@ internal sealed partial class LiveBackend
     private JsonObject JoinPrecreatedPreview(JsonElement args)
     {
         Arguments.Only(args, "name", "targetOU");
+        RequireLocalJoinEligible();
         if (PrecreatedJoinCapabilityBlockReason() is { } blocked) throw new PestoException("join.precreated_unavailable", blocked);
         var name = Arguments.Text(args, "name", true, 15).ToUpperInvariant();
         ValidateComputerName(name);
@@ -44,6 +45,7 @@ internal sealed partial class LiveBackend
         else if (!ResolveSites(read, adapter).Any(site => string.Equals(site.Code, parts.Site, StringComparison.OrdinalIgnoreCase)
             && string.Equals(site.Ou, observed.Ou, StringComparison.OrdinalIgnoreCase)))
             throw new PestoException("join.precreated_ou", "Le nom et l’OU du compte doivent désigner le même site configuré et observé.");
+        RequireJoinDestination(read, name, observed.Ou!);
         var account = new PrecreatedJoinAccount(observed.Guid ?? "", name, read.Domain, dc!, observed.Ou,
             ResolveTargetGuid(read, adapter, observed.Ou), configStamp!);
         PrecreatedJoinRules.Validate(account);

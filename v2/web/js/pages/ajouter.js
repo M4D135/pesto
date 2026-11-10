@@ -32,7 +32,12 @@ function layout() {
         <div class="card-head"><span class="card-icon">${icon('monitor')}</span><h3>Identité locale lue</h3></div>
         <p class="muted">Lecture de la session…</p>
       </section>
-      <section class="card span-7 reveal spot">
+      <section class="card span-7 reveal spot" data-zone="join-block" hidden>
+        <h3>Jonction indisponible</h3><p role="status" data-join-reason></p>
+        <div class="row-actions"><a class="btn" href="#/unposte">Ouvrir Un poste</a>
+          <button class="btn" type="button" data-act="reread-membership">Relire la session</button></div>
+      </section>
+      <section class="card span-7 reveal spot" data-zone="join-controls">
         <div class="card-head"><span class="card-icon">${icon('star')}</span><h3>Nom de jonction vérifié avant activation</h3></div>
         <div data-zone="join-mode"></div>
         <form class="k-form" novalidate data-form="join"></form>
@@ -74,6 +79,7 @@ export function render(main, ctx) {
   let sitesToken = 0;
   let expiryTimer = 0;
   let joinRequested = null;
+  let preprodLocked = false;
 
   const identity = main.querySelector('[data-zone="identity"]');
   const previewZone = main.querySelector('[data-zone="preview"]');
@@ -83,6 +89,10 @@ export function render(main, ctx) {
   let cap = ctx.capability('join');
   const precreatedCap = ctx.capability('joinPrecreated');
   const live = ctx.session()?.mode === 'live';
+  const membershipReason = () => !live || ctx.session()?.localJoined === false ? null
+    : ctx.session()?.localJoined === true
+      ? 'Ce PC est déjà membre d’un domaine. Utilisez « Un poste » pour le renommer ou le déplacer.'
+      : 'L’appartenance de ce PC à un domaine est inconnue. Relisez la session avant toute jonction.';
   const offlineEntry = main.querySelector('[data-zone="offline-entry"]');
   offlineEntry.hidden = !live;
   offlineEntry.querySelector('[data-act="offline-open"]').addEventListener('click', async event => {
@@ -107,18 +117,19 @@ export function render(main, ctx) {
     const rows = [
       ['Poste local', s.computer ?? 'inconnu'],
       ['Compte de session', s.account ?? 'inconnu'],
+      ['Appartenance locale', s.localJoined === true ? 'Déjà membre d’un domaine' : s.localJoined === false ? 'Hors domaine' : 'Inconnue'],
       ['Domaine configuré', s.domain ?? 'non connecté'],
       ['Contrôleur', s.dc ?? 'inconnu'],
       ['Mode', s.mode === 'simulation' ? 'Simulation (aucun effet réel)' : s.readOnly ? 'Lecture seule' : 'Annuaire réel'],
     ];
     identity.innerHTML = `<div class="card-head"><span class="card-icon">${icon('monitor')}</span><h3>Identité locale lue</h3>
-      <span class="meta">${s.mode === 'simulation' ? pill('info', 'Simulation', { icon: 'sparkles' }) : pill('ok', 'Faits lus', { icon: 'shield' })}</span></div>
+      <span class="meta">${s.mode === 'simulation' ? pill('info', 'Simulation', { icon: 'sparkles' }) : pill(s.localJoined == null ? 'warn' : 'ok', s.localJoined == null ? 'Lecture incomplète' : 'Faits lus', { icon: 'shield' })}</span></div>
       <div class="kv-grid">${rows.map(([k, v]) => `<span class="k">${esc(k)}</span><span class="v mono">${esc(v)}</span>`).join('')}</div>`;
   }
 
   function setPreview(p) {
     clearTimeout(expiryTimer);
-    preview = p && p.complete === true && typeof p.name === 'string' && !!p.name && typeof p.previewId === 'string' && !!p.previewId
+    preview = !membershipReason() && p && p.complete === true && typeof p.name === 'string' && !!p.name && typeof p.previewId === 'string' && !!p.previewId
       && typeof p.ou === 'string' && !!p.ou && Date.parse(p.expiresAt) > Date.now()
       && (precreated() ? p.joinAccountMode === 'precreated' && p.existingAccount === true && p.computer === ctx.session()?.computer
         && typeof p.computerGuid === 'string' && !!p.computerGuid : p.existingAccount !== true) ? p : null;
@@ -179,9 +190,12 @@ export function render(main, ctx) {
     form.setMessage('site', null);
     form.setMessage('service', null);
     try {
-      const { items } = await ctx.call('directory.sites');
+      const { items, locked } = await ctx.call('directory.sites', { purpose: 'join' });
       if (!alive || token !== sitesToken) return;
       const select = formHost.querySelector('[name="site"]');
+      preprodLocked = locked === true;
+      select.disabled = preprodLocked;
+      if (preprodLocked) form.setMessage('site', 'Préproduction : destination imposée par la configuration.', 'info');
       select.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.selector ?? s.id)}">${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}</option>`).join('') || '<option value="">Aucun site trouvé</option>';
       if (!items?.length) {
         form.setMessage('site', 'Aucun site de la configuration n’a été trouvé. Vérifiez les OU dans Paramètres.', 'warn');
@@ -212,8 +226,9 @@ export function render(main, ctx) {
     form.setMessage('service', null);
     select.innerHTML = '<option value="">Chargement…</option>';
     try {
-      const { items } = await ctx.call('directory.services', { site });
+      const { items } = await ctx.call('directory.services', { site, purpose: 'join' });
       if (!alive || token !== servicesToken) return;
+      select.disabled = preprodLocked;
       select.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}">${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}</option>`).join('') || '<option value="">Aucun service trouvé</option>';
       if (calculate && select.value) await compute(form.values(), false);
     } catch (err) {
@@ -234,14 +249,14 @@ export function render(main, ctx) {
   });
 
   async function compute(values, alternative) {
-    if (joinRequested || precreated() || !form.validate()) return;
+    if (membershipReason() || joinRequested || precreated() || !form.validate()) return;
     const token = ++computeToken;
     lastValues = { ...values, accountMode: 'new' };
     setPreview(null);
     previewZone.innerHTML = '<p class="muted" aria-busy="true">Recherche d’un nom libre…</p>';
     try {
       const p = await ctx.call('names.preview', {
-        type: values.type, site: values.site, service: values.service, alternative: alternative || undefined,
+        purpose: 'join', type: values.type, site: values.site, service: values.service, alternative: alternative || undefined,
       });
       if (!alive || token !== computeToken) return;
       if (p?.complete !== true) {
@@ -262,7 +277,7 @@ export function render(main, ctx) {
   }
 
   async function computeExisting(values) {
-    if (joinRequested || !precreated() || !precreatedForm.validate()) return;
+    if (membershipReason() || joinRequested || !precreated() || !precreatedForm.validate()) return;
     const token = ++computeToken;
     const name = String(values.existingName ?? '').trim().toUpperCase();
     lastValues = { accountMode: 'precreated', name };
@@ -287,7 +302,7 @@ export function render(main, ctx) {
   }
 
   async function add() {
-    if (!preview || busy || joinRequested) return;
+    if (membershipReason() || !cap.enabled || !preview || busy || joinRequested) return;
     const values = form.values();
     if (!lastValues || (precreated() ? lastValues.accountMode !== 'precreated'
       || String(precreatedForm.values().existingName ?? '').trim().toUpperCase() !== lastValues.name
@@ -372,6 +387,7 @@ export function render(main, ctx) {
   addButton.addEventListener('click', () => { add(); });
 
   function updateCommands() {
+    if (membershipReason()) { ctx.setScreenCommands([]); return; }
     ctx.setScreenCommands([
     { id: 'ajouter-compute', kind: 'command', label: precreated() ? 'Vérifier le compte précréé' : 'Calculer le nom libre', icon: 'sparkles', group: 'Ajouter ce PC', effect: 'read', available: !joinRequested, reason: joinRequested ? joinRequestedText(joinRequested) : undefined, detailText: 'Vérifie le nom à utiliser avant activation.', run: () => (precreated() ? precreatedHost : formHost).requestSubmit() },
     { id: 'ajouter-join', kind: 'command', label: 'Ajouter ce PC au domaine', icon: 'power', group: 'Ajouter ce PC', effect: 'write', available: !joinRequested && cap.enabled && !!preview, reason: joinRequested ? joinRequestedText(joinRequested) : preview ? cap.reason : 'Calculez d’abord un nom réellement libre.', detailText: 'Jonction : préparation sans mutation, confirmation exacte, reçu.', run: () => { if (!addButton.disabled) add(); } },
@@ -380,7 +396,27 @@ export function render(main, ctx) {
   updateCommands();
 
   if (!cap.enabled) toast(cap.reason, { tone: 'warn' });
-  paintIdentity();
-  loadSites();
+  function paintMembership() {
+    paintIdentity();
+    const reason = membershipReason();
+    main.querySelector('[data-zone="join-controls"]').hidden = !!reason;
+    main.querySelector('[data-zone="join-block"]').hidden = !reason;
+    main.querySelector('[data-join-reason]').textContent = reason ?? '';
+    offlineEntry.hidden = !live || !!reason;
+    if (reason) { computeToken++; setPreview(null); addButton.disabled = true; }
+    updateCommands();
+    return !reason;
+  }
+  main.querySelector('[data-act="reread-membership"]').addEventListener('click', async event => {
+    const button = event.currentTarget; button.disabled = true;
+    try {
+      await ctx.refreshSession();
+      if (!alive) return;
+      cap = ctx.capability('join');
+      if (paintMembership()) loadSites();
+    } catch (error) { if (alive) main.querySelector('[data-join-reason]').textContent = errorText(error); }
+    finally { if (alive) button.disabled = false; }
+  });
+  if (paintMembership()) loadSites();
   return () => { alive = false; clearTimeout(expiryTimer); form.destroy(); precreatedForm.destroy(); ctx.setScreenCommands([]); stops.forEach((stop) => stop()); };
 }

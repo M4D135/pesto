@@ -57,9 +57,15 @@ try {
               ? control.siteItems?.find(site => site.id === request.args.site) : null;
             const args = fixtureSite ? { ...request.args, site: fixtureSite.code } : { ...request.args };
             if (request.op === 'names.preview' && control.nameClaimed) args.alternative = true;
-            const data = request.op === 'reservations.list' ? { items: [] } : await browserSimulation.invoke(request.op, args);
+            const stagingOu = 'OU=Staging,OU=Postes,DC=example,DC=local';
+            const staging = control.preprod && request.args.purpose === 'join';
+            const data = request.op === 'reservations.list' ? { items: [] }
+              : staging && request.op === 'directory.sites' ? { locked: true, items: [{ id: 'PREPROD', name: 'Préproduction', code: 'PR', selector: stagingOu, ou: stagingOu }] }
+              : staging && request.op === 'directory.services' ? { locked: true, items: [{ code: '765', name: '765' }] }
+              : staging && request.op === 'names.preview' ? { complete: true, previewId: 'preprod-preview', name: 'P111301PR765001', ou: stagingOu, expiresAt: '2099-01-01T00:00:00Z' }
+              : await browserSimulation.invoke(request.op, args);
             if (request.op === 'session.info') { data.mode = 'live'; data.readOnly = false; }
-            // Live engine: join stays allowed by policy on a joined PC; membership is never inferred from it.
+            // Deliberately stale capability in this fixture: the UI must also guard the local membership fact.
             if (request.op === 'session.info' && control.localJoined !== 'unset') data.localJoined = control.localJoined;
             if (request.op === 'session.info' && control.sessionComputer) {
               data.computer = control.sessionComputer;
@@ -112,6 +118,41 @@ try {
     else await page.waitForFunction((route) => document.documentElement.dataset.ready === route, route);
     return page;
   };
+  for (const localJoined of [true, null]) {
+    await check(`Jonction V1 : appartenance ${localJoined}, aucun formulaire ni calcul proposé`, async () => {
+      const page = await makePage('ajouter', 'join', 'succeeded', { localJoined });
+      try {
+        await page.locator('[data-zone="join-block"]').waitFor();
+        assert.equal(await page.locator('[data-zone="join-controls"]').isVisible(), false);
+        assert.equal(await page.locator('[data-act="add"]').isEnabled(), false);
+        assert.equal(await page.locator('[data-zone="offline-entry"]').isVisible(), false);
+        assert.match(await page.locator('[data-join-reason]').innerText(), localJoined ? /déjà membre/ : /inconnue/);
+        const calls = await page.evaluate(() => window.fixture.calls);
+        assert.equal(calls.filter(c => ['directory.sites', 'names.preview', 'join.precreated.preview', 'operation.prepare'].includes(c.op)).length, 0);
+        if (localJoined === null) {
+          await page.evaluate(() => { window.fixture.localJoined = false; });
+          await page.locator('[data-act="reread-membership"]').click();
+          await page.locator('main .name-preview .name').waitFor();
+          assert.equal(await page.locator('[data-act="add"]').isEnabled(), true);
+        }
+      } finally { await page.close(); }
+    });
+  }
+  await check('Jonction V1 : préproduction impose seul site et service jusque dans l’aperçu', async () => {
+    const page = await makePage('ajouter', 'join', 'succeeded', { preprod: true, localJoined: false });
+    try {
+      await page.locator('main .name-preview .name').waitFor();
+      assert.equal(await page.locator('[name="site"] option').count(), 1);
+      assert.equal(await page.locator('[name="site"]').isEnabled(), false);
+      assert.equal(await page.locator('[name="service"] option').count(), 1);
+      assert.equal(await page.locator('[name="service"]').inputValue(), '765');
+      assert.equal(await page.locator('[name="service"]').isEnabled(), false);
+      assert.match(await page.locator('[data-zone="preview"]').innerText(), /OU=Staging/);
+      assert.equal(await page.locator('[data-act="add"]').isEnabled(), true);
+      const calls = await page.evaluate(() => window.fixture.calls);
+      for (const op of ['directory.sites', 'directory.services', 'names.preview']) assert.equal(calls.find(c => c.op === op).args.purpose, 'join');
+    } finally { await page.close(); }
+  });
   const selectComputer = async (page, name = 'P111301PAINF001') => {
     await pickRemote(page);
     await page.locator('[data-form="search"] [name="query"]').fill(name);

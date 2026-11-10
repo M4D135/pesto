@@ -13,7 +13,7 @@ internal sealed class HostWiringTests
     private static DirectoryComputer Observed(string name, string? guid = ComputerGuid, string? ou = ParisOu) =>
         new(name, null, ou, null, guid, "example.local", null, null, null, null, null);
 
-    private static string Root() => LiveTestConfig.Write(LiveTestConfig.NoRandom);
+    private static string Root() => LiveTestConfig.Write(LiveTestConfig.Production);
 
     private static HostWiringRequest HarnessRequest(
         bool isWindows = true, bool hasV1Root = true, string? adapter = HostWiring.AdapterPs51,

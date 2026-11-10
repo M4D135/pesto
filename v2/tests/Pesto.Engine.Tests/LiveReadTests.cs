@@ -24,6 +24,8 @@ internal static class LiveTestConfig
     /// <summary>Même configuration sans tirage au hasard : la sélection séquentielle devient déterministe pour les tests.</summary>
     public static readonly string NoRandom = Valid.Replace("\"RandomNameEnabled\": true", "\"RandomNameEnabled\": false");
 
+    public static readonly string Production = NoRandom.Replace("\"DirectProd\": \"false\"", "\"DirectProd\": \"true\"");
+
     public static string Write(string json)
     {
         var root = Path.Combine(Path.GetTempPath(), "pesto-v1-" + Guid.NewGuid().ToString("N"));
@@ -38,7 +40,8 @@ internal sealed class FakeGateway : Pesto.Engine.IDirectoryGateway, IAutomationN
 {
     public string Description => "fixture de qualification";
     public string? SelectedAccount { get; set; }
-    public bool? LocalComputerJoined { get; set; }
+    // Fixture Windows explicitly outside a domain; unknown membership is tested with null.
+    public bool? LocalComputerJoined { get; set; } = false;
     public Dictionary<string, List<string>> ChildOus = new(StringComparer.OrdinalIgnoreCase);
     public Dictionary<string, int> ChildOuReads = new(StringComparer.OrdinalIgnoreCase);
     public List<Pesto.Engine.DirectoryComputer> Computers = [];

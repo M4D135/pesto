@@ -61,8 +61,9 @@ internal sealed class AutomationFixture : IDisposable
     }
     public void Dispose() { if (System.IO.Directory.Exists(Root)) System.IO.Directory.Delete(Root, true); }
 
-    internal sealed class MemoryDirectory(AutomationFixture world) : IDirectoryGateway, IAutomationNameInventory
+    internal sealed class MemoryDirectory(AutomationFixture world) : IDirectoryGateway, IAutomationNameInventory, ILocalDomainMembership
     {
+        public bool? LocalComputerJoined => world.Context.OperatorDomainJoined;
         public string Description => "CLI fixture, in-memory AD only";
         public readonly Dictionary<string, DirectoryComputer> Computers = new(StringComparer.OrdinalIgnoreCase)
         { [Computer] = new(Computer, null, SourceOu, null, AdGuid, Domain, null, null, null, null, null) };

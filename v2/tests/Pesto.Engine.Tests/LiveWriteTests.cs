@@ -72,7 +72,7 @@ internal sealed class LiveWriteTests
                 return new(Pesto.Engine.MutationStatus.Succeeded, 0, "OK fixture", false);
             };
         }
-        var configurationRoot = LiveTestConfig.Write(LiveTestConfig.NoRandom);
+        var configurationRoot = LiveTestConfig.Write(LiveTestConfig.Production);
         return new World
         {
             Backend = Harness.Live(configurationRoot, gateway, mutation, clock),
@@ -169,7 +169,7 @@ internal sealed class LiveWriteTests
                 return new MutationOutcome(MutationStatus.PendingRestart, 20, "Renommage fixture sans déplacement.", true);
             },
         };
-        var b = Harness.Live(LiveTestConfig.Write(LiveTestConfig.NoRandom), gateway, mutation, new FixedClock());
+        var b = Harness.Live(LiveTestConfig.Write(LiveTestConfig.Production), gateway, mutation, new FixedClock());
         var preview = Harness.Call(b, "names.preview", new { type = "V", site = "PA", service = "INF", computer = oldName });
         Check.Equal(ParisOu, Harness.Str(preview, "ou"), "L’aperçu vise bien un autre site pour un éventuel renommage avec déplacement");
         var previewId = Harness.Str(preview, "previewId");
@@ -202,7 +202,7 @@ internal sealed class LiveWriteTests
                 return new MutationOutcome(MutationStatus.PendingRestart, 20, "Renommage seul", true);
             },
         };
-        var b = Harness.Live(LiveTestConfig.Write(LiveTestConfig.NoRandom), gateway, mutation, new FixedClock());
+        var b = Harness.Live(LiveTestConfig.Write(LiveTestConfig.Production), gateway, mutation, new FixedClock());
         var preview = Harness.Call(b, "names.preview", new { type = "P", site = "PA", service = "INF", computer = Computer });
         var previewId = Harness.Str(preview, "previewId");
         Check.Pesto(() => Harness.Call(b, "operation.prepare", new { kind = "renameMove", computer = Computer, previewId, targetOU = ParisOu }),

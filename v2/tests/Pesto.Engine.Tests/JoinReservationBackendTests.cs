@@ -83,7 +83,7 @@ internal sealed class JoinReservationBackendTests
         public readonly IPestoBackend Backend;
         public World(bool existing = true)
         {
-            Configuration = LiveTestConfig.Write(LiveTestConfig.NoRandom.Replace("\"Schema\": 1, \"MaxReaders\"", "\"Schema\": 1, \"ReserveNamesInAD\": true, \"MaxReaders\""));
+            Configuration = LiveTestConfig.Write(LiveTestConfig.Production.Replace("\"Schema\": 1, \"MaxReaders\"", "\"Schema\": 1, \"ReserveNamesInAD\": true, \"MaxReaders\""));
             Mutation = new() { Clock = Clock, ConfigurationRoot = Configuration };
             if (existing) Mutation.Existing();
             var directory = new FakeGateway { ChildOus = { [Container] = ["Paris-Nord"] },

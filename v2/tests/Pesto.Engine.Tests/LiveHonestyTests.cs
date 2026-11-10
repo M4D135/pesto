@@ -69,7 +69,7 @@ internal sealed class LiveHonestyTests
     {
         // Configuration lue + adaptateur lecture injectés : c'est l'adaptateur de MUTATION qui manque, tout envoi reste refusé.
         var gateway = new FakeGateway { ChildOus = { ["OU=SITES,OU=Postes,DC=example,DC=local"] = ["Paris-Nord"] } };
-        var backend = Harness.Live(LiveTestConfig.Write(LiveTestConfig.NoRandom), gateway);
+        var backend = Harness.Live(LiveTestConfig.Write(LiveTestConfig.Production), gateway);
         var preview = Harness.Call(backend, "names.preview", new { type = "P", site = "PA", service = "INF" });
         var plan = Harness.Call(backend, "operation.prepare", new { kind = "join", previewId = Harness.Str(preview, "previewId") });
         Check.Equal("live", Harness.Str(plan, "mode"), "La préparation est bien du mode réel, pas une simulation déguisée");

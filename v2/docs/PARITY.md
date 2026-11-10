@@ -1,5 +1,14 @@
 # Parité Pesto V2 — état courant et historique
 
+## Correctif 2.0.13 — règles de jonction V1 (10 novembre 2026)
+
+Deux écarts constatés dans la 2.0.12 sont corrigés dans les sources :
+
+- « Ajouter ce PC » utilise l’appartenance locale Windows, distincte du domaine configuré et de la présence d’un objet AD. Un poste déjà joint, même à un autre domaine, ou une appartenance inconnue ferme le formulaire et les capacités de jonction. Le moteur relit cet état à la préparation et à l’exécution, y compris pour un compte précréé.
+- Avec `DirectProd=false`, la jonction propose uniquement l’OU `PREPROD`, son code TAGS (alias V1 conservés, ou site explicite de cette OU) et le service `PreprodSite`. Les listes sont verrouillées. Un appel direct avec un autre site, service ou OU est refusé. Les lectures de sites destinées au renommage et au déplacement conservent les sites AD ; cette règle V1 concerne la jonction.
+
+Contrôles locaux sur configurations fictives : 686 tests moteur, dont huit régressions dédiées, et 77 contrôles métier navigateur réussis. Les fixtures de jonction de production déclarent désormais explicitement `DirectProd=true` et un poste hors domaine. Aucun essai VM ni aucune opération AD réelle : ces contrôles ne qualifient pas le fonctionnement sur un domaine réel. La version des sources et du prochain pack est 2.0.13 ; ce paragraphe n’atteste pas une publication.
+
 ## État au 9 novembre 2026
 
 La dernière release publiée est [2.0.11](https://github.com/M4D135/pesto/releases/tag/v2.0.11), source `a84c6a4238492532069660d5f210f88f52dc7eac`. Depuis la 2.0.10, la distribution publiée est **LIGHT** : `Pesto.exe` et `wad/`, .NET et module Microsoft ActiveDirectory embarqués, Evergreen installé ou Socle WebView2 externe vérifié. Le code de fabrication DEV et les anciennes preuves PROD/DEV ne décrivent pas une seconde distribution publiée actuellement.

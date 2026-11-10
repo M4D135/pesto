@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "packName": "Pesto-v2-portable",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "layout": "singlefile-wad",
   "requiredFiles": [
     "Pesto.exe", "wad/Pesto.package.json", "wad/web/index.html", "wad/support/DEBLOQUER_TOUT.cmd",

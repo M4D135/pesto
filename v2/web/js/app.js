@@ -25,7 +25,7 @@ const PAGES = OFFLINE_ENTRY ? [{ id: 'offline-join', label: 'Jonction hors ligne
   { id: 'noms', label: 'Noms disponibles', icon: 'star', section: 'Postes', keywords: 'nommage aperçu disponibilité convention' },
   { id: 'interventions', label: 'Interventions', icon: 'activity', section: 'Suivi', keywords: 'recus operations historiques verifier' },
   { id: 'journal', label: 'Journal', icon: 'file', section: 'Suivi', keywords: 'journaux messages niveaux' },
-  { id: 'parametres', label: 'Paramètres', icon: 'settings', section: null, keywords: 'domaine controleur prefixe convention sites preferences' },
+  { id: 'parametres', label: 'Paramètres', icon: 'settings', section: null, keywords: 'domaine controleur prefixe convention sites preferences politiques coordination configuration import export defaut mises a jour animations demonstration' },
   { id: 'aide', label: 'Aide', icon: 'info', section: null, keywords: 'aide raccourcis diagnostics contact' },
 ];
 const NAV_PAGES = CONFIGURATION_ENTRY ? PAGES.filter((page) => ['parametres', 'aide'].includes(page.id)) : PAGES;

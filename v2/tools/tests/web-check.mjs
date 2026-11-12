@@ -15,6 +15,8 @@ import { join, dirname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createSimulation } from '../../web/js/simulation.js';
 import { parsePastedList, parseQueueCsv, MAX_ROWS } from '../../web/js/csv.js';
+import { DEFAULT_SECTION, SECTIONS, SECTION_ALIASES, INDEX, fold as foldSetting, sectionsFor, sectionOf, addressOf, addressParams, searchSettings }
+  from '../../web/js/pages/parametres/sections.js';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const webDir = resolve(here, '../../web');
@@ -190,6 +192,76 @@ assert(escapedQuote.rows.length === 0 && escapedQuote.issues.length === 1 && /no
   'CSV : un guillemet échappé reste dans la valeur et ne devient pas PC1', JSON.stringify(escapedQuote));
 const csvTooMany = parseQueueCsv(Array.from({ length: MAX_ROWS + 5 }, (_, i) => `PC${String(i).padStart(3, '0')}`).join('\n'));
 assert(csvTooMany.rows.length === MAX_ROWS && csvTooMany.truncated === true, `CSV borné à ${MAX_ROWS} lignes`, JSON.stringify({ n: csvTooMany.rows.length }));
+
+// ---------- 3 bis. Paramètres : registre pur des sections, adresse et recherche ----------
+section('Paramètres : sections, adresse et recherche (module pur)');
+
+const sectionsSrc = read(join(jsDir, 'pages', 'parametres', 'sections.js'));
+assert(!/\b(document|window|fetch|localStorage|XMLHttpRequest)\b/.test(sectionsSrc), 'parametres/sections.js reste pur (aucun DOM, aucun réseau, aucun pont)');
+assert(!/^\s*import\b/m.test(sectionsSrc), 'parametres/sections.js n’importe rien (ui.js lit le document au chargement)');
+const EXPECTED_SECTIONS = [
+  ['annuaire', 'Annuaire', 'Domaine, préfixe, convention et sites', 'shield', 'info', false],
+  ['politiques', 'Politiques', 'Coordination, jonction, CLI et audit', 'lock', 'warn', true],
+  ['configuration', 'Configuration', 'Export, import, défaut et référentiels', 'settings', 'accent', false],
+  ['mises-a-jour', 'Mises à jour', 'ZIP, dossier ou partage UNC', 'refresh', 'info', false],
+  ['interface', 'Interface', 'Animations et démonstration', 'sparkles', 'accent', false],
+];
+assert(JSON.stringify(SECTIONS.map((s) => [s.id, s.label, s.desc, s.icon, s.tone, s.live])) === JSON.stringify(EXPECTED_SECTIONS),
+  'rail : cinq sections dans l’ordre, libellés, descriptions, icônes, tons et présence exacts', JSON.stringify(SECTIONS));
+assert(DEFAULT_SECTION === 'annuaire' && JSON.stringify(addressParams('annuaire')) === '{}'
+  && JSON.stringify(addressParams('interface')) === '{"section":"interface"}',
+  'section par défaut Annuaire, adresse nue #/parametres ; les autres sections portent ?section=');
+assert(sectionsFor({ live: false }).map((s) => s.id).join() === 'annuaire,configuration,mises-a-jour,interface'
+  && sectionsFor({ live: true }).length === 5, 'démonstration : Politiques absente du rail (quatre sections)');
+assert(SECTIONS.filter((s) => s.form).map((s) => s.id).join() === 'annuaire,politiques',
+  'brouillon unique : seuls Annuaire et Politiques sont dans le formulaire des paramètres');
+const ALIASES = {
+  annuaire: ['annuaire', 'nommage', 'domaine', 'sites'], politiques: ['politiques', 'politique', 'coordination'],
+  configuration: ['configuration', 'import', 'export', 'defaut', 'referentiels'],
+  'mises-a-jour': ['mises-a-jour', 'mise-a-jour', 'maj', 'updates'],
+  interface: ['interface', 'apparence', 'animations', 'demonstration', 'demo'],
+};
+const aliasBad = Object.entries(ALIASES).flatMap(([id, names]) => names.filter((name) => sectionOf(name, { live: true }) !== id).map((name) => `${name}≠${id}`));
+assert(aliasBad.length === 0 && Object.keys(SECTION_ALIASES).length === Object.values(ALIASES).flat().length,
+  'adresse : chaque alias mène à sa section canonique, aucun autre nom', aliasBad.join(', ') || JSON.stringify(SECTION_ALIASES));
+assert(sectionOf(' Démo ', { live: false }) === 'interface' && sectionOf('Mises-à-jour', { live: false }) === 'mises-a-jour'
+  && sectionOf('DÉFAUT', { live: true }) === 'configuration', 'adresse : casse, accents et espaces sans effet (fold puis trim)');
+assert(sectionOf('politiques', { live: false }) === null && sectionOf('coordination', { live: false }) === null
+  && sectionOf('xyz', { live: true }) === null && sectionOf('__proto__', { live: true }) === null && sectionOf('constructor', { live: true }) === null
+  && sectionOf(undefined, { live: true }) === null, 'adresse : section inconnue, héritée ou absente du mode refusée (null)');
+const addrUnknown = addressOf({ section: 'xyz', onglet: 'a' }, { live: true });
+const addrSim = addressOf({ section: 'politiques' }, { live: false });
+const addrOpen = addressOf({ section: 'demo', ouvrir: 'prefix' }, { live: false });
+assert(addrUnknown.section === 'annuaire' && addrUnknown.ouvrir === null && addrSim.section === 'annuaire'
+  && addrOpen.section === 'interface' && addrOpen.ouvrir === 'prefix' && addressOf(null, { live: true }).section === 'annuaire',
+  'adresse : inconnue ou Politiques en démonstration → Annuaire ; alias normalisé ; autres paramètres ignorés',
+  JSON.stringify({ addrUnknown, addrSim, addrOpen }));
+const badOpen = ['1prefix', 'a b', 'prefix"]', '[name]', '', 'a'.repeat(65), 'é'].filter((value) => addressOf({ ouvrir: value }, { live: true }).ouvrir !== null);
+assert(badOpen.length === 0 && addressOf({ ouvrir: 'a'.repeat(64) }, { live: true }).ouvrir === 'a'.repeat(64)
+  && addressOf({ ouvrir: 'updateSource' }, { live: true }).ouvrir === 'updateSource',
+  'adresse : ouvrir= limité à un nom de champ ou d’action (^[A-Za-z][A-Za-z0-9-]{0,63}$)', badOpen.join(' | '));
+const TARGET_RE = /^(?:\[(?:name|data-maint|data-coordination-action|data-setting)="[A-Za-z][A-Za-z0-9-]*"\]|\.demo-trigger)$/;
+const badTargets = INDEX.filter((entry) => !TARGET_RE.test(entry.target) || !SECTIONS.some((s) => s.id === entry.section)
+  || entry.words !== foldSetting(entry.words) || !entry.words.startsWith(foldSetting(entry.label)));
+assert(INDEX.length === 40 && badTargets.length === 0,
+  `recherche : ${INDEX.length} réglages indexés, cibles [name], [data-maint], [data-coordination-action], [data-setting] ou .demo-trigger`,
+  badTargets.map((entry) => `${entry.label} → ${entry.target}`).join(', '));
+assert(new Set(INDEX.map((entry) => entry.target)).size === INDEX.length, 'recherche : chaque réglage a sa propre cible');
+assert(INDEX.filter((entry) => entry.section === 'politiques').every((entry) => entry.live === true)
+  && INDEX.filter((entry) => entry.live).map((entry) => entry.target).filter((target) => !/^\[(?:name|data-coordination-action)=/.test(target)).length === 0,
+  'recherche : toute entrée de Politiques et tout champ propre à l’annuaire réel est marqué live');
+const manyHits = searchSettings('e', { live: true });
+assert(manyHits.length === 8 && searchSettings('a', { live: false }).length <= 8 && searchSettings('e', { live: true, max: 3 }).length === 3,
+  'recherche : au plus 8 résultats (borne paramétrable)', String(manyHits.length));
+const simulationWords = [...new Set(INDEX.flatMap((entry) => entry.words.split(/\s+/)))];
+const leaked = simulationWords.flatMap((word) => searchSettings(word, { live: false }).filter((entry) => entry.live || entry.section === 'politiques'));
+assert(leaked.length === 0 && searchSettings('coordination', { live: false }).length === 0 && searchSettings('ou racine', { live: false }).length === 0,
+  'recherche : aucune entrée live en démonstration', leaked.map((entry) => entry.label).join(', '));
+const hit = (query, live) => searchSettings(query, { live }).map((entry) => entry.target);
+assert(hit('Préfixe', false)[0] === '[name="prefix"]' && hit('ANIMATIONS', false)[0] === '[name="interfaceMotion"]'
+  && hit('mise jour zip', true).join() === '[data-maint="zip"]' && hit('thème', false).join() === '[data-setting="theme"]'
+  && hit('zzz', true).length === 0 && hit('   ', true).length === 0,
+  'recherche : chaque mot de la requête, sans accents ni casse ; aucun résultat pour une requête vide ou inconnue');
 
 // ---------- 4. simulation scenario ----------
 section('Scénario simulation (moteur JS en mémoire)');
@@ -389,6 +461,21 @@ if (iconsOk) ok(`${iconUses} appels icon('nom') statiques référencent tous une
 const navIcons = [...appSrc.matchAll(/icon: '([a-zA-Z]+)'/g)].map((m) => m[1]);
 const badNavIcons = navIcons.filter((n) => !iconNames.has(n));
 assert(badNavIcons.length === 0, `icônes navigation+thèmes (${navIcons.length}) existantes dans icons.js`, `inconnues : ${badNavIcons.join(', ')}`);
+
+// rail des Paramètres : icon(section.icon) dans parametres/shell.js, non vu par le contrôle statique ci-dessus
+const badSectionIcons = SECTIONS.filter((s) => !iconNames.has(s.icon)).map((s) => `${s.id} → ${s.icon}`);
+assert(badSectionIcons.length === 0, `icônes du rail des Paramètres (${SECTIONS.length}) existantes dans icons.js`, badSectionIcons.join(', '));
+const settingsCss = read(join(webDir, 'css', 'pages', 'parametres.css'));
+const settingsShell = read(join(jsDir, 'pages', 'parametres', 'shell.js')).replace(/^\s*\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//g, '');
+assert(html.indexOf('href="css/pages/parametres.css"') > html.indexOf('href="css/kit.css"') && html.indexOf('href="css/kit.css"') > 0,
+  'index.html lie css/pages/parametres.css après css/kit.css (le routeur ne charge aucune feuille d’écran)');
+const unscoped = settingsCss.replace(/\/\*[\s\S]*?\*\//g, '').split('}').map((rule) => rule.split('{').at(-2)?.trim() ?? '')
+  .filter((sel) => sel && !sel.startsWith('@') && !/^(?:from|to|\d+%(?:,\s*\d+%)*)$/.test(sel))
+  .flatMap((sel) => sel.split(',').map((part) => part.trim())).filter((part) => !part.includes('.main[data-page="parametres"]'));
+assert(unscoped.length === 0 && !/aria-current="page"|pr-leave|\.skeleton/.test(settingsCss),
+  'parametres.css : toute règle limitée à .main[data-page="parametres"], sans aria-current="page", sortie ni squelette', unscoped.join(' | '));
+assert(!/aria-busy|skeleton|(?<![\w-])nav-(?:item|pill)|'page'\)|history\.replaceState|\sstyle="/.test(settingsShell),
+  'coque des Paramètres : ni aria-busy ni squelette, ni rail de l’application, ni replaceState direct, ni attribut style');
 
 // options { icon: 'nom' } hors kit (pill, commandes d'écran) : rendues par glyph() avec repli icon() — le nom doit exister quelque part
 const glyphNames = new Set([...read(join(jsDir, 'kit', 'glyphs.js')).matchAll(/^ {2}([a-zA-Z]+): '/gm)].map((m) => m[1]));

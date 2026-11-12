@@ -10,6 +10,7 @@ const SHORTCUTS = [
   ['Alt 1…9', 'Aller à un écran de la navigation'],
   ['F1', 'Ouvrir cette aide'],
   ['?', 'Ouvrir la fiche raccourcis de l’aide'],
+  ['/', 'Rechercher un réglage (écran Paramètres)'],
   ['Échap', 'Fermer dialogue, palette ou menu'],
 ];
 

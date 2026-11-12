@@ -2,63 +2,102 @@
 // validation. Rien n'est validé « à la légère » ici : le moteur refuse et renvoie une raison, affichée telle quelle.
 // Enregistrer invalide aperçus, plans et file (documenté dans BRIDGE.md) : c'est annoncé avant l'envoi. Le mode et
 // les écritures réelles ne sont pas modifiables ici (refusés par le moteur), seulement affichés.
+// Écran façon Domenia 2 (12/11/2026, 2.0.15) : bandeau d’état, rail de sections, une section visible à la fois, recherche
+// « / » et adresse #/parametres?section=… (coque : parametres/shell.js, registre : parametres/sections.js). Toutes les
+// sections restent montées : changer de section ne touche ni le brouillon, unique, ni le moteur.
 import { openDemonstration } from '../demo.js';
 import { state, setPrefs, on } from '../shell/store.js';
 import { icon } from '../icons.js';
 import { esc, applyVars, reveal, errorText, announce, toast } from '../ui.js';
-import { field, createForm, pill, confirmDialog } from '../kit/index.js';
+import { field, createForm, pill, confirmDialog, count, focusables } from '../kit/index.js';
 import { maintenanceMarkup, mountMaintenance } from './maintenance.js';
 import { confirmConfiguration } from '../configuration-notice.js';
 import { coordinationMarkup, mountCoordination } from './coordination-panel.js';
+import { shellMarkup, mountShell } from './parametres/shell.js';
 
-function layout() {
-  return `<div class="page">
-    <header class="page-header reveal">
-      <div class="head-row"><span class="page-icon">${icon('settings')}</span>
-        <div class="titles"><h1 class="gradient-text">Paramètres</h1>
-          <p class="subtitle">Domaine, préfixe, convention et sites. Le moteur valide chaque champ ; aucune écriture AD.</p></div></div>
-      <div class="actions"><button class="btn" type="button" data-act="reload">${icon('refresh')}Relire</button>
-        <button class="btn primary" type="button" data-act="save">${icon('check')}Enregistrer</button></div>
-    </header>
-    <p class="muted small" data-settings-status role="status"></p>
-    <div data-zone="mode" class="row-actions reveal"></div>
-    <p class="k-msg error" data-configuration-invalid role="alert" hidden></p>
-    <section class="card reveal spot" aria-labelledby="interface-heading">
-      <div class="card-head"><span class="card-icon">${icon('sparkles')}</span><h3 id="interface-heading">Interface et démonstration</h3></div>
-      <div class="k-form">
-        ${field({ name: 'interfaceMotion', label: 'Animations', type: 'select', width: 'half', options: [
-          { value: 'full', label: 'Complètes' }, { value: 'reduced', label: 'Réduites' }, { value: 'system', label: 'Suivre Windows' }
-        ], hint: 'Appliqué immédiatement et mémorisé pour ce mode.' })}
-        <div class="k-field w-half"><span class="k-label">Démonstration</span>
-          <div><button class="btn demo-trigger" type="button">${icon('sparkles')}<span>Démonstration</span></button></div>
-          <p class="k-hint" data-demo-hint></p>
-        </div>
-      </div>
-    </section>
-    <section class="card reveal spot">
-      <div class="card-head"><span class="card-icon">${icon('shield')}</span><h3>Annuaire et nommage</h3></div>
-      <form class="k-form" novalidate data-form="settings"></form>
-    </section>
-    <section class="card reveal spot">
-      <div class="card-head"><span class="card-icon">${icon('server')}</span><h3>Sites</h3>
-        <span class="meta">une ligne par site : id, nom, code (2 lettres), OU</span></div>
-      <textarea class="input mono" name="sites" rows="6" spellcheck="false" aria-label="Sites, un par ligne : id;nom;code;OU"></textarea>
-      <p class="k-hint">Format par ligne : <span class="mono">paris;Paris;PA;OU=Paris,OU=Postes,DC=example,DC=local</span>.
-        L’OU doit finir par le DC du domaine.</p>
-      <p class="k-hint">Si des sites explicites sont configurés, seules leurs lignes apparaissent ici. Les règles de découverte importées sont conservées lorsque ces lignes restent inchangées ; une configuration mixte se remplace par l’import de configuration.</p>
-      <p class="k-msg" data-slot="sites-msg" hidden></p>
-    </section>
-    <p class="muted small reveal">${icon('alert')} Enregistrer invalide tous les aperçus, plans et file en cours : chaque
-      écriture devra être re-préparée et re-confirmée.</p>
-    ${coordinationMarkup()}
-    ${maintenanceMarkup()}
-  </div>`;
+const LEAD = 'Annuaire, politiques, configuration à partager, mises à jour et interface, une section à la fois. Le moteur valide chaque champ ; aucune écriture AD.';
+// Section of each maintenance card of maintenance.js; a card added later falls in Configuration.
+const MAINTENANCE_HOME = { configuration: 'configuration', references: 'configuration', updates: 'mises-a-jour' };
+// Switches counted by the Politiques tile (options of the operation policies that are on).
+const POLICY_SWITCHES = ['coordinationRequired', 'reserveNamesInAd', 'auditEventLogEnabled', 'blockJoinOnClockSkew', 'allowPrecreatedJoin', 'allowOfflineJoin', 'unattendedJoinEnabled', 'unattendedOperationsEnabled'];
+const DRAFT_BADGE = { mark: '•', label: 'modifications non enregistrées', tone: 'accent' };
+const INVALID_BADGE = { mark: '!', label: 'configuration invalide', tone: 'alert' };
+// A result written while its section is hidden (an action answered after the operator opened another section) is marked
+// on the rail until that section is shown again: never a silent outcome. The texts of maintenance.js are unchanged.
+const RESULT_BADGE = { mark: '•', label: 'nouveau résultat', tone: 'warn' };
+const VERDICT_ICONS = { ok: 'check', warn: 'alert', alert: 'alert', info: 'info' };
+const FINGERPRINT_SHOWN = 12;
+
+function layout(live) {
+  const summary = `<section class="card reveal spot" data-config-summary aria-labelledby="pr-config-summary-title">
+            <div class="card-head"><span class="card-icon">${icon('eye')}</span><h3 id="pr-config-summary-title">Configuration en vigueur</h3></div>
+            <div class="pr-verdict" data-setting="config-summary" data-tone="info">
+              <span class="pr-verdict-ico">${icon('info')}</span><b data-summary-title>Lecture…</b><span data-summary-text></span></div>
+            <dl class="pr-facts">
+              <div class="pr-fact"><dt>Domaine</dt><dd data-fact="domain">—</dd></div>
+              <div class="pr-fact"><dt>Préfixe</dt><dd data-fact="prefix">—</dd></div>
+              <div class="pr-fact"><dt>Sites</dt><dd data-fact="sites">—</dd></div>
+              <div class="pr-fact"><dt>Empreinte</dt><dd class="mono" data-fact="fingerprint">—</dd></div>
+            </dl>
+          </section>`;
+  const panels = {
+    annuaire: `<section class="card reveal spot">
+            <div class="card-head"><span class="card-icon">${icon('shield')}</span><h3>Annuaire et nommage</h3></div>
+            <div class="k-form" data-fields="annuaire"></div>
+          </section>
+          <section class="card reveal spot">
+            <div class="card-head"><span class="card-icon">${icon('server')}</span><h3>Sites</h3>
+              <span class="meta">une ligne par site : id, nom, code (2 lettres), OU</span></div>
+            <textarea class="input mono" name="sites" rows="6" spellcheck="false" aria-label="Sites, un par ligne : id;nom;code;OU"></textarea>
+            <p class="k-hint">Format par ligne : <span class="mono">paris;Paris;PA;OU=Paris,OU=Postes,DC=example,DC=local</span>.
+              L’OU doit finir par le DC du domaine.</p>
+            <p class="k-hint">Si des sites explicites sont configurés, seules leurs lignes apparaissent ici. Les règles de découverte importées sont conservées lorsque ces lignes restent inchangées ; une configuration mixte se remplace par l’import de configuration.</p>
+            <p class="k-msg" data-slot="sites-msg" hidden></p>
+          </section>`,
+    politiques: live ? `<section class="card reveal spot">
+            <div class="card-head"><span class="card-icon">${icon('lock')}</span><h3>Politiques des opérations</h3></div>
+            <div class="k-form" data-fields="politiques"></div>
+          </section>
+          ${coordinationMarkup()}` : '',
+    configuration: `<div data-slot="cards">${summary}</div>`,
+    'mises-a-jour': '<div data-slot="cards"></div>',
+    interface: `<section class="card reveal spot" aria-labelledby="interface-heading">
+            <div class="card-head"><span class="card-icon">${icon('sparkles')}</span><h3 id="interface-heading">Interface et démonstration</h3></div>
+            <div class="k-form">
+              ${field({ name: 'interfaceMotion', label: 'Animations', type: 'select', width: 'half', options: [
+                { value: 'full', label: 'Complètes' }, { value: 'reduced', label: 'Réduites' }, { value: 'system', label: 'Suivre Windows' }
+              ], hint: 'Appliqué immédiatement et mémorisé pour ce mode.' })}
+              <div class="k-field w-half"><span class="k-label">Démonstration</span>
+                <div><button class="btn demo-trigger" type="button">${icon('sparkles')}<span>Démonstration</span></button></div>
+                <p class="k-hint" data-demo-hint></p>
+              </div>
+              <p class="k-hint w-full" data-setting="theme">Le thème (clair, sombre, contraste élevé ou suivi de Windows) se choisit dans la barre supérieure.</p>
+            </div>
+          </section>`,
+  };
+  const tiles = [
+    { id: 'configuration', label: 'Configuration', icon: 'settings', section: 'configuration' },
+    { id: 'nommage', label: 'Nommage', icon: 'star', section: 'annuaire' },
+    live ? { id: 'politiques', label: 'Politiques', icon: 'lock', section: 'politiques' }
+      : { id: 'demonstration', label: 'Démonstration', icon: 'sparkles', section: 'interface' },
+    { id: 'brouillon', label: 'Brouillon', icon: 'edit', section: 'annuaire' },
+  ];
+  return shellMarkup({ live, lead: LEAD, panels, tiles });
 }
 
 export function render(main, ctx) {
-  main.innerHTML = layout();
+  const live = ctx.session()?.mode !== 'simulation';
+  main.innerHTML = layout(live);
+  // The maintenance cards are markup of maintenance.js, unchanged: each one goes to its section, before any wiring.
+  const parts = document.createElement('template');
+  parts.innerHTML = maintenanceMarkup();
+  for (const card of [...parts.content.querySelectorAll('[data-maintenance]')]) {
+    main.querySelector(`[data-section-panel="${MAINTENANCE_HOME[card.dataset.maintenance] ?? 'configuration'}"] [data-slot="cards"]`).append(card);
+  }
   applyVars(main);
   const stops = [reveal(main)];
+  const shell = mountShell(main, ctx, { live });
+  stops.push(() => shell.destroy());
   const motion = main.querySelector('[name="interfaceMotion"]');
   const paintMotion = () => { motion.value = state.prefs.motion; };
   paintMotion(); stops.push(on('prefs', paintMotion));
@@ -71,18 +110,20 @@ export function render(main, ctx) {
     ? 'Choisir un scénario, remettre à zéro ou simuler un redémarrage.'
     : 'Une fenêtre indépendante avec des données fictives. Votre session et votre brouillon restent ouverts.';
   demo.addEventListener('click', () => openDemonstration({ call: ctx.call, session: ctx.session,
-    changed: async (page) => { await ctx.refreshSession?.(); ctx.navigate(page ?? 'parametres'); } }));
+    changed: async (page) => {
+      await ctx.refreshSession?.();
+      if (page) ctx.navigate(page); else ctx.navigate('parametres', { section: 'interface' });
+    } }));
   let alive = true;
   let loaded = null;
   let loadSequence = 0, saving = false, cleanDraft = null;
-  const route = location.hash;
-  const isActive = () => alive && location.hash === route;
-  const live = ctx.session()?.mode !== 'simulation';
+  // Changing the section rewrites the address (ctx.replaceParams): the screen stays current until it is left.
+  const isActive = () => alive && (ctx.isCurrent ? ctx.isCurrent() : location.hash.split('?')[0] === '#/parametres');
   const coordination = mountCoordination(main, ctx);
   stops.push(() => coordination.dispose());
 
   const formHost = main.querySelector('[data-form="settings"]');
-  formHost.innerHTML = [
+  formHost.querySelector('[data-fields="annuaire"]').innerHTML = [
     field({ name: 'domain', label: 'Domaine', required: true, mono: true, width: 'half', placeholder: 'example.local', pattern: '[a-z0-9.-]+', patternMessage: 'Nom DNS complet attendu.' }),
     field({ name: 'dc', label: 'Contrôleur (facultatif)', mono: true, width: 'half', placeholder: 'dc01.example.local' }),
     field({ name: 'prefix', label: 'Préfixe de nommage', required: true, mono: true, width: 'third', maxLength: 10, pattern: '[A-Za-z0-9]{1,10}', patternMessage: '1 à 10 caractères alphanumériques.' }),
@@ -92,8 +133,9 @@ export function render(main, ctx) {
       field({ name: 'preprodSite', label: 'Code de service de préproduction', mono: true, width: 'half', maxLength: 6 })] : []),
     field({ name: 'production', label: 'Environnement de production', type: 'switch', width: 'half' }),
     field({ name: 'randomNames', label: 'Tirer un nom au hasard parmi les libres', type: 'switch', width: 'half' }),
-    ...(live ? [
-      '<div class="k-field w-full"><h3>Politiques des opérations</h3><p class="muted small">Ces paramètres sont inclus dans les exports et dans la configuration par défaut de l’installation (wad\\defaults\\configuration.json). Leur enregistrement ne lance aucune opération AD.</p></div>',
+  ].join('');
+  if (live) {
+    formHost.querySelector('[data-fields="politiques"]').innerHTML = [
       field({ name: 'coordinationRoot', label: 'Dossier de coordination partagé', mono: true, width: 'full', maxLength: 240, hint: 'Dossier local ou UNC approuvé. Testez ou préparez explicitement ce dossier après enregistrement ; aucun partage ni droit d’accès n’est créé automatiquement.' }),
       field({ name: 'coordinationRequired', label: 'Exiger la coordination partagée', type: 'switch', width: 'half', hint: 'Un dossier doit être renseigné. Dès qu’un dossier est configuré, son indisponibilité bloque les opérations concernées.' }),
       field({ name: 'reserveNamesInAd', label: 'Réserver le nom dans AD lors de la jonction', type: 'switch', width: 'half', hint: 'Le compte est créé uniquement après confirmation du plan. En cas d’interruption, la réservation est conservée pour inspection et décision explicites.' }),
@@ -105,8 +147,8 @@ export function render(main, ctx) {
       field({ name: 'auditEventLogEnabled', label: 'Exporter l’audit dans le journal Windows', type: 'switch', width: 'half', hint: 'La source Pesto du journal Application doit être préparée par l’administrateur. Un échec d’export est signalé ; les reçus durables restent la preuve de l’opération.' }),
       field({ name: 'blockJoinOnClockSkew', label: 'Contrôler l’écart d’horloge avant la jonction', type: 'switch', width: 'half', hint: 'Bloque un écart mesuré d’au moins cinq minutes. Une mesure indisponible reste un avertissement ; aucune correction d’heure n’est effectuée.' }),
       field({ name: 'excludedGroupGuids', label: 'Groupes AD exclus, identifiants GUID', type: 'textarea', mono: true, width: 'full', maxLength: 8000, hint: 'Un GUID par ligne, 200 au maximum. Les appartenances directes et imbriquées sont contrôlées ; une lecture incomplète refuse l’opération.' }),
-    ] : []),
-  ].join('');
+    ].join('');
+  }
   const form = createForm(formHost);
   const sitesBox = main.querySelector('[name="sites"]');
   const sitesMsg = main.querySelector('[data-slot="sites-msg"]');
@@ -133,6 +175,91 @@ export function render(main, ctx) {
     formHost.querySelector('[name="dc"]').readOnly = true;
     formHost.querySelector('[name="dc"]').placeholder = 'Découvert par Windows lors de la connexion';
   }
+  // Every field, the coordination card and the maintenance cards are in place: first section from the address.
+  shell.start();
+
+  // ----- State tiles, « Configuration en vigueur » and badges of the rail: what was read (loaded), never a new call -----
+
+  const summaryCard = main.querySelector('[data-config-summary]');
+  function paintVerdict(tone, title, text) {
+    const verdict = summaryCard.querySelector('.pr-verdict');
+    if (verdict.dataset.tone !== tone) { verdict.dataset.tone = tone; applyVars(verdict); }
+    verdict.querySelector('.pr-verdict-ico').innerHTML = icon(VERDICT_ICONS[tone] ?? 'info');
+    verdict.querySelector('[data-summary-title]').textContent = title;
+    verdict.querySelector('[data-summary-text]').textContent = text;
+  }
+  function paintFact(name, text, title = '') {
+    const dd = summaryCard.querySelector(`[data-fact="${name}"]`);
+    dd.textContent = text;
+    if (title) dd.title = title; else dd.removeAttribute('title');
+  }
+  // Badges of the sections holding maintenance statuses: « configuration invalide » first, then « nouveau résultat ».
+  const unseen = new Set();
+  const resultSections = [...new Set(Object.values(MAINTENANCE_HOME))];
+  function paintResults() {
+    if (!alive) return;
+    for (const id of resultSections) {
+      const invalid = id === 'configuration' && live && loaded?.configurationState === 'invalid';
+      shell.setBadge(id, invalid ? INVALID_BADGE : unseen.has(id) ? RESULT_BADGE : null);
+    }
+  }
+  // err: the first read failed (nothing was read yet); after a failed re-read the last values read stay shown.
+  function paintSummary(err = null) {
+    const thirdTile = live ? 'politiques' : 'demonstration';
+    if (!loaded) {
+      const value = err ? 'Non lue' : 'Lecture…';
+      const tone = err ? 'warn' : 'info';
+      for (const id of ['configuration', 'nommage', thirdTile, 'brouillon']) shell.setTile(id, { value, sub: '', tone });
+      paintVerdict(tone, value, err ? errorText(err) : '');
+      return;
+    }
+    const s = loaded;
+    const configurationState = s.configurationState ?? 'valid';
+    if (!live) {
+      shell.setTile('configuration', { value: 'Démonstration', sub: 'Monde fictif', tone: 'info' });
+      paintVerdict('info', 'Configuration de démonstration', 'Paramètres du monde fictif en mémoire. Aucun effet réel.');
+    } else if (configurationState === 'invalid') {
+      shell.setTile('configuration', { value: 'Invalide', sub: 'Import requis', tone: 'alert' });
+      paintVerdict('alert', 'Configuration invalide', main.dataset.configurationDiagnostic ?? '');
+    } else if (configurationState === 'missing') {
+      shell.setTile('configuration', { value: 'Absente', sub: 'À créer ou importer', tone: 'warn' });
+      paintVerdict('warn', 'Aucune configuration enregistrée', 'Renseignez l’annuaire et les sites, ou importez une configuration.');
+    } else {
+      shell.setTile('configuration', { value: 'Valide', sub: 'Profil Windows', tone: 'ok' });
+      paintVerdict('ok', 'Configuration valide', 'Paramètres validés par le moteur et enregistrés dans votre profil Windows.');
+    }
+    shell.setTile('nommage', { value: s.prefix || '—', sub: s.namingPattern || 'Convention non définie', tone: 'info' });
+    if (live) shell.setTile('politiques', { value: `${POLICY_SWITCHES.filter((key) => s[key] === true).length} sur ${POLICY_SWITCHES.length}`, sub: 'options activées', tone: 'accent' });
+    else shell.setTile('demonstration', { value: 'Active', sub: 'Aucun effet réel', tone: 'info' });
+    paintResults();
+    paintFact('domain', s.domain || 'Non configuré');
+    paintFact('prefix', s.prefix || '—');
+    paintFact('sites', count(Array.isArray(s.sites) ? s.sites.length : 0, 'site', 'sites'));
+    const fingerprint = typeof s.fingerprint === 'string' ? s.fingerprint : '';
+    paintFact('fingerprint', !fingerprint ? 'Aucune'
+      : fingerprint.length > FINGERPRINT_SHOWN ? `${fingerprint.slice(0, FINGERPRINT_SHOWN)}…` : fingerprint, fingerprint);
+  }
+
+  // Badges « modifications non enregistrées » of Annuaire and Politiques, and the Brouillon tile, from the single draft.
+  const panelFields = (id) => [...(main.querySelector(`[data-section-panel="${id}"]`)?.querySelectorAll('.k-field[data-name]') ?? [])]
+    .map((box) => box.dataset.name);
+  function paintDraft() {
+    if (!alive) return;
+    const clean = cleanDraft === null ? null : JSON.parse(cleanDraft);
+    const values = form.values();
+    const changed = clean ? ['annuaire', ...(live ? ['politiques'] : [])].filter((id) =>
+      panelFields(id).some((name) => JSON.stringify(values[name]) !== JSON.stringify(clean.values?.[name]))
+      || (id === 'annuaire' && sitesBox.value !== clean.sites)) : [];
+    shell.setBadge('annuaire', changed.includes('annuaire') ? DRAFT_BADGE : null);
+    if (live) shell.setBadge('politiques', changed.includes('politiques') ? DRAFT_BADGE : null);
+    if (!loaded) return;
+    shell.setTile('brouillon', changed.length
+      ? { value: 'Modifié', sub: 'Enregistrer pour appliquer', tone: 'accent', section: changed[0] }
+      : { value: 'Enregistré', sub: 'Aucune modification en attente', tone: 'ok', section: 'annuaire' });
+  }
+  const onDraftInput = (e) => { if (e.target !== sitesBox) paintDraft(); };
+  formHost.addEventListener('input', onDraftInput);
+  formHost.addEventListener('change', onDraftInput);
 
   function paintMode(s) {
     if (s.configurationState === 'invalid') {
@@ -191,7 +318,7 @@ export function render(main, ctx) {
       main.dataset.configurationDiagnostic = diagnostic;
       const warning = main.querySelector('[data-configuration-invalid]');
       warning.hidden = !invalid;
-      warning.textContent = diagnostic;
+      warning.querySelector('[data-configuration-diagnostic]').textContent = diagnostic;
       formHost.querySelectorAll('input,select,textarea').forEach((control) => { control.disabled = invalid; });
       sitesBox.disabled = invalid;
       refreshButtons();
@@ -214,6 +341,8 @@ export function render(main, ctx) {
       cleanDraft = draft();
       setSitesError(null);
       paintMode(s);
+      paintSummary();
+      paintDraft();
       if (reload) coordination.refresh();
       announce('Paramètres relus.');
       settingsStatus.textContent = 'Paramètres relus.';
@@ -221,6 +350,7 @@ export function render(main, ctx) {
       if (!isActive() || sequence !== loadSequence) return;
       settingsStatus.textContent = errorText(err);
       toast(errorText(err), { tone: 'alert', life: 7000 });
+      if (loaded === null) paintSummary(err);
     } finally {
       if (isActive() && sequence === loadSequence) settingsStatus.removeAttribute('aria-busy');
     }
@@ -249,7 +379,8 @@ export function render(main, ctx) {
     if (loaded.configurationState === 'invalid') { toast('Importez une configuration valide : le fichier invalide sera conservé jusqu’à votre confirmation, puis sauvegardé.', { tone: 'warn' }); return; }
     const parsed = sitesFromText(sitesBox.value);
     if (parsed.error) {
-      // The message sits under the Sites card, often below the fold: bring it into view and say it once.
+      // The message sits under the Sites card, often below the fold: show Annuaire, bring it into view and say it once.
+      shell.show('annuaire', { quiet: true });
       setSitesError(parsed.error);
       announce(parsed.error, { assertive: true });
       sitesMsg.scrollIntoView({ block: 'nearest' });
@@ -257,14 +388,22 @@ export function render(main, ctx) {
       return;
     }
     setSitesError(null);
-    if (!form.validate()) return;
+    if (!form.validate()) {
+      // validate() focuses the first field in error only when it is shown: its section is opened, then the field focused.
+      const bad = formHost.querySelector('.k-field.is-error');
+      const id = bad?.closest('[data-section-panel]')?.dataset.sectionPanel;
+      if (id && id !== shell.current()) { shell.show(id, { quiet: true }); focusables(bad)[0]?.focus(); }
+      return;
+    }
     const v = form.values();
     const submitted = draft();
     if (live) {
       const groups = String(v.excludedGroupGuids ?? '').split(/[\s,;]+/).filter(Boolean).map((value) => value.toLowerCase());
       if (groups.length > 200 || groups.some((value) => !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(value) || /^0{8}-0{4}-0{4}-0{4}-0{12}$/.test(value))
         || new Set(groups).size !== groups.length) {
+        shell.show('politiques', { quiet: true });
         form.setMessage('excludedGroupGuids', 'Saisissez au plus 200 GUID distincts et non nuls, un par ligne.', 'error');
+        formHost.querySelector('[name="excludedGroupGuids"]').focus();
         return;
       }
       form.setMessage('excludedGroupGuids', null);
@@ -288,12 +427,13 @@ export function render(main, ctx) {
         // Keep the submitted baseline, never bind an unsaved draft to a different concurrent document.
         loaded = { ...loaded, fingerprint: plan.fingerprint };
         cleanDraft = submitted;
+        paintDraft();
         await load();
         await ctx.refreshSession?.();
         if (!isActive()) return;
         toast((result.backup ? 'Configuration enregistrée avec sauvegarde.' : 'Configuration enregistrée dans votre profil.')
           + ' Utilisez « Reconnecter Pesto » après la première configuration ou un changement de compte.', { tone: 'ok', life: 9000 });
-      } catch (err) { if (isActive()) { setSitesError(errorText(err)); announce(errorText(err), { assertive: true }); sitesMsg.scrollIntoView({ block: 'nearest' }); } }
+      } catch (err) { if (isActive()) { shell.show('annuaire', { quiet: true }); setSitesError(errorText(err)); announce(errorText(err), { assertive: true }); sitesMsg.scrollIntoView({ block: 'nearest' }); } }
       return;
     }
     const ok = await confirmDialog({
@@ -313,10 +453,13 @@ export function render(main, ctx) {
       loaded = s;
       cleanDraft = submitted;
       paintMode(s);
+      paintSummary();
+      paintDraft();
       toast('Paramètres enregistrés ; aperçus, plans et file invalidés.', { tone: 'ok' });
       announce('Paramètres enregistrés.');
     } catch (err) {
       if (!alive) return;
+      shell.show('annuaire', { quiet: true });
       setSitesError(errorText(err));
       announce(`Refus du moteur : ${errorText(err)}`, { assertive: true });
       sitesMsg.scrollIntoView({ block: 'nearest' });
@@ -325,7 +468,7 @@ export function render(main, ctx) {
 
   reloadButton.addEventListener('click', reload);
   main.querySelector('[data-act="save"]').addEventListener('click', save);
-  sitesBox.addEventListener('input', () => setSitesError(null));
+  sitesBox.addEventListener('input', () => { setSitesError(null); paintDraft(); });
 
   ctx.setScreenCommands([
     { id: 'parametres-reload', kind: 'command', label: 'Relire les paramètres', icon: 'refresh', group: 'Paramètres', effect: 'read', available: true, detailText: 'Relit la configuration auprès du moteur.', run: reload },
@@ -334,6 +477,23 @@ export function render(main, ctx) {
 
   load();
   stops.push(mountMaintenance(main, ctx, load));
+  // Statuses of the maintenance cards, observed once their own first texts are written (simulation notice included).
+  const statuses = [...main.querySelectorAll('[data-maint-status]')];
+  const statusText = new Map(statuses.map((el) => [el, el.textContent]));
+  const results = new MutationObserver(() => {
+    const now = shell.current();
+    let changed = unseen.delete(now);
+    for (const el of statuses) {
+      if (el.textContent === statusText.get(el)) continue;
+      statusText.set(el, el.textContent);
+      const id = el.closest('[data-section-panel]')?.dataset.sectionPanel;
+      if (id && id !== now && !unseen.has(id)) { unseen.add(id); changed = true; }
+    }
+    if (changed) paintResults();
+  });
+  for (const el of statuses) results.observe(el, { childList: true, characterData: true, subtree: true });
+  for (const panel of main.querySelectorAll('[data-section-panel]')) results.observe(panel, { attributes: true, attributeFilter: ['hidden'] });
+  stops.push(() => results.disconnect());
   window.addEventListener('pesto-configuration-changed', load);
   stops.push(() => window.removeEventListener('pesto-configuration-changed', load));
   return () => { alive = false; form.destroy(); ctx.setScreenCommands([]); stops.forEach((stop) => stop()); };

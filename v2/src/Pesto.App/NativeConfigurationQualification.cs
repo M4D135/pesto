@@ -245,6 +245,8 @@ internal static class NativeConfigurationQualification
                     stage = "parent";
                     await WaitUi(state => Idle(state) && Text(state, "prefix") == "111301");
                     Check(!parent.StartFailed, "parentReady");
+                    // One section is shown at a time (2.0.15): open the one holding the next field or button first.
+                    await Act(ConfigurationQualificationStep.ShowConfiguration);
                     await Act(ConfigurationQualificationStep.SetVersion);
                     Check(Text(await WaitUi(state => Text(state, "version") == ConfigurationQualificationScripts.Version), "mode") == "configuration", "isolatedConfigurationPage");
 
@@ -264,6 +266,7 @@ internal static class NativeConfigurationQualification
                     await Capture("configuration-export.png");
 
                     stage = "settings-ui";
+                    await Act(ConfigurationQualificationStep.ShowDirectory);
                     await Act(ConfigurationQualificationStep.ChangePrefix);
                     await Act(ConfigurationQualificationStep.SaveSettings);
                     var saveDialog = await WaitDialog("Enregistrer les paramètres");
@@ -279,6 +282,7 @@ internal static class NativeConfigurationQualification
                     BackupMatches(originalStamp, "settingsBackupExact");
 
                     stage = "native-cancellations-ui";
+                    await Act(ConfigurationQualificationStep.ShowConfiguration);
                     await Pick(ImportTitle, null, ConfigurationQualificationStep.Import);
                     await WaitUi(state => Idle(state) && Returned("configuration.previewImport", "cancelled"));
                     Check(observed.Count("configuration.applyImport") == 1 && UpdatePackage.Hash(config.ConfigurationPath) == changedStamp, "importCancelled");
@@ -489,6 +493,7 @@ internal static class NativeConfigurationQualification
                         ["fingerprint"] = legacy.Fingerprint, ["configurationFingerprint"] = expectedConfiguration, ["fileCount"] = legacy.FileCount };
 
                     stage = "maintenance-inspect-ui";
+                    await Act(ConfigurationQualificationStep.ShowUpdates);
                     await Pick(SourceFolderTitle, legacyPath, ConfigurationQualificationStep.UpdateFolder);
                     var candidateUi = await WaitUi(state => Idle(state) && Number(state, "candidateCount") == 1
                         && Flag(observed.Last("updates.inspect"), "completed"), 180);
@@ -601,7 +606,7 @@ internal static class NativeConfigurationQualification
     }
 
     private static bool Idle(JsonObject value) => Flag(value, "ready") && Text(value, "mode") == "configuration"
-        && Text(value, "route") == "#/parametres" && value["dialog"] is null && Flag(value, "buttonsReady")
+        && ConfigurationQualificationScripts.IsSettingsRoute(Text(value, "route")) && value["dialog"] is null && Flag(value, "buttonsReady")
         && Flag(value, "saveEnabled") && !Flag(value, "settingsBusy");
     private static bool Flag(JsonNode? value, string key) => value?[key]?.GetValue<bool>() == true;
     private static string Text(JsonNode? value, string key) => value?[key]?.GetValue<string>() ?? "";

@@ -66,7 +66,8 @@ try {
     const back = await browser.newPage();
     try {
       for (const p of [front, back]) {
-        await p.goto(page.url().split('#')[0] + '#/parametres');
+        // The Animations field sits in the Interface section of Paramètres (one section shown at a time).
+        await p.goto(page.url().split('#')[0] + '#/parametres?section=interface');
         await p.waitForFunction(() => document.documentElement.dataset.ready === 'parametres');
       }
       // Headless automation emulates window focus; deliver the two host events explicitly.
@@ -78,7 +79,9 @@ try {
       const tick = await ornament.evaluate(async (a) => { await a.ready; return a.currentTime; });
       assert.equal(await front.locator('.aurora').evaluate((el) => getComputedStyle(el).animationPlayState), 'running');
       assert.equal(await back.locator('.busy-line').evaluate((el) => getComputedStyle(el, '::after').animationPlayState), 'running');
-      assert.equal(await back.locator('.glow-ring').evaluate((el) => getComputedStyle(el, '::before').animationPlayState), 'paused');
+      // Two rotating rings on this screen: the mode chip of the shell and the hero of Paramètres; both freeze.
+      assert.equal(await back.locator('.mode-chip .glow-ring').evaluate((el) => getComputedStyle(el, '::before').animationPlayState), 'paused');
+      assert.equal(await back.locator('.pr-hero .glow-ring').evaluate((el) => getComputedStyle(el, '::before').animationPlayState), 'paused');
       assert.equal(await ornament.evaluate((a) => a.currentTime), tick);
       await event(back, 'focus');
       await back.waitForFunction(([a, t]) => a.playState === 'running' && a.currentTime > t, [ornament, tick]);

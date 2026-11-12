@@ -37,7 +37,7 @@ const check = async (label, run) => {
 
 try {
   browser = await chromium.launch({ headless: true, executablePath });
-  async function makePage({ fresh = false, distribution = false, local = false, invalid = false, pendingSettings = false, session = {} } = {}) {
+  async function makePage({ fresh = false, distribution = false, local = false, invalid = false, pendingSettings = false, failSettings = false, session = {}, address = '#/parametres' } = {}) {
     const page = await browser.newPage({ viewport: { width: 1500, height: 1100 } });
     page.setDefaultTimeout(6000);
     page.on('pageerror', (error) => errors.push(error.message));
@@ -48,7 +48,7 @@ try {
       if (route.request().url().startsWith(origin + '/')) await route.continue();
       else { errors.push('Unexpected external request: ' + route.request().url()); await route.abort(); }
     });
-    await page.addInitScript(({ fresh, distribution, local, invalid, pendingSettings, session }) => {
+    await page.addInitScript(({ fresh, distribution, local, invalid, pendingSettings, failSettings, session }) => {
       localStorage.setItem('pesto.prefs.v1', JSON.stringify({ theme: 'light', motion: 'reduced' }));
       const saved = {
         configured: true, configurationExists: true, configurationState: 'valid', diagnostic: null,
@@ -68,7 +68,9 @@ try {
         expiresAt: '2099-10-25T12:15:00Z', differences, backupRequired: !fresh, requiresConfirmation: true });
       window.fixture = {
         calls: [], settings: invalid ? damaged : fresh ? empty : saved, pendingDistribution: distribution, sequence: 0,
-        configPlan: null, fail: null, cancelImport: false, cancelUpdateSource: false, pendingRecovery: false, canRollback: true,
+        // failSettings: the very first read of the settings is refused (nothing was ever read on this screen).
+        configPlan: null, fail: failSettings ? 'configuration.settings' : null, ...(failSettings ? { failCode: 'fixture', failMessage: 'Lecture refusée' } : {}),
+        cancelImport: false, cancelUpdateSource: false, pendingRecovery: false, canRollback: true,
         hold: pendingSettings ? 'configuration.settings' : null, releases: [], delivered: 0, packWindows: null,
         // wad\defaults\configuration.json of this installation, as InstallationDefaults.Inspect describes it.
         installationDefault: { state: 'missing', path: 'wad\\defaults\\configuration.json', version: null, fingerprint: null, sha256: null },
@@ -164,8 +166,19 @@ try {
           } catch (error) { receive({ data: { id: request.id, kind: 'error', error: { code: error.code || 'fixture', message: error.message } } }); }
         },
       };
-    }, { fresh, distribution, local, invalid, pendingSettings, session });
-    await page.goto(origin + (local ? '/?configuration=local#/parametres' : '/#/parametres'));
+    }, { fresh, distribution, local, invalid, pendingSettings, failSettings, session });
+    // Boxes lit up by the settings page from the start of the document (the flash itself lasts 1.7 s).
+    await page.addInitScript(() => {
+      window.flashed = [];
+      new MutationObserver((records) => {
+        for (const r of records) {
+          const el = r.target;
+          if (!(el instanceof Element) || !el.classList.contains('pr-flash') || String(r.oldValue ?? '').split(/\s+/).includes('pr-flash')) continue;
+          window.flashed.push([...el.querySelectorAll('[data-maint], [name]')].map((n) => n.dataset.maint || n.getAttribute('name')));
+        }
+      }).observe(document, { subtree: true, attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+    });
+    await page.goto(origin + (local ? `/?configuration=local${address}` : `/${address}`));
     if (pendingSettings) await page.waitForFunction(() => window.fixture.releases.length === 1);
     else await page.waitForFunction(() => document.documentElement.dataset.ready === 'parametres');
     await page.waitForFunction(() => window.fixture.calls.some((call) => call.op === 'configuration.settings'));
@@ -174,7 +187,18 @@ try {
   const calls = (page, op) => page.evaluate((op) => window.fixture.calls.filter((call) => call.op === op), op);
   const dialog = (page) => page.locator('.k-dlg-layer:not(.leaving) .k-dlg').last();
   const closeDialog = async (page, action) => { const host = dialog(page); await host.locator(`[data-id="${action}"]`).click(); await host.waitFor({ state: 'hidden' }); };
-  const click = (page, action) => page.locator(`[data-maint="${action}"]`).click();
+  // Paramètres shows one section at a time (2.0.15): an action is clicked once its section is open, by the rail.
+  const SECTION_OF_ACTION = { export: 'configuration', import: 'configuration', default: 'configuration', distribution: 'configuration',
+    reconnect: 'configuration', references: 'configuration', zip: 'mises-a-jour', folder: 'mises-a-jour', source: 'mises-a-jour',
+    status: 'mises-a-jour', rollback: 'mises-a-jour' };
+  const openSection = async (page, id) => {
+    await page.locator(`main .pr-nav-item[data-section="${id}"]`).click();
+    await page.locator(`main [data-section-panel="${id}"]:not([hidden])`).waitFor();
+  };
+  const click = async (page, action) => { await openSection(page, SECTION_OF_ACTION[action]); await page.locator(`[data-maint="${action}"]`).click(); };
+  const shownSections = (page) => page.locator('main [data-section-panel]:not([hidden])').evaluateAll((nodes) => nodes.map((node) => node.dataset.sectionPanel));
+  const hash = (page) => page.evaluate(() => location.hash);
+  const frames = (page) => page.evaluate(() => new Promise((done) => requestAnimationFrame(() => requestAnimationFrame(done))));
   const waitCall = (page, operation, count = 1) => page.waitForFunction(({ operation, count }) => window.fixture.calls.filter((call) => call.op === operation).length >= count, { operation, count });
 
   const release = async page => {
@@ -497,6 +521,7 @@ try {
     try {
       const coordinationRoot = String.raw`\\serveur\partage\coordination`;
       assert.equal(await page.locator('[name="entraPolicy"]').inputValue(), 'HybridOnly');
+      await openSection(page, 'politiques');
       await page.locator('[name="entraPolicy"]').selectOption('Disabled');
       await page.locator('[name="coordinationRoot"]').fill(coordinationRoot);
       for (const key of ['coordinationRequired', 'reserveNamesInAd', 'auditEventLogEnabled', 'blockJoinOnClockSkew', 'allowPrecreatedJoin']) await page.locator('[name="' + key + '"]').check();
@@ -521,6 +546,7 @@ try {
   await check('Groupes exclus : GUID invalide ou doublon refuse avant tout aperçu', async () => {
     const page = await makePage();
     try {
+      await openSection(page, 'politiques');
       for (const value of ['invalide', '00000000-0000-0000-0000-000000000000',
         'AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE\naaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee']) {
         await page.locator('[name="excludedGroupGuids"]').fill(value);
@@ -535,6 +561,7 @@ try {
   await check('Exporter transmet la version à la sélection native, sans application de configuration', async () => {
     const page = await makePage();
     try {
+      await openSection(page, 'configuration');
       await page.locator('[name="configurationVersion"]').fill('entreprise.7'); await click(page, 'export');
       await waitCall(page, 'configuration.export');
       assert.deepEqual((await calls(page, 'configuration.export'))[0].args, { version: 'entreprise.7' });
@@ -587,6 +614,7 @@ try {
   await check('Définir par défaut : état relu, confirmation sur place, annulation sans appel puis écriture exacte', async () => {
     const page = await makePage();
     try {
+      await openSection(page, 'configuration');
       await page.locator('[name="configurationVersion"]').fill('entreprise.3');
       const before = (await calls(page, 'configuration.status')).length;
       await click(page, 'default'); await dialog(page).waitFor();
@@ -859,7 +887,7 @@ try {
     await check(`Source ${action} : inspection seule, sélection correctement transmise`, async () => {
       const page = await makePage();
       try {
-        if (action === 'source') await page.locator('[name="updateSource"]').fill(args.source);
+        if (action === 'source') { await openSection(page, 'mises-a-jour'); await page.locator('[name="updateSource"]').fill(args.source); }
         await click(page, action); await page.locator('[data-candidate]').waitFor();
         assert.deepEqual((await calls(page, 'updates.inspect'))[0].args, args);
         assert.equal((await calls(page, 'updates.prepare')).length, 0); assert.equal((await calls(page, 'updates.install')).length, 0);
@@ -1116,6 +1144,352 @@ try {
         return codes;
       });
       assert.deepEqual(codes, ['demo.isolated', 'demo.isolated', 'demo.isolated']);
+    } finally { await page.close(); }
+  });
+
+  // ----- 2.0.15 : rail de sections. Une section visible à la fois, adresse #/parametres?section=…, toutes montées une fois. -----
+  const SETTING_NAMES = ['domain', 'dc', 'prefix', 'namingPattern', 'rootOu', 'preprodOu', 'preprodSite', 'production', 'randomNames',
+    'coordinationRoot', 'coordinationRequired', 'reserveNamesInAd', 'allowPrecreatedJoin', 'allowOfflineJoin', 'unattendedJoinEnabled',
+    'unattendedOperationsEnabled', 'entraPolicy', 'auditEventLogEnabled', 'blockJoinOnClockSkew', 'excludedGroupGuids',
+    'sites', 'interfaceMotion', 'configurationVersion', 'updateSource'];
+  const activeName = (page) => page.evaluate(() => document.activeElement?.getAttribute('name') ?? null);
+  const engineCalls = (page) => page.evaluate(() => window.fixture.calls.length);
+
+  await check('Rail réel : cinq sections dans l’ordre, Annuaire par défaut et adresse nue', async () => {
+    const page = await makePage();
+    try {
+      assert.deepEqual(await page.locator('main .pr-nav-item').evaluateAll((nodes) => nodes.map((node) => node.dataset.section)),
+        ['annuaire', 'politiques', 'configuration', 'mises-a-jour', 'interface']);
+      assert.deepEqual(await page.locator('main .pr-nav-item[aria-current="true"]').evaluateAll((nodes) => nodes.map((node) => node.dataset.section)), ['annuaire']);
+      assert.equal(await page.locator('main .pr-nav-item[aria-current="false"]').count(), 4);
+      assert.equal(await page.locator('main .nav-item, main .nav-pill, main [aria-current="page"]').count(), 0);
+      assert.deepEqual(await shownSections(page), ['annuaire']);
+      assert.equal(await hash(page), '#/parametres');
+      assert.equal(await page.locator('main [data-pulse="politiques"]').count(), 1);
+      assert.equal(await page.locator('main [data-pulse="demonstration"]').count(), 0);
+      // Hidden sections stay mounted: every field exists once, as the native benches and the demonstration snapshot read them.
+      for (const name of SETTING_NAMES) assert.equal(await page.locator(`main [name="${name}"]`).count(), 1, name);
+      assert.equal(await page.locator('main form[data-form="settings"].k-form-live').count(), 1);
+      assert.equal(await page.locator('main h1').count(), 1);
+    } finally { await page.close(); }
+  });
+
+  await check('Changement de section : même montage, aucun appel moteur, brouillon conservé', async () => {
+    const page = await makePage();
+    try {
+      await page.evaluate(() => { document.querySelector('main').firstElementChild.__mark = 1; });
+      await page.locator('[name="prefix"]').fill('222222');
+      await frames(page);
+      const before = await engineCalls(page);
+      await openSection(page, 'politiques');
+      assert.equal(await hash(page), '#/parametres?section=politiques');
+      await page.locator('[name="reserveNamesInAd"]').check();
+      await openSection(page, 'configuration');
+      await frames(page);
+      assert.equal(await page.evaluate(() => document.querySelector('main').firstElementChild.__mark), 1);
+      assert.equal(await engineCalls(page), before);
+      assert.equal(await page.locator('[name="prefix"]').inputValue(), '222222');
+      assert.equal(await hash(page), '#/parametres?section=configuration');
+      assert.deepEqual(await shownSections(page), ['configuration']);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+      // One draft for every section: the rail and the Brouillon tile show it whatever the section shown.
+      for (const id of ['annuaire', 'politiques']) {
+        assert.equal(await page.locator(`main [data-badge="${id}"]`).isVisible(), true, id);
+        assert.equal(await page.locator(`main [data-badge="${id}"] .visually-hidden`).textContent(), 'modifications non enregistrées');
+      }
+      assert.equal(await page.locator('main [data-pulse="brouillon"] .pr-pulse-v').innerText(), 'Modifié');
+      await openSection(page, 'annuaire');
+      assert.equal(await hash(page), '#/parametres');
+      assert.equal(await engineCalls(page), before);
+      // Saving from another section sends the whole draft, Annuaire and Politiques together.
+      await openSection(page, 'interface');
+      await page.locator('[data-act="save"]').click(); await dialog(page).waitFor();
+      const sent = (await calls(page, 'configuration.previewSettings'))[0].args;
+      assert.equal(sent.prefix, '222222'); assert.equal(sent.reserveNamesInAd, true);
+      await closeDialog(page, 'cancel');
+      assert.equal((await calls(page, 'configuration.applyImport')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Réponse tardive puis changement de section : dialogue ouvert, statut final, jamais « … »', async () => {
+    const page = await makePage();
+    try {
+      await page.evaluate(() => { window.fixture.hold = 'configuration.status'; });
+      await click(page, 'default');
+      await page.waitForFunction(() => window.fixture.releases.length === 1);
+      await openSection(page, 'mises-a-jour'); await openSection(page, 'configuration');
+      await release(page);
+      await dialog(page).waitFor();
+      assert.equal(await dialog(page).locator('h2').innerText(), 'Définir comme configuration par défaut');
+      await closeDialog(page, 'cancel');
+      assert.doesNotMatch(await configurationStatus(page), /…$/);
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
+      // The write itself, answered after two changes of section, ends with its exact result.
+      await page.evaluate(() => { window.fixture.hold = 'configuration.setDefault'; });
+      await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
+      await page.waitForFunction(() => window.fixture.releases.length === 1);
+      assert.equal(await configurationStatus(page), 'Écriture de la configuration par défaut…');
+      await openSection(page, 'interface'); await openSection(page, 'configuration');
+      await release(page);
+      const expected = `Configuration par défaut enregistrée dans cette installation : ${DEFAULT_PATH} (version 20261112-101500).`;
+      await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
+      await page.waitForFunction(() => document.querySelector('.toasts').textContent.includes('Configuration par défaut enregistrée.'));
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 1);
+      await page.waitForFunction(() => !document.querySelector('[data-maint="default"]').disabled);
+    } finally { await page.close(); }
+  });
+
+  await check('Réponse tardive après changement de section puis départ : aucun dialogue ni écriture', async () => {
+    for (const operation of ['configuration.status', 'updates.status']) {
+      const page = await makePage({ local: true });
+      try {
+        await page.evaluate((op) => { Object.assign(window.fixture, { hold: op, pendingRecovery: true }); }, operation);
+        await click(page, operation === 'updates.status' ? 'rollback' : 'default');
+        await page.waitForFunction(() => window.fixture.releases.length === 1);
+        await openSection(page, 'interface');
+        assert.equal(await hash(page), '#/parametres?section=interface');
+        await leaveSettings(page); await release(page);
+        assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+        for (const op of ['configuration.setDefault', 'updates.rollback', 'updates.windows']) assert.equal((await calls(page, op)).length, 0, op);
+      } finally { await page.close(); }
+    }
+  });
+
+  await check('Résultat reçu dans une section masquée : pastille « nouveau résultat » jusqu’à l’ouverture de la section', async () => {
+    const page = await makePage();
+    try {
+      const badge = page.locator('main [data-badge="configuration"]');
+      const expected = 'Configuration par défaut déjà identique (version entreprise.2) : aucun fichier modifié.';
+      await page.evaluate((state) => { Object.assign(window.fixture, { installationDefault: state, defaultUnchanged: true, hold: 'configuration.setDefault' }); }, localDefault);
+      await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
+      await page.waitForFunction(() => window.fixture.releases.length === 1);
+      await frames(page);
+      // « Écriture… » is written while Configuration is shown: nothing to mark.
+      assert.equal(await badge.isHidden(), true);
+      await openSection(page, 'interface');
+      await release(page);
+      await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
+      await frames(page);
+      // No toast for this outcome: the rail says a result is waiting in Configuration.
+      assert.equal(await page.locator('[data-maint-status="configuration"]').isVisible(), false);
+      assert.equal(await badge.isVisible(), true);
+      assert.equal(await badge.locator('.visually-hidden').textContent(), 'nouveau résultat');
+      assert.match(await page.locator('main .pr-nav-item[data-section="configuration"]').textContent(), /nouveau résultat/);
+      assert.equal(await page.locator('main [data-badge="mises-a-jour"]').isHidden(), true);
+      await openSection(page, 'configuration');
+      await frames(page);
+      assert.equal(await badge.isHidden(), true);
+      assert.equal(await configurationStatus(page), expected);
+      // A result read in its own section leaves no mark behind.
+      await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
+      await waitCall(page, 'configuration.setDefault', 2);
+      await page.waitForFunction(() => !document.querySelector('[data-maint="default"]').disabled);
+      await frames(page);
+      assert.equal(await badge.isHidden(), true);
+      assert.equal(await hash(page), '#/parametres?section=configuration');
+    } finally { await page.close(); }
+  });
+
+  await check('Relecture lente puis changement de section : la réponse relue est affichée', async () => {
+    const page = await makePage();
+    try {
+      // The held answer is the profile as it is when read: another prefix and one more policy switched on.
+      await page.evaluate(() => { Object.assign(window.fixture, { hold: 'configuration.settings', settings: { ...window.fixture.settings, prefix: '222222', reserveNamesInAd: true } }); });
+      await page.locator('[data-act="reload"]').click();
+      await page.waitForFunction(() => window.fixture.releases.length === 1);
+      await openSection(page, 'politiques');
+      assert.equal(await page.locator('[name="prefix"]').inputValue(), '111301');
+      await release(page);
+      await page.waitForFunction(() => document.querySelector('[name="prefix"]').value === '222222');
+      assert.equal(await page.locator('[name="reserveNamesInAd"]').isChecked(), true);
+      assert.equal(await page.locator('[data-settings-status]').innerText(), 'Paramètres relus.');
+      assert.equal(await page.locator('main [data-pulse="nommage"] .pr-pulse-v').innerText(), '222222');
+      assert.equal(await page.locator('main [data-pulse="politiques"] .pr-pulse-v').innerText(), '1 sur 8');
+      assert.deepEqual(await shownSections(page), ['politiques']);
+    } finally { await page.close(); }
+  });
+
+  await check('Validation : un champ requis vidé puis section quittée rouvre Annuaire et le focalise', async () => {
+    const page = await makePage();
+    try {
+      await page.locator('[name="domain"]').fill('');
+      await openSection(page, 'configuration');
+      await page.locator('[data-act="save"]').click();
+      await page.locator('main [data-section-panel="annuaire"]:not([hidden])').waitFor();
+      assert.deepEqual(await shownSections(page), ['annuaire']);
+      assert.equal(await hash(page), '#/parametres');
+      assert.equal(await activeName(page), 'domain');
+      assert.equal(await page.locator('[name="domain"]').getAttribute('aria-invalid'), 'true');
+      // The kit says it once; opening the section says nothing more (quiet).
+      assert.deepEqual(await page.locator('.live-assertive p').evaluateAll((nodes) => nodes.map((node) => node.textContent).filter((text) => /à corriger/.test(text))), ['1 champ à corriger.']);
+      assert.equal(await page.locator('.live-polite p').evaluateAll((nodes) => nodes.filter((node) => node.textContent.startsWith('Section ')).length), 1);
+      assert.equal((await calls(page, 'configuration.previewSettings')).length, 0);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+    } finally { await page.close(); }
+  });
+
+  await check('GUID refusé : Politiques s’ouvre, champ en erreur et focalisé, aucun aperçu', async () => {
+    const page = await makePage();
+    try {
+      await openSection(page, 'politiques');
+      await page.locator('[name="excludedGroupGuids"]').fill('invalide');
+      await openSection(page, 'annuaire');
+      await page.locator('[data-act="save"]').click();
+      await page.locator('main [data-section-panel="politiques"]:not([hidden])').waitFor();
+      assert.deepEqual(await shownSections(page), ['politiques']);
+      assert.equal(await hash(page), '#/parametres?section=politiques');
+      assert.equal(await page.locator('[name="excludedGroupGuids"]').getAttribute('aria-invalid'), 'true');
+      assert.equal(await activeName(page), 'excludedGroupGuids');
+      assert.match(await page.locator('main [data-section-panel="politiques"]').innerText(), /Saisissez au plus 200 GUID distincts et non nuls, un par ligne\./);
+      assert.equal((await calls(page, 'configuration.previewSettings')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Sites mal formés depuis une autre section : Annuaire s’ouvre, motif visible et focus sur les sites', async () => {
+    const page = await makePage();
+    try {
+      await page.locator('[name="sites"]').fill('paris;Paris;PA');
+      await openSection(page, 'interface');
+      await page.locator('[data-act="save"]').click();
+      await page.locator('main [data-section-panel="annuaire"]:not([hidden])').waitFor();
+      const message = page.locator('[data-slot="sites-msg"]');
+      assert.equal(await message.isVisible(), true);
+      assert.equal((await message.innerText()).trim(), 'Ligne à quatre champs séparés par « ; » attendue : paris;Paris;PA');
+      assert.equal(await activeName(page), 'sites');
+      assert.equal(await hash(page), '#/parametres');
+      assert.equal((await calls(page, 'configuration.previewSettings')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Refus du moteur à l’enregistrement : Annuaire s’ouvre, motif sous les sites, brouillon gardé', async () => {
+    const page = await makePage();
+    try {
+      await openSection(page, 'politiques');
+      await page.locator('[name="reserveNamesInAd"]').check();
+      await openSection(page, 'mises-a-jour');
+      await page.evaluate(() => Object.assign(window.fixture, { fail: 'configuration.previewSettings', failCode: 'config.invalid', failMessage: 'Le moteur refuse ce brouillon : OU hors du domaine.' }));
+      await page.locator('[data-act="save"]').click();
+      await page.locator('main [data-section-panel="annuaire"]:not([hidden])').waitFor();
+      await page.waitForFunction(() => document.querySelector('[data-slot="sites-msg"]').textContent.includes('OU hors du domaine'));
+      assert.equal(await page.locator('[data-slot="sites-msg"]').isVisible(), true);
+      assert.equal(await hash(page), '#/parametres');
+      assert.equal((await calls(page, 'configuration.previewSettings')).length, 1);
+      assert.equal((await calls(page, 'configuration.applyImport')).length, 0);
+      assert.equal(await page.locator('[name="reserveNamesInAd"]').isChecked(), true);
+      assert.equal(await page.locator('main [data-badge="politiques"]').isVisible(), true);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Garde de sortie avec section dans l’adresse : Annuler garde la section, l’adresse et la saisie', async () => {
+    const page = await makePage();
+    try {
+      await openSection(page, 'politiques');
+      await page.locator('[name="reserveNamesInAd"]').check();
+      await page.locator('.nav-item[data-id="aide"]').click(); await dialog(page).waitFor();
+      assert.equal(await hash(page), '#/parametres?section=politiques');
+      assert.match(await dialog(page).innerText(), /modifications non enregistrées/);
+      await closeDialog(page, 'cancel');
+      assert.equal(await hash(page), '#/parametres?section=politiques');
+      assert.equal(await page.locator('main').getAttribute('data-page'), 'parametres');
+      assert.equal(await page.locator('[name="reserveNamesInAd"]').isChecked(), true);
+      assert.deepEqual(await shownSections(page), ['politiques']);
+      // The section still changes after the dialog; leaving asks again and restores nothing behind it.
+      await openSection(page, 'configuration');
+      assert.equal(await hash(page), '#/parametres?section=configuration');
+      await leaveSettings(page, true);
+      assert.equal(await hash(page), '#/aide');
+      assert.equal((await calls(page, 'configuration.applyImport')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Configuration invalide : alerte, pastille et accès direct à l’import', async () => {
+    const page = await makePage({ invalid: true });
+    try {
+      const alert = page.locator('main [data-configuration-invalid]');
+      await alert.waitFor({ state: 'visible' });
+      assert.equal(await alert.getAttribute('role'), 'alert');
+      assert.match(await alert.innerText(), /^Configuration invalide\s+La configuration existante est invalide ou illisible\./);
+      assert.equal(await page.locator('main [data-badge="configuration"]').isVisible(), true);
+      assert.equal(await page.locator('main [data-badge="configuration"] .visually-hidden').textContent(), 'configuration invalide');
+      assert.equal(await page.locator('main [data-pulse="configuration"] .pr-pulse-v').innerText(), 'Invalide');
+      assert.equal(await page.locator('main [data-setting="config-summary"] [data-summary-title]').innerText(), 'Configuration invalide');
+      // The default section stays Annuaire, so the address stays stable; the alert shows the way.
+      assert.deepEqual(await shownSections(page), ['annuaire']);
+      assert.equal(await hash(page), '#/parametres');
+      const before = await engineCalls(page);
+      await alert.getByRole('button', { name: 'Aller à l’import', exact: true }).click();
+      await page.locator('main [data-section-panel="configuration"]:not([hidden])').waitFor();
+      assert.equal(await hash(page), '#/parametres?section=configuration');
+      assert.equal(await page.evaluate(() => document.activeElement?.dataset.maint ?? null), 'import');
+      await frames(page);
+      // It shows the action, it never runs it.
+      assert.equal(await engineCalls(page), before);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Tuiles : valeurs lues puis « Non lue » si la première lecture échoue', async () => {
+    const page = await makePage();
+    try {
+      const tile = (id) => page.locator(`main [data-pulse="${id}"] .pr-pulse-v`).innerText();
+      await page.waitForFunction(() => document.querySelector('main [data-pulse="configuration"] .pr-pulse-v').textContent === 'Valide');
+      assert.equal(await tile('nommage'), '111301');
+      assert.equal(await tile('politiques'), '0 sur 8');
+      assert.equal(await tile('brouillon'), 'Enregistré');
+      assert.equal(await page.locator('main [data-fact="domain"]').textContent(), 'example.local');
+      assert.equal(await page.locator('main [data-fact="sites"]').textContent(), '1 site');
+      assert.equal(await page.locator('main [data-fact="fingerprint"]').textContent(), `${'a'.repeat(12)}…`);
+      assert.equal(await page.locator('main [data-fact="fingerprint"]').getAttribute('title'), 'a'.repeat(64));
+      assert.equal(await page.locator('main [aria-busy="true"], main .skeleton').count(), 0);
+      const before = await engineCalls(page);
+      await page.locator('main [data-pulse="politiques"]').click();
+      await page.locator('main [data-section-panel="politiques"]:not([hidden])').waitFor();
+      assert.equal(await hash(page), '#/parametres?section=politiques');
+      assert.equal(await engineCalls(page), before);
+    } finally { await page.close(); }
+    const failed = await makePage({ failSettings: true });
+    try {
+      // makePage waited for data-ready: a refused first read never leaves a busy tile behind.
+      for (const id of ['configuration', 'nommage', 'politiques', 'brouillon'])
+        assert.equal(await failed.locator(`main [data-pulse="${id}"] .pr-pulse-v`).innerText(), 'Non lue', id);
+      assert.equal(await failed.locator('main [data-setting="config-summary"] [data-summary-title]').innerText(), 'Non lue');
+      assert.match(await failed.locator('main [data-setting="config-summary"] [data-summary-text]').innerText(), /Lecture refusée/);
+      assert.equal(await failed.locator('main [aria-busy="true"], main .skeleton').count(), 0);
+      assert.equal(await failed.locator('[data-act="save"]').isDisabled(), true);
+      assert.equal((await calls(failed, 'configuration.previewSettings')).length, 0);
+    } finally { await failed.close(); }
+  });
+
+  await check('Adresse ouvrir= d’une action : section ouverte, bouton éclairé et focalisé, aucune action lancée', async () => {
+    const page = await makePage({ address: '#/parametres?ouvrir=export' });
+    try {
+      assert.deepEqual(await shownSections(page), ['configuration']);
+      assert.equal(await hash(page), '#/parametres?section=configuration');
+      assert.equal(await page.evaluate(() => document.activeElement?.dataset.maint ?? null), 'export');
+      const lit = await page.evaluate(() => window.flashed);
+      assert.equal(lit.length, 1); assert.ok(lit[0].includes('export'), JSON.stringify(lit));
+      assert.equal(await page.locator('[data-maint="export"]').isEnabled(), true);
+      await frames(page);
+      // Only the read of the mount: no export, no dialog.
+      assert.deepEqual((await page.evaluate(() => window.fixture.calls.map((call) => call.op))).filter((op) => !['session.info', 'configuration.status', 'configuration.settings', 'coordination.status'].includes(op)), []);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Configuration locale : maintenance utilisable après changement de section', async () => {
+    const page = await makePage({ local: true });
+    try {
+      await openSection(page, 'interface'); await openSection(page, 'politiques');
+      await click(page, 'export'); await waitCall(page, 'configuration.export');
+      await page.waitForFunction(() => document.querySelector('[data-maint-status="configuration"]').textContent === 'Configuration exportée : C:\\Export\\Pesto-configuration.json');
+      assert.equal(await hash(page), '#/parametres?section=configuration');
+      await click(page, 'zip'); await page.locator('[data-candidate]').waitFor();
+      assert.equal(await hash(page), '#/parametres?section=mises-a-jour');
+      assert.deepEqual((await calls(page, 'updates.inspect'))[0].args, { kind: 'zip' });
+      assert.match(await page.locator('[data-maint-status="updates"]').innerText(), /Source inspectée/);
+      assert.equal((await calls(page, 'updates.prepare')).length, 0); assert.equal((await calls(page, 'updates.install')).length, 0);
+      assert.equal((await calls(page, 'configuration.applyImport')).length, 0);
     } finally { await page.close(); }
   });
 

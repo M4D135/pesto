@@ -56,8 +56,10 @@ export function maintenanceMarkup() {
 
 export function mountMaintenance(main, ctx, reloaded) {
   let alive = true, busy = false, closing = false, preparedUpdate = null;
-  const route = location.hash;
-  const isActive = () => alive && location.hash === route;
+  // The settings page rewrites its own query (?section=) without leaving: only the screen counts, not the full address.
+  const path = location.hash.split('?')[0];
+  const isCurrent = typeof ctx.isCurrent === 'function' ? ctx.isCurrent : () => location.hash.split('?')[0] === path;
+  const isActive = () => alive && isCurrent();
   const nativeCall = ctx.call;
   // A response may arrive after navigation. It must not open a confirmation on another screen,
   // or continue a multi-step action. An already sent operation is never cancelled or replayed here.

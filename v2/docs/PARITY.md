@@ -1,5 +1,11 @@
 # Parité Pesto V2 — état courant et historique
 
+## Version 2.0.15 — page Paramètres façon Domenia 2 (12 novembre 2026)
+
+Décision du 12/11/2026, limitée à cet écran : la page **Paramètres** reprend celle de Domenia 2. Elle a un bandeau d’état à quatre tuiles, un rail de sections avec pastille glissante et une seule section visible à la fois (Annuaire, Politiques en session réelle, Configuration, Mises à jour, Interface). La recherche de réglage s’ouvre par `/` et l’adresse est `#/parametres?section=…`. Le comportement métier ne change pas : même brouillon unique, mêmes validations, appels, confirmations, textes et refus des réponses tardives ; changer de section n’appelle jamais le moteur. Contrat détaillé : [écran Paramètres](PARAMETRES.md).
+
+Les bancs natifs ouvrent la section avant d’agir, par des étapes fermées (`ShowDirectory`, `ShowConfiguration`, `ShowUpdates`, `ShowInterface`), sans contrôle, capture ni dialogue supplémentaire. Ces bancs n’ont tourné sur aucun runner Windows pour ce changement ; seules les suites navigateur (Chromium, pont de test) et la compilation ont été exécutées. WebView2 natif, UI Automation, lecteur d’écran et échelles d’affichage restent à qualifier. La version des sources et du prochain pack est 2.0.15 ; ce paragraphe n’atteste pas une publication.
+
 ## Version 2.0.14 — configuration par défaut écrite sur place (12 novembre 2026)
 
 Décision du 12/11/2026 : **Définir comme configuration par défaut** ne fabrique plus de pack. Le bouton écrit `wad\defaults\configuration.json` dans l’installation en cours, comme GLPI-Pilot écrit son fichier de déploiement dans `wad\`. Changements dans les sources :
@@ -12,7 +18,7 @@ Décision du 12/11/2026 : **Définir comme configuration par défaut** ne fabriq
 
 Limites : une mise à jour depuis 2.0.13 ou une version antérieure, exécutée par l’ancien code, ne recopie pas la configuration scellée d’un ancien pack personnalisé ; il faut la redéfinir après la mise à jour. Un dossier source 2.0.14 ou ultérieur portant une configuration locale est refusé par un validateur 2.0.13 ou antérieur : mettre ces installations à jour avec le ZIP officiel. Le fichier contient le domaine et les OU : il se diffuse comme un fichier privé et ne se publie jamais ; les packs publiés n’en contiennent pas (`make-pack --verify` reste strict). Détails : [configuration](CONFIGURATION.md#configuration-par-défaut-de-linstallation) et [packaging](PACKAGING.md#configuration-par-défaut-pendant-la-mise-à-jour-et-le-retour-arrière).
 
-Aucun essai Windows, VM ou AD n’a été fait pour ce changement : l’écriture dans une installation réelle, le refus sous Program Files, la conservation par mise à jour et retour arrière et l’installation d’un ancien pack personnalisé restent à qualifier. Ce paragraphe n’annonce aucun résultat de test chiffré. La version des sources et du prochain pack est 2.0.14 ; ce paragraphe n’atteste pas une publication.
+Aucun essai Windows, VM ou AD n’a été fait pour ce changement : l’écriture dans une installation réelle, le refus sous Program Files, la conservation par mise à jour et retour arrière et l’installation d’un ancien pack personnalisé restent à qualifier. Ce paragraphe n’annonce aucun résultat de test chiffré. La version des sources et du pack de cette étape était 2.0.14 ; ce paragraphe n’atteste pas une publication.
 
 ## Correctif 2.0.13 — règles de jonction V1 (10 novembre 2026)
 

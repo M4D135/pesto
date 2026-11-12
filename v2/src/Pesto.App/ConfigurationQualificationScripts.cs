@@ -4,7 +4,9 @@ internal enum ConfigurationQualificationStep
 {
     Snapshot, SetVersion, ChangePrefix, SaveSettings, ConfirmSettings,
     Export, Import, ConfirmImport, CancelImport, Default, ConfirmDefault, CancelDefault,
-    UpdateFolder, PrepareUpdate, InstallUpdate, CancelInstall, UpdateStatus
+    UpdateFolder, PrepareUpdate, InstallUpdate, CancelInstall, UpdateStatus,
+    // 2.0.15: the settings page shows one section at a time; these open the section of the next input or click.
+    ShowDirectory, ShowConfiguration, ShowUpdates
 }
 
 /// <summary>Compiled DOM input and click steps. They never call the bridge or application services directly.</summary>
@@ -25,6 +27,7 @@ internal static class ConfigurationQualificationScripts
                 ready: document.documentElement.dataset.ready === 'parametres' && main?.dataset.page === 'parametres'
                   && Boolean(main.querySelector('[data-form="settings"]')) && !main.querySelector('.error-card, .skeleton'),
                 mode: document.querySelector('.mode-chip')?.dataset.mode ?? '', route: location.hash,
+                section: main?.querySelector('[data-section-panel]:not([hidden])')?.dataset.sectionPanel ?? '',
                 prefix: main?.querySelector('[name="prefix"]')?.value ?? '',
                 version: main?.querySelector('[name="configurationVersion"]')?.value ?? '',
                 configurationState: main?.dataset.configurationState ?? '',
@@ -65,8 +68,34 @@ internal static class ConfigurationQualificationScripts
         ConfigurationQualificationStep.InstallUpdate => Click("[data-maint-zone=\"prepared\"] [data-install]"),
         ConfigurationQualificationStep.CancelInstall => Dialog("Installer la mise à jour préparée", "cancel"),
         ConfigurationQualificationStep.UpdateStatus => Click("[data-maint=\"status\"]"),
+        ConfigurationQualificationStep.ShowDirectory => Show("annuaire"),
+        ConfigurationQualificationStep.ShowConfiguration => Show("configuration"),
+        ConfigurationQualificationStep.ShowUpdates => Show("mises-a-jour"),
         _ => throw new ArgumentOutOfRangeException(nameof(step))
     };
+
+    /// <summary>Address of the settings page: the bare default section (Annuaire) or one section named by the page itself.</summary>
+    internal static bool IsSettingsRoute(string route) => route == "#/parametres"
+        || (route.StartsWith("#/parametres?section=", StringComparison.Ordinal) && route.Length > 21
+            && route[21..].All(c => c is >= 'a' and <= 'z' or '-'));
+
+    // Clicks the rail item of one section, as a user would, then proves in the same evaluation that its panel is the
+    // one shown, that the item is current and that the page wrote its address (Annuaire keeps the bare #/parametres).
+    // A hidden field is never typed into: Input and Click below refuse an element without client rects.
+    // The section is chosen only by the enum steps of this class and of DemoQualificationScripts.
+    internal static string Show(string section) => """
+        (() => {
+          const items = document.querySelectorAll('main .pr-nav-item[data-section="SECTION"]');
+          if (items.length !== 1) return false;
+          const item = items[0];
+          if (item.disabled || item.hidden || item.closest('[inert]') || !item.getClientRects().length) return false;
+          item.focus(); item.click();
+          const panel = document.querySelector('main [data-section-panel="SECTION"]');
+          return Boolean(panel && !panel.hidden && panel.getClientRects().length && item.getAttribute('aria-current') === 'true'
+            && location.hash === 'ADDRESS');
+        })()
+        """.Replace("SECTION", section, StringComparison.Ordinal)
+        .Replace("ADDRESS", section == "annuaire" ? "#/parametres" : "#/parametres?section=" + section, StringComparison.Ordinal);
 
     // Values and selectors are chosen only by the enum above, never by the CLI, bridge or loaded page.
     private static string Input(string name, string value) => """

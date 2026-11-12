@@ -6,7 +6,7 @@ Ce guide décrit les chemins raccordés dans le code. Il ne certifie pas leur ex
 
 ## Préparer et distribuer la configuration
 
-Dans **Paramètres → Politiques des opérations**, activer **Autoriser la jonction hors ligne locale**, préparer les différences puis confirmer l’enregistrement. La clé est `POLICY.AllowOfflineJoin`, un booléen strict désactivé par défaut sur un profil neuf. Elle est conservée lors d’un export/import et dans la configuration par défaut de l’installation écrite par **Définir comme configuration par défaut**. Il n’est pas nécessaire de modifier un JSON ou un manifeste à la main.
+Dans **Paramètres**, section **Politiques**, activer **Autoriser la jonction hors ligne locale**, préparer les différences puis confirmer l’enregistrement. La clé est `POLICY.AllowOfflineJoin`, un booléen strict désactivé par défaut sur un profil neuf. Elle est conservée lors d’un export/import et dans la configuration par défaut de l’installation écrite par **Définir comme configuration par défaut**. Il n’est pas nécessaire de modifier un JSON ou un manifeste à la main.
 
 Le domaine unique, les OU gérées, le nommage et les politiques viennent de ce profil. Les valeurs distribuées ne contiennent aucun blob, mot de passe, historique, reçu ou cache. Elles sont écrites dans `wad\defaults\configuration.json`, qui ne modifie ni l’identité ni la provenance du pack ; ce fichier contient le domaine et les OU et se diffuse comme un fichier privé. Les règles générales sont dans [CONFIGURATION.md](CONFIGURATION.md).
 

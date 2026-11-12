@@ -2,6 +2,8 @@
 
 **Relève du 01/11 :** David a demandé à Codex de prendre la relève totale, puis de relire les derniers échanges Claude. Cette demande remplace le transfert du 28/10 ci-dessous. Les consignes KBZA fournies le 01/11 s’appliquent : gros travaux confiés au Spark, vérification indépendante par Codex, pas de nouvelle rafale de sous-agents. Le look et les animations restent validés.
 
+**12/11/2026** : à la demande de David, la page Paramètres reprend la page de Domenia 2 (bandeau, rail de sections, recherche, adresse `?section=`), livrée en 2.0.15. Cette exception vaut pour cette page seulement ; le reste du look et des animations reste validé.
+
 Reprise de la publication **2.0.9** : voir [le suivi daté](v2/docs/VALIDATION-REPRISE-20261101.md). Ne pas traiter une campagne candidate réussie comme la preuve d’une release publiée. Les tentatives officielles 10 et 11 du run `41196030973` ont échoué ; leur cause détaillée reste à établir. La branche Claude est conservée. Son sélecteur de runner (`27652d9`) a été repris explicitement dans `f4d9ffb` pour une comparaison sur le portable ; son outil de revue (`de9d5da`) n’est pas intégré. Le runner de secours est utilisé à la demande puis doit être arrêté à la fin du travail. Aucune intervention sur les VM.
 
 ## Consigne précédente du 28 octobre 2026

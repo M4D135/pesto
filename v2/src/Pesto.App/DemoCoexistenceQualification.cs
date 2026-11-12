@@ -153,7 +153,7 @@ internal static class DemoCoexistenceQualification
             var value = await WaitSnapshot(parent, "parent-context", state => Ready(state, "configuration"), campaign);
             var before = parentBefore ?? throw new PestoException("qualification.coexistence.parent-baseline", "Le contexte initial du parent n’a pas été consigné.");
             var draft = JsonNode.DeepEquals(before["draft"], value["draft"]);
-            var route = Text(before, "route") == Text(value, "route") && Text(value, "route") == "#/parametres";
+            var route = Text(before, "route") == Text(value, "route") && Text(value, "route") == "#/parametres?section=interface";
             var preferences = JsonNode.DeepEquals(before["preferences"], value["preferences"])
                 && Text(value, "theme") == "dark" && Flag(value, "collapsed");
             proof["parentDraftPreserved"] = draft;
@@ -186,9 +186,14 @@ internal static class DemoCoexistenceQualification
 
                 stage = "parent-draft";
                 await Act(parent, DemoQualificationStep.SeedParent, campaign);
-                parentBefore = await WaitSnapshot(parent, "parent-draft", value => Text(value, "theme") == "dark" && Flag(value, "collapsed")
-                    && Text(value["draft"], "domain") == "qualification.invalid" && Text(value["draft"], "prefix") == "QF", campaign);
+                static bool Seeded(JsonObject value) => Text(value, "theme") == "dark" && Flag(value, "collapsed")
+                    && Text(value["draft"], "domain") == "qualification.invalid" && Text(value["draft"], "prefix") == "QF";
+                await WaitSnapshot(parent, "parent-draft", Seeded, campaign);
+                // The capture still shows the draft in Annuaire; the demonstration button is in the « Interface » section (2.0.15).
                 await Capture(parent, "parent-draft.png", campaign);
+                await Act(parent, DemoQualificationStep.ShowInterface, campaign);
+                parentBefore = await WaitSnapshot(parent, "parent-interface", value => Seeded(value)
+                    && Text(value, "route") == "#/parametres?section=interface", campaign);
 
                 stage = "first-child";
                 var child = await OpenChildAsync();
@@ -243,7 +248,15 @@ internal static class DemoCoexistenceQualification
                 await Until(_ => Task.FromResult(childClosed.Contains(child) && child.IsDisposed && parent.OwnedForms.Length == 0), campaign);
                 proof["childClosed"] = true;
                 await VerifyParentAsync();
+                // The capture shows the preserved draft in « Annuaire » (2.0.15: one section at a time), then « Interface »
+                // is shown again for the second child; VerifyParentAsync keeps proving the route and the draft afterwards.
+                await Act(parent, DemoQualificationStep.ShowDirectory, campaign);
+                await WaitSnapshot(parent, "parent-directory", value => Seeded(value)
+                    && JsonNode.DeepEquals(parentBefore?["draft"], value["draft"]) && Text(value, "route") == "#/parametres", campaign);
                 await Capture(parent, "parent-preserved.png", campaign);
+                await Act(parent, DemoQualificationStep.ShowInterface, campaign);
+                await WaitSnapshot(parent, "parent-interface-again", value => Seeded(value)
+                    && Text(value, "route") == "#/parametres?section=interface", campaign);
 
                 stage = "second-child";
                 lastChild = await OpenChildAsync();
@@ -469,6 +482,8 @@ internal static class DemoCoexistenceQualification
         var before = await WaitSnapshot(form, "settings-mounted", value => Ready(value, "simulation") && Text(value, "readyRoute") == "parametres"
             && Flag(value, "demoEnabled") && value["dialog"] is null, deadline);
         Require(Number(before, "mountId") > 0, "ui-mount");
+        // The transition start keeps the mount and address read above: changing the section is not a remount (2.0.15).
+        await Act(form, DemoQualificationStep.ShowInterface, deadline);
         await Act(form, DemoQualificationStep.OpenDemo, deadline);
         await WaitSnapshot(form, "scenario-dialog-open", value => value["dialog"]?["scenario"] is not null, deadline);
         await Act(form, action, deadline);

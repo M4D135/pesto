@@ -252,9 +252,12 @@ internal static class UiSuite
             Suite.Require(proof[field]?.GetValue<bool>() == true, "The UI proof is missing source/profile preservation: " + field);
         Suite.Require(proof["checks"] is JsonArray checks && checks.Select(value => value?.GetValue<string>()).SequenceEqual(ExpectedChecks),
             "The UI proof does not contain all 22 named observations in their actual execution order.");
+        // From 2.0.15 the bench first opens the « Mises à jour » section of the settings page (ShowUpdates, a rail click proved
+        // in the same evaluation); a proof made by an earlier baseline (962f3ba) starts with the picker. Nothing else is optional.
+        string[] pickerToConfirmation = ["UpdateZip", "PrepareUpdate", "InstallUpdate", "CancelInstall", "InstallUpdate", "ConfirmInstall"];
         Suite.Require(proof["uiSteps"] is JsonArray steps
-            && steps.OfType<JsonObject>().Select(value => Suite.Text(value, "step")).SequenceEqual(
-                ["UpdateZip", "PrepareUpdate", "InstallUpdate", "CancelInstall", "InstallUpdate", "ConfirmInstall"])
+            && steps.OfType<JsonObject>().Select(value => Suite.Text(value, "step")).ToArray() is var names
+            && (names.SequenceEqual(pickerToConfirmation) || names.SequenceEqual(["ShowUpdates", .. pickerToConfirmation]))
             && steps.All(value => value is JsonObject step && Suite.Boolean(step, "accepted") && Suite.Text(step, "source") == "dom"),
             "The confirmation must follow the actual picker, preparation, cancellation and explicit second confirmation.");
         Suite.Require(proof["captures"] is JsonArray captures && captures.Select(value => value?.GetValue<string>()).SequenceEqual(ExpectedCaptures),

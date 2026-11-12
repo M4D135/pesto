@@ -115,9 +115,21 @@ try {
   await page.goto(`http://127.0.0.1:${server.address().port}`);
   const ready = (id) => page.waitForFunction((id) => document.documentElement.dataset.ready === id, id);
   const data = (op, args = {}) => page.evaluate(async ({ op, args }) => (await import('/js/simulation.js')).browserSimulation.invoke(op, args), { op, args });
-  const controls = async () => {
+  // Paramètres shows one section at a time: the demonstration button and the Animations field are in Interface.
+  const openInterface = async () => {
+    await page.locator('main .pr-nav-item[data-section="interface"]').click();
+    await page.locator('main [data-section-panel="interface"]:not([hidden])').waitFor();
+  };
+  // The link of the navigation is #/parametres: from another screen it mounts Paramètres; from #/parametres?section=interface
+  // it shows Annuaire in place, without remount. Either way, wait for Annuaire shown at the bare address on a ready screen.
+  const openSettings = async () => {
     await page.locator('.nav-item[data-id="parametres"]').click();
-    await ready('parametres');
+    await page.waitForFunction(() => document.documentElement.dataset.ready === 'parametres' && location.hash === '#/parametres'
+      && !!document.querySelector('main [data-section-panel="annuaire"]:not([hidden])'));
+  };
+  const controls = async () => {
+    await openSettings();
+    await openInterface();
     await page.getByRole('button', { name: 'Piloter la démonstration', exact: true }).click();
     const dialog = page.getByRole('dialog', { name: 'Piloter la démonstration', exact: true });
     await dialog.waitFor(); return dialog;
@@ -143,9 +155,12 @@ try {
     await page.locator('.nav-item[data-id="parametres"]').click(); await ready('parametres');
     assert.equal(await page.locator('main .demo-trigger').count(), 1);
     assert.equal(await page.locator('.topbar .demo-trigger, .sim-banner button').count(), 0);
+    await openInterface();
     await page.getByLabel('Animations', { exact: true }).selectOption('system');
     assert.equal(await page.locator('html').getAttribute('data-motion'), 'system');
     await page.reload(); await ready('parametres');
+    // The section is part of the address: a reload shows Interface again.
+    assert.equal(await page.evaluate(() => location.hash), '#/parametres?section=interface');
     assert.equal(await page.getByLabel('Animations', { exact: true }).inputValue(), 'system');
     await page.getByLabel('Animations', { exact: true }).selectOption('reduced');
     await page.locator('.nav-item[data-id="accueil"]').click(); await ready('accueil');

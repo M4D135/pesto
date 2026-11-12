@@ -25,8 +25,10 @@ export async function confirmConfiguration(plan, { title = 'Importer la configur
 }
 
 export async function showConfigurationNotice({ call, refreshSession, isActive = () => true }) {
-  const route = location.hash;
-  const current = () => isActive() && location.hash === route;
+  // Screen part of the address only: changing a section of the settings page (?section=) keeps the notice valid.
+  const path = (hash) => String(hash ?? '').split('?')[0];
+  const route = path(location.hash);
+  const current = () => isActive() && path(location.hash) === route;
   try {
     if (!current()) return;
     const status = await call('configuration.status');

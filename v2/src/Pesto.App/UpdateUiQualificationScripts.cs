@@ -2,7 +2,9 @@ namespace Pesto.App;
 
 internal enum UpdateUiQualificationStep
 {
-    Snapshot, UpdateZip, PrepareUpdate, InstallUpdate, CancelInstall, ConfirmInstall
+    Snapshot, UpdateZip, PrepareUpdate, InstallUpdate, CancelInstall, ConfirmInstall,
+    // 2.0.15: opens the « Mises à jour » section of the settings page before its buttons are clicked.
+    ShowUpdates
 }
 
 /// <summary>Closed DOM actions for the real maintenance page. No bridge/service invocation.</summary>
@@ -34,6 +36,7 @@ internal static class UpdateUiQualificationScripts
               button.focus(); button.click(); return true;
             })()
             """,
+        UpdateUiQualificationStep.ShowUpdates => ConfigurationQualificationScripts.For(ConfigurationQualificationStep.ShowUpdates),
         _ => throw new ArgumentOutOfRangeException(nameof(step))
     };
 }

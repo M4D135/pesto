@@ -370,7 +370,7 @@ jobs:
           $env:PESTO_PLAYWRIGHT_MODULE = (Resolve-Path 'tools/tests/browser/node_modules/playwright/index.mjs').Path
           $env:PESTO_CHROMIUM_PATH = (& node -e "console.log(require('./tools/tests/browser/node_modules/playwright').chromium.executablePath())").Trim()
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          foreach ($suite in @('web-maintenance-check', 'operator-ui-check', 'web-business-check', 'parity-ui-check', 'policy-ui-check', 'web-recovery-check', 'web-dom-check', 'web-layout-check', 'demo-dom-check', 'gui-rail-check', 'gui-join-check', 'gui-follow-check', 'gui-receipts-check', 'web-check', 'bridge-lifecycle-check', 'demo-check', 'azerty-check', 'watch-check', 'watcher-result-check')) {
+          foreach ($suite in @('web-maintenance-check', 'web-settings-rail-check', 'operator-ui-check', 'web-business-check', 'parity-ui-check', 'policy-ui-check', 'web-recovery-check', 'web-dom-check', 'web-layout-check', 'demo-dom-check', 'gui-rail-check', 'gui-join-check', 'gui-follow-check', 'gui-receipts-check', 'web-check', 'bridge-lifecycle-check', 'demo-check', 'azerty-check', 'watch-check', 'watcher-result-check')) {
             & node "tools/tests/$suite.mjs" 2>&1 | Tee-Object -FilePath "out/evidence/$suite.log"
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }

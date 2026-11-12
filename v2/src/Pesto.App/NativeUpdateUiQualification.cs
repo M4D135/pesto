@@ -163,6 +163,8 @@ internal static class NativeUpdateUiQualification
                         Check(Text(ready, "mode") == "configuration" && Text(ready, "route") == "#/parametres", "isolatedConfigurationPage");
 
                         stage = "inspect-zip-ui";
+                        // One section is shown at a time (2.0.15): the ZIP button is in « Mises à jour ».
+                        await Act(UpdateUiQualificationStep.ShowUpdates);
                         await NativeConfigurationQualification.Dialog(parent, ZipTitle, selectedZip, () => Act(UpdateUiQualificationStep.UpdateZip), stop.Token);
                         await WaitUi(state => Idle(state) && Number(state, "candidateCount") == 1 && Returned("updates.inspect"), 180);
                         var selections = host.Snapshot().OfType<JsonObject>().Where(item => Text(item, "action") == "source").ToArray();
@@ -318,7 +320,7 @@ internal static class NativeUpdateUiQualification
     }
 
     private static bool Idle(JsonObject value) => Flag(value, "ready") && Text(value, "mode") == "configuration"
-        && Text(value, "route") == "#/parametres" && value["dialog"] is null && Flag(value, "buttonsReady")
+        && ConfigurationQualificationScripts.IsSettingsRoute(Text(value, "route")) && value["dialog"] is null && Flag(value, "buttonsReady")
         && Flag(value, "saveEnabled") && !Flag(value, "settingsBusy");
     private static bool Flag(JsonNode? value, string key) => value?[key]?.GetValue<bool>() == true;
     private static string Text(JsonNode? value, string key) => value?[key]?.GetValue<string>() ?? "";

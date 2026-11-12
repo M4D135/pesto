@@ -20,7 +20,7 @@ Pesto vérifie l’inventaire du Socle (fichiers attendus, tailles, empreinte de
 
 ## 2. Préparer la configuration
 
-Au premier lancement sans configuration distribuée, Pesto ouvre les Paramètres. Renseigner le domaine, le périmètre d’OU, la convention de nommage et les sites/services utiles, ou importer une configuration existante. Relire les différences avant de confirmer l’import ou l’enregistrement.
+Au premier lancement sans configuration distribuée, Pesto ouvre les Paramètres sur la section **Annuaire**. Renseigner le domaine, le périmètre d’OU, la convention de nommage et les sites/services utiles, ou importer une configuration existante depuis la section **Configuration**. Changer de section par le rail ne perd pas la saisie ; la touche `/` recherche un réglage ([écran Paramètres](PARAMETRES.md)). Relire les différences avant de confirmer l’import ou l’enregistrement.
 
 La configuration active est conservée dans le profil de l’opérateur. **Exporter** produit un fichier partageable. **Définir comme configuration par défaut** écrit, après confirmation (**Enregistrer comme défaut**), la configuration partageable de ce profil dans `wad\defaults\configuration.json` de ce dossier Pesto. Depuis 2.0.14, aucun pack n’est recréé : les fichiers du programme et leurs empreintes restent inchangés, un pack officiel reste officiel. Un fichier déjà présent est remplacé et sa copie est conservée dans votre profil. Diffusez ensuite ce dossier : un opérateur sans configuration importe automatiquement ces paramètres au premier lancement ; un profil déjà configuré choisit explicitement **Remplacer** ou **Conserver**. Ce fichier contient le domaine et les OU : diffusez ce dossier comme un fichier privé, ne le publiez jamais.
 
@@ -32,7 +32,7 @@ Les réglages complets et les règles d’import sont décrits dans [CONFIGURATI
 
 ## 3. Découvrir les écrans sans opération réelle
 
-Dans **Paramètres → Interface et démonstration**, ouvrir la démonstration. Elle possède sa propre fenêtre, une bannière permanente et des données fictives. La fenêtre de travail et ses brouillons restent ouverts. Les scénarios, la remise à zéro et le redémarrage fictif appartiennent à cette fenêtre de démonstration.
+Dans **Paramètres**, section **Interface**, ouvrir la démonstration. Elle possède sa propre fenêtre, une bannière permanente et des données fictives. La fenêtre de travail et ses brouillons restent ouverts. Les scénarios, la remise à zéro et le redémarrage fictif appartiennent à cette fenêtre de démonstration.
 
 Les animations se règlent dans cette section ; le thème se choisit dans la barre supérieure. `Ctrl K` ouvre la palette de commandes, `Ctrl B` replie le menu et `F1` ouvre l’aide. Les diagnostics affichent ce qui a effectivement été observé ; une valeur inconnue ne devient pas un résultat positif.
 
@@ -68,4 +68,4 @@ Consulter les reçus dans **Interventions** et les détails dans le journal. Un 
 
 Si le renommage a réussi mais que le déplacement reste à effectuer, utiliser le parcours de reprise proposé par le reçu après vérification de l’identité. Une nouvelle tentative est préparée et confirmée séparément. Un acquittement motivé conserve le résultat historique ; il ne le transforme pas en succès.
 
-Les mises à jour se préparent dans les Paramètres depuis une source prise en charge. Inspecter le candidat, relire ses différences, le préparer puis confirmer séparément l’installation. La configuration par défaut de l’installation est conservée par la mise à jour ; au retour arrière, ce qui a été fait depuis la mise à jour est conservé et ce qu’elle a apporté repart avec elle, comme l’annonce la confirmation. Un pack qui en apporte une différente est refusé sans remplacement. La qualification des transactions, les procédures de retour et les limites avec 2.0.13 figurent dans [PACKAGING.md](PACKAGING.md#configuration-par-défaut-pendant-la-mise-à-jour-et-le-retour-arrière). Conserver les preuves d’un échec avant toute nouvelle action.
+Les mises à jour se préparent dans les Paramètres, section **Mises à jour**, depuis une source prise en charge. Inspecter le candidat, relire ses différences, le préparer puis confirmer séparément l’installation. La configuration par défaut de l’installation est conservée par la mise à jour ; au retour arrière, ce qui a été fait depuis la mise à jour est conservé et ce qu’elle a apporté repart avec elle, comme l’annonce la confirmation. Un pack qui en apporte une différente est refusé sans remplacement. La qualification des transactions, les procédures de retour et les limites avec 2.0.13 figurent dans [PACKAGING.md](PACKAGING.md#configuration-par-défaut-pendant-la-mise-à-jour-et-le-retour-arrière). Conserver les preuves d’un échec avant toute nouvelle action.

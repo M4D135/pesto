@@ -3,7 +3,11 @@ namespace Pesto.App;
 internal enum DemoQualificationStep
 {
     Snapshot, CaptureSnapshot, SeedParent, OpenDemo, NavigateSettings, ReadBackend, SetChildPreferences, ReloadWithCompactBanner,
-    SelectPendingRestart, SelectJoined, Reset, Restart, Confirm
+    SelectPendingRestart, SelectJoined, Reset, Restart, Confirm,
+    // 2.0.15: opens the « Interface » section of the settings page, which holds the demonstration button.
+    ShowInterface,
+    // 2.0.15: opens « Annuaire » again, so the capture of the preserved parent shows its draft.
+    ShowDirectory
 }
 
 /// <summary>Closed UI steps for the temporary native bench. No supplied script, path or native command.</summary>
@@ -49,7 +53,7 @@ internal static class DemoQualificationScripts
             """,
         DemoQualificationStep.NavigateSettings => """
             (() => {
-              if (location.hash === '#/parametres') return true;
+              if (location.hash.split('?')[0] === '#/parametres') return true;
               const link = document.querySelector('.nav-item[data-id="parametres"]');
               if (!link) return false;
               link.click(); return true;
@@ -58,10 +62,23 @@ internal static class DemoQualificationScripts
         DemoQualificationStep.OpenDemo => """
             (() => {
               const button = document.querySelector('.demo-trigger');
-              if (!button || button.disabled || button.hidden || document.querySelector('.shell')?.inert) return false;
+              if (!button || button.disabled || button.hidden || document.querySelector('.shell')?.inert || !button.getClientRects().length) return false;
               button.click(); return true;
             })()
             """,
+        // Same compiled rail click and proof as the configuration bench, refused while a dialog makes the shell inert.
+        DemoQualificationStep.ShowInterface => """
+            (() => {
+              if (document.querySelector('.shell')?.inert) return false;
+              return SHOW;
+            })()
+            """.Replace("SHOW", ConfigurationQualificationScripts.Show("interface"), StringComparison.Ordinal),
+        DemoQualificationStep.ShowDirectory => """
+            (() => {
+              if (document.querySelector('.shell')?.inert) return false;
+              return SHOW;
+            })()
+            """.Replace("SHOW", ConfigurationQualificationScripts.Show("annuaire"), StringComparison.Ordinal),
         DemoQualificationStep.ReadBackend => """
             (() => {
               globalThis.__pestoNativeQualification = { state: 'pending' };

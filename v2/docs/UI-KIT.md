@@ -22,6 +22,23 @@ Le contrôle historique `web/provenance.json` et `tools/tests/web-check.mjs` res
 actif. Le nouveau manifeste ajoute le lien explicite de chaque fichier vers le
 canon actuel, sans réécrire les variantes métier (notamment les confirmations).
 
+## Feuille propre à l’écran Paramètres
+
+`web/css/pages/parametres.css` (depuis 2.0.15) est propre à Pesto et reste hors de ce
+verrou : le manifeste liste ses 28 fichiers un par un, et ce fichier n’en fait pas partie.
+Il est porté de `v2/web/css/pages/parametres.css` de Domenia, au commit
+`044f61fe53ad7908770c2e07d2e811e860e55c58`, puis complété par un bloc d’adaptations
+Pesto en fin de fichier. Il ne sert qu’à l’[écran Paramètres](PARAMETRES.md) :
+
+- toutes ses règles sont préfixées par `.main[data-page="parametres"]` ;
+- ses jetons (couleurs, espacements, rayons, durées) sont ceux des CSS du kit ; ses seules variables propres sont des positions et des rangs (`--y`, `--h`, `--i`, `--j`) ;
+- il n’ajoute aucune animation en boucle ;
+- il ne modifie aucun des 28 fichiers verrouillés.
+
+`index.html` le lie juste après `css/kit.css`, et le pack l’emporte avec le reste de
+`web/`. `check-ui-kit.py` ne le contrôle pas. `web-check.mjs` vérifie qu’il est lié
+après `css/kit.css` et que chacune de ses règles porte le préfixe de l’écran.
+
 ## Vérification sans réseau
 
 Le contrôleur standard de `M4D135/m4d-admin-common` est livré dans

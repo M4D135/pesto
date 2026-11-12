@@ -77,7 +77,10 @@ function loadModule(id) {
  * @param {{ main: HTMLElement, nav: HTMLElement, pages: Array<{id: string, label: string, icon?: string, section?: string|null}>,
  *   context: (page: any) => Object, defaultId?: string, onChange?: (page: any) => void, isBusy?: () => boolean }} opts
  * context(page) → object handed to render(main, ctx); the router adds ctx.params (frozen), ctx.route, ctx.link,
- * ctx.navigate(id, params) and ctx.guardLeave(fn). One guard per screen, removed when the screen changes.
+ * ctx.navigate(id, params), ctx.guardLeave(fn), ctx.isCurrent() and ctx.replaceParams(params). One guard per screen,
+ * removed when the screen changes. ctx.params and ctx.route stay those of the mount; ctx.isCurrent() is what a late
+ * response checks: false once the address leaves the screen or a newer render started, true again when a leave guard
+ * restores it, unchanged by ctx.replaceParams (which rewrites the query of the screen shown: no hashchange, no remount).
  */
 export function createRouter({ main, nav, pages, context, defaultId = 'accueil', onChange, isBusy = () => false }) {
   // Navigation can be requested while session.info is pending; mount only once start() releases it.
@@ -147,8 +150,27 @@ export function createRouter({ main, nav, pages, context, defaultId = 'accueil',
       leaveGuard = typeof fn === 'function' ? fn : null;
       return () => { if (mine === token && leaveGuard === fn) leaveGuard = null; };
     };
+    // Address of the screen as mounted, then as rewritten by replaceParams. Pages used to compare location.hash with
+    // the one read at mount: isCurrent keeps that check (a hash leaving the screen, before its hashchange is handled,
+    // is no longer current) and follows the in-page rewrites, so changing a section never makes a screen stale.
+    let address = location.hash;
+    const isCurrent = () => my === token && location.hash === address;
+    // Rewrites the parameters of the current screen without hashchange, remount or leave guard. Refused (false) once
+    // the screen is no longer current, so a late call never overwrites an address the user is leaving for.
+    const replaceParams = (next = {}) => {
+      if (!isCurrent()) return false;
+      const clean = {};
+      for (const [k, v] of Object.entries(next ?? {})) {
+        if (k && v !== null && v !== undefined && v !== '' && String(v).length <= MAX_PARAM_LENGTH) clean[k] = String(v);
+      }
+      currentParams = Object.freeze(clean);
+      const hash = link(page.id, clean);
+      if (location.hash !== hash) history.replaceState(null, '', hash);
+      address = location.hash;
+      return true;
+    };
     try {
-      out = mod.render(main, { ...context(page), params, route, link, navigate, guardLeave });
+      out = mod.render(main, { ...context(page), params, route, link, navigate, guardLeave, isCurrent, replaceParams });
     } catch (err) {
       console.error(err);
       errorPage(err).render(main);
@@ -194,7 +216,9 @@ export function createRouter({ main, nav, pages, context, defaultId = 'accueil',
         guarding = false;
       }
       if (!ok) {
-        if (location.hash !== previous) history.replaceState(null, '', previous);
+        // The screen may have rewritten its parameters during the dialog (replaceParams): restore its address as it is now.
+        const restore = currentId !== null ? link(currentId, currentParams) : previous;
+        if (location.hash !== restore) history.replaceState(null, '', restore);
         return;
       }
       if (leaveGuard === fn) leaveGuard = null;

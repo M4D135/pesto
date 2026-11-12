@@ -4,7 +4,7 @@
 
 Décision du 12/11/2026, limitée à cet écran : la page **Paramètres** reprend celle de Domenia 2. Elle a un bandeau d’état à quatre tuiles, un rail de sections avec pastille glissante et une seule section visible à la fois (Annuaire, Politiques en session réelle, Configuration, Mises à jour, Interface). La recherche de réglage s’ouvre par `/` et l’adresse est `#/parametres?section=…`. Le comportement métier ne change pas : même brouillon unique, mêmes validations, appels, confirmations, textes et refus des réponses tardives ; changer de section n’appelle jamais le moteur. Contrat détaillé : [écran Paramètres](PARAMETRES.md).
 
-Les bancs natifs ouvrent la section avant d’agir, par des étapes fermées (`ShowDirectory`, `ShowConfiguration`, `ShowUpdates`, `ShowInterface`), sans contrôle, capture ni dialogue supplémentaire. Ces bancs n’ont tourné sur aucun runner Windows pour ce changement ; seules les suites navigateur (Chromium, pont de test) et la compilation ont été exécutées. WebView2 natif, UI Automation, lecteur d’écran et échelles d’affichage restent à qualifier. La version des sources et du prochain pack est 2.0.15 ; ce paragraphe n’atteste pas une publication.
+Les bancs natifs ouvrent la section avant d’agir, par des étapes fermées (`ShowDirectory`, `ShowConfiguration`, `ShowUpdates`, `ShowInterface`), sans contrôle, capture ni dialogue supplémentaire. Ces bancs et les suites navigateur ont tourné sur le runner Windows hébergé de la [campagne de publication 43228752890](https://github.com/M4D135/pesto/actions/runs/43228752890), sur la source exacte publiée en [2.0.15](https://github.com/M4D135/pesto/releases/tag/v2.0.15) (`b7fd4c67a1da990dce588ab9dd161e06bd5bd683`). Lecteur d’écran, échelles d’affichage et poste réel restent à qualifier.
 
 ## Version 2.0.14 — configuration par défaut écrite sur place (12 novembre 2026)
 
@@ -18,7 +18,7 @@ Décision du 12/11/2026 : **Définir comme configuration par défaut** ne fabriq
 
 Limites : une mise à jour depuis 2.0.13 ou une version antérieure, exécutée par l’ancien code, ne recopie pas la configuration scellée d’un ancien pack personnalisé ; il faut la redéfinir après la mise à jour. Un dossier source 2.0.14 ou ultérieur portant une configuration locale est refusé par un validateur 2.0.13 ou antérieur : mettre ces installations à jour avec le ZIP officiel. Le fichier contient le domaine et les OU : il se diffuse comme un fichier privé et ne se publie jamais ; les packs publiés n’en contiennent pas (`make-pack --verify` reste strict). Détails : [configuration](CONFIGURATION.md#configuration-par-défaut-de-linstallation) et [packaging](PACKAGING.md#configuration-par-défaut-pendant-la-mise-à-jour-et-le-retour-arrière).
 
-Aucun essai Windows, VM ou AD n’a été fait pour ce changement : l’écriture dans une installation réelle, le refus sous Program Files, la conservation par mise à jour et retour arrière et l’installation d’un ancien pack personnalisé restent à qualifier. Ce paragraphe n’annonce aucun résultat de test chiffré. La version des sources et du pack de cette étape était 2.0.14 ; ce paragraphe n’atteste pas une publication.
+Les bancs natifs de cette étape (écriture dans une copie de pack, refus en lecture seule, ancien pack personnalisé, mise à jour et retour arrière) ont tourné sur le runner Windows hébergé de la campagne de publication 43208102597, source `8940ae5879957f41399ebab34750c20e2b1285f4`, publiée en 2.0.14. Aucun essai VM ni AD : l’écriture dans une installation réelle et le refus sous Program Files restent à qualifier sur un poste.
 
 ## Correctif 2.0.13 — règles de jonction V1 (10 novembre 2026)
 
@@ -31,7 +31,7 @@ Contrôles locaux sur configurations fictives : 686 tests moteur, dont huit rég
 
 ## État au 12 novembre 2026
 
-La dernière release publiée est [2.0.14](https://github.com/M4D135/pesto/releases/tag/v2.0.14), source `8940ae5879957f41399ebab34750c20e2b1285f4`. Depuis la 2.0.10, la distribution publiée est **LIGHT** : `Pesto.exe` et `wad/`, .NET et module Microsoft ActiveDirectory embarqués, Evergreen installé ou Socle WebView2 externe vérifié. Le code de fabrication DEV et les anciennes preuves PROD/DEV ne décrivent pas une seconde distribution publiée actuellement.
+La dernière release publiée est [2.0.15](https://github.com/M4D135/pesto/releases/tag/v2.0.15), source `b7fd4c67a1da990dce588ab9dd161e06bd5bd683`. Depuis la 2.0.10, la distribution publiée est **LIGHT** : `Pesto.exe` et `wad/`, .NET et module Microsoft ActiveDirectory embarqués, Evergreen installé ou Socle WebView2 externe vérifié. Le code de fabrication DEV et les anciennes preuves PROD/DEV ne décrivent pas une seconde distribution publiée actuellement.
 
 Les corrections de source après cette release ne valent pas publication ou qualification Windows/AD. Les preuves restent attachées à leur SHA et au binaire effectivement essayé ; le domaine réel, le Socle sans Evergreen et les mutations AD restent à qualifier. Voir [le guide courant](../README.md) et [la configuration](CONFIGURATION.md).
 

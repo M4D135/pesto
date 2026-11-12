@@ -23,9 +23,9 @@ Deux écarts constatés dans la 2.0.12 sont corrigés dans les sources :
 
 Contrôles locaux sur configurations fictives : 686 tests moteur, dont huit régressions dédiées, et 77 contrôles métier navigateur réussis. Les fixtures de jonction de production déclarent désormais explicitement `DirectProd=true` et un poste hors domaine. Aucun essai VM ni aucune opération AD réelle : ces contrôles ne qualifient pas le fonctionnement sur un domaine réel. La version des sources et du prochain pack est 2.0.13 ; ce paragraphe n’atteste pas une publication.
 
-## État au 9 novembre 2026
+## État au 12 novembre 2026
 
-La dernière release publiée est [2.0.11](https://github.com/M4D135/pesto/releases/tag/v2.0.11), source `a84c6a4238492532069660d5f210f88f52dc7eac`. Depuis la 2.0.10, la distribution publiée est **LIGHT** : `Pesto.exe` et `wad/`, .NET et module Microsoft ActiveDirectory embarqués, Evergreen installé ou Socle WebView2 externe vérifié. Le code de fabrication DEV et les anciennes preuves PROD/DEV ne décrivent pas une seconde distribution publiée actuellement.
+La dernière release publiée est [2.0.14](https://github.com/M4D135/pesto/releases/tag/v2.0.14), source `8940ae5879957f41399ebab34750c20e2b1285f4`. Depuis la 2.0.10, la distribution publiée est **LIGHT** : `Pesto.exe` et `wad/`, .NET et module Microsoft ActiveDirectory embarqués, Evergreen installé ou Socle WebView2 externe vérifié. Le code de fabrication DEV et les anciennes preuves PROD/DEV ne décrivent pas une seconde distribution publiée actuellement.
 
 Les corrections de source après cette release ne valent pas publication ou qualification Windows/AD. Les preuves restent attachées à leur SHA et au binaire effectivement essayé ; le domaine réel, le Socle sans Evergreen et les mutations AD restent à qualifier. Voir [le guide courant](../README.md) et [la configuration](CONFIGURATION.md).
 

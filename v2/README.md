@@ -26,7 +26,7 @@ Les recherches de postes et les listes de file ignorent les réponses anciennes.
 
 ## État et références
 
-**État au 9 novembre 2026 : release publiée [v2.0.11](https://github.com/M4D135/pesto/releases/tag/v2.0.11), source `a84c6a4238492532069660d5f210f88f52dc7eac`, [campagne 42602330297](https://github.com/M4D135/pesto/actions/runs/42602330297).** Le pack publié est LIGHT. La 2.0.11 rétablit les sites reconnus par plusieurs motifs TAGS. Les corrections ultérieures présentes dans `master` sont des changements de source ; elles ne constituent pas une nouvelle release. La liste des sites/services du domaine réel et le démarrage sans Evergreen sur le Socle restent à qualifier sur le binaire exact.
+**État au 12 novembre 2026 : release publiée [v2.0.14](https://github.com/M4D135/pesto/releases/tag/v2.0.14), source `8940ae5879957f41399ebab34750c20e2b1285f4`, [campagne 43208102597](https://github.com/M4D135/pesto/actions/runs/43208102597).** Le pack publié est LIGHT. La 2.0.14 écrit la configuration par défaut sur place, dans `wad\defaults\configuration.json` de l’installation, sans fabriquer de pack personnalisé ; ce fichier reste hors de l’identité du pack et suit les mises à jour et les retours arrière. Les releases 2.0.10 à 2.0.12 ont été retirées de GitHub le 12 novembre ; la 2.0.13 reste disponible. Les corrections ultérieures présentes dans `master` sont des changements de source ; elles ne constituent pas une nouvelle release. La liste des sites/services du domaine réel et le démarrage sans Evergreen sur le Socle restent à qualifier sur le binaire exact.
 
 ### Archives de livraison antérieures à la recréation du dépôt
 

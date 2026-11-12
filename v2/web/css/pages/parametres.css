@@ -322,3 +322,5 @@
 @media (max-width: 560px) {
   .main[data-page="parametres"] .pr-chips .k-pill { height: auto; min-height: 24px; padding-block: 4px; line-height: 1.3; white-space: normal; }
 }
+/* La liste des sites occupe toute la largeur de sa carte : une OU complète tient sur une ligne. */
+.main[data-page="parametres"] textarea[name="sites"] { display: block; width: 100%; min-height: 9rem; resize: vertical; }

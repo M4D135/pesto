@@ -715,6 +715,12 @@ try {
       await page.keyboard.type('mise a jour');
       await page.keyboard.press('ArrowDown');
       await frames(page);
+      // On a loaded Windows runner the new selection may not be painted yet after two frames: wait for it (5 s at most),
+      // then read. The assertions below stay exact; a selection that never turns Highlight still fails.
+      await page.waitForFunction((highlight) => {
+        const li = document.querySelector('main #pr-search-list li[aria-selected="true"]');
+        return Boolean(li) && getComputedStyle(li).backgroundColor === highlight;
+      }, system.Highlight, { timeout: 5000 }).catch(() => {});
       const options = await page.locator('main #pr-search-list li[data-hit]').evaluateAll((nodes) => nodes.map((node) => [node.getAttribute('aria-selected'), getComputedStyle(node).backgroundColor]));
       // The active result is painted Highlight; the others keep the list’s own background.
       assert.deepEqual(options.map((o) => o[0]), ['false', 'true', 'false']);

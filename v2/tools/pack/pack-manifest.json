@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "packName": "Pesto-v2-portable",
-  "version": "2.0.13",
+  "version": "2.0.14",
   "layout": "singlefile-wad",
   "requiredFiles": [
     "Pesto.exe", "wad/Pesto.package.json", "wad/web/index.html", "wad/support/DEBLOQUER_TOUT.cmd",
@@ -30,5 +30,5 @@
     "packageInfo": "wad/Pesto.package.json",
     "hashes": "wad/SHA256SUMS"
   },
-  "comment": "Un seul Pesto.exe publié self-contained single-file à la racine. Tous les autres composants et documents dans wad. Packs LIGHT uniquement : le runtime WebView2 fixe vient du Socle (lien), jamais du pack. Les deux éditions livrent les six fichiers Microsoft ActiveDirectory épinglés. Les configurations diffusables sont uniquement des enveloppes validées sous wad/defaults/configuration.json dans les packs personnalisés. Les sources DEV n'incluent jamais bin/obj, journaux, cfg privé ni cache."
+  "comment": "Un seul Pesto.exe publié self-contained single-file à la racine. Tous les autres composants et documents dans wad. Packs LIGHT uniquement : le runtime WebView2 fixe vient du Socle (lien), jamais du pack. Les deux éditions livrent les six fichiers Microsoft ActiveDirectory épinglés. Les configurations diffusables sont uniquement des enveloppes validées sous wad/defaults/configuration.json : écrites sur place dans une installation, hors SHA256SUMS et hors identité du pack (2.0.14 et suivantes), ou scellées dans les anciens packs personnalisés ; jamais dans un pack publié. Les sources DEV n'incluent jamais bin/obj, journaux, cfg privé ni cache."
 }

@@ -10,7 +10,6 @@ public interface IPestoHostActions
     Task<string?> ReadImportAsync(string kind, CancellationToken cancellationToken);
     Task<string?> SaveExportAsync(string suggestedName, string text, CancellationToken cancellationToken);
     Task<string?> SelectPackSourceAsync(string kind, CancellationToken cancellationToken);
-    Task<string?> SelectPackDestinationAsync(CancellationToken cancellationToken);
     Task<object?> OpenDemoAsync(CancellationToken cancellationToken);
     Task<object?> ReconnectAsync(CancellationToken cancellationToken);
     Task<object?> InstallAsync(UpdateInstallRequest request, CancellationToken cancellationToken);
@@ -60,8 +59,13 @@ public sealed class ApplicationServicesBackend(IPestoBackend business, bool simu
                         ? await offlineHost.OpenOfflineJoinAsync(cancellationToken).ConfigureAwait(false)
                         : throw new PestoException("offlineJoin.unavailable", "Le parcours local de jonction hors ligne n’est pas raccordé à cet hôte.");
                 case "configuration.status":
+                {
                     Arguments.Only(args);
-                    return Config().Status();
+                    var status = Config().Status();
+                    // Light read for the default-configuration confirmation; the whole pack is validated when writing.
+                    status["installationDefault"] = InstallationDefaults.Inspect(installationDirectory).ToJson();
+                    return status;
+                }
                 case "configuration.settings":
                     Arguments.Only(args);
                     return Config().ReadSettings();
@@ -110,12 +114,10 @@ public sealed class ApplicationServicesBackend(IPestoBackend business, bool simu
                     Arguments.Only(args, "planId", "replace", "confirmed");
                     return Config().DecideDistribution(Arguments.Text(args, "planId", true, 100), Arguments.Flag(args, "replace"), Arguments.Flag(args, "confirmed"));
                 case "configuration.setDefault":
-                {
-                    Arguments.Only(args, "version", "confirmed");
+                    Arguments.Only(args, "version", "expectedSha256", "confirmed");
                     Confirm(args);
-                    var destination = await host.SelectPackDestinationAsync(cancellationToken).ConfigureAwait(false);
-                    return destination is null ? Cancelled() : Config().PrepareCustomizedPack(installationDirectory, destination, OptionalVersion(args));
-                }
+                    // Written in place in this installation, like GLPI-Pilot: no destination, no rebuilt pack.
+                    return Config().WriteInstallationDefault(installationDirectory, OptionalVersion(args), Arguments.Text(args, "expectedSha256", false, 64));
                 case "references.preview":
                 {
                     Arguments.Only(args);

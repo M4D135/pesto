@@ -11,6 +11,8 @@ internal sealed class ConfigurationQualificationBackend(IPestoBackend inner) : I
 {
     private readonly object gate = new();
     private readonly List<JsonObject> calls = [];
+    // Engine refusal texts, by call sequence. Kept out of the evidence snapshot: only the bench compares them to the exact text.
+    private readonly Dictionary<int, string> failureMessages = [];
     private int forbidden;
     public int ForbiddenInvocations => Volatile.Read(ref forbidden);
 
@@ -19,15 +21,29 @@ internal sealed class ConfigurationQualificationBackend(IPestoBackend inner) : I
     {
         lock (gate) return calls.LastOrDefault(item => Text(item, "operation") == operation)?.DeepClone() as JsonObject;
     }
+    /// <summary>The latest finished call of this operation: an unrelated read still in flight never hides the one already answered.</summary>
+    public JsonObject? LastCompleted(string operation)
+    {
+        lock (gate) return calls.LastOrDefault(item => Text(item, "operation") == operation && item["completed"]?.GetValue<bool>() == true)?.DeepClone() as JsonObject;
+    }
+    /// <summary>Message of the refusal returned to the page for the latest call of this operation, or null.</summary>
+    public string? FailureMessage(string operation)
+    {
+        lock (gate)
+        {
+            var last = calls.LastOrDefault(item => Text(item, "operation") == operation);
+            return last?["sequence"]?.GetValue<int>() is { } sequence && failureMessages.TryGetValue(sequence, out var message) ? message : null;
+        }
+    }
     public JsonArray Snapshot() { lock (gate) return new(calls.Select(item => item.DeepClone()).ToArray()); }
 
     public async Task<object?> InvokeAsync(string operation, JsonElement args, CancellationToken cancellationToken = default)
     {
         var entry = new JsonObject { ["operation"] = operation, ["completed"] = false,
             ["confirmed"] = args.TryGetProperty("confirmed", out var confirmation) && confirmation.ValueKind == JsonValueKind.True };
-        // IDs are non-secret correlations. Keeping them proves preview -> confirmation -> preparation,
-        // without copying any supplied configuration, credential or arbitrary argument into evidence.
-        foreach (var key in new[] { "planId", "candidateId", "preparedId", "kind", "version" })
+        // IDs and the displayed default's SHA-256 are non-secret correlations. Keeping them proves preview -> confirmation ->
+        // preparation, without copying any supplied configuration, credential or arbitrary argument into evidence.
+        foreach (var key in new[] { "planId", "candidateId", "preparedId", "kind", "version", "expectedSha256" })
             if (args.TryGetProperty(key, out var value) && value.ValueKind == JsonValueKind.String) entry[key] = value.GetString();
         lock (gate) { entry["sequence"] = calls.Count + 1; calls.Add(entry); }
         try
@@ -47,7 +63,9 @@ internal sealed class ConfigurationQualificationBackend(IPestoBackend inner) : I
                 var selected = new JsonObject();
                 if (result is JsonObject json)
                     foreach (var key in new[] { "status", "file", "backup", "destination", "fingerprint", "version", "planId",
-                        "candidateId", "preparedId", "distribution", "channel", "official", "pendingRecovery", "canRollback" })
+                        "candidateId", "preparedId", "distribution", "channel", "official", "pendingRecovery", "canRollback",
+                        "path", "sha256", "replaced", "previous", "packFingerprint", "installationDefault", "localConfiguration",
+                        "configurationIncluded" })
                         if (json[key] is { } value) selected[key] = value.DeepClone();
                 entry["result"] = selected;
                 entry["completed"] = true;
@@ -59,6 +77,7 @@ internal sealed class ConfigurationQualificationBackend(IPestoBackend inner) : I
             lock (gate)
             {
                 entry["failureCode"] = error is PestoException pesto ? pesto.Code : error.GetType().Name;
+                if (error is PestoException refusal) failureMessages[entry["sequence"]!.GetValue<int>()] = refusal.Message;
                 entry["completed"] = true;
             }
             throw;
@@ -119,8 +138,6 @@ internal sealed class ConfigurationQualificationHost(NativeHostActions native, D
         => Observe("export", true, () => native.SaveExportAsync(name, text, token));
     public Task<string?> SelectPackSourceAsync(string kind, CancellationToken token)
         => Observe("source", true, () => native.SelectPackSourceAsync(kind, token));
-    public Task<string?> SelectPackDestinationAsync(CancellationToken token)
-        => Observe("destination", true, () => native.SelectPackDestinationAsync(token));
     public Task<object?> OpenDemoAsync(CancellationToken token) => Refused<object?>();
     public Task<object?> ReconnectAsync(CancellationToken token) => Refused<object?>();
     public Task<object?> InstallAsync(UpdateInstallRequest request, CancellationToken token) => Refused<object?>();

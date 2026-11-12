@@ -93,7 +93,7 @@ export function render(main, ctx) {
     field({ name: 'production', label: 'Environnement de production', type: 'switch', width: 'half' }),
     field({ name: 'randomNames', label: 'Tirer un nom au hasard parmi les libres', type: 'switch', width: 'half' }),
     ...(live ? [
-      '<div class="k-field w-full"><h3>Politiques des opérations</h3><p class="muted small">Ces paramètres sont inclus dans les exports et les packs personnalisés. Leur enregistrement ne lance aucune opération AD.</p></div>',
+      '<div class="k-field w-full"><h3>Politiques des opérations</h3><p class="muted small">Ces paramètres sont inclus dans les exports et dans la configuration par défaut de l’installation (wad\\defaults\\configuration.json). Leur enregistrement ne lance aucune opération AD.</p></div>',
       field({ name: 'coordinationRoot', label: 'Dossier de coordination partagé', mono: true, width: 'full', maxLength: 240, hint: 'Dossier local ou UNC approuvé. Testez ou préparez explicitement ce dossier après enregistrement ; aucun partage ni droit d’accès n’est créé automatiquement.' }),
       field({ name: 'coordinationRequired', label: 'Exiger la coordination partagée', type: 'switch', width: 'half', hint: 'Un dossier doit être renseigné. Dès qu’un dossier est configuré, son indisponibilité bloque les opérations concernées.' }),
       field({ name: 'reserveNamesInAd', label: 'Réserver le nom dans AD lors de la jonction', type: 'switch', width: 'half', hint: 'Le compte est créé uniquement après confirmation du plan. En cas d’interruption, la réservation est conservée pour inspection et décision explicites.' }),

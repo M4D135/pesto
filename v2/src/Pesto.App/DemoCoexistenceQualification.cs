@@ -592,7 +592,6 @@ internal static class DemoCoexistenceQualification
         public Task<string?> ReadImportAsync(string kind, CancellationToken token) => Refused<string?>();
         public Task<string?> SaveExportAsync(string name, string text, CancellationToken token) => Refused<string?>();
         public Task<string?> SelectPackSourceAsync(string kind, CancellationToken token) => Refused<string?>();
-        public Task<string?> SelectPackDestinationAsync(CancellationToken token) => Refused<string?>();
         public Task<object?> ReconnectAsync(CancellationToken token) => Refused<object?>();
         public Task<object?> InstallAsync(UpdateInstallRequest request, CancellationToken token) => Refused<object?>();
         public Task<object?> OpenOfflineJoinAsync(CancellationToken token) => Refused<object?>();

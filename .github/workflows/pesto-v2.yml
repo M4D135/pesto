@@ -236,16 +236,18 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           & tools/qualification/Write-WindowsDesktopObservation.ps1 -OutputPath out/evidence/windows-desktop.json -SourceCommit $env:GITHUB_SHA
-      - name: Native configuration buttons, positive folder selection and update preparation — isolated profiles only
+      - name: Native configuration buttons, default written in a pack copy and legacy custom pack preparation — isolated profiles only
         run: |
           $ErrorActionPreference = 'Stop'
+          # Ordered exactly as NativeConfigurationQualification.cs records them (schema 3, 2.0.14 default written in place).
           $expectedChecks = @(
-            'parentReady', 'isolatedConfigurationPage', 'nativeExportFromButton', 'nativeExportExact', 'noExportTemporaryFile',
+            'installationCopyExact', 'parentReady', 'isolatedConfigurationPage', 'nativeExportFromButton', 'nativeExportExact', 'noExportTemporaryFile',
             'settingsUnchangedBeforeConfirmation', 'settingsSavedFromButton', 'settingsBackupExact', 'importCancelled', 'exportCancelled',
             'invalidEncodingRejected', 'importPreviewBeforeWrite', 'importConfirmationCancelled', 'nativeImportFromButton', 'importRoundTrip',
-            'importBackupExact', 'customPackWaitsForConfirmation', 'customPackConfirmationCancelled', 'packDestinationCancelled',
-            'positiveNativeFolderSelection', 'customPackResultVisible', 'customPackValidated', 'customExecutableUnchanged',
-            'customDefaultsMatchUiExport', 'noCustomPackStagingLeft', 'freshProfileImportsDefaults', 'existingProfilePreserved',
+            'importBackupExact', 'defaultWaitsForConfirmation', 'defaultConfirmationCancelled', 'readOnlyRuleApplied', 'readOnlyRefusedByEngine',
+            'readOnlyRefusalVisible', 'readOnlyLeftNothing', 'readOnlyRuleRemoved', 'defaultWrittenFromButton', 'defaultWrittenVisible',
+            'defaultPackIdentityUnchanged', 'defaultExecutableUnchanged', 'defaultMatchesUiExport', 'noDefaultDebris', 'defaultUnchangedFromButton',
+            'freshProfileImportsDefaults', 'existingProfilePreserved', 'existingProfileChoiceRemembered', 'legacyCustomPackFixtureSealed',
             'maintenanceFolderInspectedFromButton', 'maintenancePreparedFromButton', 'maintenancePreparedCopyExact',
             'maintenanceInstallWaitsForConfirmation', 'maintenanceInstallConfirmationCancelled', 'maintenanceStatusFromButton',
             'noForbiddenEffects', 'operatorDataPreserved', 'sourcePackUnchanged'
@@ -254,6 +256,7 @@ jobs:
           $packDir = "out/$channel"
           if (Test-Path (Join-Path $packDir 'wad/runtime/webview2')) { throw "Pack $channel must not contain wad/runtime/webview2" }
           if (@(Get-ChildItem -LiteralPath $packDir -Recurse -File -Filter msedgewebview2.exe).Count -ne 0) { throw "Pack $channel must not contain msedgewebview2.exe" }
+          if (Test-Path (Join-Path $packDir 'wad/defaults')) { throw "Pack $channel must not contain wad/defaults before the configuration bench" }
           $report = Join-Path ([IO.Path]::GetTempPath()) ("Pesto-configuration-$channel-" + [guid]::NewGuid().ToString('N'))
           $exe = (Resolve-Path "$packDir/Pesto.exe").Path
           $process = Start-Process -FilePath $exe -ArgumentList @('--qualify-configuration', ('"' + $report + '"')) -PassThru
@@ -267,24 +270,30 @@ jobs:
           if (Test-Path (Join-Path $report 'coexistence')) {
             Get-ChildItem (Join-Path $report 'coexistence') -File -Filter '*.png' | Copy-Item -Destination $captures
           }
+          # The bench writes its default into a copy only: the pack reused by the next steps must stay without wad/defaults.
+          if (Test-Path (Join-Path $packDir 'wad/defaults')) { throw "Native configuration wrote wad/defaults into $packDir" }
           if ($process.ExitCode -ne 0) { throw "Native configuration failed for $channel (exit $($process.ExitCode))" }
           $proof = Get-Content "out/evidence/native-configuration-$channel.json" -Raw | ConvertFrom-Json
-          if ($proof.schemaVersion -ne 2 -or $proof.channel -ne 'PROD' -or $proof.uiScope -ne 'mainform-webview2-buttons-and-native-dialogs') { throw "Native configuration scope incorrect for $channel" }
+          if ($proof.schemaVersion -ne 3 -or $proof.channel -ne 'PROD' -or $proof.uiScope -ne 'mainform-webview2-buttons-and-native-dialogs') { throw "Native configuration scope incorrect for $channel" }
+          if ($proof.installationUnderTest -cne 'temporary-copy-of-running-pack') { throw "Native configuration must act on a temporary copy for $channel" }
           if ((Get-Content "$packDir/wad/Pesto.package.json" -Raw | ConvertFrom-Json).webview2Runtime -cne 'evergreen') { throw "Pack $channel must declare webview2Runtime evergreen" }
           if ($proof.runtimeSource -cne 'evergreen') { throw "Native configuration runtimeSource must be evergreen for $channel" }
-          if (@($proof.checks).Count -ne $expectedChecks.Count -or @(Compare-Object $expectedChecks @($proof.checks)).Count -ne 0) { throw "Native configuration checks incomplete for $channel" }
-          foreach ($field in @('success', 'parentClosed', 'temporaryDataRemoved', 'sourcePackUnchanged', 'nativeExportFromUiQualified', 'nativeImportFromUiQualified', 'positiveFolderSelectionQualified', 'customPackButtonFlowQualified', 'maintenanceInspectionPreparationFromUiQualified', 'maintenanceInstallConfirmationCancelled')) {
+          if (@($proof.checks).Count -ne $expectedChecks.Count -or @(Compare-Object $expectedChecks @($proof.checks) -SyncWindow 0 -CaseSensitive).Count -ne 0) { throw "Native configuration checks incomplete for $channel" }
+          foreach ($field in @('success', 'parentClosed', 'temporaryDataRemoved', 'sourcePackUnchanged', 'sourcePackDefaultsAbsent', 'nativeExportFromUiQualified', 'nativeImportFromUiQualified', 'installationDefaultButtonFlowQualified', 'readOnlyRefusalQualified', 'legacyCustomPackPreparedFromUiQualified', 'maintenanceInspectionPreparationFromUiQualified', 'maintenanceInstallConfirmationCancelled')) {
             if ($proof.$field -ne $true) { throw "Native configuration missing $field for $channel" }
           }
-          foreach ($field in @('adQualification', 'adExecuted', 'realUac', 'ordinaryProfileAccess', 'uncQualification', 'nativeUpdateInstallFromUiQualified')) {
+          foreach ($field in @('adQualification', 'adExecuted', 'realUac', 'ordinaryProfileAccess', 'uncQualification', 'nativeUpdateInstallFromUiQualified', 'readOnlyRuleLeftInPlace')) {
             if ($proof.$field -ne $false) { throw "Native configuration overclaims $field for $channel" }
           }
           foreach ($field in @('forbiddenBackendInvocations', 'forbiddenHostInvocations')) {
             if ($proof.$field -ne 0) { throw "Native configuration unexpected $field for $channel" }
           }
+          if ($proof.installationDefault.distribution -cne $env:PACK_DISTRIBUTION -or $proof.installationDefault.packFingerprint -cne $proof.sourceFingerprint -or $proof.installationDefault.state -cne 'local') { throw "Native configuration changed the pack identity for $channel" }
+          if ($proof.readOnlyRefusal.code -cne 'config.default_readonly' -or $proof.readOnlyRefusal.ruleRemoved -ne $true) { throw "Native configuration read-only refusal incomplete for $channel" }
+          if ($proof.legacyCustomPack.fixture -cne 'LegacyCustomPack.Build' -or $proof.maintenancePreparedFingerprint -cne $proof.legacyCustomPack.fingerprint) { throw "Native configuration legacy custom pack proof incomplete for $channel" }
           if (@($proof.captures).Count -ne 6 -or @(Get-ChildItem $captures -File -Filter '*.png').Count -ne 6) { throw "Native configuration captures incomplete for $channel" }
           $dialogs = @($proof.dialogObservations)
-          if ($dialogs.Count -ne 9 -or @($dialogs | Where-Object { $_.kind -eq 'folder' -and $_.pathRequired }).Count -ne 2) { throw "Native folder selections incomplete for $channel" }
+          if ($dialogs.Count -ne 7 -or @($dialogs | Where-Object { $_.kind -eq 'folder' -and $_.pathRequired }).Count -ne 1) { throw "Native folder selections incomplete for $channel" }
           if (@($dialogs | Where-Object { $_.clicked -ne $true -or $_.closedAfterClick -ne $true -or ($_.pathRequired -and ($_.pathReadBackExact -ne $true -or $_.stableReads -lt 3)) }).Count -ne 0) { throw "Native dialog proof incomplete for $channel" }
           & node tools/pack/make-pack.mjs --verify "out/$channel"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

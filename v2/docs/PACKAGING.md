@@ -59,7 +59,8 @@ wad/
   support/DEBLOQUER_TOUT.cmd
   docs/
   dev/                         # sources et dépendances vendored, DEV seulement
-  defaults/configuration.json  # distribution personnalisée seulement
+  defaults/configuration.json  # facultatif : configuration par défaut de l’installation, hors SHA256SUMS
+                               # (déclarée et scellée seulement dans les anciens packs personnalisés)
 ```
 
 `Pesto.exe` est publié en **.NET self-contained, single-file, Windows x64**, bibliothèques natives incluses.
@@ -84,12 +85,32 @@ Les preuves natives indiquent `runtimeMode` (`evergreen`) et `runtimeSource` (`e
 - À partir de cette version, la mise à jour et le retour arrière recopient le Socle de l’installation, à l’identique, vers la nouvelle version.
 - On ne l’extrait que si Evergreen manque. Sinon, il est inutile, car Evergreen passe en premier.
 
+### Configuration par défaut de l’installation
+
+Depuis 2.0.14, **Définir comme configuration par défaut** écrit `wad\defaults\configuration.json` dans l’installation en cours, comme GLPI-Pilot écrit son fichier de déploiement dans `wad\`. Aucun pack n’est recréé. Le fichier existe sous deux formes :
+
+| Forme | Reconnaissance | Règle |
+|---|---|---|
+| **locale** (2.0.14 et suivantes) | absente de `wad\SHA256SUMS`, manifeste sans `configurationFingerprint` ni `configurationVersion` | hors de l’identité du pack, comme le Socle ; un pack `official` ou `candidate` reste tel quel |
+| **scellée** (anciens packs personnalisés, jusqu’à 2.0.13) | listée dans `wad\SHA256SUMS`, manifeste `distribution=custom` avec `configurationFingerprint` et `configurationVersion` | contrôles historiques inchangés (voir [Manifeste et intégrité](#manifeste-et-intégrité)) |
+
+Tout autre mélange est refusé (`package.defaults`).
+
+- La forme locale n’entre ni dans `wad\SHA256SUMS`, ni dans l’empreinte du pack, ni dans le nombre de fichiers ou d’octets. Le manifeste n’est pas modifié.
+- Elle est validée par son propre schéma : 1 Mio au plus, encodage strict, liens refusés, enveloppe `pesto.configuration` et empreinte de configuration vérifiées. Un fichier invalide ou illisible est refusé (`package.defaults`) : Pesto refuse de l’utiliser, aucun profil n’est modifié ; il faut le supprimer ou le remplacer par une configuration exportée valide.
+- Seul le temporaire d’écriture de Pesto, `wad\defaults\.configuration-<32 hexadécimaux>.tmp`, est toléré sous `wad\defaults\`, sans jamais être lu ; Pesto supprime ceux de plus de dix minutes avant d’écrire. Tout autre fichier (sauvegarde, dossier `backups\`, autre nom) est refusé (`package.file`). L’ancien fichier remplacé est sauvegardé dans le profil de l’opérateur, jamais dans le pack.
+- Un dossier configuré n’est pas un artefact publiable : `make-pack --verify` reste strict et refuse un `wad/defaults/configuration.json` dans un pack non personnalisé. **Le fichier contient le domaine et les OU** : ne jamais l’ajouter à un ZIP de release ni le publier ; diffuser le dossier configuré comme un fichier privé.
+- Les anciens packs personnalisés restent valides et installables. Le bouton refuse d’écrire dans une installation de ce type (`config.default_sealed`) : installer le pack officiel dans un nouveau dossier, puis y définir la configuration par défaut.
+
+Le contrat de l’écriture (confirmation, garde de concurrence, sauvegarde, refus et repli par **Exporter**) est décrit dans [la configuration](CONFIGURATION.md#configuration-par-défaut-de-linstallation). La conservation à la mise à jour et au retour arrière est décrite [plus bas](#configuration-par-défaut-pendant-la-mise-à-jour-et-le-retour-arrière).
+
 ### Migration depuis 2.0.9 PROD (ancien pack avec WebView2 intégré)
 
 - Pas de mise à jour en place : le code 2.0.9 refuse un pack evergreen.
 - Installer le pack LIGHT dans un **nouveau dossier**.
 - Si Evergreen manque, extraire le Socle dans `wad\`, ou recopier le `wad\runtime\webview2` de l’ancienne installation, à condition qu’il soit identique au Socle (sinon Pesto le refuse).
 - La configuration du profil de l’opérateur n’est pas dans le pack et n’est pas touchée.
+- La nouvelle installation n’a pas de configuration par défaut. La redéfinir depuis les Paramètres ; si l’ancienne installation provient d’un pack personnalisé, son `wad\defaults\configuration.json` peut aussi être recopié : sans déclaration au manifeste ni dans `SHA256SUMS`, il devient une configuration locale, validée par son schéma. Un fichier refusé doit être retiré.
 
 Le module Microsoft ActiveDirectory déjà livré avec V1 est inclus sous `wad/runtime/activedirectory/` :
 son manifeste, la DLL de gestion, les fichiers de types et formats, la DLL de ressources et sa ressource
@@ -152,8 +173,10 @@ restent marqués historiques ; ils ne qualifient pas le binaire candidat courant
 
 Le format de pack est versionné : `schemaVersion: 2`, `layout: "singlefile-wad"`,
 `repository: "M4D135/pesto"`, `entryPoint: "Pesto.exe"`, `channel: "PROD"` ou `"DEV"`.
-`wad/SHA256SUMS` couvre exactement tous les fichiers, avec des chemins relatifs à la racine du pack ;
-seul le fichier SHA256SUMS lui-même est exclu.
+`wad/SHA256SUMS` couvre exactement tous les fichiers, avec des chemins relatifs à la racine du pack,
+sauf SHA256SUMS lui-même et deux éléments validés à part, hors de l’identité du pack : l’arbre du Socle
+`wad/runtime/webview2/` et la configuration par défaut locale `wad/defaults/configuration.json`,
+ainsi que le temporaire d’écriture de cette configuration, toléré sans être lu.
 
 La vérification refuse les fichiers hors du contenu autorisé, les chemins Windows ambigus, les noms
 réservés, les doublons sans distinction de casse, les liens symboliques/jonctions, les empreintes
@@ -167,11 +190,13 @@ Trois provenances sont distinguées :
 |---|---|
 | `candidate` | Assemblage de développement, non présenté comme release officielle. |
 | `official` | Pack déclaré de release. L’acquisition depuis la release du dépôt officiel est vérifiée séparément. Un manifeste copié dans un ZIP local ne suffit pas à attester cette origine. |
-| `custom` | Pack produit par « Définir comme configuration par défaut », contenant les seuls paramètres diffusables validés. `official` est toujours faux. |
+| `custom` | Ancien pack personnalisé produit par « Définir comme configuration par défaut » jusqu’à 2.0.13, contenant les seuls paramètres diffusables validés. Toujours accepté et installable ; le bouton n’en produit plus. `official` est toujours faux. |
 
-Un pack personnalisé déclare également `configurationVersion` et `configurationFingerprint`, cohérents
-avec son enveloppe `wad/defaults/configuration.json`. Le moteur valide le schéma fermé et les champs
+Un ancien pack personnalisé déclare également `configurationVersion` et `configurationFingerprint`, cohérents
+avec son enveloppe `wad/defaults/configuration.json` listée dans `SHA256SUMS` (forme scellée). Le moteur valide le schéma fermé et les champs
 configurables, recalcule l’empreinte et refuse secrets, sessions, historique, caches et champs inconnus.
+Un manifeste qui déclare une configuration sans fichier reste refusé. Une configuration locale, non déclarée,
+est validée seule et ne change ni la provenance ni l’empreinte du pack.
 L’application travaille ensuite avec le `cfg.json` du profil utilisateur, hors des fichiers du pack.
 
 ## Publication et assemblage
@@ -302,8 +327,10 @@ libre. Les dossiers anciens sans marqueur, les liens, les sources choisies et le
 ne sont pas supprimés par ce nettoyage. Une instance encore active garde son espace.
 La comparaison porte sur le dossier entièrement copié, avant son admission : un remplacement concurrent
 cohérent de la source, même à version identique, est refusé. Seule la nouvelle copie est nettoyée ; la
-source modifiée est préservée. La création d’un pack personnalisé applique le même contrôle avant de
-modifier les paramètres distribués et le manifeste.
+source modifiée est préservée. La configuration par défaut locale d’un pack source, hors de son identité, est
+liée elle aussi à l’aperçu : si elle change entre l’inspection et la préparation, la préparation est refusée
+(`update.changed`). L’aperçu signale un candidat qui en porte une (« configuration par défaut incluse ») ; la
+mention « Pack personnalisé » reste réservée aux anciens packs scellés.
 Le pack courant est également contrôlé : un changement concurrent fait échouer l’installation sans
 écraser ces modifications. Un pack identique est signalé ; un pack plus ancien nécessite le retour
 transactionnel de la sauvegarde, et non un déclassement implicite.
@@ -372,6 +399,69 @@ empreintes avant toute action. Les dossiers inattendus ou modifiés sont conserv
 motivé. Le contrôle de santé, le rollback et la reprise ne déclenchent jamais le remplacement d’une
 configuration réelle.
 
+### Configuration par défaut pendant la mise à jour et le retour arrière
+
+À partir de 2.0.14, la configuration par défaut de l’installation suit la nouvelle version, selon la règle
+de GLPI-Pilot 3.10.1. Le helper qui exécute une transaction est l’EXE de la version installée au moment de
+la préparation : ces règles s’appliquent aux transactions préparées par 2.0.14 ou une version ultérieure.
+
+À la préparation, après la recopie du Socle, Pesto compare la configuration par défaut de l’installation
+(locale ou scellée) à celle du pack source :
+
+| Installation | Pack source | Résultat dans la nouvelle version |
+|---|---|---|
+| aucune | aucune ou présente | celle du pack source s’il en porte une, telle quelle : un dossier configuré diffusé comme source est adopté |
+| présente | aucune | copie exacte des octets de l’installation, comme configuration locale, empreinte SHA-256 vérifiée |
+| présente | même empreinte de configuration | ancien pack personnalisé source conservé scellé ; configuration locale source remplacée par les octets de l’installation |
+| présente | empreinte différente | refus `update.default_conflict` : aucun fichier n’est remplacé ; retirer `wad\defaults\configuration.json` du pack source ou de l’installation, puis préparer de nouveau |
+
+Ce contrôle de conflit est fait dès l’inspection et la préparation, pour refuser tôt. La configuration par
+défaut que porte la source est liée par son SHA-256 de l’inspection à la transaction : la copie préparée, qui
+attend dans le profil de l’opérateur, puis la copie de la transaction doivent porter exactement le même fichier
+(ou aucun), sinon `update.changed`. La transaction consigne dans `<transaction>\installation-default.json`
+le SHA-256 du fichier de l’installation (`sha256`) et celui du fichier posé dans la nouvelle version
+(`stageSha256`). Avant de déplacer l’installation, le helper compare les deux aux fichiers présents : si la
+configuration par défaut a changé depuis la préparation (écrite, remplacée ou supprimée), l’installation est
+annulée (`update.changed`) sans aucun déplacement ; il faut préparer de nouveau la mise à jour.
+
+Au retour arrière ou à la reprise par un helper 2.0.14 ou ultérieur, ce qui a été fait **depuis** la mise à
+jour gagne, et ce qu’elle a apporté repart avec elle. Avant le déplacement de l’installation vers
+`failed-candidate`, tant que la version retirée est encore en place (un refus laisse donc une installation qui
+démarre et un retour qui se reprend), puis avant la remise en place de la sauvegarde :
+
+- si la version retirée porte une configuration locale modifiée depuis la mise à jour (octets différents de
+  `stageSha256`), la sauvegarde reçoit exactement les mêmes octets (copie temporaire dans le dossier de
+  transaction, attribut lecture seule retiré, puis déplacement atomique) ;
+- si elle porte encore exactement le fichier posé par la transaction (par exemple celui apporté par le pack
+  source), la sauvegarde est rétablie telle quelle : la version rétablie retrouve son état d’avant la mise à
+  jour, et une installation refusée par le contrôle de santé ne garde rien du pack source ;
+- si la version retirée n’en porte pas et que la sauvegarde en a une locale, celle-ci est supprimée : un
+  retrait volontaire est conservé ;
+- une forme scellée, d’un côté ou de l’autre, n’est jamais modifiée : elle appartient à l’identité d’un pack.
+
+Cette étape est rejouable après une interruption. Lorsque la version rétablie est antérieure à 2.0.14,
+dont le validateur refuserait le fichier, Pesto déplace la configuration locale et les temporaires de
+l’installation et de `failed-candidate` dans `<transaction>\defaults-set-aside\<installation|failed-candidate>\`
+avant de rendre la main au helper. Rien n’est supprimé ; la configuration ne revient pas automatiquement et
+peut être redéfinie après une nouvelle mise à jour. La confirmation du retour l’annonce : « La version
+rétablie ne connaît pas la configuration par défaut de l’installation : elle sera mise de côté dans le
+dossier de la transaction. » Les confirmations disent exactement ce que fera le moteur, qui le calcule
+(`installDefaults` à l’inspection et à la préparation, `rollbackDefaults` et `recoveryDefaults` dans l’état des
+mises à jour) : configuration de cette installation conservée, configuration du pack choisi adoptée,
+configuration apportée par la mise à jour retirée avec elle, suppression conservée, ou rien quand il n’y a
+rien à dire.
+
+**Limites avec 2.0.13 et les versions antérieures.** Un programme déjà installé applique ses propres
+règles compilées :
+
+- une mise à jour depuis 2.0.13 ou une version antérieure est préparée et exécutée par cet ancien code,
+  qui ne recopie pas la configuration scellée d’un ancien pack personnalisé vers un pack officiel. La
+  nouvelle installation n’a donc plus de configuration par défaut (l’ancien fichier reste dans la
+  sauvegarde de la transaction) : la redéfinir après la mise à jour ;
+- un dossier source 2.0.14 ou ultérieur portant une configuration locale est refusé par le validateur
+  d’une version 2.0.13 ou antérieure : mettre ces installations à jour avec le ZIP officiel, qui n’en
+  contient pas, puis définir la configuration par défaut.
+
 ## Qualification Windows native et limites
 
 Les tests portables exercent la validation des packs, les refus en démo, les copies, les renommages,
@@ -411,6 +501,11 @@ d’attribution de processus sur `19cabd1`, restent documentés dans le [rapport
 Le banc ne contacte ni AD, ni SMB, ni HTTP ; `uncQualification` et `adQualification` restent faux.
 UAC avec un autre utilisateur, ACL Program Files, partage UNC réel, configuration utilisateur réelle
 et canari AD restent des qualifications séparées.
+
+Aucune campagne Windows ne couvre encore la configuration par défaut écrite sur place (2.0.14) : écriture
+dans une installation réelle, refus sous Program Files sans élévation, conservation par la mise à jour et
+le retour arrière, mise de côté avant un retour vers 2.0.13. Les bancs ci-dessus qualifient le parcours
+antérieur et restent attachés à leurs binaires.
 
 ### Qualification CI et recette sur banc (2.0.10)
 

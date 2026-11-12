@@ -51,8 +51,12 @@ public sealed class UpdateService : IDisposable
             var info = UpdatePackage.Validate(root, options.Channel);
             var current = UpdatePackage.Validate(options.InstallationDirectory, options.Channel);
             ValidateUpgrade(current, info);
-            lock (localGate) candidates[id] = new(id, "local", root, info.Version, info.Fingerprint, clock.GetUtcNow().AddMinutes(30), ownedInspection);
-            return Describe(info, id, "candidateId", "local", "Source locale ou partage : intégrité vérifiée, origine officielle non attestée par un fichier manifeste.");
+            InstallationDefaults.RequireCompatible(options.InstallationDirectory, root);
+            lock (localGate) candidates[id] = new(id, "local", root, info.Version, info.Fingerprint, clock.GetUtcNow().AddMinutes(30), ownedInspection,
+                info.LocalConfigurationFingerprint, InstallationDefaults.Inspect(root).Sha256);
+            var described = Describe(info, id, "candidateId", "local", "Source locale ou partage : intégrité vérifiée, origine officielle non attestée par un fichier manifeste.");
+            described["installDefaults"] = InstallationDefaults.DescribeInstall(options.InstallationDirectory, info);
+            return described;
         }
         catch
         {
@@ -93,14 +97,20 @@ public sealed class UpdateService : IDisposable
                 if (original.Fingerprint != candidate.Fingerprint) throw new PestoException("update.changed", "Le pack a changé depuis l’aperçu. Inspectez-le à nouveau.");
                 UpdatePackage.CopyToNew(candidate.Path, stage, candidate.Fingerprint);
                 var info = UpdatePackage.Validate(stage, options.Channel);
-                if (info.Version != candidate.Version)
+                // The default configuration a source folder carries is outside its identity: bind it to the inspection too.
+                var stagedDefault = InstallationDefaults.Inspect(stage).Sha256;
+                if (info.Version != candidate.Version || info.LocalConfigurationFingerprint != candidate.LocalConfigurationFingerprint
+                    || stagedDefault != candidate.DefaultSha256)
                     throw new PestoException("update.changed", "Le pack préparé ne correspond pas à l’aperçu. Inspectez-le à nouveau.");
                 var current = UpdatePackage.Validate(options.InstallationDirectory, options.Channel);
                 ValidateUpgrade(current, info);
-                var record = new Prepared(id, stage, info.Fingerprint, current.Fingerprint, clock.GetUtcNow().AddHours(2), candidate.Source);
+                InstallationDefaults.RequireCompatible(options.InstallationDirectory, stage);
+                var record = new Prepared(id, stage, info.Fingerprint, current.Fingerprint, clock.GetUtcNow().AddHours(2), candidate.Source, stagedDefault);
                 UpdatePackage.WriteJson(Path.Combine(directory, "prepared.json"), record);
                 lock (localGate) prepared[id] = record;
-                return Describe(info, id, "preparedId", candidate.Source, "Pack copié et revérifié. L’installation attend votre confirmation et fermera cette fenêtre.");
+                var described = Describe(info, id, "preparedId", candidate.Source, "Pack copié et revérifié. L’installation attend votre confirmation et fermera cette fenêtre.");
+                described["installDefaults"] = InstallationDefaults.DescribeInstall(options.InstallationDirectory, info);
+                return described;
             }
             catch { UpdatePackage.TryRemoveOwned(directory); throw; }
         }
@@ -116,6 +126,10 @@ public sealed class UpdateService : IDisposable
         var last = transactions.FirstOrDefault(t => t.Status == "completed" && Directory.Exists(Path.Combine(t.TransactionDirectory, "backup")));
         return new() { ["version"] = current.Version, ["channel"] = current.Channel, ["distribution"] = current.Distribution,
             ["fingerprint"] = current.Fingerprint, ["pendingRecovery"] = pending is not null, ["canRollback"] = last is not null,
+            ["rollbackVersion"] = last?.CurrentVersion, ["recoveryVersion"] = pending?.CurrentVersion,
+            ["rollbackDefaults"] = last is null ? null : InstallationDefaults.DescribeReturn(options.InstallationDirectory, last.TransactionDirectory, last.CurrentVersion),
+            ["recoveryDefaults"] = pending is null ? null : InstallationDefaults.DescribeReturn(options.InstallationDirectory, pending.TransactionDirectory, pending.CurrentVersion),
+            ["localConfiguration"] = InstallationDefaults.Inspect(options.InstallationDirectory).ToJson(),
             ["transactionId"] = pending?.Id ?? last?.Id, ["status"] = pending?.Status ?? last?.Status ?? "idle",
             ["configurationPreserved"] = true, ["message"] = pending is null ? "Les mises à jour remplacent uniquement les fichiers du pack." : "Une installation a été interrompue. Un retour transactionnel doit être confirmé avant une nouvelle mise à jour." };
     }
@@ -130,8 +144,10 @@ public sealed class UpdateService : IDisposable
             var current = UpdatePackage.Validate(options.InstallationDirectory, options.Channel);
             if (current.Fingerprint != record.CurrentFingerprint) throw new PestoException("update.changed", "L’installation a changé depuis la préparation.");
             var next = UpdatePackage.Validate(record.Directory, options.Channel);
-            if (next.Fingerprint != record.Fingerprint) throw new PestoException("update.changed", "Le pack préparé a changé. Aucun remplacement n’est autorisé.");
-            var request = UpdateTransaction.Create(options.InstallationDirectory, record.Directory, current, next, "install");
+            // The prepared copy waits in the operator's profile: its default configuration, outside the identity, is bound too.
+            if (next.Fingerprint != record.Fingerprint || InstallationDefaults.Inspect(record.Directory).Sha256 != record.DefaultSha256)
+                throw new PestoException("update.changed", "Le pack préparé a changé. Aucun remplacement n’est autorisé.");
+            var request = UpdateTransaction.Create(options.InstallationDirectory, record.Directory, current, next, "install", record.DefaultSha256);
             prepared.Remove(preparedId);
             // Create sealed its own stage on the installation volume; the preparation is now disposable.
             UpdateWorkspace.RemoveCopy(Path.GetDirectoryName(record.Directory)!);
@@ -142,7 +158,9 @@ public sealed class UpdateService : IDisposable
     public UpdateInstallRequest RequestRollback(bool confirmed)
     {
         using var admission = Enter(); Confirm(confirmed);
-        var transaction = UpdateTransaction.List(options.InstallationDirectory).FirstOrDefault(t => t.Status == "completed")
+        // Same choice as Status: the rollback that was announced (its version and its warning) is the one requested.
+        var transaction = UpdateTransaction.List(options.InstallationDirectory)
+                .FirstOrDefault(t => t.Status == "completed" && Directory.Exists(Path.Combine(t.TransactionDirectory, "backup")))
             ?? throw new PestoException("update.rollback", "Aucune installation terminée ne dispose d’un retour disponible.");
         return UpdateTransaction.RequestRollback(transaction.TransactionDirectory, false);
     }
@@ -191,6 +209,7 @@ public sealed class UpdateService : IDisposable
         [idField] = id, ["version"] = info.Version, ["channel"] = info.Channel, ["distribution"] = info.Distribution,
         ["fingerprint"] = info.Fingerprint, ["fileCount"] = info.FileCount, ["bytes"] = info.Bytes,
         ["source"] = source, ["configurationIncluded"] = info.ConfigurationFingerprint is not null,
+        ["localConfiguration"] = info.LocalConfigurationFingerprint is not null,
         ["message"] = message
     };
 
@@ -241,6 +260,8 @@ public sealed class UpdateService : IDisposable
     }
 
     private sealed class Admission(SemaphoreSlim gate) : IDisposable { public void Dispose() => gate.Release(); }
-    private sealed record Candidate(string Id, string Source, string Path, string Version, string Fingerprint, DateTimeOffset ExpiresAt, string? OwnedInspection);
-    private sealed record Prepared(string Id, string Directory, string Fingerprint, string CurrentFingerprint, DateTimeOffset ExpiresAt, string Source);
+    private sealed record Candidate(string Id, string Source, string Path, string Version, string Fingerprint, DateTimeOffset ExpiresAt, string? OwnedInspection,
+        string? LocalConfigurationFingerprint = null, string? DefaultSha256 = null);
+    private sealed record Prepared(string Id, string Directory, string Fingerprint, string CurrentFingerprint, DateTimeOffset ExpiresAt, string Source,
+        string? DefaultSha256);
 }

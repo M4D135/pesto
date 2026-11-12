@@ -328,7 +328,7 @@ internal sealed class ProfileConfigurationTests
             Check.Pesto(() => service.Export("1"), "config.isolated", "export blocked");
             Check.Pesto(() => service.PreviewImport(Bundle()), "config.isolated", "import blocked");
             Check.Pesto(() => service.ApplyImport("anything", true), "config.isolated", "apply blocked");
-            Check.Pesto(() => service.PrepareCustomizedPack(@"\\unreachable\pack", @"\\unreachable\target", "1"), "config.isolated", "custom pack blocked before path access");
+            Check.Pesto(() => service.WriteInstallationDefault(@"\\unreachable\pack", "1", ""), "config.isolated", "installation default blocked before path access");
             Check.Pesto(() => service.PreviewReferences("{}"), "config.isolated", "reference import blocked");
             Check.Pesto(() => service.PreviewSettings(Settings()), "config.isolated", "settings blocked");
         }
@@ -501,7 +501,7 @@ internal sealed class ProfileConfigurationTests
     }
 
     [Test]
-    public void CustomizedPackContainsOnlySanitizedDefaultsAndIsNotOfficial()
+    public void LegacyCustomizedPackContainsOnlySanitizedDefaultsAndIsNotOfficial()
     {
         var sourceConfiguration = ConfigurationPolicyFixture.Create();
         var profile = Service(NewRoot()); Import(profile, sourceConfiguration.ToJsonString());
@@ -520,9 +520,7 @@ internal sealed class ProfileConfigurationTests
             """);
         UpdatePackage.Rehash(source);
         var sourceHash = UpdatePackage.Validate(source).Fingerprint;
-        var result = profile.PrepareCustomizedPack(source, destination, "entreprise.1");
-        Check.Equal("custom", Harness.Str(result, "distribution"), "custom explicitly labelled");
-        Check.False(Harness.Bool(result, "official"), "not an official release");
+        _ = LegacyCustomPack.Build(source, destination, profile.Export("entreprise.1"), "entreprise.1");
         Check.Equal(sourceHash, UpdatePackage.Validate(source).Fingerprint, "source remains untouched");
         Check.Equal("custom", UpdatePackage.Validate(destination).Distribution, "all copied hashes verify");
         var defaults = ConfigurationDocument.ValidateBundle(File.ReadAllText(Path.Combine(destination, "wad", "defaults", "configuration.json")));
@@ -534,7 +532,7 @@ internal sealed class ProfileConfigurationTests
         Check.Equal("111301", Harness.Str(fresh.ReadSettings(), "prefix"), "new operator profile imports custom settings");
         var freshConfiguration = JsonNode.Parse(File.ReadAllText(fresh.ConfigurationPath))!;
         Check.Equal(ConfigurationDocument.Canonical(sourceConfiguration["POLICY"]!), ConfigurationDocument.Canonical(freshConfiguration["POLICY"]!), "automatic import keeps the distributed restrictions");
-        Check.Pesto(() => profile.PrepareCustomizedPack(source, Path.Combine(source, "child"), "1"), "package.destination", "source cannot be mutated by nested export");
+        Check.Pesto(() => LegacyCustomPack.Build(source, Path.Combine(source, "child"), profile.Export("1"), "1"), "package.destination", "source cannot be mutated by nested export");
     }
 }
 

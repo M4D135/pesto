@@ -75,7 +75,7 @@ internal sealed partial class MainForm
         var scope = RequireQualification();
         if (name is not ("parent-draft.png" or "demo-pending.png" or "demo-restarted.png" or "parent-preserved.png"
             or "configuration-export.png" or "configuration-import-preview.png" or "configuration-default-confirmation.png"
-            or "configuration-custom-pack.png" or "maintenance-prepared.png" or "maintenance-install-confirmation.png"))
+            or "configuration-default-written.png" or "maintenance-prepared.png" or "maintenance-install-confirmation.png"))
             throw new PestoException("qualification.capture", "Nom de capture de qualification inconnu.");
         if (InvokeRequired || closing || IsDisposed || webView.CoreWebView2 is null)
             throw new PestoException("qualification.capture", "La fenêtre n’est pas disponible pour une capture.");

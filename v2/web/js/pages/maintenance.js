@@ -4,17 +4,36 @@ import { refusal } from '../refusal.js';
 import { openDialog, confirmDialog } from '../kit/index.js';
 import { confirmConfiguration, showConfigurationNotice } from '../configuration-notice.js';
 
+// Written in place, outside the pack identity (InstallationDefaults.DisplayPath). The title, button and statuses of the
+// « default » action are read by the native qualification bench: keep them word for word.
+const DEFAULT_PATH = 'wad\\defaults\\configuration.json';
+// What installing, returning or recovering does with wad\defaults\configuration.json, as the engine computed it
+// (InstallationDefaults.DescribeInstall / DescribeReturn): the confirmation never promises more than that.
+const DEFAULTS_KEPT = ' La configuration par défaut de cette installation est conservée.';
+const RETURN_DEFAULTS = {
+  kept: DEFAULTS_KEPT,
+  withdrawn: ' La configuration par défaut apportée par la mise à jour, inchangée depuis, est retirée avec elle : la version rétablie retrouve son état d’avant la mise à jour.',
+  deleted: ' La configuration par défaut supprimée depuis la mise à jour le reste.',
+  setAside: ' La version rétablie ne connaît pas la configuration par défaut de l’installation : elle sera mise de côté dans le dossier de la transaction.',
+};
+const INSTALL_DEFAULTS = { kept: DEFAULTS_KEPT, adopted: ' La configuration par défaut du pack choisi sera adoptée par cette installation.' };
+// The file is written and verified; only the author's remembered choice is missing from the profile.
+const DECISION_NOT_SAVED = ' Votre choix n’a pas pu être mémorisé dans votre profil : au prochain démarrage, Pesto pourra vous proposer cette configuration.';
+// A source folder can carry a local default outside its identity; a sealed one stays « Pack personnalisé ».
+const defaultsText = (item) => item?.localConfiguration === true ? ' · configuration par défaut incluse' : '';
+const returnDefaults = (fate) => RETURN_DEFAULTS[fate] ?? '';
+
 export function maintenanceMarkup() {
   return `<section class="card reveal spot" data-maintenance="configuration">
     <div class="card-head"><span class="card-icon">${icon('settings')}</span><h3>Configuration à partager</h3></div>
-    <p class="muted">Exporter les paramètres, les importer après comparaison, ou préparer un pack complet personnalisé avec la configuration de ce profil.</p>
+    <p class="muted">Exporter les paramètres, les importer après comparaison, ou les définir comme configuration par défaut de cette installation.</p>
     <label class="k-field">Version de configuration <input class="input" name="configurationVersion" maxlength="80" placeholder="Automatique si vide"></label>
     <div class="row-actions"><button class="btn" type="button" data-maint="export">Exporter</button>
       <button class="btn" type="button" data-maint="import">Importer</button>
       <button class="btn primary" type="button" data-maint="default">Définir comme configuration par défaut</button></div>
     <div class="row-actions"><button class="btn" type="button" data-maint="distribution">Comparer la configuration distribuée</button>
       <button class="btn" type="button" data-maint="reconnect">Reconnecter Pesto</button></div>
-    <p class="muted small" data-maint-status="configuration">Le pack personnalisé contiendra Pesto.exe, wad, le runtime et les paramètres partageables. Secrets, sessions, reçus, historique et caches sont exclus.</p>
+    <p class="muted small" data-maint-status="configuration">La configuration par défaut est écrite dans ${DEFAULT_PATH} de cette installation. Secrets, sessions, reçus, historique et caches sont exclus. Ce fichier contient le domaine et les OU : diffusez ce dossier comme un fichier privé.</p>
   </section>
   <section class="card reveal spot" data-maintenance="references">
     <div class="card-head"><span class="card-icon">${icon('server')}</span><h3>Référentiels sites et services</h3></div>
@@ -106,7 +125,7 @@ export function mountMaintenance(main, ctx, reloaded) {
       : 'Aucune mise à jour proposée. Aucune installation préparée.'));
     const zone = main.querySelector('[data-maint-zone="candidates"]');
     zone.innerHTML = items.map((item, index) => `<div class="config-candidate"><strong>Pesto ${esc(item.version)}</strong>
-      <span class="muted small">${esc(originText(item))} · ${esc(item.name ?? item.channel ?? '')}</span>
+      <span class="muted small">${esc(originText(item) + defaultsText(item))} · ${esc(item.name ?? item.channel ?? '')}</span>
       <button class="btn" type="button" data-candidate="${index}">Préparer cette mise à jour</button></div>`).join('');
     zone.querySelectorAll('[data-candidate]').forEach((button) => button.addEventListener('click', () => guard(async () => {
       const selected = items[Number(button.dataset.candidate)];
@@ -118,12 +137,12 @@ export function mountMaintenance(main, ctx, reloaded) {
       if (!alive) return;
       preparedUpdate = prepared;
       const target = main.querySelector('[data-maint-zone="prepared"]');
-      target.innerHTML = `<div class="config-candidate"><strong>Version ${esc(prepared.version)} prête</strong><span class="muted small">${esc(prepared.channel ?? selected.channel ?? '')} · ${esc(originText(prepared))}</span><span class="muted small">${esc(prepared.message ?? 'Le pack a été préparé et vérifié.')}</span>
+      target.innerHTML = `<div class="config-candidate"><strong>Version ${esc(prepared.version)} prête</strong><span class="muted small">${esc(prepared.channel ?? selected.channel ?? '')} · ${esc(originText(prepared) + defaultsText(prepared))}</span><span class="muted small">${esc(prepared.message ?? 'Le pack a été préparé et vérifié.')}</span>
         <button class="btn primary" type="button" data-install>Installer et vérifier le démarrage</button></div>`;
       target.querySelector('[data-install]').addEventListener('click', () => guard(async () => {
         if (preparedUpdate !== prepared) return;
         const windows = await packWindows();
-        if (!await confirmDialog({ title: 'Installer la mise à jour préparée', message: `Installer Pesto ${prepared.version}${prepared.channel ? ` (${prepared.channel})` : ''} · ${originText(prepared)}. Pesto va fermer ses fenêtres, conserver les anciens fichiers et installer ce pack. Un contrôle de santé isolé vérifiera son démarrage. En cas d’échec, la sauvegarde sera rétablie. Votre configuration reste dans votre profil.${windows.text}`, confirmLabel: 'Fermer et installer', danger: true })) return;
+        if (!await confirmDialog({ title: 'Installer la mise à jour préparée', message: `Installer Pesto ${prepared.version}${prepared.channel ? ` (${prepared.channel})` : ''} · ${originText(prepared)}${defaultsText(prepared)}. Pesto va fermer ses fenêtres, conserver les anciens fichiers et installer ce pack. Un contrôle de santé isolé vérifiera son démarrage. En cas d’échec, la sauvegarde sera rétablie. Votre configuration reste dans votre profil.${INSTALL_DEFAULTS[prepared.installDefaults] ?? ''}${windows.text}`, confirmLabel: 'Fermer et installer', danger: true })) return;
         if (preparedUpdate !== prepared) return;
         // Once sent, the transaction owns the outcome. A lost response must not keep a replay button.
         discardPrepared();
@@ -185,7 +204,7 @@ export function mountMaintenance(main, ctx, reloaded) {
     statusText('updates', `Version ${state.version} · ${state.channel} · ${state.distribution === 'custom' ? 'pack personnalisé' : state.distribution === 'official' ? 'release officielle' : 'candidat de développement'}. ${state.message}`);
     if (state.pendingRecovery) {
       const windows = await packWindows();
-      if (await confirmDialog({ title: 'Reprendre la mise à jour interrompue', message: state.message + windows.text, confirmLabel: 'Fermer et reprendre', danger: true }))
+      if (await confirmDialog({ title: 'Reprendre la mise à jour interrompue', message: state.message + returnDefaults(state.recoveryDefaults) + windows.text, confirmLabel: 'Fermer et reprendre', danger: true }))
         observeClosing(await ctx.call('updates.recover', { confirmed: true, ...windows.args }));
     }
   }
@@ -197,11 +216,28 @@ export function mountMaintenance(main, ctx, reloaded) {
       if (plan?.planId && await confirmConfiguration(plan, options)) feedback(await ctx.call('configuration.applyImport', { planId: plan.planId, confirmed: true }));
     },
     default: async () => {
-      if (!await confirmDialog({ title: 'Préparer un pack avec vos paramètres', message: 'Pesto créera un nouveau dossier complet à diffuser, avec la configuration partageable de ce profil. Les empreintes et le manifeste seront recalculés. Ce pack sera indiqué comme personnalisé.', confirmLabel: 'Choisir la destination' })) return;
-      statusText('configuration', 'Préparation du pack personnalisé…');
-      const result = await ctx.call('configuration.setDefault', { ...versionArgs(), confirmed: true });
-      if (result.status === 'prepared') { statusText('configuration', `Pack prêt à diffuser : ${result.destination}`); toast('Pack personnalisé complet préparé et vérifié.', { tone: 'ok' }); }
-      else if (result.status === 'cancelled') statusText('configuration', 'Préparation annulée : aucun pack personnalisé créé.');
+      try {
+        // The file shown in the confirmation is the one the engine may replace: its SHA-256 goes with the request,
+        // and a file changed in between is refused (config.default_changed). A sealed legacy file is refused there too,
+        // so only a local file is announced as replaced.
+        const state = (await ctx.call('configuration.status'))?.installationDefault ?? null;
+        const present = state?.state === 'local';
+        const replaced = present ? ` Il remplace la configuration par défaut actuelle (version ${state.version ?? 'non indiquée'}) ; une copie sera conservée dans votre profil.` : '';
+        if (!await confirmDialog({ title: 'Définir comme configuration par défaut', message: `Pesto va écrire la configuration partageable de ce profil dans ${DEFAULT_PATH} de cette installation. Aucun pack n’est recréé ; les fichiers du programme et leurs empreintes restent inchangés.${replaced}`,
+          confirmLabel: 'Enregistrer comme défaut', danger: present })) return;
+        statusText('configuration', 'Écriture de la configuration par défaut…');
+        const result = await ctx.call('configuration.setDefault', { ...versionArgs(), expectedSha256: state?.sha256 ?? '', confirmed: true });
+        if (result?.status === 'written') {
+          statusText('configuration', `Configuration par défaut enregistrée dans cette installation : ${DEFAULT_PATH} (version ${result.version}).${result.backup ? ` Copie de l’ancienne dans votre profil : ${result.backup}` : ''}${result.decisionSaved === false ? DECISION_NOT_SAVED : ''}`);
+          toast('Configuration par défaut enregistrée.', { tone: 'ok' });
+        } else if (result?.status === 'unchanged') statusText('configuration', `Configuration par défaut déjà identique (version ${result.version}) : aucun fichier modifié.${result.decisionSaved === false ? DECISION_NOT_SAVED : ''}`);
+        // Never a success without a known result; the file may or may not have been written.
+        else statusText('configuration', 'Réponse inattendue : l’enregistrement de la configuration par défaut n’est pas confirmé. Relisez l’état avant de recommencer.');
+      } catch (error) {
+        // A refusal ends the « … » status; guard() still shows the usual error toast.
+        if (isActive()) statusText('configuration', `Configuration par défaut non enregistrée : ${errorText(error)}`);
+        throw error;
+      }
     },
     distribution: () => showConfigurationNotice({ call: ctx.call, refreshSession: ctx.refreshSession, isActive }),
     reconnect: async () => {
@@ -217,7 +253,7 @@ export function mountMaintenance(main, ctx, reloaded) {
       const state = await ctx.call('updates.status');
       if (!state.canRollback) throw Object.assign(new Error('Aucune sauvegarde de mise à jour terminée n’est disponible.'), { code: 'update.rollback' });
       const windows = await packWindows();
-      if (await confirmDialog({ title: 'Revenir au programme précédent', message: 'Pesto va fermer les fenêtres et restaurer les anciens fichiers. Votre configuration actuelle sera conservée. Le démarrage restauré sera contrôlé séparément.' + windows.text, confirmLabel: 'Fermer et restaurer', danger: true }))
+      if (await confirmDialog({ title: 'Revenir au programme précédent', message: 'Pesto va fermer les fenêtres et restaurer les anciens fichiers. Votre configuration actuelle sera conservée.' + returnDefaults(state.rollbackDefaults) + ' Le démarrage restauré sera contrôlé séparément.' + windows.text, confirmLabel: 'Fermer et restaurer', danger: true }))
         observeClosing(await ctx.call('updates.rollback', { confirmed: true, ...windows.args }));
     },
   };

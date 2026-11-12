@@ -68,8 +68,13 @@ try {
         expiresAt: '2099-10-25T12:15:00Z', differences, backupRequired: !fresh, requiresConfirmation: true });
       window.fixture = {
         calls: [], settings: invalid ? damaged : fresh ? empty : saved, pendingDistribution: distribution, sequence: 0,
-        configPlan: null, fail: null, cancelImport: false, cancelDefault: false, cancelUpdateSource: false, pendingRecovery: false, canRollback: true,
+        configPlan: null, fail: null, cancelImport: false, cancelUpdateSource: false, pendingRecovery: false, canRollback: true,
         hold: pendingSettings ? 'configuration.settings' : null, releases: [], delivered: 0, packWindows: null,
+        // wad\defaults\configuration.json of this installation, as InstallationDefaults.Inspect describes it.
+        installationDefault: { state: 'missing', path: 'wad\\defaults\\configuration.json', version: null, fingerprint: null, sha256: null },
+        defaultUnchanged: false, candidateDefaults: false, rollbackVersion: '2.0.14', recoveryVersion: '2.0.14', decisionSaved: true,
+        // InstallationDefaults.DescribeReturn of the transaction a rollback or a recovery would use.
+        rollbackDefaults: 'kept', recoveryDefaults: 'kept',
       };
       let receive;
       window.chrome ??= {};
@@ -91,7 +96,8 @@ try {
                 domain: state.settings.domain, required: state.settings.coordinationRequired, message: 'Paramètres locaux ; aucun registre contacté.' }; break;
               case 'configuration.status': data = { configured: state.settings.configured, configurationState: state.settings.configurationState,
                 configurationExists: state.settings.configurationExists, diagnostic: state.settings.diagnostic, requiresDecision: state.pendingDistribution,
-                pendingDistribution: state.pendingDistribution ? { ...plan('distributed-1', 'distribution'), requiresDecision: true } : null }; break;
+                pendingDistribution: state.pendingDistribution ? { ...plan('distributed-1', 'distribution'), requiresDecision: true } : null,
+                installationDefault: structuredClone(state.installationDefault) }; break;
               case 'configuration.previewSettings':
                 state.configPlan = structuredClone(request.args);
                 data = plan('settings-' + (++state.sequence), 'settings'); break;
@@ -110,8 +116,18 @@ try {
                 if (request.args.replace) state.settings = { ...state.settings, prefix: '222222', fingerprint: 'b'.repeat(64) };
                 data = { status: request.args.replace ? 'applied' : 'kept', changed: request.args.replace }; break;
               case 'configuration.export': data = { status: 'exported', file: 'C:\\Export\\Pesto-configuration.json', fingerprint: 'a'.repeat(64) }; break;
-              case 'configuration.setDefault': data = state.cancelDefault ? { status: 'cancelled' } : { status: 'prepared', distribution: 'custom', official: false,
-                destination: 'C:\\Export\\Pesto-PROD-personnalise', version: request.args.version ?? 'automatic', fingerprint: 'a'.repeat(64) }; break;
+              case 'configuration.setDefault': {
+                // Result shape of ProfileConfigurationService.WriteInstallationDefault: written in place, pack unchanged.
+                const current = state.installationDefault;
+                const previous = current.state === 'local' ? { version: current.version, fingerprint: current.fingerprint, sha256: current.sha256 } : null;
+                const written = !state.defaultUnchanged;
+                data = { status: written ? 'written' : 'unchanged', path: 'wad\\defaults\\configuration.json',
+                  file: 'C:\\Pesto\\PROD\\wad\\defaults\\configuration.json', version: written ? request.args.version ?? '20261112-101500' : current.version,
+                  fingerprint: 'a'.repeat(64), sha256: written ? 'e'.repeat(64) : current.sha256, replaced: written && !!previous, previous,
+                  backup: written && previous ? 'C:\\Users\\operator\\AppData\\Local\\Pesto\\backups\\installation-default.20261112-101500.' + '0'.repeat(32) + '.json' : null,
+                  distribution: 'official', official: true, packFingerprint: 'f'.repeat(64), decisionSaved: state.decisionSaved };
+                break;
+              }
               case 'references.preview': data = {
                 planId: 'references-1', version: 'referentiel.2', additions: 1, conflictCount: 2, unchanged: 0,
                 conflicts: [
@@ -123,13 +139,21 @@ try {
               case 'references.apply': data = { status: 'applied', changed: true, backup: 'C:\\Profile\\backups\\cfg.bak' }; break;
               case 'updates.inspect': data = state.cancelUpdateSource ? { status: 'cancelled' }
                 : request.args.kind === 'zip' ? { candidateId: 'zip-candidate', version: '2.0.1', source: 'local', name: 'Pesto_V2_PRODLIGHT_2.0.1.zip', channel: 'PROD', distribution: 'official' }
-                : { candidateId: 'local-candidate', version: '2.0.1', source: 'local', distribution: 'custom', channel: 'PROD' }; break;
+                : state.candidateDefaults ? { candidateId: 'local-candidate', version: '2.0.1', source: 'local', distribution: 'official', channel: 'PROD', configurationIncluded: false, localConfiguration: true }
+                : { candidateId: 'local-candidate', version: '2.0.1', source: 'local', distribution: 'custom', channel: 'PROD', configurationIncluded: true, localConfiguration: false }; break;
               case 'updates.prepare': data = { preparedId: 'prepared-' + request.args.candidateId, version: '2.0.1', channel: 'PROD',
-                source: 'local', distribution: request.args.candidateId === 'zip-candidate' ? 'official' : 'custom',
+                source: 'local', distribution: request.args.candidateId === 'zip-candidate' || state.candidateDefaults ? 'official' : 'custom',
+                localConfiguration: request.args.candidateId !== 'zip-candidate' && state.candidateDefaults,
+                // InstallationDefaults.DescribeInstall: the installation's own default is kept, otherwise the pack's is adopted.
+                installDefaults: ['local', 'sealed'].includes(state.installationDefault.state) ? 'kept'
+                  : request.args.candidateId !== 'zip-candidate' ? 'adopted' : null,
                 message: 'Copie vérifiée ; aucune installation effectuée.' }; break;
               case 'updates.install': data = { status: 'closing', transactionId: 'transaction-1', message: 'Fermeture demandée. Le résultat reste à confirmer par le contrôle de santé.' }; break;
               case 'updates.status': data = { version: '2.0.0', channel: 'PROD', distribution: 'custom', message: 'Le résultat reste consigné dans la transaction.',
-                pendingRecovery: state.pendingRecovery, canRollback: state.canRollback }; break;
+                pendingRecovery: state.pendingRecovery, canRollback: state.canRollback, rollbackVersion: state.canRollback ? state.rollbackVersion : null,
+                recoveryVersion: state.pendingRecovery ? state.recoveryVersion : null,
+                rollbackDefaults: state.canRollback ? state.rollbackDefaults : null, recoveryDefaults: state.pendingRecovery ? state.recoveryDefaults : null,
+                localConfiguration: structuredClone(state.installationDefault) }; break;
               case 'updates.windows': data = state.packWindows ?? { windows: [], token: '' }; break;
               case 'updates.rollback': case 'updates.recover': case 'host.reconnect': data = { status: 'closing', message: 'Fermeture demandée.' }; break;
               default: throw Object.assign(new Error('Opération de fixture non déclarée : ' + request.op), { code: 'operation.unknown' });
@@ -239,7 +263,7 @@ try {
   });
 
   for (const [action, operation] of [['import', 'configuration.previewImport'], ['rollback', 'updates.status'],
-    ['status', 'updates.status'], ['distribution', 'configuration.status']]) {
+    ['status', 'updates.status'], ['distribution', 'configuration.status'], ['default', 'configuration.status']]) {
     await check(`Réponse tardive ${action} : quitter les paramètres interdit tout dialogue ou effet ultérieur`, async () => {
       const page = await makePage({ local: true });
       try {
@@ -248,7 +272,7 @@ try {
         await page.waitForFunction(() => window.fixture.releases.length === 1);
         await leaveSettings(page); await release(page);
         assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
-        for (const op of ['configuration.applyImport', 'configuration.decideDistribution', 'updates.rollback', 'updates.recover'])
+        for (const op of ['configuration.applyImport', 'configuration.decideDistribution', 'configuration.setDefault', 'updates.rollback', 'updates.recover'])
           assert.equal((await calls(page, op)).length, 0);
       } finally { await page.close(); }
     });
@@ -545,31 +569,153 @@ try {
     } finally { await page.close(); }
   });
 
-  await check('Définir par défaut confirme avant sélection native et annonce un pack personnalisé', async () => {
+  const DEFAULT_PATH = String.raw`wad\defaults\configuration.json`;
+  const configurationStatus = (page) => page.locator('[data-maint-status="configuration"]').innerText();
+  const localDefault = { state: 'local', path: DEFAULT_PATH, version: 'entreprise.2', fingerprint: 'c'.repeat(64), sha256: 'd'.repeat(64) };
+
+  await check('Configuration par défaut : textes de la carte sur place, sans pack personnalisé ni destination', async () => {
     const page = await makePage();
     try {
-      await page.locator('[name="configurationVersion"]').fill('entreprise.3');
-      await click(page, 'default'); await dialog(page).waitFor();
-      assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
-      assert.match(await dialog(page).innerText(), /personnalisé/);
-      await closeDialog(page, 'cancel'); assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
-      await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
-      await waitCall(page, 'configuration.setDefault');
-      assert.deepEqual((await calls(page, 'configuration.setDefault'))[0].args, { version: 'entreprise.3', confirmed: true });
-      await page.waitForFunction(() => document.querySelector('[data-maint-status="configuration"]').textContent.includes('prêt à diffuser'));
-      assert.doesNotMatch(await page.locator('.toasts').innerText(), /release officielle/);
+      const card = await page.locator('[data-maintenance="configuration"]').innerText();
+      assert.match(card, /ou les définir comme configuration par défaut de cette installation\./);
+      assert.equal(await configurationStatus(page), `La configuration par défaut est écrite dans ${DEFAULT_PATH} de cette installation. Secrets, sessions, reçus, historique et caches sont exclus. Ce fichier contient le domaine et les OU : diffusez ce dossier comme un fichier privé.`);
+      assert.doesNotMatch(card, /pack personnalisé|pack complet|destination/i);
+      assert.equal(await page.locator('[data-maint="default"]').innerText(), 'Définir comme configuration par défaut');
     } finally { await page.close(); }
   });
 
-  await check('Destination du pack annulée : le texte de préparation est terminé sans faux livrable', async () => {
+  await check('Définir par défaut : état relu, confirmation sur place, annulation sans appel puis écriture exacte', async () => {
     const page = await makePage();
     try {
-      await page.evaluate(() => { window.fixture.cancelDefault = true; });
+      await page.locator('[name="configurationVersion"]').fill('entreprise.3');
+      const before = (await calls(page, 'configuration.status')).length;
+      await click(page, 'default'); await dialog(page).waitFor();
+      assert.equal((await calls(page, 'configuration.status')).length, before + 1);
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
+      assert.equal(await dialog(page).locator('h2').innerText(), 'Définir comme configuration par défaut');
+      assert.equal(await dialog(page).locator('.k-dlg-text').innerText(), `Pesto va écrire la configuration partageable de ce profil dans ${DEFAULT_PATH} de cette installation. Aucun pack n’est recréé ; les fichiers du programme et leurs empreintes restent inchangés.`);
+      const confirm = dialog(page).locator('[data-id="ok"]');
+      assert.equal(await confirm.innerText(), 'Enregistrer comme défaut');
+      assert.doesNotMatch(await confirm.getAttribute('class'), /danger/);
+      assert.doesNotMatch(await dialog(page).innerText(), /personnalisé|destination|nouveau dossier|Il remplace/);
+      await closeDialog(page, 'cancel');
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
+      assert.doesNotMatch(await configurationStatus(page), /Écriture|enregistrée/);
       await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
       await waitCall(page, 'configuration.setDefault');
+      assert.deepEqual((await calls(page, 'configuration.setDefault'))[0].args, { version: 'entreprise.3', expectedSha256: '', confirmed: true });
+      const expected = `Configuration par défaut enregistrée dans cette installation : ${DEFAULT_PATH} (version entreprise.3).`;
+      await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
+      await page.waitForFunction(() => document.querySelector('.toasts').textContent.includes('Configuration par défaut enregistrée.'));
+      assert.doesNotMatch(await page.locator('.toasts').innerText(), /pack personnalisé|release officielle|prêt à diffuser/i);
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 1);
+      assert.equal((await calls(page, 'configuration.applyImport')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Défaut existant : version affichée, SHA-256 transmis, copie de l’ancienne annoncée', async () => {
+    const page = await makePage();
+    try {
+      await page.evaluate((state) => { window.fixture.installationDefault = state; }, localDefault);
+      await click(page, 'default'); await dialog(page).waitFor();
+      const text = await dialog(page).locator('.k-dlg-text').innerText();
+      assert.ok(text.includes(DEFAULT_PATH), text);
+      assert.ok(text.endsWith(' Il remplace la configuration par défaut actuelle (version entreprise.2) ; une copie sera conservée dans votre profil.'), text);
+      assert.match(await dialog(page).locator('[data-id="ok"]').getAttribute('class'), /danger/);
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
+      await closeDialog(page, 'ok'); await waitCall(page, 'configuration.setDefault');
+      assert.deepEqual((await calls(page, 'configuration.setDefault'))[0].args, { expectedSha256: 'd'.repeat(64), confirmed: true });
+      const backup = String.raw`C:\Users\operator\AppData\Local\Pesto\backups\installation-default.20261112-101500.` + '0'.repeat(32) + '.json';
+      const expected = `Configuration par défaut enregistrée dans cette installation : ${DEFAULT_PATH} (version 20261112-101500). Copie de l’ancienne dans votre profil : ${backup}`;
+      await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
+      await page.waitForFunction(() => document.querySelector('.toasts').textContent.includes('Configuration par défaut enregistrée.'));
+    } finally { await page.close(); }
+  });
+
+  await check('Défaut déjà identique : aucun fichier modifié, version conservée, aucun toast de succès', async () => {
+    const page = await makePage();
+    try {
+      await page.evaluate((state) => { Object.assign(window.fixture, { installationDefault: state, defaultUnchanged: true }); }, localDefault);
+      await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
+      await waitCall(page, 'configuration.setDefault');
+      assert.deepEqual((await calls(page, 'configuration.setDefault'))[0].args, { expectedSha256: 'd'.repeat(64), confirmed: true });
+      const expected = 'Configuration par défaut déjà identique (version entreprise.2) : aucun fichier modifié.';
+      await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
       await page.waitForFunction(() => !document.querySelector('[data-maint="default"]').disabled);
-      assert.doesNotMatch(await page.locator('[data-maint-status="configuration"]').innerText(), /Préparation du pack personnalisé…|prêt à diffuser/);
-      assert.doesNotMatch(await page.locator('.toasts').innerText(), /Pack personnalisé complet préparé/);
+      assert.doesNotMatch(await page.locator('.toasts').innerText(), /enregistrée/);
+    } finally { await page.close(); }
+  });
+
+  for (const [code, message, local] of [
+    ['config.default_readonly', 'Le dossier de cette installation n’est pas accessible en écriture : la configuration par défaut n’a pas été enregistrée. Lancez Pesto normalement depuis cette installation (autorisation administrateur), ou exportez la configuration et copiez le fichier sous wad\\defaults\\configuration.json.', false],
+    ['config.default_readonly', 'Le dossier de cette installation n’est pas accessible en écriture : la configuration par défaut n’a pas été enregistrée. Lancez Pesto normalement depuis cette installation (autorisation administrateur), ou exportez la configuration et copiez le fichier sous wad\\defaults\\configuration.json.', true],
+    ['config.default_changed', 'La configuration par défaut de l’installation a changé depuis son affichage. Rien n’a été modifié ; relisez l’état puis recommencez.', false],
+    ['config.default_sealed', 'Cette installation provient d’un ancien pack personnalisé : sa configuration par défaut fait partie de l’inventaire du pack et ne peut pas être remplacée sur place. Installez le pack officiel dans un nouveau dossier, puis définissez-y la configuration par défaut. Rien n’a été modifié.', false],
+  ]) {
+    await check(`Refus ${code}${local ? ' (configuration locale)' : ''} : statut terminé par le motif, aucun « … » ni faux succès, aucune relance`, async () => {
+      const page = await makePage({ local });
+      try {
+        await page.evaluate(({ code, message }) => Object.assign(window.fixture, { fail: 'configuration.setDefault', failCode: code, failMessage: message,
+          installationDefault: code === 'config.default_sealed' ? { state: 'sealed', path: 'wad\\defaults\\configuration.json', version: 'ancien.1', fingerprint: 'c'.repeat(64), sha256: 'd'.repeat(64) }
+            : { state: 'missing', path: 'wad\\defaults\\configuration.json', version: null, fingerprint: null, sha256: null } }), { code, message });
+        await click(page, 'default'); await dialog(page).waitFor();
+        // Only a local file is announced as replaced: a sealed legacy file is refused by the engine, never replaced.
+        assert.doesNotMatch(await dialog(page).locator('.k-dlg-text').innerText(), /Il remplace/);
+        assert.doesNotMatch(await dialog(page).locator('[data-id="ok"]').getAttribute('class'), /danger/);
+        await closeDialog(page, 'ok');
+        await waitCall(page, 'configuration.setDefault');
+        const expected = `Configuration par défaut non enregistrée : ${message}`;
+        await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
+        await page.waitForFunction((text) => document.querySelector('.toasts').textContent.includes(text), message);
+        await page.waitForFunction(() => !document.querySelector('[data-maint="default"]').disabled);
+        assert.equal((await calls(page, 'configuration.setDefault')).length, 1);
+        assert.doesNotMatch(await configurationStatus(page), /…|Écriture de la configuration/);
+        assert.doesNotMatch(await page.locator('.toasts').innerText(), /Configuration par défaut enregistrée/);
+      } finally { await page.close(); }
+    });
+  }
+
+  for (const unchanged of [false, true]) {
+    await check(`Choix de l’auteur non mémorisé (${unchanged ? 'défaut identique' : 'défaut écrit'}) : résultat conservé, relance possible annoncée`, async () => {
+      const page = await makePage();
+      try {
+        await page.evaluate(({ state, unchanged }) => Object.assign(window.fixture, { decisionSaved: false, defaultUnchanged: unchanged, installationDefault: state }),
+          { state: localDefault, unchanged });
+        await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
+        await waitCall(page, 'configuration.setDefault');
+        const note = ' Votre choix n’a pas pu être mémorisé dans votre profil : au prochain démarrage, Pesto pourra vous proposer cette configuration.';
+        const expected = unchanged ? `Configuration par défaut déjà identique (version entreprise.2) : aucun fichier modifié.${note}`
+          : `Configuration par défaut enregistrée dans cette installation : ${DEFAULT_PATH} (version 20261112-101500). Copie de l’ancienne dans votre profil : `
+            + String.raw`C:\Users\operator\AppData\Local\Pesto\backups\installation-default.20261112-101500.` + '0'.repeat(32) + `.json${note}`;
+        await page.waitForFunction((text) => document.querySelector('[data-maint-status="configuration"]').textContent === text, expected);
+      } finally { await page.close(); }
+    });
+  }
+
+  await check('Lecture de l’état refusée : aucune confirmation ni écriture, motif dans le statut', async () => {
+    const page = await makePage();
+    try {
+      await page.evaluate(() => Object.assign(window.fixture, { fail: 'configuration.status', failCode: 'config.unavailable', failMessage: 'Le service de configuration n’est pas raccordé.' }));
+      await click(page, 'default');
+      await page.waitForFunction(() => document.querySelector('[data-maint-status="configuration"]').textContent === 'Configuration par défaut non enregistrée : Le service de configuration n’est pas raccordé.');
+      await page.waitForFunction(() => !document.querySelector('[data-maint="default"]').disabled);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Écriture lente puis navigation : une seule demande, aucun statut ni toast tardif', async () => {
+    const page = await makePage({ local: true });
+    try {
+      await page.evaluate(() => { window.fixture.hold = 'configuration.setDefault'; });
+      await click(page, 'default'); await dialog(page).waitFor(); await closeDialog(page, 'ok');
+      await page.waitForFunction(() => window.fixture.releases.length === 1);
+      assert.equal(await configurationStatus(page), 'Écriture de la configuration par défaut…');
+      assert.equal(await page.locator('[data-maint="default"]').isDisabled(), true);
+      await leaveSettings(page); await release(page);
+      assert.equal((await calls(page, 'configuration.setDefault')).length, 1);
+      assert.doesNotMatch(await page.locator('.toasts').innerText(), /Configuration par défaut enregistrée|non enregistrée/);
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
     } finally { await page.close(); }
   });
 
@@ -741,6 +887,81 @@ try {
     });
   }
 
+  await check('Candidat avec configuration par défaut locale : mention visible jusqu’à la confirmation, conservation annoncée', async () => {
+    const page = await makePage();
+    try {
+      await click(page, 'zip'); await page.locator('[data-candidate]').waitFor();
+      assert.doesNotMatch(await page.locator('[data-maint-zone="candidates"]').innerText(), /configuration par défaut incluse/);
+      await page.evaluate(() => { window.fixture.candidateDefaults = true; });
+      await click(page, 'folder');
+      await page.waitForFunction(() => document.querySelector('[data-maint-zone="candidates"]').textContent.includes('configuration par défaut incluse'));
+      const candidate = await page.locator('[data-maint-zone="candidates"]').innerText();
+      assert.match(candidate, /Source locale — origine à vérifier · configuration par défaut incluse · PROD/);
+      assert.doesNotMatch(candidate, /Pack personnalisé/);
+      await page.locator('[data-candidate]').click(); await page.locator('[data-install]').waitFor();
+      assert.match(await page.locator('[data-maint-zone="prepared"]').innerText(), /PROD · Source locale — origine à vérifier · configuration par défaut incluse/);
+      await page.locator('[data-install]').click(); await dialog(page).waitFor();
+      const text = await dialog(page).innerText();
+      assert.match(text, /Installer Pesto 2\.0\.1 \(PROD\) · Source locale — origine à vérifier · configuration par défaut incluse\./);
+      assert.match(text, /Votre configuration reste dans votre profil\. La configuration par défaut du pack choisi sera adoptée par cette installation\./);
+      assert.doesNotMatch(text, /est conservée/);
+      await closeDialog(page, 'cancel');
+      assert.equal((await calls(page, 'updates.install')).length, 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Ancien pack personnalisé : mention « Pack personnalisé » conservée, sans configuration incluse', async () => {
+    const page = await makePage();
+    try {
+      await click(page, 'folder'); await page.locator('[data-candidate]').waitFor();
+      const candidate = await page.locator('[data-maint-zone="candidates"]').innerText();
+      assert.match(candidate, /Pack personnalisé — source locale · PROD/);
+      assert.doesNotMatch(candidate, /configuration par défaut incluse/);
+      await page.locator('[data-candidate]').click(); await page.locator('[data-install]').waitFor();
+      await page.locator('[data-install]').click(); await dialog(page).waitFor();
+      assert.match(await dialog(page).innerText(), /· Pack personnalisé — source locale\. .*La configuration par défaut du pack choisi sera adoptée par cette installation\./s);
+      await closeDialog(page, 'cancel');
+    } finally { await page.close(); }
+  });
+
+  for (const [current, expected] of [['local', 'La configuration par défaut de cette installation est conservée.'], ['missing', null]]) {
+    await check(`Installation d’un pack sans configuration, défaut ${current} : ${expected ? 'conservation annoncée' : 'aucune promesse'}`, async () => {
+      const page = await makePage();
+      try {
+        await page.evaluate((state) => { window.fixture.installationDefault = state; },
+          current === 'local' ? localDefault : { state: 'missing', path: DEFAULT_PATH, version: null, fingerprint: null, sha256: null });
+        await click(page, 'zip'); await page.locator('[data-candidate]').waitFor();
+        await page.locator('[data-candidate]').click(); await page.locator('[data-install]').waitFor();
+        await page.locator('[data-install]').click(); await dialog(page).waitFor();
+        const text = await dialog(page).innerText();
+        assert.equal(text.includes('La configuration par défaut de cette installation est conservée.'), expected !== null, text);
+        assert.doesNotMatch(text, /sera adoptée/);
+        await closeDialog(page, 'cancel');
+      } finally { await page.close(); }
+    });
+  }
+
+  const KEPT = 'La configuration par défaut de cette installation est conservée.';
+  const SET_ASIDE = 'La version rétablie ne connaît pas la configuration par défaut de l’installation : elle sera mise de côté dans le dossier de la transaction.';
+  const WITHDRAWN = 'La configuration par défaut apportée par la mise à jour, inchangée depuis, est retirée avec elle : la version rétablie retrouve son état d’avant la mise à jour.';
+  const DELETED = 'La configuration par défaut supprimée depuis la mise à jour le reste.';
+  const FATES = { kept: KEPT, setAside: SET_ASIDE, withdrawn: WITHDRAWN, deleted: DELETED };
+  for (const fate of ['kept', 'setAside', 'withdrawn', 'deleted', null]) {
+    await check(`Retour arrière, sort du défaut ${fate ?? 'non annoncé'} : la confirmation dit exactement ce que fera le moteur`, async () => {
+      const page = await makePage();
+      try {
+        await page.evaluate((fate) => { window.fixture.rollbackDefaults = fate; }, fate);
+        await click(page, 'rollback'); await dialog(page).waitFor();
+        const text = await dialog(page).locator('.k-dlg-text').innerText();
+        assert.ok(text.startsWith('Pesto va fermer les fenêtres et restaurer les anciens fichiers. Votre configuration actuelle sera conservée.'), text);
+        for (const [name, sentence] of Object.entries(FATES)) assert.equal(text.includes(sentence), name === fate, `${sentence} : ${text}`);
+        assert.match(text, /Le démarrage restauré sera contrôlé séparément\.$/);
+        await closeDialog(page, 'cancel');
+        assert.equal((await calls(page, 'updates.rollback')).length, 0);
+      } finally { await page.close(); }
+    });
+  }
+
   await check('Rollback annulé puis confirmé : aucun envoi implicite et fermeture terminale', async () => {
     const page = await makePage();
     try {
@@ -754,6 +975,20 @@ try {
       assert.equal((await calls(page, 'updates.recover')).length, 0);
     } finally { await page.close(); }
   });
+
+  for (const fate of ['kept', 'setAside', 'withdrawn', null]) {
+    await check(`Reprise interrompue, sort du défaut ${fate ?? 'non annoncé'} : la confirmation dit exactement ce que fera le moteur`, async () => {
+      const page = await makePage();
+      try {
+        await page.evaluate((fate) => Object.assign(window.fixture, { pendingRecovery: true, recoveryDefaults: fate, rollbackDefaults: 'deleted' }), fate);
+        await click(page, 'status'); await dialog(page).waitFor();
+        const text = await dialog(page).locator('.k-dlg-text').innerText();
+        for (const [name, sentence] of Object.entries(FATES)) assert.equal(text.includes(sentence), name === fate, `${sentence} : ${text}`);
+        await closeDialog(page, 'cancel');
+        assert.equal((await calls(page, 'updates.recover')).length, 0);
+      } finally { await page.close(); }
+    });
+  }
 
   await check('Reprise interrompue annulée puis confirmée : fermeture sans rejeu d’installation', async () => {
     const page = await makePage();
@@ -848,6 +1083,39 @@ try {
       await page.waitForFunction(() => document.querySelector('.toasts').textContent.includes('ne peut pas fermer'));
       assert.equal((await calls(page, 'updates.install')).length, 0);
       assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+    } finally { await page.close(); }
+  });
+
+  await check('Démonstration : configuration par défaut inaccessible, refus isolé même en appel direct', async () => {
+    // No native fixture: the browser runs the in-memory demonstration, as the separate demo window does.
+    const page = await browser.newPage({ viewport: { width: 1500, height: 1100 } });
+    page.setDefaultTimeout(6000);
+    page.on('pageerror', (error) => errors.push(error.message));
+    page.on('console', (message) => { if (message.type() === 'error' && !message.text().includes('net::ERR_NO_BUFFER_SPACE')) errors.push(message.text()); });
+    await page.route('**/*', async (route) => {
+      if (route.request().url().startsWith(origin + '/')) await route.continue();
+      else { errors.push('Unexpected external request: ' + route.request().url()); await route.abort(); }
+    });
+    try {
+      await page.addInitScript(() => localStorage.setItem('pesto.prefs.v1', JSON.stringify({ theme: 'light', motion: 'reduced' })));
+      await page.goto(origin + '/#/parametres');
+      await page.waitForFunction(() => document.documentElement.dataset.ready === 'parametres');
+      const button = page.locator('[data-maint="default"]');
+      assert.equal(await button.isDisabled(), true);
+      assert.equal(await page.locator('[data-maint-status="configuration"]').innerText(), 'Disponible dans la fenêtre normale. La démonstration ne lit ni fichier réel ni partage réseau.');
+      await button.dispatchEvent('click');
+      assert.equal(await page.locator('.k-dlg-layer:not(.leaving)').count(), 0);
+      assert.doesNotMatch(await page.locator('[data-maint-status="configuration"]').innerText(), /Écriture|enregistrée/);
+      const codes = await page.evaluate(async () => {
+        const { browserSimulation } = await import('/js/simulation.js');
+        const codes = [];
+        for (const [op, args] of [['configuration.status', {}], ['configuration.setDefault', { expectedSha256: 'a'.repeat(64), confirmed: true }],
+          ['configuration.setDefault', { version: 'demo.1', expectedSha256: '', confirmed: true }]]) {
+          try { await browserSimulation.invoke(op, args); codes.push('accepted'); } catch (error) { codes.push(error.code); }
+        }
+        return codes;
+      });
+      assert.deepEqual(codes, ['demo.isolated', 'demo.isolated', 'demo.isolated']);
     } finally { await page.close(); }
   });
 

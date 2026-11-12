@@ -9,7 +9,8 @@ using Pesto.Core;
 namespace Pesto.Engine;
 
 public sealed record UpdatePackageInfo(string Directory, string Version, string Channel, string Distribution,
-    string Fingerprint, int FileCount, long Bytes, string? ConfigurationFingerprint, string WebView2Runtime = "evergreen", bool SoclePresent = false);
+    string Fingerprint, int FileCount, long Bytes, string? ConfigurationFingerprint, string WebView2Runtime = "evergreen", bool SoclePresent = false,
+    string? LocalConfigurationVersion = null, string? LocalConfigurationFingerprint = null);
 
 /// <summary>Closed portable package format. Hashes detect corruption; only the acquisition channel can attest origin.</summary>
 public static class UpdatePackage
@@ -69,7 +70,32 @@ public static class UpdatePackage
             || official.GetBoolean() != (distribution == "official")))
             Fail("package.manifest", "La provenance déclarée du pack est incohérente.");
         var configFingerprint = manifest.TryGetProperty("configurationFingerprint", out var fingerprintValue) ? fingerprintValue.GetString() : null;
-        var hasDefaults = files.ContainsKey("wad/defaults/configuration.json");
+        var sumsFile = Path.Combine(directory, SumsPath);
+        if (new FileInfo(sumsFile).Length > 8 * 1024 * 1024) Fail("package.hashes", "L’inventaire est trop volumineux.");
+        var declared = new Dictionary<string, string>(Paths);
+        foreach (var line in File.ReadLines(sumsFile, Encoding.UTF8))
+        {
+            if (line.Length == 0) continue;
+            if (line.Length < 67 || line[64..66] != "  " || !Regex.IsMatch(line[..64], "^[a-f0-9]{64}$"))
+                Fail("package.hashes", "L’inventaire SHA256SUMS est mal formé.");
+            var name = NormalizeRelative(line[66..]);
+            if (name == SumsPath || !declared.TryAdd(name, line[..64])) Fail("package.hashes", "L’inventaire comporte une entrée répétée ou interdite.");
+        }
+        // Defaults written in place (2.0.14+) stay outside the pack identity, like an extracted Socle: an undeclared file,
+        // with a manifest that declares none, is validated by its own schema and fingerprint. A legacy custom pack keeps its
+        // sealed file, listed in the inventory and declared by the manifest, under the historical checks below.
+        string? localVersion = null, localFingerprint = null;
+        var hasDefaults = files.ContainsKey(InstallationDefaults.RelativePath);
+        if (hasDefaults && !declared.ContainsKey(InstallationDefaults.RelativePath) && configFingerprint is null
+            && !manifest.TryGetProperty("configurationVersion", out _))
+        {
+            var (localBundle, _) = InstallationDefaults.ReadValid(Path.Combine(directory, "wad", "defaults", "configuration.json"));
+            localVersion = ConfigurationDocument.String(localBundle, "version");
+            localFingerprint = ConfigurationDocument.String(localBundle, "fingerprint");
+            files.Remove(InstallationDefaults.RelativePath);
+            hasDefaults = false;
+        }
+        foreach (var debris in files.Keys.Where(InstallationDefaults.IsDebris).ToList()) files.Remove(debris);
         if (hasDefaults && distribution != "custom" || !hasDefaults && configFingerprint is not null)
             Fail("package.defaults", "Les paramètres distribués doivent appartenir à un pack personnalisé déclaré.");
         if (hasDefaults)
@@ -96,17 +122,6 @@ public static class UpdatePackage
         }
         foreach (var file in files.Keys)
             if (!Allowed(file, channel)) Fail("package.file", "Fichier hors du contenu autorisé : " + file);
-        var sumsFile = Path.Combine(directory, SumsPath);
-        if (new FileInfo(sumsFile).Length > 8 * 1024 * 1024) Fail("package.hashes", "L’inventaire est trop volumineux.");
-        var declared = new Dictionary<string, string>(Paths);
-        foreach (var line in File.ReadLines(sumsFile, Encoding.UTF8))
-        {
-            if (line.Length == 0) continue;
-            if (line.Length < 67 || line[64..66] != "  " || !Regex.IsMatch(line[..64], "^[a-f0-9]{64}$"))
-                Fail("package.hashes", "L’inventaire SHA256SUMS est mal formé.");
-            var name = NormalizeRelative(line[66..]);
-            if (name == SumsPath || !declared.TryAdd(name, line[..64])) Fail("package.hashes", "L’inventaire comporte une entrée répétée ou interdite.");
-        }
         if (declared.Count != files.Count - 1 || files.Keys.Where(p => p != SumsPath).Any(p => !declared.ContainsKey(p)))
             Fail("package.hashes", "L’inventaire ne couvre pas exactement tous les fichiers du pack.");
         foreach (var (name, hash) in declared)
@@ -116,7 +131,8 @@ public static class UpdatePackage
             if (Hash(Path.Combine(directory, ActiveDirectoryBundle.RelativeDirectory, name)) != expected)
                 Fail("package.ad_module", "Le module ActiveDirectory ne correspond pas aux fichiers Microsoft épinglés : " + name);
         RequirePe64(Path.Combine(directory, "Pesto.exe"));
-        return new(directory, version, channel, distribution, Hash(sumsFile), files.Count, files.Values.Sum(), configFingerprint, runtime, soclePresent);
+        return new(directory, version, channel, distribution, Hash(sumsFile), files.Count, files.Values.Sum(), configFingerprint, runtime, soclePresent,
+            localVersion, localFingerprint);
     }
 
     public static Dictionary<string, long> Inventory(string directory)
@@ -216,7 +232,12 @@ public static class UpdatePackage
     public static void Rehash(string directory)
     {
         var files = Inventory(directory);
-        var lines = files.Keys.Where(p => p != SumsPath && !p.StartsWith(SocleRuntime.RelativeDirectory + "/", StringComparison.OrdinalIgnoreCase)).Order(StringComparer.Ordinal)
+        // Defaults written in place and the writer's temporaries never enter the identity; only a manifest that declares a
+        // configuration (legacy custom pack built by the qualification benches) seals the defaults file in the inventory.
+        var sealedDefaults = InstallationDefaults.DeclaresSealedDefaults(directory);
+        var lines = files.Keys.Where(p => p != SumsPath && !p.StartsWith(SocleRuntime.RelativeDirectory + "/", StringComparison.OrdinalIgnoreCase)
+                && !InstallationDefaults.IsDebris(p) && (sealedDefaults || !p.Equals(InstallationDefaults.RelativePath, StringComparison.OrdinalIgnoreCase)))
+            .Order(StringComparer.Ordinal)
             .Select(p => Hash(Path.Combine(directory, p)) + "  " + p);
         WriteAtomic(Path.Combine(directory, SumsPath), string.Join('\n', lines) + "\n");
     }

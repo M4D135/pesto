@@ -9,7 +9,7 @@ using Pesto.Core;
 namespace Pesto.Engine;
 
 public sealed record UpdateTransactionResult(string Status, string Message);
-public sealed record UpdateTransactionSummary(string Id, string TransactionDirectory, string Status, DateTimeOffset CreatedUtc);
+public sealed record UpdateTransactionSummary(string Id, string TransactionDirectory, string Status, DateTimeOffset CreatedUtc, string CurrentVersion = "");
 
 /// <summary>Durable binary replacement. Stage, backup and failed candidate share the target volume; user data is never moved.</summary>
 public static class UpdateTransaction
@@ -21,7 +21,8 @@ public static class UpdateTransaction
         "recoveryRequested", "rollingBack", "restored", "rolledBack", "rollbackHealthFailed", "cancelled"
     };
 
-    public static UpdateInstallRequest Create(string installation, string source, UpdatePackageInfo current, UpdatePackageInfo next, string action)
+    public static UpdateInstallRequest Create(string installation, string source, UpdatePackageInfo current, UpdatePackageInfo next, string action,
+        string? sourceDefaultSha256)
     {
         if (action != "install") throw new PestoException("update.action", "Une transaction doit commencer par une installation préparée.");
         installation = NormalizeInstallation(installation);
@@ -39,7 +40,9 @@ public static class UpdateTransaction
         try
         {
             UpdatePackage.CopyToNew(source, Path.Combine(directory, "stage"));
-            if (UpdatePackage.Validate(Path.Combine(directory, "stage"), next.Channel).Fingerprint != next.Fingerprint)
+            // The source's default configuration is outside its identity: it must still be the one inspected and prepared.
+            if (UpdatePackage.Validate(Path.Combine(directory, "stage"), next.Channel).Fingerprint != next.Fingerprint
+                || InstallationDefaults.Inspect(Path.Combine(directory, "stage")).Sha256 != sourceDefaultSha256)
                 throw new PestoException("update.changed", "La copie de préparation n’est pas identique au pack vérifié.");
             // LIGHT packs never ship WebView2: the installation's Socle, validated exactly above, follows the new version.
             var socle = Path.Combine(installation, SocleRuntime.RelativeDirectory);
@@ -51,6 +54,12 @@ public static class UpdateTransaction
                 if (stage.Fingerprint != next.Fingerprint || !stage.SoclePresent)
                     throw new PestoException("update.socle", "Le pack WebView2 du Socle n’a pas pu être recopié à l’identique vers la nouvelle version.");
             }
+            // The installation's default configuration follows the new version too (GLPI-Pilot 3.10.1 rule): it is outside
+            // the pack identity, a different default brought by the source is refused, and its digest is sealed for Execute.
+            var installationDefault = InstallationDefaults.CarryIntoStage(installation, Path.Combine(directory, "stage"));
+            if (UpdatePackage.Validate(Path.Combine(directory, "stage"), next.Channel).Fingerprint != next.Fingerprint)
+                throw new PestoException("update.changed", "La copie de préparation n’est pas identique au pack vérifié.");
+            InstallationDefaults.WriteMarker(directory, installationDefault, InstallationDefaults.Inspect(Path.Combine(directory, "stage")).Sha256);
             Directory.CreateDirectory(Path.Combine(directory, "helper"));
             var helper = Path.Combine(directory, "helper", "Pesto.exe");
             File.Copy(Path.Combine(installation, "Pesto.exe"), helper, false);
@@ -67,7 +76,7 @@ public static class UpdateTransaction
                 Status = "prepared", Action = "install"
             };
             if (UpdatePackage.Validate(installation, current.Channel).Fingerprint != current.Fingerprint
-                || record.HelperHash != record.CurrentExecutableHash)
+                || record.HelperHash != record.CurrentExecutableHash || InstallationDefaults.CurrentSha256(installation) != installationDefault)
                 throw new PestoException("update.changed", "L’installation a changé pendant la préparation du programme de remplacement.");
             Save(directory, record);
             return new(directory, helper, id, action);
@@ -92,7 +101,7 @@ public static class UpdateTransaction
                 continue;
             }
             var record = Read(directory);
-            results.Add(new(record.Id, directory, record.Status, record.CreatedUtc));
+            results.Add(new(record.Id, directory, record.Status, record.CreatedUtc, record.CurrentVersion));
         }
         return results.OrderByDescending(r => r.CreatedUtc).ToArray();
     }
@@ -106,6 +115,10 @@ public static class UpdateTransaction
         if (recovery && record.Status is "completed" or "rolledBack" or "cancelled")
             throw new PestoException("update.recovery", "Cette transaction ne demande aucune reprise.");
         ValidateTrees(transactionDirectory, record);
+        // The helper is the program of CurrentVersion. Before 2.0.14 its validator refuses an undeclared defaults file and
+        // would never finish: the local default is set aside in this transaction directory, never deleted.
+        if (Version.Parse(record.CurrentVersion) < InstallationDefaults.MinimumVersion)
+            InstallationDefaults.SetAsideForLegacyHelper(record.Installation, transactionDirectory);
         record.Action = recovery ? "recover" : "rollback";
         record.Status = recovery ? "recoveryRequested" : "rollbackRequested";
         using var parent = Process.GetCurrentProcess();
@@ -160,6 +173,10 @@ public static class UpdateTransaction
             cancellationToken.ThrowIfCancellationRequested();
             if (!Directory.Exists(record.Installation) || Directory.Exists(Path.Combine(transactionDirectory, "backup")))
                 throw new PestoException("update.state", "L’état des dossiers ne permet pas de commencer l’installation.");
+            if (InstallationDefaults.TryReadMarker(transactionDirectory, out var preparedDefault, out var stagedDefault)
+                && (InstallationDefaults.CurrentSha256(record.Installation) != preparedDefault
+                    || InstallationDefaults.CurrentSha256(Path.Combine(transactionDirectory, "stage")) != stagedDefault))
+                throw new PestoException("update.changed", "La configuration par défaut de l’installation a changé depuis la préparation de la mise à jour. Aucun fichier n’a été remplacé ; préparez de nouveau la mise à jour.");
             SetState(transactionDirectory, record, "backingUp", checkpoint);
             Directory.Move(record.Installation, Path.Combine(transactionDirectory, "backup"));
             checkpoint?.Invoke("backupMoved");
@@ -206,9 +223,15 @@ public static class UpdateTransaction
         else
         {
             SetState(directory, record, "rollingBack", checkpoint);
+            if (Directory.Exists(record.Installation) && Directory.Exists(failed))
+                throw new PestoException("update.recovery", "Un candidat conservé existe déjà. La reprise s’arrête sans écraser de dossier.");
+            // The latest local default configuration, or its deliberate deletion, survives the return to the old files. It is
+            // carried while the candidate is still in place: a refusal here leaves a startable installation and a resumable return.
+            _ = InstallationDefaults.TryReadMarker(directory, out _, out var stagedDefault);
+            InstallationDefaults.PreserveLatestForRollback(Directory.Exists(record.Installation) ? record.Installation : failed, backup, directory, stagedDefault);
+            checkpoint?.Invoke("defaultsPreserved");
             if (Directory.Exists(record.Installation))
             {
-                if (Directory.Exists(failed)) throw new PestoException("update.recovery", "Un candidat conservé existe déjà. La reprise s’arrête sans écraser de dossier.");
                 Directory.Move(record.Installation, failed);
                 checkpoint?.Invoke("failedCandidateMoved");
             }

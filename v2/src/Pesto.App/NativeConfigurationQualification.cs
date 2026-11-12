@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Security.Principal;
 using System.Text;
 using System.Text.Json.Nodes;
@@ -8,13 +9,27 @@ using Pesto.Engine;
 
 namespace Pesto.App;
 
-/// <summary>Real MainForm buttons and native file pickers, in a new temporary tree with no AD adapter.</summary>
+/// <summary>
+/// Real MainForm buttons and native file pickers, in a new temporary tree with no AD adapter. The installation under test is
+/// a verified copy of the running pack inside that tree: the bench never writes into <see cref="AppPaths.AppDirectory"/>,
+/// which the CI verifies again afterwards.
+/// </summary>
 internal static class NativeConfigurationQualification
 {
     private const string ImportTitle = "Importer une configuration Pesto";
     private const string ExportTitle = "Exporter les paramètres partageables";
-    private const string FolderTitle = "Choisir le dossier parent : Pesto y créera un nouveau pack personnalisé complet, prêt à diffuser.";
     private const string SourceFolderTitle = "Choisir le dossier du pack Pesto V2, local ou sur un partage UNC";
+    // Exact texts shared with web/js/pages/maintenance.js and the engine (2.0.14, configuration par défaut sur place).
+    private const string DefaultConfirmLabel = "Enregistrer comme défaut";
+    private const string ReadOnlyCode = "config.default_readonly";
+    private const string ReadOnlyMessage = "Le dossier de cette installation n’est pas accessible en écriture : la configuration par défaut n’a pas été enregistrée. Lancez Pesto normalement depuis cette installation (autorisation administrateur), ou exportez la configuration et copiez le fichier sous wad\\defaults\\configuration.json.";
+    private const string RefusedPrefix = "Configuration par défaut non enregistrée : ";
+    private const string WrittenToast = "Configuration par défaut enregistrée.";
+    private const string DefaultKeptOnUpdate = "La configuration par défaut de cette installation est conservée.";
+    private static readonly string WrittenStatus = "Configuration par défaut enregistrée dans cette installation : " + InstallationDefaults.DisplayPath
+        + " (version " + ConfigurationQualificationScripts.Version + ").";
+    private static readonly string UnchangedStatus = "Configuration par défaut déjà identique (version " + ConfigurationQualificationScripts.Version
+        + ") : aucun fichier modifié.";
     private static JsonArray? lastDialogControls;
     private static JsonArray dialogObservations = [];
 
@@ -38,12 +53,15 @@ internal static class NativeConfigurationQualification
         Directory.CreateDirectory(data);
         var proof = new JsonObject
         {
-            ["schemaVersion"] = 2, ["kind"] = "pesto.native-configuration-qualification",
+            ["schemaVersion"] = 3, ["kind"] = "pesto.native-configuration-qualification",
             ["utc"] = DateTimeOffset.UtcNow.ToString("O"), ["success"] = false, ["adQualification"] = false,
             ["adExecuted"] = false, ["realUac"] = false, ["ordinaryProfileAccess"] = false,
             ["uiScope"] = "mainform-webview2-buttons-and-native-dialogs", ["uiDriver"] = "compiled-dom-input-and-click",
-            ["fixtureSetup"] = "synthetic-configuration-before-mainform-start", ["timeoutSeconds"] = 480,
-            ["nativeUpdateInstallFromUiQualified"] = false, ["uncQualification"] = false
+            ["fixtureSetup"] = "synthetic-configuration-and-pack-copy-before-mainform-start",
+            ["installationUnderTest"] = "temporary-copy-of-running-pack", ["timeoutSeconds"] = 480,
+            ["nativeUpdateInstallFromUiQualified"] = false, ["uncQualification"] = false,
+            ["installationDefaultButtonFlowQualified"] = false, ["readOnlyRefusalQualified"] = false,
+            ["legacyCustomPackPreparedFromUiQualified"] = false
         };
         var checks = new JsonArray(); proof["checks"] = checks;
         var uiSteps = new JsonArray(); proof["uiSteps"] = uiSteps;
@@ -55,42 +73,91 @@ internal static class NativeConfigurationQualification
         ConfigurationQualificationHost? host = null;
         JsonObject? lastUi = null;
         string? sourceFingerprint = null;
+        Dictionary<string, long>? sourceInventory = null;
+        // A deny rule placed on the copy must be gone before the temporary tree is deleted, even after a failure.
+        string? deniedDirectory = null;
+        SecurityIdentifier? deniedSid = null;
         var stage = "package";
         var completed = false;
+        void Check(bool value, string name)
+        {
+            if (!value) throw new PestoException("qualification.configuration." + name, "Contrôle natif non satisfait : " + name);
+            checks.Add(name);
+        }
         try
         {
             var package = UpdatePackage.Validate(AppPaths.AppDirectory);
             AppPaths.RequirePortableFiles(); HostPolicy.ClearBrowserOverrides();
             sourceFingerprint = package.Fingerprint;
+            var sourceFiles = UpdatePackage.Inventory(AppPaths.AppDirectory);
+            sourceInventory = sourceFiles;
             proof["channel"] = package.Channel;
             proof["runtimeMode"] = package.WebView2Runtime; proof["runtimeSource"] = AppPaths.RuntimeSource;
             proof["sourceFingerprint"] = package.Fingerprint;
+            proof["sourceDistribution"] = package.Distribution;
             proof["executableSha256"] = UpdatePackage.Hash(Path.Combine(AppPaths.AppDirectory, "Pesto.exe"));
+            // The pack under CI verification carries no default and must never receive one, even a refused one.
+            if (Directory.Exists(Path.Combine(AppPaths.AppDirectory, "wad", "defaults")))
+                throw new PestoException("qualification.configuration.source-defaults", "Le pack lancé contient déjà wad\\defaults : le banc exige un pack sans configuration par défaut et n’a rien modifié.");
             using var identity = WindowsIdentity.GetCurrent();
             var profile = new OperatorProfile(identity.User!.Value, Path.Combine(data, "LocalData"));
             var parentData = AppPaths.UserData(package.Channel, false, false, profile.LocalData);
             var config = new ProfileConfigurationService(parentData, profile.Sid, ConfigurationAccessMode.Live);
             config.Initialize();
-            // Fixture setup only. All subsequent configuration changes must come through visible UI actions.
-            var seed = config.PreviewSettings(PestoJson.Element(new
+            // Fixture setup only. All subsequent configuration changes of this profile must come through visible UI actions.
+            static JsonObject Seed(ProfileConfigurationService service, string prefix) => service.PreviewSettings(PestoJson.Element(new
             {
-                domain = "example.local", dc = "", prefix = "111301", rootOu = "OU=Postes,DC=example,DC=local",
+                domain = "example.local", dc = "", prefix, rootOu = "OU=Postes,DC=example,DC=local",
                 preprodOu = "", preprodSite = "", production = true, randomNames = false, namingPattern = PestoSettings.DefaultPattern,
                 sites = new[] { new { id = "paris", name = "Paris", code = "PA", ou = "OU=Paris,OU=Postes,DC=example,DC=local" } }
             }));
-            _ = config.ApplyImport(Text(seed, "planId"), true);
+            _ = config.ApplyImport(Text(Seed(config, "111301"), "planId"), true);
+            var profileRoot = Path.GetDirectoryName(config.ConfigurationPath)!;
             var originalStamp = UpdatePackage.Hash(config.ConfigurationPath);
             var expectedConfiguration = Text(config.Export(ConfigurationQualificationScripts.Version), "fingerprint");
             var exportPath = Path.Combine(data, "export.json");
-            var folderParent = Path.Combine(data, "selected destination");
-            Directory.CreateDirectory(folderParent);
+
+            stage = "installation-copy";
+            // Fixture setup: the services and the buttons act on this verified copy, never on the running pack.
+            var installation = Path.Combine(data, "install", "Pesto");
+            scope.RequireOwned(installation);
+            Directory.CreateDirectory(Path.GetDirectoryName(installation)!);
+            UpdatePackage.CopyToNew(AppPaths.AppDirectory, installation, package.Fingerprint);
+            var copy = UpdatePackage.Validate(installation, package.Channel);
+            var copyInventory = UpdatePackage.Inventory(installation);
+            var sumsPath = Path.Combine(installation, "wad", "SHA256SUMS");
+            var manifestPath = Path.Combine(installation, "wad", "Pesto.package.json");
+            var sumsSha = UpdatePackage.Hash(sumsPath);
+            var manifestSha = UpdatePackage.Hash(manifestPath);
+            var wad = Path.Combine(installation, "wad");
+            var defaultsDirectory = Path.Combine(wad, "defaults");
+            var defaultsFile = InstallationDefaults.PathIn(installation);
+            Check(copy.Fingerprint == package.Fingerprint && copy.Distribution == package.Distribution && copy.FileCount == package.FileCount
+                && copy.ConfigurationFingerprint is null && copy.LocalConfigurationFingerprint is null && SameInventory(copyInventory, sourceFiles)
+                && sumsSha == UpdatePackage.Hash(Path.Combine(AppPaths.AppDirectory, "wad", "SHA256SUMS"))
+                && manifestSha == UpdatePackage.Hash(Path.Combine(AppPaths.AppDirectory, "wad", "Pesto.package.json"))
+                && UpdatePackage.Hash(Path.Combine(installation, "Pesto.exe")) == Text(proof, "executableSha256")
+                && InstallationDefaults.Inspect(installation).State == "missing" && !Directory.Exists(defaultsDirectory), "installationCopyExact");
+            proof["installationCopy"] = new JsonObject { ["relativePath"] = Relative(scope, installation), ["fingerprint"] = copy.Fingerprint,
+                ["distribution"] = copy.Distribution, ["fileCount"] = copy.FileCount, ["sumsSha256"] = sumsSha, ["manifestSha256"] = manifestSha };
+            IEnumerable<string> ProfileDefaultBackups()
+            {
+                var backups = Path.Combine(profileRoot, "backups");
+                return Directory.Exists(backups) ? Directory.EnumerateFiles(backups, "installation-default.*", SearchOption.TopDirectoryOnly) : [];
+            }
+            bool SourcePackUntouched() => UpdatePackage.Validate(AppPaths.AppDirectory).Fingerprint == package.Fingerprint
+                && SameInventory(UpdatePackage.Inventory(AppPaths.AppDirectory), sourceFiles)
+                && !Directory.Exists(Path.Combine(AppPaths.AppDirectory, "wad", "defaults"));
+
+            stage = "mainform";
             var updateState = Path.Combine(data, "updates");
             var native = new NativeHostActions(profile, package.Channel, false);
             host = new(native, scope);
             native.EnableQualificationFileGuard(scope, host.ObserveSelectionBeforeIo);
-            var updates = new UpdateService(new(AppPaths.AppDirectory, updateState, package.Channel, false));
+            // Both services receive the copy: a written, refused or carried default never reaches the running pack.
+            var updates = new UpdateService(new(installation, updateState, package.Channel, false));
             var backend = new ApplicationServicesBackend(PestoBackend.CreateConfigurationOnly(parentData, gpRoot: Path.Combine(data, "GP")),
-                false, config, updates, host, AppPaths.AppDirectory);
+                false, config, updates, host, installation);
             observed = new(backend);
             using var parent = new MainForm(observed, false, false, package.Channel, parentData, initialPage: "parametres", configurationOnly: true);
             parent.EnableQualification(scope);
@@ -106,13 +173,9 @@ internal static class NativeConfigurationQualification
                     args.Cancel = true; // Let the active operation finish before deleting its temporary tree.
                 }
             };
-            void Check(bool value, string name)
-            {
-                if (!value) throw new PestoException("qualification.configuration." + name, "Contrôle natif non satisfait : " + name);
-                checks.Add(name);
-            }
             var expectedBackendFailures = new HashSet<int>();
-            var encodingImportNumber = -1;
+            // One exact engine refusal admitted at a time: its stage, operation, code and call number.
+            (string Stage, string Operation, string Code, int Number)? admitted = null;
             async Task Act(ConfigurationQualificationStep step)
             {
                 var result = await parent.QualificationStepAsync(step).WaitAsync(stop.Token);
@@ -131,9 +194,8 @@ internal static class NativeConfigurationQualification
                         var code = Text(call, "failureCode");
                         var sequence = Number(call, "sequence");
                         if (code.Length == 0 || expectedBackendFailures.Contains(sequence)) continue;
-                        if (stage == "invalid-encoding-ui" && Text(call, "operation") == "configuration.previewImport" && code == "config.encoding"
-                            && observed.Count("configuration.previewImport") == encodingImportNumber
-                            && Number(observed.Last("configuration.previewImport"), "sequence") == sequence)
+                        if (admitted is { } refusal && stage == refusal.Stage && Text(call, "operation") == refusal.Operation && code == refusal.Code
+                            && observed.Count(refusal.Operation) == refusal.Number && Number(observed.Last(refusal.Operation), "sequence") == sequence)
                         { expectedBackendFailures.Add(sequence); continue; }
                         proof["backendFailure"] = call.DeepClone();
                         throw new PestoException(code, "Le vrai moteur a refusé l’action UI du banc ; aucun succès n’est attendu après ce refus.");
@@ -170,6 +232,12 @@ internal static class NativeConfigurationQualification
                 scope.RequireOwned(backup);
                 Check(File.Exists(backup) && UpdatePackage.Hash(backup) == expected, check);
             }
+            // Admits only the refusal observed for this exact call, then closes the admission.
+            void CloseAdmission(string operation)
+            {
+                expectedBackendFailures.Add(Number(observed.Last(operation), "sequence"));
+                admitted = null;
+            }
             parent.Shown += async (_, _) =>
             {
                 try
@@ -189,7 +257,7 @@ internal static class NativeConfigurationQualification
                     Check(Text(exported, "version") == ConfigurationQualificationScripts.Version
                         && Text(exported, "fingerprint") == expectedConfiguration, "nativeExportExact");
                     var exportStamp = UpdatePackage.Hash(exportPath);
-                    proof["exportObservation"] = new JsonObject { ["relativePath"] = Path.GetRelativePath(scope.Root, exportPath).Replace('\\', '/'),
+                    proof["exportObservation"] = new JsonObject { ["relativePath"] = Relative(scope, exportPath),
                         ["sha256"] = exportStamp, ["configurationFingerprint"] = expectedConfiguration, ["version"] = ConfigurationQualificationScripts.Version };
                     Check(!Directory.EnumerateFiles(data, "export.json.*.tmp", SearchOption.TopDirectoryOnly).Any(), "noExportTemporaryFile");
                     proof["nativeExportFromUiQualified"] = true;
@@ -221,7 +289,8 @@ internal static class NativeConfigurationQualification
                     stage = "invalid-encoding-ui";
                     var malformed = Path.Combine(data, "malformed.json");
                     File.WriteAllBytes(malformed, [0x7b, 0x22, 0xc3, 0x28, 0x22, 0x7d]);
-                    encodingImportNumber = observed.Count("configuration.previewImport") + 1;
+                    var encodingImportNumber = observed.Count("configuration.previewImport") + 1;
+                    admitted = (stage, "configuration.previewImport", "config.encoding", encodingImportNumber);
                     await Pick(ImportTitle, malformed, ConfigurationQualificationStep.Import);
                     await WaitUi(state => Idle(state) && Text(observed.Last("configuration.previewImport"), "failureCode") == "config.encoding"
                         && Text(state, "notifications").Contains("encodage invalide", StringComparison.Ordinal));
@@ -231,7 +300,7 @@ internal static class NativeConfigurationQualification
                     Check(Flag(encodingFailure, "completed") && Text(encodingFailure, "failureCode") == "config.encoding"
                         && observed.Count("configuration.previewImport") == encodingImportNumber
                         && UpdatePackage.Hash(config.ConfigurationPath) == changedStamp && observed.Count("configuration.applyImport") == 1, "invalidEncodingRejected");
-                    expectedBackendFailures.Add(Number(encodingFailure, "sequence"));
+                    CloseAdmission("configuration.previewImport");
 
                     stage = "import-cancel-preview-ui";
                     await Pick(ImportTitle, exportPath, ConfigurationQualificationStep.Import);
@@ -260,103 +329,219 @@ internal static class NativeConfigurationQualification
                     BackupMatches(changedStamp, "importBackupExact");
                     proof["nativeImportFromUiQualified"] = true;
 
+                    // « Définir comme configuration par défaut » writes wad\defaults\configuration.json in place, in the copy only.
                     stage = "default-confirmation-cancel-ui";
+                    var statusReads = observed.Count("configuration.status");
                     await Act(ConfigurationQualificationStep.Default);
-                    await WaitDialog("Préparer un pack avec vos paramètres");
-                    Check(observed.Count("configuration.setDefault") == 0 && host.Count("destination") == 0
-                        && !Directory.EnumerateFileSystemEntries(folderParent).Any(), "customPackWaitsForConfirmation");
+                    var defaultDialog = await WaitDialog(ConfigurationQualificationScripts.DefaultTitle);
+                    var readState = observed.LastCompleted("configuration.status")?["result"]?["installationDefault"];
+                    Check(observed.Count("configuration.setDefault") == 0 && observed.Count("configuration.status") > statusReads
+                        && Text(readState, "state") == "missing" && Text(readState, "path") == InstallationDefaults.DisplayPath
+                        && ConfirmsWith(defaultDialog, DefaultConfirmLabel)
+                        && Text(defaultDialog["dialog"], "body").Contains(InstallationDefaults.DisplayPath, StringComparison.Ordinal)
+                        && Text(defaultDialog["dialog"], "body").Contains("Aucun pack n’est recréé", StringComparison.Ordinal)
+                        && !Text(defaultDialog["dialog"], "body").Contains("Il remplace", StringComparison.Ordinal)
+                        && !Directory.Exists(defaultsDirectory) && SameInventory(UpdatePackage.Inventory(installation), copyInventory), "defaultWaitsForConfirmation");
                     await Capture("configuration-default-confirmation.png");
                     await Act(ConfigurationQualificationStep.CancelDefault);
                     await WaitUi(Idle);
-                    Check(observed.Count("configuration.setDefault") == 0 && host.Count("destination") == 0, "customPackConfirmationCancelled");
+                    Check(observed.Count("configuration.setDefault") == 0 && !Directory.Exists(defaultsDirectory)
+                        && SameInventory(UpdatePackage.Inventory(installation), copyInventory), "defaultConfirmationCancelled");
 
-                    stage = "default-folder-cancel-ui";
+                    stage = "default-readonly-ui";
+                    // A real refusal: deny creating files and folders, and writing, in the copy's wad\ for the current SID.
+                    // No inheritance: wad\defaults does not exist yet, so the engine must create it there and is refused.
+                    var sid = identity.User!;
+                    if (Directory.Exists(defaultsDirectory) || HasDeny(wad, sid))
+                        throw new PestoException("qualification.configuration.readonly-setup", "La copie n’est pas dans l’état attendu pour le refus d’écriture.");
+                    deniedDirectory = wad; deniedSid = sid;
+                    try
+                    {
+                        SetDeny(wad, sid, present: true);
+                        Check(HasDeny(wad, sid), "readOnlyRuleApplied");
+                        admitted = (stage, "configuration.setDefault", ReadOnlyCode, observed.Count("configuration.setDefault") + 1);
+                        await Act(ConfigurationQualificationStep.Default);
+                        await WaitDialog(ConfigurationQualificationScripts.DefaultTitle);
+                        await Act(ConfigurationQualificationStep.ConfirmDefault);
+                        var refusedUi = await WaitUi(state => Idle(state) && Text(observed.Last("configuration.setDefault"), "failureCode") == ReadOnlyCode
+                            && Text(state, "configurationStatus") == RefusedPrefix + ReadOnlyMessage
+                            && Text(state, "notifications").Contains(ReadOnlyMessage, StringComparison.Ordinal), 120);
+                        var refusal = observed.Last("configuration.setDefault");
+                        Check(Flag(refusal, "completed") && Text(refusal, "failureCode") == ReadOnlyCode && Flag(refusal, "confirmed")
+                            && observed.Count("configuration.setDefault") == 1 && refusal?["expectedSha256"]?.GetValue<string>() == ""
+                            && observed.FailureMessage("configuration.setDefault") == ReadOnlyMessage, "readOnlyRefusedByEngine");
+                        CloseAdmission("configuration.setDefault");
+                        Check(Text(refusedUi, "configurationStatus") == RefusedPrefix + ReadOnlyMessage
+                            && !Text(refusedUi, "notifications").Contains(WrittenToast, StringComparison.Ordinal), "readOnlyRefusalVisible");
+                        Check(!Directory.Exists(defaultsDirectory) && SameInventory(UpdatePackage.Inventory(installation), copyInventory)
+                            && UpdatePackage.Validate(installation, package.Channel).Fingerprint == copy.Fingerprint
+                            && InstallationDefaults.Inspect(installation).State == "missing" && !ProfileDefaultBackups().Any()
+                            && UpdatePackage.Hash(config.ConfigurationPath) == originalStamp, "readOnlyLeftNothing");
+                    }
+                    finally { if (TryRemoveDeny(wad, sid)) deniedDirectory = null; }
+                    Check(deniedDirectory is null && !HasDeny(wad, sid), "readOnlyRuleRemoved");
+                    proof["readOnlyRefusal"] = new JsonObject { ["operation"] = "configuration.setDefault", ["code"] = ReadOnlyCode,
+                        ["rule"] = "deny-createfiles-createdirectories-write-current-sid-on-copy-wad-without-inheritance",
+                        ["messageExact"] = true, ["statusExact"] = true, ["ruleRemoved"] = true };
+                    proof["readOnlyRefusalQualified"] = true;
+
+                    stage = "default-written-ui";
                     await Act(ConfigurationQualificationStep.Default);
-                    await WaitDialog("Préparer un pack avec vos paramètres");
-                    await Pick(FolderTitle, null, ConfigurationQualificationStep.ConfirmDefault);
-                    await WaitUi(state => Idle(state) && Returned("configuration.setDefault", "cancelled"));
-                    Check(host.Count("destination") == 1 && !Directory.EnumerateFileSystemEntries(folderParent).Any()
-                        && UpdatePackage.Hash(config.ConfigurationPath) == originalStamp, "packDestinationCancelled");
+                    var writeDialog = await WaitDialog(ConfigurationQualificationScripts.DefaultTitle);
+                    if (!ConfirmsWith(writeDialog, DefaultConfirmLabel) || Text(writeDialog["dialog"], "body").Contains("Il remplace", StringComparison.Ordinal))
+                        throw new PestoException("qualification.configuration.default-dialog", "La confirmation affichée ne correspond pas à une installation sans configuration par défaut.");
+                    await Act(ConfigurationQualificationStep.ConfirmDefault);
+                    var writtenUi = await WaitUi(state => Idle(state) && Returned("configuration.setDefault", "written")
+                        && Text(state, "configurationStatus") == WrittenStatus, 120);
+                    var written = Result("configuration.setDefault");
+                    var writtenSha = UpdatePackage.Hash(defaultsFile);
+                    Check(observed.Count("configuration.setDefault") == 2 && Flag(observed.Last("configuration.setDefault"), "confirmed")
+                        && observed.Last("configuration.setDefault")?["expectedSha256"]?.GetValue<string>() == ""
+                        && Text(observed.Last("configuration.setDefault"), "version") == ConfigurationQualificationScripts.Version
+                        && Text(written, "path") == InstallationDefaults.DisplayPath && SamePath(Text(written, "file"), defaultsFile)
+                        && Text(written, "version") == ConfigurationQualificationScripts.Version && Text(written, "fingerprint") == expectedConfiguration
+                        && Text(written, "sha256") == writtenSha && written["replaced"]?.GetValue<bool>() == false
+                        && written["previous"] is null && written["backup"] is null
+                        && Text(written, "distribution") == package.Distribution && written["official"]?.GetValue<bool>() == (package.Distribution == "official")
+                        && Text(written, "packFingerprint") == package.Fingerprint && !ProfileDefaultBackups().Any(), "defaultWrittenFromButton");
+                    Check(Text(writtenUi, "configurationStatus") == WrittenStatus
+                        && Text(writtenUi, "notifications").Contains(WrittenToast, StringComparison.Ordinal), "defaultWrittenVisible");
+                    var after = UpdatePackage.Validate(installation, package.Channel);
+                    Check(after.Fingerprint == copy.Fingerprint && after.Distribution == copy.Distribution && after.FileCount == copy.FileCount
+                        && after.Bytes == copy.Bytes && after.ConfigurationFingerprint is null
+                        && after.LocalConfigurationFingerprint == expectedConfiguration && after.LocalConfigurationVersion == ConfigurationQualificationScripts.Version
+                        && UpdatePackage.Hash(sumsPath) == sumsSha && UpdatePackage.Hash(manifestPath) == manifestSha
+                        && !File.ReadAllText(sumsPath).Contains("wad/defaults/", StringComparison.OrdinalIgnoreCase), "defaultPackIdentityUnchanged");
+                    Check(UpdatePackage.Hash(Path.Combine(installation, "Pesto.exe")) == Text(proof, "executableSha256"), "defaultExecutableUnchanged");
+                    Check(File.ReadAllBytes(defaultsFile).SequenceEqual(new UTF8Encoding(false).GetBytes(ConfigurationDocument.Canonical(exported)))
+                        && ConfigurationDocument.Canonical(ConfigurationDocument.ValidateBundle(ConfigurationDocument.ReadFile(defaultsFile)))
+                        == ConfigurationDocument.Canonical(exported), "defaultMatchesUiExport");
+                    var writtenInventory = UpdatePackage.Inventory(installation);
+                    var writtenState = InstallationDefaults.Inspect(installation);
+                    Check(writtenInventory.Count == copyInventory.Count + 1 && writtenInventory.ContainsKey(InstallationDefaults.RelativePath)
+                        && copyInventory.All(item => writtenInventory.TryGetValue(item.Key, out var size) && size == item.Value)
+                        && Directory.EnumerateFileSystemEntries(defaultsDirectory).Select(entry => Path.GetFileName(entry)).SequenceEqual(["configuration.json"])
+                        && writtenState.State == "local" && writtenState.Sha256 == writtenSha && writtenState.Fingerprint == expectedConfiguration, "noDefaultDebris");
+                    await Capture("configuration-default-written.png");
 
-                    stage = "default-positive-folder-ui";
+                    stage = "default-unchanged-ui";
                     await Act(ConfigurationQualificationStep.Default);
-                    await WaitDialog("Préparer un pack avec vos paramètres");
-                    await Pick(FolderTitle, folderParent, ConfigurationQualificationStep.ConfirmDefault);
-                    var preparedUi = await WaitUi(state => Idle(state) && Returned("configuration.setDefault", "prepared"), 180);
-                    var destination = Text(Result("configuration.setDefault"), "destination");
-                    scope.RequireOwned(destination);
-                    Check(SamePath(Path.GetDirectoryName(destination), folderParent) && SamePath(Directory.EnumerateDirectories(folderParent).Single(), destination)
-                        && host.Count("destination") == 2 && observed.Count("configuration.setDefault") == 2
-                        && Flag(observed.Last("configuration.setDefault"), "confirmed"), "positiveNativeFolderSelection");
-                    Check(Text(preparedUi, "configurationStatus") == "Pack prêt à diffuser : " + destination, "customPackResultVisible");
-                    var custom = UpdatePackage.Validate(destination);
-                    var customManifest = JsonNode.Parse(File.ReadAllText(Path.Combine(destination, "wad", "Pesto.package.json")))!;
-                    Check(custom.Distribution == "custom" && customManifest["official"]?.GetValue<bool>() == false
-                        && Text(customManifest, "configurationVersion") == ConfigurationQualificationScripts.Version
-                        && Text(customManifest, "configurationFingerprint") == expectedConfiguration, "customPackValidated");
-                    Check(UpdatePackage.Hash(Path.Combine(destination, "Pesto.exe")) == Text(proof, "executableSha256"), "customExecutableUnchanged");
-                    var defaults = Path.Combine(destination, "wad", "defaults", "configuration.json");
-                    Check(ConfigurationDocument.Canonical(ConfigurationDocument.ValidateBundle(ConfigurationDocument.ReadFile(defaults)))
-                        == ConfigurationDocument.Canonical(exported), "customDefaultsMatchUiExport");
-                    Check(!Directory.EnumerateDirectories(folderParent, ".pesto-personnalisation-*", SearchOption.TopDirectoryOnly).Any(), "noCustomPackStagingLeft");
-                    proof["customPack"] = new JsonObject { ["relativePath"] = Path.GetRelativePath(scope.Root, destination).Replace('\\', '/'),
-                        ["fingerprint"] = custom.Fingerprint, ["configurationFingerprint"] = expectedConfiguration,
-                        ["executableSha256"] = Text(proof, "executableSha256"), ["fileCount"] = custom.FileCount };
-                    proof["positiveFolderSelectionQualified"] = true;
-                    proof["customPackButtonFlowQualified"] = true;
-                    await Capture("configuration-custom-pack.png");
+                    var replaceDialog = await WaitDialog(ConfigurationQualificationScripts.DefaultTitle);
+                    var replaceWarned = ConfirmsWith(replaceDialog, DefaultConfirmLabel) && Text(replaceDialog["dialog"], "body").Contains(
+                        "Il remplace la configuration par défaut actuelle (version " + ConfigurationQualificationScripts.Version + ")", StringComparison.Ordinal)
+                        && Text(observed.LastCompleted("configuration.status")?["result"]?["installationDefault"], "sha256") == writtenSha;
+                    await Act(ConfigurationQualificationStep.ConfirmDefault);
+                    var unchangedUi = await WaitUi(state => Idle(state) && Returned("configuration.setDefault", "unchanged")
+                        && Text(state, "configurationStatus") == UnchangedStatus, 120);
+                    var unchanged = Result("configuration.setDefault");
+                    Check(replaceWarned && observed.Count("configuration.setDefault") == 3 && Flag(observed.Last("configuration.setDefault"), "confirmed")
+                        && Text(observed.Last("configuration.setDefault"), "expectedSha256") == writtenSha
+                        && Text(unchanged, "sha256") == writtenSha && Text(unchanged, "version") == ConfigurationQualificationScripts.Version
+                        && Text(unchanged, "fingerprint") == expectedConfiguration && unchanged["backup"] is null
+                        && Text(unchangedUi, "configurationStatus") == UnchangedStatus && UpdatePackage.Hash(defaultsFile) == writtenSha
+                        && SameInventory(UpdatePackage.Inventory(installation), writtenInventory) && !ProfileDefaultBackups().Any(), "defaultUnchangedFromButton");
+                    proof["installationDefault"] = new JsonObject { ["relativePath"] = Relative(scope, defaultsFile), ["state"] = writtenState.State,
+                        ["version"] = ConfigurationQualificationScripts.Version, ["configurationFingerprint"] = expectedConfiguration, ["sha256"] = writtenSha,
+                        ["distribution"] = after.Distribution, ["packFingerprint"] = after.Fingerprint, ["fileCount"] = after.FileCount,
+                        ["sumsSha256"] = sumsSha, ["manifestSha256"] = manifestSha };
+                    proof["installationDefaultButtonFlowQualified"] = true;
 
-                    stage = "distribution-service-checks";
-                    // Separate read/import checks of the produced bundle, not a claim of another UI journey.
+                    stage = "default-service-checks";
+                    // Service checks of the file written by the button, not another UI journey.
                     var fresh = new ProfileConfigurationService(Path.Combine(data, "fresh"), profile.Sid, ConfigurationAccessMode.Live);
-                    var first = fresh.Initialize(defaults);
+                    var first = fresh.Initialize(defaultsFile);
                     Check(Text(first, "status") == "imported" && Text(fresh.ReadSettings(), "prefix") == "111301", "freshProfileImportsDefaults");
                     var freshStamp = UpdatePackage.Hash(fresh.ConfigurationPath);
-                    _ = fresh.Initialize(defaults);
-                    Check(UpdatePackage.Hash(fresh.ConfigurationPath) == freshStamp, "existingProfilePreserved");
+                    _ = fresh.Initialize(defaultsFile);
+                    var existing = new ProfileConfigurationService(Path.Combine(data, "existing"), profile.Sid, ConfigurationAccessMode.Live);
+                    existing.Initialize();
+                    _ = existing.ApplyImport(Text(Seed(existing, "333333"), "planId"), true);
+                    var existingStamp = UpdatePackage.Hash(existing.ConfigurationPath);
+                    var pending = existing.Initialize(defaultsFile);
+                    Check(UpdatePackage.Hash(fresh.ConfigurationPath) == freshStamp && Flag(pending, "requiresDecision")
+                        && UpdatePackage.Hash(existing.ConfigurationPath) == existingStamp && Text(existing.ReadSettings(), "prefix") == "333333", "existingProfilePreserved");
+                    var kept = existing.DecideDistribution(Text(pending["pendingDistribution"], "planId"), false, true);
+                    var again = existing.Initialize(defaultsFile);
+                    Check(Text(kept, "status") == "kept" && !Flag(again, "requiresDecision")
+                        && UpdatePackage.Hash(existing.ConfigurationPath) == existingStamp && UpdatePackage.Hash(defaultsFile) == writtenSha, "existingProfileChoiceRemembered");
+
+                    stage = "legacy-custom-pack-fixture";
+                    // Code fixture, not a UI journey: the sealed format the button produced up to 2.0.13, built from the running pack
+                    // (read only) to prove that such packs remain valid candidates from the maintenance buttons.
+                    var legacyParent = Path.Combine(data, "legacy");
+                    Directory.CreateDirectory(legacyParent);
+                    var legacyPath = Path.Combine(legacyParent, "Pesto-perso");
+                    scope.RequireOwned(legacyPath);
+                    var legacy = LegacyCustomPack.Build(AppPaths.AppDirectory, legacyPath,
+                        config.Export(ConfigurationQualificationScripts.Version), ConfigurationQualificationScripts.Version);
+                    var legacyManifest = JsonNode.Parse(File.ReadAllText(Path.Combine(legacyPath, "wad", "Pesto.package.json")))!;
+                    Check(legacy.Distribution == "custom" && legacy.ConfigurationFingerprint == expectedConfiguration && legacy.LocalConfigurationFingerprint is null
+                        && legacy.Fingerprint != copy.Fingerprint && legacy.Version == copy.Version && legacy.Channel == copy.Channel
+                        && legacyManifest["official"]?.GetValue<bool>() == false
+                        && Text(legacyManifest, "configurationVersion") == ConfigurationQualificationScripts.Version
+                        && Text(legacyManifest, "configurationFingerprint") == expectedConfiguration
+                        && InstallationDefaults.Inspect(legacyPath).State == "sealed"
+                        && File.ReadLines(Path.Combine(legacyPath, "wad", "SHA256SUMS")).Any(line => line.EndsWith("  " + InstallationDefaults.RelativePath, StringComparison.Ordinal))
+                        && UpdatePackage.Hash(Path.Combine(legacyPath, "Pesto.exe")) == Text(proof, "executableSha256")
+                        && !Directory.EnumerateDirectories(legacyParent, ".pesto-personnalisation-*", SearchOption.TopDirectoryOnly).Any()
+                        && SourcePackUntouched(), "legacyCustomPackFixtureSealed");
+                    proof["legacyCustomPack"] = new JsonObject { ["fixture"] = "LegacyCustomPack.Build", ["relativePath"] = Relative(scope, legacyPath),
+                        ["fingerprint"] = legacy.Fingerprint, ["configurationFingerprint"] = expectedConfiguration, ["fileCount"] = legacy.FileCount };
 
                     stage = "maintenance-inspect-ui";
-                    await Pick(SourceFolderTitle, destination, ConfigurationQualificationStep.UpdateFolder);
+                    await Pick(SourceFolderTitle, legacyPath, ConfigurationQualificationStep.UpdateFolder);
                     var candidateUi = await WaitUi(state => Idle(state) && Number(state, "candidateCount") == 1
                         && Flag(observed.Last("updates.inspect"), "completed"), 180);
+                    var inspected = Result("updates.inspect");
                     Check(observed.Count("updates.inspect") == 1 && observed.Count("updates.prepare") == 0
-                        && Text(Result("updates.inspect"), "fingerprint") == custom.Fingerprint
-                        && Text(candidateUi, "candidatesText").Contains("Pack personnalisé", StringComparison.Ordinal), "maintenanceFolderInspectedFromButton");
-                    var candidateId = Text(Result("updates.inspect"), "candidateId");
+                        && Text(inspected, "fingerprint") == legacy.Fingerprint && Text(inspected, "distribution") == "custom"
+                        && inspected["configurationIncluded"]?.GetValue<bool>() == true && inspected["localConfiguration"]?.GetValue<bool>() == false
+                        && Text(candidateUi, "candidatesText").Contains("Pack personnalisé", StringComparison.Ordinal)
+                        && !Text(candidateUi, "candidatesText").Contains("configuration par défaut incluse", StringComparison.Ordinal), "maintenanceFolderInspectedFromButton");
+                    var candidateId = Text(inspected, "candidateId");
                     await Act(ConfigurationQualificationStep.PrepareUpdate);
                     await WaitUi(state => Idle(state) && Number(state, "preparedCount") == 1
                         && Flag(observed.Last("updates.prepare"), "completed"), 180);
                     Check(observed.Count("updates.prepare") == 1 && Text(observed.Last("updates.prepare"), "candidateId") == candidateId
-                        && Text(Result("updates.prepare"), "fingerprint") == custom.Fingerprint, "maintenancePreparedFromButton");
+                        && Text(Result("updates.prepare"), "fingerprint") == legacy.Fingerprint, "maintenancePreparedFromButton");
                     var preparedId = Text(Result("updates.prepare"), "preparedId");
                     var workspaces = Path.Combine(updateState, "workspaces");
                     scope.RequireOwned(workspaces);
                     var preparedDirectory = Directory.EnumerateDirectories(workspaces)
                         .Select(work => Path.Combine(work, "prepared", preparedId, "package")).Single(Directory.Exists);
                     scope.RequireOwned(preparedDirectory);
-                    Check(UpdatePackage.Validate(preparedDirectory).Fingerprint == custom.Fingerprint
-                        && UpdatePackage.Validate(destination).Fingerprint == custom.Fingerprint, "maintenancePreparedCopyExact");
+                    Check(UpdatePackage.Validate(preparedDirectory).Fingerprint == legacy.Fingerprint
+                        && UpdatePackage.Validate(legacyPath).Fingerprint == legacy.Fingerprint
+                        && UpdatePackage.Validate(installation, package.Channel).Fingerprint == copy.Fingerprint
+                        && UpdatePackage.Hash(defaultsFile) == writtenSha, "maintenancePreparedCopyExact");
                     await Capture("maintenance-prepared.png");
                     await Act(ConfigurationQualificationStep.InstallUpdate);
                     var installDialog = await WaitDialog("Installer la mise à jour préparée");
-                    Check(observed.Count("updates.install") == 0 && Text(installDialog["dialog"], "body").Contains("configuration reste", StringComparison.Ordinal), "maintenanceInstallWaitsForConfirmation");
+                    Check(observed.Count("updates.install") == 0 && Text(installDialog["dialog"], "body").Contains("configuration reste", StringComparison.Ordinal)
+                        && Text(installDialog["dialog"], "body").Contains(DefaultKeptOnUpdate, StringComparison.Ordinal), "maintenanceInstallWaitsForConfirmation");
                     await Capture("maintenance-install-confirmation.png");
                     await Act(ConfigurationQualificationStep.CancelInstall);
                     await WaitUi(Idle);
                     Check(observed.Count("updates.install") == 0 && native.PendingUpdate is null
-                        && UpdateTransaction.List(AppPaths.AppDirectory).Count == 0, "maintenanceInstallConfirmationCancelled");
+                        && UpdateTransaction.List(installation).Count == 0, "maintenanceInstallConfirmationCancelled");
                     await Act(ConfigurationQualificationStep.UpdateStatus);
                     await WaitUi(state => Idle(state) && Flag(observed.Last("updates.status"), "completed"), 180);
-                    Check(Text(Result("updates.status"), "status") == "idle" && !Flag(Result("updates.status"), "pendingRecovery"), "maintenanceStatusFromButton");
+                    var updateStatus = Result("updates.status");
+                    Check(Text(updateStatus, "status") == "idle" && !Flag(updateStatus, "pendingRecovery")
+                        && Text(updateStatus, "distribution") == package.Distribution && Text(updateStatus, "fingerprint") == package.Fingerprint
+                        && Text(updateStatus["localConfiguration"], "state") == "local"
+                        && Text(updateStatus["localConfiguration"], "fingerprint") == expectedConfiguration, "maintenanceStatusFromButton");
                     proof["maintenanceInspectionPreparationFromUiQualified"] = true;
                     proof["maintenanceInstallConfirmationCancelled"] = true;
-                    proof["maintenanceScope"] = "local-folder-inspection-preparation-and-install-confirmation-cancellation";
-                    proof["maintenancePreparedFingerprint"] = custom.Fingerprint;
+                    proof["maintenanceScope"] = "legacy-custom-pack-folder-inspection-preparation-and-install-confirmation-cancellation";
+                    proof["maintenancePreparedFingerprint"] = legacy.Fingerprint;
+                    // Inspection and preparation over an installation carrying a local default; the installation itself is not run here.
+                    proof["legacyCustomPackPreparedFromUiQualified"] = true;
 
                     stage = "integrity";
                     Check(observed.ForbiddenInvocations == 0 && host.ForbiddenInvocations == 0, "noForbiddenEffects");
                     Check(UpdatePackage.Hash(config.ConfigurationPath) == originalStamp && UpdatePackage.Hash(exportPath) == exportStamp, "operatorDataPreserved");
-                    Check(UpdatePackage.Validate(AppPaths.AppDirectory).Fingerprint == package.Fingerprint, "sourcePackUnchanged");
+                    Check(SourcePackUntouched(), "sourcePackUnchanged");
                     completed = true;
                 }
                 catch (Exception error) { proof["failureCode"] = error is PestoException pesto ? pesto.Code : error.GetType().Name; }
@@ -369,6 +554,9 @@ internal static class NativeConfigurationQualification
         catch (Exception error) { proof["failureCode"] = error is PestoException pesto ? pesto.Code : error.GetType().Name; }
         finally
         {
+            // Never leave a deny rule behind: it would block the deletion below and survive in the temporary tree.
+            var ruleLeft = deniedDirectory is not null && deniedSid is not null && !TryRemoveDeny(deniedDirectory, deniedSid);
+            proof["readOnlyRuleLeftInPlace"] = ruleLeft;
             for (var attempt = 0; attempt < 60 && Directory.Exists(data); attempt++)
             {
                 try { Directory.Delete(data, true); }
@@ -381,7 +569,14 @@ internal static class NativeConfigurationQualification
             proof["hostCalls"] = host?.Snapshot();
             proof["forbiddenBackendInvocations"] = observed?.ForbiddenInvocations ?? 0;
             proof["forbiddenHostInvocations"] = host?.ForbiddenInvocations ?? 0;
-            try { proof["sourcePackUnchanged"] = sourceFingerprint is not null && UpdatePackage.Validate(AppPaths.AppDirectory).Fingerprint == sourceFingerprint; }
+            var defaultsAbsent = !Directory.Exists(Path.Combine(AppPaths.AppDirectory, "wad", "defaults"));
+            proof["sourcePackDefaultsAbsent"] = defaultsAbsent;
+            try
+            {
+                proof["sourcePackUnchanged"] = sourceFingerprint is not null && sourceInventory is not null && defaultsAbsent
+                    && UpdatePackage.Validate(AppPaths.AppDirectory).Fingerprint == sourceFingerprint
+                    && SameInventory(UpdatePackage.Inventory(AppPaths.AppDirectory), sourceInventory);
+            }
             catch (Exception) { proof["sourcePackUnchanged"] = false; }
             if (Program.UiFailure is { } uiFailure)
             {
@@ -397,7 +592,7 @@ internal static class NativeConfigurationQualification
                 };
             }
             if (!completed) { proof["lastDialogControls"] = lastDialogControls; proof["lastUi"] = lastUi; }
-            proof["success"] = completed && !Directory.Exists(data) && Flag(proof, "sourcePackUnchanged")
+            proof["success"] = completed && !Directory.Exists(data) && Flag(proof, "sourcePackUnchanged") && defaultsAbsent && !ruleLeft
                 && (observed?.ForbiddenInvocations ?? 0) == 0 && (host?.ForbiddenInvocations ?? 0) == 0;
             if (!completed && proof["failureCode"] is null) proof["failureCode"] = "qualification.configuration.timeout";
             File.WriteAllText(Path.Combine(output, "proof.json"), proof.ToJsonString(new() { WriteIndented = true }));
@@ -413,11 +608,55 @@ internal static class NativeConfigurationQualification
     private static int Number(JsonNode? value, string key) => value?[key]?.GetValue<int>() ?? -1;
     private static bool SamePath(string? left, string right) => !string.IsNullOrWhiteSpace(left)
         && Path.TrimEndingDirectorySeparator(Path.GetFullPath(left)).Equals(Path.TrimEndingDirectorySeparator(Path.GetFullPath(right)), StringComparison.OrdinalIgnoreCase);
+    private static string Relative(DemoQualificationScope scope, string path) => Path.GetRelativePath(scope.Root, path).Replace('\\', '/');
+    private static bool SameInventory(IReadOnlyDictionary<string, long> left, IReadOnlyDictionary<string, long> right)
+        => left.Count == right.Count && left.All(item => right.TryGetValue(item.Key, out var size) && size == item.Value);
+
+    /// <summary>The open dialog offers « cancel » and « ok », with the exact confirmation label on « ok ».</summary>
+    private static bool ConfirmsWith(JsonObject state, string label)
+    {
+        if (state["dialog"]?["actions"] is not JsonArray actions || state["dialog"]?["labels"] is not JsonArray labels || actions.Count != labels.Count) return false;
+        var ids = actions.Select(action => action?.GetValue<string>()).ToList();
+        var ok = ids.IndexOf("ok");
+        return ok >= 0 && ids.Contains("cancel") && labels[ok]?.GetValue<string>() == label;
+    }
+
+    // Exactly the bench's rule: explicit, on this directory only, never inherited by existing files.
+    private static FileSystemAccessRule DenyRule(SecurityIdentifier sid) => new(sid,
+        FileSystemRights.CreateFiles | FileSystemRights.CreateDirectories | FileSystemRights.Write,
+        InheritanceFlags.None, PropagationFlags.None, AccessControlType.Deny);
+
+    private static void SetDeny(string directory, SecurityIdentifier sid, bool present)
+    {
+        var info = new DirectoryInfo(directory);
+        var security = info.GetAccessControl(AccessControlSections.Access);
+        // Removal takes every explicit deny of this SID on this directory: the bench requires that none existed before its own.
+        if (present) security.AddAccessRule(DenyRule(sid));
+        else security.RemoveAccessRuleAll(DenyRule(sid));
+        info.SetAccessControl(security);
+    }
+
+    private static bool HasDeny(string directory, SecurityIdentifier sid) => new DirectoryInfo(directory).GetAccessControl(AccessControlSections.Access)
+        .GetAccessRules(includeExplicit: true, includeInherited: false, typeof(SecurityIdentifier)).OfType<FileSystemAccessRule>()
+        .Any(rule => rule.AccessControlType == AccessControlType.Deny && sid.Equals(rule.IdentityReference));
+
+    /// <summary>Removes the bench's rule; true only when no explicit deny for this SID remains on the directory.</summary>
+    private static bool TryRemoveDeny(string directory, SecurityIdentifier sid)
+    {
+        try
+        {
+            if (!Directory.Exists(directory)) return true;
+            if (HasDeny(directory, sid)) SetDeny(directory, sid, present: false);
+            return !HasDeny(directory, sid);
+        }
+        // Best effort during cleanup: a failure is reported as a rule left in place, never as a removal.
+        catch (Exception) { return false; }
+    }
 
     internal static async Task Dialog(MainForm parent, string title, string? path, Func<Task> action, CancellationToken token)
     {
         var owner = parent.Handle;
-        var isFolder = title is FolderTitle or SourceFolderTitle;
+        var isFolder = title is SourceFolderTitle;
         using var driveStop = CancellationTokenSource.CreateLinkedTokenSource(token);
         token = driveStop.Token;
         var drive = Task.Run(async () =>

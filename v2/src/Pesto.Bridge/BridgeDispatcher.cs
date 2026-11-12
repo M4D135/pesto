@@ -210,7 +210,7 @@ public sealed partial class BridgeDispatcher(IPestoBackend backend)
             "production randomNames coordinationRequired reserveNamesInAd auditEventLogEnabled blockJoinOnClockSkew allowPrecreatedJoin allowOfflineJoin unattendedJoinEnabled unattendedOperationsEnabled", arrays: "sites", guidArrays: "excludedGroupGuids"),
         ["configuration.applyImport"] = S("planId", "planId confirmed", true, "confirmed"),
         ["configuration.decideDistribution"] = S("planId", "planId replace confirmed", true, "replace confirmed"),
-        ["configuration.setDefault"] = S("version", "confirmed", true, "confirmed"),
+        ["configuration.setDefault"] = S("version expectedSha256", "confirmed", true, "confirmed"),
         ["references.preview"] = S(mutation: true),
         ["references.apply"] = S("planId", "planId confirmed resolutions", true, "confirmed", resolutions: "resolutions"),
         ["updates.status"] = S(), ["updates.windows"] = S(),

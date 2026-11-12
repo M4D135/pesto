@@ -99,18 +99,6 @@ internal sealed partial class NativeHostActions(OperatorProfile profile, string 
         return folder.SelectedPath;
     }, cancellationToken);
 
-    public Task<string?> SelectPackDestinationAsync(CancellationToken cancellationToken) => OnUi(() =>
-    {
-        using var folder = new FolderBrowserDialog
-        {
-            Description = "Choisir le dossier parent : Pesto y créera un nouveau pack personnalisé complet, prêt à diffuser.",
-            UseDescriptionForTitle = true, ShowNewFolderButton = true
-        };
-        if (folder.ShowDialog(Owner) != DialogResult.OK) return null;
-        qualificationFileGuard?.Invoke("destination", folder.SelectedPath);
-        return Path.Combine(folder.SelectedPath, $"Pesto-{channel}-personnalise-{DateTime.Now:yyyyMMdd-HHmmss}-{Guid.NewGuid().ToString("N")[..6]}");
-    }, cancellationToken);
-
     public Task<object?> OpenDemoAsync(CancellationToken cancellationToken) => OnUi<object?>(() =>
     {
         var instance = Guid.NewGuid().ToString("N");

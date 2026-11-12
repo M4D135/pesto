@@ -293,7 +293,6 @@ internal static class MaintenanceHost
         public Task<string?> ReadImportAsync(string kind, CancellationToken cancellationToken) => Refused<string?>();
         public Task<string?> SaveExportAsync(string suggestedName, string text, CancellationToken cancellationToken) => Refused<string?>();
         public Task<string?> SelectPackSourceAsync(string kind, CancellationToken cancellationToken) => Refused<string?>();
-        public Task<string?> SelectPackDestinationAsync(CancellationToken cancellationToken) => Refused<string?>();
         public Task<object?> OpenDemoAsync(CancellationToken cancellationToken) => Refused<object?>();
         public Task<object?> OpenOfflineJoinAsync(CancellationToken cancellationToken) => Refused<object?>();
         public Task<string?> SelectOfflineJoinBlobAsync(CancellationToken cancellationToken) => Refused<string?>();

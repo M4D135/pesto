@@ -63,7 +63,8 @@ public sealed partial class ProfileConfigurationService
                 _ = ConfigurationStore.Write(ConfigurationPath, ConfigurationDocument.Canonical(clean), null);
             }
             if (defaultBundlePath is null || !File.Exists(defaultBundlePath)) return Status();
-            var bundle = ConfigurationDocument.ValidateBundle(ConfigurationStore.Read(defaultBundlePath));
+            // Same strict reader and message as the pack validator, also when no validation preceded (--settings, elevated start).
+            var (bundle, _) = InstallationDefaults.ReadValid(defaultBundlePath);
             var version = ConfigurationDocument.String(bundle, "version");
             var fingerprint = ConfigurationDocument.String(bundle, "fingerprint");
             var decisionKey = DecisionKey(version, fingerprint);
@@ -357,43 +358,182 @@ public sealed partial class ProfileConfigurationService
         }
     }
 
-    public JsonObject PrepareCustomizedPack(string sourcePack, string destination, string version)
+    /// <summary>
+    /// Writes this profile's shareable configuration as the installation's distributed defaults, in place, like GLPI-Pilot's
+    /// deployment file. No pack is rebuilt: the inventory, the manifest and the pack fingerprint stay exactly as they were.
+    /// <paramref name="expectedSha256"/> is the SHA-256 of the defaults file the interface showed, or empty when it showed none.
+    /// </summary>
+    public JsonObject WriteInstallationDefault(string installationDirectory, string version, string expectedSha256)
     {
         RequireLive();
+        if (expectedSha256.Length != 0 && !System.Text.RegularExpressions.Regex.IsMatch(expectedSha256, "^[0-9a-f]{64}$"))
+            throw new PestoException("invalid_arguments", "Empreinte attendue invalide : expectedSha256.");
         lock (gate)
         {
+            using var profileLock = ConfigurationStore.Lock(profileRoot);
             var bundle = Export(version);
-            // Validate closed binary inventory before any copy; never include profile, history, sessions or secrets.
-            var sourceFingerprint = UpdatePackage.Validate(sourcePack).Fingerprint;
-            destination = ConfigurationStore.LocalPath(destination);
-            var sourcePath = Path.GetFullPath(sourcePack).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + Path.DirectorySeparatorChar;
-            if ((destination + Path.DirectorySeparatorChar).StartsWith(sourcePath, OperatingSystem.IsWindows() ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal))
-                throw new PestoException("package.destination", "Préparez le pack personnalisé dans un dossier extérieur au pack source.");
-            if (Directory.Exists(destination) || File.Exists(destination)) throw new PestoException("package.destination", "Le dossier de destination existe déjà.");
-            var stage = Path.Combine(Path.GetDirectoryName(destination)!, ".pesto-personnalisation-" + Guid.NewGuid().ToString("N"));
+            var fingerprint = ConfigurationDocument.String(bundle, "fingerprint");
+            var installation = Path.GetFullPath(installationDirectory).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+            UpdatePackage.RequireNoLinks(installation);
+            if (UpdateTransaction.List(installation).Any(t => t.Status is not ("completed" or "rolledBack" or "cancelled")))
+                throw new PestoException("update.pending", "Une mise à jour de cette installation est en cours ou interrompue. Traitez-la dans « État et reprise » avant de définir la configuration par défaut. Rien n’a été modifié.");
+            var before = UpdatePackage.Validate(installation);
+            if (before.ConfigurationFingerprint is not null || InstallationDefaults.DeclaresSealedDefaults(installation))
+                throw new PestoException("config.default_sealed", "Cette installation provient d’un ancien pack personnalisé : sa configuration par défaut fait partie de l’inventaire du pack et ne peut pas être remplacée sur place. Installez le pack officiel dans un nouveau dossier, puis définissez-y la configuration par défaut. Rien n’a été modifié.");
+            var target = InstallationDefaults.PathIn(installation);
+            var existing = ConfigurationStore.ReadOptionalSnapshot(target);
+            if ((existing?.Stamp ?? "") != expectedSha256) throw DefaultChanged();
+            JsonObject? previous = null;
+            if (existing is not null)
+            {
+                var (current, _) = InstallationDefaults.ReadValid(target);
+                previous = new JsonObject { ["version"] = ConfigurationDocument.String(current, "version"),
+                    ["fingerprint"] = ConfigurationDocument.String(current, "fingerprint"), ["sha256"] = existing.Stamp };
+                if (ConfigurationDocument.String(current, "fingerprint") == fingerprint)
+                {
+                    // Same configuration: keep the published version so other profiles are not asked again.
+                    var kept = ConfigurationDocument.String(current, "version");
+                    var keptSaved = RememberAuthored(kept, fingerprint);
+                    return DefaultResult("unchanged", installation, target, kept, fingerprint, existing.Stamp, false, previous, null, before, keptSaved);
+                }
+            }
+            string? backup = null;
+            if (existing is not null)
+            {
+                var backups = Path.Combine(profileRoot, "backups");
+                ConfigurationStore.RejectLinks(backups);
+                Directory.CreateDirectory(backups);
+                backup = Path.Combine(backups, "installation-default." + clock.GetUtcNow().ToString("yyyyMMdd-HHmmss") + "." + Guid.NewGuid().ToString("N") + ".json");
+                using (var stream = new FileStream(backup, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
+                {
+                    stream.Write(existing.Bytes);
+                    stream.Flush(flushToDisk: true);
+                }
+            }
+            InstallationDefaults.RemoveDebris(installation, TimeSpan.FromMinutes(10));
+            var text = ConfigurationDocument.Canonical(bundle);
             try
             {
-                // The copy must still be the exact validated source before Rehash can bless our own changes.
-                UpdatePackage.CopyToNew(sourcePack, stage, sourceFingerprint);
-                var defaults = Path.Combine(stage, "wad", "defaults");
-                Directory.CreateDirectory(defaults);
-                File.WriteAllText(Path.Combine(defaults, "configuration.json"), ConfigurationDocument.Canonical(bundle));
-                var manifestPath = Path.Combine(stage, "wad", "Pesto.package.json");
-                var manifest = ConfigurationDocument.ParseObject(File.ReadAllText(manifestPath));
-                manifest["distribution"] = "custom";
-                manifest["official"] = false;
-                manifest["configurationVersion"] = version;
-                manifest["configurationFingerprint"] = bundle["fingerprint"]!.DeepClone();
-                File.WriteAllText(manifestPath, manifest.ToJsonString(new JsonSerializerOptions { WriteIndented = true }));
-                UpdatePackage.Rehash(stage);
-                _ = UpdatePackage.Validate(stage);
-                Directory.Move(stage, destination);
+                try { _ = ConfigurationStore.Write(target, text, existing?.Stamp, backup: false); }
+                catch (Exception error) when (error is PestoException or IOException or UnauthorizedAccessException)
+                {
+                    // Windows ReplaceFile without a backup name can fail after removing the replaced file: put it back.
+                    if (existing is not null && !File.Exists(target)) throw RestoreAfterFailedWrite(target, existing, backup);
+                    DiscardUnusedBackup(backup, target, existing);
+                    throw;
+                }
             }
-            finally { if (Directory.Exists(stage)) Directory.Delete(stage, recursive: true); }
-            return new JsonObject { ["status"] = "prepared", ["distribution"] = "custom", ["official"] = false,
-                ["destination"] = destination, ["version"] = version, ["fingerprint"] = bundle["fingerprint"]!.DeepClone() };
+            catch (PestoException error) when (error.Code == "config.changed") { throw DefaultChanged(); }
+            catch (Exception error) when (IsReadOnly(error) && existing is not null && HasReadOnlyAttribute(target))
+            {
+                throw new PestoException("config.default_readonly", "Le fichier wad\\defaults\\configuration.json de cette installation est en lecture seule : retirez cet attribut (Propriétés du fichier) puis recommencez. Rien n’a été modifié.");
+            }
+            catch (Exception error) when (IsReadOnly(error))
+            {
+                throw new PestoException("config.default_readonly", "Le dossier de cette installation n’est pas accessible en écriture : la configuration par défaut n’a pas été enregistrée. Lancez Pesto normalement depuis cette installation (autorisation administrateur), ou exportez la configuration et copiez le fichier sous wad\\defaults\\configuration.json.");
+            }
+            catch (IOException)
+            {
+                throw new PestoException("config.default_write", "L’écriture de la configuration par défaut a échoué : aucun fichier n’a été remplacé. Fermez les autres fenêtres Pesto de cette installation puis recommencez.");
+            }
+            string written;
+            try
+            {
+                var (readBack, sha) = InstallationDefaults.ReadValid(target);
+                written = sha;
+                var after = UpdatePackage.Validate(installation);
+                if (ConfigurationDocument.Canonical(readBack) != text || after.Fingerprint != before.Fingerprint || after.Distribution != before.Distribution
+                    || after.LocalConfigurationFingerprint != fingerprint)
+                    throw new PestoException("config.default_verification", "Vérification refusée.");
+            }
+            catch (Exception error) when (error is PestoException or IOException or UnauthorizedAccessException)
+            {
+                throw RestoreDefault(target, existing)
+                    ? new PestoException("config.default_verification", "La configuration par défaut écrite n’a pas pu être vérifiée ; l’état précédent a été rétabli.")
+                    : new PestoException("config.default_verification", "La configuration par défaut écrite n’a pas pu être vérifiée et l’état précédent n’a pas pu être rétabli : contrôlez wad\\defaults\\configuration.json avant de diffuser ce dossier." + (backup is null ? "" : " Copie de l’ancien fichier : " + backup));
+            }
+            var decisionSaved = RememberAuthored(version, fingerprint);
+            return DefaultResult("written", installation, target, version, fingerprint, written, existing is not null, previous, backup, before, decisionSaved);
         }
     }
+
+    /// <summary>
+    /// The author is not asked again about the default just published. The file is already written and verified: a profile
+    /// that cannot record the decision does not turn the result into a refusal; the interface says the next start may ask.
+    /// </summary>
+    private bool RememberAuthored(string version, string fingerprint)
+    {
+        // A pending proposal of the replaced default is obsolete whatever the profile can record.
+        ClearPendingDistribution();
+        try
+        {
+            SaveDecision(ReadDecisions(), DecisionKey(version, fingerprint), "authored", version, fingerprint);
+            return true;
+        }
+        catch (Exception error) when (error is PestoException or IOException or UnauthorizedAccessException) { return false; }
+    }
+
+    /// <summary>
+    /// A refused write left the installation file as it was: the profile copy of that file is then useless and removed, so a
+    /// refusal changes nothing. When the file can no longer be read as the previous one, the copy is kept.
+    /// </summary>
+    private static void DiscardUnusedBackup(string? backup, string target, ConfigurationStore.Snapshot? existing)
+    {
+        if (backup is null || existing is null) return;
+        try { if (ConfigurationStore.Stamp(target) == existing.Stamp) File.Delete(backup); }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException or PestoException) { }
+    }
+
+    private static PestoException RestoreAfterFailedWrite(string target, ConfigurationStore.Snapshot existing, string? backup)
+        => new("config.default_write", RestoreDefault(target, existing)
+            ? "L’écriture de la configuration par défaut a échoué ; l’ancien fichier a été remis en place. Fermez les autres fenêtres Pesto de cette installation puis recommencez."
+            : "L’écriture de la configuration par défaut a échoué et l’ancien fichier n’a pas pu être remis en place : contrôlez wad\\defaults avant de diffuser ce dossier." + (backup is null ? "" : " Copie de l’ancien fichier : " + backup));
+
+    private static bool HasReadOnlyAttribute(string path)
+    {
+        try { return (File.GetAttributes(path) & FileAttributes.ReadOnly) != 0; }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException) { return false; }
+    }
+
+    private static PestoException DefaultChanged() => new("config.default_changed", "La configuration par défaut de l’installation a changé depuis son affichage. Rien n’a été modifié ; relisez l’état puis recommencez.");
+
+    private static bool IsReadOnly(Exception error) => error is UnauthorizedAccessException
+        || error is IOException && error.HResult is unchecked((int)0x80070005) or unchecked((int)0x80070013);
+
+    /// <summary>Puts back the exact previous bytes (or removes a file that did not exist). Returns false when it could not.</summary>
+    private static bool RestoreDefault(string target, ConfigurationStore.Snapshot? previous)
+    {
+        try
+        {
+            if (previous is null)
+            {
+                if (File.Exists(target)) File.Delete(target);
+                return true;
+            }
+            var temporary = Path.Combine(Path.GetDirectoryName(target)!, ".configuration-" + Guid.NewGuid().ToString("N") + ".tmp");
+            try
+            {
+                using (var stream = new FileStream(temporary, FileMode.CreateNew, FileAccess.Write, FileShare.None, 4096, FileOptions.WriteThrough))
+                {
+                    stream.Write(previous.Bytes);
+                    stream.Flush(flushToDisk: true);
+                }
+                File.Move(temporary, target, true);
+            }
+            finally { if (File.Exists(temporary)) File.Delete(temporary); }
+            return ConfigurationStore.Stamp(target) == previous.Stamp;
+        }
+        catch (Exception error) when (error is IOException or UnauthorizedAccessException or PestoException) { return false; }
+    }
+
+    private static JsonObject DefaultResult(string status, string installation, string target, string version, string fingerprint, string sha256,
+        bool replaced, JsonObject? previous, string? backup, UpdatePackageInfo pack, bool decisionSaved) => new()
+    {
+        ["status"] = status, ["path"] = InstallationDefaults.DisplayPath, ["file"] = target, ["installation"] = installation, ["decisionSaved"] = decisionSaved,
+        ["version"] = version, ["fingerprint"] = fingerprint, ["sha256"] = sha256, ["replaced"] = replaced,
+        ["previous"] = previous, ["backup"] = backup, ["distribution"] = pack.Distribution,
+        ["official"] = pack.Distribution == "official", ["packFingerprint"] = pack.Fingerprint
+    };
 
     private JsonObject ReadConfiguration() => ConfigurationDocument.Sanitize(ConfigurationStore.Read(ConfigurationPath));
 

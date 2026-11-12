@@ -1,6 +1,6 @@
 // The browser preview never falls back after an error from the native host.
-// A UI deadline must not abandon a native mutation, a long pack copy, or a file dialog while it
-// can still finish. Those operations settle from the host's own bounded steps and durable receipts.
+// A UI deadline must not abandon a native mutation (such as writing the installation default), a long pack copy,
+// or a file dialog while it can still finish. Those operations settle from the host's own bounded steps and durable receipts.
 const nativeCompletion = new Set([
   'operation.prepare', 'operation.execute', 'queue.prepare', 'queue.execute', 'reservations.execute', 'coordination.apply',
   'receipts.reconcile', 'receipts.prepareMove', 'receipts.prepareAcknowledgement', 'receipts.acknowledge',

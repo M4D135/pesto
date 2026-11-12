@@ -6,9 +6,9 @@ Ce guide décrit les chemins raccordés dans le code. Il ne certifie pas leur ex
 
 ## Préparer et distribuer la configuration
 
-Dans **Paramètres → Politiques des opérations**, activer **Autoriser la jonction hors ligne locale**, préparer les différences puis confirmer l’enregistrement. La clé est `POLICY.AllowOfflineJoin`, un booléen strict désactivé par défaut sur un profil neuf. Elle est conservée lors d’un export/import et dans le pack produit par **Définir comme configuration par défaut**. Il n’est pas nécessaire de modifier un JSON ou un manifeste à la main.
+Dans **Paramètres → Politiques des opérations**, activer **Autoriser la jonction hors ligne locale**, préparer les différences puis confirmer l’enregistrement. La clé est `POLICY.AllowOfflineJoin`, un booléen strict désactivé par défaut sur un profil neuf. Elle est conservée lors d’un export/import et dans la configuration par défaut de l’installation écrite par **Définir comme configuration par défaut**. Il n’est pas nécessaire de modifier un JSON ou un manifeste à la main.
 
-Le domaine unique, les OU gérées, le nommage et les politiques viennent de ce profil. Les valeurs distribuées ne contiennent aucun blob, mot de passe, historique, reçu ou cache. Le pack personnalisé demeure distinct d’une release officielle. Les règles générales sont dans [CONFIGURATION.md](CONFIGURATION.md).
+Le domaine unique, les OU gérées, le nommage et les politiques viennent de ce profil. Les valeurs distribuées ne contiennent aucun blob, mot de passe, historique, reçu ou cache. Elles sont écrites dans `wad\defaults\configuration.json`, qui ne modifie ni l’identité ni la provenance du pack ; ce fichier contient le domaine et les OU et se diffuse comme un fichier privé. Les règles générales sont dans [CONFIGURATION.md](CONFIGURATION.md).
 
 Les options CLI `UnattendedJoinEnabled` et `UnattendedOperationsEnabled` sont indépendantes d’ODJ. Leur activation n’applique pas un blob. Ce parcours local utilise uniquement les cinq opérations d’interface décrites ci-dessous ; il ne convertit pas une jonction AD ordinaire en jonction hors ligne.
 
@@ -25,7 +25,7 @@ Pesto.exe --offline-join
 
 L’entrée locale résout d’abord le profil Windows d’origine. Si une élévation UAC est nécessaire, le relais conserve son SID ; le chemin est dérivé du registre machine, sans accepter un chemin de profil fourni par l’interface. Un LocalAppData redirigé, un chemin réseau ou une jonction de profil non pris en charge provoque un refus avant initialisation.
 
-Sur cette entrée explicite, un `cfg.json` absent peut être initialisé depuis `wad/defaults/configuration.json`, lu localement dans le pack. Un profil existant n’est pas remplacé et ne reçoit pas silencieusement de nouvelles valeurs distribuées. Sans configuration disponible ou sans `AllowOfflineJoin`, la page indique pourquoi l’import est indisponible ; elle n’invente pas de domaine ni de paramètres.
+Sur cette entrée explicite, un `cfg.json` absent peut être initialisé depuis `wad/defaults/configuration.json`, lu localement dans le dossier `wad` de l’installation. Un profil existant n’est pas remplacé et ne reçoit pas silencieusement de nouvelles valeurs distribuées. Sans configuration disponible ou sans `AllowOfflineJoin`, la page indique pourquoi l’import est indisponible ; elle n’invente pas de domaine ni de paramètres.
 
 La fenêtre utilise `OfflineJoinBackend`, sans construire `LiveBackend`, sans invite d’identification AD ordinaire et sans chargement du tableau de bord AD. Son `session.info` repose sur les faits locaux. Les API métier, de maintenance et de configuration hors de ce parcours sont refusées par ce backend.
 

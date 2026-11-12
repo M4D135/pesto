@@ -126,7 +126,6 @@ internal sealed class UpdateUiQualificationHost(NativeHostActions native, DemoQu
 
     public Task<string?> ReadImportAsync(string kind, CancellationToken token) => Refused<string?>();
     public Task<string?> SaveExportAsync(string name, string text, CancellationToken token) => Refused<string?>();
-    public Task<string?> SelectPackDestinationAsync(CancellationToken token) => Refused<string?>();
     public Task<object?> OpenDemoAsync(CancellationToken token) => Refused<object?>();
     public Task<object?> ReconnectAsync(CancellationToken token) => Refused<object?>();
     private Task<T> Refused<T>()

@@ -155,7 +155,6 @@ internal sealed class ApplicationServicesTests
         public Task<string?> ReadImportAsync(string kind, CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
         public Task<string?> SaveExportAsync(string name, string text, CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
         public Task<string?> SelectPackSourceAsync(string kind, CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
-        public Task<string?> SelectPackDestinationAsync(CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
         public Task<object?> OpenDemoAsync(CancellationToken cancellationToken) { Calls++; return Task.FromResult<object?>(new JsonObject { ["opened"] = true }); }
         public Task<object?> ReconnectAsync(CancellationToken cancellationToken) { Calls++; return Task.FromResult<object?>(new JsonObject { ["status"] = "closing" }); }
         public Task<object?> InstallAsync(UpdateInstallRequest request, CancellationToken cancellationToken) { Calls++; InstallCalls++; return Task.FromResult<object?>(new JsonObject { ["status"] = "closing" }); }
@@ -190,7 +189,6 @@ internal sealed class ApplicationServicesTests
         public Task<string?> ReadImportAsync(string kind, CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
         public Task<string?> SaveExportAsync(string name, string text, CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
         public Task<string?> SelectPackSourceAsync(string kind, CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
-        public Task<string?> SelectPackDestinationAsync(CancellationToken cancellationToken) { Calls++; return Task.FromResult<string?>(null); }
         public Task<object?> OpenDemoAsync(CancellationToken cancellationToken) { Calls++; return Task.FromResult<object?>(new JsonObject { ["opened"] = true }); }
         public Task<object?> ReconnectAsync(CancellationToken cancellationToken) { Calls++; return Task.FromResult<object?>(new JsonObject { ["status"] = "closing" }); }
         public Task<object?> InstallAsync(UpdateInstallRequest request, CancellationToken cancellationToken) { Calls++; return Task.FromResult<object?>(new JsonObject { ["status"] = "closing" }); }

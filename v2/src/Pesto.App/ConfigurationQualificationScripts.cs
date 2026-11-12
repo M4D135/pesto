@@ -11,6 +11,8 @@ internal enum ConfigurationQualificationStep
 internal static class ConfigurationQualificationScripts
 {
     internal const string Version = "native-ui-qualification";
+    // Exact title of the confirmation opened by « Définir comme configuration par défaut » (web/js/pages/maintenance.js).
+    internal const string DefaultTitle = "Définir comme configuration par défaut";
 
     public static string For(ConfigurationQualificationStep step) => step switch
     {
@@ -41,7 +43,8 @@ internal static class ConfigurationQualificationScripts
                   title: dialog.querySelector('h2')?.textContent ?? '',
                   subtitle: dialog.querySelector('.k-dlg-sub')?.textContent ?? '',
                   body: dialog.querySelector('.k-dlg-body')?.textContent ?? '',
-                  actions: [...dialog.querySelectorAll('.k-dlg-foot button:not([disabled])')].map(b => b.dataset.id)
+                  actions: [...dialog.querySelectorAll('.k-dlg-foot button:not([disabled])')].map(b => b.dataset.id),
+                  labels: [...dialog.querySelectorAll('.k-dlg-foot button:not([disabled])')].map(b => b.textContent.trim())
                 } : null
               };
             })()
@@ -55,8 +58,8 @@ internal static class ConfigurationQualificationScripts
         ConfigurationQualificationStep.ConfirmImport => Dialog("Importer la configuration", "apply"),
         ConfigurationQualificationStep.CancelImport => Dialog("Importer la configuration", "cancel"),
         ConfigurationQualificationStep.Default => Click("[data-maint=\"default\"]"),
-        ConfigurationQualificationStep.ConfirmDefault => Dialog("Préparer un pack avec vos paramètres", "ok"),
-        ConfigurationQualificationStep.CancelDefault => Dialog("Préparer un pack avec vos paramètres", "cancel"),
+        ConfigurationQualificationStep.ConfirmDefault => Dialog(DefaultTitle, "ok"),
+        ConfigurationQualificationStep.CancelDefault => Dialog(DefaultTitle, "cancel"),
         ConfigurationQualificationStep.UpdateFolder => Click("[data-maint=\"folder\"]"),
         ConfigurationQualificationStep.PrepareUpdate => Click("[data-maint-zone=\"candidates\"] [data-candidate]"),
         ConfigurationQualificationStep.InstallUpdate => Click("[data-maint-zone=\"prepared\"] [data-install]"),

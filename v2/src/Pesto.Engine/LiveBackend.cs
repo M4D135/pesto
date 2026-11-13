@@ -43,6 +43,9 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
     private V1Config? conventionCacheOwner;
     private string? discoveredDc;
     private bool dcDiscovered;
+    private List<ResolvedSite>? resolvedSitesCache;
+    private string? resolvedSitesCacheKey;
+    private DateTimeOffset resolvedSitesCacheAt;
     /// <summary>Dossier GP de l'historique durable (Interventions V1 + reçus de l'adaptateur). Null = aucun emplacement connu sur ce poste.</summary>
     private readonly string? gpRoot = gpRoot ?? DefaultGpRoot();
 
@@ -555,11 +558,22 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
     private List<ResolvedSite> ResolveSites(V1Config read, IDirectoryGateway adapter)
     {
+        // Site discovery is unchanged throughout the normal UI flow (site list → services → name preview).
+        // Reusing this short-lived observation avoids repeating the same AD OU round-trips for each screen.
+        // Every actual write still rechecks the target OU GUID immediately before execution.
+        var dc = DcOrNull();
+        var cacheKey = (configStamp ?? string.Empty) + "|" + read.Domain + "|" + (dc ?? string.Empty);
+        var now = clock.GetUtcNow();
+        if (resolvedSitesCache is not null
+            && string.Equals(resolvedSitesCacheKey, cacheKey, StringComparison.Ordinal)
+            && now - resolvedSitesCacheAt < TimeSpan.FromSeconds(30))
+            return new List<ResolvedSite>(resolvedSitesCache);
+
         var list = new List<ResolvedSite>();
         var seenIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var added = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var parents = read.OrganismOus.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
-        var listing = adapter.ReadSiteOus(read.Domain, DcOrNull(), read.ExplicitSites.Select(site => site.Ou).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(), parents);
+        var listing = adapter.ReadSiteOus(read.Domain, dc, read.ExplicitSites.Select(site => site.Ou).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(), parents);
         foreach (var site in read.ExplicitSites)
         {
             // The batched LDAP read can miss a DN that the exact OU lookup used up to 2.0.9 still confirms.
@@ -582,7 +596,10 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
                 for (var suffix = 2; !seenIds.Add(id); suffix++) id = declaration.Tag + "-" + suffix;
                 list.Add(new(id, site.Name, declaration.Tag, site.Ou));
             }
-        return list;
+        resolvedSitesCache = new List<ResolvedSite>(list);
+        resolvedSitesCacheKey = cacheKey;
+        resolvedSitesCacheAt = now;
+        return new List<ResolvedSite>(list);
     }
 
     private bool ConfirmedOu(V1Config read, IDirectoryGateway adapter, string dn)

@@ -68,6 +68,13 @@ public interface IMutationGateway
 }
 
 /// <summary>
+/// L'adaptateur relit lui-même, au dernier point avant envoi natif, l'identité source, la collision du nouveau nom,
+/// l'OU cible et les exclusions/politiques nécessaires. Pour un renommage, le moteur peut alors éviter de refaire
+/// exactement ces lectures juste avant Execute ; la relecture finale après mutation reste toujours obligatoire.
+/// </summary>
+public interface IMutationGatewayFinalReadback { }
+
+/// <summary>
 /// Divulgation d'état pour l'aperçu du plan — port du « control summary » V1 (Pesto-Core.ps1:4035 pour la confirmation
 /// de file, Pesto-Direct.ps1:345 pour la confirmation unitaire) : avant de confirmer, V1 affichait la politique de repli
 /// réellement lue. Un adaptateur de qualification qui lit réellement <c>POLICY.AllowPasswordTaskFallback</c> et observe

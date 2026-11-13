@@ -43,13 +43,13 @@ internal static class DirectoryReadPowerShellValidation
                 .EnumerateArray().Select(item => item.GetString()!).ToArray();
             Check.Equal(1, v1Sites.Calls.Length, "Sans sites explicites V2, une lecture OneLevel retrouve aussi les sites ordinaires");
             AuditSiteCompatibilityTests.VerifyObservedSites(observed);
-            EqualSet(serviceResult.GetProperty("inOu"), [Occupied[0], "OTHER002", "OTHER003", "P111301LY888001"]);
+            EqualSet(serviceResult.GetProperty("inOu"), [Occupied[0], "P111301LY888001"]);
             EqualSet(serviceResult.GetProperty("withTag"), [Occupied[0], Occupied[3], Occupied[6], Occupied[9]]);
             Check.True(serviceResult.GetProperty("complete").GetBoolean(), "Inventaire des services complet");
             Check.Equal(3, services.Calls.Length, "Identité OU et deux lectures AD dans un worker pour les services");
             Check.Equal(Site, Text(services.Calls[0], "identity"), "OU exacte relue avant les postes");
             Check.Equal(Site, Text(services.Calls[1], "base"), "Postes du sous-arbre du site");
-            Check.Equal("*", Text(services.Calls[1], "filter"), "Tous les postes dans l’OU");
+            Check.Equal("(|(name=P111301*)(name=L111301*))", Text(services.Calls[1], "ldap"), "Préfixes d’organisme filtrés dans l’OU, tous tags conservés");
             Check.Equal(DomainDn, Text(services.Calls[2], "base"), "Motifs de tag recherchés dans tout le domaine");
             Check.Equal("(|(name=P111301PR*)(name=L111301PR*))", Text(services.Calls[2], "ldap"), "Tous les types du site dans une seule lecture");
             foreach (var call in services.Calls.Skip(1)) RequireSubtree(call, 21);
@@ -188,7 +188,12 @@ function Get-ADComputer {
     [pscustomobject]@{Name=$(if($i%3 -eq 1){$n}else{$other});SamAccountName=$(if($i%3 -eq 2){$n+'$'}else{$other+'$'});DNSHostName=$(if($i%3 -eq 0){$n+'.fixture.invalid'}else{$other+'.fixture.invalid'});InSite=($i -le 3)}
   })
   $rows+=@([pscustomobject]@{Name='P111301LY888001';SamAccountName='LEGACY$';DNSHostName='old.fixture.invalid';InSite=$true})
-  if($SearchBase -ceq $site -and $Filter -ceq '*'){$selected=@($rows|Where-Object InSite)}
+  if($SearchBase -ceq $site -and $LDAPFilter -ceq '(|(name=P111301*)(name=L111301*))'){
+    if($env:PESTO_FIXTURE_MODE -eq 'overflow-ou'){
+      $rows+=@(1..4|ForEach-Object{[pscustomobject]@{Name=('P111301ZZ765{0:d3}' -f $_);SamAccountName='';DNSHostName='';InSite=$true}})
+    }
+    $selected=@($rows|Where-Object {$_.InSite -and ($_.Name -like 'P111301*' -or $_.Name -like 'L111301*')})
+  }
   elseif($SearchBase -ceq $root -and $LDAPFilter -ceq '(|(name=P111301PR*)(name=L111301PR*))'){$selected=@($rows|Where-Object {$_.Name -like 'P111301PR*' -or $_.Name -like 'L111301PR*'})}
   elseif($SearchBase -ceq $root -and $LDAPFilter -ceq '(|(name=P111301PR765*)(sAMAccountName=P111301PR765*$)(dNSHostName=P111301PR765*.*))'){$selected=@($rows|Where-Object {$_.Name -like 'P111301PR765*' -or $_.SamAccountName -like 'P111301PR765*$' -or $_.DNSHostName -like 'P111301PR765*.*'})}
   else{throw 'Unexpected computer filter or base'}

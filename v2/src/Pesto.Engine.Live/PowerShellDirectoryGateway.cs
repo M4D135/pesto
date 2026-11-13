@@ -458,20 +458,7 @@ try{
       $max=[int]$j.Max
       $clauses=@(foreach($pattern in $j.Patterns){
         if($pattern.Length -lt 6 -or -not $pattern.EndsWith('*') -or $pattern.Substring(0,$pattern.Length-1).Contains('*') -or
-           $pattern.Substring($pattern.Length-3,2) -notmatch '^[A-Za-z0-9]{2}$'){throw 'Motif de recherche invalide.'}
-        '(name='+$pattern+')'
-      })
-      # Le tag de site occupe deux caractères avant l'astérisque. Dans l'OU,
-      # chercher le préfixe d'organisme (sans le tag) évite de lire tous les PC
-      # et conserve les noms Pesto mal rangés dans la mauvaise OU de site.
-      $scopeClauses=@(foreach($pattern in $j.Patterns){
-        $scopePattern=$pattern.Substring(0,$pattern.Length-3)+'*'
-        '(name='+$scopePattern+')'
-      })
-      $inOu=@(Get-ADComputer -SearchBase $j.Ou -SearchScope Subtree -LDAPFilter ('(|'+($scopeClauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})
-      $withTag=@(Get-ADComputer -SearchBase $domainRoot -SearchScope Subtree -LDAPFilter ('(|'+($clauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})
-      $result=[pscustomobject]@{inOu=$inOu;withTag=$withTag;complete=($inOu.Count -le $max -and $withTag.Count -le $max)}
-    }
+           $pattern.Substring($pattern.Length-3,2) -notmatch '^[A-Za-z0-9]{2}
     'automationNames'{
       $pattern=[string]$j.Pattern;$max=[int]$j.Max
       if($pattern.Length -lt 2 -or $pattern.Length -gt 15 -or $pattern -notmatch '^[A-Za-z0-9-]*\*[A-Za-z0-9-]*$' -or $max -lt 1 -or $max -gt 20000){throw 'Serie automatisee invalide.'}

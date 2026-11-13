@@ -68,9 +68,9 @@ public interface IMutationGateway
 }
 
 /// <summary>
-/// L'adaptateur relit lui-même, au dernier point avant envoi natif, l'identité source, la collision du nouveau nom,
-/// l'OU cible et les exclusions/politiques nécessaires. Pour un renommage, le moteur peut alors éviter de refaire
-/// exactement ces lectures juste avant Execute ; la relecture finale après mutation reste toujours obligatoire.
+/// L'adaptateur natif de renommage relit lui-même, au dernier point avant envoi, l'identité source et les
+/// exclusions de groupes. Le moteur peut mutualiser ces deux lectures, mais conserve ses propres contrôles
+/// de disponibilité du nouveau nom et de GUID de destination. La relecture finale après mutation reste obligatoire.
 /// </summary>
 public interface IMutationGatewayFinalReadback { }
 

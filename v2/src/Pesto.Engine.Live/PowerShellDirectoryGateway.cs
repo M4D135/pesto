@@ -456,9 +456,20 @@ try{
     'siteServices'{
       $domainRoot=(@(([string]$j.Domain)-split '\.'|ForEach-Object{'DC='+$_}) -join ',')
       $max=[int]$j.Max
-      $clauses=@(foreach($pattern in $j.Patterns){
-        if($pattern.Length -lt 6 -or -not $pattern.EndsWith('*') -or $pattern.Substring(0,$pattern.Length-1).Contains('*') -or
-           $pattern.Substring($pattern.Length-3,2) -notmatch '^[A-Za-z0-9]{2}
+      if($max -lt 1 -or $max -gt 20000 -or @($j.Patterns).Count -lt 1 -or @($j.Patterns).Count -gt 3){throw 'Paramètres de recherche des services invalides.'}
+      $prefixClauses=@()
+      $tagClauses=@()
+      foreach($pattern in $j.Patterns){
+        if($pattern -notmatch '^[A-Za-z0-9]{5,12}[A-Za-z0-9]{2}\*$'){throw 'Motif de recherche de site invalide.'}
+        $prefix=$pattern.Substring(0,$pattern.Length-3)+'*'
+        if($prefix -notmatch '^[A-Za-z0-9]{5,12}\*$'){throw 'Préfixe de recherche de service invalide.'}
+        $prefixClauses+=('(name='+$prefix+')')
+        $tagClauses+=('(name='+$pattern+')')
+      }
+      $inOu=@(Get-ADComputer -SearchBase ([string]$j.Ou) -SearchScope Subtree -LDAPFilter ('(|'+($prefixClauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})
+      $withTag=@(Get-ADComputer -SearchBase $domainRoot -SearchScope Subtree -LDAPFilter ('(|'+($tagClauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})
+      $result=[pscustomobject]@{inOu=$inOu;withTag=$withTag;complete=($inOu.Count -le $max -and $withTag.Count -le $max)}
+    }
     'automationNames'{
       $pattern=[string]$j.Pattern;$max=[int]$j.Max
       if($pattern.Length -lt 2 -or $pattern.Length -gt 15 -or $pattern -notmatch '^[A-Za-z0-9-]*\*[A-Za-z0-9-]*$' -or $max -lt 1 -or $max -gt 20000){throw 'Serie automatisee invalide.'}

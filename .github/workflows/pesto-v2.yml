@@ -237,6 +237,7 @@ jobs:
           $ErrorActionPreference = 'Stop'
           & tools/qualification/Write-WindowsDesktopObservation.ps1 -OutputPath out/evidence/windows-desktop.json -SourceCommit $env:GITHUB_SHA
       - name: Native configuration buttons, default written in a pack copy and legacy custom pack preparation — isolated profiles only
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           # Ordered exactly as NativeConfigurationQualification.cs records them (schema 3, 2.0.14 default written in place).
@@ -375,6 +376,7 @@ jobs:
             if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           }
       - name: Native login controls and protected in-memory credentials — synthetic only
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           $pack = (Resolve-Path 'out/PROD-LIGHT').Path
@@ -395,6 +397,7 @@ jobs:
             if ($capture -notin $proof.captures -or -not (Test-Path "out/evidence/native-login/$capture" -PathType Leaf)) { throw "Native login capture missing: $capture" }
           }
       - name: Native Windows startup, normal close and direct demo API isolation
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           $channel = 'PROD-LIGHT'
@@ -419,6 +422,7 @@ jobs:
           if (-not $proof.coexistence.success -or -not $proof.coexistence.parentDraftPreserved -or -not $proof.coexistence.idsDistinct -or -not $proof.coexistence.parentClosedWithChild -or -not $proof.coexistence.freshUiTransitions -or @($proof.coexistence.uiTransitions).Count -ne 6 -or $proof.coexistence.forbiddenHostInvocations -ne 0) { throw "Normal/demo coexistence proof incomplete for $channel" }
       - name: Start the exact extracted PROD-LIGHT ZIP with the installed Evergreen runtime
         timeout-minutes: 8
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           $archive = (Resolve-Path "out/Pesto_V2_PROD-LIGHT_$env:PACK_DISTRIBUTION.zip").Path
@@ -465,6 +469,7 @@ jobs:
           } finally { Remove-Item -LiteralPath $owned -Recurse -Force }
       - name: Socle runner check — exact copy valid, altered refused, demo with evergreen
         timeout-minutes: 10
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           $harnais = (Resolve-Path 'tools/qualification/Pesto.UpdateQualification/bin/Release/net10.0/Pesto.UpdateQualification.dll').Path
@@ -523,6 +528,7 @@ jobs:
           } finally { Remove-Item -LiteralPath $owned -Recurse -Force }
       - name: Native PROD-LIGHT cross-build ZIP updates — installation, failure, recovery and rollback in isolated copies
         timeout-minutes: 18
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           $runner = (Resolve-Path 'tools/qualification/Pesto.UpdateQualification/bin/Release/net10.0/Pesto.UpdateQualification.dll').Path
@@ -541,6 +547,7 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Native maintenance UI installation — baseline to this build, then separate service rollback
         timeout-minutes: 18
+        if: ${{ false }} # Native/interactive qualification is deferred to the user's live workstation.
         run: |
           $ErrorActionPreference = 'Stop'
           $runner = (Resolve-Path 'tools/qualification/Pesto.UpdateQualification/bin/Release/net10.0/Pesto.UpdateQualification.dll').Path
@@ -570,7 +577,7 @@ jobs:
               $proof.installation.status -ne 'completed' -or $proof.rollback.status -ne 'rolledBack' -or $proof.rollback.healthAttemptCount -ne 2) { throw "Native UI update did not qualify both exact builds for $channel" }
           & node tools/pack/make-pack.mjs --verify "out/$channel"
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: Archive candidates and record exact artifact identities
+      - name: Archive candidate packages and record live-test status
         run: |
           $ErrorActionPreference = 'Stop'
           $channel = 'PROD-LIGHT'
@@ -581,54 +588,30 @@ jobs:
           if ($manifest.sourceCommit -cne $env:GITHUB_SHA -or $manifest.channel -cne 'PROD' -or
               $manifest.distribution -cne $env:PACK_DISTRIBUTION -or $manifest.qualification -cne 'unqualified' -or
               $manifest.official -isnot [bool] -or $manifest.official -ne ($env:PACK_DISTRIBUTION -ceq 'official')) {
-            throw 'The tested package provenance differs from this run.'
+            throw 'The candidate package provenance differs from this run.'
           }
-          $updateProof = Get-Content "out/evidence/native-update-$channel/transaction-evidence/proof.json" -Raw | ConvertFrom-Json
-          if ($updateProof.success -ne $true -or $updateProof.channel -cne 'PROD' -or $updateProof.candidate.sourceCommit -cne $env:GITHUB_SHA -or $updateProof.base.sourceCommit -cne $env:UPDATE_BASELINE_COMMIT) { throw "Native update proof identity is incorrect for $channel" }
-          $smokeFile = 'out/evidence/prod-light-smoke.json'
-          $light = Get-Content $smokeFile -Raw | ConvertFrom-Json
-          if ($light.success -ne $true -or $light.sourceCommit -cne $env:GITHUB_SHA -or $light.runId -cne $env:GITHUB_RUN_ID -or
-              $light.runAttempt -cne $env:GITHUB_RUN_ATTEMPT -or $light.version -cne $manifest.version -or
-              $light.executableSha256 -cne (Get-FileHash "out/$channel/Pesto.exe" -Algorithm SHA256).Hash.ToLowerInvariant() -or
-              $light.archiveSha256 -cne (Get-FileHash $archive -Algorithm SHA256).Hash.ToLowerInvariant()) { throw 'Light bytes differ from the tested archive.' }
           $baselineManifest = Get-Content "out/baseline-PROD-LIGHT/wad/Pesto.package.json" -Raw | ConvertFrom-Json
           $baselineZipHash = (Get-FileHash 'out/Pesto_V2_baseline-PROD-LIGHT.zip' -Algorithm SHA256).Hash.ToLowerInvariant()
-          $socleIndexFile = 'vendor/socle/webview2-156.0.4314.42.files.json'
-          $socleMatchFile = 'out/evidence/socle-match.json'
-          $socleRunnerFile = 'out/evidence/socle-runner.json'
-          $engineSocleFile = 'out/evidence/engine-socle-tests.json'
-          $soclePreservationQualified = $false
-          if (Test-Path $engineSocleFile) {
-            $engineSocle = Get-Content $engineSocleFile -Raw | ConvertFrom-Json
-            $required = @('InstallCarriesTheSocleAndRollbackKeepsIt','SocleExactCopyIsAcceptedOutsideThePackIdentity','SocleChangedExtraMissingOrEmptyIsRefused','InstallWithoutSocleNeverCreatesOne','EmbeddedSocleIndexLoadsTheRealRuntimeInventory')
-            $soclePreservationQualified = ($engineSocle.passed -eq $true) -and (@($required | Where-Object { $_ -notin @($engineSocle.tests) }).Count -eq 0)
-          }
           $record = [ordered]@{
-            channel='PROD'; edition='PROD-LIGHT'; version=$manifest.version; qualification=$manifest.qualification
+            channel='PROD'; edition='PROD-LIGHT'; version=$manifest.version; qualification='unqualified'
             runId=$env:GITHUB_RUN_ID; runAttempt=$env:GITHUB_RUN_ATTEMPT; sourceCommit=$env:GITHUB_SHA
             archiveSha256=(Get-FileHash $archive -Algorithm SHA256).Hash.ToLowerInvariant()
             executableSha256=(Get-FileHash "out/$channel/Pesto.exe" -Algorithm SHA256).Hash.ToLowerInvariant()
             distribution=$manifest.distribution; adQualified=$false
-            nativeStartupDemoQualified=$true; nativeDemoCoexistenceQualified=$true
-            nativeConfigurationQualified=$true; nativeConfigurationUiQualified=$true
-            nativeUpdatePreparationUiQualified=$true; nativeUpdateInstallUiQualified=$true
-            nativeRollbackUiQualified=$false; nativeServiceRollbackAfterUiInstallQualified=$true
-            nativeUpdateQualified=($updateProof.nativeBinaryUpdateQualification -eq $true)
-            baselineInPlaceUpdateQualified=($updateProof.inPlaceUpdateQualified -eq $true)
-            baselineFormatRefusalQualified=($updateProof.formatRefusalQualified -eq $true)
-            newInstallationRequiredFromBaseline=($updateProof.newInstallationRequired -eq $true)
-            distinctUpdateBuilds=$true; runtimeMode='evergreen'; runtimeSource='evergreen'
+            nativeStartupDemoQualified=$false; nativeConfigurationQualified=$false; nativeConfigurationUiQualified=$false
+            nativeUpdatePreparationUiQualified=$false; nativeUpdateInstallUiQualified=$false
+            nativeRollbackUiQualified=$false; nativeServiceRollbackAfterUiInstallQualified=$false
+            nativeUpdateQualified=$false; baselineInPlaceUpdateQualified=$false
+            baselineFormatRefusalQualified=$false; newInstallationRequiredFromBaseline=$false
+            distinctUpdateBuilds=$false; runtimeMode='evergreen'; runtimeSource='evergreen'
             uiUpdateFromVersion=$baselineManifest.version; uiUpdateFromSourceCommit=$env:UPDATE_BASELINE_COMMIT
             uiUpdateFromArchiveSha256=$baselineZipHash; updateBaselineSourceCommit=$env:UPDATE_BASELINE_COMMIT
-            smokeSha256=(Get-FileHash $smokeFile -Algorithm SHA256).Hash.ToLowerInvariant()
+            liveValidationRequired=$true
+            liveValidationNote='Validation interactive Windows et AD à effectuer par l’utilisateur sur son poste réel. Aucun test GUI/VM n’a été exécuté dans cette CI.'
             socleVersion='156.0.4314.42'
-            socleIndexSha256=(Get-FileHash $socleIndexFile -Algorithm SHA256).Hash.ToLowerInvariant()
-            socleMatchSha256=(Get-FileHash $socleMatchFile -Algorithm SHA256).Hash.ToLowerInvariant()
-            socleRunnerSha256=(Get-FileHash $socleRunnerFile -Algorithm SHA256).Hash.ToLowerInvariant()
-            soclePreservationQualified=$soclePreservationQualified
+            socleIndexSha256=(Get-FileHash 'vendor/socle/webview2-156.0.4314.42.files.json' -Algorithm SHA256).Hash.ToLowerInvariant()
             socleReleaseUrl='https://github.com/M4D135/socle-windows/releases/tag/webview2-156.0.4314.42'
           }
-          # -InputObject keeps a one-record JSON array; piping a single record would emit a bare object.
           ConvertTo-Json -InputObject @($record) -Depth 5 | Set-Content -Encoding utf8 out/evidence/artifacts.json
       - name: Seal the exact tested files on the lab runner
         id: lab-handoff

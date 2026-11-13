@@ -1096,30 +1096,37 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         }
         ValidatePrecreatedJoinPlan(plan, read, policy);
         policy.AssertPlan(plan.Kind, plan.Computer, plan.NewName, plan.SourceOu, plan.TargetOu, GetConvention(read));
-        if (plan.PrecreatedJoin is null) VerifyPreviewName(read, policy, plan.Kind, plan.NewName, plan.NameReservation, plan.ConfigurationSha256);
+        var gatewayOwnsFinalReadback = mutation is IMutationGatewayFinalReadback
+            && plan.Kind is ("rename" or "renameMove");
+        if (plan.PrecreatedJoin is null && !gatewayOwnsFinalReadback)
+            VerifyPreviewName(read, policy, plan.Kind, plan.NewName, plan.NameReservation, plan.ConfigurationSha256);
         var adapter = RequireGateway();
 
-        // Juste avant envoi : identité et disponibilité sont relues (port v1 « l'état a changé pendant le contrôle → aucun envoi »).
-        if (plan.Kind != "join")
+        // Le gateway natif porte déjà ces mêmes lectures au dernier point avant l'envoi.
+        // Les répéter ici rallonge le renommage sans renforcer la décision ; on garde le contrôle de secours
+        // pour les adaptateurs de qualification qui ne déclarent pas ce contrat.
+        if (!gatewayOwnsFinalReadback)
         {
-            var found = adapter.FindComputer(read.Domain, DcOrNull(), plan.Computer)
-                ?? throw new PestoException("identity.changed", "Le poste n’a plus été relu avant l’envoi. Rien n’a été appliqué.");
-            if (!string.Equals(found.Guid, plan.Guid, StringComparison.OrdinalIgnoreCase))
-                throw new PestoException("identity.changed", "L’identité du poste a changé depuis la préparation. Rien n’a été appliqué.");
-            if (!WithinScope(found.Ou, read.RootOu) || !string.Equals(found.Ou, plan.SourceOu, StringComparison.OrdinalIgnoreCase))
-                throw new PestoException("source.changed", "L’OU source a changé depuis la préparation ou sort du périmètre : rien n’a été appliqué.");
+            if (plan.Kind != "join")
+            {
+                var found = adapter.FindComputer(read.Domain, DcOrNull(), plan.Computer)
+                    ?? throw new PestoException("identity.changed", "Le poste n’a plus été relu avant l’envoi. Rien n’a été appliqué.");
+                if (!string.Equals(found.Guid, plan.Guid, StringComparison.OrdinalIgnoreCase))
+                    throw new PestoException("identity.changed", "L’identité du poste a changé depuis la préparation. Rien n’a été appliqué.");
+                if (!WithinScope(found.Ou, read.RootOu) || !string.Equals(found.Ou, plan.SourceOu, StringComparison.OrdinalIgnoreCase))
+                    throw new PestoException("source.changed", "L’OU source a changé depuis la préparation ou sort du périmètre : rien n’a été appliqué.");
+            }
+            if (plan.Kind is "join" or "move" or "renameMove"
+                && !string.Equals(ResolveTargetGuid(read, adapter, plan.TargetOu), plan.TargetOuGuid, StringComparison.OrdinalIgnoreCase))
+                throw new PestoException("destination.changed", "Le GUID de l’OU cible a changé depuis la confirmation : aucune commande envoyée.");
+            if (plan.Kind != "move")
+            {
+                var taken = adapter.FindComputer(read.Domain, DcOrNull(), plan.NewName);
+                if (taken is not null && !string.Equals(taken.Guid, plan.Guid, StringComparison.OrdinalIgnoreCase))
+                    throw new PestoException("name.taken", "Le nom vient d’être pris. Aucun ajout automatique : nouvel aperçu, nouveau clic.");
+            }
+            RequireGroupExclusions(read, policy, plan.Guid, plan.PrecreatedJoin?.Name ?? plan.Computer, plan.SourceOu);
         }
-        if (plan.Kind is "join" or "move" or "renameMove"
-            && !string.Equals(ResolveTargetGuid(read, adapter, plan.TargetOu), plan.TargetOuGuid, StringComparison.OrdinalIgnoreCase))
-            throw new PestoException("destination.changed", "Le GUID de l’OU cible a changé depuis la confirmation : aucune commande envoyée.");
-        if (plan.Kind != "move")
-        {
-            var taken = adapter.FindComputer(read.Domain, DcOrNull(), plan.NewName);
-            if (taken is not null && !string.Equals(taken.Guid, plan.Guid, StringComparison.OrdinalIgnoreCase))
-                throw new PestoException("name.taken", "Le nom vient d’être pris. Aucun ajout automatique : nouvel aperçu, nouveau clic.");
-        }
-
-        RequireGroupExclusions(read, policy, plan.Guid, plan.PrecreatedJoin?.Name ?? plan.Computer, plan.SourceOu);
         var joinClock = CheckJoinClock(policy, plan.Kind);
         if (joinClock is { State: "warning" }) Log(joinClock.Message);
 

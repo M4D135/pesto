@@ -164,10 +164,25 @@ export function render(main, ctx) {
   formHost.innerHTML = [
     field({ name: 'type', label: 'Type de poste', type: 'radio', options: TYPES, value: 'P', required: true, width: 'full' }),
     field({ name: 'site', label: 'Site', type: 'select', options: [], placeholder: 'Chargement des sites…', required: true, width: 'half' }),
-    field({ name: 'service', label: 'Service', type: 'select', options: [], placeholder: 'Chargement des services…', required: true, width: 'half' }),
+    field({ name: 'service', label: 'Service', type: 'text', placeholder: 'Code service (3 caractères)', required: true,
+      maxLength: 3, pattern: '[A-Za-z0-9]{3}', patternMessage: 'Saisissez un code service de trois caractères.',
+      hint: 'Suggestions AD disponibles ; vous pouvez aussi saisir un nouveau code.', width: 'half' }),
     '<div class="row-actions"><button class="btn" type="submit">' + icon('sparkles') + 'Calculer le nom libre</button></div>',
   ].join('');
   const form = createForm(formHost, { onSubmit: (values) => compute(values, false) });
+  const serviceInput = formHost.querySelector('[name="service"]');
+  const serviceList = document.createElement('datalist');
+  serviceList.id = 'pesto-join-service-suggestions';
+  serviceInput.setAttribute('list', serviceList.id);
+  serviceInput.insertAdjacentElement('afterend', serviceList);
+  serviceInput.addEventListener('input', () => {
+    const start = serviceInput.selectionStart, end = serviceInput.selectionEnd;
+    const normalized = serviceInput.value.toUpperCase();
+    if (normalized !== serviceInput.value) {
+      serviceInput.value = normalized;
+      serviceInput.setSelectionRange(start, end);
+    }
+  });
   const precreatedHost = main.querySelector('[data-form="precreated"]');
   precreatedHost.innerHTML = field({ name: 'existingName', label: 'Nom exact du compte AD précréé', required: true, mono: true, maxLength: 15,
     pattern: '[A-Za-z0-9][A-Za-z0-9-]{0,14}', patternMessage: 'Nom Windows de 1 à 15 caractères attendu.',
@@ -186,7 +201,7 @@ export function render(main, ctx) {
     servicesToken++;
     formHost.querySelector('[data-zone="sites-retry"]')?.remove();
     formHost.querySelector('[name="site"]').innerHTML = '<option value="">Chargement des sites…</option>';
-    formHost.querySelector('[name="service"]').innerHTML = '<option value="">Chargement des services…</option>';
+    serviceList.replaceChildren();
     form.setMessage('site', null);
     form.setMessage('service', null);
     try {
@@ -199,14 +214,14 @@ export function render(main, ctx) {
       select.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.selector ?? s.id)}">${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}</option>`).join('') || '<option value="">Aucun site trouvé</option>';
       if (!items?.length) {
         form.setMessage('site', 'Aucun site de la configuration n’a été trouvé. Vérifiez les OU dans Paramètres.', 'warn');
-        formHost.querySelector('[name="service"]').innerHTML = '<option value="">Choisissez d’abord un site</option>';
+        serviceList.replaceChildren();
         return;
       }
       loadServices(true);
     } catch (err) {
       if (!alive || token !== sitesToken) return;
       formHost.querySelector('[name="site"]').innerHTML = '<option value="">Indisponible</option>';
-      formHost.querySelector('[name="service"]').innerHTML = '<option value="">Indisponible</option>';
+      serviceList.replaceChildren();
       form.setMessage('site', errorText(err), 'error');
       formHost.querySelector('[type="submit"]').parentElement.insertAdjacentHTML('beforebegin',
         '<div class="row-actions" data-zone="sites-retry"><button class="btn" type="button" data-retry-sites>' + icon('refresh') + 'Réessayer le chargement des sites</button></div>');
@@ -222,19 +237,20 @@ export function render(main, ctx) {
     const token = ++servicesToken;
     const site = formHost.querySelector('[name="site"]')?.value;
     if (!site) return;
-    const select = formHost.querySelector('[name="service"]');
+    serviceInput.disabled = preprodLocked;
     form.setMessage('service', null);
-    select.innerHTML = '<option value="">Chargement…</option>';
+    serviceList.replaceChildren();
     try {
       const { items } = await ctx.call('directory.services', { site, purpose: 'join' });
       if (!alive || token !== servicesToken) return;
-      select.disabled = preprodLocked;
-      select.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}">${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}</option>`).join('') || '<option value="">Aucun service trouvé</option>';
-      if (calculate && select.value) await compute(form.values(), false);
+      serviceInput.disabled = preprodLocked;
+      serviceList.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}" label="${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}"></option>`).join('');
+      if (!(items ?? []).length) form.setMessage('service', 'Aucun service connu : saisissez le code manuellement.', 'warn');
+      if (calculate && serviceInput.value.trim()) await compute(form.values(), false);
     } catch (err) {
       if (!alive || token !== servicesToken) return;
-      select.innerHTML = '<option value="">Indisponible</option>';
-      form.setMessage('service', errorText(err), 'error');
+      // Les suggestions ne sont pas une condition de saisie : un code valide reste utilisable.
+      form.setMessage('service', 'Suggestions AD indisponibles : vous pouvez saisir le code manuellement.', 'warn');
     }
   }
 

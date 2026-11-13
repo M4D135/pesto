@@ -470,7 +470,7 @@ try{
       })
       $inOu=@(Get-ADComputer -SearchBase $j.Ou -SearchScope Subtree -LDAPFilter ('(|'+($scopeClauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})
       $withTag=@(Get-ADComputer -SearchBase $domainRoot -SearchScope Subtree -LDAPFilter ('(|'+($clauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})
-$result=[pscustomobject]@{inOu=$inOu;withTag=$withTag;complete=($inOu.Count -le $max -and $withTag.Count -le $max)}
+      $result=[pscustomobject]@{inOu=$inOu;withTag=$withTag;complete=($inOu.Count -le $max -and $withTag.Count -le $max)}
     }
     'automationNames'{
       $pattern=[string]$j.Pattern;$max=[int]$j.Max

@@ -180,8 +180,8 @@ try {
       try {
         if (kind === 'rename') await selectComputer(page);
         const service = page.locator(`[data-form="${kind}"] [name="service"]`);
-        await service.locator('xpath=following-sibling::datalist/option').first().waitFor({ state: 'attached' });
-        const next = await service.locator('xpath=following-sibling::datalist/option').first().getAttribute('value');
+        await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().waitFor({ state: 'attached' });
+        const next = await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().getAttribute('value');
         await service.fill(next);
         await page.waitForFunction(code => document.querySelector('main .name-preview .name')?.textContent.includes(code), next);
         const calls = await page.evaluate(() => window.fixture.calls);
@@ -680,7 +680,7 @@ try {
       assert.equal(await page.locator('main .name-preview').count(), 0);
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'operation.prepare').length), 0);
       await page.evaluate(() => { window.fixture.previewError = null; });
-      await page.locator('[data-form="rename"] [name="service"]').selectOption('ADM');
+      await page.locator('[data-form="rename"] [name="service"]').fill('ADM');
       await page.locator('[data-zone="rpreview"] .name-preview .name').waitFor();
       assert.match(await page.locator('[data-zone="rpreview"] .name-preview .name').innerText(), /ADM/);
       assert.equal(await page.locator('[data-zone="rpreview"] [role="alert"]').count(), 0);

@@ -63,6 +63,9 @@ try {
               : staging && request.op === 'directory.sites' ? { locked: true, items: [{ id: 'PREPROD', name: 'Préproduction', code: 'PR', selector: stagingOu, ou: stagingOu }] }
               : staging && request.op === 'directory.services' ? { locked: true, items: [{ code: '765', name: '765' }] }
               : staging && request.op === 'names.preview' ? { complete: true, previewId: 'preprod-preview', name: 'P111301PR765001', ou: stagingOu, expiresAt: '2099-01-01T00:00:00Z' }
+              : request.op === 'names.preview' && control.serviceWidth !== undefined
+                ? { complete: true, previewId: 'custom-width-fixture', name: `${args.type}1PA${args.service}001`,
+                  ou: 'OU=Paris,OU=Postes,DC=example,DC=local', expiresAt: '2099-01-01T00:00:00Z', source: 'explicit browser fixture' }
               : await browserSimulation.invoke(request.op, args);
             if (request.op === 'session.info') { data.mode = 'live'; data.readOnly = false; }
             // Deliberately stale capability in this fixture: the UI must also guard the local membership fact.
@@ -76,6 +79,7 @@ try {
               if (control.holdSites) await new Promise((done) => { control.releases.sites = done; });
               if (control.sitesError) throw Object.assign(new Error(control.sitesError), { code: 'directory.unavailable' });
               if (control.siteItems) data.items = structuredClone(control.siteItems);
+              if (control.serviceWidth !== undefined) data.serviceWidth = control.serviceWidth;
             }
             if (request.op === 'directory.services' && control.emptyServices) data.items = [];
             if (request.op === 'computer.inspect') {
@@ -434,6 +438,30 @@ try {
   });
   // Service text edits must invalidate a preview immediately, before blur or submission.
   for (const [route, form, action] of [['ajouter', 'join', 'add'], ['unposte', 'rename', 'apply']]) {
+    for (const width of [1, 4, 6]) await check(`${route} : saisie service de ${width} caractères selon la convention, sans lecture supplémentaire`, async () => {
+      const page = await makePage(route, 'rename', 'succeeded', { serviceWidth: width });
+      try {
+        if (route === 'unposte') await selectComputer(page);
+        const service = page.locator(`[data-form="${form}"] [name="service"]`);
+        await page.waitForFunction(({ form, width }) => document.querySelector(`[data-form="${form}"] [name="service"]`)?.maxLength === width, { form, width });
+        await page.locator(`[data-form="${form}"] [name="service"] + datalist option[value="INF"]`).waitFor({ state: 'attached' });
+        assert.equal(await service.getAttribute('pattern'), `[A-Za-z0-9]{${width}}`);
+        await service.fill('');
+        const before = await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'names.preview').length);
+        const code = 'ABC123'.slice(0, width);
+        if (width > 1) await service.fill(code.slice(0, -1));
+        assert.equal(await page.locator(`[data-act="${action}"]`).isEnabled(), false);
+        assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'names.preview').length), before);
+        await service.fill(code.toLowerCase());
+        await page.locator('main .name-preview .name').waitFor();
+        assert.equal(await service.inputValue(), code);
+        assert.match(await page.locator('main .name-preview .name').innerText(), new RegExp(`${code}001$`));
+        assert.equal(await page.locator(`[data-act="${action}"]`).isEnabled(), true);
+        const calls = await page.evaluate(() => window.fixture.calls);
+        assert.equal(calls.filter(c => c.op === 'names.preview').length, before + 1);
+        assert.equal(calls.filter(c => c.op === 'settings.get' || c.op === 'operation.prepare' || c.op === 'operation.execute').length, 0);
+      } finally { await page.close(); }
+    });
     await check(`${route} : type, service et site désactivent l’écriture jusqu’au nouvel aperçu`, async () => {
       const page = await makePage(route);
       try {

@@ -55,6 +55,8 @@ internal sealed class FakeGateway : Pesto.Engine.IDirectoryGateway, IAutomationN
     public string? FailOnChildOu;
     public string OuGuid = "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa";
     public Func<string, DirectoryOrganizationalUnit?>? FindOu;
+    public string[] LastSiteServicePatterns = [];
+    public string[] LastOrganismServicePatterns = [];
 
     public string? DiscoverDomainController(string domain)
     {
@@ -103,6 +105,22 @@ internal sealed class FakeGateway : Pesto.Engine.IDirectoryGateway, IAutomationN
     {
         var local = ListComputerNames(domain, dc, ou, maximum);
         return new(local, new(DomainNames ?? [], NamesComplete));
+    }
+
+    public SiteComputerNames ReadSiteComputerNames(string domain, string? dc, string ou, IReadOnlyList<string> patterns,
+        IReadOnlyList<string> organismPatterns, int maximum)
+    {
+        LastSiteServicePatterns = [.. patterns];
+        LastOrganismServicePatterns = [.. organismPatterns];
+        return ReadSiteComputerNames(domain, dc, ou, patterns, maximum);
+    }
+
+    public SiteComputerNames ReadSelectedSiteComputerNames(string domain, string? dc, SelectedSiteOu site, IReadOnlyList<string> patterns,
+        IReadOnlyList<string> organismPatterns, int maximum)
+    {
+        LastSiteServicePatterns = [.. patterns];
+        LastOrganismServicePatterns = [.. organismPatterns];
+        return ((IDirectoryGateway)this).ReadSelectedSiteComputerNames(domain, dc, site, patterns, maximum);
     }
 
     public List<string>? DomainNames;
@@ -390,6 +408,8 @@ internal sealed class LiveReadTests
             Check.Equal(ou, selector, "La sélection reste liée à l’OU si la liste change");
             var services = Harness.Arr(Harness.Call(backend, "directory.services", new { site = selector }), "items");
             Check.Equal("765,ADM", string.Join(',', services.Select(item => Harness.Str(item!, "code"))), "Services du site par OU ou par tag dans le domaine");
+            Check.Equal("P111301PR*,S111301PR*,V111301PR*", string.Join(',', gateway.LastSiteServicePatterns), "Motifs du tag exact transmis au lecteur");
+            Check.Equal("P111301*,S111301*,V111301*", string.Join(',', gateway.LastOrganismServicePatterns), "Motifs explicites d’organisme transmis pour tous les tags dans l’OU");
             var preview = Harness.Call(backend, "names.preview", new { type = "P", site = selector, service = "765" });
             Check.Equal("P111301PR765001", Harness.Str(preview, "name"), "La série P est distincte de V");
             Check.Equal(1, gateway.ChildOuReads[Container], "Choisir un site puis calculer ne réénumère pas les autres sites");

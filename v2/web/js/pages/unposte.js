@@ -6,6 +6,7 @@
 import { icon } from '../icons.js';
 import { esc, applyVars, reveal, errorText, announce, toast, formatDateTime } from '../ui.js';
 import { field, createForm, pill, bindCopy } from '../kit/index.js';
+import { serviceCodeSpec } from '../service-code.js';
 import { confirmAndExecute, refusalMarkup, receiptMarkup, receiptFeedback } from '../writeflow.js';
 
 const TYPES = [
@@ -66,6 +67,7 @@ export function render(main, ctx) {
   const route = location.hash;
   const isActive = () => alive && location.hash === route;
   let sites = [];
+  let serviceSpec = serviceCodeSpec();
   let sitesState = 'loading';
   let sitesError = '';
   let sitesLoading = false;
@@ -274,8 +276,7 @@ export function render(main, ctx) {
     host.innerHTML = [
       field({ name: 'type', label: 'Type', type: 'radio', options: TYPES, value: guessType(current), required: true, width: 'full' }),
       field({ name: 'site', label: 'Site', type: 'select', options: sites.map((s) => ({ value: s.id, label: `${s.name} (${s.code})` })), value: site?.id ?? '', placeholder: site ? undefined : 'Choisissez le site', required: true, width: 'half' }),
-      field({ name: 'service', label: 'Service', type: 'text', value: target.service ?? '', placeholder: 'Code service (3 caractères)', required: true,
-        maxLength: 3, pattern: '[A-Za-z0-9]{3}', patternMessage: 'Saisissez un code service de trois caractères.',
+      field({ name: 'service', label: 'Service', type: 'text', value: target.service ?? '', required: true, ...serviceSpec,
         hint: 'Suggestions AD disponibles ; vous pouvez aussi saisir un nouveau code.', width: 'half' }),
       '<div class="row-actions"><button class="btn" type="submit">' + icon('sparkles') + 'Calculer le nom libre</button></div>',
     ].join('');
@@ -294,7 +295,7 @@ export function render(main, ctx) {
       }
       // Editing a free-form code invalidates the previous preview immediately, not on blur.
       renameToken++; renamePreview = null; previewValues = null; paintPreview();
-      if (serviceInput.value.trim().length === 3 && form.validate()) computeRename(form.values());
+      if (serviceInput.value.trim().length === serviceSpec.maxLength && form.validate()) computeRename(form.values());
     });
     const rpreview = renameZone.querySelector('[data-zone="rpreview"]');
     const apply = renameZone.querySelector('[data-act="apply"]');
@@ -555,8 +556,9 @@ export function render(main, ctx) {
     sitesError = '';
     if (current) { buildRenameForm(); paintMove(); }
     try {
-      const { items } = await ctx.call('directory.sites');
+      const { items, serviceWidth } = await ctx.call('directory.sites');
       if (!isActive()) return;
+      serviceSpec = serviceCodeSpec(serviceWidth);
       sites = (items ?? []).map(site => ({ ...site, id: site.selector ?? site.id }));
       sitesState = 'ready';
       if (!sites.length) toast('Aucun site configuré : ajoutez-en dans Paramètres.', { tone: 'warn' });

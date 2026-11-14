@@ -12,6 +12,7 @@ internal static class DirectoryReadPowerShellValidation
     private const string Parent = "OU=Agences," + DomainDn, Site = "OU=Paris(1)," + Parent;
     private const string Series = "P111301PR765*";
     private static readonly string[] Patterns = ["P111301PR*", "L111301PR*"];
+    private static readonly string[] OrganismPatterns = ["P111301*", "L111301*"];
     private static readonly string[] Occupied = Enumerable.Range(1, 12).Select(i => $"P111301PR765{i:D3}").ToArray();
     private sealed record Read(JsonElement Reply, JsonElement[] Calls, int Pid);
 
@@ -26,7 +27,7 @@ internal static class DirectoryReadPowerShellValidation
             File.WriteAllText(module, FixtureModule, new UTF8Encoding(true));
             var sites = await Invoke(module, "sites", new { Explicit = new[] { Site, "OU=Missing," + Parent }, Parents = new[] { Parent } });
             var selection = new SelectedSiteOu(Site, "Paris(1)");
-            var services = await Invoke(module, "siteServices", new { Ou = Site, Patterns, Max = 20, SelectedSite = selection });
+            var services = await Invoke(module, "siteServices", new { Ou = Site, Patterns, OrganismPatterns, Max = 20, SelectedSite = selection });
             var names = await Invoke(module, "automationNames", new { Pattern = Series, Max = 12, SelectedSite = selection });
             var siteResult = Result(sites); var serviceResult = Result(services); var seriesResult = Result(names);
             EqualSet(siteResult.GetProperty("found"), [Site]);
@@ -53,6 +54,34 @@ internal static class DirectoryReadPowerShellValidation
             Check.Equal(DomainDn, Text(services.Calls[2], "base"), "Motifs de tag recherchés dans tout le domaine");
             Check.Equal("(|(name=P111301PR*)(name=L111301PR*))", Text(services.Calls[2], "ldap"), "Tous les types du site dans une seule lecture");
             foreach (var call in services.Calls.Skip(1)) RequireSubtree(call, 21);
+            var customPatterns = new[]
+            {
+                new { Mode = "custom-reordered", SitePattern = "*P123PA", OrganismPattern = "*P123*",
+                    Local = new[] { "INF107P123PA", "ADM109P123LY" }, Tagged = new[] { "INF107P123PA", "FIN101P123PA" } },
+                new { Mode = "custom-wide-site", SitePattern = "P1PARI*", OrganismPattern = "P1*",
+                    Local = new[] { "P1PARIA1", "P1LYONB2" }, Tagged = new[] { "P1PARIA1", "P1PARIC3" } }
+            };
+            foreach (var custom in customPatterns)
+            {
+                var observedServices = await Invoke(module, "siteServices", new { Ou = Site, Patterns = new[] { custom.SitePattern },
+                    OrganismPatterns = new[] { custom.OrganismPattern }, Max = 20, SelectedSite = selection }, custom.Mode);
+                var result = Result(observedServices);
+                EqualSet(result.GetProperty("inOu"), custom.Local);
+                EqualSet(result.GetProperty("withTag"), custom.Tagged);
+                Check.True(result.GetProperty("complete").GetBoolean(), "Convention personnalisée complète");
+                Check.Equal(3, observedServices.Calls.Length, "Une relecture d’OU et deux requêtes ciblées, aucun scan général");
+                Check.Equal("(|(name=" + custom.OrganismPattern + "))", Text(observedServices.Calls[1], "ldap"), "Motif d’organisme exact transmis");
+                Check.Equal("(|(name=" + custom.SitePattern + "))", Text(observedServices.Calls[2], "ldap"), "Motif de site exact transmis");
+                foreach (var call in observedServices.Calls.Skip(1)) { RequireSubtree(call, 21); Check.Equal("", Text(call, "filter"), "Aucun Filter *"); }
+            }
+            foreach (var invalid in new[] { Array.Empty<string>(), new[] { "**" }, new[] { "P123*)(name=*)" }, new[] { "P123*", "S123*" } })
+            {
+                var rejected = await Invoke(module, "siteServices", new { Ou = Site, Patterns = new[] { "*P123PA" },
+                    OrganismPatterns = invalid, Max = 20, SelectedSite = selection });
+                Check.False(rejected.Reply.GetProperty("ok").GetBoolean(), "Motifs manquants, non ciblés ou malformés refusés");
+                Check.Equal(1, rejected.Calls.Length, "Aucune lecture de postes après refus des motifs");
+                Check.False(rejected.Reply.TryGetProperty("result", out _), "Aucun résultat inventé après refus");
+            }
             Check.True(seriesResult.GetProperty("complete").GetBoolean(), "Douze objets ne dépassent pas la borne de douze");
             var aliases = seriesResult.GetProperty("names").EnumerateArray().Select(x => x.GetString()!).ToArray();
             Check.True(Occupied.All(n => aliases.Contains(n, StringComparer.OrdinalIgnoreCase)), "CN, sAM sans $ et DNS sans suffixe occupent 001 à 012");
@@ -77,7 +106,7 @@ internal static class DirectoryReadPowerShellValidation
             // Undersized bounds and failures after a first successful query cannot be presented as complete results.
             foreach (var mode in new[] { "overflow-ou", "overflow-tag" })
             {
-                var clipped = Result(await Invoke(module, "siteServices", new { Ou = Site, Patterns, Max = 3 }, mode));
+                var clipped = Result(await Invoke(module, "siteServices", new { Ou = Site, Patterns, OrganismPatterns, Max = 3 }, mode));
                 Check.Equal(mode == "overflow-ou" ? 4 : 1, clipped.GetProperty("inOu").GetArrayLength(), "Borne réellement atteinte dans la lecture OU prévue");
                 Check.Equal(mode == "overflow-tag" ? 4 : 1, clipped.GetProperty("withTag").GetArrayLength(), "Borne réellement atteinte dans la lecture du tag prévue");
                 Check.False(clipped.GetProperty("complete").GetBoolean(), "Chacune des deux lectures peut rendre les services incomplets");
@@ -88,7 +117,7 @@ internal static class DirectoryReadPowerShellValidation
             {
                 object payload = operation switch {
                     "sites" => new { Explicit = new[] { Site }, Parents = new[] { Parent } },
-                    "siteServices" => new { Ou = Site, Patterns, Max = 20 },
+                    "siteServices" => new { Ou = Site, Patterns, OrganismPatterns, Max = 20 },
                     _ => new { Pattern = Series, Max = 12 }
                 };
                 var failed = await Invoke(module, operation, payload, "partial");
@@ -109,7 +138,8 @@ internal static class DirectoryReadPowerShellValidation
                     SHA256.HashData(Encoding.UTF8.GetBytes(PowerShellDirectoryGateway.ConstantScript))),
                 nominalWorkers = nominal.Length, nominalDirectoryCalls = nominal.Sum(r => r.Calls.Length), seriesWorkers = 1, seriesDirectoryCalls = names.Calls.Length,
                 occupied = Occupied.Length, firstUnoccupiedFixtureMember = firstUnused, selectedOuRefusals = 4, incompleteAndFailureCases = 7,
-                v1ObservedSites = observed.Length, v1ConfiguredPreproductionSites = 2, v1SuffixSites = 2 }));
+                v1ObservedSites = observed.Length, v1ConfiguredPreproductionSites = 2, v1SuffixSites = 2,
+                customServiceConventions = customPatterns.Length, invalidServicePatternCases = 4 }));
             return 0;
         }
         catch (Exception e) { Console.Error.WriteLine("ECHEC lectures synthétiques PS5.1 : " + e.Message); return 1; }
@@ -183,6 +213,18 @@ function Get-ADOrganizationalUnit {
 function Get-ADComputer {
   [CmdletBinding()]param([string]$Server,[string]$SearchBase,[string]$SearchScope,[string]$Filter,[string]$LDAPFilter,[string[]]$Properties,[int]$ResultSetSize,[int]$ResultPageSize)
   Trace-Call $PSBoundParameters
+  if($env:PESTO_FIXTURE_MODE -eq 'custom-reordered'){
+    if($SearchBase -ceq $site -and $LDAPFilter -ceq '(|(name=*P123*))'){$names=@('INF107P123PA','ADM109P123LY')}
+    elseif($SearchBase -ceq $root -and $LDAPFilter -ceq '(|(name=*P123PA))'){$names=@('INF107P123PA','FIN101P123PA')}
+    else{throw 'Unexpected custom convention filter or base'}
+    $names|Select-Object -First $ResultSetSize|ForEach-Object{[pscustomobject]@{Name=$_}};return
+  }
+  if($env:PESTO_FIXTURE_MODE -eq 'custom-wide-site'){
+    if($SearchBase -ceq $site -and $LDAPFilter -ceq '(|(name=P1*))'){$names=@('P1PARIA1','P1LYONB2')}
+    elseif($SearchBase -ceq $root -and $LDAPFilter -ceq '(|(name=P1PARI*))'){$names=@('P1PARIA1','P1PARIC3')}
+    else{throw 'Unexpected custom site width filter or base'}
+    $names|Select-Object -First $ResultSetSize|ForEach-Object{[pscustomobject]@{Name=$_}};return
+  }
   $rows=@(foreach($i in 1..12){
     $n='P111301PR765{0:d3}' -f $i;$other='OTHER{0:d3}' -f $i
     [pscustomobject]@{Name=$(if($i%3 -eq 1){$n}else{$other});SamAccountName=$(if($i%3 -eq 2){$n+'$'}else{$other+'$'});DNSHostName=$(if($i%3 -eq 0){$n+'.fixture.invalid'}else{$other+'.fixture.invalid'});InSite=($i -le 3)}

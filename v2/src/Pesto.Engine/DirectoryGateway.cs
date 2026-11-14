@@ -91,6 +91,15 @@ public interface IDirectoryGateway
         return ReadSiteComputerNames(domain, dc, site.DistinguishedName, patterns, maximum);
     }
 
+    /// <summary>Explicit convention-derived scopes: all organism names in the OU, selected site names domain-wide.</summary>
+    SiteComputerNames ReadSiteComputerNames(string domain, string? dc, string ou, IReadOnlyList<string> sitePatterns,
+        IReadOnlyList<string> organismPatterns, int maximum)
+        => ReadSiteComputerNames(domain, dc, ou, sitePatterns, maximum);
+
+    SiteComputerNames ReadSelectedSiteComputerNames(string domain, string? dc, SelectedSiteOu site, IReadOnlyList<string> sitePatterns,
+        IReadOnlyList<string> organismPatterns, int maximum)
+        => ReadSelectedSiteComputerNames(domain, dc, site, sitePatterns, maximum);
+
     DirectoryNameInventory ReadSelectedSiteSeries(string domain, string dc, SelectedSiteOu site, string pattern, int maximum)
     {
         site.RequireObserved(FindOrganizationalUnit(domain, dc, site.DistinguishedName));

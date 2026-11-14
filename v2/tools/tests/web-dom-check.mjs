@@ -113,8 +113,13 @@ try {
       const host = page.locator(`form[data-form="${form}"].k-form-live`);
       assert.equal(await host.count(), 1);
       await host.locator('[name="site"]').selectOption('paris');
-      await host.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
-      await host.locator('[name="service"]').fill('INF');
+      if (id === 'noms') {
+        // Noms is still a catalogue select; only join and rename use free-form service codes.
+        await host.locator('[name="service"]').selectOption('INF');
+      } else {
+        await host.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
+        await host.locator('[name="service"]').fill('INF');
+      }
       await host.locator('button[type="submit"]').click();
       const name = page.locator('main .name-preview .name');
       await name.waitFor();

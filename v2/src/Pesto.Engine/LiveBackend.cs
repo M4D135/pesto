@@ -481,7 +481,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         var adapter = RequireGateway();
         var locked = ForJoin(args) && !read.Production;
         var sites = locked ? [PreprodDestination(read, adapter)] : ResolveSites(read, adapter);
-        return Resp.Obj(("locked", locked), ("items", Resp.Arr(sites, s =>
+        return Resp.Obj(("locked", locked), ("serviceWidth", read.Convention.ServiceWidth), ("items", Resp.Arr(sites, s =>
             Resp.Obj(("id", s.Id), ("name", s.Name), ("code", s.Code), ("ou", s.Ou), ("selector", s.Ou)))));
     }
 
@@ -497,9 +497,10 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
         var convention = GetConvention(read);
         var patterns = convention.Types.Select(type => convention.SitePattern(type.ToString(), resolved.Code)).ToArray();
+        var organismPatterns = convention.Types.Select(type => convention.OrganismPattern(type.ToString())).ToArray();
         var names = selection is null
-            ? adapter.ReadSiteComputerNames(read.Domain, DcOrNull(), resolved.Ou, patterns, InventoryHardLimit)
-            : adapter.ReadSelectedSiteComputerNames(read.Domain, DcOrNull(), selection, patterns, InventoryHardLimit);
+            ? adapter.ReadSiteComputerNames(read.Domain, DcOrNull(), resolved.Ou, patterns, organismPatterns, InventoryHardLimit)
+            : adapter.ReadSelectedSiteComputerNames(read.Domain, DcOrNull(), selection, patterns, organismPatterns, InventoryHardLimit);
         if (!names.InOu.Complete || !names.WithTag.Complete)
             throw new PestoException("directory.incomplete", "La lecture des postes du site est incomplète. Relancez la lecture pour obtenir ses services.");
         var codes = new SortedSet<string>(StringComparer.Ordinal);

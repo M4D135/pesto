@@ -6,6 +6,7 @@
 import { icon } from '../icons.js';
 import { esc, applyVars, reveal, errorText, announce, toast, formatDateTime } from '../ui.js';
 import { refusal } from '../refusal.js';
+import { serviceCodeSpec } from '../service-code.js';
 import { field, createForm, pill, bindCopy } from '../kit/index.js';
 import { confirmAndExecute, refusalMarkup, receiptMarkup, receiptFeedback } from '../writeflow.js';
 import { reservationMarkup, mountReservations } from './reservation-panel.js';
@@ -80,6 +81,7 @@ export function render(main, ctx) {
   let expiryTimer = 0;
   let joinRequested = null;
   let preprodLocked = false;
+  let serviceSpec = serviceCodeSpec();
 
   const identity = main.querySelector('[data-zone="identity"]');
   const previewZone = main.querySelector('[data-zone="preview"]');
@@ -164,8 +166,7 @@ export function render(main, ctx) {
   formHost.innerHTML = [
     field({ name: 'type', label: 'Type de poste', type: 'radio', options: TYPES, value: 'P', required: true, width: 'full' }),
     field({ name: 'site', label: 'Site', type: 'select', options: [], placeholder: 'Chargement des sites…', required: true, width: 'half' }),
-    field({ name: 'service', label: 'Service', type: 'text', placeholder: 'Code service (3 caractères)', required: true,
-      maxLength: 3, pattern: '[A-Za-z0-9]{3}', patternMessage: 'Saisissez un code service de trois caractères.',
+    field({ name: 'service', label: 'Service', type: 'text', required: true, ...serviceSpec,
       hint: 'Suggestions AD disponibles ; vous pouvez aussi saisir un nouveau code.', width: 'half' }),
     '<div class="row-actions"><button class="btn" type="submit">' + icon('sparkles') + 'Calculer le nom libre</button></div>',
   ].join('');
@@ -186,7 +187,7 @@ export function render(main, ctx) {
     computeToken++;
     lastValues = null;
     setPreview(null);
-    if (serviceInput.value.trim().length === 3 && form.validate()) compute(form.values(), false);
+    if (serviceInput.value.trim().length === serviceSpec.maxLength && form.validate()) compute(form.values(), false);
   });
   const precreatedHost = main.querySelector('[data-form="precreated"]');
   precreatedHost.innerHTML = field({ name: 'existingName', label: 'Nom exact du compte AD précréé', required: true, mono: true, maxLength: 15,
@@ -210,8 +211,13 @@ export function render(main, ctx) {
     form.setMessage('site', null);
     form.setMessage('service', null);
     try {
-      const { items, locked } = await ctx.call('directory.sites', { purpose: 'join' });
+      const { items, locked, serviceWidth } = await ctx.call('directory.sites', { purpose: 'join' });
       if (!alive || token !== sitesToken) return;
+      serviceSpec = serviceCodeSpec(serviceWidth);
+      serviceInput.maxLength = serviceSpec.maxLength;
+      serviceInput.pattern = serviceSpec.pattern;
+      serviceInput.placeholder = serviceSpec.placeholder;
+      serviceInput.closest('.k-field').dataset.patternMessage = serviceSpec.patternMessage;
       const select = formHost.querySelector('[name="site"]');
       preprodLocked = locked === true;
       select.disabled = preprodLocked;

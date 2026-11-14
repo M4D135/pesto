@@ -274,6 +274,13 @@ public sealed class NamingConvention
         return Render(type, site, "*", "*").Replace("**", "*", StringComparison.Ordinal);
     }
 
+    /// <summary>All sites and services of one type/organism, in the configured token order.</summary>
+    public string OrganismPattern(string type)
+    {
+        _ = Format(type, new string('A', SiteWidth), new string('A', ServiceWidth), 1);
+        return Regex.Replace(Render(type, "*", "*", "*"), @"\*+", "*");
+    }
+
     private string Render(string type, string site, string service, string number) =>
         Token.Replace(pattern, m => m.Groups["name"].Value switch
         {

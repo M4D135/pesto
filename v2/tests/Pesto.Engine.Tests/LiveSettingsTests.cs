@@ -93,6 +93,8 @@ internal sealed class LiveSettingsTests
         var preview = Harness.Call(w.Backend, "names.preview", new { type = "P", site = "PA", service = "IT" });
         Check.Equal("IT01P123PA", Harness.Str(preview, "name"),
             "Le nom proposé suit la convention lue : service, numéro AU MILIEU, type, préfixe, site (port NAMING_119 v1)");
+        var unlisted = Harness.Call(w.Backend, "names.preview", new { type = "P", site = "PA", service = "ZZ" });
+        Check.Equal("ZZ01P123PA", Harness.Str(unlisted, "name"), "Un code valide inédit ne dépend pas des suggestions du catalogue");
     }
 
     [Test]
@@ -104,6 +106,31 @@ internal sealed class LiveSettingsTests
         Check.Equal(2, items.Count, "Services lus à la position que la convention leur donne (IT et XX vus, HORSNOM ignoré) + catalogue");
         Check.Equal("IT", Harness.Str(items[0]!, "code"), "Catalogue fusionné");
         Check.Equal("XX", Harness.Str(items[1]!, "code"), "Service analysé à la largeur configurée, pas à un offset fixe");
+        Check.Equal("*P123PA,*S123PA,*V123PA", string.Join(',', w.Gateway.LastSiteServicePatterns), "Ordre de la convention transmis au filtre de tag");
+        Check.Equal("*P123*,*S123*,*V123*", string.Join(',', w.Gateway.LastOrganismServicePatterns), "Ordre de la convention transmis au filtre d’organisme");
+    }
+
+    [Test]
+    public void DirectorySitesDisclosesServiceWidthsForProductionAndPreproduction()
+    {
+        for (var width = 1; width <= 6; width++)
+        foreach (var production in new[] { false, true })
+        {
+            var cfg = JsonNode.Parse(Atelier)!.AsObject();
+            cfg["NamingConvention"]!["Widths"]!["Service"] = width;
+            cfg["CONF"]![0]!["PreprodSite"] = new string('7', width);
+            cfg["CONF"]![0]!["DirectProd"] = production;
+            cfg["NameCatalogue"]![0]!["Service"] = new string('A', width);
+            var root = LiveTestConfig.Write(cfg.ToJsonString());
+            try
+            {
+                var backend = Harness.Live(root, new FakeGateway { ChildOus = { [Container] = ["Paris-Nord"] } });
+                var sites = Harness.Call(backend, "directory.sites", new { purpose = "join" });
+                Check.Equal(width, Harness.Int(sites, "serviceWidth"), "Largeur exacte exposée au formulaire, sans appel annuaire supplémentaire");
+                Check.Equal(!production, Harness.Bool(sites, "locked"), "La destination de préproduction reste imposée");
+            }
+            finally { Directory.Delete(root, true); }
+        }
     }
 
     [Test]

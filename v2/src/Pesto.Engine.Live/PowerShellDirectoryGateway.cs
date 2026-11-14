@@ -131,19 +131,33 @@ public sealed partial class PowerShellDirectoryGateway : IDirectoryGateway, IDir
         return value.EnumerateArray().Select(item => item.GetString()!).ToArray();
     }
 
+    // The legacy interface remains usable by non-native adapters. Native reads require both explicit scopes;
+    // guessing a prefix or site width could hide valid services, and a broad fallback would undo the optimization.
     public SiteComputerNames ReadSiteComputerNames(string domain, string? dc, string ou, IReadOnlyList<string> sitePatterns, int maximum)
-        => ReadSiteServices(domain, dc, ou, sitePatterns, maximum, null);
+        => throw new PestoException("directory.unavailable", "Les motifs d’organisme de la convention sont requis pour lire les services sans élargir la recherche.");
 
     public SiteComputerNames ReadSelectedSiteComputerNames(string domain, string? dc, SelectedSiteOu site, IReadOnlyList<string> patterns, int maximum)
-        => ReadSiteServices(domain, dc, site.DistinguishedName, patterns, maximum, site);
+        => throw new PestoException("directory.unavailable", "Les motifs d’organisme de la convention sont requis pour lire les services sans élargir la recherche.");
 
-    private SiteComputerNames ReadSiteServices(string domain, string? dc, string ou, IReadOnlyList<string> sitePatterns, int maximum, SelectedSiteOu? selectedSite)
+    public SiteComputerNames ReadSiteComputerNames(string domain, string? dc, string ou, IReadOnlyList<string> sitePatterns,
+        IReadOnlyList<string> organismPatterns, int maximum)
+        => ReadSiteServices(domain, dc, ou, sitePatterns, organismPatterns, maximum, null);
+
+    public SiteComputerNames ReadSelectedSiteComputerNames(string domain, string? dc, SelectedSiteOu site, IReadOnlyList<string> sitePatterns,
+        IReadOnlyList<string> organismPatterns, int maximum)
+        => ReadSiteServices(domain, dc, site.DistinguishedName, sitePatterns, organismPatterns, maximum, site);
+
+    private SiteComputerNames ReadSiteServices(string domain, string? dc, string ou, IReadOnlyList<string> sitePatterns,
+        IReadOnlyList<string> organismPatterns, int maximum, SelectedSiteOu? selectedSite)
     {
         RequireOu(ou);
-        Require(maximum is >= 1 and <= 20000 && sitePatterns.Count is >= 1 and <= 3 && sitePatterns.All(pattern =>
-            pattern.Length is >= 2 and <= 15 && pattern.Contains('*') && pattern.All(c => char.IsAsciiLetterOrDigit(c) || c is '*' or '-')),
-            "Motifs de site invalides.");
-        var result = Run("siteServices", Payload(domain, dc, ("Ou", ou), ("Patterns", sitePatterns), ("Max", maximum), ("SelectedSite", selectedSite)));
+        Require(maximum is >= 1 and <= 20000 && sitePatterns.Count is >= 1 and <= 3
+            && organismPatterns.Count == sitePatterns.Count && sitePatterns.Concat(organismPatterns).All(pattern =>
+                pattern.Length is >= 2 and <= 15 && pattern.Contains('*') && pattern.Any(char.IsAsciiLetterOrDigit)
+                && pattern.All(c => char.IsAsciiLetterOrDigit(c) || c is '*' or '-')),
+            "Motifs de site ou d’organisme invalides.");
+        var result = Run("siteServices", Payload(domain, dc, ("Ou", ou), ("Patterns", sitePatterns),
+            ("OrganismPatterns", organismPatterns), ("Max", maximum), ("SelectedSite", selectedSite)));
         var complete = result.GetProperty("complete").ValueKind == JsonValueKind.True;
         return new(new(ReadStrings(result.GetProperty("inOu")), complete), new(ReadStrings(result.GetProperty("withTag")), complete));
     }
@@ -456,14 +470,16 @@ try{
     'siteServices'{
       $domainRoot=(@(([string]$j.Domain)-split '\.'|ForEach-Object{'DC='+$_}) -join ',')
       $max=[int]$j.Max
-      if($max -lt 1 -or $max -gt 20000 -or @($j.Patterns).Count -lt 1 -or @($j.Patterns).Count -gt 3){throw 'Paramètres de recherche des services invalides.'}
+      if($max -lt 1 -or $max -gt 20000 -or @($j.Patterns).Count -lt 1 -or @($j.Patterns).Count -gt 3 -or @($j.OrganismPatterns).Count -ne @($j.Patterns).Count){throw 'Paramètres de recherche des services invalides.'}
       $prefixClauses=@()
       $tagClauses=@()
+      foreach($pattern in (@($j.Patterns)+@($j.OrganismPatterns))){
+        if($pattern -notmatch '^[A-Za-z0-9*-]{2,15}$' -or $pattern -notmatch '\*' -or $pattern -notmatch '[A-Za-z0-9]'){throw 'Motif de recherche de site ou d''organisme invalide.'}
+      }
+      foreach($pattern in $j.OrganismPatterns){
+        $prefixClauses+=('(name='+$pattern+')')
+      }
       foreach($pattern in $j.Patterns){
-        if($pattern -notmatch '^[A-Za-z0-9]{5,12}[A-Za-z0-9]{2}\*$'){throw 'Motif de recherche de site invalide.'}
-        $prefix=$pattern.Substring(0,$pattern.Length-3)+'*'
-        if($prefix -notmatch '^[A-Za-z0-9]{5,12}\*$'){throw 'Préfixe de recherche de service invalide.'}
-        $prefixClauses+=('(name='+$prefix+')')
         $tagClauses+=('(name='+$pattern+')')
       }
       $inOu=@(Get-ADComputer -SearchBase ([string]$j.Ou) -SearchScope Subtree -LDAPFilter ('(|'+($prefixClauses -join '')+')') -ResultPageSize 500 -ResultSetSize ($max+1) -ErrorAction Stop @adp|ForEach-Object{[string]$_.Name})

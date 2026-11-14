@@ -30,7 +30,8 @@ internal static class InteractiveReadTransportValidation
             JsonElement Read(string op, object? credential = null, string pattern = "P111301PR765*")
             {
                 var input = JsonSerializer.Serialize(new { Op = op, Server = Dc, Domain, ModulePath = module, Credential = credential,
-                    Pattern = pattern, Patterns = new[] { "P111301PR*" }, Explicit = new[] { Ou }, Parents = Array.Empty<string>(), Ou, Max = 100,
+                    Pattern = pattern, Patterns = new[] { "P111301PR*" }, OrganismPatterns = new[] { "P111301*" },
+                    Explicit = new[] { Ou }, Parents = Array.Empty<string>(), Ou, Max = 100,
                     SelectedSite = op is "siteServices" or "automationNames" ? new SelectedSiteOu(Ou, "Site") : null,
                     Literal = "'; [Environment]::Exit(77); $(throw 'JSON is not code')" });
                 var reply = JsonSerializer.Deserialize<JsonElement>(fixture.Execute(input, module));

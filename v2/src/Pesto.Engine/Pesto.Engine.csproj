@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><RootNamespace>Pesto.Engine</RootNamespace></PropertyGroup>
-  <!-- Portable business and application services. Native AD/WMI/WinForms adapters stay in Engine.Live and App; stores and the local-source updater are managed services. -->
-  <ItemGroup><ProjectReference Include="../Pesto.Core/Pesto.Core.csproj" /></ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="../../vendor/socle/webview2-156.0.4314.42.files.json" LogicalName="Pesto.Socle.WebView2Index" />
-  </ItemGroup>
-</Project>

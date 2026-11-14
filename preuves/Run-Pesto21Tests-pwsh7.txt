@@ -1,5 +1,0 @@
-[31;1mException: [0m/home/claude/pesto/work/DEV/tests/Run-Pesto21Tests.ps1:6[0m
-[31;1m[0m[36;1mLine |[0m
-[31;1m[0m[36;1m[36;1m   6 | [0m … ajor -ne 5){[36;1mthrow 'Recette cible : Windows PowerShell 5.1 sous Window[0m …[0m
-[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m     | [31;1m               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
-[31;1m[0m[36;1m[36;1m[0m[36;1m[0m[36;1m[31;1m[31;1m[36;1m     | [31;1mRecette cible : Windows PowerShell 5.1 sous Windows.[0m

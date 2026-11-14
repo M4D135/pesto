@@ -182,6 +182,11 @@ export function render(main, ctx) {
       serviceInput.value = normalized;
       serviceInput.setSelectionRange(start, end);
     }
+    // Invalidate the old name as soon as the operator edits the free-form service code.
+    computeToken++;
+    lastValues = null;
+    setPreview(null);
+    if (serviceInput.value.trim().length === 3 && form.validate()) compute(form.values(), false);
   });
   const precreatedHost = main.querySelector('[data-form="precreated"]');
   precreatedHost.innerHTML = field({ name: 'existingName', label: 'Nom exact du compte AD précréé', required: true, mono: true, maxLength: 15,
@@ -259,13 +264,12 @@ export function render(main, ctx) {
   }
 
   formHost.addEventListener('change', (e) => {
-    if (!['type', 'site', 'service'].includes(e.target.name)) return;
+    if (!['type', 'site'].includes(e.target.name)) return;
     computeToken++;
     lastValues = null;
     setPreview(null);
     if (e.target.name === 'site') loadServices(true);
-    else if (['type', 'service'].includes(e.target.name) && formHost.querySelector('[name="service"]').value)
-      compute(form.values(), false);
+    else if (formHost.querySelector('[name="service"]').value) compute(form.values(), false);
   });
 
   async function compute(values, alternative) {

@@ -1,5 +1,0 @@
-{
-  "success": false,
-  "error": "InvalidOperationException",
-  "message": "Native helper timed out or the required interruption boundary was not observed."
-}

@@ -1,2 +1,0 @@
-{"kind":"pesto.first-chance-diagnostic","initialized":true,"diagnosticOnly":true,"utc":"2026-11-01T02:46:26.202082+00:00","pid":3036}
-{"utc":"2026-11-01T02:46:26.2296554+00:00","pid":3036,"threadId":2,"type":"System.IO.IOException","hResult":-2147024864,"hResultHex":"80070020","stack":[{"type":"Program","method":"\u003CMain\u003E$","ilOffset":15}]}

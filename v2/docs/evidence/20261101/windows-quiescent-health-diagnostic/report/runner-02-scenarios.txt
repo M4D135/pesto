@@ -1,5 +1,0 @@
-[
-  "normal",
-  "health-failure",
-  "interruption"
-]

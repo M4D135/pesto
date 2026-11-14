@@ -1,5 +1,0 @@
-{
-  "success": false,
-  "error": "InvalidOperationException",
-  "message": "The transaction reached its terminal state but its owned result dialog could not be identified; inspect resultWindows."
-}

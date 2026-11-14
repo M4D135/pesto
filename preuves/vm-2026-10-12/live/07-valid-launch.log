@@ -1,9 +1,0 @@
-élément introuvable : OK
-At C:\PestoRecette20261012\pilot\demo-commun.ps1:19 char:18
-+   if (-not $e) { throw "élément introuvable : $Nom" }
-+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (élément introuvable : OK:String) [], Runtime 
-   Exception
-    + FullyQualifiedErrorId : élément introuvable : OK
- 
-

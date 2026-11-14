@@ -1,8 +1,0 @@
-Exception calling "SetWindowVisualState" with "1" argument(s): "Operation cannot be performed."
-At C:\PestoRecette20261012\pilot\75-login-redraw.ps1:5 char:1
-+ $pattern.SetWindowVisualState([System.Windows.Automation.WindowVisual ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
-    + FullyQualifiedErrorId : InvalidOperationException
- 
-

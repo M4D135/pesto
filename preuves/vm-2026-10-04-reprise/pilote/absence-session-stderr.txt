@@ -1,8 +1,0 @@
-C:\PestoTest-run\lancer.ps1 : Echec du pilote : PestoPilote-e4fdeb8a : Delai depasse : 
-PestoPilote-e4fdeb8a etat=Ready resultat=267011 ; definition retiree.
-At C:\PestoTest-preuves\2026-10-04-reprise\pilote\absence-session.ps1:1 char:1
-+ & 'C:\PestoTest-run\lancer.ps1' -Exe cmd.exe -Arguments '/c exit 7' - ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1
- 

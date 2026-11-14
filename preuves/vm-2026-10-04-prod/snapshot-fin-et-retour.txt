@@ -1,6 +1,0 @@
-0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
-Snapshot taken. UUID: fb0a904c-3e1a-4cf3-a79d-25c8fbe47a17
-0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
-Restoring snapshot '04-avant-AD-Pesto-20261004' (19de5ecb-931f-4a44-8212-f860d66150b9)
-Waiting for VM "PESTO-W11-TEST" to power on...
-VM "PESTO-W11-TEST" has been successfully started.

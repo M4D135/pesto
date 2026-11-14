@@ -1,5 +1,0 @@
-#JnName = P111301LY765128
-capture C:\PestoRecette20261012\preuves\81-r6-jonction-preparation-hd.png 1920x1160
-clic : #JnCheck (Vérifier sans ajouter)
-clic : #JnStart (Ajouter ce PC au domaine)
-capture C:\PestoRecette20261012\preuves\81-r6-jonction-confirmation-hd.png 1920x1160

@@ -1,2 +1,0 @@
-ECHEC DemonstrationTests.RefusedOrUncertainMoveReceiptsKeepThePlannedDestinationWithoutMovingTheComputer : Le reçu décrit l’OU du plan, pas un faux déplacement observé (attendu OU=Lyon,OU=Postes,DC=example,DC=local, obtenu OU=Paris,OU=Postes,DC=example,DC=local)
-0 réussis, 1 en échec, 1 au total.

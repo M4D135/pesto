@@ -1,6 +1,0 @@
-Fenetre de test uniquement : saisie fictive, connexion desactivee.
-Aucun vrai identifiant necessaire. Aucune saisie enregistree.
-
-
-Apercu termine. Le logiciel normal se lance avec Pesto.cmd.
-Press any key to continue . . . 

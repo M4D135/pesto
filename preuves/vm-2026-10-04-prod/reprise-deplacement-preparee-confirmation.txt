@@ -1,3 +1,0 @@
-﻿Renommage confirmé ou observé. Le déplacement reste à préparer séparément ; aucun renommage ne sera rejoué.
-
-Consigner cette observation et préparer uniquement la suite indiquée ? Aucune commande n’est lancée par cette confirmation.

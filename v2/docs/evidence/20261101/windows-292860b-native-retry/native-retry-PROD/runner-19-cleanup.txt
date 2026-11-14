@@ -1,5 +1,0 @@
-{
-  "success": true,
-  "scenario": "interruption",
-  "ownedFixtureRemoved": true
-}

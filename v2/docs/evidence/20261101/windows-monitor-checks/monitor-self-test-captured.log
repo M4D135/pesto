@@ -1,5 +1,0 @@
-{
-  "success": false,
-  "error": "InvalidOperationException",
-  "message": "Run portable qualification checks from the repository or a DEV pack with its pinned AD bundle. No module is imported or executed."
-}

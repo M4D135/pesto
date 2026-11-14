@@ -1,9 +1,0 @@
-{
-  "Command": "python3 -m unittest -q DEV/tests/test_accents.py DEV/tests/test_services_list.py DEV/tests/test_names_loading.py DEV/tests/test_rc22.py DEV/tests/test_services_rapides.py DEV/tests/test_reservations_noms.py DEV/tests/test_rc21.py DEV/tests/test_rc23.py DEV/tests/test_spark_t053.py DEV/tests/test_spark_t059.py DEV/tests/test_noms_pris.py DEV/tests/test_build_record.py DEV/tests/test_distribution.py DEV/tests/test_production_builder.py",
-  "Tests": 181,
-  "Passed": 181,
-  "Failed": 0,
-  "DurationSeconds": 26.912,
-  "WindowsExecuted": false,
-  "ADExecuted": false
-}

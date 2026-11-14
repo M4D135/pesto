@@ -1,7 +1,0 @@
-﻿{
-    "ProcessId":  6060,
-    "ExecutableHash":  "7BA3E7D3B8D4B75A10C4EB6DD60FB68EE2B0F562EB540D16B2F17E3C40E72230",
-    "User":  "LABO\\tech.pesto",
-    "Workload":  "3 warmup cycles, then 10 identical cycles at 60-second intervals; physical navigation clicks and forced site AD refresh (Request-PestoSiteLookup -Force); prior p02/p23 read clicks may use cache; 120 samples at 5 seconds",
-    "StartedUtc":  "2026-10-18T16:22:56.3490642Z"
-}

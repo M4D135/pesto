@@ -1,8 +1,0 @@
-#NmCmbSite = VA
-#NmCmbEquipe = 765
-#NmCmbType = Portable
-capture C:\PestoRecette20261012\preuves\17-noms-filtres.png 1440x860
-clic : #NavRename (Renommer)
-CbOrg: Département 111301
-CbSite: Lyon | Paris
-CbType: Portable | Fixe | Virtuel

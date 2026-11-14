@@ -1,8 +1,0 @@
-test_all_supplied_rsat_components_have_exact_hashes_and_unconfirmed_rights (test_microsoft_components.MicrosoftComponentsTests.test_all_supplied_rsat_components_have_exact_hashes_and_unconfirmed_rights) ... ok
-test_changed_component_is_refused (test_microsoft_components.MicrosoftComponentsTests.test_changed_component_is_refused) ... ok
-test_release_supplies_the_inventory_referenced_by_its_sbom (test_microsoft_components.MicrosoftComponentsTests.test_release_supplies_the_inventory_referenced_by_its_sbom) ... ok
-
-----------------------------------------------------------------------
-Ran 3 tests in 0.079s
-
-OK

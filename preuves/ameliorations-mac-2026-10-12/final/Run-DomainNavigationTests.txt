@@ -1,7 +1,0 @@
-{
-  "Passed": 10,
-  "PowerShell": "7.4.20",
-  "Scope": "Local UI state doubles",
-  "WindowsExecuted": false,
-  "ADExecuted": false
-}

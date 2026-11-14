@@ -1,8 +1,0 @@
-{
-  "Result": "PASS",
-  "Source": "arret-force-entre-etapes.json",
-  "CorrectionDuBanc": "La relance est une NOUVELLE commande, refusee avant creation de son recu : code96 NotStarted. Le recu du processus interrompu reste Running (issue a verifier), avec effet protection Lowering et Move Requested. Attendre97 pour cette nouvelle commande etait incorrect.",
-  "ReplayCode": 96,
-  "OriginalReceiptUnchanged": true,
-  "OriginalPhase": "Running"
-}

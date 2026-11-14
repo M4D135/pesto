@@ -144,7 +144,7 @@ try {
       await page.locator('main .name-preview .name').waitFor();
       assert.equal(await page.locator('[name="site"] option').count(), 1);
       assert.equal(await page.locator('[name="site"]').isEnabled(), false);
-      assert.equal(await page.locator('[name="service"] + datalist option').count(), 0);
+      assert.equal(await page.locator('[name="service"] + datalist option[value="765"]').count(), 1);
       assert.equal(await page.locator('[name="service"]').inputValue(), '765');
       assert.equal(await page.locator('[name="service"]').isEnabled(), false);
       assert.match(await page.locator('[data-zone="preview"]').innerText(), /OU=Staging/);
@@ -180,9 +180,15 @@ try {
       try {
         if (kind === 'rename') await selectComputer(page);
         const service = page.locator(`[data-form="${kind}"] [name="service"]`);
-        await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().waitFor({ state: 'attached' });
-        const next = await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().getAttribute('value');
-        await service.fill(next);
+        let next = 'ADM';
+        if (kind === 'preview') {
+          const options = await service.locator('option').evaluateAll(nodes => nodes.map(node => node.value).filter(Boolean));
+          next = options.find(value => value !== await service.inputValue()) ?? options[0];
+          await service.selectOption(next);
+        } else {
+          await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().waitFor({ state: 'attached' });
+          await service.fill(next);
+        }
         await page.waitForFunction(code => document.querySelector('main .name-preview .name')?.textContent.includes(code), next);
         const calls = await page.evaluate(() => window.fixture.calls);
         assert.equal(calls.filter(c => c.op === 'names.preview').at(-1).args.service, next);

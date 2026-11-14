@@ -1,4 +1,0 @@
-aucun handle -> RENOMME
-racine acces 0, partage lecture (lanceur 9ee3fe2) -> RENOMME
-racine FILE_LIST_DIRECTORY, partage 3 (correctif L2) -> refuse : The process cannot access the file because it is being used by another process.
-fichier wad\f.ps1 lecture, partage lecture (composant) -> refuse : Access to the path 'C:\PC\L2micro' is denied.

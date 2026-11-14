@@ -1,9 +1,0 @@
-{
-  "schema": 1,
-  "baseCommit": "8556142bbced7670e66ef497436d95b66eabbc1a",
-  "buildSHA256": "add688198e38269f4d3d8084bba9bd3b3a5664f1336ec961677c130eb2d75e7f",
-  "sources": {
-    "DEV/tests/Run-EngineTests.ps1": "0f91f3fb24f3b32a0b958b04737fb414f34447ea57828c2071e0efe451bca142",
-    "DEV/docs/implementation/RELEASE_120.md": "555639a6ecdaafeccc316941db9027272f39667ddbcf276823c7ed2178f38a5c"
-  }
-}

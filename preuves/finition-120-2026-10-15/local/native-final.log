@@ -1,1 +1,0 @@
-PASS: 48 C entry scenarios, 9 explicit argument checks, 2000 argument roundtrips, 132 SHA256 cases. No Windows APIs executed.

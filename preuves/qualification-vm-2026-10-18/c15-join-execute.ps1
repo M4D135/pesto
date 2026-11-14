@@ -1,2 +1,0 @@
-. 'C:\PestoQual_20261018\pilot\commun.ps1'
-$w=Get-Pesto;. "$R\pilot\gui-input.ps1";Click-PointId $w 'JnStart';Start-Sleep -Seconds 12;$panelText=(Get-PanelText $w)-join "`n";$panelText;if($panelText -notmatch 'V111301VA765542' -or $panelText -notmatch 'labo.local' -or $panelText -notmatch 'Paris'){throw 'Unexpected join confirmation; no acceptance'};Save-Vue $w 'c15-join-confirmation';Click-Id $w 'PanelAccept';Start-Sleep -Seconds 25;Get-PanelText $w;Get-EtatPoste;Get-RecusRecents 2;Save-Vue $w 'c15-join-result' 

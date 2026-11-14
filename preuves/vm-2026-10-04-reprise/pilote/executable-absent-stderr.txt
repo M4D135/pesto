@@ -1,8 +1,0 @@
-C:\PestoTest-run\lancer.ps1 : Echec du pilote : PestoPilote-c7d4b0d6 : La commande a echoue 
-(resultat Windows 2147942402).
-At C:\PestoTest-preuves\2026-10-04-reprise\pilote\executable-absent.ps1:1 char:1
-+ & 'C:\PestoTest-run\lancer.ps1' -Exe C:\PestoTest-run\absent-c1f375c5 ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1
- 

@@ -1,9 +1,0 @@
-{
-  "Version": "1.0",
-  "RuntimeFiles": 44,
-  "ExeSHA256": "336a49c259e0ab87295c56e0f80e4d7e84ce6e60037c769749ce90d7b6fa7d18",
-  "WindowsExecutedByBuild": false,
-  "ADExecutedByBuild": false,
-  "SourceSnapshot": "pesto-r4-source",
-  "Change": "Shared preflight progress contract and executable Direct/batch worker regression tests"
-}

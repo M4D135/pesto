@@ -1,1 +1,0 @@
-﻿Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -ne $PID -and $_.CommandLine -match '\\eveil\.ps1' -and $_.CommandLine -notmatch 'stopeveil\.ps1' } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force; "eveil arrete " + $_.ProcessId }

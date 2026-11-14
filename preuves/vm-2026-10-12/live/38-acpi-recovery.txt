@@ -1,1 +1,0 @@
-{"Utc":"2026-10-12T18:44:06.7564119Z","VM":"PESTO-W11-TEST","ProcessId":6176,"KernelModeTime":3996718750,"UserModeTime":22519531250,"ReadTransferCount":8792554316,"WriteTransferCount":5587748397,"Recovery":"One ACPI power-button request; no snapshot restore","RestartRequestedUtc":"2026-10-12T18:34:40Z"}

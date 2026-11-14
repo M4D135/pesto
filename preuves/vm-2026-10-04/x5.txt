@@ -1,9 +1,0 @@
-Parametres : invoke
-Suivre Windows
-Accueil : invoke
-contraste : True
-capture C:\PestoTest-preuves\phase2\x5-contraste-survol.png 1920x1043
-focus : ControlType.Button "Plusieurs postes (file)" #NavBatch
-capture C:\PestoTest-preuves\phase2\x5-contraste-focus.png 1920x1043
-retour : True flags=126
-capture C:\PestoTest-preuves\phase2\x5-retour.png 1920x1043

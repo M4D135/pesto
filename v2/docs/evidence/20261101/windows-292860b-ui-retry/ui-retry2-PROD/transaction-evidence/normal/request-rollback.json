@@ -1,6 +1,0 @@
-{
-  "transactionDirectory": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-504135d063514b23b5c10f4f96ebbb62\\cases\\normal\\.pesto-v2-update-050f77012aee5dc9\\bc29fd100f0847f1a0e0b1ff834b1248",
-  "helperExecutable": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-504135d063514b23b5c10f4f96ebbb62\\cases\\normal\\.pesto-v2-update-050f77012aee5dc9\\bc29fd100f0847f1a0e0b1ff834b1248\\helper\\Pesto.exe",
-  "transactionId": "bc29fd100f0847f1a0e0b1ff834b1248",
-  "action": "rollback"
-}

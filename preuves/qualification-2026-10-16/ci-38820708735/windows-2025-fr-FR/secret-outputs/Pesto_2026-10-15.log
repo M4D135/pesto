@@ -1,6 +1,0 @@
-2026-10-15 23:06:13 [INFO] password=********
-2026-10-15 23:06:13 [ERROR] [password=********
-    Type      : System.Exception
-    Message   : token=********
-    interne[0] : System.Exception : Authorization: ********
-PESTO_EVENT {"Schema":1,"Utc":"2026-10-15T23:06:13.1612442Z","OperationId":"","WorkerId":"","BuildSHA256":"","Stage":"password=********","Context":"password=********","Level":"INFO","Message":"password=********"}

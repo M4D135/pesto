@@ -292,6 +292,9 @@ export function render(main, ctx) {
         serviceInput.value = normalized;
         serviceInput.setSelectionRange(start, end);
       }
+      // Editing a free-form code invalidates the previous preview immediately, not on blur.
+      renameToken++; renamePreview = null; previewValues = null; paintPreview();
+      if (serviceInput.value.trim().length === 3 && form.validate()) computeRename(form.values());
     });
     const rpreview = renameZone.querySelector('[data-zone="rpreview"]');
     const apply = renameZone.querySelector('[data-act="apply"]');
@@ -316,7 +319,7 @@ export function render(main, ctx) {
       }
     }
     host.addEventListener('change', (e) => {
-      if (!['type', 'site', 'service'].includes(e.target.name)) return;
+      if (!['type', 'site'].includes(e.target.name)) return;
       renameToken++; renamePreview = null; previewValues = null; paintPreview();
       if (e.target.name === 'site') loadServices(true);
       else if (host.querySelector('[name="service"]').value) computeRename(form.values());

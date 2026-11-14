@@ -1,7 +1,0 @@
-OK    BridgeDispatcherTests.DuplicateRequestIdIsRejected
-OK    BridgeDispatcherTests.MutationsAreSerialized
-OK    BridgeDispatcherTests.ReadsMayRunConcurrently
-OK    BridgeDispatcherTests.ReceiptReconciliationIsSerializedWithMutationsAndHasClosedArguments
-OK    BridgeDispatcherTests.RemainingMovePreparationIsSerializedAndOnlyAcceptsReceiptId
-OK    BridgeDispatcherTests.UnknownOperationIsRejected
-6 réussis, 0 en échec, 6 au total.

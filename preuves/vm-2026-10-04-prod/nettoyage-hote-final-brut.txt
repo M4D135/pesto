@@ -1,8 +1,0 @@
-{
-    "Date":  "2026-10-04T22:47:26.6923983+02:00",
-    "RootAbsent":  true,
-    "AccountAbsent":  true,
-    "HostSecretRemoved":  true,
-    "OtherPcTestScriptRemoved":  true,
-    "DCLeftRunning":  true
-}

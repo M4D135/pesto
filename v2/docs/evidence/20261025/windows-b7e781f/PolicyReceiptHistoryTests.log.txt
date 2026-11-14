@@ -1,5 +1,0 @@
-OK    PolicyReceiptHistoryTests.ActualNativeReceiptRoundTripsEveryC3FieldForAllOperationalKinds
-OK    PolicyReceiptHistoryTests.CoordinationMustBeClosedAndBoundToTheExactContainingReceipt
-OK    PolicyReceiptHistoryTests.MalformedOrContradictoryClockAuditAndReservationMetadataIsUnreadable
-OK    PolicyReceiptHistoryTests.ReservationBindingMayAddTheObservedGuidWithoutRewritingItsInitialLocks
-4 réussis, 0 en échec, 4 au total.

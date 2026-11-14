@@ -1,9 +1,0 @@
-VM PESTO-W11-TEST, 04/10 vers 17 h 30 (heure du Mac), Windows PowerShell 5.1.26100.6584 Desktop, C:\PestoTest = DEV de 786136c.
-
-listeps1.ps1 (Get-ChildItem -Filter *.ps1, avant correctif) : 68 entrées ; les 2 absentes de la liste des .ps1 du dépôt :
-wad/ActiveDirectory.Types.ps1xml | 04/10 17:03 | 9334
-wad/ActiveDirectory.Format.ps1xml | 04/10 17:03 | 5191
-
-Après correctif (filtre .Extension -eq '.ps1') :
-parse_all.ps1 : FICHIERS=66 ERREURS=0 PARSEUR=PowerShell 5.1.26100.6584 (Desktop)
-parsevp.ps1 (texte PARSE de validate_pesto.py) : fichiers 66 ; avec erreurs 0 ; hors .ps1 0 ; contrôles attendus avec --require-parser : 340 + 1 + 66 = 407

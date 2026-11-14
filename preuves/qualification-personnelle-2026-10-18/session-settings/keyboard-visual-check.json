@@ -1,8 +1,0 @@
-﻿{
-    "Passed":  true,
-    "Observed":  "azerty",
-    "Method":  "VirtualBox physical US QWERTY scancodes; screenshot p49-keyboard-native visually reviewed",
-    "User":  "V111301VA765542\\labadmin",
-    "Expected":  "azerty",
-    "EarlierPilot":  "p48 UIA Edit query returned no elements; not a keyboard failure"
-}

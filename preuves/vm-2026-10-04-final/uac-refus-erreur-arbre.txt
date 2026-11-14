@@ -1,7 +1,0 @@
-﻿Pane "OK" #2
-Pane "" #20
-Pane "Pesto n'a pas pu demarrer.
-
-This command cannot be run due to the error: The operation was canceled by the user.
-
-Aucune action n'a ete lancee par le demarrage. Consulter wad\logs\Pesto-demarrage.log. Ne pas contourner une restriction imposee par votre organisation." #65535

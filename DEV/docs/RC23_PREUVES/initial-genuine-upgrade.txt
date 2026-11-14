@@ -1,7 +1,0 @@
-Traceback (most recent call last):
-  File "/mnt/data/pesto_rc23_work/test_real_upgrade.py", line 7, in <module>
-    verify_runtime(R);verify_runtime(B)
-                      ~~~~~~~~~~~~~~^^^
-  File "/mnt/data/pesto_rc23_work/DEV/tools/refresh_manifest.py", line 105, in verify_runtime
-    raise ValueError("Incompatible runtime manifest")
-ValueError: Incompatible runtime manifest

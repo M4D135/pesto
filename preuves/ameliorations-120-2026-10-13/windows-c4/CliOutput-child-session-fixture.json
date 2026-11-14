@@ -1,6 +1,0 @@
-{
-  "CanonicalFixtureSHA256": "61dfc058d56d1cb9998da69d23c978bab15c1194c40eb5c12a134ac1c5b0d549",
-  "ExecutedFixtureSHA256": "f2b71b3bda610a53348df477ca5b56bb2dc653e30ad22ff51ea60a27682e8e35",
-  "Change": "Only test runtime path bound to immutable C4 copy; child ProgressPreference suppresses PS host module progress, error stream remains enabled.",
-  "ExitCode": 0
-}

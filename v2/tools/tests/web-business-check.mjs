@@ -183,7 +183,8 @@ try {
         let next = 'ADM';
         if (kind === 'preview') {
           const options = await service.locator('option').evaluateAll(nodes => nodes.map(node => node.value).filter(Boolean));
-          next = options.find(value => value !== await service.inputValue()) ?? options[0];
+          const current = await service.inputValue();
+          next = options.find(value => value !== current) ?? options[0];
           await service.selectOption(next);
         } else {
           await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().waitFor({ state: 'attached' });

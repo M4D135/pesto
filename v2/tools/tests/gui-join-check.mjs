@@ -75,10 +75,12 @@ try {
       const host = page.locator(`form[data-form="${form}"]`);
       const site = host.locator('[name="site"]'), service = host.locator('[name="service"]');
       const retry = host.locator('[data-retry-sites]');
-      await check(`${id} : échec de lecture des sites, listes « Indisponible » et bouton Réessayer`, async () => {
+      await check(`${id} : échec de lecture des sites, saisie libre conservée et bouton Réessayer`, async () => {
         await retry.waitFor();
         assert.deepEqual(await optionTexts(site), ['Indisponible']);
-        assert.deepEqual(await optionTexts(service), ['Indisponible']);
+        assert.equal(await service.inputValue(), '');
+        assert.equal(await host.locator('[name="service"] + datalist option').count(), 0);
+        assert.equal(await service.isEnabled(), true);
         assert.equal(await retry.getAttribute('type'), 'button');
         assert.match(await retry.innerText(), /Réessayer le chargement des sites/);
         assert.match(await host.locator('.k-field[data-name="site"] .k-msg').innerText(), /annuaire indisponible/);

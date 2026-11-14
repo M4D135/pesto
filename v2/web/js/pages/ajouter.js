@@ -244,7 +244,10 @@ export function render(main, ctx) {
       const { items } = await ctx.call('directory.services', { site, purpose: 'join' });
       if (!alive || token !== servicesToken) return;
       serviceInput.disabled = preprodLocked;
-      if (preprodLocked && items?.length) serviceInput.value = String(items[0].code ?? '').toUpperCase();
+      // Le select V1 choisissait automatiquement sa première option. Avec le champ libre,
+      // conserver ce comportement pour le premier aperçu, sans écraser une saisie déjà commencée.
+      if (items?.length && (preprodLocked || !serviceInput.value.trim()))
+        serviceInput.value = String(items[0].code ?? '').toUpperCase();
       serviceList.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}" label="${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}"></option>`).join('');
       if (!(items ?? []).length) form.setMessage('service', 'Aucun service connu : saisissez le code manuellement.', 'warn');
       if (calculate && serviceInput.value.trim()) await compute(form.values(), false);

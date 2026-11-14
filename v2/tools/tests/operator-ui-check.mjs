@@ -124,7 +124,7 @@ try {
       }
     }, { kind, options });
     if (kind === 'receipts') await page.locator('[data-receipt="receipt-parent"]').waitFor();
-    if (kind === 'join') await page.locator('[data-form="join"] option[value="INF"]').waitFor({ state: 'attached' });
+    if (kind === 'join') await page.locator('[data-form="join"] [name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
     if (kind === 'batch') await page.waitForFunction(() => !document.querySelector('[data-act="prepare"]').disabled);
     return page;
   }

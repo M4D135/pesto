@@ -1,7 +1,0 @@
-{
-  "Kind": "VirtualBox guest hard power-off at native NTFS replacement boundary",
-  "Payload": "Inert fixture",
-  "Updater": "Unmodified production update_installation.py except a pause callback after real replacement",
-  "Coordination": "Real Windows mutex and real local-state guards; no mocks",
-  "NoADMutation": true
-}

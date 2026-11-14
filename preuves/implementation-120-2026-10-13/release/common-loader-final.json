@@ -1,8 +1,0 @@
-{
-  "Passed": 19,
-  "Scope": "Local DLL/hash and pure primitives; no application/AD",
-  "PowerShell": "7.4.20",
-  "Target": "net472",
-  "WindowsExecuted": false,
-  "WpfExecuted": false
-}

@@ -1,2 +1,0 @@
-ECHEC LiveWriteTests.PlanExpiryDuringFinalDirectoryReadsPreventsTheSend : Une lecture lente ne prolonge pas l’autorisation confirmée : rename (aucune exception PestoException plan.stale)
-0 réussis, 1 en échec, 1 au total.

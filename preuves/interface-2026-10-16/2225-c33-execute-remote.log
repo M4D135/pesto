@@ -1,8 +1,0 @@
-capture c33-confirmation 1920x1200
-clic : #PanelAccept (Renommer puis déplacer)
-Result: Action non lancée.
-
-Aucune mutation lancée pour cette ligne. Corrigez le précontrôle local puis préparez un nouvel essai.
-Renommage échoué (code 96) : Cible non validée : L'identité Windows et AD ne peut pas être confirmée. Aucun retrait Entra ni renommage. | Poste NON déplacé.
-capture c33-result 1920x1200
-

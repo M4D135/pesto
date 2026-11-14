@@ -1,5 +1,0 @@
-{
-  "code_processus": 1,
-  "stdout": "",
-  "stderr": "C:\\PestoTest-run\\lancer.ps1 : Echec du pilote : PestoPilote-2bd62b31 : Delai depasse : PestoPilote-2bd62b31 etat=Ready \r\nresultat=267011 ; definition retiree.\r\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\r\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1\r\n \r\n"
-}

@@ -1,4 +1,0 @@
-VMState="poweroff"
-Waiting for VM "PESTO-W11-TEST" to power on...
-VM "PESTO-W11-TEST" has been successfully started.
-Cold start UTC=2026-10-12T19:33:27.5688408Z

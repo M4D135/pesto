@@ -144,7 +144,7 @@ try {
       await page.locator('main .name-preview .name').waitFor();
       assert.equal(await page.locator('[name="site"] option').count(), 1);
       assert.equal(await page.locator('[name="site"]').isEnabled(), false);
-      assert.equal(await page.locator('[name="service"] option').count(), 1);
+      assert.equal(await page.locator('[name="service"] + datalist option[value="765"]').count(), 1);
       assert.equal(await page.locator('[name="service"]').inputValue(), '765');
       assert.equal(await page.locator('[name="service"]').isEnabled(), false);
       assert.match(await page.locator('[data-zone="preview"]').innerText(), /OU=Staging/);
@@ -158,7 +158,7 @@ try {
     await page.locator('[data-form="search"] [name="query"]').fill(name);
     await page.locator('[data-form="search"] [name="query"]').press('Enter');
     await page.locator(`[data-pick="${name}"]`).click();
-    await page.locator('[data-form="rename"] [name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+    await page.locator('[data-form="rename"] [name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
   };
   const preview = async (page, form) => {
     await page.locator(`[data-form="${form}"] button[type="submit"]`).click();
@@ -180,9 +180,16 @@ try {
       try {
         if (kind === 'rename') await selectComputer(page);
         const service = page.locator(`[data-form="${kind}"] [name="service"]`);
-        await service.locator('option').nth(1).waitFor({ state: 'attached' });
-        const next = await service.locator('option').nth(1).getAttribute('value');
-        await service.selectOption(next);
+        let next = 'ADM';
+        if (kind === 'preview') {
+          const options = await service.locator('option').evaluateAll(nodes => nodes.map(node => node.value).filter(Boolean));
+          const current = await service.inputValue();
+          next = options.find(value => value !== current) ?? options[0];
+          await service.selectOption(next);
+        } else {
+          await page.locator(`[data-form="${kind}"] [name="service"] + datalist option`).first().waitFor({ state: 'attached' });
+          await service.fill(next);
+        }
         await page.waitForFunction(code => document.querySelector('main .name-preview .name')?.textContent.includes(code), next);
         const calls = await page.evaluate(() => window.fixture.calls);
         assert.equal(calls.filter(c => c.op === 'names.preview').at(-1).args.service, next);
@@ -425,6 +432,7 @@ try {
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'queue.add').length), 0);
     } finally { await page.close(); }
   });
+  // Service text edits must invalidate a preview immediately, before blur or submission.
   for (const [route, form, action] of [['ajouter', 'join', 'add'], ['unposte', 'rename', 'apply']]) {
     await check(`${route} : type, service et site désactivent l’écriture jusqu’au nouvel aperçu`, async () => {
       const page = await makePage(route);
@@ -435,7 +443,8 @@ try {
           const host = page.locator(`[data-form="${form}"]`);
           await page.evaluate(() => { window.fixture.holdPreview = true; delete window.fixture.releases.preview; });
           if (field === 'type') await host.locator('[name="type"][value="S"]').check();
-          else await host.locator(`[name="${field}"]`).selectOption(field === 'service' ? 'ADM' : 'lyon');
+          else if (field === 'service') await host.locator('[name="service"]').fill('ADM');
+          else await host.locator('[name="site"]').selectOption('lyon');
           assert.equal(await page.locator(`[data-act="${action}"]`).isEnabled(), false);
           assert.equal(await page.locator('main .name-preview').count(), 0);
           await page.waitForFunction(() => typeof window.fixture.releases.preview === 'function');
@@ -528,7 +537,7 @@ try {
     const local = 'P111301PAINF001', remote = 'S111301PAADM001';
     const page = await makePage('unposte', 'rename', 'succeeded', { sessionComputer: local, localJoined: true, inspectionPatch });
     async function verifyReadOnly() {
-      await page.locator('[data-form="rename"] [name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+      await page.locator('[data-form="rename"] [name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
       const calculate = page.locator('[data-form="rename"] button[type="submit"]');
       assert.equal(await calculate.isEnabled(), true);
       await preview(page, 'rename');
@@ -593,7 +602,7 @@ try {
       await search.fill('recherche en cours');
       await page.waitForFunction(() => typeof window.fixture.releases.sites === 'function');
       await page.evaluate(() => window.fixture.releases.sites());
-      await page.locator('[data-form="rename"] [name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+      await page.locator('[data-form="rename"] [name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
       assert.equal(await search.inputValue(), 'recherche en cours');
       assert.equal(await page.locator('[data-form="rename"] [name="site"]').inputValue(), 'lyon');
       assert.equal(await page.locator('[data-form="rename"] [name="type"]:checked').inputValue(), 'V');
@@ -614,7 +623,7 @@ try {
       await page.locator('[data-pick="V111301LYINF001"]').click();
       await page.waitForFunction(() => document.querySelector('[data-zone="identity"] .kv-grid')?.textContent.includes('V111301LYINF001'));
       await page.evaluate(() => window.fixture.releases.sites());
-      await page.locator('[data-form="rename"] [name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+      await page.locator('[data-form="rename"] [name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
       assert.match(await page.locator('[data-zone="rename"] h3').innerText(), /V111301LYINF001/);
       assert.equal(await page.locator('[data-form="rename"] [name="site"]').inputValue(), 'lyon');
       assert.deepEqual(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'directory.services').map(c => c.args.site)), ['lyon']);
@@ -633,7 +642,7 @@ try {
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'directory.sites').length), 1);
       await page.evaluate(() => { window.fixture.sitesError = null; });
       await page.locator('[data-zone="rename"] [data-retry-sites]').click();
-      await page.locator('[data-form="rename"] [name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+      await page.locator('[data-form="rename"] [name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'directory.sites').length), 2);
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => (c.op === 'computer.inspect' && c.args.computer !== 'NOUVEAU-PC')).length), 1);
     } finally { await page.close(); }
@@ -658,8 +667,9 @@ try {
         try {
           const field = noSites ? 'site' : 'service';
           const label = noSites ? 'Aucun site trouvé' : 'Aucun service trouvé';
-          await page.waitForFunction(([field, label]) => document.querySelector(`select[name="${field}"]`)?.selectedOptions[0]?.textContent === label, [field, label]);
-          assert.doesNotMatch(await page.locator('select[name="service"]').innerText(), /chargement/i);
+          if (noSites) await page.waitForFunction(label => document.querySelector('select[name="site"]')?.selectedOptions[0]?.textContent === label, label);
+          else await page.locator('[data-form="' + (route === 'ajouter' ? 'join' : 'preview') + '"] [name="service"]').waitFor();
+          if (!noSites) assert.match(await page.locator('.k-field[data-name="service"] .k-msg').innerText(), /Aucun service connu|saisissez le code manuellement/i);
           const ops = await page.evaluate(() => window.fixture.calls.map(call => call.op));
           assert.equal(ops.includes('directory.services'), !noSites);
           assert.equal(ops.includes('names.preview'), false);
@@ -678,7 +688,7 @@ try {
       assert.equal(await page.locator('main .name-preview').count(), 0);
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'operation.prepare').length), 0);
       await page.evaluate(() => { window.fixture.previewError = null; });
-      await page.locator('[data-form="rename"] [name="service"]').selectOption('ADM');
+      await page.locator('[data-form="rename"] [name="service"]').fill('ADM');
       await page.locator('[data-zone="rpreview"] .name-preview .name').waitFor();
       assert.match(await page.locator('[data-zone="rpreview"] .name-preview .name').innerText(), /ADM/);
       assert.equal(await page.locator('[data-zone="rpreview"] [role="alert"]').count(), 0);
@@ -699,7 +709,7 @@ try {
         assert.equal(await page.evaluate(() => window.fixture.calls.find(c => c.op === 'operation.prepare').args.kind), 'rename');
         await dialog.locator('[data-id="cancel"]').click(); await dialog.waitFor({ state: 'hidden' });
         await form.locator('[name="site"]').selectOption(site === 'paris' ? 'lyon' : 'paris');
-        await form.locator('[name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+        await form.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
         await preview(page, 'rename'); await page.locator('[data-act="apply"]').click(); await dialog.waitFor();
         assert.deepEqual(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'operation.prepare').map(c => c.args.kind)), ['rename', 'renameMove']);
         await dialog.locator('[data-id="cancel"]').click();
@@ -721,7 +731,7 @@ try {
       await form.locator('button[type="submit"]').click();
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'directory.services' || c.op === 'names.preview').length), 0);
       await form.locator('[name="type"][value="P"]').check(); await form.locator('[name="site"]').selectOption('paris');
-      await form.locator('[name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+      await form.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
       await preview(page, 'rename');
     } finally { await page.close(); }
   });
@@ -740,7 +750,7 @@ try {
       assert.equal(await page.locator('[data-form="move"] [name="site"]').inputValue(), '');
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'directory.services').length), 0);
       await form.locator('[name="site"]').selectOption('PA');
-      await form.locator('[name="service"] option[value="INF"]').waitFor({ state: 'attached' });
+      await form.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
       await preview(page, 'rename');
       assert.match(await page.locator('main .name-preview .name').innerText(), /LY/);
       await page.locator('[data-act="apply"]').click();

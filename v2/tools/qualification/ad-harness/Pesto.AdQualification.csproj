@@ -1,5 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><OutputType>Exe</OutputType><AssemblyName>Pesto.AdQualification</AssemblyName></PropertyGroup>
-  <ItemGroup><ProjectReference Include="../../../src/Pesto.Engine.Live/Pesto.Engine.Live.csproj" /></ItemGroup>
-  <ItemGroup><Content Include="requests/*.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" /></ItemGroup>
-</Project>

@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup><OutputType>Exe</OutputType><AssemblyName>Pesto.AdQualification.Tests</AssemblyName></PropertyGroup>
-  <ItemGroup><Compile Include="../ad-harness/RestoreNamePolicy.cs" Link="RestoreNamePolicy.cs" /><Compile Include="../ad-harness/RestoreV1Barriers.cs" Link="RestoreV1Barriers.cs" /><Compile Include="../../../src/Pesto.Engine/StoredMutationBarrier.cs" Link="StoredMutationBarrier.cs" /></ItemGroup>
-  <ItemGroup><Compile Include="../ad-harness/RestoreHistoryPolicy.cs" Link="RestoreHistoryPolicy.cs" /></ItemGroup>
-  <ItemGroup><Compile Include="../ad-harness/RestoreRenameMovePolicy.cs" Link="RestoreRenameMovePolicy.cs" /></ItemGroup>
-  <ItemGroup><Compile Include="../ad-harness/RestoreRenameMoveReceiptGate.cs" Link="RestoreRenameMoveReceiptGate.cs" /></ItemGroup>
-  <ItemGroup><Compile Include="../ad-harness/LabDomain.cs" Link="LabDomain.cs" /></ItemGroup>
-</Project>

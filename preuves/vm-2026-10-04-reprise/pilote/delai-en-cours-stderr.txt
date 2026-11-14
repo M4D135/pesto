@@ -1,8 +1,0 @@
-C:\PestoTest-run\lancer.ps1 : Echec du pilote : PestoPilote-748c74c0 : Delai depasse : 
-PestoPilote-748c74c0 etat=Running resultat=267009 ; tache conservee, resultat final non etabli.
-At C:\PestoTest-preuves\2026-10-04-reprise\pilote\delai-en-cours.ps1:1 char:1
-+ & 'C:\PestoTest-run\lancer.ps1' -Exe powershell.exe -Arguments '-NoPr ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1
- 

@@ -1,9 +1,0 @@
-﻿{
-    "schemaVersion":  1,
-    "kind":  "pesto.native-update-qualification",
-    "success":  false,
-    "nativeBinaryUpdateQualification":  false,
-    "adQualification":  false,
-    "error":  "Qualification runner failed: observe, exit 2; see C:\\Users\\degun\\actions-runner\\PestoTargetedDiag-20261101\\report\\runner-04-observe.txt",
-    "fixtureRoot":  "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-eca7c0ec74bb4f86980bb66a2676fdde"
-}

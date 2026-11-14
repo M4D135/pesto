@@ -274,34 +274,52 @@ export function render(main, ctx) {
     host.innerHTML = [
       field({ name: 'type', label: 'Type', type: 'radio', options: TYPES, value: guessType(current), required: true, width: 'full' }),
       field({ name: 'site', label: 'Site', type: 'select', options: sites.map((s) => ({ value: s.id, label: `${s.name} (${s.code})` })), value: site?.id ?? '', placeholder: site ? undefined : 'Choisissez le site', required: true, width: 'half' }),
-      field({ name: 'service', label: 'Service', type: 'select', options: [], placeholder: 'Chargement…', required: true, width: 'half' }),
+      field({ name: 'service', label: 'Service', type: 'text', value: target.service ?? '', placeholder: 'Code service (3 caractères)', required: true,
+        maxLength: 3, pattern: '[A-Za-z0-9]{3}', patternMessage: 'Saisissez un code service de trois caractères.',
+        hint: 'Suggestions AD disponibles ; vous pouvez aussi saisir un nouveau code.', width: 'half' }),
       '<div class="row-actions"><button class="btn" type="submit">' + icon('sparkles') + 'Calculer le nom libre</button></div>',
     ].join('');
     const form = createForm(host, { onSubmit: (values) => computeRename(values) });
+    const serviceInput = host.querySelector('[name="service"]');
+    const serviceList = document.createElement('datalist');
+    serviceList.id = 'pesto-service-suggestions-' + selected;
+    serviceInput.setAttribute('list', serviceList.id);
+    serviceInput.insertAdjacentElement('afterend', serviceList);
+    serviceInput.addEventListener('input', () => {
+      const start = serviceInput.selectionStart, end = serviceInput.selectionEnd;
+      const normalized = serviceInput.value.toUpperCase();
+      if (normalized !== serviceInput.value) {
+        serviceInput.value = normalized;
+        serviceInput.setSelectionRange(start, end);
+      }
+      // Editing a free-form code invalidates the previous preview immediately, not on blur.
+      renameToken++; renamePreview = null; previewValues = null; paintPreview();
+      if (serviceInput.value.trim().length === 3 && form.validate()) computeRename(form.values());
+    });
     const rpreview = renameZone.querySelector('[data-zone="rpreview"]');
     const apply = renameZone.querySelector('[data-act="apply"]');
     const rhint = renameZone.querySelector('[data-slot="rhint"]');
 
     async function loadServices(calculate = false) {
       const services = ++servicesToken;
-      const select = host.querySelector('[name="service"]');
       const siteId = host.querySelector('[name="site"]').value;
       form.setMessage('service', null);
-      if (!siteId) { select.innerHTML = '<option value="">Choisissez d’abord un site</option>'; return; }
-      select.innerHTML = '<option value="">Chargement…</option>';
+      if (!siteId) { serviceList.replaceChildren(); return; }
+      serviceList.innerHTML = '';
       try {
         const { items } = await ctx.call('directory.services', { site: siteId });
         if (!alive || selected !== selectionToken || services !== servicesToken) return;
-        select.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}"${s.code === target.service ? ' selected' : ''}>${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}</option>`).join('') || '<option value="">Aucun service trouvé</option>';
-        if (calculate && select.value && host.isConnected) await computeRename(form.values());
+        serviceList.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}" label="${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}"></option>`).join('');
+        if (!(items ?? []).length) form.setMessage('service', 'Aucun service connu pour ce site : saisissez le code manuellement.', 'warn');
+        if (calculate && serviceInput.value.trim() && host.isConnected) await computeRename(form.values());
       } catch (err) {
         if (!alive || selected !== selectionToken || services !== servicesToken) return;
-        select.innerHTML = '<option value="">Indisponible</option>';
-        form.setMessage('service', errorText(err), 'error');
+        // La panne de suggestions ne doit pas interdire un code service saisi manuellement.
+        form.setMessage('service', 'Suggestions AD indisponibles : vous pouvez saisir le code manuellement.', 'warn');
       }
     }
     host.addEventListener('change', (e) => {
-      if (!['type', 'site', 'service'].includes(e.target.name)) return;
+      if (!['type', 'site'].includes(e.target.name)) return;
       renameToken++; renamePreview = null; previewValues = null; paintPreview();
       if (e.target.name === 'site') loadServices(true);
       else if (host.querySelector('[name="service"]').value) computeRename(form.values());

@@ -1,7 +1,0 @@
-{
-  "sourceCommit": "07dc74116478f1dd28d5f54ab6e2f11b1b4ee472",
-  "expectedSdkVersion": "10.0.302",
-  "sdkVersion": "10.0.302",
-  "rollForward": "disable",
-  "success": true
-}

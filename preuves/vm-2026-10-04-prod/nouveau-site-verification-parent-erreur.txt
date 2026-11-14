@@ -1,8 +1,0 @@
-﻿Ligne fixture non unique
-At C:\PestoTest-run\ui-parent-verifier.ps1:15 char:23
-+  if($row.Count -ne 1){throw 'Ligne fixture non unique'}
-+                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (Ligne fixture non unique:String) [], RuntimeException
-    + FullyQualifiedErrorId : Ligne fixture non unique
- 
-

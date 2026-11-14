@@ -1,7 +1,0 @@
-5 test(s) en ‚chec.
-At C:\Pesto120_20261013\tests\Run-PilotageTests.ps1:226 char:19
-+ if($failed.Count){throw "$($failed.Count) test(s) en ‚chec."}
-+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (5 test(s) en ‚chec.:String) [], RuntimeException
-    + FullyQualifiedErrorId : 5 test(s) en ‚chec.
- 

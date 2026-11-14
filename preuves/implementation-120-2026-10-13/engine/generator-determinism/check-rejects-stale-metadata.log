@@ -1,5 +1,0 @@
-Exception: /Users/david/Documents/Codex/2026-10-12/tu-x20/work/engine-build-determinism-fb93dbde2213457eb97962b1cfe69ab6/b/tools/Build-PestoEngineModule.ps1:95
-Line |
-  95 |  … llText($target) -cne $text){throw ('Moteur généré périmé : '+$name)}}
-     |                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-     | Moteur généré périmé : Pesto.Engine.build.json

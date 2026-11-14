@@ -1,8 +1,0 @@
-{
-  "Runtime": "7.4.20",
-  "SourceFiles": 42,
-  "OriginalFunctions": 818,
-  "ChangedTests": 4,
-  "Issues": [],
-  "Scope": "AST only; generated CLI aggregate excluded from original GUI source index; no product execution or WPF."
-}

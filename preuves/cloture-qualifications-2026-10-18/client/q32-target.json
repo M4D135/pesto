@@ -1,7 +1,0 @@
-﻿{
-    "ProcessId":  6020,
-    "ExecutableHash":  "155523258FCE24E506E1F13E4552F234C2D906485D690573BF5631489A04739A",
-    "User":  "V111301VA765542\\labadmin",
-    "Workload":  "3 warmup cycles, then 10 identical cycles at 30-second intervals; UIA Invoke navigation and site refresh; freshness checked every cycle (Request-PestoSiteLookup -Force); prior p02/p23 read clicks may use cache; 72 samples at 5 seconds",
-    "StartedUtc":  "2026-10-18T18:49:01.2856834Z"
-}

@@ -1,6 +1,0 @@
-clic : #PanelAccept (Confirmer)
-clic : #NavHome (Accueil)
-capture C:\PestoRecette20261012\preuves\48-accueil-hd.png 1920x1160
-clic : #SuiteNavToggle (Déployer le menu : icônes et libellés.)
-capture C:\PestoRecette20261012\preuves\48-menu-reduit-hd.png 1920x1160
-clic : #SuiteNavToggle (Réduire le menu : conserver uniquement les icônes.)

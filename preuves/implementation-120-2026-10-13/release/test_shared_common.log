@@ -1,8 +1,0 @@
-test_both_channels_ship_lock_and_libraries_and_only_dev_ships_sources (test_shared_common.SharedCommonTests.test_both_channels_ship_lock_and_libraries_and_only_dev_ships_sources) ... ok
-test_embedded_dlls_match_the_pinned_bundle (test_shared_common.SharedCommonTests.test_embedded_dlls_match_the_pinned_bundle) ... ok
-test_frozen_vendor_source_matches_canonical_digest (test_shared_common.SharedCommonTests.test_frozen_vendor_source_matches_canonical_digest) ... ok
-
-----------------------------------------------------------------------
-Ran 3 tests in 0.030s
-
-OK

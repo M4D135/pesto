@@ -1,7 +1,0 @@
-﻿{
-    "Date":  "2026-10-04T21:11:23.2633399+02:00",
-    "Action":  "shutdown /r /f /t 5",
-    "PestoClosed":  true,
-    "KeepAwakeStopped":  true,
-    "PendingName":  "V999004BBQA1003"
-}

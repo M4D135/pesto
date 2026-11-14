@@ -1,8 +1,0 @@
-test_parser_passes_keep_only_ps1_extension (test_ps51_compat.PowerShell51CompatTests.test_parser_passes_keep_only_ps1_extension) ... ok
-test_command_line_preview_prints_clear_warning (test_update_queues.UserQueueTests.test_command_line_preview_prints_clear_warning) ... ok
-test_command_line_with_ansi_code_page_and_foreign_profile_path (test_update_queues.UserQueueTests.test_command_line_with_ansi_code_page_and_foreign_profile_path) ... ok
-
-----------------------------------------------------------------------
-Ran 3 tests in 5.401s
-
-OK

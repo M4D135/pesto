@@ -1,8 +1,0 @@
-C:\PestoTest-run\lancer.ps1 : Echec du pilote : PestoPilote-2d0f234c : La commande a echoue 
-(resultat Windows 7).
-At C:\PestoTest-preuves\2026-10-04-reprise\pilote\fin-7.ps1:1 char:1
-+ & 'C:\PestoTest-run\lancer.ps1' -Exe cmd.exe -Arguments '/c exit 7' - ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException
-    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1
- 

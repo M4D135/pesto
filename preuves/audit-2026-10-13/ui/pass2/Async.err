@@ -1,9 +1,0 @@
-5 test(s) asynchrones en echec. Rapport : C:\PestoAudit20261013\ui\reports\Async.json
-At C:\PestoAudit20261013\ui\tests\Async-ScopeFixture.ps1:363 char:13
-+ if($failed){throw "$failed test(s) asynchrones en echec. Rapport : $R ...
-+             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (5 test(s) async...orts\Async.json:String) [], Ru 
-   ntimeException
-    + FullyQualifiedErrorId : 5 test(s) asynchrones en echec. Rapport : C:\PestoAudit20261013\ui\ 
-   reports\Async.json
- 

@@ -1,8 +1,0 @@
-﻿Ancien lanceur toujours actif
-At C:\PestoTest-run\ui-dpi-appliquer.ps1:14 char:17
-+  if($old.Count){throw 'Ancien lanceur toujours actif'}
-+                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : OperationStopped: (Ancien lanceur toujours actif:String) [], RuntimeException
-    + FullyQualifiedErrorId : Ancien lanceur toujours actif
- 
-

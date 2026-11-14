@@ -1,9 +1,0 @@
-{
-  "baseCommit": "ad0f78935b24281dce91f038d478b4516c7bee20",
-  "sourceOverlay": {
-    "v2/tools/qualification/Pesto.UpdateQualification/NativeMonitor.cs": "1b0bbc6c7c7b473ee2eee586515d0752bfdaa0ac130a7c419aced847abb0c095",
-    "v2/tools/qualification/Invoke-NativeUpdateQualification.ps1": "2f3b4283d0efbb9a0db2b622f0266d3826f8062616190cc9435b812f7fce8037"
-  },
-  "zipSha256": "e9acaaf0d36f5af5788be6afe608e891ada171819ecfffba681e268c3bb1c754",
-  "notRelease": true
-}

@@ -1,9 +1,0 @@
-{
-  "Commit": "6c230381cadabf46db31573f6c87a5b880ef5197",
-  "PestoExeSha256": "155523258fce24e506e1f13e4552f234c2d906485d690573bf5631489a04739a",
-  "ClientMachine": "V111301VA765542",
-  "TargetMachine": "P111301VA765158",
-  "Server": "dc01.labo.local",
-  "Date": "2026-10-18",
-  "SignaturesExcludedByUser": true
-}

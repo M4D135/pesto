@@ -1,1 +1,0 @@
-﻿Rapports RC21/22/23 et noms réutilisés : sources de ces parcours inchangées. Correctifs limités à Startup : deux files Idle vides et archivage sans fusion des historiques divergents.

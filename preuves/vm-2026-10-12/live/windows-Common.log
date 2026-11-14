@@ -1,7 +1,0 @@
-{
-    "Passed":  11,
-    "Scope":  "Local DLL/hash checks only",
-    "PowerShell":  "5.1.26100.6584",
-    "Target":  "net472",
-    "WindowsExecuted":  false
-}

@@ -1,4 +1,0 @@
-premiere instance : True
-message deja ouvert : Pesto | Deja ouvert
-capture C:\PestoTest-preuves\phase2\l4-128.png 1920x1043
-seconde instance, code : 128

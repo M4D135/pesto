@@ -1,8 +1,0 @@
-clic : #NavNames (Noms disponibles)
-clic : Inventaire
-capture C:\PestoZoom20261012\preuves-release-final\04-noms-inventaire-120.png 1920x1160
-clic : #NavHistory (Historique)
-clic : #BtnInterventions (Interventions et reprises)
-capture C:\PestoZoom20261012\preuves-release-final\05-interventions-consulter-120.png 1920x1160
-clic : #LedgerClose (Fermer)
-clic : #NavHome (Accueil)

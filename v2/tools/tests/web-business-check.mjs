@@ -432,6 +432,7 @@ try {
       assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'queue.add').length), 0);
     } finally { await page.close(); }
   });
+  // Service text edits must invalidate a preview immediately, before blur or submission.
   for (const [route, form, action] of [['ajouter', 'join', 'add'], ['unposte', 'rename', 'apply']]) {
     await check(`${route} : type, service et site désactivent l’écriture jusqu’au nouvel aperçu`, async () => {
       const page = await makePage(route);

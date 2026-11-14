@@ -43,9 +43,6 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
     private V1Config? conventionCacheOwner;
     private string? discoveredDc;
     private bool dcDiscovered;
-    private List<ResolvedSite>? resolvedSitesCache;
-    private string? resolvedSitesCacheKey;
-    private DateTimeOffset resolvedSitesCacheAt;
     /// <summary>Dossier GP de l'historique durable (Interventions V1 + reçus de l'adaptateur). Null = aucun emplacement connu sur ce poste.</summary>
     private readonly string? gpRoot = gpRoot ?? DefaultGpRoot();
 
@@ -558,17 +555,9 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
     private List<ResolvedSite> ResolveSites(V1Config read, IDirectoryGateway adapter)
     {
-        // Site discovery is unchanged throughout the normal UI flow (site list → services → name preview).
-        // Reusing this short-lived observation avoids repeating the same AD OU round-trips for each screen.
-        // Every actual write still rechecks the target OU GUID immediately before execution.
+        // Site discovery is always refreshed: OU creation/removal and policy changes must be visible immediately.
+        // LDAP batching in the gateway removes the former per-pattern round-trips without serving stale OU data.
         var dc = DcOrNull();
-        var cacheKey = (configStamp ?? string.Empty) + "|" + read.Domain + "|" + (dc ?? string.Empty);
-        var now = clock.GetUtcNow();
-        if (resolvedSitesCache is not null
-            && string.Equals(resolvedSitesCacheKey, cacheKey, StringComparison.Ordinal)
-            && now - resolvedSitesCacheAt < TimeSpan.FromSeconds(30))
-            return new List<ResolvedSite>(resolvedSitesCache);
-
         var list = new List<ResolvedSite>();
         var seenIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var added = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -596,10 +585,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
                 for (var suffix = 2; !seenIds.Add(id); suffix++) id = declaration.Tag + "-" + suffix;
                 list.Add(new(id, site.Name, declaration.Tag, site.Ou));
             }
-        resolvedSitesCache = new List<ResolvedSite>(list);
-        resolvedSitesCacheKey = cacheKey;
-        resolvedSitesCacheAt = now;
-        return new List<ResolvedSite>(list);
+        return list;
     }
 
     private bool ConfirmedOu(V1Config read, IDirectoryGateway adapter, string dn)

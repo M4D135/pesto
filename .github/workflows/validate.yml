@@ -40,6 +40,7 @@ jobs:
           if-no-files-found: warn
   windows-isolated:
     if: ${{ false }} # User requested live workstation validation instead of hosted Windows VM tests.
+    if: ${{ false }} # User requested live workstation validation instead of hosted Windows VM tests.
     strategy:
       fail-fast: false
       matrix:

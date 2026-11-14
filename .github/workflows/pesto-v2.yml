@@ -609,7 +609,7 @@ jobs:
             uiUpdateFromVersion=$baselineManifest.version; uiUpdateFromSourceCommit=$env:UPDATE_BASELINE_COMMIT
             uiUpdateFromArchiveSha256=$baselineZipHash; updateBaselineSourceCommit=$env:UPDATE_BASELINE_COMMIT
             liveValidationRequired=$true
-            liveValidationNote='Validation interactive Windows et AD à effectuer par l’utilisateur sur son poste réel. Aucun test GUI/VM n’a été exécuté dans cette CI.'
+            liveValidationNote="Validation interactive Windows et AD à effectuer par l’utilisateur sur son poste réel. Aucun test GUI/VM n’a été exécuté dans cette CI."
             socleVersion='156.0.4314.42'
             socleIndexSha256=(Get-FileHash 'vendor/socle/webview2-156.0.4314.42.files.json' -Algorithm SHA256).Hash.ToLowerInvariant()
             socleReleaseUrl='https://github.com/M4D135/socle-windows/releases/tag/webview2-156.0.4314.42'

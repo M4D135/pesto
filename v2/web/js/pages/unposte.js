@@ -303,6 +303,7 @@ export function render(main, ctx) {
 
     async function loadServices(calculate = false) {
       const services = ++servicesToken;
+      const previewToken = renameToken;
       const siteId = host.querySelector('[name="site"]').value;
       form.setMessage('service', null);
       if (!siteId) { serviceList.replaceChildren(); return; }
@@ -312,7 +313,8 @@ export function render(main, ctx) {
         if (!alive || selected !== selectionToken || services !== servicesToken) return;
         serviceList.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}" label="${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}"></option>`).join('');
         if (!(items ?? []).length) form.setMessage('service', 'Aucun service connu pour ce site : saisissez le code manuellement.', 'warn');
-        if (calculate && serviceInput.value.trim() && host.isConnected) await computeRename(form.values());
+        // Suggestions must not replace a newer manual preview or interrupt its preparation.
+        if (calculate && previewToken === renameToken && !busy && serviceInput.value.trim() && host.isConnected) await computeRename(form.values());
       } catch (err) {
         if (!alive || selected !== selectionToken || services !== servicesToken) return;
         // La panne de suggestions ne doit pas interdire un code service saisi manuellement.

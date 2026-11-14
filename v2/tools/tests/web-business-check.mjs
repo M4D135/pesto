@@ -39,7 +39,7 @@ try {
     await page.addInitScript(({ kind, status, options }) => {
       localStorage.setItem('pesto.prefs.v1', JSON.stringify({ theme: 'light', motion: 'reduced' }));
       window.fixture = { kind, status, sessionComputer: options.sessionComputer ?? null, localJoined: 'localJoined' in options ? options.localJoined : 'unset', reserveInAd: false, holdPreview: false, holdInspect: false, holdPrepare: false,
-        holdSites: false, holdQueueAdd: false, sitesError: null, previewError: null, siteAsCode: true, inspectionPatch: {}, releases: {}, calls: [], ...options };
+        holdSites: false, holdServices: false, holdQueueAdd: false, sitesError: null, previewError: null, siteAsCode: true, inspectionPatch: {}, releases: {}, calls: [], ...options };
       let receive;
       window.chrome ??= {};
       window.chrome.webview = {
@@ -81,6 +81,7 @@ try {
               if (control.siteItems) data.items = structuredClone(control.siteItems);
               if (control.serviceWidth !== undefined) data.serviceWidth = control.serviceWidth;
             }
+            if (request.op === 'directory.services' && control.holdServices) await new Promise((done) => { control.releases.services = done; });
             if (request.op === 'directory.services' && control.emptyServices) data.items = [];
             if (request.op === 'computer.inspect') {
               if (control.siteAsCode) data.site = { paris: 'PA', lyon: 'LY' }[data.site] ?? data.site;
@@ -498,6 +499,46 @@ try {
         await page.waitForFunction(() => !document.querySelector('main [aria-busy="true"]'));
         assert.equal(await current.innerText(), freshName);
         assert.equal(await page.locator(`[data-act="${action}"]`).isEnabled(), true);
+      } finally { await page.close(); }
+    });
+    for (const duringPrepare of [false, true]) await check(`${route} : suggestions tardives conservent l’aperçu manuel ${duringPrepare ? 'pendant la préparation' : 'avant le clic'}`, async () => {
+      const page = await makePage(route, form);
+      try {
+        if (route === 'unposte') await selectComputer(page);
+        const host = page.locator(`[data-form="${form}"]`);
+        const suggestions = host.locator('[name="service"] + datalist option[value="INF"]');
+        await suggestions.waitFor({ state: 'attached' });
+        await page.evaluate(() => { window.fixture.holdServices = true; window.fixture.holdPrepare = true; });
+        await host.locator('[name="site"]').selectOption('lyon');
+        await page.waitForFunction(() => typeof window.fixture.releases.services === 'function');
+        assert.equal(await suggestions.count(), 0);
+        await host.locator('[name="service"]').fill('ADM');
+        const current = page.locator('main .name-preview .name');
+        await page.waitForFunction(() => document.querySelector('main .name-preview .name')?.textContent.includes('LYADM'));
+        const chosenName = await current.innerText();
+        const previewCalls = await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'names.preview').length);
+        const actionButton = page.locator(`[data-act="${action}"]`);
+        const prepare = async () => {
+          await actionButton.click();
+          await page.waitForFunction(() => typeof window.fixture.releases.prepare === 'function');
+          assert.equal(await page.locator('.k-dlg').count(), 0);
+        };
+        if (duringPrepare) await prepare();
+        await page.evaluate(() => { window.fixture.holdServices = false; window.fixture.releases.services(); });
+        await suggestions.waitFor({ state: 'attached' });
+        assert.equal(await host.locator('[name="service"]').inputValue(), 'ADM');
+        assert.equal(await current.innerText(), chosenName);
+        assert.equal(await actionButton.isEnabled(), !duringPrepare);
+        assert.equal(await page.evaluate(() => window.fixture.calls.filter(c => c.op === 'names.preview').length), previewCalls);
+        if (!duringPrepare) await prepare();
+        await page.evaluate(() => { window.fixture.holdPrepare = false; window.fixture.releases.prepare(); });
+        const dialog = page.locator('.k-dlg'); await dialog.waitFor();
+        assert.equal(await dialog.locator('.k-cw-target b').innerText(), chosenName);
+        const calls = await page.evaluate(() => window.fixture.calls);
+        assert.equal(calls.filter(c => c.op === 'operation.prepare').length, 1);
+        assert.equal(calls.find(c => c.op === 'operation.prepare').args.kind, form === 'join' ? 'join' : 'renameMove');
+        assert.equal(calls.filter(c => c.op === 'operation.execute').length, 0);
+        await dialog.locator('[data-id="cancel"]').click(); await dialog.waitFor({ state: 'hidden' });
       } finally { await page.close(); }
     });
     await check(`${route} : préparation tardive abandonnée si les choix ont changé`, async () => {

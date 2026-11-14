@@ -246,6 +246,7 @@ export function render(main, ctx) {
 
   async function loadServices(calculate = false) {
     const token = ++servicesToken;
+    const previewToken = computeToken;
     const site = formHost.querySelector('[name="site"]')?.value;
     if (!site) return;
     serviceInput.disabled = preprodLocked;
@@ -261,7 +262,8 @@ export function render(main, ctx) {
         serviceInput.value = String(items[0].code ?? '').toUpperCase();
       serviceList.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}" label="${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}"></option>`).join('');
       if (!(items ?? []).length) form.setMessage('service', 'Aucun service connu : saisissez le code manuellement.', 'warn');
-      if (calculate && serviceInput.value.trim()) await compute(form.values(), false);
+      // Suggestions may arrive after a manual preview or while its plan is being prepared.
+      if (calculate && previewToken === computeToken && !busy && serviceInput.value.trim()) await compute(form.values(), false);
     } catch (err) {
       if (!alive || token !== servicesToken) return;
       // Les suggestions ne sont pas une condition de saisie : un code valide reste utilisable.

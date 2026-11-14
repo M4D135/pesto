@@ -113,7 +113,8 @@ try {
       const host = page.locator(`form[data-form="${form}"].k-form-live`);
       assert.equal(await host.count(), 1);
       await host.locator('[name="site"]').selectOption('paris');
-      await host.locator('[name="service"]').selectOption('INF');
+      await host.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
+      await host.locator('[name="service"]').fill('INF');
       await host.locator('button[type="submit"]').click();
       const name = page.locator('main .name-preview .name');
       await name.waitFor();
@@ -128,7 +129,8 @@ try {
     await page.locator('[data-pick="P111301PAINF001"]').click();
     const rename = page.locator('form[data-form="rename"].k-form-live');
     await rename.waitFor();
-    await rename.locator('[name="service"]').selectOption('INF');
+    await rename.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
+    await rename.locator('[name="service"]').fill('INF');
     await rename.locator('button[type="submit"]').click();
     await page.locator('[data-zone="rpreview"] .name-preview').waitFor();
   });

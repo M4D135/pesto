@@ -1,0 +1,220 @@
+﻿{
+    "PowerShell":  "5.1.26100.6584",
+    "WindowsWpfRequested":  true,
+    "WindowShown":  false,
+    "NoAD":  true,
+    "NoRegistry":  true,
+    "Failed":  0,
+    "Checks":  [
+                   {
+                       "Name":  "Every supported ten-percent value is preserved exactly",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Numeric values are clamped to 80 and 150",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Intermediate values round to ten away from zero at the half step",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Missing, malformed and nonfinite values use 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Normalization is idempotent and uses integer percentages",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Stored layout preserves normalized zoom and unrelated fields",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Old layout without zoom opens at 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Corrupt stored zoom cannot exceed bounds or become nonfinite",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Layout JSON round trip preserves the chosen zoom",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Initialization reads layout zoom without writing preferences",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Initialization without a preference chooses 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Malformed layout falls back safely without saving",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Set applies an absolute normalized percentage without implicit persistence",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Explicit persistence saves the percentage immediately",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Repeated assignment has no cumulative scale drift",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Reset from both bounds returns exactly to 100 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Viewport uses physical DIP divided by absolute scale",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Tiny viewport retains usable logical canvas and scrollable content",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Invalid or unmeasured viewport stays finite and positive",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Zoomed logical width drives responsive one-column form",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "All zoom controls have stable accessible names and tooltips",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Zoom toolbar stays outside both scaled root and viewport scrolling",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Canvas scrollbars allow access to oversized content on both axes",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Names page scrolls filters, grid and tools together while preserving grid virtualization",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Names grid uses the same bounded responsive height as the batch grid",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Preference save includes zoom in the established layout store",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Zoom presentation does not call mutation or domain commands",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Plus and minus buttons change by exactly ten and persist each click",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Repeated button clicks stop at both bounds",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Percentage button resets to exactly 100 and persists",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Unknown button cannot change or persist zoom",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "One hundred reversible click cycles cannot accumulate rounding error",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: real XAML loads and zoom controls remain outside the transformed root",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: initialization is idempotent and a routed click saves once",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: all percentages give an absolute uniform transform with no drift",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: buttons reflect both bounds and reset remains enabled at 100",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: 150 percent on 760 by 560 keeps commands accessible with scrollable content",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: expanded name tools retain a finite visible grid at 760 by 560 and 150 percent",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: zoom commands remain reachable at 320 by 300 without shrinking their text",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: reset restores logical viewport without leaving accumulated scale",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: real Save-Prefs stores zoom with the existing layout and reloads it",
+                       "Passed":  true,
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF: storage failure keeps applied zoom and surfaces a persistence warning",
+                       "Passed":  true,
+                       "Error":  ""
+                   }
+               ]
+}

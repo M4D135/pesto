@@ -1,0 +1,11 @@
+﻿{
+    "kind":  "pesto.isolated-native-update-run",
+    "sourceCommit":  "292860b934bcdff0f1321b0839158bf38b58816e",
+    "fullReleaseQualification":  false,
+    "success":  false,
+    "startedUtc":  "2026-11-01T04:19:29.5442421+00:00",
+    "sessionId":  2,
+    "channels":  [
+
+                 ]
+}

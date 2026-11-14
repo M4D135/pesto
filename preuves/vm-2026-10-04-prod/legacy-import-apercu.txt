@@ -1,0 +1,8 @@
+﻿
+Poste           NomPrevu Etat       Id                              
+-----           -------- ----       --                              
+V999004AAQA1997          À vérifier de6977a6685547ad9ad6bf0b7b12bde3
+
+
+
+Le fichier d'origine ne sera pas modifié. Aucun ancien verrou ne sera supprimé. Importer ces reçus ?

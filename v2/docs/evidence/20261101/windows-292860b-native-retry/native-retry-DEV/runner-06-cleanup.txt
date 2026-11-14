@@ -1,0 +1,5 @@
+{
+  "success": true,
+  "scenario": "format-refusal",
+  "ownedFixtureRemoved": true
+}

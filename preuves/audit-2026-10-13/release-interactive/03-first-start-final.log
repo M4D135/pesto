@@ -1,0 +1,12 @@
+capture C:\PestoAudit20261013\release\preuves\03-first-start-1920.png 1920x1200
+clic : #Save (Valider, sauvegarder et continuer)
+clic : #Save (Valider, sauvegarder et continuer)
+clic : #Wizard (Créer avec l’assistant)
+Configuration wizard opens
+At C:\PestoAudit20261013\release\pilot\03-first-start-final.ps1:3 char:114
++ ... scustomobject]@{Name=$Name;Passed=$Pass});if(-not$Pass){throw $Name}}
++                                                             ~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Configuration wizard opens:String) [], RuntimeException
+    + FullyQualifiedErrorId : Configuration wizard opens
+ 
+

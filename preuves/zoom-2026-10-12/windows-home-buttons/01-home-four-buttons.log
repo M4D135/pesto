@@ -1,0 +1,11 @@
+clic : #NavHome (Accueil)
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+capture C:\PestoZoom20261012\preuves-home-buttons\01-accueil-quatre-boutons-100.png 1920x1160
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #SuiteNavToggle (Déployer le menu : icônes et libellés.)
+capture C:\PestoZoom20261012\preuves-home-buttons\02-menu-zoom-quatre-boutons-120.png 1920x1160
+clic : #HomeQueue (Plusieurs postes)
+clic : #NavHome (Accueil)
+clic : #SuiteNavToggle (Réduire le menu : conserver uniquement les icônes.)
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)

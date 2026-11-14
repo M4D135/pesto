@@ -1,0 +1,52 @@
+{
+  "Result": "PASS",
+  "CreatedUtc": "2026-10-12T23:21:41.777785+00:00",
+  "Finding": "Le déblocage échouait pour un fichier Hidden NTFS : Get-Item -Stream sans -Force ne retrouvait pas ce fichier pourtant énuméré.",
+  "Fix": "Ajouter -Force aux quatre lectures de flux ADS (racine et descendants, avant/après Unblock-File). Aucun autre changement du helper.",
+  "Source": {
+    "Path": "DEV/wad/support/DEBLOQUER_TOUT.cmd",
+    "SHA256": "82b7420a1c3cb8f2e1acfa6771b5e57512bfadc4d9277f75f87f265ce91288cd"
+  },
+  "Format": {
+    "ASCII": true,
+    "CRLF": 106,
+    "BareLF": 0
+  },
+  "LocalRegression": {
+    "Cases": 26,
+    "Result": "PASS",
+    "Evidence": {
+      "Path": "preuves/audit-2026-10-13/python-package/distribution-support-final.log",
+      "SHA256": "38b3fed80efe1bd82dc337e527633fabbf5943eca34c68309950116dc7bcaab7"
+    },
+    "Meaning": "Assertions de distribution et présence de -Force dans les quatre lectures ; pas une exécution NTFS."
+  },
+  "WindowsQualification": {
+    "Executor": "engine_finish",
+    "PowerShell": "5.1.26100.6584",
+    "Cases": 27,
+    "Passed": 27,
+    "Failed": 0,
+    "Evidence": {
+      "Path": "preuves/audit-2026-10-13/engine/Package.json",
+      "SHA256": "e9a821a2236dbb341ec49ebb1126bb167214854d28aac925de4c41ef22798d9e"
+    },
+    "InitialFailure": {
+      "Path": "preuves/audit-2026-10-13/engine/initial/Package-unblock-before.json",
+      "SHA256": "f4cbd801ff10a03ed98f612be078b27215a64c8afe69bb34b4e3c76b54d112c3"
+    },
+    "Meaning": "Bloc livré exécuté réellement sur fixtures NTFS : Hidden + Zone.Identifier, octets préservés, idempotence, fichier voisin et cible de jonction intacts. Aucun accès AD."
+  },
+  "AdditionalNativeEvidence": {
+    "Executor": "root",
+    "Cases": 15,
+    "Passed": 15,
+    "Evidence": {
+      "Path": "preuves/audit-2026-10-13/final-interactive/native-summary.json",
+      "SHA256": "40528dc8380a6b4f241b8f823e9e7c4b45665db520e4af41225ced4739b9ebf8"
+    },
+    "ExeSHA256": "22f8f5c49304f67d346db72a687d216402e0c6aa86d8bb4e67a7d62878dfabad",
+    "Meaning": "Lanceur Windows testé en mode contrôle ; aucun UAC ni changement AD."
+  },
+  "Documentation": "Comportement annoncé inchangé ; le déblocage couvre à présent correctement les fichiers cachés. Aucune régénération des guides requise par ce correctif."
+}

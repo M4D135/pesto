@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-observation",
+  "scenario": "interruption",
+  "stage": "recovery",
+  "transactionId": "907dbc2f566e4a91b8856801f8b357dd",
+  "helperProcessId": 15728,
+  "helperStartUtcTicks": "639291041682115152",
+  "helperExecutableSha256": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+  "candidateExecutableSha256": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+  "journalReadPolicy": "owned-dialog-exit-or-attributed-checking-child",
+  "dialogDeadlinePolicy": "30s-from-owned-dialog-observation-through-helper-exit",
+  "success": true,
+  "interrupted": false,
+  "dialogClosed": true,
+  "checkingObserved": false,
+  "healthChildObserved": false,
+  "webViewChildObserved": false,
+  "events": [
+    {
+      "utc": "2026-11-01T04:29:58.1336847\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "907dbc2f566e4a91b8856801f8b357dd",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\interruption\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "f7444b532a8c5abbb8eecfbd3d3e0f041b9eb0d70bdcb5858cc28589afe31060",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "recover",
+        "status": "rolledBack",
+        "createdUtc": "2026-11-01T04:28:26.2513896\u002B00:00",
+        "parentProcessId": 8340,
+        "parentStartUtc": "2026-11-01T04:29:06.2231554\u002B00:00",
+        "failure": null
+      }
+    }
+  ],
+  "descendantAttributionRefusals": [],
+  "helperHandleRetained": true,
+  "ownedDialogObservedUtc": "2026-11-01T04:29:58.1266870\u002B00:00",
+  "resultDialogCloseMethod": "WM_CLOSE",
+  "resultWindows": [
+    {
+      "handle": "10553458",
+      "class": "#32770",
+      "title": "Pesto \u2014 Mise \u00E0 jour",
+      "hasIdOk": false
+    }
+  ],
+  "helperExitCode": 0,
+  "finalJournalStatus": "rolledBack",
+  "ownedDialogElapsedMilliseconds": 42,
+  "helperDiagnosticCollection": {
+    "helperProcessId": 15728,
+    "helperStartUtcTicks": "639291041682115152",
+    "maximumFiles": 8,
+    "maximumBytesPerFile": 65536,
+    "maximumCandidates": 64,
+    "files": [],
+    "refusals": [],
+    "completed": true,
+    "informationalOnly": true,
+    "scannedCandidates": 0,
+    "copiedFiles": 0
+  },
+  "finishedUtc": "2026-11-01T04:29:58.1926846\u002B00:00"
+}

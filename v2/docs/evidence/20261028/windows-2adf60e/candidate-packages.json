@@ -1,0 +1,42 @@
+[
+  {
+    "channel": "PROD",
+    "sourceCommit": "2adf60e15f8f7d5fd808c0471a63e1fd4457cd90",
+    "archiveSha256": "08a3383f7884195d1986db5b473502dfbf2a0a3999a3d975121457d6a823d5b3",
+    "executableSha256": "b8361c8b0185ab5c528eb182639ca5bf81fbb456c647f68db410382190b33e24",
+    "distribution": "candidate",
+    "adQualified": false,
+    "nativeStartupDemoQualified": true,
+    "nativeDemoCoexistenceQualified": true,
+    "nativeConfigurationQualified": true,
+    "nativeConfigurationUiQualified": true,
+    "nativeUpdatePreparationUiQualified": true,
+    "nativeUpdateInstallUiQualified": true,
+    "nativeRollbackUiQualified": false,
+    "nativeServiceRollbackAfterUiInstallQualified": true,
+    "nativeUpdateQualified": true,
+    "distinctUpdateBuilds": true,
+    "devSourceRebuildQualified": true,
+    "updateBaselineSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+  },
+  {
+    "channel": "DEV",
+    "sourceCommit": "2adf60e15f8f7d5fd808c0471a63e1fd4457cd90",
+    "archiveSha256": "93e3b3afb037547d125acd8866cc8ef461d8ea0988ca02d0a33e567915c24e20",
+    "executableSha256": "b8361c8b0185ab5c528eb182639ca5bf81fbb456c647f68db410382190b33e24",
+    "distribution": "candidate",
+    "adQualified": false,
+    "nativeStartupDemoQualified": true,
+    "nativeDemoCoexistenceQualified": true,
+    "nativeConfigurationQualified": true,
+    "nativeConfigurationUiQualified": true,
+    "nativeUpdatePreparationUiQualified": true,
+    "nativeUpdateInstallUiQualified": true,
+    "nativeRollbackUiQualified": false,
+    "nativeServiceRollbackAfterUiInstallQualified": true,
+    "nativeUpdateQualified": true,
+    "distinctUpdateBuilds": true,
+    "devSourceRebuildQualified": true,
+    "updateBaselineSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+  }
+]

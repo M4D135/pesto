@@ -1,0 +1,542 @@
+{
+  "Schema": 1,
+  "Agent": "/root/engine_finish",
+  "Document": "administrateur",
+  "DOCXSHA256": "578b7baa567a2b9b6f15edea18d3bbc608e2cf87e1ea0741f15c36670d81b9c6",
+  "PDFSHA256": "a4eb7f427a0a874735adf4f6daa173ca838f30d4c4015102e7e4cf40923ebabe",
+  "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/administrateur-livraison-v2",
+  "PageCount": 56,
+  "Method": "Relecture initiale individuelle de toutes les pages ; comparaison exacte des pixels du corps de page (0,0,1414,1840), revue visuelle de toutes les pages de livraison en planches, puis ouverture individuelle de chaque page modifiée. Dernière correction du paragraphe isolé p56 : suppression de cette page par resserrement des prérequis et relecture intégrale des pages54–56 finales. Texte PDF utilisé seulement pour vérifier pieds et bornes, jamais comme preuve visuelle.",
+  "Pages": [
+    {
+      "Page": 1,
+      "ImageSHA256": "ed82326dd344b625f88a6fe7458d3ac6ead016927d24cc6868f672569677f132",
+      "BodySHA256": "85ec515e0c6a78808da5003cf4d878dd186f0b0729946ee20f039f2d16475981",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 1,
+      "FooterValidated": true
+    },
+    {
+      "Page": 2,
+      "ImageSHA256": "5d3430f506501c07f17541ecad77930266943edb436d687f84b872838fc7e66c",
+      "BodySHA256": "f3d4f90f90d232c70db18a53079ffa158b469b0ecfdd663f64d1874a976408f3",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 2,
+      "FooterValidated": true
+    },
+    {
+      "Page": 3,
+      "ImageSHA256": "4e82d85397154d947754598fe28b120bda3c57f1b334105e0d9488c6201ea735",
+      "BodySHA256": "ae2d5d0757ccc3e843b31fadf3fe09707c80c410b6d6e26c5ad4b69848fac9e1",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 3,
+      "FooterValidated": true
+    },
+    {
+      "Page": 4,
+      "ImageSHA256": "423ac4a5c75a3f63837343ee4052aa135377380b7f66905902f86e16c1737e85",
+      "BodySHA256": "df2e1814d7837aae27d52335b83c59a81c1b156809fa36688c22fbad955a3de5",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 4,
+      "FooterValidated": true
+    },
+    {
+      "Page": 5,
+      "ImageSHA256": "53a3648a43657a9db423b37533be5c8d89dfc5f14989bfd7728f25abf34dc18f",
+      "BodySHA256": "ceee9ae687b2ba4706ca8b1085ec3773bda198806b83f491dd9a02a26e9e26d2",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 6,
+      "ImageSHA256": "1a539ec347cdf6f0f9b8fc6c2261dad75548123fafd02196b45ad56904ecaaf5",
+      "BodySHA256": "52fd534d47c0cf1c6216a02eff061a771e06ea2cdb82f4ed469ae32a63a142b7",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 6,
+      "FooterValidated": true
+    },
+    {
+      "Page": 7,
+      "ImageSHA256": "1aaa883cc6128454556abb89d342ce9b2bb1dca5734ed37940fef1ec9f23cfc3",
+      "BodySHA256": "ce0077bac6d30884299fdad2ac63221f7437fbcfa0b64c91d09c45912b1cf46f",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 8,
+      "ImageSHA256": "fb84a4a1b55521c780b9bf88b95c52837eb6549ddd6aa05dd2bf6dd78ca33a34",
+      "BodySHA256": "f9323adf5e2efc1a5ba38947281868843fcbceb1802e847691c55f2434b6ac45",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 8,
+      "FooterValidated": true
+    },
+    {
+      "Page": 9,
+      "ImageSHA256": "89f32e35dc14f831a6af3b111e8adc6ab4dd8d7180c72b39c467a5cb8d14e173",
+      "BodySHA256": "393128c2a0d7836cc92265f41b2661c5b5ecc55231569610a28dba445ff9a953",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 10,
+      "ImageSHA256": "deb762cd4e7f157c79aa2070900634e507d2c081748c0918c69fbcdef3f8b9fc",
+      "BodySHA256": "45611e48ae8a8e4adf31538a5a62f01e887f209591615e101b62d337a8ac3af8",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 9,
+      "FooterValidated": true
+    },
+    {
+      "Page": 11,
+      "ImageSHA256": "6ac29b844426f6b45e57cd46303dbc5006651f088969456130564f7f46279771",
+      "BodySHA256": "a64aa12319a7b1dc09bbee98b3990bc61b06f889bc374a827695a415fb028856",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 12,
+      "ImageSHA256": "d816030d38a8ae25683251f0af9e48eb53b7befa6087d7b368445af40ab3fd0e",
+      "BodySHA256": "6391565e511691e49a1ca4f4fa6055785a68d9418cebca6947b8aef29842d575",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 13,
+      "ImageSHA256": "00d24bebe5018e33aea9f006b251a8de0d12d88a3f25bdfe01490e5dc55a0eda",
+      "BodySHA256": "3188461cd8c883901666946ce21cae5b2e83211e9ebf02d27a340aa45ae5b13a",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 14,
+      "ImageSHA256": "190ceb061751d61285ab03b7c478565d60ce6f83ad85fc71f7ca44c0dbd49d4e",
+      "BodySHA256": "d780026218c479d00fcd82a647190b825a97b8bc95bbbf5bf17ecb3b2ac9ea27",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 15,
+      "ImageSHA256": "4d70e27f2afd96bd6a82aeb08140d8a6f4445823ddc3bd267016a4c0ab7e3968",
+      "BodySHA256": "590308715420c1a9d6057e489c70617dc044b4054bdc7833cb76ecc583adfb91",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 14,
+      "FooterValidated": true
+    },
+    {
+      "Page": 16,
+      "ImageSHA256": "9cde7282315567c179404c0b47b2a0de6f98c375ffd5b0ddca70b8c805b05b0e",
+      "BodySHA256": "eb697976a70ce08d57fa16f7b46b2fccd96d9e33f79bde9d58e8305274db3022",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 15,
+      "FooterValidated": true
+    },
+    {
+      "Page": 17,
+      "ImageSHA256": "4ef2eac510b53771f422a731978c6bd3a0cc284a858241050a5efcc39bf5e553",
+      "BodySHA256": "59bd3f3301d99eb59fd29397b51ae8b9ce23be2187f9e88baf0d8d135b125e9c",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 18,
+      "ImageSHA256": "dae68756c152c1aa02d66d01f222f4d76c92270a6a96e1a77bbe4ac6ec12089b",
+      "BodySHA256": "5ac3a71280f3ec1160088377a67e0903423e48ecf453ec70db7061b87366ecf4",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 19,
+      "ImageSHA256": "aa4120402d0a06e6caaa666596d559bbc7c3de0993fe7ae50d8abfad60c1e40d",
+      "BodySHA256": "0c3a14f0ef789177d98ec05e96f6d3c8e136c2f0dd38e92a5c01af834901e222",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 20,
+      "ImageSHA256": "ec3e1ef4029e24bf95a40a7efc2bdcf6d5da208a295afd01285275960579514b",
+      "BodySHA256": "6b1c2cd1a076621f9b9d8f1a97dd7e7b19ed7577db34a9db9b24bd8e8d6cfa6e",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 19,
+      "FooterValidated": true
+    },
+    {
+      "Page": 21,
+      "ImageSHA256": "c0d0947889e3e09ee754df6f25e94458bde799adf3be1dcb9cc4389ae3533305",
+      "BodySHA256": "608b0ac0e0b4be44427641af312a16793f13304de94679f6376bc5aa970477f9",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 20,
+      "FooterValidated": true
+    },
+    {
+      "Page": 22,
+      "ImageSHA256": "1efc2944d40253751183f4bd7183485f59a61a21239bf56e9ad09721508b4d73",
+      "BodySHA256": "e5a368762373d20002c2c37ee84be503e1405ee0081749e47f7813ea390a5114",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 21,
+      "FooterValidated": true
+    },
+    {
+      "Page": 23,
+      "ImageSHA256": "e68fa9b75f29d4e3ae18ee7237ab7ba240d8ff651fe9bfc40783c3cec545bf28",
+      "BodySHA256": "9bad13432bcd37234d3a63b4337f59250a33c26ec0ac893ef17af5df4b7eb131",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 24,
+      "ImageSHA256": "62d8b2c63da08e67e7bf3ee96bc0309b3fcc653fd0b92378c595af8d776dc533",
+      "BodySHA256": "22883933d2c77df8b234ebbbfa9160199e72f74c88c206253529b996cb9726d7",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 23,
+      "FooterValidated": true
+    },
+    {
+      "Page": 25,
+      "ImageSHA256": "08bd01040aa6462aa5bac53edbefef39dafe39fcbaf353ad0c610465ac7e6c79",
+      "BodySHA256": "ecc2424c080e944615191c7c10c4ef9e0441bae0cb0c2ba187dee2e9f879409c",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 24,
+      "FooterValidated": true
+    },
+    {
+      "Page": 26,
+      "ImageSHA256": "df14bfb72dd33a0365cee6f89f89e63739aa010c5ca04e230e79fc1cb26f6582",
+      "BodySHA256": "9cec91bf8ddab5ee0283519ed561a023cda8576a0524d0b27cb4552b75a82a53",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 27,
+      "ImageSHA256": "b19801c149cd2c89f9f13854895c66bbc42b1fb5fe30441a71a470b11b7c6601",
+      "BodySHA256": "37afdf5682ffed01ced7313cd9f35932b0a5793a1ed9323571672fe57052cd9d",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 26,
+      "FooterValidated": true
+    },
+    {
+      "Page": 28,
+      "ImageSHA256": "b96f92de8d6435d0002ac213fb4361ec25295a76d0bb9ab9e9e42474c7ba1fbc",
+      "BodySHA256": "922057238a286c7992deb9f13a4994ee807bde9511d029111bf3d084dd0504aa",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 27,
+      "FooterValidated": true
+    },
+    {
+      "Page": 29,
+      "ImageSHA256": "5dfc5e523fbffdc0ec31d4d6a78e159850a129f326bdf97ddd034ca572e62bb9",
+      "BodySHA256": "145d015320da5c56b617f274e8e6af8e392dfce6fbf6ac122c3d353bb2199c13",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 28,
+      "FooterValidated": true
+    },
+    {
+      "Page": 30,
+      "ImageSHA256": "f3c808a6e805a7bbefb6890322bbade4630a1aa424db24e8d2dd61adf7bea649",
+      "BodySHA256": "a1b0cc0a425c203ea5fe632ff416544c3b26f3a01025f5f2b4f7cc98b1670be4",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 29,
+      "FooterValidated": true
+    },
+    {
+      "Page": 31,
+      "ImageSHA256": "192df999c0cf765cbaa09d92663e98f3d8974ec17dd1d056793e8e008d98827f",
+      "BodySHA256": "e67d8e5e9e9e3b23b1cc237fbfa73679f6f1904c4c8ddf9e9a44c495e41e1724",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 30,
+      "FooterValidated": true
+    },
+    {
+      "Page": 32,
+      "ImageSHA256": "2ed20a2cb619f4141b200fea390b902cae7de02cb35a3e4f545ed54cb1a139af",
+      "BodySHA256": "fc631f01182bf483cd69eccc99ef8909d943180b4bab287a872b5ff1da119266",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 33,
+      "ImageSHA256": "938393908a2a13b57c53d687957474f7f30a68cb720142a4042d3c6bfea13a37",
+      "BodySHA256": "0a86a02b8b8b7dfa231928982587987b847ed438a6bf9c164360ec6fdf52a2e6",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 32,
+      "FooterValidated": true
+    },
+    {
+      "Page": 34,
+      "ImageSHA256": "21b9abb28a8815049cb528570552f984ddc78612c0bea72ded466f90608f781e",
+      "BodySHA256": "b3c39fb6544047771c67fd643a0ee2b06c714967c4c9b8421c1a5c01b803b07f",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 35,
+      "ImageSHA256": "b799b68d1e2f7d4e0c8db2c95a54e61becaff16894ec9a7d2e1a7a403a082701",
+      "BodySHA256": "a949da7cdc62a9a612a4564cc2512f79aaa8230c9297f372ad8baf510f69934d",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 34,
+      "FooterValidated": true
+    },
+    {
+      "Page": 36,
+      "ImageSHA256": "b1a6b4a527603cfc0bb06d981cf3dc042f3d13566ceccfa6a577f35c3b4fcdde",
+      "BodySHA256": "078a44a15c3d586b4ac9577f108c77a2ab7496bd7dea4053ac68dfe301e44049",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 35,
+      "FooterValidated": true
+    },
+    {
+      "Page": 37,
+      "ImageSHA256": "554a8beb6e8f764386d0da030ffd630c1a4854e02e6ea5807043e2cbcec648ca",
+      "BodySHA256": "301ff71b7e277355459fe839d31d6197edd7cfb15f903128b45a26e5f8423e4d",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 36,
+      "FooterValidated": true
+    },
+    {
+      "Page": 38,
+      "ImageSHA256": "eb04e5faf7566c2a41b5da449b9b71a70b09bfaf1f9a95582033cb96d0fd4f82",
+      "BodySHA256": "7bafd393f99daed8c56ce1e68aad7ebcca0feed43ccb321062d8a0367c8bd908",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 37,
+      "FooterValidated": true
+    },
+    {
+      "Page": 39,
+      "ImageSHA256": "91d73f2d597f842fd6787a7775fb8a57d4089efb91da58567d18132141e9a2ff",
+      "BodySHA256": "0fb7d5f9ed2e56080b7c23853e88c10c614aa66fce348912f7a5db9c160fb3f8",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 40,
+      "ImageSHA256": "c396cfc643cc22b329c9f436a37009711cb406e101f413c2b66633ad479e1825",
+      "BodySHA256": "523a1f42e36a2c24f515281770a9fe4cf7f4fea67182f6bcf0f534664dc20120",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 39,
+      "FooterValidated": true
+    },
+    {
+      "Page": 41,
+      "ImageSHA256": "479b9dde815f24443a30af52d745aa038f8411dd5c607c27cb30d78a102c0874",
+      "BodySHA256": "51d7f686ede14c0ee036dd535698cd45b32bcdbaa02d130cd4e0f763e26558ac",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 40,
+      "FooterValidated": true
+    },
+    {
+      "Page": 42,
+      "ImageSHA256": "6aa7e4956e6688977ff912d73b2b45868f4958826b6073a4eed201bcc8da54d3",
+      "BodySHA256": "1ddb957bddebd9ff7c9078681036a2f0f86e5aa5ddf95699a23ce2dc12516176",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 41,
+      "FooterValidated": true
+    },
+    {
+      "Page": 43,
+      "ImageSHA256": "237135ab9a1a6d1081f4dae61ee519f812e1721fe90f6465bbac8e9e035971fd",
+      "BodySHA256": "791739732c76a2af90ca848bc8c8094ee656f6e8962634ca228a99723926c562",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 42,
+      "FooterValidated": true
+    },
+    {
+      "Page": 44,
+      "ImageSHA256": "43cd46cbb463b6e60e864dab6b46754eadf515240742cdf5d3f8fc46957dfbd6",
+      "BodySHA256": "a991f9691f8f9b7f12b3ae44260453de3400d4cf29bb18f08e30c684f5d81024",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 43,
+      "FooterValidated": true
+    },
+    {
+      "Page": 45,
+      "ImageSHA256": "8bc5f30f282c2035faab72406ae67fc5e0164e9d4d6a8911b21970f9a098d0c6",
+      "BodySHA256": "d77a2c7d7e5f3a2d944b60dafc7d2924ae6a66e1832e68e141ffa1720c1c3d53",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 46,
+      "ImageSHA256": "f9542bcb3890bda27aeec6cfacbbfdba140689a80ec30087823deaedabc983eb",
+      "BodySHA256": "21d05ee4ec49d154ac790b984c600c65e98f1e58707f042e932230f317fbcc8f",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 45,
+      "FooterValidated": true
+    },
+    {
+      "Page": 47,
+      "ImageSHA256": "48056c650eb2ff3851fd4a8dd50bc559c044bab237d0e07dd8ae07b5db620dcc",
+      "BodySHA256": "dc4d6c6bbee590cf59859adbc465909463301b3d1c2af3fa784c219958978ac7",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 46,
+      "FooterValidated": true
+    },
+    {
+      "Page": 48,
+      "ImageSHA256": "6ec4f2e4c47154665702e11f5779ba3133454573a3c4ad1cc22d7036bebd0ee0",
+      "BodySHA256": "e1b81e3ce2aee116f532b563189d9df85d2276b51ecf4e2caa333d6d6ddda601",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 47,
+      "FooterValidated": true
+    },
+    {
+      "Page": 49,
+      "ImageSHA256": "05e3ecac07059a1f175bddf094b24dae906afedefdbf6a063c5ccd53ff1c7e65",
+      "BodySHA256": "44d54e394c4cd1f21cbfac71d89de5f5dddd8f745e09a77ad75f1d232090809b",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 48,
+      "FooterValidated": true
+    },
+    {
+      "Page": 50,
+      "ImageSHA256": "6492f36849207a2bde9b0ce64038e724b8cbf39ff64ab549b28e5b52b63d9486",
+      "BodySHA256": "9bed6ee2c498f520268042a88fa87beb98e67246c557e39dfa2e6b87bf90fed4",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 49,
+      "FooterValidated": true
+    },
+    {
+      "Page": 51,
+      "ImageSHA256": "04506575bc0c07f423ebf1096e0e78d03ad0c367a56afaf9a3d0f96a2158e2be",
+      "BodySHA256": "6793118d266b3501ea3063c39b8b79afd2064e9fa6017cebbefaab070032050f",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 50,
+      "FooterValidated": true
+    },
+    {
+      "Page": 52,
+      "ImageSHA256": "6029dbeea6c85d772313b697a81047c0416c1d0980ac2d8b3e2c974d894694be",
+      "BodySHA256": "79296ad8c255e48af69d17815a15812de292da07a471c030ae3c45d5b51f3c59",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 51,
+      "FooterValidated": true
+    },
+    {
+      "Page": 53,
+      "ImageSHA256": "606d906e3dac80b9c692ada0136478cca7a9e5ce4d32e83532221ba98b1e1582",
+      "BodySHA256": "6d1fcd68501bcfa31358b5aaadba1310863ae0e99dd80e2a2583385061e87e2f",
+      "VisualReview": "PASS",
+      "ReviewMode": "Corps pixel-identique à la page initiale relue, et mise en page revue en planche",
+      "PreviousPageWithIdenticalBodyPixels": 52,
+      "FooterValidated": true
+    },
+    {
+      "Page": 54,
+      "ImageSHA256": "f385fe4c619a9295233a3d6404c86dcdc5d7c0dc48c443b947fe614e5e6fd003",
+      "BodySHA256": "c38afebf9496c1e77adb1b209dbc752efdb563bb061b288f58231e996350b037",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 55,
+      "ImageSHA256": "1796f06f372ed9c7a95f9e5d105a76ca64dbeb51d26c6326af3ac55a6ed81ad7",
+      "BodySHA256": "1dab6a681a0e9ab4037f4c5a0af659a021884b438ad7fe947d28abc3dc1cc199",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": null,
+      "FooterValidated": true
+    },
+    {
+      "Page": 56,
+      "ImageSHA256": "cc16273686b3da17cb3cf85a2ee2f6e70a72937a7620520826461c660a7dc5ca",
+      "BodySHA256": "b8593985019c71b8c1b1d7abba90024221d7f692bdee9e6632043411da9793e9",
+      "VisualReview": "PASS",
+      "ReviewMode": "Ouverte individuellement en pleine page",
+      "PreviousPageWithIdenticalBodyPixels": 55,
+      "FooterValidated": true
+    }
+  ],
+  "Technical": {
+    "OutsidePageCharacters": 0,
+    "AllSourcesNativeHD": true,
+    "Fonts": [
+      "BAAAAA+LiberationSans",
+      "CAAAAA+LiberationSans-Bold",
+      "DAAAAA+LiberationSans-Bold",
+      "EAAAAA+LiberationSans",
+      "FAAAAA+LiberationSans-Bold",
+      "GAAAAA+LiberationSans",
+      "HAAAAA+LiberationSans-Bold",
+      "IAAAAA+LiberationSans",
+      "JAAAAA+LiberationSans-Bold",
+      "KAAAAA+LiberationSans-Bold",
+      "LAAAAA+LiberationSans",
+      "MAAAAA+LiberationSans-Bold",
+      "NAAAAA+LiberationMono"
+    ],
+    "PDFLinks": 27,
+    "PDFBookmarksTopLevel": 50
+  },
+  "Findings": [],
+  "Overall": "PASS",
+  "Limits": [
+    "Rendu contrôlé par le convertisseur fourni ; Microsoft Word peut repaginer selon son moteur et ses polices."
+  ]
+}

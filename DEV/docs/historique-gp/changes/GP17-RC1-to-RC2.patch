@@ -1,0 +1,503 @@
+--- RC1/GP.ps1
++++ RC2/wad/GP-Core.ps1
+@@ -5,7 +5,7 @@
+ #  GP - Gestion des Postes   (interface WPF, Active Directory)
+ #  Jonction au domaine / Renommage / Déplacement / File d'actions
+ #
+-#  Version 17.0 RC1 — renforcement du moteur, de la file et des contrôles ; recette Windows requise :
++#  Version 17.0 RC2 — renforcement du moteur, de la file et des contrôles ; recette Windows requise :
+ #    - Moteur AD entièrement découplé de l'interface (aucun appel UI dans le
+ #      moteur : les fonctions renvoient un résultat { ExitCode, ExitMsg }).
+ #    - Interface WPF moderne, thème clair / sombre commutable à chaud (soleil / lune).
+@@ -35,7 +35,7 @@
+ 
+ Set-StrictMode -Off
+ $ErrorActionPreference = 'Stop'
+-$script:GP_VERSION = '17.0-RC1'
++$script:GP_VERSION = '17.0-RC2'
+ 
+ if ($env:OS -ne 'Windows_NT') { throw "GP nécessite Windows PowerShell 5.1 x64 sous Windows." }
+ if ([Threading.Thread]::CurrentThread.ApartmentState -ne 'STA') {
+@@ -686,7 +686,7 @@
+ }
+ 
+ function Get-RootDir {
+-    <# Racine du script (.ps1) ou de l'exécutable compilé (.exe / PS2EXE). #>
++    <# Répertoire du moteur : wad. GP.ps1 / GP.exe à la racine sont des lanceurs. #>
+     if ($PSCommandPath -and (Split-Path $PSCommandPath -Leaf) -like '*.ps1') { return $PSScriptRoot }
+     return [System.IO.Path]::GetDirectoryName(
+         [System.Diagnostics.Process]::GetCurrentProcess().MainModule.FileName)
+@@ -966,7 +966,7 @@
+             Import-Module ActiveDirectory -ErrorAction Stop -WarningAction SilentlyContinue
+         } elseif ($modulePath -and (Test-Path -LiteralPath $modulePath)) {
+             Import-Module $modulePath -ErrorAction Stop -WarningAction SilentlyContinue
+-        } else { throw 'Module ActiveDirectory introuvable (RSAT ou dossier mod).' }
++        } else { throw 'Module ActiveDirectory introuvable (RSAT ou dossier wad).' }
+     }
+ 
+     $domain = ([string]$Request.Domain).Trim()
+@@ -1067,7 +1067,7 @@
+         ScanOU=$script:OU_SCAN
+         LocalComputerName=$env:COMPUTERNAME
+         IncludeLocalHardware=[bool]$IncludeLocalHardware
+-        ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')
++        ADModulePath=(Join-Path $BasePath 'ActiveDirectory.psd1')
+     }
+ }
+ 
+@@ -1157,8 +1157,8 @@
+             return $true
+         }
+     } catch { }
+-    # 2) Repli : module embarqué fourni avec l'outil (dossier mod\).
+-    if ($ADModulePath -and (Test-Path $ADModulePath)) {
++    # 2) Repli : module embarqué fourni avec l'outil (dossier wad\).
++    if ($ADModulePath -and (Test-Path -LiteralPath $ADModulePath -PathType Leaf)) {
+         try {
+             Import-Module $ADModulePath -ErrorAction Stop -WarningAction SilentlyContinue
+             return $true
+@@ -4425,7 +4425,7 @@
+     # périmètre différent, saisie distante, réplication AD en cours...).
+     $request=[pscustomobject]@{
+         Name=$name;Local=[bool]$script:LOCALHOST;DC=$script:DC;Credential=$script:cred
+-        ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')
++        ADModulePath=(Join-Path $BasePath 'ActiveDirectory.psd1')
+     }
+     $ok={param($r) Complete-GPComputerProbeSuccess -Result $r -Name $name -Generation $gen}.GetNewClosure()
+     $err={param($e) Complete-GPComputerProbeError -Failure $e -Name $name -Generation $gen}.GetNewClosure()
+@@ -5092,7 +5092,7 @@
+         SIM=[bool]$script:SIM;InDomain=[bool]$script:INDOMAIN;PRD=[bool]$script:PRD;OU=$ou;OUSite=$ouv
+         OUPostes=$script:OU_POSTES;OUScan=$script:OU_SCAN;ClearProtection=[bool]$script:CLEAR_PROTECTION
+         AllowHybridRepair=[bool]$script:ALLOW_HYBRID_REPAIR
+-        ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')
++        ADModulePath=(Join-Path $BasePath 'ActiveDirectory.psd1')
+     }
+     # Callbacks nommés : pas de $script: capturé dans un module GetNewClosure.
+     [void](Start-GPAsyncOperation -Name 'QueueAction' -ScriptBlock $script:GPQueueWorker -ArgumentList @($req,(Get-GPWorkerCoreSource)) `
+@@ -5858,7 +5858,7 @@
+       foreach($c in $children){$ci=New-Object Windows.Controls.TreeViewItem;$ci.Header=$c.Name;$ci.Tag=$c.DN;[void]$ci.Items.Add('…');[void]$item.Items.Add($ci)};return
+     }
+     $wait=New-Object Windows.Controls.TreeViewItem;$wait.Header='Chargement…';$wait.IsEnabled=$false;[void]$item.Items.Add($wait)
+-    $req=[pscustomobject]@{DN=$dn;DC=$script:DC;Credential=$script:cred;ADModulePath=(Join-Path $BasePath 'mod\ActiveDirectory.psd1')}
++    $req=[pscustomobject]@{DN=$dn;DC=$script:DC;Credential=$script:cred;ADModulePath=(Join-Path $BasePath 'ActiveDirectory.psd1')}
+     $opName='OU_'+[Guid]::NewGuid().ToString('N')
+     $ok={param($children)
+       $item.Items.Clear();$arr=@($children)
+@@ -6064,7 +6064,7 @@
+     exit 1
+ }
+ 
+-$script:JsonFile = if($Demo){Join-Path $BasePath 'demo\cfg.demo.json'}elseif($ConfigPath){[IO.Path]::GetFullPath($ConfigPath)}else{Join-Path $BasePath 'cfg.json'}
++$script:JsonFile = if($Demo){Join-Path $BasePath 'cfg.demo.json'}elseif($ConfigPath){[IO.Path]::GetFullPath($ConfigPath)}else{Join-Path $BasePath 'cfg.json'}
+ $JsonFile=$script:JsonFile
+ $script:CFG=Read-GPStartupConfig -Path $script:JsonFile
+ if(-not $script:CFG){Quit 1}
+--- RC1/tools/Build-GP.ps1
++++ RC2/tools/Build-GP.ps1
+@@ -2,33 +2,43 @@
+ [CmdletBinding()]
+ param([string]$OutputDirectory,[version]$PS2EXEVersion='1.0.18')
+ $ErrorActionPreference='Stop'
+-if($PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5 -or -not [Environment]::Is64BitProcess){throw 'Compilation : Windows PowerShell 5.1 x64 requis.'}
++if($env:OS -ne 'Windows_NT' -or $PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5 -or -not [Environment]::Is64BitProcess){throw 'Compilation : Windows PowerShell 5.1 x64 requis.'}
+ $root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+ if(-not $OutputDirectory){$OutputDirectory=Join-Path $root ('dist\GP-'+[DateTime]::Now.ToString('yyyyMMdd-HHmmss')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,6))}
+ $OutputDirectory=[IO.Path]::GetFullPath($OutputDirectory)
+-if(Test-Path -LiteralPath $OutputDirectory){throw "Le dossier de sortie existe déjà : $OutputDirectory. Choisir un nouveau dossier ; aucun écrasement automatique."}
+-# La suite extrait des fonctions ; elle ne lance pas l'interface ni une mutation AD.
+-& (Join-Path $root 'tests\Run-EngineTests.ps1') -SourcePath (Join-Path $root 'GP.ps1')
++if(Test-Path -LiteralPath $OutputDirectory){throw "Le dossier de sortie existe deja : $OutputDirectory. Aucun ecrasement automatique."}
++# Tests isoles : aucun demarrage de GP, aucun appel AD reel.
++& (Join-Path $root 'tests\Run-EngineTests.ps1') -SourcePath (Join-Path $root 'wad\GP-Core.ps1')
++& (Join-Path $root 'tests\Run-PackageTests.ps1')
+ $module=Get-Module -ListAvailable -Name ps2exe|Where-Object{$_.Version -eq $PS2EXEVersion}|Select-Object -First 1
+-if(-not $module){throw "PS2EXE $PS2EXEVersion absent. Installer la version approuvée séparément (voir README) ; ce script ne télécharge aucun composant."}
++if(-not $module){throw "PS2EXE $PS2EXEVersion absent. Fournir une version approuvee separement ; aucun telechargement automatique."}
+ Import-Module $module.Path -Force -ErrorAction Stop
+ [void][IO.Directory]::CreateDirectory($OutputDirectory)
+ try {
+     $exe=Join-Path $OutputDirectory 'GP.exe'
+-    # Pas de requireAdmin : l'UAC est déclenché uniquement par les opérations locales qui le nécessitent.
++    # Compiler le lanceur, pas le moteur : wad reste l'unique dossier de ressources.
++    # Pas de requireAdmin : l'UAC reste limite aux operations locales qui le necessitent.
+     Invoke-ps2exe -inputFile (Join-Path $root 'GP.ps1') -outputFile $exe -x64 -STA -noConsole -DPIAware -supportOS `
+-      -iconFile (Join-Path $root 'icone.ico') -title 'GP 17.0 RC1' -description 'Gestion des postes - version de préproduction' -product 'GP' -version '17.0.0.1'
+-    if(-not (Test-Path -LiteralPath $exe) -or (Get-Item -LiteralPath $exe).Length -eq 0){throw 'Le compilateur n''a pas produit un exécutable valide.'}
+-    foreach($item in @('cfg.json','cfg.original.json','cfg.example.json','icone.ico','mod','demo','docs','README.md','CHANGELOG.md')){
++        -iconFile (Join-Path $root 'wad\icone.ico') -title 'GP 17.0 RC2' -description 'Gestion des postes - preproduction' -product 'GP' -version '17.0.0.2'
++    if(-not (Test-Path -LiteralPath $exe) -or (Get-Item -LiteralPath $exe).Length -eq 0){throw 'Le compilateur n''a pas produit un executable valide.'}
++    foreach($item in @('GP.ps1','GP.cmd','DEBLOQUER_TOUT.cmd','LIRE_MOI.txt','docs','README.md','CHANGELOG.md')){
+         Copy-Item -LiteralPath (Join-Path $root $item) -Destination $OutputDirectory -Recurse -ErrorAction Stop
++    }
++    $outWad=Join-Path $OutputDirectory 'wad'
++    [void][IO.Directory]::CreateDirectory($outWad)
++    # Liste explicite : ne pas embarquer les journaux produits apres utilisation.
++    foreach($item in @('GP-Core.ps1','cfg.json','cfg.original.json','cfg.example.json','cfg.demo.json','icone.ico',
++        'ActiveDirectory.psd1','ActiveDirectory.Format.ps1xml','ActiveDirectory.Types.ps1xml',
++        'ActiveDirectoryPowerShellResources.dll','Microsoft.ActiveDirectory.Management.dll','fr-FR')){
++        Copy-Item -LiteralPath (Join-Path (Join-Path $root 'wad') $item) -Destination $outWad -Recurse -ErrorAction Stop
+     }
+     $lines=@(Get-ChildItem -LiteralPath $OutputDirectory -File -Recurse|Sort-Object FullName|ForEach-Object{
+         '{0}  {1}' -f (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash,$_.FullName.Substring($OutputDirectory.Length+1)
+     })
+     $lines|Set-Content -LiteralPath (Join-Path $OutputDirectory 'SHA256SUMS.txt') -Encoding UTF8
+-    Write-Host "Exécutable généré : $exe"
+-    Write-Warning 'Compilation ne signifie pas recette WPF/AD/UAC réussie. Corriger cfg.json puis suivre docs\VALIDATION.md sur un environnement de test.'
++    Write-Host "Executable genere : $exe"
++    Write-Warning 'Conserver wad a cote de GP.exe. Compilation ne signifie pas validation WPF/AD/UAC. Suivre docs\VALIDATION.md.'
+ } catch {
+-    Write-Warning "Sortie potentiellement incomplète conservée pour diagnostic : $OutputDirectory"
++    Write-Warning "Sortie potentiellement incomplete conservee pour diagnostic : $OutputDirectory"
+     throw
+ }
+--- RC1/tests/Run-EngineTests.ps1
++++ RC2/tests/Run-EngineTests.ps1
+@@ -1,9 +1,9 @@
+ #requires -Version 5.1
+ [CmdletBinding()]
+-param([string]$SourcePath=(Join-Path $PSScriptRoot '..\GP.ps1'),[string]$ReportPath=(Join-Path $PSScriptRoot 'windows-test-results.json'))
++param([string]$SourcePath=(Join-Path $PSScriptRoot '..\wad\GP-Core.ps1'),[string]$ReportPath=(Join-Path $PSScriptRoot 'windows-test-results.json'))
+ $ErrorActionPreference='Stop';Set-StrictMode -Off
+ Add-Type -AssemblyName System.Data
+-# Ne PAS dot-sourcer GP.ps1 : seules ses définitions de fonctions sont chargées.
++# Ne PAS dot-sourcer GP-Core.ps1 : seules ses définitions de fonctions sont chargées.
+ # Tous les points de mutation utilisés ci-dessous sont remplacés par des mocks locaux.
+ $tokens=$null;$parseErrors=$null
+ $ast=[Management.Automation.Language.Parser]::ParseFile([IO.Path]::GetFullPath($SourcePath),[ref]$tokens,[ref]$parseErrors)
+@@ -167,10 +167,10 @@
+ Case 'Jonction HasSucceeded=False => code 11' {Reset-Fakes;$script:JoinResult='false';Assert-Equal (AddToDomain $script:DC $script:DOMAINE $script:OU.ROOT 'S111301MA123001' $script:cred).ExitCode 11}
+ Case 'Jonction confirmée => code 10' {Reset-Fakes;Assert-Equal (AddToDomain $script:DC $script:DOMAINE $script:OU.ROOT 'S111301MA123001' $script:cred).ExitCode 10}
+ Case 'Jonction serveur égal domaine refusée' {Reset-Fakes;Assert-Equal (AddToDomain 'example.local' $script:DOMAINE $script:OU.ROOT 'S111301MA123001' $script:cred).ExitCode 11;Assert-Equal $script:JoinCalls 0}
+-Case 'Configuration exemple cohérente' {$cfg=Get-Content (Join-Path $PSScriptRoot '..\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;Assert-Equal @(Test-CfgValid $cfg).Count 0}
+-Case 'Domaine / DN incohérents refusés' {$cfg=Get-Content (Join-Path $PSScriptRoot '..\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;$cfg.CONF[0].Domaine='wrong.local';Assert-True (@(Test-CfgValid $cfg).Count -gt 0)}
+-Case 'Buffer énorme refusé sans exception de conversion' {$cfg=Get-Content (Join-Path $PSScriptRoot '..\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;$cfg.CONF[0].Buffer='999999999999999999999999999999999999999';Assert-True (@(Test-CfgValid $cfg).Count -gt 0)}
+-Case 'Faux mode hors domaine interdit en réel' {$cfg=Get-Content (Join-Path $PSScriptRoot '..\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;$cfg.DEBUG.GUI='false';$cfg.DEBUG.Simulation='false';$cfg.DEBUG.HorsDomaine='true';Assert-True (@(Test-CfgValid $cfg).Count -gt 0)}
++Case 'Configuration exemple cohérente' {$cfg=Get-Content -LiteralPath (Join-Path $PSScriptRoot '..\wad\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;Assert-Equal @(Test-CfgValid $cfg).Count 0}
++Case 'Domaine / DN incohérents refusés' {$cfg=Get-Content -LiteralPath (Join-Path $PSScriptRoot '..\wad\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;$cfg.CONF[0].Domaine='wrong.local';Assert-True (@(Test-CfgValid $cfg).Count -gt 0)}
++Case 'Buffer énorme refusé sans exception de conversion' {$cfg=Get-Content -LiteralPath (Join-Path $PSScriptRoot '..\wad\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;$cfg.CONF[0].Buffer='999999999999999999999999999999999999999';Assert-True (@(Test-CfgValid $cfg).Count -gt 0)}
++Case 'Faux mode hors domaine interdit en réel' {$cfg=Get-Content -LiteralPath (Join-Path $PSScriptRoot '..\wad\cfg.example.json') -Raw -Encoding UTF8|ConvertFrom-Json;$cfg.DEBUG.GUI='false';$cfg.DEBUG.Simulation='false';$cfg.DEBUG.HorsDomaine='true';Assert-True (@(Test-CfgValid $cfg).Count -gt 0)}
+ Case 'Écriture atomique et sauvegarde du précédent' {
+     $dir=Join-Path ([IO.Path]::GetTempPath()) ('GP-Test-'+[Guid]::NewGuid().ToString('N'))
+     try{$p=Join-Path $dir 'cfg.json';Write-GPAtomicText $p 'premier';Write-GPAtomicText $p 'deuxième' -Backup;Assert-Equal ([IO.File]::ReadAllText($p)) 'deuxième';Assert-Equal ([IO.File]::ReadAllText($p+'.bak')) 'premier'}
+--- /dev/null
++++ RC2/GP.ps1
+@@ -0,0 +1,35 @@
++#requires -Version 5.1
++[CmdletBinding()]
++param([switch]$Demo,[string]$ConfigPath)
++# Point d'entree GP. Le moteur et ses ressources restent dans wad.
++# Ce lanceur peut etre execute en PS1 ou compile en EXE x64/STA.
++$ErrorActionPreference='Stop'
++$root=$null
++try {
++    if($env:OS -ne 'Windows_NT'){throw 'GP necessite Windows PowerShell 5.1 x64 sous Windows.'}
++    if($PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5){throw 'Utiliser Windows PowerShell 5.1 (powershell.exe), pas pwsh.'}
++    if(-not [Environment]::Is64BitProcess){throw 'Un processus PowerShell 64 bits est requis. Utiliser GP.cmd.'}
++    if([Threading.Thread]::CurrentThread.ApartmentState -ne 'STA'){throw 'Un thread STA est requis. Utiliser GP.cmd ou powershell.exe -STA.'}
++    $root=if($PSScriptRoot){$PSScriptRoot}else{[IO.Path]::GetDirectoryName([Diagnostics.Process]::GetCurrentProcess().MainModule.FileName)}
++    $core=Join-Path $root 'wad\GP-Core.ps1'
++    if(-not (Test-Path -LiteralPath $core -PathType Leaf)){throw "Moteur absent : $core. Extraire toute l'archive ; conserver wad a cote du lanceur."}
++    $parameters=@{Demo=$Demo.IsPresent}
++    if($PSBoundParameters.ContainsKey('ConfigPath')){
++        if([string]::IsNullOrWhiteSpace($ConfigPath)){throw 'Le parametre ConfigPath ne peut pas etre vide.'}
++        # Resoudre avant le changement de portee, relativement au dossier appelant.
++        $parameters.ConfigPath=$ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($ConfigPath)
++    }
++    & $core @parameters
++    # Le moteur termine par Quit : transmettre son code au CMD ou au lanceur EXE.
++    exit $LASTEXITCODE
++} catch {
++    $message="GP n'a pas pu demarrer.`r`n`r`n$($_.Exception.Message)`r`n`r`nApres extraction, utiliser DEBLOQUER_TOUT.cmd puis GP.cmd. Ne pas contourner une restriction imposee par votre organisation."
++    if($root){
++        try { ([DateTime]::Now.ToString('s')+"`r`n"+$_.Exception.ToString()) | Set-Content -LiteralPath (Join-Path $root 'GP-demarrage.log') -Encoding UTF8 -ErrorAction Stop } catch {}
++    }
++    try {
++        Add-Type -AssemblyName PresentationFramework -ErrorAction Stop
++        [Windows.MessageBox]::Show($message,'GP - demarrage impossible','OK','Error') | Out-Null
++    } catch { Write-Host $message }
++    exit 1
++}
+--- /dev/null
++++ RC2/GP.cmd
+@@ -0,0 +1,25 @@
++@echo off
++setlocal EnableExtensions DisableDelayedExpansion
++title GP - Gestion des Postes
++set "GP_PS=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
++if exist "%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe" set "GP_PS=%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe"
++if not exist "%GP_PS%" (
++    echo ERREUR : Windows PowerShell x64 introuvable.
++    pause
++    exit /b 1
++)
++if not exist "%~dp0wad\GP-Core.ps1" (
++    echo ERREUR : wad\GP-Core.ps1 absent. Extraire tout le dossier GP.
++    pause
++    exit /b 1
++)
++rem RemoteSigned ne concerne que ce processus ; les GPO restent prioritaires.
++"%GP_PS%" -NoLogo -NoProfile -STA -ExecutionPolicy RemoteSigned -File "%~dp0GP.ps1" %*
++set "GP_EXIT_CODE=%ERRORLEVEL%"
++if not "%GP_EXIT_CODE%"=="0" (
++    echo.
++    echo GP a signale une erreur. Consulter le message et GP-demarrage.log si present.
++    echo Apres extraction, executer DEBLOQUER_TOUT.cmd avant de relancer GP.
++    pause
++)
++exit /b %GP_EXIT_CODE%
+--- /dev/null
++++ RC2/DEBLOQUER_TOUT.cmd
+@@ -0,0 +1,118 @@
++@echo off
++setlocal EnableExtensions DisableDelayedExpansion
++title GP - Debloquer les fichiers du dossier
++set "GP_UNBLOCK_ROOT=%~dp0"
++set "GP_UNBLOCK_SELF=%~f0"
++set "GP_PS=%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe"
++if exist "%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe" set "GP_PS=%SystemRoot%\Sysnative\WindowsPowerShell\v1.0\powershell.exe"
++if not exist "%GP_PS%" (
++    echo ERREUR : Windows PowerShell introuvable.
++    pause
++    exit /b 1
++)
++echo.
++echo GP - DEBLOQUER TOUT
++echo Dossier cible : "%GP_UNBLOCK_ROOT%"
++echo.
++echo Retire la marque de telechargement des fichiers de CE dossier uniquement.
++echo Aucune modification de l'antivirus, des GPO, des droits ou des verrous GP.
++echo Continuer seulement si vous faites confiance au contenu de cette archive.
++echo.
++"%SystemRoot%\System32\choice.exe" /C ON /N /M "Debloquer les fichiers du dossier GP ? [O/N] : "
++if errorlevel 2 exit /b 2
++if errorlevel 1 goto :GP_RUN_UNBLOCK
++exit /b 2
++:GP_RUN_UNBLOCK
++rem Le code est inclus dans ce CMD : aucun second script bloque n'est necessaire.
++rem Le chemin est transmis par l'environnement, jamais insere dans du code.
++"%GP_PS%" -NoLogo -NoProfile -NonInteractive -Command "$ErrorActionPreference='Stop'; try { $text=[IO.File]::ReadAllText($env:GP_UNBLOCK_SELF); $marker='# GP_UNBLOCK_POWERSHELL_START'; $pos=$text.LastIndexOf($marker,[StringComparison]::Ordinal); if($pos -lt 0){throw 'Bloc PowerShell absent.'}; & ([ScriptBlock]::Create($text.Substring($pos+$marker.Length))) -Root $env:GP_UNBLOCK_ROOT } catch { Write-Host ('ERREUR : '+$_.Exception.Message); exit 1 }"
++set "GP_EXIT_CODE=%ERRORLEVEL%"
++echo.
++if "%GP_EXIT_CODE%"=="0" echo Termine. Vous pouvez maintenant lancer GP.cmd.
++if not "%GP_EXIT_CODE%"=="0" echo Deblocage incomplet. Consulter les erreurs affichees et DEBLOCAGE_GP.log si cree.
++echo.
++pause
++exit /b %GP_EXIT_CODE%
++# GP_UNBLOCK_POWERSHELL_START
++[CmdletBinding()]
++param([Parameter(Mandatory)][string]$Root)
++$ErrorActionPreference='Stop'
++
++function Invoke-GPPackageUnblock {
++    [CmdletBinding()]
++    param([Parameter(Mandatory)][string]$Root)
++    # Aucun lancement de GP, aucun changement de politique ou d'ACL.
++    $rootItem=Get-Item -LiteralPath $Root -Force -ErrorAction Stop
++    if(-not $rootItem.PSIsContainer){throw 'La cible doit etre le dossier GP extrait.'}
++    if(($rootItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Le dossier racine ne doit pas etre un lien ou une jonction.'}
++    $trimChars=[char[]]@([char]92,[char]47)
++    $full=$rootItem.FullName.TrimEnd($trimChars)
++    $volumeRoot=[IO.Path]::GetPathRoot($rootItem.FullName).TrimEnd($trimChars)
++    if($full -eq $volumeRoot){throw 'Deblocage refuse a la racine d''un lecteur ou partage.'}
++    foreach($required in @('GP.ps1','wad\GP-Core.ps1')){
++        if(-not (Test-Path -LiteralPath (Join-Path $full $required) -PathType Leaf)){
++            throw "Dossier GP non reconnu : $required absent. Extraire toute l'archive."
++        }
++    }
++    $prefix=$full+[IO.Path]::DirectorySeparatorChar
++    $pending=[Collections.Generic.Stack[string]]::new()
++    $pending.Push($full)
++    $messages=[Collections.Generic.List[string]]::new()
++    $messages.Add('GP - deblocage de fichiers - '+[DateTime]::Now.ToString('s'))
++    $messages.Add('Dossier : '+$full)
++    $scanned=0; $unblocked=0; $alreadyClear=0; $skipped=0; $failures=0
++    while($pending.Count -gt 0){
++        $directory=$pending.Pop()
++        try {
++            # Recontroler le dossier avant enumeration, sans suivre les jonctions.
++            $dirItem=Get-Item -LiteralPath $directory -Force -ErrorAction Stop
++            if(($dirItem.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){
++                $skipped++; $messages.Add('IGNORE LIEN : '+$directory); continue
++            }
++            $children=@(Get-ChildItem -LiteralPath $directory -Force -ErrorAction Stop)
++        } catch {
++            $failures++; $messages.Add('ERREUR LECTURE : '+$directory+' | '+$_.Exception.Message); continue
++        }
++        foreach($entry in $children){
++            if(-not $entry.FullName.StartsWith($prefix,[StringComparison]::OrdinalIgnoreCase)){
++                $failures++; $messages.Add('ERREUR HORS DOSSIER : '+$entry.FullName); continue
++            }
++            if(($entry.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){
++                $skipped++; $messages.Add('IGNORE LIEN : '+$entry.FullName); continue
++            }
++            if($entry.PSIsContainer){$pending.Push($entry.FullName); continue}
++            $scanned++
++            try {
++                # Enumerer les flux : ne pas confondre un acces refuse avec une marque absente.
++                $zone=@(Get-Item -LiteralPath $entry.FullName -Stream * -Force -ErrorAction Stop |
++                    Where-Object { $_.Stream -eq 'Zone.Identifier' })
++                if($zone.Count -eq 0){$alreadyClear++; continue}
++                Unblock-File -LiteralPath $entry.FullName -ErrorAction Stop
++                $remaining=@(Get-Item -LiteralPath $entry.FullName -Stream * -Force -ErrorAction Stop |
++                    Where-Object { $_.Stream -eq 'Zone.Identifier' })
++                if($remaining.Count -gt 0){throw 'La marque Zone.Identifier est toujours presente.'}
++                $unblocked++; $messages.Add('DEBLOQUE : '+$entry.FullName)
++            } catch {
++                $failures++; $messages.Add('ERREUR FICHIER : '+$entry.FullName+' | '+$_.Exception.Message)
++            }
++        }
++    }
++    $messages.Add(('BILAN : {0} fichiers examines ; {1} debloques ; {2} deja sans marque ; {3} liens ignores ; {4} erreurs.' -f $scanned,$unblocked,$alreadyClear,$skipped,$failures))
++    return [pscustomobject]@{
++        Root=$full; Scanned=$scanned; Unblocked=$unblocked; AlreadyClear=$alreadyClear
++        SkippedLinks=$skipped; Errors=$failures; Success=($failures -eq 0); Messages=$messages.ToArray()
++    }
++}
++
++$result=Invoke-GPPackageUnblock -Root $Root
++foreach($line in $result.Messages){Write-Host $line}
++$log=Join-Path $result.Root 'DEBLOCAGE_GP.log'
++try {
++    $result.Messages | Set-Content -LiteralPath $log -Encoding UTF8 -ErrorAction Stop
++    Write-Host ('Journal : '+$log)
++} catch {
++    Write-Host ('ERREUR : journal non ecrit : '+$_.Exception.Message)
++    exit 1
++}
++if(-not $result.Success){exit 1}
++exit 0
+--- /dev/null
++++ RC2/tests/Run-PackageTests.ps1
+@@ -0,0 +1,132 @@
++#requires -Version 5.1
++[CmdletBinding()]
++param([string]$ReportPath=(Join-Path $PSScriptRoot 'windows-package-results.json'))
++$ErrorActionPreference='Stop'
++if($env:OS -ne 'Windows_NT' -or $PSVersionTable.PSEdition -ne 'Desktop' -or $PSVersionTable.PSVersion.Major -ne 5 -or -not [Environment]::Is64BitProcess){throw 'Tests de package : Windows PowerShell 5.1 x64 requis.'}
++$root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
++$results=[Collections.Generic.List[object]]::new()
++function Assert-True {param($Condition,[string]$Message);if(-not $Condition){throw $Message}}
++function Case {
++    param([string]$Name,[scriptblock]$Body)
++    try { & $Body; $results.Add([pscustomobject]@{Name=$Name;Passed=$true;Error=''}); Write-Host "OK  $Name" }
++    catch { $results.Add([pscustomobject]@{Name=$Name;Passed=$false;Error=$_.Exception.Message}); Write-Host "KO  $Name : $($_.Exception.Message)" }
++}
++function Parse-Code {
++    param([string]$Code)
++    $tokens=$null; $errors=$null
++    $ast=[Management.Automation.Language.Parser]::ParseInput($Code,[ref]$tokens,[ref]$errors)
++    if($errors.Count){throw (($errors|ForEach-Object{"$($_.Extent.StartLineNumber): $($_.Message)"}) -join "`n")}
++    return $ast
++}
++# Ne jamais dot-sourcer le moteur ou executer le corps de DEBLOQUER_TOUT.cmd ici.
++foreach($relative in @('GP.ps1','wad\GP-Core.ps1','tests\Run-EngineTests.ps1','tests\Run-PackageTests.ps1','tools\Build-GP.ps1','wad\ActiveDirectory.psd1')){
++    Case ('Parseur natif : '+$relative) { [void](Parse-Code -Code (Get-Content -LiteralPath (Join-Path $root $relative) -Raw)) }
++}
++$cmd=[IO.File]::ReadAllText((Join-Path $root 'DEBLOQUER_TOUT.cmd'))
++$marker='# GP_UNBLOCK_POWERSHELL_START'
++$offset=$cmd.LastIndexOf($marker,[StringComparison]::Ordinal)
++if($offset -lt 0){throw 'Bloc PowerShell du CMD absent.'}
++$body=$cmd.Substring($offset+$marker.Length)
++Case 'Parseur natif : bloc de deblocage' { [void](Parse-Code -Code $body) }
++$ast=Parse-Code -Code $body
++$definition=@($ast.EndBlock.Statements | Where-Object { $_ -is [Management.Automation.Language.FunctionDefinitionAst] -and $_.Name -eq 'Invoke-GPPackageUnblock' })
++if($definition.Count -ne 1){throw 'Fonction de deblocage absente ou dupliquee.'}
++. ([scriptblock]::Create($definition[0].Extent.Text))
++
++Case 'Ressources dans wad ; aucun dossier mod' {
++    foreach($name in @('GP-Core.ps1','cfg.json','cfg.original.json','cfg.example.json','cfg.demo.json','icone.ico',
++        'ActiveDirectory.psd1','ActiveDirectory.Format.ps1xml','ActiveDirectory.Types.ps1xml',
++        'ActiveDirectoryPowerShellResources.dll','Microsoft.ActiveDirectory.Management.dll','fr-FR\ActiveDirectoryPowerShellResources.dll.mui')){
++        Assert-True (Test-Path -LiteralPath (Join-Path (Join-Path $root 'wad') $name) -PathType Leaf) ('Ressource absente : '+$name)
++    }
++    Assert-True (-not (Test-Path -LiteralPath (Join-Path $root 'mod'))) 'Ancien dossier mod encore present.'
++}
++# Tests de flux NTFS dans un dossier temporaire, jamais sur les fichiers livres.
++$temp=Join-Path ([IO.Path]::GetTempPath()) ('GP-package-tests-'+[Guid]::NewGuid().ToString('N'))
++[void][IO.Directory]::CreateDirectory($temp)
++try {
++    Case 'Lanceur : parametres et code de sortie du moteur factice preserves' {
++        $launchFixture=Join-Path $temp 'launch test'
++        $fakeWad=Join-Path $launchFixture 'wad'
++        [void][IO.Directory]::CreateDirectory($fakeWad)
++        Copy-Item -LiteralPath (Join-Path $root 'GP.ps1') -Destination (Join-Path $launchFixture 'GP.ps1')
++        $fakeCore=@'
++[CmdletBinding()]
++param([switch]$Demo,[string]$ConfigPath)
++[pscustomobject]@{Demo=$Demo.IsPresent;ConfigPath=$ConfigPath;CoreRoot=$PSScriptRoot} |
++    ConvertTo-Json | Set-Content -LiteralPath (Join-Path $PSScriptRoot 'probe.json') -Encoding UTF8
++exit 23
++'@
++        [IO.File]::WriteAllText((Join-Path $fakeWad 'GP-Core.ps1'),$fakeCore,[Text.UTF8Encoding]::new($true))
++        $config=Join-Path $launchFixture 'configuration avec espaces.json'
++        $shell=Join-Path $env:SystemRoot 'System32\WindowsPowerShell\v1.0\powershell.exe'
++        & $shell -NoLogo -NoProfile -NonInteractive -STA -ExecutionPolicy RemoteSigned -File (Join-Path $launchFixture 'GP.ps1') -Demo -ConfigPath $config
++        $childExit=$LASTEXITCODE
++        Assert-True ($childExit -eq 23) ('Le lanceur masque le code 23 : '+$childExit)
++        $probe=Get-Content -LiteralPath (Join-Path $fakeWad 'probe.json') -Raw -Encoding UTF8 | ConvertFrom-Json
++        Assert-True ($probe.Demo -eq $true) 'Parametre Demo perdu.'
++        Assert-True ($probe.ConfigPath -eq $config) 'Parametre ConfigPath perdu ou tronque.'
++        Assert-True ($probe.CoreRoot -eq $fakeWad) 'Racine du moteur incorrecte.'
++    }
++    $fixture=Join-Path $temp "GP [test] d'atelier & accent-é!"
++    [void][IO.Directory]::CreateDirectory((Join-Path $fixture 'wad\nested'))
++    $files=@('GP.ps1','wad\GP-Core.ps1','wad\nested\script [1].ps1','wad\module.dll','wad\cache.txt')
++    foreach($file in $files){[IO.File]::WriteAllText((Join-Path $fixture $file),'contenu inerte, jamais execute')}
++    $sibling=Join-Path $temp 'hors-GP.txt';[IO.File]::WriteAllText($sibling,'hors perimetre')
++    $hashes=@{}
++    foreach($file in $files){$p=Join-Path $fixture $file;$hashes[$p]=(Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash}
++    Case 'Refus d''un dossier sans marqueurs GP' {
++        $caught=$false
++        try { [void](Invoke-GPPackageUnblock -Root $temp) } catch { $caught=$true }
++        Assert-True $caught 'Le dossier parent a ete accepte a tort.'
++    }
++    Case 'Deblocage recursif des flux Zone.Identifier (NTFS requis)' {
++        foreach($file in $files){Set-Content -LiteralPath (Join-Path $fixture $file) -Stream Zone.Identifier -Value "[ZoneTransfer]`r`nZoneId=3" -Encoding ASCII}
++        Set-Content -LiteralPath $sibling -Stream Zone.Identifier -Value "[ZoneTransfer]`r`nZoneId=3" -Encoding ASCII
++        $hidden=Get-Item -LiteralPath (Join-Path $fixture 'wad\cache.txt') -Force
++        $hidden.Attributes=$hidden.Attributes -bor [IO.FileAttributes]::Hidden
++        $report=Invoke-GPPackageUnblock -Root $fixture
++        Assert-True $report.Success ($report.Messages -join "`n")
++        Assert-True ($report.Unblocked -eq $files.Count) 'Nombre de fichiers debloques incorrect.'
++        foreach($file in $files){
++            $remaining=@(Get-Item -LiteralPath (Join-Path $fixture $file) -Stream * -Force | Where-Object { $_.Stream -eq 'Zone.Identifier' })
++            Assert-True ($remaining.Count -eq 0) ('Flux encore present : '+$file)
++        }
++    }
++    Case 'Contenu des fichiers preserve' {
++        foreach($p in $hashes.Keys){Assert-True ((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -eq $hashes[$p]) ('Contenu modifie : '+$p)}
++    }
++    Case 'Fichier voisin hors GP non touche' {
++        $zone=@(Get-Item -LiteralPath $sibling -Stream * -Force | Where-Object { $_.Stream -eq 'Zone.Identifier' })
++        Assert-True ($zone.Count -eq 1) 'Le fichier voisin a ete debloque a tort.'
++    }
++    Case 'Deuxieme execution sans modification supplementaire' {
++        $report=Invoke-GPPackageUnblock -Root $fixture
++        Assert-True ($report.Success -and $report.Unblocked -eq 0 -and $report.AlreadyClear -eq $files.Count) 'Deblocage non idempotent.'
++    }
++    Case 'Jonction ignoree sans toucher la cible externe' {
++        $outside=Join-Path $temp 'externe';[void][IO.Directory]::CreateDirectory($outside)
++        $external=Join-Path $outside 'fichier.txt';[IO.File]::WriteAllText($external,'hors perimetre via lien')
++        Set-Content -LiteralPath $external -Stream Zone.Identifier -Value "[ZoneTransfer]`r`nZoneId=3" -Encoding ASCII
++        $junction=Join-Path $fixture 'vers-externe'
++        [void](New-Item -ItemType Junction -Path $junction -Target $outside -ErrorAction Stop)
++        try {
++            $report=Invoke-GPPackageUnblock -Root $fixture
++            Assert-True ($report.Success -and $report.SkippedLinks -eq 1) 'Jonction non ignoree.'
++            $zone=@(Get-Item -LiteralPath $external -Stream * | Where-Object { $_.Stream -eq 'Zone.Identifier' })
++            Assert-True ($zone.Count -eq 1) 'Cible de la jonction debloquee a tort.'
++        } finally { [IO.Directory]::Delete($junction) }
++    }
++} finally {
++    # Les jonctions sont retirees sans -Recurse avant le nettoyage des fixtures.
++    $junctionPath=Join-Path $temp "GP [test] d'atelier & accent-é!\vers-externe"
++    if([IO.Directory]::Exists($junctionPath)){[IO.Directory]::Delete($junctionPath)}
++    if(Test-Path -LiteralPath $temp){Remove-Item -LiteralPath $temp -Recurse -Force}
++}
++$failed=@($results | Where-Object { -not $_.Passed }).Count
++$report=[ordered]@{Version='17.0-RC2';Utc=[DateTime]::UtcNow.ToString('o');PowerShell=$PSVersionTable.PSVersion.ToString();
++    Scope='Parseur natif, lanceur avec moteur factice et fichiers temporaires NTFS ; aucun moteur GP reel, WPF ou acces AD.';
++    Total=$results.Count;Passed=($results.Count-$failed);Failed=$failed;Results=$results.ToArray()}
++$report | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $ReportPath -Encoding UTF8
++if($failed -gt 0){throw "$failed test(s) de package en echec. Rapport : $ReportPath"}
++Write-Host "Tests de package reussis : $($results.Count). Rapport : $ReportPath"

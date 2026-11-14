@@ -1,0 +1,15 @@
+{
+  "observed": "2026-10-16",
+  "target": "P111301VA765480",
+  "requestedNewName": "V111301LY765664",
+  "targetGuid": "b4797c9c-d790-4797-bf71-424a57acb36e",
+  "operatorClient": "V111301VA765183",
+  "account": "LABO\\tech.pesto",
+  "guiResult": "NotStarted; code 96; no rename or move requested",
+  "causeFound": "New-CimSessionOption used parameters from incompatible parameter sets; reproduced on Windows PowerShell 5.1",
+  "fixedNativeOption": "New-CimSessionOption -PacketPrivacy",
+  "fixedDirectReadResult": "Access is denied.",
+  "qualification": "PARTIAL; native DCOM option creation and 27 targeted cases pass; full GUI remote rename not completed",
+  "noFirewallChanges": true,
+  "noVmDiskBackupOnMac": true
+}

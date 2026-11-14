@@ -1,0 +1,318 @@
+﻿{
+    "Suite":  "Pesto RC4",
+    "Utc":  "2026-10-12T23:10:27.0657009Z",
+    "PowerShell":  "5.1.26100.6584",
+    "SourceHash":  "D631C5C0F9769AD31E5EED38A9DB6E202B0F9C0481EC9B8F4DECE3D164C61FC1",
+    "Total":  51,
+    "Passed":  51,
+    "Failed":  0,
+    "Tests":  [
+                  {
+                      "Name":  "Le moteur complet est accepte par le parseur Windows PowerShell",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  4
+                  },
+                  {
+                      "Name":  "Reproduction RC3 : $null devient un chemin de sauvegarde invalide",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  47
+                  },
+                  {
+                      "Name":  "RC4 : deux ecritures sans backup sur le meme fichier",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  49
+                  },
+                  {
+                      "Name":  "RC4 : 100 remplacements successifs sans backup",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  366
+                  },
+                  {
+                      "Name":  "RC4 : backup conserve exactement la version precedente",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  24
+                  },
+                  {
+                      "Name":  "RC4 : fichier verrouille, erreur explicite et ancien contenu conserve",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  42
+                  },
+                  {
+                      "Name":  "RC4 : contenu vide accepte",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "RC4 : chemin vide refuse",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  23
+                  },
+                  {
+                      "Name":  "RC4 : UTF8 accents preservés et sans BOM de fichier JSON",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  26
+                  },
+                  {
+                      "Name":  "Checkpoint reel : Idle -\u003e Active -\u003e BetweenActions -\u003e Idle sur le meme chemin",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  202
+                  },
+                  {
+                      "Name":  "Tag extrait du cas utilisateur : PR et VA",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  41
+                  },
+                  {
+                      "Name":  "Nom hors convention ne produit pas un faux tag",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "PR -\u003e VA : renommage et deplacement automatiques",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  139
+                  },
+                  {
+                      "Name":  "VA -\u003e VA : changer seulement le numero ne deplace pas",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  17
+                  },
+                  {
+                      "Name":  "VA -\u003e VA : changement de service, meme site, pas de deplacement",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "VA -\u003e VA : Portable vers Fixe ne deplace pas",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "Drapeau Move RC3 ignore quand le site est identique",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Drapeau Move false n empeche pas le deplacement auto PR -\u003e VA",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  17
+                  },
+                  {
+                      "Name":  "Site different mais poste deja dans OU cible : aucun deplacement inutile",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "Comparaison OU insensible a la casse",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  18
+                  },
+                  {
+                      "Name":  "Changement de site sans cible : refus avant mutation",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Meme site sans OU de destination : renommage seul autorise",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Nom cible invalide refuse",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Meme nom : pas de faux renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Tag insensible a la casse",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "Deplacement seul explicite conserve",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  12
+                  },
+                  {
+                      "Name":  "Sans renommage et sans demande, pas de deplacement",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Jonction locale hors domaine conserve OU obligatoire",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "Ancien nom libre : meme conteneur de site, sous-OU conservee",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  63
+                  },
+                  {
+                      "Name":  "Ancien nom libre : autre conteneur de site, deplacement auto",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  66
+                  },
+                  {
+                      "Name":  "Ancien nom libre : PREPROD reconnue par la configuration",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  28
+                  },
+                  {
+                      "Name":  "Ancien nom libre : site indeterminable, aucune supposition",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  21
+                  },
+                  {
+                      "Name":  "Sous-OU PREPROD reste dans le site PREPROD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "Faux suffixe AD ne devient pas un site valide",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "File RC3 : normalisation avant execution active le move PR -\u003e VA",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  41
+                  },
+                  {
+                      "Name":  "File RC3 : normalisation retire le move inutile VA -\u003e VA",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  18
+                  },
+                  {
+                      "Name":  "Resultat historique jamais reecrit par normalisation",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  20
+                  },
+                  {
+                      "Name":  "UI : case deplacement calculee et verrouillee lors du rename",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  32
+                  },
+                  {
+                      "Name":  "Moteur : ordre RENAME puis MOVE et resultat 77",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  45
+                  },
+                  {
+                      "Name":  "Moteur : renommage refuse, aucun deplacement",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  25
+                  },
+                  {
+                      "Name":  "Moteur : resultat rename absent, aucun deplacement et code 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  25
+                  },
+                  {
+                      "Name":  "Moteur : move refuse apres rename, code 89 partiel conserve",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  20
+                  },
+                  {
+                      "Name":  "Moteur : meme site ignore ancien flag Move true",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  20
+                  },
+                  {
+                      "Name":  "Moteur : ne rajoute pas une mutation absente du plan confirme",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  27
+                  },
+                  {
+                      "Name":  "Moteur : lecture AD refusee, zero mutation",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Moteur : deplacement seul explicite reste fonctionnel",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "Moteur : hors domaine la file refuse la jonction, renvoi vers la page",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  21
+                  },
+                  {
+                      "Name":  "Integration locale : checkpoint existant puis lancement du worker mock",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  97
+                  },
+                  {
+                      "Name":  "Precontrole local refuse : zero worker, zero echec AD, une non lancee",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  46
+                  },
+                  {
+                      "Name":  "Precontrole local refuse : les lignes suivantes restent non lancees",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  30
+                  },
+                  {
+                      "Name":  "Precontrole local ne leve jamais un verrou preexistant",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  44
+                  }
+              ],
+    "Scope":  "Parser Windows PowerShell + fichiers temporaires reels + fonctions extraites, commandes AD et UI remplacees par des mocks. Aucun test AD/reseau/WPF complet."
+}

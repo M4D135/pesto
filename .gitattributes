@@ -1,0 +1,15 @@
+# Runtime integrity and Common source provenance depend on the exact committed bytes.
+# Preserve BOM and line endings even with core.autocrlf enabled on Windows.
+DEV/wad/** -text
+DEV/vendor/M4D.Admin.Common/** -text
+# The frozen Domenia kit is checked against byte hashes on every build platform.
+v2/web/** -text
+# Qualification receipts retain the exact bytes bound by their collection hashes.
+v2/docs/evidence/** -text
+# The embedded Socle index is checked against its published SHA-256 when Pesto.Engine loads it.
+v2/vendor/socle/** -text
+
+# Reviewed offline comparator and lock bytes are identical on Windows and Linux.
+v2/tools/m4d-components/** text eol=lf
+v2/tools/check-ui-kit.py text eol=lf
+v2/web/ui-kit.lock.json text eol=lf

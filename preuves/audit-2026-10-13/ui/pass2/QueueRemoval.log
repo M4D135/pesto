@@ -1,0 +1,26 @@
+OK  Cas de la capture : retirer autoris‚ pendant la modification, ex‚cuter reste bloqu‚
+OK  Aucune ligne s‚lectionn‚e : retrait d‚sactiv‚ mˆme si les cases sont coch‚es
+OK  Ligne d‚coch‚e mais surlign‚e : peut ˆtre retir‚e
+OK  Ex‚cution active : bouton et fonction refusent le retrait
+OK  Pr‚contr“le actif : retrait refus‚ mˆme en ‚dition
+OK  Une DataRow provenant d une autre table est refus‚e
+OK  Une ancienne ligne d‚tach‚e est refus‚e
+OK  Une ligne marqu‚e Deleted est refus‚e
+OK  Refuser la confirmation ne change ni la file ni l ‚dition ni la sauvegarde
+OK  Retirer la ligne modifi‚e quitte son ‚dition aprŠs confirmation
+OK  Seule la ligne surlign‚e est retir‚e, pas les autres lignes coch‚es
+OK  Tri d‚croissant : le retrait utilise la DataRow r‚elle
+OK  Filtre : retirer la ligne visible ne retire pas une ligne masqu‚e
+OK  Retirer avant une autre ligne en ‚dition recalcule son index
+OK  Retirer aprŠs une autre ligne en ‚dition conserve son index
+OK  La sauvegarde JSON ne contient plus la ligne retir‚e
+OK  Le cache du pr‚contr“le retir‚ est invalid‚ sans vider les autres
+OK  chec de sauvegarde : mˆme objet, mˆmes donn‚es et mˆme ordre restaur‚s
+OK  chec de sauvegarde : l ‚dition et le cache sont conserv‚s
+OK  chec avant ‚criture : ancien checkpoint intact
+OK  Un traitement d‚marr‚ pendant la confirmation est recontr“l‚
+OK  Le retrait ne modifie ni le journal historique ni le verrou existant
+OK  File devenue vide : le verrou Uncertain survit … une relecture du checkpoint
+OK  Mode d‚mo : retirer ne cr‚e pas de checkpoint r‚el
+OK  File vide sans verrou : retrait d‚sactiv‚ et aucune ex‚cution possible
+25/25 tests de retrait r‚ussis. Rapport : C:\PestoAudit20261013\ui\reports\QueueRemoval.json

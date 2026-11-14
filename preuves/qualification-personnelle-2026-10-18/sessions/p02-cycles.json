@@ -1,0 +1,202 @@
+﻿[
+    {
+        "Cycle":  1,
+        "Utc":  "2026-10-18T15:47:46.3971829Z",
+        "ElapsedSeconds":  22.77,
+        "PrivateBytes":  290635776,
+        "Handles":  1005,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  2,
+        "Utc":  "2026-10-18T15:48:47.5117335Z",
+        "ElapsedSeconds":  82.93,
+        "PrivateBytes":  300789760,
+        "Handles":  1028,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  3,
+        "Utc":  "2026-10-18T15:49:47.0979198Z",
+        "ElapsedSeconds":  143.09,
+        "PrivateBytes":  312295424,
+        "Handles":  1064,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  4,
+        "Utc":  "2026-10-18T15:50:48.7205043Z",
+        "ElapsedSeconds":  203.35,
+        "PrivateBytes":  318537728,
+        "Handles":  1083,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  5,
+        "Utc":  "2026-10-18T15:51:45.1845991Z",
+        "ElapsedSeconds":  263.44,
+        "PrivateBytes":  325636096,
+        "Handles":  1098,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  6,
+        "Utc":  "2026-10-18T15:52:46.7212881Z",
+        "ElapsedSeconds":  323.51,
+        "PrivateBytes":  334434304,
+        "Handles":  1128,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  7,
+        "Utc":  "2026-10-18T15:53:46.9322414Z",
+        "ElapsedSeconds":  383.52,
+        "PrivateBytes":  340860928,
+        "Handles":  1132,
+        "Threads":  22,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  8,
+        "Utc":  "2026-10-18T15:54:45.7494018Z",
+        "ElapsedSeconds":  443.33,
+        "PrivateBytes":  349007872,
+        "Handles":  1137,
+        "Threads":  22,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  9,
+        "Utc":  "2026-10-18T15:55:46.0434809Z",
+        "ElapsedSeconds":  503.16,
+        "PrivateBytes":  316669952,
+        "Handles":  917,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  10,
+        "Utc":  "2026-10-18T15:56:47.4763845Z",
+        "ElapsedSeconds":  563.22,
+        "PrivateBytes":  314654720,
+        "Handles":  932,
+        "Threads":  24,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  11,
+        "Utc":  "2026-10-18T15:57:47.3827399Z",
+        "ElapsedSeconds":  623.38,
+        "PrivateBytes":  321212416,
+        "Handles":  952,
+        "Threads":  23,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  12,
+        "Utc":  "2026-10-18T15:58:46.0921340Z",
+        "ElapsedSeconds":  683.24,
+        "PrivateBytes":  323710976,
+        "Handles":  968,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  13,
+        "Utc":  "2026-10-18T15:59:48.3204969Z",
+        "ElapsedSeconds":  743.27,
+        "PrivateBytes":  326840320,
+        "Handles":  983,
+        "Threads":  24,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  14,
+        "Utc":  "2026-10-18T16:00:49.8230035Z",
+        "ElapsedSeconds":  803.39,
+        "PrivateBytes":  330629120,
+        "Handles":  982,
+        "Threads":  23,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  15,
+        "Utc":  "2026-10-18T16:01:42.7754536Z",
+        "ElapsedSeconds":  863.44,
+        "PrivateBytes":  336355328,
+        "Handles":  1018,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  16,
+        "Utc":  "2026-10-18T16:02:41.0625221Z",
+        "ElapsedSeconds":  923.52,
+        "PrivateBytes":  341008384,
+        "Handles":  1030,
+        "Threads":  23,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  17,
+        "Utc":  "2026-10-18T16:03:52.8087659Z",
+        "ElapsedSeconds":  983.63,
+        "PrivateBytes":  347697152,
+        "Handles":  1045,
+        "Threads":  24,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  18,
+        "Utc":  "2026-10-18T16:04:43.0748987Z",
+        "ElapsedSeconds":  1043.67,
+        "PrivateBytes":  351727616,
+        "Handles":  1081,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  19,
+        "Utc":  "2026-10-18T16:05:49.1294579Z",
+        "ElapsedSeconds":  1102.79,
+        "PrivateBytes":  359653376,
+        "Handles":  1089,
+        "Threads":  24,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    },
+    {
+        "Cycle":  20,
+        "Utc":  "2026-10-18T16:06:48.1418277Z",
+        "ElapsedSeconds":  1163.75,
+        "PrivateBytes":  367079424,
+        "Handles":  1097,
+        "Threads":  22,
+        "ReadButtonEnabled":  true,
+        "Locked":  false
+    }
+]

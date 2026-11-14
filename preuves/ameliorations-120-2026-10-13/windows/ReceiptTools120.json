@@ -1,0 +1,77 @@
+{
+    "Suite":  "ReceiptTools120",
+    "Passed":  14,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "Identities never merge receipts by name only",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "AD object identity survives renaming",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invalid GUID falls back to intervention identity",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Every active or unresolved phase refuses archive",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Terminal phase cannot hide uncertain effects or lowered protection",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Unfinished tasks refuse archive",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Masked support excludes private names reference and raw result text",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Explicit unmasked support retains the exact selected plan",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Archive preserves bytes hash and identity and creates provenance",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Unresolved receipt remains byte identical at active path",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Read-only context refuses archive before touching filesystem",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Support export publishes three files with matching hashes",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Archive uses same mutation mutex as real commands and never writes receipt status",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Comparison explicitly requires two receipts instead of hidden first-click state",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

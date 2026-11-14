@@ -1,0 +1,35 @@
+{
+  "runId": 38869819782,
+  "url": "https://github.com/M4D135/pesto/actions/runs/38869819782",
+  "sourceCommit": "f8a531e38f69ae218bf9ef9b1934fdf942e43aaf",
+  "allJobsPassed": true,
+  "jobs": [
+    {
+      "name": "portable",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-isolated (windows-2025, fr-FR)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "windows-isolated (windows-2022, en-US)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "name": "windows-isolated-evidence-windows-2022-en-US",
+      "artifactId": 12033526317,
+      "digest": "sha256:ce788ac2cab7deec00b77b12169af82ae6db5868c937dd72b7c2dc576a36b8c5"
+    },
+    {
+      "name": "windows-isolated-evidence-windows-2025-fr-FR",
+      "artifactId": 12032712710,
+      "digest": "sha256:e65d28dc14de30d7f24d916e89a3aece522b82517c88a21e00cb4e43981bb7da"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "proofId": "3999d9c509d24f9084003b83a80babf7",
+  "utc": "2026-10-28T11:25:23.1276439Z",
+  "name": "P111301LY765715",
+  "domain": "labo.local",
+  "secureChannel": true,
+  "secureChannelError": null,
+  "objects": [
+    {
+      "name": "P111301LY765715",
+      "guid": "b4797c9c-d790-4797-bf71-424a57acb36e",
+      "sid": "S-1-5-21-2348118763-2306653211-1344436245-1777",
+      "dn": "CN=P111301LY765715,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+      "uac": 4096,
+      "dns": "P111301LY765715.labo.local",
+      "created": "10/12/2026 19:51:52",
+      "changed": "10/28/2026 11:23:48"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+﻿{
+    "Date":  "2026-10-04T22:16:20.5398906+02:00",
+    "Launch":  {
+                   "Date":  "2026-10-04T22:14:38.9334231+02:00",
+                   "Mode":  "SSO",
+                   "PID":  6208,
+                   "User":  "V999004AAQA1004\\PestoProd",
+                   "Admin":  false
+               },
+    "ConsoleUser":  "V999004AAQA1004\\PestoProd",
+    "EnginePID":  4392,
+    "EngineOwner":  "LABO\\pesto-qualif",
+    "EngineElevated":  true,
+    "OriginalHistoriesUnchanged":  true,
+    "Originals":  [
+                      {
+                          "Profile":  "PestoProd",
+                          "Path":  "C:\\Users\\PestoProd\\AppData\\Local\\GP\\State\\2039CF84C9D6D28E\\history-v1.json",
+                          "Hash":  "426418A4229EC32E87448094AC9748FD35F8E191F69F9B43BBFA9B9E4E52FAF5"
+                      },
+                      {
+                          "Profile":  "pesto-qualif",
+                          "Path":  "C:\\Users\\pesto-qualif\\AppData\\Local\\GP\\State\\2039CF84C9D6D28E\\history-v1.json",
+                          "Hash":  "BFDDBE9ED0528C993F5926755B2FE912DA429E65F7A931326D105675671B8045"
+                      }
+                  ],
+    "Archive":  "C:\\Users\\pesto-qualif\\AppData\\Local\\GP\\State\\2039CF84C9D6D28E\\history-imported-426418A4229EC32E87448094AC9748FD35F8E191F69F9B43BBFA9B9E4E52FAF5.json",
+    "ArchiveSHA256":  "426418A4229EC32E87448094AC9748FD35F8E191F69F9B43BBFA9B9E4E52FAF5",
+    "ExeSHA256":  "DF14AB7F228DF6F08A2375A5E6C31A1F88312719054EAEDF7532BA5405DD88F0"
+}

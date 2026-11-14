@@ -1,0 +1,8 @@
+﻿{
+    "PolicyId":  "{ED17275F-DD4B-485B-8FF0-441F5A14D0B4}",
+    "AuditLaunchStarted":  true,
+    "EnforcedLaunchRefused":  true,
+    "AuditEvents":  1,
+    "EnforcedEvents":  1,
+    "Snapshot":  "f3d1a1a1-4116-40cb-9524-2742f74a168d"
+}

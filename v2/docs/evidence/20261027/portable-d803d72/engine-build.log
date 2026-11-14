@@ -1,0 +1,11 @@
+  Pesto.Core -> /workspace/scratch/7bba0587c51a/pesto/v2/src/Pesto.Core/bin/Release/net10.0/Pesto.Core.dll
+  Pesto.Engine -> /workspace/scratch/7bba0587c51a/pesto/v2/src/Pesto.Engine/bin/Release/net10.0/Pesto.Engine.dll
+  Pesto.Engine.Live -> /workspace/scratch/7bba0587c51a/pesto/v2/src/Pesto.Engine.Live/bin/Release/net10.0/Pesto.Engine.Live.dll
+  Pesto.Bridge -> /workspace/scratch/7bba0587c51a/pesto/v2/src/Pesto.Bridge/bin/Release/net10.0/Pesto.Bridge.dll
+  Pesto.Engine.Tests -> /workspace/scratch/7bba0587c51a/pesto/v2/tests/Pesto.Engine.Tests/bin/Release/net10.0/Pesto.Engine.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:14.55

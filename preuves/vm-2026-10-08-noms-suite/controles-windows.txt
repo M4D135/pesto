@@ -1,0 +1,15 @@
+PS 5.1.26100.6584 | STA
+ancien C:\PestoTest -> C:\PestoTest-avant-0810-143253
+cfg.json conservé
+EXE DEV 4636913BF5AE9FEE / PROD 4636913BF5AE9FEE
+--- parseur 5.1
+FICHIERS=66 ERREURS=0 PARSEUR=PowerShell 5.1.26100.6584 (Desktop)
+check-json C:\PestoTest : code 0
+check-json C:\PestoProd-test : code 0
+--- RC23
+PASS Mesures worker et calcul ne sont pas mélangées
+PASS Lecture réelle du schéma 3 dans un fichier fixture
+Rapport : C:\Users\labadmin\AppData\Local\Temp\Pesto-RC23-254d0e40a3674b11a2cd6d0484777d36.json
+--- stabilisation
+RESULTAT 27 reussis, 0 echecs | moteur : PowerShell 5.1.26100.6584 (Desktop) | doubles AD/Windows, aucune operation reelle
+Checks=65 Failed=0 Skipped=1

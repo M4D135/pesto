@@ -1,0 +1,143 @@
+{"Utc": "2026-10-13T20:19:45.815036+00:00", "Kind": "Keyboard", "Detail": "Déverrouillage de la session autorisée ; secret non journalisé"}
+{"Utc": "2026-10-13T20:20:04.136885+00:00", "Kind": "Screenshot", "Detail": "02-session-deverrouillee.png"}
+{"Utc": "2026-10-13T20:22:56.250897+00:00", "Kind": "Keyboard", "Detail": "Fermer le message de saisie refusée"}
+{"Utc": "2026-10-13T20:22:57.765332+00:00", "Kind": "Click", "Detail": {"x": 164, "y": 1143}}
+{"Utc": "2026-10-13T20:22:59.587520+00:00", "Kind": "Screenshot", "Detail": "03-autre-compte-diagnostic-clavier.png"}
+{"Utc": "2026-10-13T20:23:41.043879+00:00", "Kind": "Keyboard", "Detail": "Type Aa12"}
+{"Utc": "2026-10-13T20:23:42.937440+00:00", "Kind": "Screenshot", "Detail": "04-clavier-temoin.png"}
+{"Utc": "2026-10-13T20:25:57.502201+00:00", "Kind": "Click", "Detail": {"x": 164, "y": 1143}}
+{"Utc": "2026-10-13T20:26:00.878807+00:00", "Kind": "Click", "Detail": {"x": 930, "y": 655}}
+{"Utc": "2026-10-13T20:26:06.107010+00:00", "Kind": "Keyboard", "Detail": "Connexion console autorisée ; mot de passe non journalisé"}
+{"Utc": "2026-10-13T20:26:10.426737+00:00", "Kind": "Screenshot", "Detail": "05-resultat-connexion.png"}
+{"Utc": "2026-10-13T20:27:01.313466+00:00", "Kind": "Keyboard", "Detail": "Fermer refus"}
+{"Utc": "2026-10-13T20:27:02.613010+00:00", "Kind": "Click", "Detail": {"x": 927, "y": 660}}
+{"Utc": "2026-10-13T20:27:03.799743+00:00", "Kind": "Keyboard", "Detail": "Test de saisie fictive Aa12 sans validation"}
+{"Utc": "2026-10-13T20:27:05.387458+00:00", "Kind": "Screenshot", "Detail": "06-saisie-factice-sans-validation.png"}
+{"Utc": "2026-10-13T20:28:28.936786+00:00", "Kind": "Click", "Detail": {"x": 933, "y": 569}}
+{"Utc": "2026-10-13T20:28:30.404593+00:00", "Kind": "Click", "Detail": {"x": 927, "y": 660}}
+{"Utc": "2026-10-13T20:28:31.665480+00:00", "Kind": "Keyboard", "Detail": "Saisie témoin uniquement"}
+{"Utc": "2026-10-13T20:28:38.639149+00:00", "Kind": "Keyboard", "Detail": "Effacement de la saisie témoin"}
+{"Utc": "2026-10-13T20:29:17.590765+00:00", "Kind": "Click", "Detail": {"x": 933, "y": 569}}
+{"Utc": "2026-10-13T20:29:18.873400+00:00", "Kind": "Click", "Detail": {"x": 164, "y": 1143}}
+{"Utc": "2026-10-13T20:29:20.372667+00:00", "Kind": "Click", "Detail": {"x": 930, "y": 655}}
+{"Utc": "2026-10-13T20:29:21.562383+00:00", "Kind": "Keyboard", "Detail": "Type Aa12"}
+{"Utc": "2026-10-13T20:29:23.148441+00:00", "Kind": "Screenshot", "Detail": "09-identifiant-temoin.png"}
+{"Utc": "2026-10-13T20:29:57.639019+00:00", "Kind": "Keyboard", "Detail": "Select all; type administrateur"}
+{"Utc": "2026-10-13T20:29:59.262209+00:00", "Kind": "Keyboard", "Detail": "Authentification autorisée ; secret non journalisé"}
+{"Utc": "2026-10-13T20:30:04.584824+00:00", "Kind": "Screenshot", "Detail": "10-session-ouverte.png"}
+{"Utc": "2026-10-13T20:31:56.947647+00:00", "Kind": "Click", "Detail": {"x": 933, "y": 569}}
+{"Utc": "2026-10-13T20:31:58.898559+00:00", "Kind": "Keyboard", "Detail": "Fermer éventuel message de saisie"}
+{"Utc": "2026-10-13T20:32:00.606618+00:00", "Kind": "Click", "Detail": {"x": 160, "y": 1024}}
+{"Utc": "2026-10-13T20:32:02.543207+00:00", "Kind": "Click", "Detail": {"x": 927, "y": 660}}
+{"Utc": "2026-10-13T20:32:03.916250+00:00", "Kind": "Keyboard", "Detail": "Vider le champ de connexion"}
+{"Utc": "2026-10-13T20:32:05.473289+00:00", "Kind": "Keyboard", "Detail": "Saisie du secret fourni, non journalisé"}
+{"Utc": "2026-10-13T20:32:06.885024+00:00", "Kind": "Keyboard", "Detail": "Valider la connexion"}
+{"Utc": "2026-10-13T20:32:11.724212+00:00", "Kind": "Screenshot", "Detail": "11-connexion-console.png"}
+{"Utc": "2026-10-13T20:33:33.870995+00:00", "Kind": "Click", "Detail": {"x": 1895, "y": 10}}
+{"Utc": "2026-10-13T20:33:37.353166+00:00", "Kind": "Keyboard", "Detail": "Ouvrir Exécuter"}
+{"Utc": "2026-10-13T20:33:42.961353+00:00", "Kind": "Keyboard", "Detail": "Type C:\\Pesto120_GUI_C4_20261013\\Pesto.exe"}
+{"Utc": "2026-10-13T20:33:43.931017+00:00", "Kind": "Keyboard", "Detail": "Lancer le candidat C4"}
+{"Utc": "2026-10-13T20:33:47.056421+00:00", "Kind": "Screenshot", "Detail": "12-c4-demarrage.png"}
+{"Utc": "2026-10-13T20:34:48.497291+00:00", "Kind": "Screenshot", "Detail": "13-c4-apres-attente.png"}
+{"Utc": "2026-10-13T20:35:16.932900+00:00", "Kind": "Click", "Detail": {"x": 1048, "y": 920}}
+{"Utc": "2026-10-13T20:35:18.412177+00:00", "Kind": "Keyboard", "Detail": "Champ Nom de fichier"}
+{"Utc": "2026-10-13T20:35:21.755433+00:00", "Kind": "Keyboard", "Detail": "Type C:\\Pesto120_GUI_20261013\\wad\\cfg.json"}
+{"Utc": "2026-10-13T20:35:22.682351+00:00", "Kind": "Keyboard", "Detail": "Importer la configuration de labo existante"}
+{"Utc": "2026-10-13T20:35:24.121297+00:00", "Kind": "Screenshot", "Detail": "14-c4-configuration-importee.png"}
+{"Utc": "2026-10-13T20:36:11.433333+00:00", "Kind": "Click", "Detail": {"x": 1265, "y": 920}}
+{"Utc": "2026-10-13T20:36:15.522152+00:00", "Kind": "Screenshot", "Detail": "15-c4-configuration-validee.png"}
+{"Utc": "2026-10-13T20:37:30.835613+00:00", "Kind": "Keyboard", "Detail": "Maximiser Pesto"}
+{"Utc": "2026-10-13T20:37:32.415437+00:00", "Kind": "Screenshot", "Detail": "16-c4-accueil.png"}
+{"Utc": "2026-10-13T20:38:03.276454+00:00", "Kind": "Click", "Detail": {"x": 1850, "y": 14}}
+{"Utc": "2026-10-13T20:38:04.601929+00:00", "Kind": "Click", "Detail": {"x": 78, "y": 155}}
+{"Utc": "2026-10-13T20:38:05.847673+00:00", "Kind": "Screenshot", "Detail": "17-c4-accueil-maximise.png"}
+{"Utc": "2026-10-13T20:38:53.759463+00:00", "Kind": "Click", "Detail": {"x": 85, "y": 538}}
+{"Utc": "2026-10-13T20:38:55.137306+00:00", "Kind": "Screenshot", "Detail": "18-c4-parametres.png"}
+{"Utc": "2026-10-13T20:41:51.615294+00:00", "Kind": "Click", "Detail": {"x": 79, "y": 147}}
+{"Utc": "2026-10-13T20:42:00.473914+00:00", "Kind": "Screenshot", "Detail": "19-c4-accueil-apres-attente.png"}
+{"Utc": "2026-10-13T20:42:21.459451+00:00", "Kind": "Click", "Detail": {"x": 80, "y": 258}}
+{"Utc": "2026-10-13T20:42:24.337852+00:00", "Kind": "Screenshot", "Detail": "20-c4-plusieurs-postes.png"}
+{"Utc": "2026-10-13T20:42:25.315022+00:00", "Kind": "Click", "Detail": {"x": 80, "y": 371}}
+{"Utc": "2026-10-13T20:42:28.170919+00:00", "Kind": "Screenshot", "Detail": "21-c4-noms-disponibles.png"}
+{"Utc": "2026-10-13T20:42:44.084510+00:00", "Kind": "Click", "Detail": {"x": 85, "y": 202}}
+{"Utc": "2026-10-13T20:42:47.965972+00:00", "Kind": "Screenshot", "Detail": "22-c4-un-seul-poste.png"}
+{"Utc": "2026-10-13T20:43:01.148602+00:00", "Kind": "Click", "Detail": {"x": 1122, "y": 565}}
+{"Utc": "2026-10-13T20:43:04.126936+00:00", "Kind": "Keyboard", "Detail": "Type 765"}
+{"Utc": "2026-10-13T20:43:05.019987+00:00", "Kind": "Click", "Detail": {"x": 808, "y": 565}}
+{"Utc": "2026-10-13T20:43:06.908993+00:00", "Kind": "Screenshot", "Detail": "23-c4-choix-site.png"}
+{"Utc": "2026-10-13T20:43:12.133729+00:00", "Kind": "Click", "Detail": {"x": 700, "y": 678}}
+{"Utc": "2026-10-13T20:43:18.003513+00:00", "Kind": "Screenshot", "Detail": "24-c4-site-selectionne.png"}
+{"Utc": "2026-10-13T20:43:18.988726+00:00", "Kind": "Click", "Detail": {"x": 810, "y": 565}}
+{"Utc": "2026-10-13T20:43:21.770286+00:00", "Kind": "Click", "Detail": {"x": 693, "y": 640}}
+{"Utc": "2026-10-13T20:43:25.632815+00:00", "Kind": "Screenshot", "Detail": "25-c4-paris-propose.png"}
+{"Utc": "2026-10-13T20:43:30.317410+00:00", "Kind": "Click", "Detail": {"x": 1787, "y": 1057}}
+{"Utc": "2026-10-13T20:43:35.188006+00:00", "Kind": "Screenshot", "Detail": "26-c4-confirmation.png"}
+{"Utc": "2026-10-13T20:43:48.381672+00:00", "Kind": "Click", "Detail": {"x": 1351, "y": 791}}
+{"Utc": "2026-10-13T20:43:57.265007+00:00", "Kind": "Screenshot", "Detail": "27-c4-operation-resultat.png"}
+{"Utc": "2026-10-13T20:44:16.505434+00:00", "Kind": "Click", "Detail": {"x": 1386, "y": 657}}
+{"Utc": "2026-10-13T20:44:17.519447+00:00", "Kind": "Click", "Detail": {"x": 989, "y": 897}}
+{"Utc": "2026-10-13T20:44:18.438143+00:00", "Kind": "Keyboard", "Detail": "Page down"}
+{"Utc": "2026-10-13T20:44:20.320953+00:00", "Kind": "Screenshot", "Detail": "28-c4-suivi-facultatif.png"}
+{"Utc": "2026-10-13T20:44:47.724598+00:00", "Kind": "Click", "Detail": {"x": 337, "y": 948}}
+{"Utc": "2026-10-13T20:44:50.620750+00:00", "Kind": "Screenshot", "Detail": "29-c4-nouvelle-operation-sans-validation.png"}
+{"Utc": "2026-10-13T20:45:10.004876+00:00", "Kind": "Click", "Detail": {"x": 1895, "y": 9}}
+{"Utc": "2026-10-13T20:45:12.944266+00:00", "Kind": "Keyboard", "Detail": "Win R"}
+{"Utc": "2026-10-13T20:45:15.640888+00:00", "Kind": "Keyboard", "Detail": "Select all; type shutdown /r /t 5"}
+{"Utc": "2026-10-13T20:45:18.406575+00:00", "Kind": "Keyboard", "Detail": "Enter; manual reboot of PESTO-W11-TEST"}
+{"Utc": "2026-10-13T20:45:27.269547+00:00", "Kind": "Screenshot", "Detail": "30-c4-redemarrage-manuel.png"}
+{"Utc": "2026-10-13T20:45:42.658341+00:00", "Kind": "Keyboard", "Detail": "Wake console after reboot"}
+{"Utc": "2026-10-13T20:45:45.477559+00:00", "Kind": "Screenshot", "Detail": "31-c4-apres-redemarrage.png"}
+{"Utc": "2026-10-13T20:45:53.379429+00:00", "Kind": "Click", "Detail": {"x": 881, "y": 640}}
+{"Utc": "2026-10-13T20:45:55.549406+00:00", "Kind": "Keyboard", "Detail": "Clear password field"}
+{"Utc": "2026-10-13T20:45:59.066852+00:00", "Kind": "Keyboard", "Detail": "Entered user-authorized lab credential; value excluded"}
+{"Utc": "2026-10-13T20:46:00.062242+00:00", "Kind": "Keyboard", "Detail": "Submit lab sign in"}
+{"Utc": "2026-10-13T20:46:08.398409+00:00", "Kind": "Screenshot", "Detail": "32-c4-session-apres-redemarrage.png"}
+{"Utc": "2026-10-13T20:46:08.657441+00:00", "Kind": "Screenshot", "Detail": "33-c4-console-actuelle.png"}
+{"Utc": "2026-10-13T20:46:50.442544+00:00", "Kind": "Keyboard", "Detail": "Win R"}
+{"Utc": "2026-10-13T20:46:54.803811+00:00", "Kind": "Keyboard", "Detail": "Select all; type C:\\Pesto120_GUI_C4_20261013\\Pesto.exe"}
+{"Utc": "2026-10-13T20:46:55.734804+00:00", "Kind": "Keyboard", "Detail": "Launch C4 Pesto"}
+{"Utc": "2026-10-13T20:47:05.336660+00:00", "Kind": "Screenshot", "Detail": "34-c4-reouverture.png"}
+{"Utc": "2026-10-13T20:47:36.383577+00:00", "Kind": "Click", "Detail": {"x": 859, "y": 747}}
+{"Utc": "2026-10-13T20:47:46.706450+00:00", "Kind": "Screenshot", "Detail": "35-c4-apres-uac.png"}
+{"Utc": "2026-10-13T20:47:51.226115+00:00", "Kind": "Click", "Detail": {"x": 189, "y": 13}}
+{"Utc": "2026-10-13T20:47:55.112361+00:00", "Kind": "Screenshot", "Detail": "36-c4-operation-apres-redemarrage.png"}
+{"Utc": "2026-10-13T20:48:57.301993+00:00", "Kind": "Click", "Detail": {"x": 1090, "y": 565}}
+{"Utc": "2026-10-13T20:48:58.551889+00:00", "Kind": "Keyboard", "Detail": "Type 765"}
+{"Utc": "2026-10-13T20:49:01.335461+00:00", "Kind": "Click", "Detail": {"x": 1634, "y": 1057}}
+{"Utc": "2026-10-13T20:49:07.216631+00:00", "Kind": "Screenshot", "Detail": "37-c4-nouvelle-operation-verifiable.png"}
+{"Utc": "2026-10-13T20:49:37.976041+00:00", "Kind": "Click", "Detail": {"x": 78, "y": 372}}
+{"Utc": "2026-10-13T20:49:50.833755+00:00", "Kind": "Screenshot", "Detail": "38-c4-noms-calcules.png"}
+{"Utc": "2026-10-13T20:49:54.081389+00:00", "Kind": "Keyboard", "Detail": "Ctrl K; open action palette"}
+{"Utc": "2026-10-13T20:49:55.969807+00:00", "Kind": "Screenshot", "Detail": "39-c4-palette-outils.png"}
+{"Utc": "2026-10-13T20:50:21.155989+00:00", "Kind": "Keyboard", "Detail": "Escape palette"}
+{"Utc": "2026-10-13T20:50:22.116941+00:00", "Kind": "Click", "Detail": {"x": 79, "y": 539}}
+{"Utc": "2026-10-13T20:50:23.128583+00:00", "Kind": "Click", "Detail": {"x": 474, "y": 126}}
+{"Utc": "2026-10-13T20:50:24.998538+00:00", "Kind": "Screenshot", "Detail": "40-c4-parametres-noms.png"}
+{"Utc": "2026-10-13T20:50:39.707993+00:00", "Kind": "Keyboard", "Detail": "Ctrl K; open action palette"}
+{"Utc": "2026-10-13T20:50:42.523037+00:00", "Kind": "Click", "Detail": {"x": 950, "y": 294}}
+{"Utc": "2026-10-13T20:50:51.396522+00:00", "Kind": "Screenshot", "Detail": "41-c4-palette-sans-infobulle.png"}
+{"Utc": "2026-10-13T20:51:21.147299+00:00", "Kind": "Keyboard", "Detail": "Close palette"}
+{"Utc": "2026-10-13T20:51:22.115242+00:00", "Kind": "Click", "Detail": {"x": 82, "y": 149}}
+{"Utc": "2026-10-13T20:51:23.176997+00:00", "Kind": "Click", "Detail": {"x": 34, "y": 1073}}
+{"Utc": "2026-10-13T20:51:25.960964+00:00", "Kind": "Click", "Detail": {"x": 1891, "y": 1130}}
+{"Utc": "2026-10-13T20:51:28.771022+00:00", "Kind": "Click", "Detail": {"x": 1891, "y": 1130}}
+{"Utc": "2026-10-13T20:51:29.710074+00:00", "Kind": "Click", "Detail": {"x": 1891, "y": 1130}}
+{"Utc": "2026-10-13T20:51:32.587653+00:00", "Kind": "Screenshot", "Detail": "42-c4-zoom-menu-compact.png"}
+{"Utc": "2026-10-13T20:51:39.240174+00:00", "Kind": "Click", "Detail": {"x": 1891, "y": 1130}}
+{"Utc": "2026-10-13T20:51:40.211261+00:00", "Kind": "Click", "Detail": {"x": 1891, "y": 1130}}
+{"Utc": "2026-10-13T20:51:43.068530+00:00", "Kind": "Screenshot", "Detail": "43-c4-zoom-150.png"}
+{"Utc": "2026-10-13T20:52:40.957825+00:00", "Kind": "Click", "Detail": {"x": 1834, "y": 1131}}
+{"Utc": "2026-10-13T20:52:43.740446+00:00", "Kind": "Click", "Detail": {"x": 1789, "y": 74}}
+{"Utc": "2026-10-13T20:52:46.597183+00:00", "Kind": "Screenshot", "Detail": "44-c4-theme-sombre.png"}
+{"Utc": "2026-10-13T20:53:10.456466+00:00", "Kind": "Click", "Detail": {"x": 1833, "y": 56}}
+{"Utc": "2026-10-13T20:53:13.338984+00:00", "Kind": "Screenshot", "Detail": "45-c4-theme-sombre.png"}
+{"Utc": "2026-10-13T20:56:11.671347+00:00", "Kind": "Click", "Detail": {"x": 1833, "y": 56}}
+{"Utc": "2026-10-13T20:56:12.595113+00:00", "Kind": "Click", "Detail": {"x": 34, "y": 1073}}
+{"Utc": "2026-10-13T20:56:13.534509+00:00", "Kind": "Click", "Detail": {"x": 77, "y": 202}}
+{"Utc": "2026-10-13T20:56:16.359425+00:00", "Kind": "Click", "Detail": {"x": 813, "y": 565}}
+{"Utc": "2026-10-13T20:56:19.129299+00:00", "Kind": "Click", "Detail": {"x": 697, "y": 606}}
+{"Utc": "2026-10-13T20:56:20.063692+00:00", "Kind": "Click", "Detail": {"x": 386, "y": 763}}
+{"Utc": "2026-10-13T20:56:21.992111+00:00", "Kind": "Screenshot", "Detail": "46-c4-options-deplacement.png"}
+{"Utc": "2026-10-13T20:59:25.926958+00:00", "Kind": "Screenshot", "Detail": "47-c4-reprise"}
+{"Utc": "2026-10-13T20:59:44.940224+00:00", "Kind": "Click", "Detail": {"x": 245, "y": 804}}
+{"Utc": "2026-10-13T20:59:46.204735+00:00", "Kind": "Screenshot", "Detail": "48-c4-deplacement-seul.png"}

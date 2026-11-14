@@ -1,0 +1,5 @@
+Exception: /Users/david/Projects/pesto/DEV/wad/Pesto-Common.ps1:20
+Line |
+  20 |  … ne 'Pesto'){throw 'Version du socle commun incompatible avec ce paque …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Version du socle commun incompatible avec ce paquet.

@@ -1,0 +1,16 @@
+{
+  "qualificationHarnessSourceCommit": "07dc74116478f1dd28d5f54ab6e2f11b1b4ee472",
+  "qualificationHarnessDllSha256": "b8d9615291ab65b62925523bc0b85221b873a89687c7f1602b3982f02e840e4e",
+  "compilerSdk": "10.0.401",
+  "compilerHost": "macOS",
+  "target": "win-x64",
+  "selfContained": true,
+  "includedRuntime": "Microsoft.NETCore.App 10.0.12",
+  "repositoryPinnedSdk": "10.0.302",
+  "qualificationArchiveSha256": "ef59cc7b7e95a900c28942510315f08f0e9fd91f34b565e5439b56066ac41f66",
+  "syntheticConfigSha256": "f76ad53a8d7ea367248fd2b067cb48ddaa0bb1dd7e9cc87566f7d85b58adfe35",
+  "installationFilesVerified": 219,
+  "separateCiCandidateSourceCommit": "2adf60e15f8f7d5fd808c0471a63e1fd4457cd90",
+  "qualificationDoesNotTransferToCiCandidateZip": true,
+  "nativeAdReceiptRawBytesNote": "move-durable-receipt-wrapper.json is an exact copy of the native wrapper. Its sha256 property records the original GP receipt hash; the wrapper contains a parsed receipt object, not the original receipt byte stream."
+}

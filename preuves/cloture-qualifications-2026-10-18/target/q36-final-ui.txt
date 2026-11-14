@@ -1,0 +1,113 @@
+﻿P
+Pesto
+Active Directory
+⌂
+Accueil
+✎
+Un seul poste
+▦
+Plusieurs postes
++
+Ajouter au domaine
+▤
+Noms disponibles
+◷
+Historique
+≡
+Journal
+⚙
+Paramètres
+Pesto 1.0
+Windows · PowerShell
+Étapes de l’opération
+RÉEL
+DC : dc01.labo.local
+P111301VA765158
+labo.local
+LABO\tech.pesto
+Actions · Ctrl+K
+Audit
+?
+Préparer plusieurs postes
+Cible et compte de l’intervention
+État du poste
+Données : 29 min · à actualiser
+Actualiser ce site
+Poste à modifier
+Utilisez ce PC ou saisissez le nom d'un autre poste.
+Un autre poste du domaine
+Nom du poste actuel ⓘ
+Lire le poste
+2. Définir le nouveau nom
+Le nom est proposé selon votre convention à 15 caractères.
+Organisme ⓘ
+Site ⓘ
+Service ⓘ
+Services lus · Données : 29 min · à actualiser
+Type ⓘ
+2 · Nouveau nom ⓘ
+Autre nom
+ⓘ Déplacement automatique uniquement si le site change.
+Options : déplacement seul et redémarrage
+Renommer
+Déplacer (seul)
+Redémarrer après réussite
+Ajouter à la file
+Saisissez un code service conforme a la convention.
+Avant / après
+Brouillon du formulaire, pas un résultat d'exécution.
+Nom actuel
+P111301VA765158
+Nouveau nom
+P111301VA765158
+Choisir un nom exact…
+Copier le nom proposé
+Site cible : Paris
+OU actuelle : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+Après : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+Opération prévue
+Aucune action prête
+Redémarrage : non demandé
+3. Vérifier la file
+2 poste(s) • 0 à traiter
+Seules les lignes cochées seront exécutées. Les lignes masquées par un filtre restent cochées.
+Contrôler dans AD
+Prévisualiser la file
+Détails
+Retirer de la file
+Préparer un lot
+⌕
+2 visible(s)
+✓
+Nom du PC
+Nouveau nom
+Plan
+Résultat
+Contrôle
+Tout cocher (visible)
+Tout décocher (visible)
+Colonnes techniques
+Outils de la file
+File
+Import et export
+Échangez une préparation ou conservez son bilan.
+Importer un tableau…
+Importer
+Exporter
+Exporter le bilan
+Suivi
+MODE RÉEL : écritures après confirmation
+Terminé : 2 action(s) | 1 réussie(s), 0 échouée(s), 0 à vérifier, 1 non lancée(s).
+Terminé : 2 action(s) | 1 réussie(s), 0 échouée(s), 0 à vérifier, 1 non lancée(s).
+Confirmer chaque action
+Faire un poste pilote puis arrêter le lot
+Exécuter la file
+Arrêter après cette action
+Bilan de la file
+Copier le texte
+Fermer
+Zoom
+−
+État de l’intervention
+100 %
++

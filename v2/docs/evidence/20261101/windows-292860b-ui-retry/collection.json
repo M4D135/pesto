@@ -1,0 +1,468 @@
+﻿{
+    "kind":  "pesto.isolated-native-update-ui-collection",
+    "fullReleaseQualification":  false,
+    "sourceCommit":  "292860b934bcdff0f1321b0839158bf38b58816e",
+    "success":  true,
+    "files":  [
+                  {
+                      "path":  "native-retry-inputs.json",
+                      "bytes":  1473,
+                      "sha256":  "f727e40596c5a9247d4f7294a7d5bc21bb56dcc7e373f8a06fb6b8240cf812ef"
+                  },
+                  {
+                      "path":  "Prepare-PestoUiRetry.ps1",
+                      "bytes":  4101,
+                      "sha256":  "97c01325f58924551ae1518d05efe2136b0008b640ab3b615ead3cbb175ecbff"
+                  },
+                  {
+                      "path":  "Start-UiRetry2.ps1",
+                      "bytes":  4658,
+                      "sha256":  "cb6bc7b9ba69c2b2ca5a0a25b2fa47d8720337b14058982b53a8b0586da90ce3"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV.log",
+                      "bytes":  98,
+                      "sha256":  "850756be2b72555d09c4439f422d796117e031cc321d6ba0391814aaa8c4cb8d"
+                  },
+                  {
+                      "path":  "ui-retry2-preparation-start.json",
+                      "bytes":  421,
+                      "sha256":  "3ffd590451a3eafccd6768c00416e45b9b7c8f3f22d20331267af9386a96c8d4"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD.log",
+                      "bytes":  98,
+                      "sha256":  "850756be2b72555d09c4439f422d796117e031cc321d6ba0391814aaa8c4cb8d"
+                  },
+                  {
+                      "path":  "ui-retry2-progress.json",
+                      "bytes":  775,
+                      "sha256":  "586a56e211c4f2227d36751ba03d07df5c0e08b27a103264f4fe9cacffbf6907"
+                  },
+                  {
+                      "path":  "ui-retry2-result.json",
+                      "bytes":  829,
+                      "sha256":  "7ce0300b492218cb7c778c3e43f683617b23aab3e639b7c702d010c22ffb829c"
+                  },
+                  {
+                      "path":  "ui-retry2-start.json",
+                      "bytes":  531,
+                      "sha256":  "6ee31c09f0163567ad87519ea274f2e898caead2d9bdf2cdea6da02a76a9c566"
+                  },
+                  {
+                      "path":  "prepared-inputs/prepared.json",
+                      "bytes":  904,
+                      "sha256":  "37c7947c90885ece4ed91b6c986a5586bb2819780aa567cebf362b78f357b87b"
+                  },
+                  {
+                      "path":  "prepared-inputs/verify-log-DEV.txt",
+                      "bytes":  101,
+                      "sha256":  "ebf562a61f36c85ef5eb644d70d2aa630594ae311d978fe2b32e51dbf6621ccc"
+                  },
+                  {
+                      "path":  "prepared-inputs/verify-log-PROD.txt",
+                      "bytes":  101,
+                      "sha256":  "7666bb4bcaf4d206b49bbd04b61250b183e99b5447554dcf8617c6eb7c2a928e"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-01-ui-init.txt",
+                      "bytes":  1253,
+                      "sha256":  "3837a858767df5172dfbb7a35e96631d83cf19f5e3a030c8b733b05e8a39f415"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-02-ui-adopt.txt",
+                      "bytes":  238,
+                      "sha256":  "3fe420c0880be22456cdfdb76fd3948f4fb25b9388fd69d2da7725827e411425"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-03-observe.txt",
+                      "bytes":  3162,
+                      "sha256":  "4072f77046de1e38d36a9f1fffcfad74e0496e62d1e047cb4287b3bba7790608"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-04-ui-verify.txt",
+                      "bytes":  1246,
+                      "sha256":  "3fd7f8d168e354600517f2f8df8f4a699c165dd820fc9684c46ceba76a902880"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-05-request.txt",
+                      "bytes":  515,
+                      "sha256":  "925be584c26a8adc4681e015de7dc8dbb5b0a363c1ffa9a7e4526c1b993cd64f"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-06-observe.txt",
+                      "bytes":  3170,
+                      "sha256":  "5e5c0fa65a0654eb4c44c5b301579b68516cd8f04828a92069ab5366e39820ce"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-07-ui-verify.txt",
+                      "bytes":  1248,
+                      "sha256":  "2c53fa603e39040aa5ca2d3b8eca63d42599bbcfec6ce2073923d91b01d21d3c"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-08-ui-cleanup.txt",
+                      "bytes":  279,
+                      "sha256":  "2bcb9b74e360f8c648b4176842bc1f703a03e852760a938871a22d1329ba9f19"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/runner-09-ui-finish.txt",
+                      "bytes":  13626,
+                      "sha256":  "5052cb15d89e03e956c2d13f6505a0d5f5af3429318477f4666c87bddc8d4bb3"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/ui-request.json",
+                      "bytes":  1251,
+                      "sha256":  "1a4f9a67a008a3fcd05528a2b773628d0adc513fd7448e6acad543c0743a7304"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/suite.json",
+                      "bytes":  1413,
+                      "sha256":  "d17bc3d3012744891ae7ea32f3d235ee7c64ff3aab029a78c486427dd2438650"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/ui-proof.json",
+                      "bytes":  13624,
+                      "sha256":  "324719c265d3cc0b50bf4600758e46e71af19be5382b067c9b44adcd10c07415"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/acquisition.json",
+                      "bytes":  593,
+                      "sha256":  "d56e1fced89fe3419786b37dd0359eab3d540d80cbdd1fab75bdef06c2af3876"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/fixture.json",
+                      "bytes":  809,
+                      "sha256":  "22eea6cd4f11bfe5756085254b94d892379fa13c09d23c969497203d05b819e8"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/health-7bec9af18933d38075f6fd290db7e365faf66b615adf1a4a00db40a2ebd00952.json",
+                      "bytes":  938,
+                      "sha256":  "6c21d86a4b42fb73c11c7c4c4c80a94e6a71874a694e4a6fa9e9c07286df6822"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/health-f87fa834ce6ad97365e313634b68cf4e1ed2de5b55e4ca9177c30eb20b6d1c5a.json",
+                      "bytes":  937,
+                      "sha256":  "a5d502967b4b2a37fc0f81f631147854dbc20860beec0030f5c094f86f9d4406"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/helper-diagnostic-22384-639291056052814511-d1dd04ecfcff4aaebb76abdd57611bdb.jsonl",
+                      "bytes":  2931,
+                      "sha256":  "0672b180a73559653c161782328054a86d817b201730a6c28e882b9d92ed5220"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/helper-diagnostic-2408-639291054952290184-5444d49f54534ca9a8c85b18ddcb45db.jsonl",
+                      "bytes":  2922,
+                      "sha256":  "0c109f1b20efee3becb8a73e4e697653a4c45b1df5bbdd16a617cd3c4a4f9bd2"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/helper-rollback-host.log",
+                      "bytes":  422047,
+                      "sha256":  "432ed6760dcc7e30c04737c9ee90636b5abde3427af9ff6f7a7a0eb488532297"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/journal-install.json",
+                      "bytes":  971,
+                      "sha256":  "ccefe60de8ef3334dcaad922376cf5a701872cde4337f9659696c4a26647a4a1"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/journal-rollback.json",
+                      "bytes":  973,
+                      "sha256":  "dd5afbd186a543abb07a664984fdb86624caf360b5160d9b49264220de7b1c37"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/journal-ui-handoff.json",
+                      "bytes":  971,
+                      "sha256":  "2a1042d1221e7f535f813920516aac372cf4d3df662e85d28d1d69b1ff2cbc72"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/launch-install.json",
+                      "bytes":  339,
+                      "sha256":  "fb6da5ea9d162fb5f89ad035ef451378c2fffc225a3864f934589d2715271165"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/launch-rollback.json",
+                      "bytes":  352,
+                      "sha256":  "8957708d5cd3d4ad161adb4572e00ed65db867b214d5a27c795128e8fce7a7a7"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/observation-install.json",
+                      "bytes":  3160,
+                      "sha256":  "e3c63df987f6426133823d48072dc9214699d9899ddbb47cad206327fca4e5bb"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/observation-rollback.json",
+                      "bytes":  3168,
+                      "sha256":  "64585bf837fd5884bcb52a7705b3428f99362c67f2df5a9f0c6e8eee2d1a9aa9"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/proof-install.json",
+                      "bytes":  1244,
+                      "sha256":  "cb26191e4f7ed29378da244cd98e35ee6045feec6da76249dac58c45db12727f"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/proof-rollback.json",
+                      "bytes":  1246,
+                      "sha256":  "e541458562a95a238ac7b94a8e5a0da6d286f7c3c68fd1bc296a239d9945b16a"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/request-install.json",
+                      "bytes":  512,
+                      "sha256":  "1c407deef0a03b88703e20d6d2811826ec7ed7a5b1b8b729440b118310e3d4f6"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/request-rollback.json",
+                      "bytes":  513,
+                      "sha256":  "e4ffb31151f6ebdae4a39e1464bc2ae597aea73d89f8fd10c627264fa5152109"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui-cleanup.json",
+                      "bytes":  277,
+                      "sha256":  "0486c62d97b19192d96d65733ceb24a21b66bde1c80189e2cac1a65eaf44250c"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui-parent-exit.json",
+                      "bytes":  117,
+                      "sha256":  "e6a018bb4c402aebf993d075c17025b5b002ea0c26e39af74f805cd4cc938868"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui-parent-launch.json",
+                      "bytes":  230,
+                      "sha256":  "8ecc5ebb927d7698204496bca1ccd4044864815f152969071cfe4f4f9b885c46"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui-profile-install.json",
+                      "bytes":  420,
+                      "sha256":  "c63e05176e2efa406847b49db100749362a115882663debe4e8115456411e98b"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui-profile-rollback.json",
+                      "bytes":  421,
+                      "sha256":  "42b2371e1a9762bfb4ba277fa6635c0886855a94534ee262f2f55ace39b0aa44"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui/launch-install.json",
+                      "bytes":  339,
+                      "sha256":  "fb6da5ea9d162fb5f89ad035ef451378c2fffc225a3864f934589d2715271165"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui/proof.json",
+                      "bytes":  8408,
+                      "sha256":  "a55465f434e472c7321f3616728395b8cd3c7908a346525ca5d7777dc208551b"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui/request-install.json",
+                      "bytes":  512,
+                      "sha256":  "1c407deef0a03b88703e20d6d2811826ec7ed7a5b1b8b729440b118310e3d4f6"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui/coexistence/maintenance-install-confirmation.png",
+                      "bytes":  207864,
+                      "sha256":  "23d1aac7fe1ffc1bc03c4d41136c9455c6c647cfc5cf9849f268d7890ea6dd85"
+                  },
+                  {
+                      "path":  "ui-retry2-DEV/transaction-evidence/normal/ui/coexistence/maintenance-prepared.png",
+                      "bytes":  173763,
+                      "sha256":  "db0f68a07ade8732eafeb67e44f0604a54b65255905dd87507b73ba1e1a6dce6"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-01-ui-init.txt",
+                      "bytes":  1255,
+                      "sha256":  "e14b98d2ee0206531fb2f03c19510d6d611f50083322f50b044173fcbcdc38df"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-02-ui-adopt.txt",
+                      "bytes":  238,
+                      "sha256":  "61fcf743744816cf6507f408827f88d137f21883d893449237b93a38175e1ced"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-03-observe.txt",
+                      "bytes":  3165,
+                      "sha256":  "c11625d29a2babbe8e42442d63de4e962e062d9cffba6648b8c752cebadccd6c"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-04-ui-verify.txt",
+                      "bytes":  1246,
+                      "sha256":  "b006688216f52ec1111024a306372d673a0da3901db95fc2600739d9cba7a6d1"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-05-request.txt",
+                      "bytes":  515,
+                      "sha256":  "498a73b36844630860c6e2fd432e25df5f3c465d5af93c6e860f90628f193041"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-06-observe.txt",
+                      "bytes":  3166,
+                      "sha256":  "7adf80e321d70cd40d57dd107e4c8ef14373b4361493fc0d2af3cc94abe115e2"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-07-ui-verify.txt",
+                      "bytes":  1248,
+                      "sha256":  "4197c3d0ef994c80a0e7787df83afe4d24db2224467f3fe8b4d87354b81fb25d"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-08-ui-cleanup.txt",
+                      "bytes":  279,
+                      "sha256":  "3136f54f97ad6b2e6e7a4ddf8c0413e64d757f0c48ee5e93c2a73c1b90165f01"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/runner-09-ui-finish.txt",
+                      "bytes":  13639,
+                      "sha256":  "5737aec7930a0b7d95c0bc48d50c714795e72f690bb581f6debdc3ed924b86bd"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/ui-request.json",
+                      "bytes":  1253,
+                      "sha256":  "ecb6786481bd9e89cc9550f88dd2597e99dafc95c8656c6b496a37abf0ca29fe"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/suite.json",
+                      "bytes":  1420,
+                      "sha256":  "24f43c8eb014ca705bb7c0bbf6ac022f7c330a5b4a4a66361e2369defa9f8228"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/ui-proof.json",
+                      "bytes":  13637,
+                      "sha256":  "1f29ec4ce62fecd5be6e1f2f741dc83f462b2e2336f8fac84c35c749ba9bbd54"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/acquisition.json",
+                      "bytes":  593,
+                      "sha256":  "775175da793e5a48281c90535d43ef1764b7c07845670efb10e7db9c36c4ef2b"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/fixture.json",
+                      "bytes":  809,
+                      "sha256":  "eed255a6dfd641febb7a511ebb5705a3441b8db60530e6a4cc51dd61d5e2c2f1"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/health-5dd802b6ab0e89b8d3fd59dedaa7ec378e35d101af1919f124fd7bb6b62f9039.json",
+                      "bytes":  938,
+                      "sha256":  "033242e2176a4203e72742608156c824f36eb26457d8ab61097590d4cf872aba"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/health-6f5ed84634f647bdb47172739da69fe8a62a23dd4e8e74e71128a6ebdfce3d73.json",
+                      "bytes":  937,
+                      "sha256":  "5f0526a38d70ac93c1fd93156a985088ce7007fa962a940f7164ea9bcc53cfb8"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/helper-diagnostic-21160-639291051854022138-9f94b55646f34c15bf0df38102e87efd.jsonl",
+                      "bytes":  2929,
+                      "sha256":  "cea6c3280b80c7409d7c6d5a541e9a189b8ebb273d05f5c00105c68e0ca966c8"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/helper-diagnostic-7804-639291052869559804-94917a4133a14ab8bb7f9945c7ef2791.jsonl",
+                      "bytes":  2924,
+                      "sha256":  "785e91299ce55fbce9279df4ac792b7856be941fd2a2031c9618edbd9494072c"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/helper-rollback-host.log",
+                      "bytes":  422047,
+                      "sha256":  "b1406062526b6ed6b08f006a56a8a8354149890c0dc2af8844f5dd85c2fee6bc"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/journal-install.json",
+                      "bytes":  971,
+                      "sha256":  "5b726d3f49c2c5a2385c87528ee957ba545a3862c1fe7a4f02bd5cf761f5e880"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/journal-rollback.json",
+                      "bytes":  973,
+                      "sha256":  "5ce90349fec08f88b795be7eeafcb2a44f2a4c3ebc04f499d91e48de3a81f7fc"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/journal-ui-handoff.json",
+                      "bytes":  971,
+                      "sha256":  "751535bf46f370d40ef6a8e858554e61287dcea9ac4c16d92fba2c107726282d"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/launch-install.json",
+                      "bytes":  340,
+                      "sha256":  "ae54054ea17802d87d15e29e5dc19c699dc0bf62a45457a0d870412e032d622e"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/launch-rollback.json",
+                      "bytes":  351,
+                      "sha256":  "8bc9cfc3c3a3e60be0cc8077fa1e89a2f786388440c3a0fb643f376e753ad8dc"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/observation-install.json",
+                      "bytes":  3163,
+                      "sha256":  "fcf57bf50956bca7f243c01c05b2174f4fd7a725cc9abcedca7c7322c1387167"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/observation-rollback.json",
+                      "bytes":  3164,
+                      "sha256":  "6947cc61c8479cd00598af43e322d37caf078992567d473bfca7e657aae79977"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/proof-install.json",
+                      "bytes":  1244,
+                      "sha256":  "16e4a1ea7538f0e57dd2d59c953a580df1d70de025a738090e083ce34e02db10"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/proof-rollback.json",
+                      "bytes":  1246,
+                      "sha256":  "95ee5145d898d449f50cc206396335a5907bceb8defb3d318a003113b814b096"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/request-install.json",
+                      "bytes":  512,
+                      "sha256":  "a4efc6089d5b295618a4a885e26f1e0c9c0e1e9134693a5f01c56690b0d9faeb"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/request-rollback.json",
+                      "bytes":  513,
+                      "sha256":  "01363646f31fb8704372eea08a8c49b584d0f90aee66c547cff4c225bf72ebaa"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui-cleanup.json",
+                      "bytes":  277,
+                      "sha256":  "ee8c65ee5134d20b99d4513ec03acbb57b94486d368be58c53ccf517543c95cd"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui-parent-exit.json",
+                      "bytes":  116,
+                      "sha256":  "3458a086bbf41a90784b5c6fc524ef016d86b07c93fd238322360925d0a8c64a"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui-parent-launch.json",
+                      "bytes":  229,
+                      "sha256":  "a24968d23e189d38923aecba791c42135f35ca5e1f2a6a0029361dc4c0858d1f"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui-profile-install.json",
+                      "bytes":  421,
+                      "sha256":  "cc93ef95098777d125718c1464dbd9ec46d8e7ddbe7ceba734f4704de68be434"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui-profile-rollback.json",
+                      "bytes":  422,
+                      "sha256":  "473e9224f389c951f2a8ba9ff092c3ed6c2e777f49d2e1783fb2ddbd4f56c107"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui/launch-install.json",
+                      "bytes":  340,
+                      "sha256":  "ae54054ea17802d87d15e29e5dc19c699dc0bf62a45457a0d870412e032d622e"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui/proof.json",
+                      "bytes":  8415,
+                      "sha256":  "6761a4b5ad0ce666585145414979464c21e68e58e557148f30f4f3fcdcf132e2"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui/request-install.json",
+                      "bytes":  512,
+                      "sha256":  "a4efc6089d5b295618a4a885e26f1e0c9c0e1e9134693a5f01c56690b0d9faeb"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui/coexistence/maintenance-install-confirmation.png",
+                      "bytes":  209026,
+                      "sha256":  "1cf8c0567995774fb3d654bfe46db2b3a0a3acf5421b7ba9cd21f0ffec087044"
+                  },
+                  {
+                      "path":  "ui-retry2-PROD/transaction-evidence/normal/ui/coexistence/maintenance-prepared.png",
+                      "bytes":  165516,
+                      "sha256":  "d1b83f891b8471b647a97c4a686838ba79f3ad9b9bd82af7482bc57acb2615aa"
+                  }
+              ]
+}

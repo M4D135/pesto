@@ -1,0 +1,31 @@
+OK  Parseur PowerShell natif du moteur et de ses composants
+OK  Chargement réel de la fenêtre XAML et de ses ressources
+OK  Table des libellés UX chargée depuis l'AST du moteur
+OK  Les contrôles publics du Shell sont uniques et résolus par FindName
+OK  Palettes Light et Dark lues dans $script:Themes sans exécuter le moteur
+OK  PR vers VA : aperçu renommer puis déplacer
+OK  Même site : conserver l'OU actuelle malgré une autre OU proposée
+OK  Même site, changement de service : aucun déplacement
+OK  Déplacement seul : nom source conservé
+OK  Redémarrage non demandé par défaut
+OK  Redémarrage explicite correctement présenté
+OK  Hors domaine : aperçu de jonction locale
+OK  Verrou de sécurité expliqué sans être effacé
+OK  Nom occupé expliqué
+OK  Lecture source en cours explique l'attente
+OK  Étape 4 réservée au traitement effectivement en cours
+OK  Contrôle AD reste en étape 3 sans annoncer une mutation
+OK  Aides des commandes désactivées activées dans WPF
+OK  Tous les contrôles interactifs publics possèdent une aide
+OK  Colonnes simples : exactement six colonnes visibles
+OK  Colonnes techniques réversibles et liaisons conservées
+OK  Thème clair appliqué par le véritable Set-Theme
+OK  Thème sombre appliqué aux mêmes ressources
+OK  Initialisation des événements sans closure privée
+OK  Fenêtre affichée hors écran : mise en page réellement rendue
+NT  Mise en page réelle à 1460 x 940 : 1044 px rendus < 1244 px requis (écran 1024 px)
+OK  Mise en page compacte à 1100 : aperçu sous le formulaire
+NT  Retour à la disposition large sans recréer le formulaire : 1044 px rendus < 1244 px requis (écran 1024 px)
+OK  ComboBox non éditable : menu contractuel présent
+OK  ComboBox éditable : vrai champ de saisie conservé
+OK  Navigation par vrais événements WPF

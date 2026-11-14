@@ -1,0 +1,17 @@
+  ok   Profil neuf : formulaire sans V1, aperçu puis application exacte après confirmation
+  ok   Exporter transmet la version à la sélection native, sans application de configuration
+  ok   Import : différences visibles, annulation sans écriture puis plan confirmé exact
+  ok   Sélection d’import annulée : aucun dialogue de remplacement ni faux succès
+  ok   Définir par défaut confirme avant sélection native et annonce un pack personnalisé
+  ok   Destination du pack annulée : le texte de préparation est terminé sans faux livrable
+  ok   Référentiels : tous les conflits doivent être résolus avant une application unique
+  ok   Mise à jour GitHub : vérifier, préparer, confirmer et demander l’installation sont distincts
+  ok   Source zip : inspection seule, sélection correctement transmise
+  ok   Source folder : inspection seule, sélection correctement transmise
+  ok   Source source : inspection seule, sélection correctement transmise
+  ok   Configuration distribuée : keep exige le choix explicite avec différences
+  ok   Configuration distribuée : replace exige le choix explicite avec différences
+  ok   Rollback et reprise restent deux actions confirmées séparément
+  ok   Échec d’application : message de refus, aucun faux succès ni relance automatique
+  ok   Aucune erreur de module/console ni requête externe
+16/16 contrôles maintenance Chromium réussis ; 0 échec(s).

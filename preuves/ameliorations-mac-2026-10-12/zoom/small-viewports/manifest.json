@@ -1,0 +1,53 @@
+{
+  "Utc": "2026-10-12T22:02:38.543852+00:00",
+  "Scope": "Portable structural checks and isolated Windows WPF layout checks for Noms and Interventions small viewports.",
+  "Sources": [
+    {
+      "Path": "DEV/tests/Run-ZoomTests.ps1",
+      "Sha256": "2fdeebda2f16df19a8897b948776371241d9a1956dd662c8c528687b9ad9b79f",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    },
+    {
+      "Path": "DEV/tests/Run-ToolsTabsTests.ps1",
+      "Sha256": "1d390f6a590350e6ae8e79de5f35d00c076d11878b415e7ea832a4a018518d5b",
+      "Utf8Bom": true,
+      "OnlyCRLF": true
+    }
+  ],
+  "Suites": [
+    {
+      "Name": "Zoom",
+      "Passed": 32,
+      "Failed": 0,
+      "ReportSha256": "031dff39330736a44646bc108c173115ff815456ebe8dc101137005491bb7530"
+    },
+    {
+      "Name": "ToolsTabs",
+      "Passed": 27,
+      "Failed": 0,
+      "ReportSha256": "56333141ba463d49c7e8acd0b9bcbd7176ec416e5c9aea7c0b46af595271953b"
+    }
+  ],
+  "WindowsValidation": {
+    "Utc": "2026-10-12T22:05:31.195855+00:00",
+    "RuntimeExeSha256": "ad05add239a884b93e47a2ae647687a26f46784ad690a234abaf0e692c043e16",
+    "RuntimeDirectory": "C:\\PestoZoom20261012\\prod-release-final",
+    "ReportDirectory": "C:\\PestoZoom20261012\\preuves-release-final",
+    "SessionId": 0,
+    "WindowShown": false,
+    "Results": [
+      {
+        "Suite": "Zoom",
+        "Passed": 42,
+        "Failed": 0
+      },
+      {
+        "Suite": "ToolsTabs",
+        "Passed": 33,
+        "Failed": 0
+      }
+    ],
+    "Note": "Root independently owns visible application verification and copies final reports to preuves/zoom-2026-10-12/windows-release."
+  }
+}

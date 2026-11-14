@@ -1,0 +1,13 @@
+{
+  "technicien": {
+    "pages": 26,
+    "visual_review": "all pages reviewed",
+    "text_outside_safe_area": []
+  },
+  "administrateur": {
+    "pages": 61,
+    "visual_review": "all pages reviewed; final page 44 rechecked; unchanged text positions compared",
+    "text_outside_safe_area": []
+  },
+  "screenshots": "Existing real captures; no new VM session"
+}

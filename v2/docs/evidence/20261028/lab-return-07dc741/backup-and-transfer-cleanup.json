@@ -1,0 +1,18 @@
+{
+  "vm": "PESTO-W11-TEST",
+  "poweroffObservedUtc": "2026-10-28T10:58:23.7861680Z",
+  "poweroffObserved": true,
+  "snapshotName": "C18-avant-retour-AD-20261028",
+  "snapshotUuid": "0e731400-8e8b-4779-bf0d-f2bd135b6d17",
+  "snapshotConfirmedByReadbackUtc": "2026-10-28T11:01:55.3639455Z",
+  "snapshotWrapperNote": "The initial wrapper reported an error on progress stderr; later poweroff state and snapshot UUID reads confirmed creation. No restore was performed.",
+  "newBootUtc": "2026-10-28T11:02:02.5000000Z",
+  "cleanup": {
+    "utc": "2026-10-28T11:00:40.7063821Z",
+    "phase": "completed",
+    "deletedTemporaryCopies": 42,
+    "deletedBytes": 2786739027,
+    "eachMatchedArchivedLocalBytesAndSha256": true,
+    "guestTouched": false
+  }
+}

@@ -1,0 +1,138 @@
+[
+    {
+        "Name":  "Source DCOM options bind to the native cmdlet with packet privacy",
+        "Passed":  false,
+        "Error":  "Parameter set cannot be resolved using the specified named parameters."
+    },
+    {
+        "Name":  "Remote rename accepts AD and DCOM identity with optional registry unavailable",
+        "Passed":  false,
+        "Error":  "L\u0027identité Windows et AD ne peut pas être confirmée. Aucun retrait Entra ni renommage."
+    },
+    {
+        "Name":  "Known pending remote name blocks rename",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Known MachineGuid remains recorded",
+        "Passed":  false,
+        "Error":  "L\u0027identité Windows et AD ne peut pas être confirmée. Aucun retrait Entra ni renommage."
+    },
+    {
+        "Name":  "Wrong active Windows name blocks rename",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Wrong Windows domain blocks rename",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Domain controller role remains excluded",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Missing Windows identity is not replaced by AD alone",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Task creation refusal is explicitly not started",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Refusal before COM Run does not create uncertainty",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Uncertain Run response retains the task",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Legacy error without launch evidence remains uncertain",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Task not finished is retained even with zero result",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Completed leave propagates confirmation",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Completed pre-leave refusal remains not requested",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Generic completed task error is never assumed pre-leave",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Prelaunch refusal propagates no Entra mutation",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Simulation never creates a remote Entra task",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Target conflict searches DNS and both HOST SPN forms on same DC",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Any conflicting AD object blocks target name",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Failed AD conflict read cannot become a free name",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Invalid target never enters LDAP query",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Clock check is disabled by default and performs no read",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Clock policy rejects a string boolean",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Measured offset below threshold allows join",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Positive and negative measured 300 seconds block join",
+        "Passed":  true,
+        "Error":  ""
+    },
+    {
+        "Name":  "Unknown clock and timeout warn without blocking",
+        "Passed":  true,
+        "Error":  ""
+    }
+]
+

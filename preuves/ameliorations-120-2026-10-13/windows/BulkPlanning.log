@@ -1,0 +1,30 @@
+{
+    "Checks":  [
+                   {
+                       "Name":  "Opt-out selects first free names and preserves source input",
+                       "Passed":  false,
+                       "Error":  "The term \u0027Merge-PestoManagedPolicy\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again."
+                   },
+                   {
+                       "Name":  "Default random uses complete filtered pool without duplicates",
+                       "Passed":  false,
+                       "Error":  "The term \u0027Merge-PestoManagedPolicy\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again."
+                   },
+                   {
+                       "Name":  "Whole series remains available after occupied reserved and prior-row exclusions",
+                       "Passed":  false,
+                       "Error":  "The term \u0027Merge-PestoManagedPolicy\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again."
+                   },
+                   {
+                       "Name":  "Preserving an occupied number refuses the whole batch",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Exhausted series never appends a partial plan",
+                       "Passed":  true
+                   }
+               ],
+    "Failed":  3,
+    "WindowsExecuted":  false,
+    "ADExecuted":  false
+}

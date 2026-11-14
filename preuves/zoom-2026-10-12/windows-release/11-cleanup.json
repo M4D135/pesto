@@ -1,0 +1,9 @@
+﻿{
+    "Result":  "PASS",
+    "LayoutRestored":  true,
+    "StoppedPesto":  true,
+    "RemovedOwnTasks":  [
+                            "PestoPilote-42125a75"
+                        ],
+    "OtherTasksUntouched":  true
+}

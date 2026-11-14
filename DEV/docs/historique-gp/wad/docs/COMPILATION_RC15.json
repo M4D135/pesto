@@ -1,0 +1,15 @@
+{
+  "version": "17.0-RC15",
+  "host": "Linux",
+  "nativeWindowsExecuted": false,
+  "exeBytes": 99840,
+  "exeSha256": "c745e8131e4a4134e179215892660178f2d53ba87c253fed711142e787bd14a9",
+  "twoIndependentBuildsIdentical": true,
+  "argumentChecks": 9,
+  "argumentRoundTrips": 2000,
+  "cTestExitCode": 0,
+  "cTestOutput": "9 explicit launcher checks and 2000 independent argument round-trips passed (Linux C only).",
+  "portableChecks": 279,
+  "portableFailures": 0,
+  "windowsTestsProvidedNotExecuted": true
+}

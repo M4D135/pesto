@@ -1,0 +1,42 @@
+2026-10-27T10:52:49.4126239Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20261021.278/images/windows/Windows2025-VS2026-Readme.md
+2026-10-27T10:55:17.6753108Z   if ($baseline.sourceCommit -ne $env:UPDATE_BASELINE_COMMIT) { throw 'Baseline manifest source mismatch' }
+2026-10-27T10:55:17.6755375Z   [ordered]@{ sourceCommit=$env:UPDATE_BASELINE_COMMIT; build='rebuilt-from-pinned-source-in-this-run'; channel=$channel; executableSha256=$oldExe; candidateExecutableSha256=$newExe } |
+2026-10-27T10:56:15.8632630Z   if ($process.ExitCode -ne 0) { throw "Native configuration failed for $channel (exit $($process.ExitCode))" }
+2026-10-27T10:59:16.4355727Z {"schemaVersion":1,"kind":"pesto.qualification-entrypoint-syntax","powershellMajor":5,"powershellMinor":1,"fileSha256":"84daf8aae5e6943221b5ce95d860a39731e228f4c1688fae33176c69834c5634","errorCount":0,"success":true}
+2026-10-27T10:59:17.3110644Z 18/18 scripts compilés analysés par Windows PowerShell 5.1 ; aucune exécution de script métier, aucune qualification AD.
+2026-10-27T10:59:17.8704701Z {"success":true,"checks":2,"powershell":"5.1","unicodeRoundTrip":true,"substitutedBodyRejected":true,"businessScriptsExecuted":false,"adExecuted":false}
+2026-10-27T11:00:17.2796939Z 615 réussis, 0 en échec, 615 au total.
+2026-10-27T11:00:17.4859118Z 15 réussis, 0 en échec, 15 au total.
+2026-10-27T11:00:25.8001391Z   "checks": 30,
+2026-10-27T11:00:32.0069747Z 22/22 history guards passed; original pending status retained.
+2026-10-27T11:00:32.0070440Z 28/28 restore guards and 20/20 raw V1 barrier checks passed; no native command executed.
+2026-10-27T11:01:04.8289287Z PACK CHECK OK : 46/46 contrôles ; aucune exécution Windows.
+2026-10-27T11:01:12.8867639Z Downloading Chrome for Testing 151.0.7922.34 (playwright chromium v1234) from https://cdn.playwright.dev/builds/cft/151.0.7922.34/win64/chrome-win64.zip
+2026-10-27T11:01:18.4031691Z Chrome for Testing 151.0.7922.34 (playwright chromium v1234) downloaded to C:\Users\runneradmin\AppData\Local\ms-playwright\chromium-1234
+2026-10-27T11:02:09.7405645Z 35/35 contrôles maintenance Chromium réussis ; 0 échec(s).
+2026-10-27T11:02:41.7804491Z 41/41 contrôles opérateur réussis ; backend mémoire déclaré, aucune opération AD/SMB/Windows.
+2026-10-27T11:03:39.4538093Z 48/48 contrôles métier navigateur réussis (fixtures explicites, sans Windows/AD).
+2026-10-27T11:04:08.5964346Z   "checks": 53,
+2026-10-27T11:04:16.9533716Z POLICY UI OK: 17/17 contrôles ; backend de fixture uniquement.
+2026-10-27T11:04:34.1280030Z 23/23 contrôles de reprise UI réussis (fixture navigateur, aucune preuve AD).
+2026-10-27T11:04:45.0626668Z 32/32 contrôles DOM réussis (simulation Chromium, sans qualification native/AD).
+2026-10-27T11:04:49.2143817Z 8/8 checks passed
+2026-10-27T11:05:02.7383951Z 9/9 contrôles DOM démo réussis (Chromium, sans qualification native Windows).
+2026-10-27T11:05:07.7224188Z {"success":true,"checks":28,"adExecuted":false,"nativeUac":false}
+2026-10-27T11:05:08.6379741Z   ok   accueil : chaque carte KPI occupe 3/12 colonnes (4 cartes = ligne pleine)
+2026-10-27T11:05:08.6484558Z 149/149 contrôles réussis.
+2026-10-27T11:05:08.7051617Z 21/21 contrôles de cycle du pont réussis, horloge et canal explicitement factices.
+2026-10-27T11:05:08.8284022Z 11/11 contrôles de démonstration réussis (JavaScript, sans qualification Windows).
+2026-10-27T11:05:08.9014840Z 21/21 contrôles AZERTY réussis.
+2026-10-27T11:05:08.9612692Z 44/44 contrôles watcher réussis.
+2026-10-27T11:05:09.0116451Z Watcher stop verdict: malformed evidence, wrong PID, presence, contradiction and verified disappearance passed.
+2026-10-27T11:13:30.7877096Z   $records += [ordered]@{ channel=$channel; sourceCommit=$env:GITHUB_SHA; archiveSha256=(Get-FileHash $archive -Algorithm SHA256).Hash.ToLowerInvariant(); executableSha256=(Get-FileHash "out/$channel/Pesto.exe" -Algorithm SHA256).Hash.ToLowerInvariant(); distribution='candidate'; adQualified=$false; nativeStartupDemoQualified=$true; nativeDemoCoexistenceQualified=$true; nativeConfigurationQualified=$true; nativeConfigurationUiQualified=$true; nativeUpdatePreparationUiQualified=$true; nativeUpdateInstallUiQualified=$false; nativeUpdateQualified=$true; distinctUpdateBuilds=$true; updateBaselineSourceCommit=$env:UPDATE_BASELINE_COMMIT }
+2026-10-27T11:13:34.9655038Z SHA256 digest of uploaded artifact zip is e4b250b6ebf8276e8955da7f11d3a23f4896a2459f0f49dcd8ace51c7d50cadb
+2026-10-27T11:13:35.4266697Z Artifact Pesto-V2-Windows-evidence-3a8c49d85d5cc16dcab2d7c743be7fa445d05715.zip successfully finalized. Artifact ID 12729422738
+2026-10-27T11:13:35.4267921Z Artifact Pesto-V2-Windows-evidence-3a8c49d85d5cc16dcab2d7c743be7fa445d05715 has been successfully uploaded! Final size is 3520579 bytes. Artifact ID is 12729422738
+2026-10-27T11:13:39.6585708Z SHA256 digest of uploaded artifact zip is 33573f6262ade7726157eea2749db519aa3887f0c95d2d4267a58258588d7262
+2026-10-27T11:13:40.1241044Z Artifact Pesto-V2-PROD-candidate-3a8c49d85d5cc16dcab2d7c743be7fa445d05715.zip successfully finalized. Artifact ID 12730361970
+2026-10-27T11:13:40.1242395Z Artifact Pesto-V2-PROD-candidate-3a8c49d85d5cc16dcab2d7c743be7fa445d05715 has been successfully uploaded! Final size is 369903903 bytes. Artifact ID is 12730361970
+2026-10-27T11:13:44.3194555Z SHA256 digest of uploaded artifact zip is 7df8ae613abd6b4294cb5c5bf444e3db805c8c391a99b34586650ebebc2f926b
+2026-10-27T11:13:44.7666527Z Artifact Pesto-V2-DEV-candidate-3a8c49d85d5cc16dcab2d7c743be7fa445d05715.zip successfully finalized. Artifact ID 12729157837
+2026-10-27T11:13:44.7668163Z Artifact Pesto-V2-DEV-candidate-3a8c49d85d5cc16dcab2d7c743be7fa445d05715 has been successfully uploaded! Final size is 384586698 bytes. Artifact ID is 12729157837

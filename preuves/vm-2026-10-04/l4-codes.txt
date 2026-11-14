@@ -1,0 +1,11 @@
+Sortie de v-l4.ps1 (copies jetables sous C:\PC\L4, compte labadmin non élevé), recopiée de la console SSH.
+Premier passage (EXE intermédiaire, avant le correctif --quiet) :
+123 lance depuis la racine d un lecteur -> code 1   (boîte de message affichée malgré --quiet)
+Passage final (EXE 8fd5bd8c…, commit abd6c2e) :
+0 --check-json neuf -> code 0
+120 argument inconnu (--unknown --check --quiet) -> code 120
+126 verrou de mise a jour present -> code 126
+124 ou 125 composant Pesto-Join.xaml absent -> code 124
+125 empreinte refusee -> code 125
+123 lance depuis la racine d un lecteur -> code 123
+Seconde instance (l4-128.txt, l4-128.png) -> code 128

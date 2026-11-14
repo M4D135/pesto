@@ -1,0 +1,20 @@
+[
+  {
+    "etat": "avant-borne",
+    "date_cockpit": "2026-10-04T18:29:17.012955+02:00",
+    "commande": "powershell -NoProfile -ExecutionPolicy Bypass -File C:\\PestoTest-run\\test-lancer-retard.ps1 -Lanceur C:\\PestoTest-run\\lancer-avant-borne.ps1",
+    "code_test": 1,
+    "stdout": "tache PestoPilote-21bba9d3 etat=Ready resultat=0\r\nDOUBLE : definition retiree\r\nCode observe=0 ; attendu=1 (resultat 0 revenu trop tard)\r\n",
+    "stderr": "",
+    "nature": "Windows PowerShell 5.1, cmdlets Planificateur remplacees par doubles"
+  },
+  {
+    "etat": "apres-borne",
+    "date_cockpit": "2026-10-04T18:29:19.710563+02:00",
+    "commande": "powershell -NoProfile -ExecutionPolicy Bypass -File C:\\PestoTest-run\\test-lancer-retard.ps1 -Lanceur C:\\PestoTest-run\\lancer.ps1",
+    "code_test": 0,
+    "stdout": "DOUBLE : definition retiree\r\nCode observe=1 ; attendu=1 (resultat 0 revenu trop tard)\r\n",
+    "stderr": "C:\\PestoTest-run\\lancer.ps1 : Echec du pilote : PestoPilote-a148ef26 : Delai depasse : PestoPilote-a148ef26 etat=Ready \r\nresultat=0 ; definition retiree.\r\nAt C:\\PestoTest-run\\test-lancer-retard.ps1:19 char:1\r\n+ & $Lanceur -Exe cmd.exe -Attendre -Delai 1\r\n+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\r\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,lancer.ps1\r\n \r\n",
+    "nature": "Windows PowerShell 5.1, cmdlets Planificateur remplacees par doubles"
+  }
+]

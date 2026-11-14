@@ -1,0 +1,17 @@
+PESTO | Compte rendu d'intervention
+Version : 1.0
+Résultat connu : ✓ Windows / AD vérifié
+Code : 20
+Référence : password=********
+Poste : PC-OLD
+Nom prévu : PC-NEW
+Domaine : example.test
+OU : Non défini → Non défini
+Contrôleur : Inconnu
+Vérificateur : Non vérifié — suivi facultatif
+Début : 16/10/2026 02:00
+Fin : 16/10/2026 02:00
+Entra : Non demandé | Renommage : Confirmé | Déplacement : Non demandé | Protection : Inchangée
+16/10/2026 02:00:00 | Détails dans le reçu | État technique à consulter
+Vérifier l'étape intervention et le résultat observé. Code natif : 20. Aucune réparation automatique.
+Une réponse tardive ou un délai dépassé ne prouve pas l'annulation de Windows.

@@ -1,0 +1,117 @@
+﻿{
+    "Date":  "2026-10-04T21:25:26.3952460+02:00",
+    "StoppedPID":  9104,
+    "FaultInjection":  "Pause apres ecriture Move Requested, protection deja levee, avant appel Move-ADObject; Stop-Process exact",
+    "Receipt":  {
+                    "Schema":  2,
+                    "Version":  "1.0",
+                    "OperationId":  "6aef1544c4ef4235b251cb0d36ac88b2",
+                    "Plan":  {
+                                 "Nom_du_PC":  "V999004AAQA1997",
+                                 "Nouveau_Nom":  "V999004AAQA1997",
+                                 "OU_Actuelle":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                 "OU_Destination":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                 "Objet_GUID":  "8b54de3a-a68c-4662-a8d4-742d29bc5dff",
+                                 "Domain":  "labo.local",
+                                 "DC":  "dc01.labo.local",
+                                 "ConfigStamp":  "4928F1F81841BD7B338D178B1349BFCFDFCFE9CDB7D003D36DAABDC26C53233E",
+                                 "TargetOUGuid":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35",
+                                 "Renommer":  false,
+                                 "Deplacer":  true,
+                                 "Reboot":  false
+                             },
+                    "StartedUtc":  "2026-10-04T19:24:55.5619447Z",
+                    "UpdatedUtc":  "2026-10-04T19:24:55.9790995Z",
+                    "Phase":  "Running",
+                    "InitialProtection":  true,
+                    "TargetMachineId":  "",
+                    "TargetOUGuid":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35",
+                    "Entra":  "NotRequested",
+                    "Protection":  "Lowering",
+                    "Rename":  "NotRequested",
+                    "Move":  "Requested",
+                    "ResultCode":  0,
+                    "ResultMessage":  "Plan enregistré avant commande.",
+                    "LastObservation":  null,
+                    "LastStage":  "Move: Requested",
+                    "VerifiedUtc":  "",
+                    "VerifiedBy":  "",
+                    "ResumeFrom":  "",
+                    "PlanFingerprint":  "2a8d16d0e20783c7495d6b7f32390a8d05ccbaea068aeac220898354548f2e23",
+                    "Coordination":  {
+                                         "Enabled":  false,
+                                         "Keys":  [
+
+                                                  ],
+                                         "Owner":  "6aef1544c4ef4235b251cb0d36ac88b2"
+                                     },
+                    "Baseline":  {
+                                     "Schema":  1,
+                                     "CapturedUtc":  "2026-10-04T19:24:55.7903923Z",
+                                     "ADUtc":  "2026-10-04T19:24:55.7903923Z",
+                                     "WindowsUtc":  "",
+                                     "HealthUtc":  "",
+                                     "AD":  {
+                                                "Name":  "V999004AAQA1997",
+                                                "Guid":  "8b54de3a-a68c-4662-a8d4-742d29bc5dff",
+                                                "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                                "Protected":  true
+                                            },
+                                     "Windows":  null,
+                                     "Health":  null
+                                 },
+                    "Sequence":  5,
+                    "Timeline":  [
+                                     {
+                                         "Sequence":  1,
+                                         "Utc":  "2026-10-04T19:24:55.7903923Z",
+                                         "Stage":  "Observation",
+                                         "State":  "Initial"
+                                     },
+                                     {
+                                         "Sequence":  2,
+                                         "Utc":  "2026-10-04T19:24:55.8433760Z",
+                                         "Stage":  "InitialProtection",
+                                         "State":  "True"
+                                     },
+                                     {
+                                         "Sequence":  3,
+                                         "Utc":  "2026-10-04T19:24:55.8685894Z",
+                                         "Stage":  "TargetOUGuid",
+                                         "State":  "75e2833e-ede5-4d1c-8e36-fd1c17778b35"
+                                     },
+                                     {
+                                         "Sequence":  4,
+                                         "Utc":  "2026-10-04T19:24:55.8938169Z",
+                                         "Stage":  "Protection",
+                                         "State":  "Lowering"
+                                     },
+                                     {
+                                         "Sequence":  5,
+                                         "Utc":  "2026-10-04T19:24:55.9790995Z",
+                                         "Stage":  "Move",
+                                         "State":  "Requested"
+                                     }
+                                 ]
+                },
+    "AD":  {
+               "Name":  "V999004AAQA1997",
+               "ObjectGUID":  "8b54de3a-a68c-4662-a8d4-742d29bc5dff",
+               "DistinguishedName":  "CN=V999004AAQA1997,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+               "ProtectedFromAccidentalDeletion":  false
+           },
+    "Replay":  {
+                   "Action":  {
+                                  "Schema":  2,
+                                  "ExitCode":  96,
+                                  "ExitMsg":  "Intervention précédente à vérifier sur cette cible : 6aef1544c4ef4235b251cb0d36ac88b2. Ouvrez Interventions. Aucune nouvelle commande lancée.",
+                                  "Outcome":  "NotStarted"
+                              },
+                   "Reboot":  null,
+                   "Logs":  [
+
+                            ]
+               },
+    "ReceiptHashBeforeReplay":  "1EF6CAE4006AA8C84BE26D19D51A3930A1C2E037F5DE8AACBE29B5D5B5962A65",
+    "ReceiptHashAfterReplay":  "1EF6CAE4006AA8C84BE26D19D51A3930A1C2E037F5DE8AACBE29B5D5B5962A65"
+}

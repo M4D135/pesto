@@ -1,0 +1,187 @@
+﻿{
+    "Version":  "17.0-RC3",
+    "Utc":  "2026-10-12T23:11:17.9725705Z",
+    "PowerShell":  "5.1.26100.6584",
+    "SourcePath":  "C:\\PestoAudit20261013\\ui\\wad\\Pesto-Core.ps1",
+    "SourceSHA256":  "D631C5C0F9769AD31E5EED38A9DB6E202B0F9C0481EC9B8F4DECE3D164C61FC1",
+    "Scope":  "Windows PowerShell 5.1, portee de script enfant, vrais runspaces/DispatcherTimer et TreeViewItem WPF ; workers et effets AD/configuration simules. Pas de lancement complet de Pesto.",
+    "Total":  29,
+    "Passed":  24,
+    "Failed":  5,
+    "Results":  [
+                    {
+                        "Name":  "Parseur natif du moteur complet",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  5
+                    },
+                    {
+                        "Name":  "La fixture ne rend pas les fonctions Pesto globales",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  48
+                    },
+                    {
+                        "Name":  "Reproduction du login : timer WPF vers fonction privee du script enfant",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  308
+                    },
+                    {
+                        "Name":  "Erreur worker relayee au callback, sans sortir du Dispatcher",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  169
+                    },
+                    {
+                        "Name":  "Erreur non terminante worker ne devient pas un succes",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  147
+                    },
+                    {
+                        "Name":  "Resultat vide conserve sous forme null",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  157
+                    },
+                    {
+                        "Name":  "Tableau resultat garde entier dans le premier argument",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  202
+                    },
+                    {
+                        "Name":  "Contexte erreur conserve par reference",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  145
+                    },
+                    {
+                        "Name":  "Absence de callbacks autorisee",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  184
+                    },
+                    {
+                        "Name":  "Callback invalide signale sans exception fatale",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  32
+                    },
+                    {
+                        "Name":  "Exception du callback contenue et journalisee",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  183
+                    },
+                    {
+                        "Name":  "Erreur du callback de file conserve le verrou de securite",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  165
+                    },
+                    {
+                        "Name":  "Annulation non bloquante sans succes tardif",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  133
+                    },
+                    {
+                        "Name":  "Remplacement : ancien worker ne supprime pas le nouveau",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  314
+                    },
+                    {
+                        "Name":  "Doublon sans Replace refuse sans perdre le premier worker",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  245
+                    },
+                    {
+                        "Name":  "Timeout notifie une seule fois puis nettoie le worker",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  1176
+                    },
+                    {
+                        "Name":  "Quatre workers concurrents gardent leur propre contexte",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  336
+                    },
+                    {
+                        "Name":  "Reentrance du timer pendant le callback de timeout neutralisee",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  1181
+                    },
+                    {
+                        "Name":  "Defaut du polling notifie sans remonter a PushFrame",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  268
+                    },
+                    {
+                        "Name":  "Lecture poste : nom et generation restent disponibles au retour",
+                        "Passed":  false,
+                        "Error":  "The term \u0027Assert-PestoPlainPath\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.",
+                        "Ms":  51
+                    },
+                    {
+                        "Name":  "Lecture poste en erreur : rappel prive retrouve",
+                        "Passed":  false,
+                        "Error":  "The term \u0027Assert-PestoPlainPath\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.",
+                        "Ms":  30
+                    },
+                    {
+                        "Name":  "Actualisation AD : LockMain transmis sans closure privee",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  177
+                    },
+                    {
+                        "Name":  "Actualisation AD en erreur : echec et verrou UI transmis",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  170
+                    },
+                    {
+                        "Name":  "Navigateur OU : deux enfants, controle WPF reel",
+                        "Passed":  false,
+                        "Error":  "The term \u0027Assert-PestoPlainPath\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.",
+                        "Ms":  62
+                    },
+                    {
+                        "Name":  "Navigateur OU vide : une indication, pas une OU sans nom",
+                        "Passed":  false,
+                        "Error":  "The term \u0027Assert-PestoPlainPath\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.",
+                        "Ms":  23
+                    },
+                    {
+                        "Name":  "Navigateur OU en erreur : Write-Log retrouve la portee Pesto",
+                        "Passed":  false,
+                        "Error":  "The term \u0027Assert-PestoPlainPath\u0027 is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.",
+                        "Ms":  27
+                    },
+                    {
+                        "Name":  "Validation config : fonctions du script retrouvees, ecriture mockee",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  84
+                    },
+                    {
+                        "Name":  "Validation config refusee : aucune sauvegarde",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  12
+                    },
+                    {
+                        "Name":  "JSON invalide : erreur inline et aucune sauvegarde",
+                        "Passed":  true,
+                        "Error":  "",
+                        "Ms":  17
+                    }
+                ]
+}

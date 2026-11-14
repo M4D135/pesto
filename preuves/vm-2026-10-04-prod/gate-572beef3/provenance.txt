@@ -1,0 +1,1 @@
+﻿Rapports RC21/22/23 et noms réutilisés : sources de ces parcours inchangées. Nouveau correctif XAML : navigation avec retour à la ligne. RC23 rejoué ; autres sources métier inchangées.

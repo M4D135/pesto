@@ -1,0 +1,164 @@
+{
+  "version": "17.0-RC13",
+  "utc": "2026-09-30T12:22:34.149338+00:00",
+  "source_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "scope": "Source and XML only; not a native PowerShell parse or Windows/WPF/AD run.",
+  "passed": 33,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Login XAML exists",
+      "passed": true
+    },
+    {
+      "name": "No maximize or resize in login XAML",
+      "passed": true
+    },
+    {
+      "name": "Compact width and content-sized height",
+      "passed": true
+    },
+    {
+      "name": "Native title bar, no custom drag imitation",
+      "passed": true
+    },
+    {
+      "name": "Runtime bounds use work area in WPF units",
+      "passed": true
+    },
+    {
+      "name": "Runtime bounds applied before ShowDialog",
+      "passed": true
+    },
+    {
+      "name": "Maximized-state guard present",
+      "passed": true
+    },
+    {
+      "name": "Short RBP header, not tall marketing banner",
+      "passed": true
+    },
+    {
+      "name": "Feedback collapsed at rest without reserved blank area",
+      "passed": true
+    },
+    {
+      "name": "Name/password native and extensible",
+      "passed": true
+    },
+    {
+      "name": "No password literal in XAML",
+      "passed": true
+    },
+    {
+      "name": "Help on every interactive control including disabled controls",
+      "passed": true
+    },
+    {
+      "name": "Distinct keyboard tab order",
+      "passed": true
+    },
+    {
+      "name": "Enter connects; Escape cancels",
+      "passed": true
+    },
+    {
+      "name": "Remember username is opt-in",
+      "passed": true
+    },
+    {
+      "name": "Username preference tied to config/profile and domain",
+      "passed": true
+    },
+    {
+      "name": "Boolean opt-in and bounded username validated",
+      "passed": true
+    },
+    {
+      "name": "Stored JSON is username-only allowlist",
+      "passed": true
+    },
+    {
+      "name": "No credential parameter in preference writer",
+      "passed": true
+    },
+    {
+      "name": "Preference write atomic, no backup retained",
+      "passed": true
+    },
+    {
+      "name": "Preference read bounded and symlinks rejected",
+      "passed": true
+    },
+    {
+      "name": "Uncheck wired to immediate forgetting",
+      "passed": true
+    },
+    {
+      "name": "Remember only after explicit successful AD authentication",
+      "passed": true
+    },
+    {
+      "name": "Password cleared on login window closing",
+      "passed": true
+    },
+    {
+      "name": "Preference checkbox locked during authentication",
+      "passed": true
+    },
+    {
+      "name": "Username errors use visible feedback",
+      "passed": true
+    },
+    {
+      "name": "Theme shared; no duplicate input templates",
+      "passed": true
+    },
+    {
+      "name": "Windows session limitation remains in tooltip",
+      "passed": true
+    },
+    {
+      "name": "RC11 functions preserved outside declared login and RC13 authentication changes",
+      "passed": true
+    },
+    {
+      "name": "Only declared login and RC13 authentication helpers added",
+      "passed": true
+    },
+    {
+      "name": "Conservative lexical delimiters: Run-LoginPreferencesTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Conservative lexical delimiters: Run-LoginTests.ps1",
+      "passed": true
+    },
+    {
+      "name": "Uploaded config unchanged byte-for-byte",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Login maximize enabled",
+      "detected": true
+    },
+    {
+      "name": "Large fixed-height login returns",
+      "detected": true
+    },
+    {
+      "name": "Password field added to preference serialization",
+      "detected": true
+    },
+    {
+      "name": "Opt-in enabled by default",
+      "detected": true
+    },
+    {
+      "name": "Business engine unexpectedly changed",
+      "detected": true
+    }
+  ]
+}

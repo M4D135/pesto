@@ -1,0 +1,7 @@
+#JnType = Portable
+#JnOrg = Département 111301
+#JnSite = Lyon
+#JnService = 765 (saisie)
+capture C:\PestoRecette20261012\preuves\65-jonction-preparation-hd.png 1920x1160
+clic : #JnCheck (Vérifier sans ajouter)
+capture C:\PestoRecette20261012\preuves\65-jonction-verification-hd.png 1920x1160

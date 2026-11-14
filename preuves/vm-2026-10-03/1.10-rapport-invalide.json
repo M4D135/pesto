@@ -1,0 +1,11 @@
+{
+    "Schema":  1,
+    "Product":  "Pesto",
+    "Version":  "1.0",
+    "ValidDraft":  false,
+    "Authorized":  false,
+    "Error":  "INVALID_DRAFT",
+    "AD":  "NOT_CONTACTED",
+    "UAC":  "NOT_REQUESTED",
+    "Configuration":  "NOT_VALIDATED"
+}

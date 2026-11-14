@@ -1,0 +1,349 @@
+﻿{
+    "Suite":  "Pesto interface (fenêtre principale isolée)",
+    "Utc":  "2026-10-12T23:08:30.6976724Z",
+    "SourceHash":  "D631C5C0F9769AD31E5EED38A9DB6E202B0F9C0481EC9B8F4DECE3D164C61FC1",
+    "ShellHash":  "38F1D54020909D6413EA71943020FF79E94B0DB6DE9685C73E75BE850575BD9C",
+    "EngineFiles":  [
+                        "Pesto-Core.ps1",
+                        "Pesto-Integrity.ps1",
+                        "Pesto-Common.ps1",
+                        "Pesto-Contracts.ps1",
+                        "Pesto-JoinRecovery.ps1",
+                        "Pesto-UXFlow.ps1",
+                        "Pesto-Policy.ps1",
+                        "Pesto-Appearance.ps1",
+                        "Pesto-Configuration.ps1",
+                        "Pesto-Authentication.ps1",
+                        "Pesto-Directory.ps1",
+                        "Pesto-Async.ps1",
+                        "Pesto-Journal.ps1",
+                        "Pesto-Operations.ps1",
+                        "Pesto-Safety.ps1",
+                        "Pesto-Interventions.ps1",
+                        "Pesto-Preparation.ps1",
+                        "Pesto-Names.ps1",
+                        "Pesto-Workspace.ps1",
+                        "Pesto-Review.ps1",
+                        "Pesto-Tables.ps1",
+                        "Pesto-Recovery.ps1",
+                        "Pesto-Join.ps1",
+                        "Pesto-Inspection.ps1",
+                        "Pesto-Direct.ps1",
+                        "Pesto-SuiteUI.ps1",
+                        "Pesto-Support.ps1",
+                        "Invoke-PestoAutoJoin.ps1",
+                        "Pesto-Automation.ps1",
+                        "Pesto-Startup.ps1"
+                    ],
+    "Total":  50,
+    "Passed":  48,
+    "Failed":  0,
+    "Skipped":  2,
+    "NotTested":  [
+                      "Mise en page réelle à 1460 x 940",
+                      "Retour à la disposition large sans recréer le formulaire"
+                  ],
+    "Tests":  [
+                  {
+                      "Name":  "Parseur PowerShell natif du moteur et de ses composants",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Chargement réel de la fenêtre XAML et de ses ressources",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Table des libellés UX chargée depuis l\u0027AST du moteur",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Les contrôles publics du Shell sont uniques et résolus par FindName",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Palettes Light et Dark lues dans $script:Themes sans exécuter le moteur",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "PR vers VA : aperçu renommer puis déplacer",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Même site : conserver l\u0027OU actuelle malgré une autre OU proposée",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Même site, changement de service : aucun déplacement",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Déplacement seul : nom source conservé",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Redémarrage non demandé par défaut",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Redémarrage explicite correctement présenté",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Hors domaine : aperçu de jonction locale",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Verrou de sécurité expliqué sans être effacé",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Nom occupé expliqué",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Lecture source en cours explique l\u0027attente",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Étape 4 réservée au traitement effectivement en cours",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Contrôle AD reste en étape 3 sans annoncer une mutation",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Aides des commandes désactivées activées dans WPF",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Tous les contrôles interactifs publics possèdent une aide",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Colonnes simples : exactement six colonnes visibles",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Colonnes techniques réversibles et liaisons conservées",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Thème clair appliqué par le véritable Set-Theme",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Thème sombre appliqué aux mêmes ressources",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Initialisation des événements sans closure privée",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Fenêtre affichée hors écran : mise en page réellement rendue",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Mise en page réelle à 1460 x 940",
+                      "Passed":  true,
+                      "Skipped":  true,
+                      "Error":  "Non testé sur ce viewport : 1044 px rendus pour un écran de 1024 px, la disposition large en exige 1244."
+                  },
+                  {
+                      "Name":  "Mise en page compacte à 1100 : aperçu sous le formulaire",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retour à la disposition large sans recréer le formulaire",
+                      "Passed":  true,
+                      "Skipped":  true,
+                      "Error":  "Non testé sur ce viewport : 1044 px rendus pour un écran de 1024 px, la disposition large en exige 1244."
+                  },
+                  {
+                      "Name":  "ComboBox non éditable : menu contractuel présent",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "ComboBox éditable : vrai champ de saisie conservé",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Navigation par vrais événements WPF",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "UIA : aucun pair créé lorsque personne ne consulte l\u0027accessibilité",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "UIA : les changements de page exposent le contenu courant en conservant les pairs",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "UIA : dix demandes avant le rendu produisent une seule actualisation différée",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "UIA : changer les sous-onglets ne reconstruit pas les enfants de MainTabs",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "X5 contraste élevé : anneaux du menu actif, de l\u0027onglet actif et de l\u0027élément survolé, transparents en clair et sombre",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Bouton Aide : panneau basculé et mémorisé, page conservée",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Historique vide clairement expliqué",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Historique d\u0027un autre domaine refusé",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "La recherche invalide immédiatement l\u0027ancien plan",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Saisies rapides : aucune lecture du poste sans demande explicite",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Lecture différée au même contexte : une seule lecture",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Demande temporisée abandonnée après changement de ligne éditée",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Demande temporisée abandonnée après changement local/distant",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Bouton de lecture : une lecture, sans préparer ni lancer de ligne",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Touche Entrée : lecture du poste seulement",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Verrou de sécurité : aucune lecture du poste",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Fermeture arrête les deux timers UI",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Aucune mutation ni lecture AD pendant les tests UI",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Aucune exception masquée par le rafraîchissement d\u0027aperçu",
+                      "Passed":  true,
+                      "Skipped":  false,
+                      "Error":  ""
+                  }
+              ],
+    "Scope":  "Fenêtre WPF isolée (Pesto-Shell.xaml), mise en page hors écran, palettes de $script:Themes, événements, aides, fonctions extraites du moteur et de ses composants. Aucun login, accès AD, mutation ni validation visuelle manuelle."
+}

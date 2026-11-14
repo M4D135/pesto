@@ -1,0 +1,46 @@
+{
+  "Schema": 1,
+  "Version": "0.1.0",
+  "Repository": "https://github.com/M4D135/m4d-admin-common",
+  "SourceSHA256": "4885554a273623fd58f5e1a5881fe1ade57ef434729e8dcb5d01f3b743fd0987",
+  "TargetFramework": "net472",
+  "LanguageVersion": "CSharp5",
+  "Builder": {
+    "PowerShell": "7.4.20",
+    "Roslyn": "4.9.0.0",
+    "CompilerSHA256": "84db9210dd34459db6e7b1d00130d5ada5bc1bbc4e40d425afa9cbc70ffd5865",
+    "ReferencePackage": "Microsoft.NETFramework.ReferenceAssemblies.net472/1.0.3"
+  },
+  "Files": [
+    {
+      "Name": "M4D.Admin.Common.Core.dll",
+      "SHA256": "d3a112e2c0a31903a07a6a07ba41c76dbda1418f9ed4bd4d423ef9c3ae3849b6",
+      "Bytes": 4608
+    },
+    {
+      "Name": "M4D.Admin.Common.Query.dll",
+      "SHA256": "15b29a0bbd5c2b57868e191450be752987bbc61326ff492ac81cdbbd87eefea5",
+      "Bytes": 17408
+    },
+    {
+      "Name": "M4D.Admin.Common.IO.dll",
+      "SHA256": "54e387b55597a3361c26cf36f68d49e067050ba1d655227d4ef534790b92e4ae",
+      "Bytes": 8704
+    },
+    {
+      "Name": "M4D.Admin.Common.Tests.Core.dll",
+      "SHA256": "5e6d4a5be84b529df252a8ec036c169def7337eaaf78722299b324a029f2b761",
+      "Bytes": 7680
+    },
+    {
+      "Name": "M4D.Admin.Common.Tests.Query.dll",
+      "SHA256": "d1a5dab9ac37b8052873a7f06451ad946fe370c1fd0e352deeac9a31545bdf2c",
+      "Bytes": 12800
+    },
+    {
+      "Name": "M4D.Admin.Common.Tests.IO.dll",
+      "SHA256": "650749af30f029bd3718367559545f1922cecac3dca2e650db6fff8b13d1bb00",
+      "Bytes": 8704
+    }
+  ]
+}

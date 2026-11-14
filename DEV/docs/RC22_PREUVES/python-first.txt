@@ -1,0 +1,14 @@
+................................................F....................
+======================================================================
+FAIL: test_current_version_file_drives_native_build (test_rc21.RC21.test_current_version_file_drives_native_build)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/data/pesto_rc22_work/DEV/tests/test_rc21.py", line 159, in test_current_version_file_drives_native_build
+    self.assertEqual(version['revision'],21)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 22 != 21
+
+----------------------------------------------------------------------
+Ran 69 tests in 4.877s
+
+FAILED (failures=1)

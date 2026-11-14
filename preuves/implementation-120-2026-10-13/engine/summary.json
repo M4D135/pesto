@@ -1,0 +1,250 @@
+{
+  "Schema": 1,
+  "Utc": "2026-10-13T18:33:17.851426+00:00",
+  "Scope": "Engine points 39-48,55-72,120; supporting metadata/reference/policy contracts",
+  "ImplementedIds": [
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    57,
+    62,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71
+  ],
+  "EvaluatedIds": [
+    55,
+    56,
+    58,
+    59,
+    60,
+    61,
+    63,
+    64,
+    72,
+    120
+  ],
+  "Counts": {
+    "Passed": 425,
+    "Failed": 0,
+    "SkippedWithinCompletedSuites": 0,
+    "Suites": 10
+  },
+  "Platform": "macOS PowerShell 7.4.20 / .NET 8.0.31",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "VMAccess": false,
+  "WPFExecuted": false,
+  "GeneratedModuleUsedByEngine120": "6129deb727fefc705a3310c175d9e97608ea0457a8ecbe55dd9a479bcd3aab9f",
+  "Reports": [
+    {
+      "Suite": "Engine120",
+      "Path": "preuves/implementation-120-2026-10-13/engine/Engine120-final.json",
+      "SHA256": "9c6dfb7511c79f7464a3164ee0ac01594b706ae4eeb5d307aa933eb72c882d5f",
+      "Passed": 62,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "Engine",
+      "Path": "preuves/implementation-120-2026-10-13/engine/Engine-final.json",
+      "SHA256": "4823289484cd4194aad3d47678add8031f4f01432ce76d47f21e034cfdf376f3",
+      "Passed": 117,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "WorkerContract",
+      "Path": "preuves/implementation-120-2026-10-13/engine/WorkerContract-final.json",
+      "SHA256": "ba664f5ee4d23430a7ee8d69a8686f7e9bda826f638525cd3c904a68f557b669",
+      "Passed": 20,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "RandomNames",
+      "Path": "preuves/implementation-120-2026-10-13/engine/RandomNames-final.json",
+      "SHA256": "768fda7d99da93d9321e910b58a40f53d68dcb49bc9e3400a8edba31f8847fc4",
+      "Passed": 11,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "OptionalPostCheck",
+      "Path": "preuves/implementation-120-2026-10-13/engine/OptionalPostCheck-regression.json",
+      "SHA256": "980d1f0e9471ea1b832e167cdd0bcdff9be59e0e79ae3dd30e4baa48ecb64061",
+      "Passed": 83,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "Automation",
+      "Path": "preuves/implementation-120-2026-10-13/engine/Automation-regression.json",
+      "SHA256": "c05a83adb7bc6862746d6037f911bc51fcabb4eb05928050f8ef44f7adaf79b3",
+      "Passed": 34,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "JoinReservation",
+      "Path": "preuves/implementation-120-2026-10-13/engine/JoinReservation-regression.json",
+      "SHA256": "bdae3a29eca8c19100bed56e2654d5695db66998c456b97b27325d4890ec7456",
+      "Passed": 27,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "NamesLoading",
+      "Path": "preuves/implementation-120-2026-10-13/engine/NamesLoading-regression.json",
+      "SHA256": "8a727c55fb4396536c8e98c73ecc13502e8211dc2e338b5256f9e7a142a33604",
+      "Passed": 34,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "Reliability",
+      "Path": "preuves/implementation-120-2026-10-13/engine/Reliability-regression.json",
+      "SHA256": "192e35d325d5367ffeed7092170f27e9a4077e5380fa218162b0260b60113cca",
+      "Passed": 19,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    {
+      "Suite": "DirectoryCache",
+      "Path": "preuves/implementation-120-2026-10-13/engine/DirectoryCache-regression.log",
+      "SHA256": "452c2183b489ec9edee379d58e1b26cc825ad4dc20732c2c2eae99f8ccb0a111",
+      "Passed": 18,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  ],
+  "SourcesAtEngineFreeze": [
+    {
+      "Path": "DEV/wad/Pesto-Async.ps1",
+      "SHA256": "87f0453806da7484d3c69c619c48938b8db6d4f475495a81b8ff1fc91e17894c"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Contracts.ps1",
+      "SHA256": "f389b6471288290a5910a98cdede80ba33630ba077d041d5c6d9e32f2169ac4e"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Direct.ps1",
+      "SHA256": "1b57dd17770cab2b62b0abcacf38ec565b952380ce0a7b37a2bad95312c8b233"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Join.ps1",
+      "SHA256": "caa2e41629a2c46d08e9d8f252ff926e5bdc61de0589cfcf5d2ce3b09402ecb7"
+    },
+    {
+      "Path": "DEV/wad/Pesto-JoinRecovery.ps1",
+      "SHA256": "10a9e506cbcb697996068cf724bc4dc3ff31155c4e8ccfd5f0ad8ccb5fcaa229"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Journal.ps1",
+      "SHA256": "18c30b0e51858a1cbb9904ac6fc51472b5e6554870e3dcfcb475b20fbfda4fe5"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Operations.ps1",
+      "SHA256": "5d79b4dc6a4f086ca2849bba3f3f8b1c824cfba3f1628c4c95bd30ae87d98e45"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Policy.ps1",
+      "SHA256": "7dc7f7b06d3e7a0df92218923347b7a65518b26f44342301a227485cc60f6992"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Safety.ps1",
+      "SHA256": "f185482041cd9a43269f61856dd88b24e81abe5b1518cba1d27972726312bfd2"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Catalogue.ps1",
+      "SHA256": "cd6b256eae89490057aece872ed0a5574418f45845e2e545b2e39943ab198366"
+    },
+    {
+      "Path": "DEV/wad/Pesto-Diagnostics.ps1",
+      "SHA256": "edc81f59f660f3d2320f14c8f8319203097c23f4587533814f89ead9ac5f0eb8"
+    },
+    {
+      "Path": "DEV/wad/Pesto-EngineContracts.ps1",
+      "SHA256": "d7fe0514d47be10ef87fb3c1d57c7dd1f1b003ce1670935162dd56f86f2bc6b9"
+    },
+    {
+      "Path": "DEV/wad/Pesto.Engine.Runtime.ps1",
+      "SHA256": "6129deb727fefc705a3310c175d9e97608ea0457a8ecbe55dd9a479bcd3aab9f"
+    },
+    {
+      "Path": "DEV/wad/Pesto.Engine.psm1",
+      "SHA256": "01dab467d93eaf4af4d54f53f4145498d1b65c8a0adfad8b0ea2d4cf15c2256c"
+    },
+    {
+      "Path": "DEV/wad/Pesto.Engine.psd1",
+      "SHA256": "443a2b7f1524c5b9a7cc56fd234419421ecb64fa556b731fb47ad6f83eda5dc9"
+    },
+    {
+      "Path": "DEV/wad/Pesto.Engine.build.json",
+      "SHA256": "67f13d163f52887fe3b489942e20b1a192b9561172133327910d0aca24edd3aa"
+    },
+    {
+      "Path": "DEV/wad/Pesto.Engine.exports.json",
+      "SHA256": "e63f1eff482cffb17a434b66dd6dc7a96eea2645996309775624d243185b0802"
+    },
+    {
+      "Path": "DEV/tools/Build-PestoEngineModule.ps1",
+      "SHA256": "ffaf8f06ed55368b2ca2d37caa558100aecb21b46b2a3f4a83fac4561ce07d50"
+    },
+    {
+      "Path": "DEV/tests/Run-Engine120Tests.ps1",
+      "SHA256": "4cba81e05fc2efca7a9bea7031a0b3e066d9fdc2a7f76807e84b3443b58b717a"
+    },
+    {
+      "Path": "DEV/tests/Measure-Engine120.ps1",
+      "SHA256": "1eac0559b9110e4c7955357cf0cde768a25d864aefdcfa07f8d0e54175b8ef1e"
+    },
+    {
+      "Path": "DEV/tests/Run-EngineTests.ps1",
+      "SHA256": "49a609cf6536490b9433956061690b9dfcd00a275a5bc9dd3f63676b9298ab3f"
+    },
+    {
+      "Path": "DEV/tests/Run-RandomNamesTests.ps1",
+      "SHA256": "cabff2ee77ff6482a985f9b38b7a37af1bc0bfc42a8d4cfd51b83302f18e9583"
+    }
+  ],
+  "Benchmarks": [
+    {
+      "Path": "preuves/implementation-120-2026-10-13/engine/benchmark-first.json",
+      "SHA256": "e38721de2802f071d1203787aac8d511bf06f6b02515d12ba1933754ab067896"
+    },
+    {
+      "Path": "preuves/implementation-120-2026-10-13/engine/benchmark-second.json",
+      "SHA256": "4110919c29513c5926e917b8308d94cbab8fbc7b3d8bcddd9b82cc1cd75144b7"
+    }
+  ],
+  "Document": {
+    "Path": "DEV/docs/implementation/ENGINE_120.md",
+    "SHA256": "c76c0220bca256ac6c978de21cd685c32727bc6cd8198b8c5cfd1ef0d766ee6d"
+  },
+  "NotExecuted": [
+    {
+      "Suite": "Run-JoinTests.ps1",
+      "Reason": "Explicit Windows PowerShell5.1 requirement; local Mac invocation refused before tests"
+    }
+  ],
+  "Notes": [
+    "Earlier failed attempts retained; only last passing reports counted.",
+    "ManagedPolicy dependency lists added to Engine/RandomNames test fixtures; no real host GPO is read by those fixtures.",
+    "A counter in the first concurrent catalogue fixture was dynamically shadowed. Fixed fixture passes one shared read; cache-lock hypothesis rejected and no dedicated-lock change retained.",
+    "Native diagnostics need Windows-specific qualification; local parsers/doubles are not proof of DNS/AD/w32tm behavior.",
+    "Modern runtime and optimization prototypes do not change production platform, algorithm or mutation retry policy.",
+    "Generated artifacts must be regenerated by the release owner after integration changes."
+  ]
+}

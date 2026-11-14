@@ -1,0 +1,276 @@
+{
+  "Schema": 1,
+  "Section": "OfflineJoin109Observe",
+  "Point": 109,
+  "Utc": "2026-10-25T02:08:48Z",
+  "Platform": "Linux 6.17.0-1026-nvidia",
+  "PowerShell": "7.6.7",
+  "CLR": ".NET 10.0.13",
+  "HostExecutable": "/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh",
+  "BuildHash": "9a2b44979e4e093cb2448c021185b6ec4e3feceb",
+  "WindowsADExecuted": false,
+  "UIExecuted": false,
+  "VMExecuted": false,
+  "ProductRuntimeUsed": false,
+  "Limits": "Exécution locale sous PowerShell 7.6.7 (.NET 10.0.13), runtime non produit : le produit cible Windows PowerShell 5.1 x64 et .NET Framework 4.7.2. Aucun appel AD, registre, réseau, DPAPI, djoin, machine virtuelle, labo, Windows réel ni annuaire réel : la règle permanente de la session les interdit et la mention « les tests VM sont désormais autorisés » du catalogue ne l'emporte pas sur elle. Ce que la suite exécute vraiment : le moteur scellé wad/Pesto.Engine.Runtime.ps1 est chargé par dot-sourcing et Invoke-PestoExtensionCommand -Action OfflineObserve est réellement appelé, donc la politique, la garde de plateforme, le verrou du mutex, la lecture et la relecture de l'enregistrement, les trois contrôles croisés du reçu d'intervention, la décision d'état, le code de sortie et la clôture durable sont joués par le produit ; Write-PestoJoinReceipt, Write-PestoAtomicText, Read-PestoAutomationJson, Read-PestoOfflineRecord, Start-PestoIntervention, Write-PestoIntervention, Read-PestoIntervention et Complete-PestoIntervention sont les vraies fonctions, sur de vrais fichiers dans un sac temporaire. Ce qu'elle ne peut pas exécuter ici : Get-Acl et Set-Acl sont absents de ce runtime et les types DirectorySecurity, FileSystemAccessRule et SecurityIdentifier y lèvent PlatformNotSupportedException (sondage consigné), donc l'écriture ACL du reçu par Write-PestoJoinReceipt est doublée ; de même Import-PestoADModule, Get-DomainController, Get-ADComputer et Test-ComputerSecureChannel, dont la vraie implémentation exige l'annuaire. Un double qui imiterait ces quatre-là n'attesterait que de l'imitation : ils sont nommés comme doublés, pas présentés comme vérifiés.",
+  "GapClosed": {
+    "Id": "jambe-dobservation-du-blob-secret-jouee-par-aucune-suite-et-recouvrant-le-verdict-de-cloture",
+    "Observed": "Le point 109 est annoncé implémenté et validé, et son énoncé catalogue compte explicitement « observation du redemarrage, GUID, domaine et canal securise » parmi les garanties. Or aucune suite n'appelle Get-PestoOfflineObservation sur un reçu réconcilié. Run-ExtensionEffectsTests.ps1 remplace Write-PestoJoinReceipt par un double (ConvertTo-Json -Depth 14 là où le produit écrit -Depth 8, ligne 88) et son unique cas d'observation échoue pour un motif étranger à la garde jugée ; Run-OfflineJoin109EntryTests.ps1 remplace pareillement Write-PestoJoinReceipt (-Depth 12, ligne 105) et Invoke-PestoOfflineNative, et s'arrête avant l'observation. Le harnais de mutations du point d'entrée (trente-deux mutants) et celui du transport (vingt-deux) ne frappent aucune garde d'observation.",
+    "Impact": "C'est la jambe qui décide si un blob appliqué est clos : ses six conditions locales (poste joint, domaine, nom, identité de machine, renommage en attente, redémarrage réellement postérieur à la demande), ses trois comparaisons d'objet d'annuaire, sa décision à trois jambes et ses trois contrôles croisés du reçu d'intervention pouvaient être supprimés une par une sans que rien ne bronche. Le sondage consigné sous TautologyProbe le mesure : sur douze réécritures appliquées au moteur copié hors sac et rejouées contre les deux suites existantes, dix laissent les deux suites vertes, et vingt-deux des vingt-quatre rejets rendent la suite attaquée entièrement verte.",
+    "Fix": "Nouvelle suite Run-OfflineJoin109ObserveTests.ps1 : vingt et un cas qui jouent chaque condition une par une par le point d'entrée public Invoke-PestoExtensionCommand -Action OfflineObserve, le reçu étant écrit, relu et clôturé par les vraies fonctions durables. Nouveau harnais Run-OfflineJoin109ObserveMutationTests.ps1 : trente et une mutations de ces gardes sur copie hors sac du moteur, chacune devant faire échouer exactement le contrôle visé avec un code de sortie non nul, copie témoin passant. Le produit n'est pas modifié.",
+    "Proof": "OfflineJoin109Observe: 21 passed, 0 failed (sortie 0) et OfflineJoin109ObserveMutations : 127/127 PASS (sortie 0). Les trente et un mutants sont tués un par un, chacun sur le message du contrôle de la garde visée."
+  },
+  "Suite": {
+    "File": "DEV/tests/Run-OfflineJoin109ObserveTests.ps1",
+    "Command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109ObserveTests.ps1",
+    "Result": "OfflineJoin109Observe: 21 passed, 0 failed. Each offline join observation condition judged alone against the sealed engine; durable receipts real; AD/DPAPI/djoin/ACL transports mocked; no VM. (sortie 0)",
+    "PreviousCount": "0 cas : la jambe d'observation n'était jouée par aucune suite ; ses gardes n'étaient frappées par aucun mutant.",
+    "Method": "Chaque cas pose un contexte hors connexion cohérent (import du blob, intention durable, application) puis ne fait varier **qu'une seule** condition de l'observation, rejouée par Invoke-PestoExtensionCommand -Action OfflineObserve sur le moteur scellé chargé par dot-sourcing. Le reçu n'est pas un objet en mémoire : il est écrit, relu et clôturé par les vraies fonctions durables du produit (Write-PestoJoinReceipt, Write-PestoAtomicText, Read-PestoAutomationJson, Read-PestoOfflineRecord, Start-PestoIntervention, Write-PestoIntervention, Read-PestoIntervention, Complete-PestoIntervention), et l'état final est recontrôlé en relisant le fichier sur disque, pas la valeur rendue. Le sérialiseur du double de Write-PestoJoinReceipt reprend la profondeur lue dans la définition du produit (ConvertTo-Json -Depth 8, obtenue par expression régulière sur (Get-Command Write-PestoJoinReceipt).Definition) pour que la suite ne puisse pas se satisfaire d'une profondeur de confort. Les contrôles croisés du reçu sont joués en re-signant le plan (Get-PestoPlanFingerprint) : sinon c'est la garde d'empreinte de Read-PestoIntervention qui refuse, et elle masquerait la garde visée. Chaque cas incertain exige State=Uncertain, ExitCode=97, IdentityConfirmed et SecureChannel à faux, TargetReadOnly et ReplayAllowed à vrai, et zéro appel Get-ADComputer, Get-DomainController, Test-ComputerSecureChannel ou Import-PestoADModule — les compteurs des quatre doubles sont lus, donc une jambe d'annuaire jouée à tort est vue même quand l'état rendu reste Uncertain.",
+    "Cases": [
+      "Reconciled observation verifies and closes the receipt",
+      "A machine not joined to the domain is never verified",
+      "A machine joined to another domain is never verified",
+      "A machine whose name differs from the plan is never verified",
+      "A machine whose machine identity changed is never verified",
+      "A machine with a pending rename is never verified",
+      "A boot identical to the recorded boot is not a reboot",
+      "A boot older than the recorded boot is not a reboot",
+      "A directory object with another GUID is never verified",
+      "A directory object renamed in the directory is never verified",
+      "A directory object moved out of the planned OU is never verified",
+      "An unverified secure channel never closes the receipt",
+      "The controller is discovered for the planned domain and used for both checks",
+      "An uncertain observation never recalls the native application",
+      "A ledger naming another computer is refused",
+      "A ledger belonging to another domain is refused",
+      "A ledger without an offline join intention is refused",
+      "A read-only observation reports verified without closing anything",
+      "A second observation keeps the receipt verified and never recalls the native call",
+      "Observation of a record still at Imported is refused before any directory read",
+      "The observation never publishes the blob material"
+    ],
+    "CaseCount": 21,
+    "NotCovered": "Le contrat effectif de l'annuaire : Get-ADComputer rend un objet fabriqué, Get-DomainController un nom fabriqué, Test-ComputerSecureChannel un booléen fabriqué, et l'import du module ActiveDirectory est un enregistrement d'appel. Un GUID qui ne se relit pas comme un GUID réel, un objet d'annuaire dont le distinguishedName serait mal formé, un contrôleur injoignable ou un canal qui tombe entre deux lectures ne sont pas jouables ici. L'écriture ACL du reçu (Write-PestoJoinReceipt) reste doublée : Get-Acl et Set-Acl sont absents de ce runtime et les types d'ACL lèvent. Le redémarrage réel, la persistance sur un vrai système de fichiers et la concurrence entre deux observateurs ne sont pas rejouables sans la cible. Le cas « seconde observation » tolère la réécriture des horodatages, que le produit fait légitimement : il juge l'état, le code de sortie, l'état du reçu d'intervention et l'absence de rappel natif, pas l'immuabilité des horodatages."
+  },
+  "VacuousCasesFound": {
+    "Id": "cas-dobservation-echouant-pour-un-motif-qui-nest-pas-la-garde-jugee",
+    "File": "DEV/tests/Run-ExtensionEffectsTests.ps1",
+    "Observed": "L'unique cas d'observation de la suite existante échouait à la première exécution du harnais d'observation, pour un motif qui n'est pas la garde jugée : le reçu était produit par un double de Write-PestoJoinReceipt sérialisé à une profondeur différente du produit, et les compteurs d'appels AD n'étaient pas lus, de sorte qu'un cas pouvait être « vert » parce qu'une jambe amont avait déjà fait échouer l'observation pour une autre raison. Deux cas écrits en premier lieu dans la nouvelle suite ont été corrigés après coup, et non laissés tels quels : les deux cas de reçu incohérent étaient refusés par la garde d'empreinte de Read-PestoIntervention (« Le plan du reçu a changé depuis son enregistrement. ») au lieu du contrôle croisé visé (« Recu intervention ODJ incoherent. »), et le cas d'idempotence échouait parce que le produit rafraîchit légitimement les horodatages à chaque observation.",
+    "Impact": "Un cas qui échoue pour la mauvaise raison ne prouve rien : il compte comme succès tant que la suite est verte, et il laisse passer le mutant de la garde qu'il croyait juger. C'est exactement le mode de défaillance que le vérificateur avait retenu contre la déclaration précédente du point.",
+    "Fix": "La nouvelle suite impose à chaque cas incertain le message de la garde attendue **et** le zéro appel des quatre doubles, et re-signe le plan avant de falsifier un reçu pour que ce soit la garde visée qui parle. Le cas d'idempotence a été réécrit pour juger ce que le produit garantit (état, code de sortie, reçu d'intervention, absence de rappel natif) plutôt qu'une immuabilité qu'il n'offre pas.",
+    "Proof": "Sondage TautologyProbe : douze réécritures des gardes d'observation rejouées contre les deux suites existantes, 22 vertes. Et après réparation, les trente et un mutants du nouveau harnais meurent chacun sur le message du contrôle attendu (sortie non nulle + message exact + témoin vert)."
+  },
+  "TautologyProbe": {
+    "Command": "pwsh -NoProfile -NonInteractive -File /tmp/p109/probe.ps1 (pilote hors dépôt, non commité : pour chaque réécriture, copie wad/Pesto.Engine.Runtime.ps1, tools/cfg.modele-complet.json et la suite visée dans un dossier temporaire PestoProbe109-, applique une réécriture à occurrence unique du moteur, exécute la suite sur la copie ; douze réécritures x deux suites existantes)",
+    "Purpose": "Mesurer, au lieu de l'affirmer, l'angle mort dénoncé par GapClosed : ce que Run-OfflineJoin109EntryTests.ps1 et Run-ExtensionEffectsTests.ps1 voient réellement des réécritures des gardes d'observation.",
+    "Survived": [
+      "localMatches: domain comparison dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: computer name dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: machine id dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: pending rename dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: reboot comparison dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: reboot comparison weakened to -ge (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: PartOfDomain dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "identity: ObjectGUID comparison dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "ledger: computer name comparison dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "ledger: domain comparison dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 48 passed, 0 failed (sortie 0)",
+      "localMatches: domain comparison dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "localMatches: computer name dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "localMatches: machine id dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "localMatches: pending rename dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "localMatches: reboot comparison dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "localMatches: reboot comparison weakened to -ge (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "localMatches: PartOfDomain dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "identity: ObjectGUID comparison dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "identity: target OU comparison dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "ledger: computer name comparison dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "ledger: domain comparison dropped (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)",
+      "AD leg skipped when local matches absent (tests/Run-ExtensionEffectsTests.ps1) -> ExtensionEffects: 57 passed, 0 failed (sortie 0)"
+    ],
+    "Caught": [
+      "identity: target OU comparison dropped (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 47 passed, 1 failed (sortie 1)",
+      "AD leg skipped when local matches absent (tests/Run-OfflineJoin109EntryTests.ps1) -> OfflineJoin109Entry: 47 passed, 1 failed (sortie 1)"
+    ],
+    "Reading": "Sur 24 rejets (douze réécritures contre chacune des deux suites existantes), 22 rendent la suite attaquée entièrement verte. Contre Run-OfflineJoin109EntryTests.ps1, dix des douze passent : drapeau de poste joint retiré, comparaison de domaine, de nom de poste, d'identité de machine, de renommage en attente, de redémarrage, comparaison de redémarrage affaiblie en -ge, comparaison de GUID de l'annuaire, et deux des trois contrôles croisés du reçu d'intervention. Contre Run-ExtensionEffectsTests.ps1, les douze passent. Les deux réécritures que la suite du point d'entrée voit (comparaison de l'unité organisationnelle, jambe d'annuaire jouée alors que la confrontation locale a échoué) ne sont donc vues que par elle, à 47/1. Autrement dit un blob appliqué sur un autre poste, non redémarré, renommé ou sorti de l'unité planifiée pouvait être clos « Verified » avec 48/48 et 57/57 verts. C'est ce trou que Run-OfflineJoin109ObserveTests.ps1 et ses trente et un mutants rebouchent."
+  },
+  "MutationHarness": {
+    "File": "DEV/tests/Run-OfflineJoin109ObserveMutationTests.ps1",
+    "Command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109ObserveMutationTests.ps1",
+    "Result": "OfflineJoin109ObserveMutations : 127/127 PASS (sortie 0) — trente et un mutants et une copie témoin, cent vingt-sept assertions",
+    "Copy": "Le harnais ne copie que wad/Pesto.Engine.Runtime.ps1, tools/cfg.modele-complet.json et la suite elle-même dans un dossier temporaire à préfixe PestoMutObserve109-, vérifie que l'arbre copié ne dérive pas de la liste blanche, établit le processus enfant dans ce dossier (un mutant qui accepterait un chemin de blob relatif écrirait son fichier dans le sac détruit, jamais dans le dépôt) et détruit le sac.",
+    "Rule": "Un mutant n'est tué que si la suite sort avec un code non nul ET fait entendre le message exact du contrôle de la garde visée ; la copie témoin doit sortir à zéro avec la ligne OfflineJoin109Observe: 21 passed, 0 failed. Une mutation dont le motif ne tombe exactement qu'une fois est une erreur, non un succès.",
+    "Mutations": [
+      "Local domain comparison dropped from the observation conjunction",
+      "Local computer name dropped from the observation conjunction",
+      "Local machine identity dropped from the observation conjunction",
+      "Pending rename dropped from the observation conjunction",
+      "Reboot comparison dropped from the observation conjunction",
+      "Reboot comparison weakened to -ge",
+      "Domain-joined flag dropped from the observation conjunction",
+      "Directory GUID comparison dropped",
+      "Directory name comparison dropped",
+      "Directory OU comparison dropped",
+      "Directory identity no longer required to verify",
+      "Secure channel no longer required to verify",
+      "Reboot compared to the record write time instead of the recorded boot",
+      "Directory leg played even when the local confrontation failed",
+      "Active Directory module no longer imported",
+      "Secure channel asked of another machine than the discovered controller",
+      "Controller discovered for another value than the planned domain",
+      "Directory read addressed by name instead of the planned GUID",
+      "Ledger computer name no longer cross-checked",
+      "Ledger domain no longer cross-checked",
+      "Ledger offline intention no longer cross-checked",
+      "Read-only session ignored when closing the receipt",
+      "Ledger intention no longer marked verified",
+      "Ledger phase no longer marked verified",
+      "Ledger result code no longer set to verified",
+      "Verifier of the receipt no longer recorded",
+      "Durable record no longer closed after a verified observation",
+      "Uncertain observation reported a successful exit code",
+      "Observation no longer declared read-only",
+      "Observation declared replayable",
+      "Unapplied blob no longer refused by the observation"
+    ],
+    "EquivalentMutant": "Une treizième réécriture a été retirée du harnais après mesure, et non comptée comme mutant tué : retirer $localMatches de la décision $state=if($localMatches -and $identity -and $secure){'Verified'}else{'Uncertain'} laisse la suite à 21/21. Ce n'est pas un trou de la suite mais un mutant équivalent : $identity et $secure sont initialisés à $false avant le bloc if($localMatches){}, et ce bloc est le seul chemin qui les rende vrais, donc la confrontation locale est déjà exigée par les deux autres conjonctions. La réécriture est remplacée par un mutant observable du même ordre d'idée — le redémarrage comparé à l'heure d'écriture de l'enregistrement ($r.Utc) plutôt qu'au démarrage enregistré ($r.BootUtc) — qui, lui, fait échouer le cas « Reconciled observation verifies and closes the receipt ».",
+    "GuardFamilies": [
+      "Confrontation locale : chacune des six conditions (joint, domaine, nom, identité de machine, renommage en attente, redémarrage postérieur) et son affaiblissement en -ge",
+      "Objet d'annuaire : nom, ObjectGUID, unité organisationnelle parente, et l'obligation pour la décision de les exiger",
+      "Cloisonnement des jambes : annuaire joué alors que la confrontation locale a échoué, module ActiveDirectory non importé",
+      "Adressage : contrôleur découvert pour le domaine planifié, canal sécurisé et relecture AD adressés à ce contrôleur, relecture par le GUID planifié",
+      "Reçu d'intervention : nom du poste, domaine, intention de jonction hors connexion, état, phase, code de résultat, vérificateur",
+      "Clôture durable : enregistrement fermé après observation vérifiée, session en consultation qui ne clos rien",
+      "Rendu : code de sortie 97 d'un cas incertain, mention en lecture seule, refus du rejeu, refus d'un blob encore à Imported"
+    ]
+  },
+  "TargetedSuites": [
+    {
+      "file": "tests/Run-OfflineJoin109ObserveTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109ObserveTests.ps1",
+      "result": "OfflineJoin109Observe: 21 passed, 0 failed. Each offline join observation condition judged alone against the sealed engine; durable receipts real; AD/DPAPI/djoin/ACL transports mocked; no VM. (sortie 0)"
+    },
+    {
+      "file": "tests/Run-OfflineJoin109ObserveMutationTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109ObserveMutationTests.ps1",
+      "result": "OfflineJoin109ObserveMutations : 127/127 PASS (sortie 0)"
+    },
+    {
+      "file": "tests/Run-OfflineJoin109EntryTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109EntryTests.ps1",
+      "result": "OfflineJoin109Entry: 48 passed, 0 failed. Public entry point played for the three offline join actions; durable intent, receipts and policy guards real; AD/DPAPI/djoin/ACL transports mocked; no VM. (sortie 0)"
+    },
+    {
+      "file": "tests/Run-OfflineJoin109EntryMutationTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109EntryMutationTests.ps1",
+      "result": "OfflineJoin109EntryMutations : 148/148 PASS (sortie 0)"
+    },
+    {
+      "file": "tests/Run-OfflineJoin109NativeTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109NativeTests.ps1",
+      "result": "OfflineJoin109Native: 20 passed, 0 failed. Sealed syntax tree of the secret hand-off judged by the real PowerShell parser, product path guards really executed; no djoin, no Windows, no VM. (sortie 0)"
+    },
+    {
+      "file": "tests/Run-OfflineJoin109NativeMutationTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109NativeMutationTests.ps1",
+      "result": "OfflineJoin109NativeMutations : 94/94 PASS (sortie 0)"
+    },
+    {
+      "file": "tests/Run-ExtensionEffectsTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-ExtensionEffectsTests.ps1",
+      "result": "ExtensionEffects: 57 passed, 0 failed. Real receipt lifecycle and schema; AD/DPAPI/djoin/ACL transports mocked; no VM. (sortie 0)"
+    },
+    {
+      "file": "tests/Run-ManagedExtensionsTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-ManagedExtensionsTests.ps1",
+      "result": "ManagedExtensions: 14 passed, 0 failed (no Windows/AD/VM calls). (sortie 0)"
+    }
+  ],
+  "Harness": {
+    "Command": "cd DEV && python3 tools/run_tests.py --root . --platform Portable --pwsh /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh --timeout 900",
+    "Counts": {
+      "PASS": 65,
+      "FAIL": 0,
+      "SKIP": 21
+    },
+    "PreviousCounts": {
+      "PASS": 63,
+      "FAIL": 0,
+      "SKIP": 21
+    },
+    "NewSuites": [
+      {
+        "name": "OfflineJoin109Observe",
+        "status": "PASS"
+      },
+      {
+        "name": "OfflineJoin109ObserveMutations",
+        "status": "PASS"
+      }
+    ],
+    "ReusedSuites": [
+      {
+        "name": "OfflineJoin109Entry",
+        "status": "PASS",
+        "cases": 48
+      },
+      {
+        "name": "OfflineJoin109EntryMutations",
+        "status": "PASS",
+        "checks": 148
+      },
+      {
+        "name": "OfflineJoin109Native",
+        "status": "PASS",
+        "cases": 20
+      },
+      {
+        "name": "OfflineJoin109NativeMutations",
+        "status": "PASS",
+        "checks": 94
+      },
+      {
+        "name": "ExtensionEffects",
+        "status": "PASS",
+        "cases": 57
+      },
+      {
+        "name": "ManagedExtensions",
+        "status": "PASS",
+        "cases": 14
+      }
+    ],
+    "SummaryFile": "DEV/tests/results/20261025_011826_062201/summary.json",
+    "Note": "Soixante-trois suites vertes avant ce sous-lot, soixante-cinq après : les deux nouvelles s'y ajoutent et aucune autre ne bouge. Les vingt-et-une ignorées sont des suites Windows51 (WPF, console, AD réel) : une suite ignorée n'est jamais comptée comme réussie. Les suites de ce point sont jouées strictement à la suite, jamais en parallèle : deux lanceurs simultanés se heurtent au refus du produit « Une mutation Pesto est déjà en cours. »."
+  },
+  "Validators": [
+    {
+      "command": "cd DEV && PATH=/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh:$PATH python3 tools/checks/validate_pesto.py",
+      "result": "RESULT 670 passed 0 failed; parser PowerShell 7.6.7 Core; native Windows NOT executed (sortie 0). Soixante-soixante-huit avant : les deux nouvelles suites s'ajoutent au contrôle de parsage réel ; DEV/tests/pesto-portable-validation.json est régénéré en conséquence."
+    },
+    {
+      "command": "cd DEV && python3 tools/refresh_manifest.py --root . --check",
+      "result": "Checked: 67 runtime components; no demos/tests/CMD/configuration. Not an author signature. (sortie 0) — le paquet n'a pas bougé."
+    },
+    {
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -File tools/Build-PestoEngineModule.ps1 -Root . -Check",
+      "result": "True       740           165 a948d92aa147f2566c2840305a2a0a47a03655b56e9fcb… (sortie 0) — moteur scellé inchangé."
+    }
+  ],
+  "PythonSuites": [
+    {
+      "command": "cd DEV && PESTO_PWSH=/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh python3 -m pytest tests -q",
+      "result": "624 passed, 6 skipped, 535 subtests passed in 475.04s (0:07:55) (sortie 0) ; test_spark_h01.py contrôle la cohérence DEV/tests/suites.json <-> DEV/tests/Run-AllTests.ps1 pour les deux nouvelles suites."
+    }
+  ],
+  "Registration": "Les deux suites sont déclarées deux fois, comme toutes les autres : DEV/tests/suites.json (profils Portable et Complet, après OfflineJoin109NativeMutations) et la liste $suites de DEV/tests/Run-AllTests.ps1. La cohérence des deux fichiers est contrôlée par tests/test_spark_h01.py dans la suite pytest.",
+  "Seal": "Aucun fichier scellé n'a été modifié : git status ne montre que deux suites nouvelles, deux fichiers d'enregistrement et la documentation, et wad/Pesto-Extensions.ps1, wad/Pesto.Engine.Runtime.ps1, wad/Pesto.Engine.psm1, wad/package.json sont octet pour octet identiques à l'empreinte 9a2b449. Le moteur scellé reste à 740 fonctions, fermeture travailleur 165, RuntimeSHA256 a948d92aa147f2566c2840305a2a0a47a03655b56e9fcb67aa047429a7f9fd28 (Build-PestoEngineModule.ps1 -Check : True). Exécuter la vraie écriture ACL du reçu aurait exigé de fabriquer les types d'ACL que ce runtime n'a pas : la substitution n'aurait attesté que d'elle-même, donc le produit n'a pas été touché pour ce sous-lot.",
+  "Remaining": [
+    "Qualification spécifique de l'extension hors connexion sur Windows et annuaire réel encore ouverte. La règle permanente de la session interdit VM, labo, Windows réel et AD réel : aucun n'a été lancé, et la mention « les tests VM sont désormais autorisés » du catalogue ne l'emporte pas sur cette règle.",
+    "L'observation est jugée contre des doubles d'annuaire : Get-ADComputer, Get-DomainController, Test-ComputerSecureChannel et l'import du module ActiveDirectory. Un objet d'annuaire réel, un contrôleur injoignable, un canal qui tombe entre deux lectures, un GUID mal formé restent non attestés.",
+    "L'écriture ACL du reçu par Write-PestoJoinReceipt reste doublée : Get-Acl et Set-Acl sont absents de ce runtime et les types DirectorySecurity, FileSystemAccessRule et SecurityIdentifier y lèvent PlatformNotSupportedException. Le droit réel sur le magasin, l'héritage de l'ACL et la persistance sur un vrai système de fichiers ne sont pas joués.",
+    "Le contrat effectif de djoin /requestodj /loadfile /windowspath /localos reste non attesté (voir la preuve OFFLINE_JOIN_109_NATIVE_20261025.json) : sous Linux la fonction meurt à Join-Path sur racine système vide avant sa première garde.",
+    "Un mutant équivalent a été écarté du harnais plutôt que compté comme tué (voir MutationHarness.EquivalentMutant) : la confrontation locale est déjà exigée indirectement par $identity et $secure. Une réécriture qui rendrait les deux jambes indépendantes devrait être refrappée à ce moment-là.",
+    "La contention du mutex nommé Global\\GP_PostMutation_v1 n'a toujours ni fixture ni mutant dans une suite. Elle est en revanche mesurée incidemment : deux lanceurs de harnais lancés en parallèle se sont heurtés au refus du produit « Une mutation Pesto est déjà en cours. », ce qui établit que la porte est honorée entre processus même hors Windows. Les suites du point doivent donc être jouées strictement à la suite.",
+    "Résidus d'une coupe abrupte entre l'intention durable, l'appel natif et l'observation (poste redémarré pendant que djoin écrit, reçu clos à moitié) : non rejouables sans machine cible."
+  ]
+}

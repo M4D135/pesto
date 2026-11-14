@@ -1,0 +1,21 @@
+{
+  "Date": "2026-10-04T18:53:17.954845+02:00",
+  "Python": "3.14.7 (tags/v3.14.7:823f032, Aug  5 2026, 10:51:32) [MSC v.1944 64 bit (AMD64)]",
+  "ArchiveSHA256": "3bc648ae2fde076946895f7fd018dea6ace90d8540d6263d529fb04de5a61699",
+  "BeforeVersion": "17.0-RC23",
+  "AfterVersion": "1.0",
+  "PreviewUnchanged": true,
+  "PreservedSHA256": {
+    "C:\\PestoTest-run\\recette-update-final-20261004\\rc23\\DEV\\wad\\cfg.json": "9228370dc6220c05802725b22fc10841c92de9fee4fed4c372b904f0cb9fbd32",
+    "C:\\PestoTest-run\\recette-update-final-20261004\\rc23\\DEV\\wad\\logs\\recette.log": "5ec7e00b57e80b75d8b93caed249161f62f3ef2e229eae093cea38b491a8ee3f",
+    "C:\\PestoTest-run\\recette-update-final-20261004\\profil-local\\GP\\preferences.json": "6554ce81f39f278fb19cc47a89d68c555662223cd5eceeb33604e89c461abdf8",
+    "C:\\PestoTest-run\\recette-update-final-20261004\\profil-local\\GP\\State\\recette\\history-v1.json": "0389e454111d385836f8994c6b2d42cedac6ff9b5917c8bf46b5cdc1cd0f76a8",
+    "C:\\PestoTest-run\\recette-update-final-20261004\\donnees-programme\\GP\\Join\\recette.json": "2d00804c93607777714a7313c9458d7955302c4deb7e7b16fce50fec3aa58321",
+    "C:\\PestoTest-run\\recette-update-final-20261004\\donnees-programme\\GP\\Interventions\\recette.json": "4c3852aee913f76d95432a9b721d44c42651c3815c7119e7a501769d0c81cb29"
+  },
+  "RuntimeComponents": 38,
+  "ExeSHA256": "aed2be1900b45d380ac95f360daaf770b613c047e4d1a80f5bea07e24722d782",
+  "Backup": "C:\\PestoTest-run\\recette-update-final-20261004\\rc23\\DEV-code-backup-qo7t7nfp",
+  "RealAD": false
+}
+5.6 PASS : verrou conserve, code 126, recuperation en apercu seulement.

@@ -1,0 +1,12 @@
+{
+  "Date": "2026-10-04T21:19:23.443005+02:00",
+  "VM": "PESTO-W11-TEST",
+  "NIC": 2,
+  "NewName": "V999004AAQA1004",
+  "PauseReachedAt": "2026-10-04T21:19:32.059366+02:00",
+  "Cut": true,
+  "WorkerExit": 0,
+  "Output": "PASS : renommage confirme, coupure avant lecture AD, code89, deplacement non tente\r\n",
+  "Restored": true,
+  "RestoredAt": "2026-10-04T21:19:34.150474+02:00"
+}

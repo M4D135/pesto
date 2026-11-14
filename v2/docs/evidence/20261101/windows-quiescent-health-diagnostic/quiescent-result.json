@@ -1,0 +1,13 @@
+﻿{
+    "kind":  "pesto.quiescent-journal-diagnostic-launch",
+    "diagnosticOnly":  true,
+    "fullSuite":  false,
+    "success":  true,
+    "startedUtc":  "2026-11-01T03:39:15.5245716+00:00",
+    "sessionId":  2,
+    "userInteractive":  true,
+    "runnerSha256":  "b18463716b8e068c7a341bcd63b43446053424cc068485156f1eba265ad19946",
+    "sdkVersion":  "10.0.302",
+    "exitCode":  0,
+    "finishedUtc":  "2026-11-01T03:41:30.7344764+00:00"
+}

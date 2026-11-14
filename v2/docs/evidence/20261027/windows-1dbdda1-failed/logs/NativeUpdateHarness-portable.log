@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "checks": 30,
+  "channels": [
+    "PROD",
+    "DEV"
+  ],
+  "distinctFixtureBinaries": true,
+  "zipAcquisitionExercised": true,
+  "nativeWindowsExecuted": false,
+  "adExecuted": false,
+  "fixtureRuntimeOnly": true
+}

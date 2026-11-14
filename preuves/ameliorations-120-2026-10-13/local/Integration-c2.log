@@ -1,0 +1,23 @@
+PASS Metadata liste fermée et limite
+PASS Plan exportable fermé et non secret
+PASS Plan altéré, configuration et machine différents refusés
+PASS Plan expiré refusé même avec empreinte recalculée
+PASS Schéma plan entier uniquement même avec empreinte recalculée
+PASS Export exclusif et UTF8 strict
+PASS Clé idempotente restitue résultat sans deuxième appel
+PASS Rejeu jonction conserve PreparedPlan et refuse schéma marqueur texte
+PASS Même clé autre payload refusée sans mutation
+PASS Même clé autre machine refusée
+PASS Interruption après marqueur interdit rejeu
+PASS Disque refusé avant action interdit mutation
+PASS Disque refusé après action devient incertain sans rejeu
+PASS Consultation et clés invalides refusées sans écriture
+PASS Résultat ambigu non marqué Completed
+PASS CLI préparation puis plan réutilisé et clé sans masquage variable Action
+PASS CLI arguments différents du plan refusés avant moteur
+PASS CLI refus export avec exécution et lecture avec Execute
+
+Suite       Total Passed Failed
+-----       ----- ------ ------
+Integration    18     18      0
+

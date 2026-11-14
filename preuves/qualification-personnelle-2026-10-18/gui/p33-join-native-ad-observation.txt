@@ -1,0 +1,123 @@
+﻿ÉTAT OBSERVÉ, PAS UNE COMMANDE
+Lecture UTC : 2026-10-18T16:18:29.4386177Z
+
+WINDOWS
+Nom actif : V111301VA765542
+Nom configuré : V111301VA765542
+Redémarrage pour le nom : Non indiqué par ces deux valeurs
+Domaine : labo.local
+Dernier démarrage UTC : 2026-10-18T14:33:55.5000000Z
+Lecture : Local / 2026-10-18T16:18:28.0570857Z
+
+ACTIVE DIRECTORY
+Nom : V111301VA765542
+GUID : fc6f4538-2fb8-43fa-812b-5c9b07b454a7
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+DN exact : CN=V111301VA765542,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Protection anti-suppression : False
+Lecture UTC : 2026-10-18T16:18:27.9554689Z
+
+PLAN CONSERVÉ
+PESTO-QCLIENT → V111301VA765542
+Jonction locale : un ajout, sans file ni nouvelle commande depuis cette fiche.
+OU finale prévue : OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+
+AVANT / PRÉVU / OBSERVÉ : le plan conservé reste inchangé.
+
+Controle                     Etat       Observe                                                                          Attendu                                                    
+--------                     ----       -------                                                                          -------                                                    
+Nom actif                    Conforme   V111301VA765542                                                                  V111301VA765542                                            
+Domaine Windows              Conforme   labo.local                                                                     labo.local                                               
+Identité AD                  À vérifier fc6f4538-2fb8-43fa-812b-5c9b07b454a7                                                                                                        
+Emplacement AD               Conforme   OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADC...
+Jointure Entra de l'appareil NO         NO                                                                               À contrôler séparément si retrait                          
+Canal sécurisé               Conforme                                                                                    Lecture dédiée après redémarrage                           
+
+
+
+AVANT / PRÉVU / OBSERVÉ
+
+
+Champ      : Nom Windows actif
+Avant      : PESTO-QCLIENT
+Prevu      : V111301VA765542
+Observe    : V111301VA765542
+Etat       : Concordant
+AvantUtc   : 2026-10-18T14:23:24.9463118Z
+ObserveUtc : 2026-10-18T16:18:28.0570857Z
+
+Champ      : Nom Windows configuré
+Avant      : PESTO-QCLIENT
+Prevu      : V111301VA765542
+Observe    : V111301VA765542
+Etat       : Concordant
+AvantUtc   : 2026-10-18T14:23:24.9463118Z
+ObserveUtc : 2026-10-18T16:18:28.0570857Z
+
+Champ      : Domaine Windows
+Avant      : LABO
+Prevu      : labo.local
+Observe    : labo.local
+Etat       : Concordant
+AvantUtc   : 2026-10-18T14:23:24.9463118Z
+ObserveUtc : 2026-10-18T16:18:28.0570857Z
+
+Champ      : Identité Windows
+Avant      : a20fa269-76f2-4f01-9ff4-fe0f4db1499b
+Prevu      : a20fa269-76f2-4f01-9ff4-fe0f4db1499b
+Observe    : a20fa269-76f2-4f01-9ff4-fe0f4db1499b
+Etat       : Concordant
+AvantUtc   : 2026-10-18T14:23:24.9463118Z
+ObserveUtc : 2026-10-18T16:18:28.0570857Z
+
+Champ      : Nom AD
+Avant      : Non enregistré
+Prevu      : V111301VA765542
+Observe    : V111301VA765542
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-18T16:18:27.9554689Z
+
+Champ      : GUID AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : fc6f4538-2fb8-43fa-812b-5c9b07b454a7
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-18T16:18:27.9554689Z
+
+Champ      : Emplacement AD
+Avant      : Non enregistré
+Prevu      : OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Observe    : OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-18T16:18:27.9554689Z
+
+Champ      : Protection AD
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : False
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-18T16:18:27.9554689Z
+
+Champ      : Inscription Entra
+Avant      : Non enregistré
+Prevu      : À vérifier séparément
+Observe    : NO
+Etat       : Information
+AvantUtc   : 
+ObserveUtc : 2026-10-18T16:18:28.0570857Z
+
+Champ      : Canal sécurisé
+Avant      : Non enregistré
+Prevu      : True
+Observe    : True
+Etat       : Concordant
+AvantUtc   : 
+ObserveUtc : 2026-10-18T16:18:28.0570857Z
+
+
+
+

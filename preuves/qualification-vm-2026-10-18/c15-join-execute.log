@@ -1,0 +1,19 @@
+﻿AJOUT RÉEL
+
+Ce PC : PESTO-QCLIENT
+Nouveau nom : V111301VA765542
+Domaine : labo.local
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+
+Aucun retrait Entra. Aucun redémarrage automatique.
+
+Confirmer l’ajout ?
+capture C:\PestoQual_20261018\preuves\c15-join-confirmation.png 1714x919
+clic : #PanelAccept (Ajouter ce poste au domaine)
+Ajout accepté · redémarrage nécessaire
+
+Le nouveau nom et le domaine ne sont pas annoncés comme pleinement actifs avant redémarrage et vérification.
+nom actif=V111301VA765542 nom configuré=V111301VA765542 domaine=labo.local dans le domaine=True
+16:23:25 d8260724 PESTO-QCLIENT->V111301VA765542 phase=PendingRestart code=10 renommage=Confirmed déplacement=NotRequested
+09:43:49 aec98b16 P111301VA765480->V111301LY765664 phase=Failed code=96 renommage=NotRequested déplacement=NotRequested
+capture C:\PestoQual_20261018\preuves\c15-join-result.png 1714x919

@@ -1,0 +1,22 @@
+{
+  "startedUtc": "2026-10-28T11:15:08.1954430Z",
+  "finishedUtc": "2026-10-28T11:18:27.7850477Z",
+  "exitCode": 0,
+  "status": "preparedOnly",
+  "nativeWrite": false,
+  "execute": false,
+  "explicitCredential": true,
+  "account": "LABO\\Administrateur",
+  "requestSha256": "c53cbbe0d087e96ebd4442ecbb58430e5ee71ebfecc10a72653af1af9f2297ce",
+  "syntheticConfigSha256": "f76ad53a8d7ea367248fd2b067cb48ddaa0bb1dd7e9cc87566f7d85b58adfe35",
+  "computer": "P111301LY765715",
+  "computerGuid": "b4797c9c-d790-4797-bf71-424a57acb36e",
+  "sourceOu": "OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+  "targetOu": "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+  "bootUtc": "2026-10-28T11:02:02.5000000Z",
+  "secureChannel": true,
+  "pendingRename": false,
+  "planKind": "move",
+  "confirmationName": "P111301LY765715",
+  "entraLeaveRequired": false
+}

@@ -1,0 +1,24 @@
+﻿2026-10-12 20:16:06 [INFO ] [auth] Connexion Windows intégrée confirmée : LABO\tech.pesto ; aucun credential Pesto.
+2026-10-12 20:16:08 [INFO ] [AD] Lecture ciblée du site : 3 poste(s) en 163 ms.
+2026-10-12 20:16:08 [INFO ] [auth] AuthMode=Windows | AuthUser=LABO\tech.pesto | CredentialEnMemoire=False
+2026-10-12 20:16:08 [HEAD] ================ Session Pesto — 2026-10-12 20:16:08 ================
+2026-10-12 20:16:08 [INFO ] [session] Hote=P111301LY765002 | UtilisateurWin=tech.pesto | CompteAD=LABO\tech.pesto [Compte Windows] | Admin=True | Mode=DANS LE DOMAINE | Domaine=labo.local | DC=dc01.labo.local | DansDomaine=True | Flags=PRD
+2026-10-12 20:16:08 [INFO ] [session] Env : PSVersion=5.1.26100.6584 | OS=Microsoft Windows NT 10.0.26200.0 | x64=True | Lancement=script .ps1 | Prefixe=111301 | PreprodSite=765 | NiveauLog=INFO | Journal=C:\PestoRecette20261012\prod-r3\wad\logs\Pesto_2026-10-12.log
+2026-10-12 20:16:08 [HEAD] Pesto 1.0 démarré — DANS LE DOMAINE · domaine labo.local.
+2026-10-12 20:16:08 [INFO] Connexion prête : 1 organisme(s) / 2 site(s). Inventaire complet chargé à la demande, pas pendant le login.
+2026-10-12 20:16:08 [INFO] Périmètre onglet Noms (ADCC-Lab › Departement 111301 › Postes) : 3 poste(s).
+2026-10-12 20:16:08 [INFO] Journal d'audit : C:\PestoRecette20261012\prod-r3\wad\logs\Pesto_2026-10-12.log
+2026-10-12 20:16:10 [INFO] [20:16:10] P111301LY765002 | étape : Lecture de l'état Windows : Aucune modification
+2026-10-12 20:17:39 [INFO] Inventaire actualisé : 7 noms / 7 postes.
+2026-10-12 20:19:55 [INFO ] [AD] Lecture ciblée du site : 3 poste(s) en 153 ms.
+2026-10-12 20:20:02 [INFO ] [AD] Lecture ciblée du site : 4 poste(s) en 126 ms.
+2026-10-12 20:20:49 [WARN ] [direct] Contrôle unitaire refusé avant mutation.
+    Type      : System.Management.Automation.RuntimeException
+    Message   : You cannot call a method on a null-valued expression.
+    Categorie : InvalidOperation: (:) [], RuntimeException
+    ErrorId   : InvokeMethodOnNull
+    pos> At line:13 char:31
+    pos> + ... sults.Add($result);$Request.Progress.Results.Enqueue($result);$Reques ...
+    pos> +                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    stk> at <ScriptBlock>, <No file>: line 13
+    stk> at <ScriptBlock>, <No file>: line 6

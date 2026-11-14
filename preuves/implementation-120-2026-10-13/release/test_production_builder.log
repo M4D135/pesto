@@ -1,0 +1,18 @@
+test_existing_destination_refused_without_compilation (test_production_builder.ProductionBuilderTests.test_existing_destination_refused_without_compilation) ... ok
+test_linked_wad_refused (test_production_builder.ProductionBuilderTests.test_linked_wad_refused) ... ok
+test_missing_component_refused (test_production_builder.ProductionBuilderTests.test_missing_component_refused) ... ok
+test_new_production_command_shipped_only_in_dev (test_production_builder.ProductionBuilderTests.test_new_production_command_shipped_only_in_dev) ... ok
+test_only_named_guides_are_allowed_as_development_artifacts (test_production_builder.ProductionBuilderTests.test_only_named_guides_are_allowed_as_development_artifacts) ... ok
+test_output_inside_tools_refused_before_compilation (test_production_builder.ProductionBuilderTests.test_output_inside_tools_refused_before_compilation) ... ok
+test_output_parent_alias_to_tools_refused (test_production_builder.ProductionBuilderTests.test_output_parent_alias_to_tools_refused) ... ok
+test_preparation_uses_modified_sources_and_preserves_original (test_production_builder.ProductionBuilderTests.test_preparation_uses_modified_sources_and_preserves_original) ... ok
+test_prepare_payload_refuses_staging_inside_tools_without_copying (test_production_builder.ProductionBuilderTests.test_prepare_payload_refuses_staging_inside_tools_without_copying) ... ok
+test_prepare_payload_resolves_staging_parent_alias (test_production_builder.ProductionBuilderTests.test_prepare_payload_resolves_staging_parent_alias) ... ok
+test_update_preserves_existing_access_mode (test_production_builder.ProductionBuilderTests.test_update_preserves_existing_access_mode) ... ok
+test_windows_replace_failure_is_not_silently_ignored (test_production_builder.ProductionBuilderTests.test_windows_replace_failure_is_not_silently_ignored) ... ok
+test_windows_replace_uses_no_acl_error_override (test_production_builder.ProductionBuilderTests.test_windows_replace_uses_no_acl_error_override) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.046s
+
+OK

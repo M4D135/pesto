@@ -1,0 +1,349 @@
+{
+  "Schema": 1,
+  "Agent": "/root/engine_finish",
+  "Document": "administrateur",
+  "PDFSHA256": "4ce3816cbf32886a33790391ca134e7ed2832fe1c06b782029cdf065b857ebbd",
+  "DOCXSHA256": "d3f28fb43e1ae7326c157519fb6a4f399ae83b611192853999fbdeb53c6b1590",
+  "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/administrateur-final",
+  "Method": "Chaque page couverte a été ouverte individuellement avec view_image, en séries de cinq au plus. Relecture visuelle des tableaux, commandes, images, légendes et fins de page ; extraction de texte seulement en complément.",
+  "Pages": [
+    {
+      "Page": 1,
+      "ImageSHA256": "ed82326dd344b625f88a6fe7458d3ac6ead016927d24cc6868f672569677f132",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 2,
+      "ImageSHA256": "4075883113d4d4897b1ba3cc0d121b545cffd876b0a94fdae6c25b2916b1ced6",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 3,
+      "ImageSHA256": "925fd431c8cbd1744f7b38864d8cc43299dc3f5d942da37b2983bea8d0acb13e",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 4,
+      "ImageSHA256": "95e58a7696d6febd7efcc580c2e97ff2b8ce401596945e4489b9396c5c9d0e27",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 5,
+      "ImageSHA256": "67e9ee32bacb67f8a7e41de72fcf7309923f892409aa26c7927e6b064673ae8c",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 6,
+      "ImageSHA256": "14db8efd1690588c5ec2c27e396119f98b22a865e982d7c62ca44b52203dec0f",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 7,
+      "ImageSHA256": "9b995149a88dd734973ea6dc936188765740ddda20151b414348d5658c499833",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 8,
+      "ImageSHA256": "47e2b6c394df696eecb12399afa78c73ff12aaf5053d0c82b3cdae7f1a845595",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 9,
+      "ImageSHA256": "58e08103b73102993c3118b1ef85bf4e043eff55cda01a72dc0d8cfbc37a8ea8",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 10,
+      "ImageSHA256": "d1821050376bf09e3373f58cdb59e7bef5ae5bd56ac8ee29cf70df4195473504",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 11,
+      "ImageSHA256": "33daa3ce59b8075c922af1d78d9b57d2b4e0f230ed1d176b161238bba93ae66c",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 12,
+      "ImageSHA256": "3fd84a6cfababd51a6f2173e225496e4257f4ca7ca04634582b0f72fa0a2b9e5",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 13,
+      "ImageSHA256": "f3078ab69db857e1cbb834b17b948d0f153201b2865f388114a31e9c88317f2a",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 14,
+      "ImageSHA256": "37ca8030658f03a594c3b74adf72f0ed206e3f258013e41f6af35921e9f829d5",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 15,
+      "ImageSHA256": "950e012f64fcb9bd15351b8c809980099460ed55b293dd082b1c2a4dd118e940",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 16,
+      "ImageSHA256": "fd4250fcdcb8b4fb960ce80106c38201e2646e796e3b8d0da83dcc556a92b2c7",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 17,
+      "ImageSHA256": "bb414d097b3267f5626dc78bf1dbdb0b16fa2f726e0bf265b1087a008701bab7",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 18,
+      "ImageSHA256": "84b91f10a913e4a6b803b5b0f7c5c890d28fde6a47d996a45493365c5d179c98",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 19,
+      "ImageSHA256": "3533a41578c873d2e4e760b9c5c3b50ea85f03cf552f224fdee566bd3440ffc4",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 20,
+      "ImageSHA256": "54347d12f604be411a883f07a40b2aa787ac5ed63526055a42b32e4448b64743",
+      "VisualReview": "CORRECTION_CIBLEE",
+      "Findings": [
+        "Chemin UNC coupé après le premier antislash ; reformulation prévue pour le garder groupé."
+      ]
+    },
+    {
+      "Page": 21,
+      "ImageSHA256": "4f3f17caee8f295e7fcee2765abd57237759c295057882da29ede6a95bd72b40",
+      "VisualReview": "CORRECTION_CIBLEE",
+      "Findings": [
+        "Libellé R5 Actualiser l’état à remplacer par Vérifier l’état."
+      ]
+    },
+    {
+      "Page": 22,
+      "ImageSHA256": "007da405733da10c45e1d772812fc149c3ad58130295a40b68c1705e34f56e34",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 23,
+      "ImageSHA256": "16396042db353c10384266b0bd3b11c141e470cca432825e0d21fa6feae13c56",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 24,
+      "ImageSHA256": "6b32c30132fcb5f0d860556bbb30db8b4c2b81b66cc53162c6d3893472b59142",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 25,
+      "ImageSHA256": "78256e2894f643362f9226239316d39dc833297a8cd72bbb6deef19540657d27",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 26,
+      "ImageSHA256": "c96f5f60bea1064c3f5c41434c8fcea1d9116d50a0a09c4c4c9766241c368f1b",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 27,
+      "ImageSHA256": "5a2f696907f99d0e924e264f0c24eafcad2916f99a1ed4422a2fe7ae5f0afccf",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 28,
+      "ImageSHA256": "3f392e4aaef237568d924b0ba2a4fa3075fa257489c3563c4a79f10f592945b0",
+      "VisualReview": "CORRECTION_CIBLEE",
+      "Findings": [
+        "Ancien dossier de guides DOC à remplacer par DEV/docs."
+      ]
+    },
+    {
+      "Page": 29,
+      "ImageSHA256": "1842c9b80babd525deff22bf1c4a94ff6c00bf9ea7aa0902b8329774f685b4d9",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 30,
+      "ImageSHA256": "df899d10140d6669ce49e8a4d4bea5c41c976c55a9ef242da1ee223d579be67b",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 31,
+      "ImageSHA256": "3d93a5dcd8fe7e932a9c2157f43afeef5830620568a518375ef7b22f0b1d8811",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 32,
+      "ImageSHA256": "5a211861cd48d3604a41460fc3ea99897e084db85ac9a72fc9bb85cc87b51ba4",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 33,
+      "ImageSHA256": "f9d48c05562babc25b4f28eb43d0567933804ee47e3106ad8a544208a8860ebb",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 34,
+      "ImageSHA256": "75e05c3fdb3bc2128c55a641ec644965dccbc1d520b6e60dd7c29682b844481b",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 35,
+      "ImageSHA256": "2564fba4681ffac587eb56b2379bb30cec6a98085ad0f9878c9ad8f8e06199f4",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 36,
+      "ImageSHA256": "25cb6cb7c3e62daec365d2b7893db0aa764cb1ac7d5c04fc106e72ea2f7d6f5d",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 37,
+      "ImageSHA256": "98e26596ec275a70f84665a2ee5b57e10849a34605850bf89aca8532031163ca",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 38,
+      "ImageSHA256": "1d91ea8b90920e975e09c8094dddbb5a9226beccaeee8b69d84c52ff15b851a9",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 39,
+      "ImageSHA256": "1200b62f6f9c98407f19306a6961a2b8c589b5f4a96ab5edc6ca280dc3e46cf0",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 40,
+      "ImageSHA256": "8f02f1ebe1315f0e84e1fbac73cdcf78f657b2aba563700e39986360f0e23518",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 41,
+      "ImageSHA256": "07f2e4cddd3143325aaea6e266e201f83fbdb396a0f49064ad65dfcf418902c4",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 42,
+      "ImageSHA256": "866721ac844a6be4f6447729f7e696f61f40a0c5bac5fa8e1749a9e2932ad56a",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 43,
+      "ImageSHA256": "4b43fd715b5f41d6d6876264b1c87dceff9fe1f4590f85a7e9c80469e9e6a897",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 44,
+      "ImageSHA256": "6fa728b3434616220f4a2f825843b72fb1b619fa353eddff6e838abdd864eb52",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 45,
+      "ImageSHA256": "21f8363289ee0b6407f5261cccb3f7cf6a27adde0227c39762badfede35da8ad",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 46,
+      "ImageSHA256": "16361bec513526682ce44250e94bb68e8c73f2bb242897604d855e500d0f79ad",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 47,
+      "ImageSHA256": "05d6ba3693a66e1ed708d09cd39106e9f258b3fb14b729ad391df0016da84b8c",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 48,
+      "ImageSHA256": "f688c48c1682c312fe15d98f26080ad752501a8d033313292b2f5dff1dd3b10e",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 49,
+      "ImageSHA256": "57890aeadfa51063473290872f21d7a665c6b44125fae7983afea5176b894ca7",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 50,
+      "ImageSHA256": "07e92fa514b579c5ae1c90f55304b9f82d243dd65d48c9e127e4af40a57be896",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 51,
+      "ImageSHA256": "9b357cdc6d1a0adf9509ce8328890c3ceb1a2deee3ee56fdc71833195e3b253f",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 52,
+      "ImageSHA256": "51d6196c2c20c01bd2fe47cfe4b2723811887497ea6b371c3006a9dfda6817c0",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 53,
+      "ImageSHA256": "bdb996a3d5e372c923295e2b794bce1a4f5baeab5559c079dab343a6166b5dd1",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 54,
+      "ImageSHA256": "ecc3d0fbd09442a9a430759639bc6136bd8a0150514b37a2db3967395bb51698",
+      "VisualReview": "PASS",
+      "Findings": []
+    },
+    {
+      "Page": 55,
+      "ImageSHA256": "eebfaba06185aa3938a7ae54b1099f8103bbbe0d5192c304466a8cf70cec0adf",
+      "VisualReview": "PASS",
+      "Findings": []
+    }
+  ],
+  "Overall": "PASS après relecture des pages corrigées dans le rendu suivant ; aucune troncature, aucun débordement, aucune colonne cassée ni titre isolé observés sur les autres pages.",
+  "Pending": "Évolution R6 du parcours de jonction à intégrer ; une nouvelle comparaison de tous les PNG et une relecture de chaque page différente seront exigées avant livraison."
+}

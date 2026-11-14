@@ -1,0 +1,157 @@
+{
+  "Build": "R6",
+  "Files": [
+    {
+      "File": "Run-AutomationTests.json",
+      "SHA256": "c05a83adb7bc6862746d6037f911bc51fcabb4eb05928050f8ef44f7adaf79b3"
+    },
+    {
+      "File": "Run-AutomationTests.txt",
+      "SHA256": "1af7f8925fcb8a182f7d2b9197da969959c8bc10a44676b1fd16e781e1499b15"
+    },
+    {
+      "File": "Run-BootIdentityTests.json",
+      "SHA256": "e5fe54db950d241e9cc563012dfbe9bb4af72704f6d005cd8d34e4ce718908c6"
+    },
+    {
+      "File": "Run-BootIdentityTests.txt",
+      "SHA256": "e5fe54db950d241e9cc563012dfbe9bb4af72704f6d005cd8d34e4ce718908c6"
+    },
+    {
+      "File": "Run-BulkPlanningTests.json",
+      "SHA256": "a39f9aff2e22015eefb70316ffd5691215e8df709955be2c982a2a1cd6f4c74d"
+    },
+    {
+      "File": "Run-BulkPlanningTests.txt",
+      "SHA256": "a39f9aff2e22015eefb70316ffd5691215e8df709955be2c982a2a1cd6f4c74d"
+    },
+    {
+      "File": "Run-CommonTests.txt",
+      "SHA256": "713613604857f8e285f44d80ee35957b7768c238637496c19415f6ab1c618a2d"
+    },
+    {
+      "File": "Run-DirectoryCacheTests.txt",
+      "SHA256": "452c2183b489ec9edee379d58e1b26cc825ad4dc20732c2c2eae99f8ccb0a111"
+    },
+    {
+      "File": "Run-DomainNavigationTests.json",
+      "SHA256": "1dac38bd4822a9249fd6510915ec93a351d909b36355827bb223f2a710ee30e8"
+    },
+    {
+      "File": "Run-DomainNavigationTests.txt",
+      "SHA256": "1dac38bd4822a9249fd6510915ec93a351d909b36355827bb223f2a710ee30e8"
+    },
+    {
+      "File": "Run-EngineTests.json",
+      "SHA256": "9b7a3fc7cafc745cf90328d1827502bb2d9799978e8146a7972ac7e8d6d31d22"
+    },
+    {
+      "File": "Run-EngineTests.txt",
+      "SHA256": "6b1ccbe9acdd67bb3ed44701bf3d110f53c65cae50858d283422886e8bfcc712"
+    },
+    {
+      "File": "Run-InterventionViewTests.json",
+      "SHA256": "946ae8f91b9ef0aeb9040008ef6d74b164ac7d942af6acfd1988ae44627d7372"
+    },
+    {
+      "File": "Run-InterventionViewTests.txt",
+      "SHA256": "946ae8f91b9ef0aeb9040008ef6d74b164ac7d942af6acfd1988ae44627d7372"
+    },
+    {
+      "File": "Run-JoinReservationTests.json",
+      "SHA256": "bdae3a29eca8c19100bed56e2654d5695db66998c456b97b27325d4890ec7456"
+    },
+    {
+      "File": "Run-JoinReservationTests.txt",
+      "SHA256": "bdae3a29eca8c19100bed56e2654d5695db66998c456b97b27325d4890ec7456"
+    },
+    {
+      "File": "Run-NamesLoadingTests.json",
+      "SHA256": "8a727c55fb4396536c8e98c73ecc13502e8211dc2e338b5256f9e7a142a33604"
+    },
+    {
+      "File": "Run-NamesLoadingTests.txt",
+      "SHA256": "2617d8ef643c11eabcf27dcc2ae2417102065ddfc70ad423e695095a6d86952f"
+    },
+    {
+      "File": "Run-RandomNamesTests.json",
+      "SHA256": "768fda7d99da93d9321e910b58a40f53d68dcb49bc9e3400a8edba31f8847fc4"
+    },
+    {
+      "File": "Run-RandomNamesTests.txt",
+      "SHA256": "768fda7d99da93d9321e910b58a40f53d68dcb49bc9e3400a8edba31f8847fc4"
+    },
+    {
+      "File": "Run-ReliabilityTests.json",
+      "SHA256": "192e35d325d5367ffeed7092170f27e9a4077e5380fa218162b0260b60113cca"
+    },
+    {
+      "File": "Run-ReliabilityTests.txt",
+      "SHA256": "192e35d325d5367ffeed7092170f27e9a4077e5380fa218162b0260b60113cca"
+    },
+    {
+      "File": "Run-SettingsTests.json",
+      "SHA256": "d24a6e77bb7d35db05d50ab3b7aad7051f5d02aa326a72b1f220624f35cf41e0"
+    },
+    {
+      "File": "Run-SettingsTests.txt",
+      "SHA256": "d24a6e77bb7d35db05d50ab3b7aad7051f5d02aa326a72b1f220624f35cf41e0"
+    },
+    {
+      "File": "Run-StabilisationTests.json",
+      "SHA256": "daa11ea9d48fddf31b983bb8a16a975e2718bbdb401cd1e9da26eeaae142a827"
+    },
+    {
+      "File": "Run-StabilisationTests.txt",
+      "SHA256": "da88af08a04e8f2768656b2bfb4800adbf502ba3d1218582586be5db3e287b07"
+    },
+    {
+      "File": "Run-UiPresentationTests.json",
+      "SHA256": "10a23947f5fe8fa4e09ba30d1788ef0a2cca29f187b8cf7946e575e57cd7109e"
+    },
+    {
+      "File": "Run-UiPresentationTests.txt",
+      "SHA256": "10a23947f5fe8fa4e09ba30d1788ef0a2cca29f187b8cf7946e575e57cd7109e"
+    },
+    {
+      "File": "Run-V1ImprovementsTests.json",
+      "SHA256": "adc21ca4363f22095fcf20f1fd2eb1f2a8071aaced35e5edb4b24b4816331cfa"
+    },
+    {
+      "File": "Run-V1ImprovementsTests.txt",
+      "SHA256": "a031ebd24d771192dfa6684f9467ff1905dafdb6635a03dbb6151af66a74a119"
+    },
+    {
+      "File": "Run-WorkerContractTests.json",
+      "SHA256": "ba664f5ee4d23430a7ee8d69a8686f7e9bda826f638525cd3c904a68f557b669"
+    },
+    {
+      "File": "Run-WorkerContractTests.txt",
+      "SHA256": "ba664f5ee4d23430a7ee8d69a8686f7e9bda826f638525cd3c904a68f557b669"
+    },
+    {
+      "File": "builder-final.txt",
+      "SHA256": "c58f4ec6d391938ef86d1c1a842c10b170db8096b93e0768da94b278eafa9e7e"
+    },
+    {
+      "File": "parser.txt",
+      "SHA256": "f90cc96fe389cb475a166588b89ec8f84b677acbf565a2eefc8ee18904849b29"
+    },
+    {
+      "File": "powershell-suites.json",
+      "SHA256": "acf6866ba76b8cc82ec2ab80b968ac36b272e6288f529bd74529bd54ec97d98a"
+    },
+    {
+      "File": "python-tests.txt",
+      "SHA256": "da4c2be3ad855b647b464f29e1cf7fed1e771554102bb75f3fba5733da499f89"
+    },
+    {
+      "File": "rebuild.txt",
+      "SHA256": "270377f9a4f243b629e2823473e0513a9505d6e01af3780e18d7a9b6892a67fc"
+    },
+    {
+      "File": "summary.json",
+      "SHA256": "715da42b8a3e66841ec4685cd0ca23a212413e7a02f06cd97b8009db8bbcf8fd"
+    }
+  ]
+}

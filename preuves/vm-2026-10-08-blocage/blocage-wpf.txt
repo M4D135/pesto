@@ -1,0 +1,15 @@
+PASS Jonction à vérifier : bouton « Vérifier la jonction » actif
+PASS Jonction à vérifier : la cause est dite
+PASS Jonction à vérifier : le clic ouvre la vérification, puis recalcule le formulaire
+PASS Jonction sans reçu : bouton grisé, cause dite
+PASS Paramètres enregistrés : « fermez puis relancez Pesto »
+PASS Ancienne exécution : « Ouvrir les interventions »
+PASS Opération unitaire : « Vérifier l'opération »
+PASS Ligne en édition : cause dite
+PASS Consultation : bouton grisé
+PASS Sans blocage : « Vérifier puis renommer »
+PASS cfg livré : EntraPolicy absent
+PASS Enregistrer sans changement : signature identique (aucun redémarrage)
+PASS Vrai changement (retrait Entra interdit) : signature différente
+PASS Vrai changement (domaine) : signature différente
+RESULTAT 14 reussis, 0 echecs

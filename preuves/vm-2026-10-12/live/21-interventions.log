@@ -1,0 +1,9 @@
+clic : #NavHome (Accueil)
+élément introuvable : #HomeInterventions
+At C:\PestoRecette20261012\pilot\demo-commun.ps1:23 char:239
++ ...  -lt $fin); if (-not $e) { throw "élément introuvable : #$Id" }; if ( ...
++                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (élément introuvable : #HomeInterventions:String) [], RuntimeException
+    + FullyQualifiedErrorId : élément introuvable : #HomeInterventions
+ 
+

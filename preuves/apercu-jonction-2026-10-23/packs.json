@@ -1,0 +1,16 @@
+[
+  {
+    "Archive": "packs/Pesto_PROD.zip",
+    "Entries": 70,
+    "SHA256": "0e4f20aa0fccd7a7ebd75c480ad4b01968e9b4e5504d772b09667b37803a488e",
+    "RuntimeVerified": true,
+    "EveryFileMatchesSource": true
+  },
+  {
+    "Archive": "packs/Pesto_DEV.zip",
+    "Entries": 617,
+    "SHA256": "93147831edbe14ad7945fc68fa251b363bf52bde4acc6d5e7fdb538984951407",
+    "RuntimeVerified": true,
+    "EveryFileMatchesSource": true
+  }
+]

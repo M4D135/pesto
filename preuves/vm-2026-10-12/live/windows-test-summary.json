@@ -1,0 +1,18 @@
+﻿[
+    {
+        "Suite":  "Common",
+        "ExitCode":  0
+    },
+    {
+        "Suite":  "Automation",
+        "ExitCode":  0
+    },
+    {
+        "Suite":  "UiPresentation",
+        "ExitCode":  0
+    },
+    {
+        "Suite":  "Settings",
+        "ExitCode":  0
+    }
+]

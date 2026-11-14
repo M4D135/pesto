@@ -1,0 +1,72 @@
+﻿Text "P" [inactif]
+Text "Pesto" #SuiteBrandLabel [inactif]
+Text "Gestion des postes" #SuiteBrandHint [inactif]
+Button "Réduire ou déployer le menu" #SuiteNavToggle [inactif]
+  Text "☰" [inactif]
+Pane "" [inactif]
+  Button "Accueil" #NavHome [inactif]
+    Text "⌂" [inactif]
+    Text "Accueil" #NavHomeLabel [inactif]
+  Button "Renommer" #NavRename [inactif]
+    Text "✎" [inactif]
+    Text "Un poste" #NavRenameLabel [inactif]
+  Button "Plusieurs postes (file)" #NavBatch [inactif]
+    Text "▦" [inactif]
+    Text "Plusieurs postes" #NavBatchLabel [inactif]
+  Button "Ajouter au domaine" #NavJoin [inactif]
+    Text "+" [inactif]
+    Text "Ajouter au domaine" #NavJoinLabel [inactif]
+  Button "Noms disponibles" #NavNames [inactif]
+    Text "▤" [inactif]
+    Text "Noms disponibles" #NavNamesLabel [inactif]
+  Button "Historique" #NavHistory [inactif]
+    Text "◷" [inactif]
+    Text "Historique" #NavHistoryLabel [inactif]
+  Button "Journal" #NavLogs [inactif]
+    Text "≡" [inactif]
+    Text "Journal" #NavLogsLabel [inactif]
+  Button "Paramètres" #NavSettings [inactif]
+    Text "⚙" [inactif]
+    Text "Paramètres" #NavSettingsLabel [inactif]
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Button "?   Aide et raccourcis" #NavHelp [inactif]
+  Text "?   Aide et raccourcis" [inactif]
+Text "Pesto 1.0" #UxVersion [inactif]
+Text "Windows · PowerShell" [inactif]
+Text "PESTO-W11-TEST" [inactif]
+Text "example.local" [inactif]
+Text "Compte : démonstration" [inactif]
+Text "" [inactif] [hors-ecran]
+Text "SIMULATION" [inactif]
+Text "démo · sans AD" [inactif]
+Button "Palette de commandes" #WorkspaceButton [inactif]
+  Text "Actions · Ctrl+K" [inactif]
+Button "Audit" #BtnLog [inactif]
+  Text "Audit" [inactif]
+Button "Changer de thème" #BtnTheme [inactif]
+Button "Aide" #BtnHelp [inactif]
+  Text "?" [inactif]
+Tab "" #MainTabs [inactif]
+Button "›" #SuiteHelpClose [inactif] [hors-ecran]
+Text "À vos côtés" [inactif] [hors-ecran]
+Pane "" [inactif] [hors-ecran]
+Text "Que souhaitez-vous faire ?" #PanelTitle
+Edit "Détails du panneau" #PanelBody
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Edit "Rechercher une commande" #PanelSearch
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+List "Choix disponibles" #PanelChoices
+  ListItem "@{Id=performance; Label=Mesures de performance locales; Detail=Durées observées et état du rédacteur de journal ; pas de télémétrie.}"
+    Text "Mesures de performance locales"
+Text "" #PanelInputLabel [hors-ecran]
+Edit "Valeur à renseigner" #PanelInput [hors-ecran]
+Text "1 commande(s). Flèches pour choisir, Entrée pour ouvrir, Échap pour fermer." #PanelHint
+Button "Copier le texte" #PanelCopy
+  Text "Copier le texte"
+Button "Annuler" #PanelCancel
+  Text "Annuler"
+Button "Ouvrir" #PanelAccept
+  Text "Ouvrir"

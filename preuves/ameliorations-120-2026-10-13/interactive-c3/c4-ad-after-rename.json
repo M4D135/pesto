@@ -1,0 +1,13 @@
+{
+    "Utc":  "2026-10-13T20:44:30.8966916Z",
+    "DC":  "dc01.labo.local",
+    "Results":  [
+                    {
+                        "Name":  "P111301VA765345",
+                        "DistinguishedName":  "CN=P111301VA765345,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                        "Guid":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                        "Dns":  "P111301VA765345.labo.local"
+                    }
+                ]
+}
+

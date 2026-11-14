@@ -1,0 +1,17 @@
+OK    LiveWriteTests.ExecuteRefusesUnknownOrExpiredPlans
+OK    LiveWriteTests.ExecuteWithoutQualifiedAdapterRefusesEveryWrite
+OK    LiveWriteTests.IdentityOrAvailabilityMovedBeforeSendStopsEverything
+OK    LiveWriteTests.JoinSendIsLocalOnlyAndBindsTheObservedName
+OK    LiveWriteTests.PrepareJoinBuildsAPlanBoundToThePreview
+OK    LiveWriteTests.PrepareJoinIsLocalOnlyAndRefusesAnAlreadyKnownMachine
+OK    LiveWriteTests.PrepareMoveNeedsAnObservedTargetOuAndKeepsTheName
+OK    LiveWriteTests.PrepareRefusesANameTakenAfterThePreview
+OK    LiveWriteTests.PrepareRefusesExpiredOrSupersededPreviews
+OK    LiveWriteTests.PrepareRenameIsBoundToItsPreviewAndComputer
+OK    LiveWriteTests.QualifiedSendConsumesOnceWritesReceiptThenReReads
+OK    LiveWriteTests.RefusalBeforeSendIsRefusedAndRestartIsPendingRestart
+OK    LiveWriteTests.RenameOnlyWithDifferentSitePreviewKeepsObservedSourceOuInPlanAndReceipt
+OK    LiveWriteTests.SameSiteRenameMoveNormalizesToRenameAndPreservesDeeperOu
+OK    LiveWriteTests.SuccessClaimedButNotSeenByRereadStaysUncertain
+OK    LiveWriteTests.UncertainResultIsKeptAndNeverReplayed
+16 réussis, 0 en échec, 16 au total.

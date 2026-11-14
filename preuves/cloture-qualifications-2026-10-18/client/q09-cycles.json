@@ -1,0 +1,112 @@
+﻿[
+    {
+        "Cycle":  1,
+        "Utc":  "2026-10-18T18:13:11.2908509Z",
+        "ElapsedSeconds":  22.7,
+        "PrivateBytes":  321556480,
+        "Handles":  920,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  2,
+        "Utc":  "2026-10-18T18:13:42.0227698Z",
+        "ElapsedSeconds":  53.43,
+        "PrivateBytes":  313266176,
+        "Handles":  818,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  3,
+        "Utc":  "2026-10-18T18:14:12.1465974Z",
+        "ElapsedSeconds":  83.55,
+        "PrivateBytes":  320585728,
+        "Handles":  839,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  4,
+        "Utc":  "2026-10-18T18:14:42.2724009Z",
+        "ElapsedSeconds":  113.67,
+        "PrivateBytes":  312233984,
+        "Handles":  865,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  5,
+        "Utc":  "2026-10-18T18:15:11.9830092Z",
+        "ElapsedSeconds":  143.39,
+        "PrivateBytes":  316297216,
+        "Handles":  884,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  6,
+        "Utc":  "2026-10-18T18:15:41.8439124Z",
+        "ElapsedSeconds":  173.25,
+        "PrivateBytes":  323575808,
+        "Handles":  937,
+        "Threads":  31,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  7,
+        "Utc":  "2026-10-18T18:16:11.7513297Z",
+        "ElapsedSeconds":  203.15,
+        "PrivateBytes":  323989504,
+        "Handles":  950,
+        "Threads":  24,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  8,
+        "Utc":  "2026-10-18T18:16:41.6507618Z",
+        "ElapsedSeconds":  233.05,
+        "PrivateBytes":  335630336,
+        "Handles":  964,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  9,
+        "Utc":  "2026-10-18T18:17:11.3986945Z",
+        "ElapsedSeconds":  262.8,
+        "PrivateBytes":  339283968,
+        "Handles":  988,
+        "Threads":  25,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    },
+    {
+        "Cycle":  10,
+        "Utc":  "2026-10-18T18:17:41.1539101Z",
+        "ElapsedSeconds":  292.56,
+        "PrivateBytes":  340082688,
+        "Handles":  1012,
+        "Threads":  26,
+        "ReadButtonEnabled":  true,
+        "Locked":  false,
+        "SiteState":  "Services lus · Données : 8 s · récent"
+    }
+]

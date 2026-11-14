@@ -1,0 +1,31 @@
+{
+  "kind": "pesto.authorized-artifact-cleanup-audit",
+  "source": "Authenticated GitHub API responses, collected locally by gh; binary data not downloaded",
+  "files": [
+    {
+      "path": "authorization.json",
+      "bytes": 2460,
+      "sha256": "d636c3708e913bd6dbcd7eb6e2d5dcc841d6ed0bec22d10f4c71211370fc7a7f"
+    },
+    {
+      "path": "deletion-receipt.json",
+      "bytes": 44852,
+      "sha256": "c11e0c501b167da7fb5690b40b671fc106231da63068328a193d7cdbf2dd103f"
+    },
+    {
+      "path": "preserved-artifacts.json",
+      "bytes": 202338,
+      "sha256": "c4137eefe413ba7c94c261a94d2fe7999bf8139ff09ba921c7eba15094885d60"
+    },
+    {
+      "path": "preserved-releases.json",
+      "bytes": 23740,
+      "sha256": "376d6a2db3faf6f725d6aec0b9e17d9581923b47a0f25988dad1675efb561de3"
+    },
+    {
+      "path": "verification.json",
+      "bytes": 242,
+      "sha256": "8d32a5197c1de0492c3e3b4b90d266e58861d54fb15bd03b6d5ba4f333aee9fa"
+    }
+  ]
+}

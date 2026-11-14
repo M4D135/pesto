@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "transactionId": "4379948fc27842028517ad09451a5c4e",
+  "nonce": "22062e8f22b76946cdf723c6668b7d268fa58a790adfaf3857ceb1e1d8cabe99",
+  "target": "candidate",
+  "expectedVersion": "2.0.0.102",
+  "expectedExecutableSha256": "bf91f1d132415efeb1794164306dc9626ff775a4568cacf8e9a56b0e90f12710",
+  "status": "interrupted",
+  "startedUtc": "2026-10-25T18:25:35.7873730\u002B00:00",
+  "finishedUtc": "2026-10-25T18:25:48.6755314\u002B00:00",
+  "reportedSuccess": null,
+  "accepted": false,
+  "failureCode": "health.interrupted",
+  "proof": null
+}

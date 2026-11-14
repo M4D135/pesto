@@ -1,0 +1,225 @@
+﻿{
+    "Version":  "17.0-RC13",
+    "Utc":  "2026-10-13T19:15:04.5127330Z",
+    "Runtime":  "5.1.26100.6584",
+    "Scope":  "Parseur natif, logique isolée avec AD/CIM/Entra simulés et XAML sans ouverture de session. Pas de mutation réelle.",
+    "Total":  43,
+    "Failed":  0,
+    "Tests":  [
+                  {
+                      "Name":  "Domaine : connexion Windows par défaut",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Hors domaine : formulaire explicite conservé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Autre compte : opt-in conservé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Démonstration : pas de connexion AD",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "AskCredential reste absent du lancement UAC par défaut",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "AskCredential explicite traverse le lancement UAC",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "AD intégré : le paramètre Credential est absent, pas égal à null",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "AD explicite : credential conservé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "File : renommage local sans credential autorisé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "File : déplacement distant sans credential autorisé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "File : renommage distant doit être signalé avant exécution",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Snapshot : mauvaise identité refusée sans credential affecté",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Snapshot : domaine différent refusé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Snapshot validé : compte du worker conservé, aucun credential",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Renommage local intégré : dsreg puis CIM, sans Rename-Computer",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Renommage distant intégré : aucune mutation ni retrait Entra",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Compte explicite : parcours Rename-Computer conservé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Sans élévation : refus avant dsregcmd",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Compte local : refus avant dsregcmd",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Nom déjà pris : aucun appel système",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "GUID ou OU dérivés : aucun appel système",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Nom WMI différent : aucun appel de mutation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Domaine réel différent : aucune mutation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Contrôleur de domaine exclu",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Lecture WMI impossible : pas de retrait Entra",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Echec du retrait Entra : pas de renommage",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retrait Entra incertain : pas de renommage",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WMI code 5 : refus sans second essai",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WMI résultat empty : incertain, aucun succès inventé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WMI résultat missing : incertain, aucun succès inventé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WMI résultat null : incertain, aucun succès inventé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WMI résultat string : incertain, aucun succès inventé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "WMI résultat multi : incertain, aucun succès inventé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Exception après appel WMI : incertain, sans retry",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Simulation : aucun retrait Entra ni renommage",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : worker sans credential et contexte correspondant au compte élevé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : identité locale refusée sans ouvrir un second login",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : élévation absente refusée avant lecture AD",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : résultat périmé ignoré",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : résultat après annulation ignoré",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : lecture confirmée ferme attente sans identifiants Pesto",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Connexion auto : échec de validation affiche erreur sans relogin automatique",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Nouvelle fenêtre : XAML natif valide, sans mot de passe ni maximisation",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

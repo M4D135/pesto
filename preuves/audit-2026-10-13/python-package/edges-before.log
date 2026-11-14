@@ -1,0 +1,387 @@
+test_failed_directory_publication_removes_only_owned_partial_output (test_packaging_edges.PackagingEdgeTests.test_failed_directory_publication_removes_only_owned_partial_output) ... FAIL
+test_failed_zip_write_removes_incomplete_archive (test_packaging_edges.PackagingEdgeTests.test_failed_zip_write_removes_incomplete_archive) ... FAIL
+test_native_header_refuses_invalid_closed_list_before_writing (test_packaging_edges.PackagingEdgeTests.test_native_header_refuses_invalid_closed_list_before_writing) ... FAIL
+test_native_header_refuses_linked_parent (test_packaging_edges.PackagingEdgeTests.test_native_header_refuses_linked_parent) ... FAIL
+test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) ... 
+  test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/private.log') ... FAIL
+  test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/docs/private.ps1') ... FAIL
+  test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/maintenance/cleanup.ps1') ... FAIL
+  test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/cfg.backup') ... FAIL
+test_pack_config_refuses_linked_template_even_if_bytes_equal (test_packaging_edges.PackagingEdgeTests.test_pack_config_refuses_linked_template_even_if_bytes_equal) ... FAIL
+test_prepare_refuses_linked_template_parent (test_packaging_edges.PackagingEdgeTests.test_prepare_refuses_linked_template_parent) ... FAIL
+test_prepare_refuses_linked_wad_before_creating_external_config (test_packaging_edges.PackagingEdgeTests.test_prepare_refuses_linked_wad_before_creating_external_config) ... FAIL
+test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) ... 
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=None) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=[]) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value={}) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=42) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=True) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=None) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=[]) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value={}) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=42) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=True) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=None) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=[]) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value={}) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=42) ... ERROR
+  test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=True) ... ERROR
+test_zip_refuses_linked_source_file (test_packaging_edges.PackagingEdgeTests.test_zip_refuses_linked_source_file) ... FAIL
+test_zip_refuses_target_inside_payload_without_creating_it (test_packaging_edges.PackagingEdgeTests.test_zip_refuses_target_inside_payload_without_creating_it) ... FAIL
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 579, in plan_recovery
+    if lock['Destination']!=str(destination) or not re.fullmatch(r'[a-f0-9]{32}',lock['Id']):raise ValueError('Wrong recovery target')
+                                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'NoneType'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 579, in plan_recovery
+    if lock['Destination']!=str(destination) or not re.fullmatch(r'[a-f0-9]{32}',lock['Id']):raise ValueError('Wrong recovery target')
+                                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'list'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 579, in plan_recovery
+    if lock['Destination']!=str(destination) or not re.fullmatch(r'[a-f0-9]{32}',lock['Id']):raise ValueError('Wrong recovery target')
+                                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'dict'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 579, in plan_recovery
+    if lock['Destination']!=str(destination) or not re.fullmatch(r'[a-f0-9]{32}',lock['Id']):raise ValueError('Wrong recovery target')
+                                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'int'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Id', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 579, in plan_recovery
+    if lock['Destination']!=str(destination) or not re.fullmatch(r'[a-f0-9]{32}',lock['Id']):raise ValueError('Wrong recovery target')
+                                                    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/re/__init__.py", line 172, in fullmatch
+    return _compile(pattern, flags).fullmatch(string)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+TypeError: expected string or bytes-like object, got 'bool'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 580, in plan_recovery
+    backup=Path(lock['Backup'])
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 150, in __init__
+    raise TypeError(
+    ...<2 lines>...
+        f"not {type(path).__name__!r}")
+TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'NoneType'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 580, in plan_recovery
+    backup=Path(lock['Backup'])
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 150, in __init__
+    raise TypeError(
+    ...<2 lines>...
+        f"not {type(path).__name__!r}")
+TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'list'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 580, in plan_recovery
+    backup=Path(lock['Backup'])
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 150, in __init__
+    raise TypeError(
+    ...<2 lines>...
+        f"not {type(path).__name__!r}")
+TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'dict'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 580, in plan_recovery
+    backup=Path(lock['Backup'])
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 150, in __init__
+    raise TypeError(
+    ...<2 lines>...
+        f"not {type(path).__name__!r}")
+TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'int'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='Backup', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 580, in plan_recovery
+    backup=Path(lock['Backup'])
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 150, in __init__
+    raise TypeError(
+    ...<2 lines>...
+        f"not {type(path).__name__!r}")
+TypeError: argument should be a str or an os.PathLike object where __fspath__ returns a str, not 'bool'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 583, in plan_recovery
+    transaction=safe_file(backup,'transaction.json')
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 84, in safe_file
+    root = root.resolve(strict=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 938, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 457, in realpath
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-package-edges-94p2vdgn/source-code-backup-fixture'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=[])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 583, in plan_recovery
+    transaction=safe_file(backup,'transaction.json')
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 84, in safe_file
+    root = root.resolve(strict=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 938, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 457, in realpath
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-package-edges-94p2vdgn/source-code-backup-fixture'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 583, in plan_recovery
+    transaction=safe_file(backup,'transaction.json')
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 84, in safe_file
+    root = root.resolve(strict=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 938, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 457, in realpath
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-package-edges-94p2vdgn/source-code-backup-fixture'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=42)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 583, in plan_recovery
+    transaction=safe_file(backup,'transaction.json')
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 84, in safe_file
+    root = root.resolve(strict=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 938, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 457, in realpath
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-package-edges-94p2vdgn/source-code-backup-fixture'
+
+======================================================================
+ERROR: test_recovery_refuses_nonstrings_as_clean_validation_errors (test_packaging_edges.PackagingEdgeTests.test_recovery_refuses_nonstrings_as_clean_validation_errors) (key='JournalSHA256', value=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 157, in test_recovery_refuses_nonstrings_as_clean_validation_errors
+    update.plan_recovery(self.source)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Users/david/Projects/pesto/DEV/tools/update_installation.py", line 583, in plan_recovery
+    transaction=safe_file(backup,'transaction.json')
+  File "/Users/david/Projects/pesto/DEV/tools/refresh_manifest.py", line 84, in safe_file
+    root = root.resolve(strict=True)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 938, in resolve
+    return self.with_segments(os.path.realpath(self, strict=strict))
+                              ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen posixpath>", line 457, in realpath
+FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-package-edges-94p2vdgn/source-code-backup-fixture'
+
+======================================================================
+FAIL: test_failed_directory_publication_removes_only_owned_partial_output (test_packaging_edges.PackagingEdgeTests.test_failed_directory_publication_removes_only_owned_partial_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 88, in test_failed_directory_publication_removes_only_owned_partial_output
+    self.assertFalse(destination.exists())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_failed_zip_write_removes_incomplete_archive (test_packaging_edges.PackagingEdgeTests.test_failed_zip_write_removes_incomplete_archive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 105, in test_failed_zip_write_removes_incomplete_archive
+    self.assertFalse(target.exists())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_native_header_refuses_invalid_closed_list_before_writing (test_packaging_edges.PackagingEdgeTests.test_native_header_refuses_invalid_closed_list_before_writing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 132, in test_native_header_refuses_invalid_closed_list_before_writing
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_native_header_refuses_linked_parent (test_packaging_edges.PackagingEdgeTests.test_native_header_refuses_linked_parent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 143, in test_native_header_refuses_linked_parent
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/private.log')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 171, in test_old_manifest_refuses_logs_and_development_paths
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/docs/private.ps1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 171, in test_old_manifest_refuses_logs_and_development_paths
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/maintenance/cleanup.ps1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 171, in test_old_manifest_refuses_logs_and_development_paths
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_old_manifest_refuses_logs_and_development_paths (test_packaging_edges.PackagingEdgeTests.test_old_manifest_refuses_logs_and_development_paths) (relative='wad/cfg.backup')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 171, in test_old_manifest_refuses_logs_and_development_paths
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_pack_config_refuses_linked_template_even_if_bytes_equal (test_packaging_edges.PackagingEdgeTests.test_pack_config_refuses_linked_template_even_if_bytes_equal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 76, in test_pack_config_refuses_linked_template_even_if_bytes_equal
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_prepare_refuses_linked_template_parent (test_packaging_edges.PackagingEdgeTests.test_prepare_refuses_linked_template_parent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 67, in test_prepare_refuses_linked_template_parent
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_prepare_refuses_linked_wad_before_creating_external_config (test_packaging_edges.PackagingEdgeTests.test_prepare_refuses_linked_wad_before_creating_external_config)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 58, in test_prepare_refuses_linked_wad_before_creating_external_config
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zip_refuses_linked_source_file (test_packaging_edges.PackagingEdgeTests.test_zip_refuses_linked_source_file)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 123, in test_zip_refuses_linked_source_file
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_zip_refuses_target_inside_payload_without_creating_it (test_packaging_edges.PackagingEdgeTests.test_zip_refuses_target_inside_payload_without_creating_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/DEV/tests/test_packaging_edges.py", line 112, in test_zip_refuses_target_inside_payload_without_creating_it
+    with self.assertRaises(ValueError):
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.045s
+
+FAILED (failures=13, errors=15)

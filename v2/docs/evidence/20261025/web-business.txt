@@ -1,0 +1,27 @@
+  ok   join/succeeded : message métier exact et aucune suite sur résultat non confirmé
+  ok   join/pendingRestart : message métier exact et aucune suite sur résultat non confirmé
+  ok   join/uncertain : message métier exact et aucune suite sur résultat non confirmé
+  ok   join/refused : message métier exact et aucune suite sur résultat non confirmé
+  ok   rename/succeeded : message métier exact et aucune suite sur résultat non confirmé
+  ok   rename/pendingRestart : message métier exact et aucune suite sur résultat non confirmé
+  ok   rename/uncertain : message métier exact et aucune suite sur résultat non confirmé
+  ok   rename/refused : message métier exact et aucune suite sur résultat non confirmé
+  ok   move/succeeded : message métier exact et aucune suite sur résultat non confirmé
+  ok   move/pendingRestart : message métier exact et aucune suite sur résultat non confirmé
+  ok   move/uncertain : message métier exact et aucune suite sur résultat non confirmé
+  ok   move/refused : message métier exact et aucune suite sur résultat non confirmé
+  ok   queue/succeeded : synthèse du lot fondée sur chaque reçu
+  ok   queue/pendingRestart : synthèse du lot fondée sur chaque reçu
+  ok   queue/uncertain : synthèse du lot fondée sur chaque reçu
+  ok   queue/refused : synthèse du lot fondée sur chaque reçu
+  ok   ajouter : type, service et site invalident le nom et désactivent l’écriture
+  ok   ajouter : réponse d’aperçu tardive ignorée après changement du choix
+  ok   ajouter : préparation tardive abandonnée si les choix ont changé
+  ok   unposte : type, service et site invalident le nom et désactivent l’écriture
+  ok   unposte : réponse d’aperçu tardive ignorée après changement du choix
+  ok   unposte : préparation tardive abandonnée si les choix ont changé
+  ok   Un poste : deux inspections hors ordre gardent le dernier choix
+  ok   Déplacement seul après navigation et rechargement : inspection puis un seul plan move, aucun renommage
+  ok   Aucune erreur JavaScript/console
+
+25/25 contrôles métier navigateur réussis (fixtures explicites, sans Windows/AD).

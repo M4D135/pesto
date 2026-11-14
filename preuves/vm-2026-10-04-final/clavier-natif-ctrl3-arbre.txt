@@ -1,0 +1,79 @@
+﻿Text "P"
+Text "Pesto" #SuiteBrandLabel
+Text "Gestion des postes" #SuiteBrandHint
+Button "Réduire ou déployer le menu" #SuiteNavToggle
+  Text "☰"
+Pane ""
+  Button "Accueil" #NavHome
+    Text "⌂"
+    Text "Accueil" #NavHomeLabel
+  Button "Renommer" #NavRename
+    Text "✎"
+    Text "Un poste" #NavRenameLabel
+  Button "Plusieurs postes (file)" #NavBatch
+    Text "▦"
+    Text "Plusieurs postes" #NavBatchLabel
+  Button "Ajouter au domaine" #NavJoin
+    Text "+"
+    Text "Ajouter au domaine" #NavJoinLabel
+  Button "Noms disponibles" #NavNames
+    Text "▤"
+    Text "Noms disponibles" #NavNamesLabel
+  Button "Historique" #NavHistory
+    Text "◷"
+    Text "Historique" #NavHistoryLabel
+  Button "Journal" #NavLogs
+    Text "≡"
+    Text "Journal" #NavLogsLabel
+  Button "Paramètres" #NavSettings
+    Text "⚙"
+    Text "Paramètres" #NavSettingsLabel
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Button "?   Aide et raccourcis" #NavHelp
+  Text "?   Aide et raccourcis"
+Text "Pesto 1.0" #UxVersion
+Text "Windows · PowerShell"
+Text "PESTO-W11-TEST"
+Text "example.local"
+Text "Compte : démonstration"
+Text "" [hors-ecran]
+Text "SIMULATION"
+Text "démo · sans AD"
+Button "Palette de commandes" #WorkspaceButton
+  Text "Actions · Ctrl+K"
+Button "Audit" #BtnLog
+  Text "Audit"
+Button "Changer de thème" #BtnTheme
+Button "Aide" #BtnHelp
+  Text "?"
+Tab "" #MainTabs
+  TabItem "Renommer" #TabRename [hors-ecran]
+  TabItem "Noms disponibles" [hors-ecran]
+  TabItem "Paramètres" [hors-ecran]
+  TabItem "Journal" [hors-ecran]
+    Text "Journal de la session"
+    Edit "Rechercher dans le journal" #SuiteLogSearch
+      ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+      ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    CheckBox "Suivre" #SuiteLogFollow
+      Text "Suivre"
+    CheckBox "Retour à la ligne" #SuiteLogWrap
+      Text "Retour à la ligne"
+    Button "A−" #SuiteLogMinus
+      Text "A−"
+    Button "A+" #SuiteLogPlus
+      Text "A+"
+    Button "Actualiser le journal" #SuiteLogRefresh
+      Text "Actualiser"
+    Button "Diagnostic…" #SuiteLogDiagnostic
+      Text "Diagnostic…"
+    Text "3 affichés / 3 correspondants / 3 en mémoire" #SuiteLogCount
+    Document "Journal de la session" #LogBox
+  TabItem "Accueil" [hors-ecran]
+  TabItem "Historique" [hors-ecran]
+  TabItem "Aide" [hors-ecran]
+  TabItem "Ajouter au domaine" #TabJoin [hors-ecran]
+Button "›" #SuiteHelpClose [hors-ecran]
+Text "À vos côtés" [hors-ecran]
+Pane "" [hors-ecran]

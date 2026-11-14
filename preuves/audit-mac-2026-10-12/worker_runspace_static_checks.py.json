@@ -1,0 +1,144 @@
+{
+  "utc": "2026-10-12 13:56:58.809943+00:00",
+  "scope": "Static check of the async worker runspace contract. No PowerShell execution.",
+  "summary": {
+    "checks": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Worker body extracted and balanced",
+      "status": "PASS",
+      "functions": 3
+    },
+    {
+      "name": "AD resolver source still declared",
+      "status": "PASS",
+      "names": [
+        "Assert-PestoPlainPath",
+        "Import-PestoADModule"
+      ]
+    },
+    {
+      "name": "Identity source exporter declared",
+      "status": "PASS",
+      "names": [
+        "Get-PestoWindowsAuthIdentity",
+        "Get-PestoDomainIdentityWarning",
+        "Add-PestoDomainIdentityCause"
+      ]
+    },
+    {
+      "name": "Every Pesto function the worker calls is shipped into its runspace",
+      "status": "PASS",
+      "detail": "",
+      "called": [
+        "Add-PestoDomainIdentityCause",
+        "Get-PestoWindowsAuthIdentity",
+        "Import-PestoADModule"
+      ],
+      "required": [
+        "Add-PestoDomainIdentityCause",
+        "Assert-PestoPlainPath",
+        "Get-PestoDomainIdentityWarning",
+        "Get-PestoWindowsAuthIdentity",
+        "Import-PestoADModule"
+      ],
+      "shipped": [
+        "Add-PestoDomainIdentityCause",
+        "Assert-PestoPlainPath",
+        "Get-PestoDomainIdentityWarning",
+        "Get-PestoWindowsAuthIdentity",
+        "Import-PestoADModule"
+      ]
+    },
+    {
+      "name": "Worker refuses to run without the identity source",
+      "status": "PASS"
+    },
+    {
+      "name": "Request factory ships the identity source",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker dot-sources identitySource before calling Pesto helpers",
+      "status": "PASS"
+    },
+    {
+      "name": "Worker dot-sources adLoader before calling Pesto helpers",
+      "status": "PASS"
+    },
+    {
+      "name": "Shipped names are really defined at depth 0",
+      "status": "PASS",
+      "detail": ""
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Retirer Get-PestoWindowsAuthIdentity de la source d identite",
+      "file": "Pesto-Authentication.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Every Pesto function the worker calls is shipped into its runspace"
+      ]
+    },
+    {
+      "name": "Ne plus fournir la source d identite dans la requete",
+      "file": "Pesto-Directory.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Request factory ships the identity source"
+      ]
+    },
+    {
+      "name": "Retirer l exigence de la source dans le worker",
+      "file": "Pesto-Directory.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Worker refuses to run without the identity source",
+        "Worker dot-sources identitySource before calling Pesto helpers"
+      ]
+    },
+    {
+      "name": "Ne plus charger la source d identite dans le worker",
+      "file": "Pesto-Directory.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Worker dot-sources identitySource before calling Pesto helpers"
+      ]
+    },
+    {
+      "name": "Ne plus charger le resolveur AD dans le worker",
+      "file": "Pesto-Directory.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Worker dot-sources adLoader before calling Pesto helpers"
+      ]
+    },
+    {
+      "name": "Omettre une dependance transitive du resolveur AD",
+      "file": "Pesto-Safety.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Every Pesto function the worker calls is shipped into its runspace"
+      ]
+    },
+    {
+      "name": "Commenter le chargement de la source d identite",
+      "file": "Pesto-Directory.ps1",
+      "applied": true,
+      "detected": true,
+      "failed_checks": [
+        "Worker dot-sources identitySource before calling Pesto helpers"
+      ]
+    }
+  ]
+}

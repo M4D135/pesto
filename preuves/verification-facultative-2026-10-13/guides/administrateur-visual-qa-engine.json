@@ -1,0 +1,72 @@
+{
+  "reviewer": "Codex engine_finish",
+  "reviewed_utc": "2026-10-13T08:26:11.917999+00:00",
+  "method": "Each assigned page opened individually with view_image original detail; no text-only layout inference.",
+  "scope": "Changed administrator guide pages assigned by documentation owner; not a full-document certification.",
+  "render_directory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-postop-2026-10-13/administrateur-livraison",
+  "pdf_sha256": "ae2f9f021311a572f1171c16ee6a31661718cd9d878eb47afa5a72482f97d392",
+  "docx_sha256": "e38b014d0c6b19e7145e27daef712066c6817c5e3ae5f587bd069c28cb097ec1",
+  "pages": [
+    {
+      "page": 26,
+      "sha256": "92bf82b726df05ac8ab9184f855fb54a9263e485f0deb9728e8cba264e30f10a",
+      "result": "PASS",
+      "checks": [
+        "No clipped text, overlap or isolated heading.",
+        "Tables and captions remain coherent; native screenshots have no tooltip.",
+        "Header/footer and page number intact."
+      ]
+    },
+    {
+      "page": 27,
+      "sha256": "03204d5a0860c428ddc5d2338bdd3e2c3c8cfc781de429d4cb395e00aad3fc5a",
+      "result": "PASS",
+      "checks": [
+        "No clipped text, overlap or isolated heading.",
+        "Tables and captions remain coherent; native screenshots have no tooltip.",
+        "Header/footer and page number intact."
+      ]
+    },
+    {
+      "page": 32,
+      "sha256": "2373e26531a9085b649393a216def9974d63d812ace98b8096d040500566195f",
+      "result": "PASS",
+      "checks": [
+        "No clipped text, overlap or isolated heading.",
+        "Tables and captions remain coherent; native screenshots have no tooltip.",
+        "Header/footer and page number intact."
+      ]
+    },
+    {
+      "page": 34,
+      "sha256": "2c2b49b6f8336183e8d1e960d6fb5c2dd413b6a8eb38c2847f047a171483f747",
+      "result": "PASS",
+      "checks": [
+        "No clipped text, overlap or isolated heading.",
+        "Tables and captions remain coherent; native screenshots have no tooltip.",
+        "Header/footer and page number intact."
+      ]
+    },
+    {
+      "page": 39,
+      "sha256": "7cc82caeb2c985e3c041b4e19644094d413c63f6259d93fede8e18a75556c1bc",
+      "result": "PASS",
+      "checks": [
+        "No clipped text, overlap or isolated heading.",
+        "Tables and captions remain coherent; native screenshots have no tooltip.",
+        "Header/footer and page number intact."
+      ]
+    },
+    {
+      "page": 53,
+      "sha256": "317c6fc727a94d84fd50162040079fea5fbc78e3f719fbd94b70602be83468bf",
+      "result": "PASS",
+      "checks": [
+        "No clipped text, overlap or isolated heading.",
+        "Tables and captions remain coherent; native screenshots have no tooltip.",
+        "Header/footer and page number intact."
+      ]
+    }
+  ],
+  "findings": []
+}

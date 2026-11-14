@@ -1,0 +1,16 @@
+[
+  {
+    "channel": "PROD",
+    "currentPack": "C:\\Users\\degun\\actions-runner\\PestoTargetedDiag-20261101\\ui-retry-inputs\\released-PROD\\PROD",
+    "targetPack": "C:\\Users\\degun\\actions-runner\\_work\\pesto\\pesto\\v2\\out\\PROD",
+    "targetZip": "C:\\Users\\degun\\actions-runner\\_work\\pesto\\pesto\\v2\\out\\Pesto_V2_PROD_candidate.zip",
+    "releaseZipSha256": "0fcbb2ce36c5ffc3acd146cbbdbd3ca76d6bba2b0bf56bcd837dfef262f494bf"
+  },
+  {
+    "channel": "DEV",
+    "currentPack": "C:\\Users\\degun\\actions-runner\\PestoTargetedDiag-20261101\\ui-retry-inputs\\released-DEV\\DEV",
+    "targetPack": "C:\\Users\\degun\\actions-runner\\_work\\pesto\\pesto\\v2\\out\\DEV",
+    "targetZip": "C:\\Users\\degun\\actions-runner\\_work\\pesto\\pesto\\v2\\out\\Pesto_V2_DEV_candidate.zip",
+    "releaseZipSha256": "a094152ada77f59e86368a38708c32813e558bf4df2bedecd3ae6853d8537519"
+  }
+]

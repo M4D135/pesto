@@ -1,0 +1,283 @@
+{
+  "schema": 1,
+  "created_utc": "2026-10-13T08:23:36.090278+00:00",
+  "base_commit": "1b96100af5600af9d950a657249ae2ccc369c06e",
+  "powershell": "7.4.20",
+  "platform": "macOS",
+  "windows_executed": false,
+  "ad_executed": false,
+  "real_receipts_or_preferences_changed": false,
+  "passed": 350,
+  "failed": 0,
+  "suites": [
+    {
+      "suite": "DEV/tests/Run-OptionalPostCheckTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/OptionalPostCheck.json",
+      "report_sha256": "980d1f0e9471ea1b832e167cdd0bcdff9be59e0e79ae3dd30e4baa48ecb64061",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/OptionalPostCheck.stdout.log",
+      "passed": 83,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-WorkerContractTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/WorkerContract.json",
+      "report_sha256": "ba664f5ee4d23430a7ee8d69a8686f7e9bda826f638525cd3c904a68f557b669",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/WorkerContract.stdout.log",
+      "passed": 20,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-BootIdentityTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/BootIdentity.json",
+      "report_sha256": "e5fe54db950d241e9cc563012dfbe9bb4af72704f6d005cd8d34e4ce718908c6",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/BootIdentity.stdout.log",
+      "passed": 17,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-EngineTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/Engine.json",
+      "report_sha256": "482c3f9a954f9355c5fc43ff24157fc39d9ce9b7103f30246bc49798cf7fcff7",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/Engine.stdout.log",
+      "passed": 117,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-ReliabilityTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/Reliability.json",
+      "report_sha256": "192e35d325d5367ffeed7092170f27e9a4077e5380fa218162b0260b60113cca",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/Reliability.stdout.log",
+      "passed": 19,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-JoinReservationTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/JoinReservation.json",
+      "report_sha256": "bdae3a29eca8c19100bed56e2654d5695db66998c456b97b27325d4890ec7456",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/JoinReservation.stdout.log",
+      "passed": 27,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-AutomationTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/Automation.json",
+      "report_sha256": "c05a83adb7bc6862746d6037f911bc51fcabb4eb05928050f8ef44f7adaf79b3",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/Automation.stdout.log",
+      "passed": 34,
+      "failed": 0,
+      "exit_code": 0
+    },
+    {
+      "suite": "DEV/tests/Run-StabilisationTests.ps1",
+      "report": "preuves/verification-facultative-2026-10-13/engine/Stabilisation.json",
+      "report_sha256": "ef1ef63c6e3e3c5c98b95aaf070f155ccc12382946c9b9a14fd56d5acd8b9b55",
+      "stdout": "preuves/verification-facultative-2026-10-13/engine/Stabilisation.stdout.log",
+      "passed": 33,
+      "failed": 0,
+      "exit_code": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "DEV/wad/Pesto-Policy.ps1",
+      "sha256": "9caa7c02937b7a7b91764f3f4643433526cfea0f325280c7a145bad53ceba038",
+      "before": {
+        "bom": true,
+        "crlf": 212,
+        "lf_only": 0
+      },
+      "after": {
+        "bom": true,
+        "crlf": 233,
+        "lf_only": 0
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/wad/Pesto-Safety.ps1",
+      "sha256": "109c71f731776574d350d4bbf8ff9e06e228fc52cf93c7ab7bd6cd1533112023",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 437
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 445
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/wad/Pesto-Direct.ps1",
+      "sha256": "431ebc0db96069375860c5530ce20f3157c687855313fe7d46d5a3996ad1971f",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 536
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 542
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/wad/Pesto-Join.ps1",
+      "sha256": "e24dba5317bdb60ce14171f2f62513113ac67fc70af8c069df9b733ad195a462",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 1102
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 1112
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/wad/Pesto-Core.ps1",
+      "sha256": "eb0195d0f8f4a260896bcaa9fbd51c806a766490b49f871353ec738ccf7af46b",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 5411
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 5411
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Run-OptionalPostCheckTests.ps1",
+      "sha256": "9982ae8282ea3961f91db528cf77d57debeb395872a0e55b90e4ee079dbed282",
+      "before": {
+        "bom": false,
+        "crlf": 0,
+        "lf_only": 0
+      },
+      "after": {
+        "bom": true,
+        "crlf": 191,
+        "lf_only": 0
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Run-BootIdentityTests.ps1",
+      "sha256": "da393cfe45925c2893ce508a0d6dec6fdeabc988fa74b84d041ed4b0445ef078",
+      "before": {
+        "bom": true,
+        "crlf": 71,
+        "lf_only": 0
+      },
+      "after": {
+        "bom": true,
+        "crlf": 77,
+        "lf_only": 0
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Run-JoinTests.ps1",
+      "sha256": "a75ca51c712297c4c46183ef2bcd82b722a6baccedb812dba2f9152531649070",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 131
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 131
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Run-Pesto23Tests.ps1",
+      "sha256": "8dc520c52f53f187eeb7d559c80837e3650b8ae74345b5c460e54f27e688de3f",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 138
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 138
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Run-StabilisationTests.ps1",
+      "sha256": "05619c232082c48df51926bc28d9e8fecd9c4acef88b0d791db1e9c4ce5c8f03",
+      "before": {
+        "bom": true,
+        "crlf": 529,
+        "lf_only": 0
+      },
+      "after": {
+        "bom": true,
+        "crlf": 529,
+        "lf_only": 0
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Pesto.Safety.Tests.ps1",
+      "sha256": "69d723cc8e47075d5d4398bbfbd3fd143de843e02577d5ce8c7f0f2f8666914f",
+      "before": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 56
+      },
+      "after": {
+        "bom": true,
+        "crlf": 0,
+        "lf_only": 56
+      },
+      "preserved": true
+    },
+    {
+      "path": "DEV/tests/Run-AllTests.ps1",
+      "sha256": "e52dc334877969070d1ec138ac3171a71875add9b7690dddcbb2fb3c708cdf5a",
+      "before": {
+        "bom": true,
+        "crlf": 13,
+        "lf_only": 0
+      },
+      "after": {
+        "bom": true,
+        "crlf": 13,
+        "lf_only": 0
+      },
+      "preserved": true
+    }
+  ],
+  "contract": [
+    "Completed PendingRestart with numeric success codes 10/20/77 or a validated legacy join is optional follow-up, without changing receipt phase or VerifiedUtc.",
+    "A completed move-resume parent with original result89 is optional only when both rename and move are Confirmed and protection is restored/unchanged.",
+    "Contradictory effects, ongoing/uncertain/partial/protection states remain guarded.",
+    "An accepted join requires a later boot, same MachineId, joined expected domain, current Windows names coherent and secure channel before lifting the global block; the old requested name is not a permanent lock after a later rename.",
+    "New target identity checks and machine mutex remain mandatory.",
+    "Shared coordination cleanup only releases keys owned by the completed receipt; older completed same-target receipts are reconciled before acquiring the next lease.",
+    "Direct worker tests use real separate runspaces and the real mutex, with isolated receipts and mocked Windows command body."
+  ],
+  "limitations": [
+    "No new Windows PowerShell5.1/WPF/native AD execution in this engine report.",
+    "Run-JoinTests and Run-Pesto23Tests expectations and Pesto.Safety.Tests dependency list were updated; their Windows/Pester execution is delegated separately.",
+    "Full Run-AllTests runner is Windows-only; this report covers the eight targeted portable suites."
+  ],
+  "format_validation": "UTF-8 BOM and original LF/CRLF styles preserved; git diff check with cr-at-eol passed."
+}

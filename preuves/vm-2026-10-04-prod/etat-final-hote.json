@@ -1,0 +1,15 @@
+{
+  "Date": "2026-10-04T22:50:38.0759382+02:00",
+  "VirtualMachines": [
+    {
+      "Name": "PESTO-W11-TEST",
+      "State": "poweroff"
+    },
+    {
+      "Name": "LABO-DC01",
+      "State": "running"
+    }
+  ],
+  "PestoShutdown": "shutdown /s /f /t5 après fermeture des applications et sauvegarde des preuves",
+  "DomainControllerLeftRunning": true
+}

@@ -1,0 +1,38 @@
+﻿clic : #NavHome (Accueil)
+capture C:\PestoTest-preuves\demo-reelle\captures\80-0-accueil.png 1460x940
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+#CbOrg = Département 111301
+#CbSite = Paris
+#CbService = 765 (saisie)
+#CbType = Portable
+#CbName = P111301VA765003
+capture C:\PestoTest-preuves\demo-reelle\captures\80-1-formulaire.png 1460x940
+clic : #HeaderSite (Options : déplacement seul et redémarrage)
+capture C:\PestoTest-preuves\demo-reelle\captures\80-1b-options.png 1460x940
+clic : #HeaderSite (Options : déplacement seul et redémarrage)
+bouton principal : Vérifier puis renommer
+capture C:\PestoTest-preuves\demo-reelle\captures\80-2-confirmation.png 1460x940
+confirmation : RÉEL · Renommer puis déplacer
+
+Poste : P111301LY765003
+Nom final : P111301VA765003
+Emplacement : ADCC-Lab › Departement 111301 › Postes › SITES › Paris
+
+LECTURE : Site LY -> VA : deplacement automatique apres renommage confirme.
+LECTURE : Source AD unique, périmètre et OU source contrôlés.
+LECTURE : Nom cible libre sur le contrôleur interrogé au moment de cette lecture.
+LECTURE : OU de destination effective et son GUID confirmés sur le même contrôleur.
+LECTURE : Droits de mutation, canaux RPC/WMI et redémarrage : non certifiés par ce contrôle en lecture seule.
+
+Aucun redémarrage automatique.
+État Entra relu avant renommage : aucun retrait si AD seul ; retrait si hybride et autorisé. Réinscription à vérifier séparément.
+clic : #PanelAccept (Confirmer)
+capture C:\PestoTest-preuves\demo-reelle\captures\80-3-bilan.png 1460x940
+bilan : Renommage accepté · redémarrage et vérification nécessaires.
+
+Renommage et déplacement annoncés réussis. Vérifiez le nom après redémarrage et les stratégies du nouveau site.
+"P111301LY765003" renommé en "P111301VA765003" et déplacé dans "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local"
+clic : #PanelCancel (Fermer)
+capture C:\PestoTest-preuves\demo-reelle\captures\80-4-apres-bilan.png 1460x940
+OPÉRATION : étape terminée

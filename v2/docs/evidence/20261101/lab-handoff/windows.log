@@ -1,0 +1,138 @@
+v24.22.0
+OK   round trip preserves both ZIPs, every proof and empty logs; receipt binds the job output
+OK   existing sealed batch is refused without overwrite
+OK   refuse seal: source ZIP changed after tests
+OK   refuse seal: foreign source
+OK   refuse seal: foreign run
+OK   refuse seal: old attempt
+OK   refuse seal: candidate distribution
+OK   refuse seal: duplicate channel
+OK   refuse context RUNNER_OS
+OK   refuse context RUNNER_ENVIRONMENT
+OK   refuse context RUNNER_NAME
+OK   refuse context GITHUB_JOB
+OK   refuse context GITHUB_EVENT_NAME
+OK   refuse context GITHUB_REF
+OK   refuse context PESTO_EXPECTED_SOURCE_SHA
+OK   refuse context PESTO_PUBLISH_RELEASE
+OK   refuse context RUNNER_TEMP
+OK   refuse manifest: foreign source
+OK   refuse manifest: foreign run
+OK   refuse manifest: old attempt
+OK   refuse manifest: wrong runner
+OK   refuse manifest: wrong kind
+OK   refuse manifest: wrong schema
+OK   refuse manifest: case collision
+OK   refuse manifest: negative size
+OK   refuse manifest: invalid digest
+OK   refuse manifest: missing ZIP
+OK   refuse manifest: missing provenance
+OK   refuse manifest: wrong byte count
+OK   refuse unsafe path ../escape
+OK   refuse unsafe path /absolute
+OK   refuse unsafe path evidence/../escape
+OK   refuse unsafe path evidence/./file
+OK   refuse unsafe path evidence//file
+OK   refuse unsafe path evidence/back\slash
+OK   refuse unsafe path evidence/file:stream
+OK   refuse unsafe path evidence/CON.txt
+OK   refuse unsafe path evidence/trailing.
+OK   refuse unsafe path evidence/trailing 
+OK   refuse unsafe path evidence/lab-transfer-receipt.json
+OK   refuse restore: missing output digest
+OK   refuse restore: manifest changed on disk
+OK   refuse restore: sealed ZIP corrupted
+OK   refuse restore: extra file
+OK   refuse restore: missing file
+OK   refuse restore: missing manifest
+OK   refuse restore: incomplete manifest
+OK   existing publication directory and sentinel are preserved
+OK   source directory links are rejected
+OK   sealed tree directory links are rejected
+OK   handoff parent links are rejected
+OK   destination links are rejected without modifying their target
+OK   source and destination must use the runner checkout layout
+OK   Windows CLI writes the digest to GITHUB_OUTPUT and restores the same bytes
+PASS 54 lab handoff checks (win32; synthetic files, no network)
+OK   only explicit dispatch, exact SHA and master are admitted
+OK   refuse context GITHUB_ACTIONS
+OK   refuse context GITHUB_REPOSITORY
+OK   refuse context GITHUB_EVENT_NAME
+OK   refuse context GITHUB_REF
+OK   refuse context PESTO_PUBLISH_RELEASE
+OK   refuse context PESTO_EXPECTED_SOURCE_SHA
+OK   refuse context GITHUB_SHA
+OK   refuse context GITHUB_RUN_ID
+OK   refuse context GITHUB_RUN_ATTEMPT
+OK   refuse local proof: foreign source SHA
+OK   refuse local proof: another workflow run
+OK   refuse local proof: older attempt
+OK   refuse local proof: candidate instead of official
+OK   refuse local proof: invented AD qualification
+OK   refuse local proof: invented complete qualification
+OK   refuse local proof: invented UI rollback
+OK   refuse local proof: missing native success
+OK   refuse local proof: DEV refusal claimed as native update
+OK   refuse local proof: PROD refusal instead of update
+OK   refuse local proof: DEV outcome missing
+OK   refuse local proof: DEV refusal without new installation
+OK   refuse local proof: DEV refusal and update both claimed
+OK   refuse local proof: DEV refusal without baseline
+OK   refuse local proof: wrong version
+OK   refuse local proof: duplicate channel
+OK   refuse local proof: missing channel
+OK   refuse local proof: ZIP changed after testing
+OK   refuse local proof: different SDK
+OK   refuse local proof: SDK proof from other source
+OK   five assets bind two untouched ZIPs, evidence, manifest and sums
+OK   release notes announce the DEV new installation, never a DEV in-place update
+OK   DEV in-place outcome is accepted without the new-installation notice
+OK   publication files are CreateNew and never overwritten
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   successful transaction publishes only after five GitHub digests match
+OK   preflight refuses without any GitHub mutation: run source mismatch
+OK   preflight refuses without any GitHub mutation: Windows pending
+OK   preflight refuses without any GitHub mutation: Windows failure
+OK   preflight refuses without any GitHub mutation: master advanced
+OK   preflight refuses without any GitHub mutation: tag already exists
+OK   preflight refuses without any GitHub mutation: release already exists
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: upload digest missing
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: upload digest wrong
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: upload failed
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: remote assets incomplete
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: foreign asset
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: tag changed before publication
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: master changed during upload
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   failure retains draft and never publishes: draft changed by another caller
+Draft created: 99. Any failure preserves the draft and tag for manual inspection.
+OK   changed local ZIP after preparation is never uploaded or published
+
+50/50 release checks passed; no GitHub call, Windows execution or AD qualification.
+[
+  {
+    "path": "v2/tools/release/lab-handoff.mjs",
+    "sha256": "f1478283ac08073fc1143b290e7b2c7e0629f6056874acf3187731e38a892794"
+  },
+  {
+    "path": "v2/tools/release/publish-release.mjs",
+    "sha256": "06fac3d77ddcb20334f37c0985bb99e2f2e96c15d6728611db1f67d50167927e"
+  },
+  {
+    "path": "v2/tools/tests/lab-handoff-check.mjs",
+    "sha256": "9b0088d9c27e3be7bb1ccd25d091c3a2cae2e1db80de13fea1372e4931f37f8d"
+  },
+  {
+    "path": "v2/tools/tests/release-check.mjs",
+    "sha256": "feb7607f57c7bf6266bb40c3d262f0c9584ce517f73711052f436e2bb3526ad7"
+  }
+]
+
+

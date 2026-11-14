@@ -1,0 +1,18 @@
+﻿{
+    "Method":  "Explicit lab cleanup Move-ADObject; not a Pesto replay",
+    "Objects":  [
+                    {
+                        "Server":  "dc01.labo.local",
+                        "Guid":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                        "DN":  "CN=P111301VA765158,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                        "Utc":  "2026-10-18T18:57:48.8738170Z"
+                    },
+                    {
+                        "Server":  "LABO-DC02.labo.local",
+                        "Guid":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                        "DN":  "CN=P111301VA765158,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                        "Utc":  "2026-10-18T18:58:05.4724124Z"
+                    }
+                ],
+    "Restored":  true
+}

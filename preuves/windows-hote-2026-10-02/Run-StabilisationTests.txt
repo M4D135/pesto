@@ -1,0 +1,10 @@
+PASS D1 deplacement reussi + protection non retablie : code 32 ET effet Move conserve
+PASS D1 deplacement reussi + protection retablie : code 30, Move confirme une seule fois
+PASS D1 erreur apres la demande de deplacement : 97 incertain, aucun effet Move confirme
+PASS D2 resultat TARDIF d'une reprise : l'intervention parente n'est pas resolue
+PASS D2 resultat a temps et verifie : le parent est mis a jour
+PASS D3 nom actuel = nom demande : jamais un succes de renommage
+PASS D4 Get-SiteTag : exact, motif unique, motif ambigu
+PASS F7 filtre LDAP des groupes exclus : echappement RFC 4515
+RESULTAT 8 reussis, 0 echecs | moteur : PowerShell 5.1.26100.9549 (Desktop) | doubles AD/Windows, aucune operation reelle
+EXIT=0

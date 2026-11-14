@@ -1,0 +1,144 @@
+{
+  "Schema": 1,
+  "Version": "Pesto 1.0",
+  "Status": "DELIVERED",
+  "CompletedAtUtc": "2026-10-12T20:13:50.563776+00:00",
+  "Artifacts": [
+    {
+      "Document": "technicien",
+      "Format": "DOCX",
+      "Path": "DEV/docs/Pesto-1.0-Guide-technicien.docx",
+      "SHA256": "48c2c4f5a12368d57c73637bb948c9cbde2800c753dad6079c2671860d22fff7",
+      "Bytes": 743376,
+      "RenderedPageCount": 25
+    },
+    {
+      "Document": "technicien",
+      "Format": "PDF",
+      "Path": "DEV/docs/Pesto-1.0-Guide-technicien.pdf",
+      "SHA256": "6edb02edb95acbc0259b99ef9a26691f3612bcf24b33385672941c0f695384ba",
+      "Bytes": 1169226,
+      "RenderedPageCount": 25
+    },
+    {
+      "Document": "administrateur",
+      "Format": "DOCX",
+      "Path": "DEV/docs/Pesto-1.0-Guide-administrateur.docx",
+      "SHA256": "578b7baa567a2b9b6f15edea18d3bbc608e2cf87e1ea0741f15c36670d81b9c6",
+      "Bytes": 1047077,
+      "RenderedPageCount": 56
+    },
+    {
+      "Document": "administrateur",
+      "Format": "PDF",
+      "Path": "DEV/docs/Pesto-1.0-Guide-administrateur.pdf",
+      "SHA256": "a4eb7f427a0a874735adf4f6daa173ca838f30d4c4015102e7e4cf40923ebabe",
+      "Bytes": 1870419,
+      "RenderedPageCount": 56
+    }
+  ],
+  "Documents": [
+    {
+      "Document": "technicien",
+      "PageCount": 25,
+      "EmbeddedImages": 13,
+      "BodyFigures": 12,
+      "Fonts": [
+        "BAAAAA+LiberationSans",
+        "CAAAAA+LiberationSans-Bold",
+        "DAAAAA+LiberationSans-Bold",
+        "EAAAAA+LiberationSans",
+        "FAAAAA+LiberationSans-Bold",
+        "GAAAAA+LiberationSans",
+        "HAAAAA+LiberationSans-Bold",
+        "IAAAAA+LiberationSans",
+        "JAAAAA+LiberationSans-Bold",
+        "KAAAAA+LiberationSans-Bold",
+        "LAAAAA+LiberationSans-Bold",
+        "MAAAAA+LiberationSans"
+      ],
+      "OutsidePageCharacters": 0,
+      "PDFLinks": 10,
+      "PDFBookmarksTopLevel": 20,
+      "VisualQA": "preuves/guides-2026-10-12/technicien-visual-qa-final.json",
+      "VisualQASHA256": "a266414acaee48e654ddf3d3f691b82f9b2ca90e952f13a99c076cf42d06c3bc",
+      "Result": "PASS"
+    },
+    {
+      "Document": "administrateur",
+      "PageCount": 56,
+      "EmbeddedImages": 18,
+      "BodyFigures": 17,
+      "Fonts": [
+        "BAAAAA+LiberationSans",
+        "CAAAAA+LiberationSans-Bold",
+        "DAAAAA+LiberationSans-Bold",
+        "EAAAAA+LiberationSans",
+        "FAAAAA+LiberationSans-Bold",
+        "GAAAAA+LiberationSans",
+        "HAAAAA+LiberationSans-Bold",
+        "IAAAAA+LiberationSans",
+        "JAAAAA+LiberationSans-Bold",
+        "KAAAAA+LiberationSans-Bold",
+        "LAAAAA+LiberationSans",
+        "MAAAAA+LiberationSans-Bold",
+        "NAAAAA+LiberationMono"
+      ],
+      "OutsidePageCharacters": 0,
+      "PDFLinks": 27,
+      "PDFBookmarksTopLevel": 50,
+      "VisualQA": "preuves/guides-2026-10-12/administrateur-visual-qa-final.json",
+      "VisualQASHA256": "9932a24eb36ccc37f8e2ecb30e4ae1b09e113a3db0f961ff6579c3a3170164ff",
+      "Result": "PASS"
+    }
+  ],
+  "SourceFiles": [
+    {
+      "Path": "outils/guides/build_guide.js",
+      "SHA256": "087928792174866cd27153609765748caf78cf26b8efc1b334154f58aa48c57e"
+    },
+    {
+      "Path": "outils/guides/technicien.md",
+      "SHA256": "6236af7369d1190abb2305ba044689126f52df590cd3ea83630f7295db3dd4cb"
+    },
+    {
+      "Path": "outils/guides/technicien.json",
+      "SHA256": "af9aa56f9c10dc789a1ca74d6aa65ce654ec962e43e8f63cf640eae55d56ba91"
+    },
+    {
+      "Path": "outils/guides/administrateur.md",
+      "SHA256": "d79e59e864a71998a9ebcf908775edb67209c5afd785e9b5efe371f87f829469"
+    },
+    {
+      "Path": "outils/guides/administrateur.json",
+      "SHA256": "b255c2e51e38b60b449fcf246c0c39dd9407a88f0f019e6a421720337073ba7d"
+    },
+    {
+      "Path": "outils/guides/LIRE.md",
+      "SHA256": "131c0f8a3109cae0e0e55141eeaa8ea635ede1febc756da4b0a60e0123bf6d3e"
+    }
+  ],
+  "Captures": {
+    "Count": 17,
+    "Pixels": [
+      1920,
+      1160
+    ],
+    "Native": true,
+    "ArtificialUpscale": false,
+    "Tooltips": "Aucune sur les captures retenues ; revue visuelle de chaque source.",
+    "Manifest": "preuves/guides-2026-10-12/captures.json",
+    "ManifestSHA256": "0c8bfe17fbf4db666d36a7a8c0016dc0e324328dc8cbae9c47a89ef1efa6498a"
+  },
+  "Workflow": "Sources Markdown/JSON vers DOCX avec build_guide.js --no-pdf ; PDF et pages PNG issus de ce même DOCX par le convertisseur fourni ; contrôle technique et visuel avant copie dans DEV/docs.",
+  "VisualCoverage": {
+    "technicien": "25/25 pages finales ouvertes individuellement en résolution originale par le relecteur indépendant.",
+    "administrateur": "Relecture individuelle du document initial complet ; toutes les pages finales couvertes par revue en planches et comparaison des pixels du corps. Les19 pages nouvelles/modifiées ont été ouvertes individuellement, avec dernière relecture des pages54–56 après suppression du paragraphe isolé."
+  },
+  "Result": "PASS",
+  "OutstandingLayoutFindings": [],
+  "Limits": [
+    "Microsoft Word peut repaginer le DOCX selon son moteur et ses polices ; le PDF livré est le rendu contrôlé.",
+    "Les captures de préparation illustrent un exemple distinct de la jonction vérifiée ; une préparation ne constitue pas une preuve d’exécution."
+  ]
+}

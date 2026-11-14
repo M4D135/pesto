@@ -1,0 +1,17 @@
+{
+  "v1Root": "C:\\Pesto\\DEV",
+  "outputRoot": "C:\\Windows\\Temp\\pesto-v2-ad",
+  "expectedComputer": "P111301VA765158",
+  "action": "read",
+  "computer": "P111301VA765158",
+  "expectedGuid": "REPLACE-WITH-OBSERVED-AD-GUID",
+  "expectedSourceOu": "REPLACE-WITH-OBSERVED-OU",
+  "targetOu": "REPLACE-WITH-APPROVED-OBSERVED-SITE-OU",
+  "site": "REPLACE-WITH-ACTUAL-SITE-CODE",
+  "service": "REPLACE-WITH-ACTUAL-SERVICE-CODE",
+  "type": "P",
+  "execute": false,
+  "explicitCredential": false,
+  "confirmation": "",
+  "returnPlan": ""
+}

@@ -1,0 +1,116 @@
+{
+  "paths": [
+    {
+      "pack": "C:\\Users\\degun\\actions-runner\\_work\\pesto\\pesto\\v2\\out\\baseline-PROD",
+      "packExists": true,
+      "runtimeExists": true,
+      "runtimeFiles": 257,
+      "webviewExists": true,
+      "pestoExists": true
+    },
+    {
+      "pack": "C:\\Users\\degun\\actions-runner\\_work\\pesto\\pesto\\v2\\out\\PROD",
+      "packExists": true,
+      "runtimeExists": true,
+      "runtimeFiles": 257,
+      "webviewExists": true,
+      "pestoExists": true
+    },
+    {
+      "pack": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-024f6e31db4b46509d8c0cde2636cd51\\cases\\normal\\installation",
+      "packExists": true,
+      "runtimeExists": true,
+      "runtimeFiles": 257,
+      "webviewExists": true,
+      "pestoExists": true
+    },
+    {
+      "pack": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-024f6e31db4b46509d8c0cde2636cd51\\cases\\normal\\.pesto-v2-update-d1c2095121b7cd19\\f2384a1932d74e1aade3ab6c8d2ddcab\\backup",
+      "packExists": true,
+      "runtimeExists": false,
+      "runtimeFiles": 0,
+      "webviewExists": false,
+      "pestoExists": true
+    },
+    {
+      "pack": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-024f6e31db4b46509d8c0cde2636cd51\\cases\\normal\\.pesto-v2-update-d1c2095121b7cd19\\f2384a1932d74e1aade3ab6c8d2ddcab\\stage",
+      "packExists": false,
+      "runtimeExists": false,
+      "runtimeFiles": 0,
+      "webviewExists": false,
+      "pestoExists": false
+    }
+  ],
+  "journal": {
+    "schemaVersion": 1,
+    "id": "f2384a1932d74e1aade3ab6c8d2ddcab",
+    "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-024f6e31db4b46509d8c0cde2636cd51\\cases\\normal\\installation",
+    "channel": "PROD",
+    "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+    "nextFingerprint": "a2f740aababc938848053322e53cbdccf5734d9f46f5bbf5649a180f529ab48c",
+    "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+    "nextExecutableHash": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+    "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+    "currentVersion": "2.0.0",
+    "nextVersion": "2.0.9",
+    "action": "install",
+    "status": "completed",
+    "createdUtc": "2026-11-01T04:04:16.5856319+00:00",
+    "parentProcessId": 25324,
+    "parentStartUtc": "2026-11-01T04:03:46.2705383+00:00",
+    "failure": null
+  },
+  "backupEntries": [
+    {
+      "Name": "wad",
+      "Attributes": 16,
+      "CreationTimeUtc": "/Date(1793505829009)/",
+      "LastWriteTimeUtc": "/Date(1793505829541)/"
+    },
+    {
+      "Name": "Pesto.exe",
+      "Attributes": 32,
+      "CreationTimeUtc": "/Date(1793505828979)/",
+      "LastWriteTimeUtc": "/Date(1793505062839)/"
+    }
+  ],
+  "wadEntries": [
+    {
+      "Name": "docs",
+      "Attributes": 16,
+      "CreationTimeUtc": "/Date(1793505829541)/",
+      "LastWriteTimeUtc": "/Date(1793505829549)/"
+    },
+    {
+      "Name": "runtime",
+      "Attributes": 16,
+      "CreationTimeUtc": "/Date(1793505829080)/",
+      "LastWriteTimeUtc": "/Date(1793505907963)/"
+    },
+    {
+      "Name": "support",
+      "Attributes": 16,
+      "CreationTimeUtc": "/Date(1793505829078)/",
+      "LastWriteTimeUtc": "/Date(1793505829078)/"
+    },
+    {
+      "Name": "web",
+      "Attributes": 16,
+      "CreationTimeUtc": "/Date(1793505829011)/",
+      "LastWriteTimeUtc": "/Date(1793505829072)/"
+    },
+    {
+      "Name": "Pesto.package.json",
+      "Attributes": 32,
+      "CreationTimeUtc": "/Date(1793505829009)/",
+      "LastWriteTimeUtc": "/Date(1793505076398)/"
+    },
+    {
+      "Name": "SHA256SUMS",
+      "Attributes": 32,
+      "CreationTimeUtc": "/Date(1793505829010)/",
+      "LastWriteTimeUtc": "/Date(1793505079683)/"
+    }
+  ],
+  "attribution": "No deletion process attributed. No global security setting or cleanup task changed."
+}

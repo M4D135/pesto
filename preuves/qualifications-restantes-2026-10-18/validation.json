@@ -1,0 +1,25 @@
+{
+  "utc": "2026-10-18T19:49:24.427323+00:00",
+  "release_tests": {
+    "command": "python3 DEV/tests/test_release_120.py",
+    "passed": 50,
+    "exit_code": 0
+  },
+  "runtime_manifest": {
+    "command": "python3 DEV/tools/refresh_manifest.py --root DEV --check",
+    "components": 67,
+    "exit_code": 0
+  },
+  "catalogue_ids": 120,
+  "counts": {
+    "implemented": 102,
+    "withdrawn": 7,
+    "qualified": 9,
+    "pending_qualification": 1,
+    "evaluated": 1
+  },
+  "remaining": [
+    102
+  ],
+  "runtime_changed": false
+}

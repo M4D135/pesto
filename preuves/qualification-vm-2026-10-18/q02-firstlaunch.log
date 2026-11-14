@@ -1,0 +1,22 @@
+Microsoft.PowerShell.Commands.Internal.Format.FormatStartData
+Microsoft.PowerShell.Commands.Internal.Format.GroupStartData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
+Microsoft.PowerShell.Commands.Internal.Format.GroupEndData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEndData
+Microsoft.PowerShell.Commands.Internal.Format.FormatStartData
+Microsoft.PowerShell.Commands.Internal.Format.GroupStartData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEntryData
+Microsoft.PowerShell.Commands.Internal.Format.GroupEndData
+Microsoft.PowerShell.Commands.Internal.Format.FormatEndData
+PathLabel                          Text           actif=True  [368;154;994;16] Aucun accès AD n'est lancé. Vérifiez vos valeurs réelles ; Pesto n'invente pas le domaine 
+Errors                             Edit           actif=True  [368;182;994;54] Erreurs de configuration
+Json                               Edit           actif=True  [368;248;994;522] Configuration à valider
+Wizard                             Button         actif=True  [701;782;151;36] Créer avec l’assistant
+Import                             Button         actif=True  [862;782;187;36] Importer une configuration
+Save                               Button         actif=True  [1059;782;216;36] Valider, sauvegarder et continuer
+capture C:\PestoQual_20261018\preuves\q02-firstlaunch.png 1050x780
+

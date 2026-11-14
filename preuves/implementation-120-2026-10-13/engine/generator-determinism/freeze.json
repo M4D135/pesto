@@ -1,0 +1,30 @@
+{
+  "Schema": 1,
+  "Utc": "2026-10-13T18:51:40.662205+00:00",
+  "FrozenFiles": [
+    "DEV/tools/Build-PestoEngineModule.ps1",
+    "DEV/wad/Pesto-Contracts.ps1",
+    "DEV/tests/Run-Engine120Tests.ps1"
+  ],
+  "Changes": [
+    "Ordered source metadata and output order in engine generator.",
+    "Strict draft Schema int/int64 equal1 accepted; string/bool/double/unknown version refused.",
+    "Two new Engine120 regression cases for JSON roundtrip and invalid Schema types."
+  ],
+  "GeneratorEvidence": "preuves/implementation-120-2026-10-13/engine/generator-determinism/summary.json",
+  "Engine120": {
+    "Report": "preuves/implementation-120-2026-10-13/engine/generator-determinism/Engine120-draft-regression.json",
+    "SHA256": "30c9d897d2de73de692287516b61085352b20bc51a4a63135b63c4d43deceba6",
+    "Passed": 64,
+    "Failed": 0
+  },
+  "SharedGeneratedArtifactsChanged": false,
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "Note": "Targeted isolated run was started before final steering to defer remaining suites; no further suite started.",
+  "SourceSHA256": {
+    "DEV/tools/Build-PestoEngineModule.ps1": "12121f0e5ad9e58d0092bf831d71b52cfbdbc7f8342dfe7f60deaf43a160f185",
+    "DEV/wad/Pesto-Contracts.ps1": "61b3a3b8f6d9f1cb52732c010f761831430f2d3a8d22e1e5737a22aea22896e2",
+    "DEV/tests/Run-Engine120Tests.ps1": "9b7017eb28b2f2bbbf2b63bee7fe8a58c297b5933146cbb63252d242948ebe27"
+  }
+}

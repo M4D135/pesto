@@ -1,0 +1,37 @@
+[
+  {
+    "suite": "LiveReadTests",
+    "startedUtc": "2026-10-27T09:05:33.297744+00:00",
+    "finishedUtc": "2026-10-27T09:05:33.820956+00:00",
+    "exitCode": 0,
+    "summary": "24 r\u00e9ussis, 0 en \u00e9chec, 24 au total."
+  },
+  {
+    "suite": "LiveWriteTests",
+    "startedUtc": "2026-10-27T09:05:33.298294+00:00",
+    "finishedUtc": "2026-10-27T09:05:33.742600+00:00",
+    "exitCode": 0,
+    "summary": "16 r\u00e9ussis, 0 en \u00e9chec, 16 au total."
+  },
+  {
+    "suite": "LiveQueueTests",
+    "startedUtc": "2026-10-27T09:05:33.298652+00:00",
+    "finishedUtc": "2026-10-27T09:05:33.828603+00:00",
+    "exitCode": 0,
+    "summary": "28 r\u00e9ussis, 0 en \u00e9chec, 28 au total."
+  },
+  {
+    "suite": "LiveSettingsTests",
+    "startedUtc": "2026-10-27T09:05:33.298982+00:00",
+    "finishedUtc": "2026-10-27T09:05:33.668727+00:00",
+    "exitCode": 0,
+    "summary": "16 r\u00e9ussis, 0 en \u00e9chec, 16 au total."
+  },
+  {
+    "suite": "UpdateTests",
+    "startedUtc": "2026-10-27T09:05:33.299292+00:00",
+    "finishedUtc": "2026-10-27T09:05:36.240012+00:00",
+    "exitCode": 0,
+    "summary": "24 r\u00e9ussis, 0 en \u00e9chec, 24 au total."
+  }
+]

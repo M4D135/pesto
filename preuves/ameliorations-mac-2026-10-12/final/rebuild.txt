@@ -1,0 +1,48 @@
+Pesto 1.0 — R7
+Display-only correction after verified R6 join; native join engine unchanged.
+
+Compiled: /Users/david/Projects/pesto/DEV/Pesto.exe 113664 bytes (not executed)
+Toolchain: Apple clang version 21.0.0 (clang-2100.1.1.101) | Homebrew LLD 23.1.2
+
+Regenerated: 44 runtime components; no demos/tests/CMD/configuration. Not an author signature.
+
+Checked: 44 runtime components; no demos/tests/CMD/configuration. Not an author signature.
+
+1/4 Sources copiées ; contrôle de syntaxe et de configuration.
+2/4 Recompilation du lanceur natif et des empreintes.
+3/4 Vérification de la distribution classique.
+4/4 PROD généré : Pesto.exe + dossier wad. Sources conservées.
+{
+  "Version": "1.0",
+  "RuntimeFiles": 44,
+  "ExeSHA256": "ba43a8de4d303b4d09ff8831ba112c345adc8b776c31a1367bc5ec90da3a78b1",
+  "RuntimeVerification": "PASS",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "NativeCompiler": "LLVM clang/lld",
+  "SourceWad": "/Users/david/Projects/pesto/DEV/wad",
+  "OutputDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/pesto-vm-candidate-r7-20261012"
+}
+
+SHA256 ba43a8de4d303b4d09ff8831ba112c345adc8b776c31a1367bc5ec90da3a78b1
+{
+  "Schema": 1,
+  "Version": "1.0",
+  "FileVersion": "1.0.0.0",
+  "Utc": "2026-10-12T20:01:35.188188+00:00",
+  "Clang": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "Lld": "Homebrew LLD 23.1.2",
+  "Exe": "Pesto.exe",
+  "Size": 113664,
+  "SHA256": "ba43a8de4d303b4d09ff8831ba112c345adc8b776c31a1367bc5ec90da3a78b1",
+  "Inputs": {
+    "tools/launcher/Pesto-launcher.c": "eecb4680690af5fbf65fb77cfe9e595c4c44fdbf4d38eb222b3a0fbae603a893",
+    "tools/launcher/pesto_runtime.h": "dad6457a1659adfc00ecd48b476d003b3bc4c5b00134dec452264125b6c5bf4d",
+    "tools/launcher/pesto_sha256.h": "23dee663ebf2aad88ee45002c9c71abe87ff2fc4621b8a1610466d471bc233b8",
+    "tools/launcher/pesto_verify.h": "4583e08d7d0e39dd21e2ecd7ae64d981bc4d5f8f913eb016a348a67ac2942241",
+    "tools/launcher/Pesto.manifest": "79213be8dcb79ae4859a1d9aa61ce262e018af327ded7139f52cd7e42f34999f",
+    "wad/Pesto.ico": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a",
+    "tools/version.json": "e5bd73d68dce560d34edec2efe8628b81ebcd546717bae19c871e48b677304f2"
+  },
+  "WindowsExecution": "NOT_RUN"
+}

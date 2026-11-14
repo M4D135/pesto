@@ -1,0 +1,31 @@
+{
+  "repository": "M4D135/pesto",
+  "sourceCommit": "292860b934bcdff0f1321b0839158bf38b58816e",
+  "runId": 41270720023,
+  "conclusion": "failure",
+  "githubArtifactUploaded": false,
+  "uploadFailure": "Artifact storage quota has been hit",
+  "collection": "SSH copy of completed job evidence; archive SHA-256 checked against remote bytes",
+  "remoteArchive": {
+    "archive": "C:\\Users\\degun\\actions-runner\\PestoTargetedDiag-20261101\\monitor-lab-evidence.zip",
+    "bytes": 3202663,
+    "sha256": "eecbcb29f626ed9b580cf1cd45a9e6cd305a39f767fa03aeb45c8c2c0995926d",
+    "sourceCommit": "292860b934bcdff0f1321b0839158bf38b58816e",
+    "freeGiB": 28.16
+  },
+  "files": {
+    "candidate-sdk.json": "c1baba730cf726c15309c7de1fd2d3159f74f99d50fccc98a923584e6e75260f",
+    "windows-desktop.json": "bcb0e85624bfa2f0d31af149054c196b46d876475c0ee0638efa05ddf189cb4b",
+    "dev-rebuild/proof.json": "854202dc9bc050017b90ac92ad0dde084927c00870fcd66e9b3756616e5439f3",
+    "dev-rebuild/rebuilt-native-demo.json": "64c779eac8b64a802209e7db7ab0bda9402a174eaf0335ce8bf7fc51a9f5b3d4",
+    "native-update-PROD/failure.json": "2cdda13306e69244bbe726afd2cc233479ca33a58a375128e6ab0d29f08c4776",
+    "native-update-PROD/runner-06-request.txt": "1b025256817d0fe0489644903f9131f0a663ec479b474aa7cb62a7e6c7e1fa20",
+    "native-update-PROD/transaction-evidence/suite.json": "c410f9e5458d0ab471da9dcc5f34e1d331aa1d2712e2c97bea21fdb9c6e9340b",
+    "native-update-PROD/transaction-evidence/normal/fixture.json": "ba2f316dd0af54b4536f7c18b8c520095b42ffc3b2ac4650492e05031c515565",
+    "native-update-PROD/transaction-evidence/normal/observation-install.json": "5c80d7af23bb71334030a11ec6f233b61ecdd6355a79e8dba84a76853cdb08bf",
+    "native-update-PROD/transaction-evidence/normal/proof-install.json": "9f025536527fa4994864455f625cfae154e171497a0d60a5ad30d88d18795e78",
+    "readonly-runtime-observation.json": "b39da1950ed43267a433a40d9ed2d1dac41341f438304774ebbf1405d2f296ae",
+    "existing-event-query.json": "6ab1e09112b7200a28d520d8c782942f429d66451a2fc38cfe0ed72c65cf6df5",
+    "github-failed.log": "cec556cb6a16b0bd8d1688dfb3bb2ac2d0beabfe0078b42070bce6621c781bb1"
+  }
+}

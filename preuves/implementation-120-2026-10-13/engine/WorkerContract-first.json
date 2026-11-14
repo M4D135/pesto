@@ -1,0 +1,91 @@
+{
+  "Checks": [
+    {
+      "Name": "Queue worker exports every product function it calls",
+      "Passed": false,
+      "Error": "ConvertTo-PestoPolicy dépend de Merge-PestoManagedPolicy absent du worker."
+    },
+    {
+      "Name": "Join worker exports every product function it calls",
+      "Passed": false,
+      "Error": "ConvertTo-PestoPolicy dépend de Merge-PestoManagedPolicy absent du worker."
+    },
+    {
+      "Name": "Direct worker exports every product function it calls",
+      "Passed": false,
+      "Error": "ConvertTo-PestoPolicy dépend de Merge-PestoManagedPolicy absent du worker."
+    },
+    {
+      "Name": "Preflight worker exports every product function it calls",
+      "Passed": true
+    },
+    {
+      "Name": "Directory projection has no missing product functions",
+      "Passed": true
+    },
+    {
+      "Name": "Worker source cache is stable within the process",
+      "Passed": true
+    },
+    {
+      "Name": "Preflight progress is synchronized and independent for each request",
+      "Passed": true
+    },
+    {
+      "Name": "Real direct request completes the shared worker and reaches user confirmation",
+      "Passed": true
+    },
+    {
+      "Name": "Real queue producer shares progress with its callback and retains all results",
+      "Passed": true
+    },
+    {
+      "Name": "Cancelled queue retains exactly the row completed before cancellation",
+      "Passed": true
+    },
+    {
+      "Name": "AD refusal is returned as blocked and cannot reach direct confirmation",
+      "Passed": true
+    },
+    {
+      "Name": "Import failure stays a worker error with no completed result",
+      "Passed": true
+    },
+    {
+      "Name": "Incomplete progress contract fails explicitly before importing AD",
+      "Passed": true
+    },
+    {
+      "Name": "Direct freshness accepts a recent result only within the two minute window",
+      "Passed": true
+    },
+    {
+      "Name": "Direct callback refuses Missing preflight before confirmation",
+      "Passed": true
+    },
+    {
+      "Name": "Direct callback refuses Malformed preflight before confirmation",
+      "Passed": true
+    },
+    {
+      "Name": "Direct callback refuses Expired preflight before confirmation",
+      "Passed": true
+    },
+    {
+      "Name": "Direct callback refuses Future preflight before confirmation",
+      "Passed": true
+    },
+    {
+      "Name": "Expired preflight cannot enter the direct execution boundary",
+      "Passed": true
+    },
+    {
+      "Name": "Expiry during modal confirmation is rejected without starting another worker",
+      "Passed": true
+    }
+  ],
+  "Failed": 3,
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false
+}

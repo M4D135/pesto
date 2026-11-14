@@ -1,0 +1,17 @@
+{
+    "Schema":  1,
+    "OperationId":  "4146ae36-adbf-40bd-aadb-726ba2bbb71e",
+    "Redacted":  true,
+    "Files":  [
+                  {
+                      "Name":  "diagnostic.json",
+                      "Bytes":  2379,
+                      "SHA256":  "c3d06a66de1516c34750a9c168987a53ea69d56c31a36621281a6b7bcf724d1e"
+                  },
+                  {
+                      "Name":  "operation.json",
+                      "Bytes":  1399,
+                      "SHA256":  "c5af74e9eb9b68a83fbac5d65ac6f6b898ae959512a38b03fd8ac516dc64d0c3"
+                  }
+              ]
+}

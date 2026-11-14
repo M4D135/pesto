@@ -1,0 +1,47 @@
+test_command_preserves_script_bytes_after_bom_removal (vps_tests.VpsTests.test_command_preserves_script_bytes_after_bom_removal) ... FAIL
+test_empty_success_remains_success (vps_tests.VpsTests.test_empty_success_remains_success) ... FAIL
+test_invalid_utf8_stops_before_ssh (vps_tests.VpsTests.test_invalid_utf8_stops_before_ssh) ... ok
+test_missing_input_stops_before_ssh (vps_tests.VpsTests.test_missing_input_stops_before_ssh) ... ok
+test_remote_failure_and_diagnostics_survive (vps_tests.VpsTests.test_remote_failure_and_diagnostics_survive) ... FAIL
+test_ssh_failure_is_not_masked (vps_tests.VpsTests.test_ssh_failure_is_not_masked) ... FAIL
+
+======================================================================
+FAIL: test_command_preserves_script_bytes_after_bom_removal (vps_tests.VpsTests.test_command_preserves_script_bytes_after_bom_removal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/outils/labo/tests/test_vps.py", line 58, in test_command_preserves_script_bytes_after_bom_removal
+    self.assertEqual(self.run_script().returncode, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_empty_success_remains_success (vps_tests.VpsTests.test_empty_success_remains_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/outils/labo/tests/test_vps.py", line 42, in test_empty_success_remains_success
+    self.assertEqual(result.returncode, 0)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 0
+
+======================================================================
+FAIL: test_remote_failure_and_diagnostics_survive (vps_tests.VpsTests.test_remote_failure_and_diagnostics_survive)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/outils/labo/tests/test_vps.py", line 48, in test_remote_failure_and_diagnostics_survive
+    self.assertEqual(result.returncode, 42)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1 != 42
+
+======================================================================
+FAIL: test_ssh_failure_is_not_masked (vps_tests.VpsTests.test_ssh_failure_is_not_masked)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/david/Projects/pesto/outils/labo/tests/test_vps.py", line 54, in test_ssh_failure_is_not_masked
+    self.assertEqual(result.returncode, 255)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 255
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.146s
+
+FAILED (failures=4)

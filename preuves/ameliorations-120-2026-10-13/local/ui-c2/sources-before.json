@@ -1,0 +1,198 @@
+{
+  "DEV/wad/Invoke-Pesto.ps1": {
+    "bytes": 2074,
+    "sha256": "5d43e59883b4a1eb5d5362f1bf7b665ceb613e0fd7a698e88662f27dc62eb910"
+  },
+  "DEV/wad/Invoke-PestoAutoJoin.ps1": {
+    "bytes": 2221,
+    "sha256": "a08930905497bbe95fb59f09ea6a0f04e60b0b8e13cdb446fe64b6c09cb55d52"
+  },
+  "DEV/wad/Pesto-Appearance.ps1": {
+    "bytes": 20388,
+    "sha256": "bae814fd5343926bf71516dadcc25892f733ccc937b10a81d29b6fc7ec073ed2"
+  },
+  "DEV/wad/Pesto-Async.ps1": {
+    "bytes": 24698,
+    "sha256": "87f0453806da7484d3c69c619c48938b8db6d4f475495a81b8ff1fc91e17894c"
+  },
+  "DEV/wad/Pesto-Authentication.ps1": {
+    "bytes": 35842,
+    "sha256": "14ac0e936446cbbade80590e86a65ec9d2fe823248bf3f5adfa9054e6c0486fc"
+  },
+  "DEV/wad/Pesto-Automation.ps1": {
+    "bytes": 16923,
+    "sha256": "4b07b6bb828f7fa8f4ed378ba6b1452c1c97794324d46c5cf643a2f628d43769"
+  },
+  "DEV/wad/Pesto-BatchTools.ps1": {
+    "bytes": 19788,
+    "sha256": "a1e342b5e688f0a3767ddcd0e94a72660844ac831b71a4b613a8caf0805098ad"
+  },
+  "DEV/wad/Pesto-Catalogue.ps1": {
+    "bytes": 5030,
+    "sha256": "cd6b256eae89490057aece872ed0a5574418f45845e2e545b2e39943ab198366"
+  },
+  "DEV/wad/Pesto-Collections.ps1": {
+    "bytes": 19152,
+    "sha256": "9dfcb5878ac9e0c6085d7f0e501dfb5f065f2dcf6671fa3d2c4251e30837249b"
+  },
+  "DEV/wad/Pesto-Common.ps1": {
+    "bytes": 5066,
+    "sha256": "49ff8575a59206efcb79c5fab6e0f8ed58387a53bd3f47e14baa0dd7b618be47"
+  },
+  "DEV/wad/Pesto-ConfigEditor.ps1": {
+    "bytes": 18733,
+    "sha256": "23b948dc6511ee9049439b3bffd9620be503aeca9203c19d8bb6a194633864f9"
+  },
+  "DEV/wad/Pesto-Configuration.ps1": {
+    "bytes": 57324,
+    "sha256": "e193251bc65a689df9f1790dd5176c122b79524ccda399680d70ce8ff48df2a3"
+  },
+  "DEV/wad/Pesto-Contracts.ps1": {
+    "bytes": 26286,
+    "sha256": "61b3a3b8f6d9f1cb52732c010f761831430f2d3a8d22e1e5737a22aea22896e2"
+  },
+  "DEV/wad/Pesto-Core.ps1": {
+    "bytes": 350542,
+    "sha256": "9c7b55690beb7d91a511252a0649044148613feb57ced14e6db06687c3211a1a"
+  },
+  "DEV/wad/Pesto-Diagnostics.ps1": {
+    "bytes": 16453,
+    "sha256": "edc81f59f660f3d2320f14c8f8319203097c23f4587533814f89ead9ac5f0eb8"
+  },
+  "DEV/wad/Pesto-Direct.ps1": {
+    "bytes": 40525,
+    "sha256": "1b57dd17770cab2b62b0abcacf38ec565b952380ce0a7b37a2bad95312c8b233"
+  },
+  "DEV/wad/Pesto-Directory.ps1": {
+    "bytes": 41836,
+    "sha256": "320225214606c8d435eea1f487885e5b00e59b838353e5c5aa397261fd710199"
+  },
+  "DEV/wad/Pesto-EngineContracts.ps1": {
+    "bytes": 9836,
+    "sha256": "d7fe0514d47be10ef87fb3c1d57c7dd1f1b003ce1670935162dd56f86f2bc6b9"
+  },
+  "DEV/wad/Pesto-Enterprise.ps1": {
+    "bytes": 28620,
+    "sha256": "452391a4fb4302e3350f5269e7dc71fb1bfb061bdb78ef8c910832517ba6e023"
+  },
+  "DEV/wad/Pesto-Inspection.ps1": {
+    "bytes": 30103,
+    "sha256": "a19d2bfa946ae6f1b74d3b9c14aec022a962f6c20f6289d38db1a228ac975d8a"
+  },
+  "DEV/wad/Pesto-Integrity.ps1": {
+    "bytes": 10935,
+    "sha256": "f846da48226193f714316303f4a1f99d6618a69b7a1633a395bd6951c83a33d0"
+  },
+  "DEV/wad/Pesto-Interventions.ps1": {
+    "bytes": 42378,
+    "sha256": "6488a25afaca97ed2b9e27019d4f159a27b874186152ccff08063f1f60539b0a"
+  },
+  "DEV/wad/Pesto-Join.ps1": {
+    "bytes": 92497,
+    "sha256": "caa2e41629a2c46d08e9d8f252ff926e5bdc61de0589cfcf5d2ce3b09402ecb7"
+  },
+  "DEV/wad/Pesto-JoinRecovery.ps1": {
+    "bytes": 12867,
+    "sha256": "10a9e506cbcb697996068cf724bc4dc3ff31155c4e8ccfd5f0ad8ccb5fcaa229"
+  },
+  "DEV/wad/Pesto-Journal.ps1": {
+    "bytes": 13193,
+    "sha256": "18c30b0e51858a1cbb9904ac6fc51472b5e6554870e3dcfcb475b20fbfda4fe5"
+  },
+  "DEV/wad/Pesto-ManagedPolicy.ps1": {
+    "bytes": 2900,
+    "sha256": "8aa614affd1efcace5f715a6365e8b16c64be4045d85035e5cf46df71cf5e942"
+  },
+  "DEV/wad/Pesto-NameWorkbench.ps1": {
+    "bytes": 8640,
+    "sha256": "233f47b20e82a07032061c03b8882dd4cbe8146d140cfffc127a6600b9c35498"
+  },
+  "DEV/wad/Pesto-Names.ps1": {
+    "bytes": 42666,
+    "sha256": "68b73fe2f2cb067e3a4e4b512e06d1c22ac7afb384014610fe66b9ee4508f62f"
+  },
+  "DEV/wad/Pesto-Operations.ps1": {
+    "bytes": 96296,
+    "sha256": "5d79b4dc6a4f086ca2849bba3f3f8b1c824cfba3f1628c4c95bd30ae87d98e45"
+  },
+  "DEV/wad/Pesto-Policy.ps1": {
+    "bytes": 16165,
+    "sha256": "7dc7f7b06d3e7a0df92218923347b7a65518b26f44342301a227485cc60f6992"
+  },
+  "DEV/wad/Pesto-Preparation.ps1": {
+    "bytes": 12464,
+    "sha256": "2d817e1441e53df53057af1cfcb1d87f2fe44c8ef2da8cbdd6e8d1ce5e31def9"
+  },
+  "DEV/wad/Pesto-ReceiptTools.ps1": {
+    "bytes": 10106,
+    "sha256": "09bde8cbf2596575436effc852697703a2385252289da7fbc02342046c13616d"
+  },
+  "DEV/wad/Pesto-Recovery.ps1": {
+    "bytes": 14821,
+    "sha256": "e97d83c8dfc3dae1b2b9d3254a77ed0015e46045b474df1d8064e7946136ab00"
+  },
+  "DEV/wad/Pesto-Review.ps1": {
+    "bytes": 10919,
+    "sha256": "6d655acc9052c08558deb0d37c1e590c785109d71c4c40fadeed2f5469f704f9"
+  },
+  "DEV/wad/Pesto-Safety.ps1": {
+    "bytes": 31814,
+    "sha256": "f185482041cd9a43269f61856dd88b24e81abe5b1518cba1d27972726312bfd2"
+  },
+  "DEV/wad/Pesto-Startup.ps1": {
+    "bytes": 30891,
+    "sha256": "3d433821b84ac1911633d44d53eff4efe6e9e4c982d3d761af7485e582c3a1e8"
+  },
+  "DEV/wad/Pesto-SuiteUI.ps1": {
+    "bytes": 35008,
+    "sha256": "c81b0dd1764f7a164e4d3151db04d993e962c197d6bf938149779f83756526bb"
+  },
+  "DEV/wad/Pesto-Support.ps1": {
+    "bytes": 19135,
+    "sha256": "a68ed2c1494b08bc7d8cf6ae3872737c2a4c43f425f397d6e9d9640d236ac32c"
+  },
+  "DEV/wad/Pesto-Tables.ps1": {
+    "bytes": 6453,
+    "sha256": "d8daae256e86d69f21856ae4cd493a1562e0791242a814288fe225ac555868b6"
+  },
+  "DEV/wad/Pesto-UXFlow.ps1": {
+    "bytes": 8855,
+    "sha256": "6ddfc333a432824c07b0c8eb9738774dd5354d1ccb10f5386d2b816ffabdd2a4"
+  },
+  "DEV/wad/Pesto-Workbench.ps1": {
+    "bytes": 20065,
+    "sha256": "5b70c0de555b146dc723c78987227381fdebe8afece06bcf736f4528720c6370"
+  },
+  "DEV/wad/Pesto-Workspace.ps1": {
+    "bytes": 36100,
+    "sha256": "a5e0def04262aa1efb7d3da1ee981422fb6fccdc6a4cf7169d996ac7896f2300"
+  },
+  "DEV/wad/Pesto.Engine.Runtime.ps1": {
+    "bytes": 953041,
+    "sha256": "2cebec7acb8e0538cbc3b292192e94954d4b897b5c9d5f1f8099da5360fb871b"
+  },
+  "DEV/wad/Pesto-Shell.xaml": {
+    "bytes": 209804,
+    "sha256": "26083c6a6c98064b18f325db5872f53dcc881eb62e75d54f072109c894202aa3"
+  },
+  "DEV/tests/Run-Workbench120Tests.ps1": {
+    "bytes": 13088,
+    "sha256": "7c04e46c69f8d59689e7e304b5884439ce00970434c040fc11c110eed2183198"
+  },
+  "DEV/tests/Run-ConfigEditor120Tests.ps1": {
+    "bytes": 7483,
+    "sha256": "98b33a33415b5b648b193e20360daa41ab3f0400c3496ae87d9238d7e80bdff1"
+  },
+  "DEV/tests/Run-ReceiptTools120Tests.ps1": {
+    "bytes": 6656,
+    "sha256": "95d4de483249c4f84c7af36002696157174c54378bf81a734da2af7073cfbc2d"
+  },
+  "DEV/tests/Run-BatchNames120Tests.ps1": {
+    "bytes": 10405,
+    "sha256": "196d19ce891347347982c66e054b5bb2784663b0ca6427d381a16372043ed42c"
+  },
+  "DEV/tests/Run-Collections120Tests.ps1": {
+    "bytes": 9918,
+    "sha256": "8e7b6775ffd11efff208aa6cdb846442c295acee69af18420f2e8128b1d360ab"
+  }
+}

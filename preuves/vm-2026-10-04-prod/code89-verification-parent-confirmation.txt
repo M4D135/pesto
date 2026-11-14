@@ -1,0 +1,3 @@
+﻿Identité Windows, nom actif, nom configuré et objet AD conformes au plan.
+
+Consigner cette observation et préparer uniquement la suite indiquée ? Aucune commande n’est lancée par cette confirmation.

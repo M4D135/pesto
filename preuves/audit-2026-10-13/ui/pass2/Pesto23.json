@@ -1,0 +1,341 @@
+﻿{
+    "Version":  "1.0",
+    "Utc":  "2026-10-12T23:11:44.1788761Z",
+    "PowerShell":  "5.1.26100.6584",
+    "Failed":  0,
+    "Skipped":  0,
+    "NoLiveAD":  true,
+    "NoUAC":  true,
+    "Checks":  [
+                   {
+                       "Name":  "Reçu historique exact accepté",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Schéma textuel refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Champ secret inattendu refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Identifiant de reçu vide refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Champ date sans fuseau refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Chronologie impossible refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "OU dans un autre domaine refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Nom futur invalide refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Reçu d\u0027un autre préfixe accepté (cfg.json changé depuis)",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Message trop volumineux refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Import jonction sans inventer succès ou baseline",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Les trois phases historiques non résolues sont importables",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Historique déjà résolu non réimporté comme en cours",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Import autre PC refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Import autre domaine refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Import hash tronqué refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "L import ne modifie pas sa source",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Baseline locale durable avant commande",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Photographie de jonction immuable",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Préparation échoue quand écriture durable échoue",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Machine déjà dans un domaine refusée avant baseline",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Jeton non élevé refusé avant baseline",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Booléens sous forme de chaînes refusés avant baseline",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Demande native est persistée et ne peut être répétée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Acceptation native ne permet pas une seconde commande",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Acceptation sans demande native préalable refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Retour tardif de jonction ne libère pas la coordination",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Postconditions complètes vérifiables mais pas de réinscription Entra supposée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Ancien reçu sans preuve de démarrage reste indéterminé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Identité du PC local différente refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Identité Windows différente refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Contrôleur de domaine non certifié par le test membre",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Domaine Windows différent non vérifié",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Nom actif précédent attend redémarrage",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Pas de nouveau boot déduit d une simple chaîne différente",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Boot antérieur au reçu refusé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Boot avant la date de préparation ne résout pas la jonction",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Boot sans fuseau ne résout pas la jonction",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Absence AD conserve l incertitude",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Emplacement AD différent refuse la résolution",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "OU supprimée recréée de même nom est rejetée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Compte précréé remplacé est rejeté",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Compte déjà lié remplacé est rejeté",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Chaîne false du canal ne devient pas vraie",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Canal booléen false reste non conforme",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Sources périmées refusées séparément",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Date de lecture future refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Plan de jonction reste immuable pendant décision",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Avant prévu observé montre aussi la cible de jonction",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Une lecture de statut seule ne valide plus AD",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Tous les nouveaux exports écartent le secret sentinelle",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Parcours primaire commence par lire une cible valide",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Parcours primaire refuse un nom vide",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Parcours primaire prépare sans mutation un formulaire incomplet",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Parcours primaire conserve le contrôle puis confirmation",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Reprise primaire annonce uniquement le déplacement restant",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Busy ou verrou restent prioritaires devant un plan prêt",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Consultation permet la lecture mais pas exécution",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Instrumentation bornée à 200 échantillons",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Instrumentation refuse les noms de cible et valeurs négatives",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Résumé calcule moyenne et percentile sans prétendre au succès métier",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Délais erreurs et annulations restent distincts",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Mesures worker et calcul ne sont pas mélangées",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Lecture réelle du schéma 3 dans un fichier fixture",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Vrais XAML incluent le bouton de jonction accessible",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Vrai bouton primaire conserve sa zone tactile et absence de défaut Entrée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   }
+               ]
+}

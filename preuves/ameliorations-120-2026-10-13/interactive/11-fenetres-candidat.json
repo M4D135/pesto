@@ -1,0 +1,26 @@
+[
+    {
+        "Name":  "",
+        "Pid":  4288,
+        "Handle":  65740,
+        "Bounds":  "0,1152,1920,48"
+    },
+    {
+        "Name":  "Pesto · Corriger la configuration",
+        "Pid":  9892,
+        "Handle":  721710,
+        "Bounds":  "435,186,1050,780"
+    },
+    {
+        "Name":  "Administrator: C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Pid":  9016,
+        "Handle":  393912,
+        "Bounds":  "-32000,-32000,160,28"
+    },
+    {
+        "Name":  "Program Manager",
+        "Pid":  4288,
+        "Handle":  65772,
+        "Bounds":  "0,0,1920,1200"
+    }
+]

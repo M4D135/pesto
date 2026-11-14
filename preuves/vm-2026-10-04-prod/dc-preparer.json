@@ -1,0 +1,45 @@
+{
+  "Date": "2026-10-04T19:22:49.6020611+02:00",
+  "Root": "OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+  "User": "pesto-qualif",
+  "SID": "S-1-5-21-2348118763-2306653211-1344436245-1158",
+  "OUs": [
+    {
+      "Name": "Pesto-20261004",
+      "DistinguishedName": "OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "ad13eeac-026c-4085-a943-fad052cbaa2b"
+    },
+    {
+      "Name": "Computers",
+      "DistinguishedName": "OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "19a13d79-5fd6-4b19-b09e-10914c3e122c"
+    },
+    {
+      "Name": "Accounts",
+      "DistinguishedName": "OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "3c82021c-2ddc-4685-8e89-d531293aa31b"
+    },
+    {
+      "Name": "PREPROD",
+      "DistinguishedName": "OU=PREPROD,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "f763143d-d1bc-442f-ab6b-e09dade74523"
+    },
+    {
+      "Name": "ALPHA-AA",
+      "DistinguishedName": "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "02826a0f-e401-4934-850a-c9872a33b4ce"
+    },
+    {
+      "Name": "BETA-BB",
+      "DistinguishedName": "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "75e2833e-ede5-4d1c-8e36-fd1c17778b35"
+    },
+    {
+      "Name": "RECREATE-RR",
+      "DistinguishedName": "OU=RECREATE-RR,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+      "ObjectGUID": "f8bbabdf-21e2-44b1-819c-8eb5048d2406"
+    }
+  ],
+  "DomainAdmin": false,
+  "Delegation": "GenericAll sur OU Pesto exclusivement et descendants"
+}

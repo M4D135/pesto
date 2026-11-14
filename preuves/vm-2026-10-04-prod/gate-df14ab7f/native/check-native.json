@@ -1,0 +1,19 @@
+{
+    "Schema":  1,
+    "Product":  "Pesto",
+    "Version":  "1.0",
+    "Runtime":  "PASS",
+    "ComponentCount":  38,
+    "Syntax":  "PASS",
+    "ParsedFiles":  27,
+    "EmbeddedScripts":  3,
+    "AuditWriter":  "PASS",
+    "Platform":  "10.0.26200.0",
+    "PowerShell":  "5.1.26100.6584",
+    "Architecture":  "x64",
+    "Configuration":  "NOT_VALIDATED",
+    "Network":  "NOT_TESTED",
+    "UAC":  "NOT_REQUESTED",
+    "Signature":  "NOT_ASSERTED",
+    "Utc":  "2026-10-04T20:15:12.5687975Z"
+}

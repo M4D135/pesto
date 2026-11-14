@@ -1,0 +1,112 @@
+{"Utc": "2026-10-12T23:27:06.856118+00:00", "Kind": "Screenshot", "Detail": "05-human-wizard-error.png"}
+{"Utc": "2026-10-12T23:27:24.467203+00:00", "Kind": "Click", "Detail": {"x": 1240, "y": 966}}
+{"Utc": "2026-10-12T23:27:33.947747+00:00", "Kind": "Screenshot", "Detail": "06-human-cancel.png"}
+{"Utc": "2026-10-12T23:27:52.681332+00:00", "Kind": "Click", "Detail": {"x": 1450, "y": 1075}}
+{"Utc": "2026-10-12T23:28:01.340964+00:00", "Kind": "Screenshot", "Detail": "07-human-import.png"}
+{"Utc": "2026-10-12T23:28:23.155793+00:00", "Kind": "Keyboard", "Detail": "Type C:\\PestoAudit20261013\\release\\native-cases\\valid-draft.json"}
+{"Utc": "2026-10-12T23:28:23.704223+00:00", "Kind": "Keyboard", "Detail": "Enter to open selected JSON"}
+{"Utc": "2026-10-12T23:28:51.404085+00:00", "Kind": "Screenshot", "Detail": "08-human-invalid-import.png"}
+{"Utc": "2026-10-12T23:29:38.919995+00:00", "Kind": "Click", "Detail": {"x": 891, "y": 585}}
+{"Utc": "2026-10-12T23:29:39.854443+00:00", "Kind": "Click", "Detail": {"x": 1270, "y": 1075}}
+{"Utc": "2026-10-12T23:29:55.950502+00:00", "Kind": "Screenshot", "Detail": "09-human-wizard.png"}
+{"Utc": "2026-10-12T23:30:09.681614+00:00", "Kind": "Click", "Detail": {"x": 1117, "y": 966}}
+{"Utc": "2026-10-12T23:30:17.114110+00:00", "Kind": "Screenshot", "Detail": "10-human-wizard-validation.png"}
+{"Utc": "2026-10-12T23:30:36.181941+00:00", "Kind": "Click", "Detail": {"x": 784, "y": 380}}
+{"Utc": "2026-10-12T23:30:36.748437+00:00", "Kind": "Keyboard", "Detail": "Type 111301"}
+{"Utc": "2026-10-12T23:30:37.681945+00:00", "Kind": "Click", "Detail": {"x": 1120, "y": 1047}}
+{"Utc": "2026-10-12T23:30:52.864496+00:00", "Kind": "Screenshot", "Detail": "11-human-prefix.png"}
+{"Utc": "2026-10-12T23:31:11.106766+00:00", "Kind": "Click", "Detail": {"x": 1240, "y": 1030}}
+{"Utc": "2026-10-12T23:31:12.027743+00:00", "Kind": "Click", "Detail": {"x": 1822, "y": 1075}}
+{"Utc": "2026-10-12T23:32:09.664552+00:00", "Kind": "Screenshot", "Detail": "13-human-main.png"}
+{"Utc": "2026-10-12T23:32:27.837845+00:00", "Kind": "Click", "Detail": {"x": 1614, "y": 121}}
+{"Utc": "2026-10-12T23:32:35.545788+00:00", "Kind": "Screenshot", "Detail": "14-human-maximized.png"}
+{"Utc": "2026-10-12T23:32:51.431027+00:00", "Kind": "Click", "Detail": {"x": 1247, "y": 481}}
+{"Utc": "2026-10-12T23:32:58.392297+00:00", "Kind": "Screenshot", "Detail": "15-human-read-computer.png"}
+{"Utc": "2026-10-12T23:33:15.406147+00:00", "Kind": "Click", "Detail": {"x": 616, "y": 637}}
+{"Utc": "2026-10-12T23:33:20.934929+00:00", "Kind": "Screenshot", "Detail": "16-human-organism.png"}
+{"Utc": "2026-10-12T23:36:03.598189+00:00", "Kind": "Click", "Detail": {"x": 270, "y": 678}}
+{"Utc": "2026-10-12T23:36:04.503643+00:00", "Kind": "Screenshot", "Detail": "17-human-organism-selected.png"}
+{"Utc": "2026-10-12T23:36:25.677640+00:00", "Kind": "Click", "Detail": {"x": 828, "y": 637}}
+{"Utc": "2026-10-12T23:36:26.590609+00:00", "Kind": "Screenshot", "Detail": "18-human-site-dropdown.png"}
+{"Utc": "2026-10-12T23:36:32.395925+00:00", "Kind": "Click", "Detail": {"x": 686, "y": 678}}
+{"Utc": "2026-10-12T23:36:33.347383+00:00", "Kind": "Click", "Detail": {"x": 428, "y": 701}}
+{"Utc": "2026-10-12T23:36:34.225263+00:00", "Kind": "Screenshot", "Detail": "19-human-type-dropdown.png"}
+{"Utc": "2026-10-12T23:36:42.089994+00:00", "Kind": "Click", "Detail": {"x": 281, "y": 742}}
+{"Utc": "2026-10-12T23:36:43.037476+00:00", "Kind": "Click", "Detail": {"x": 1143, "y": 637}}
+{"Utc": "2026-10-12T23:36:43.943152+00:00", "Kind": "Screenshot", "Detail": "20-human-service-dropdown.png"}
+{"Utc": "2026-10-12T23:36:52.250164+00:00", "Kind": "Keyboard", "Detail": "Type INF"}
+{"Utc": "2026-10-12T23:36:52.839504+00:00", "Kind": "Keyboard", "Detail": "Tab"}
+{"Utc": "2026-10-12T23:36:53.676708+00:00", "Kind": "Screenshot", "Detail": "21-human-name-generated.png"}
+{"Utc": "2026-10-12T23:37:01.894465+00:00", "Kind": "Click", "Detail": {"x": 1256, "y": 744}}
+{"Utc": "2026-10-12T23:37:02.765148+00:00", "Kind": "Screenshot", "Detail": "22-human-random-name.png"}
+{"Utc": "2026-10-12T23:37:04.065430+00:00", "Kind": "Click", "Detail": {"x": 1796, "y": 1057}}
+{"Utc": "2026-10-12T23:37:04.957317+00:00", "Kind": "Screenshot", "Detail": "23-human-single-confirm.png"}
+{"Utc": "2026-10-12T23:37:11.519632+00:00", "Kind": "Click", "Detail": {"x": 1258, "y": 1037}}
+{"Utc": "2026-10-12T23:37:12.433214+00:00", "Kind": "Screenshot", "Detail": "24-human-single-cancel.png"}
+{"Utc": "2026-10-12T23:37:18.644021+00:00", "Kind": "Click", "Detail": {"x": 1796, "y": 1057}}
+{"Utc": "2026-10-12T23:37:19.550673+00:00", "Kind": "Screenshot", "Detail": "25-human-single-reconfirm.png"}
+{"Utc": "2026-10-12T23:37:20.596648+00:00", "Kind": "Click", "Detail": {"x": 1376, "y": 1037}}
+{"Utc": "2026-10-12T23:37:21.458575+00:00", "Kind": "Screenshot", "Detail": "26-human-single-result.png"}
+{"Utc": "2026-10-12T23:37:28.594649+00:00", "Kind": "Click", "Detail": {"x": 1387, "y": 1037}}
+{"Utc": "2026-10-12T23:37:29.501820+00:00", "Kind": "Click", "Detail": {"x": 92, "y": 259}}
+{"Utc": "2026-10-12T23:37:30.331640+00:00", "Kind": "Screenshot", "Detail": "27-human-batch.png"}
+{"Utc": "2026-10-12T23:37:38.254091+00:00", "Kind": "Click", "Detail": {"x": 767, "y": 883}}
+{"Utc": "2026-10-12T23:37:39.160747+00:00", "Kind": "Screenshot", "Detail": "28-human-queue-added.png"}
+{"Utc": "2026-10-12T23:37:55.256473+00:00", "Kind": "Click", "Detail": {"x": 447, "y": 452}}
+{"Utc": "2026-10-12T23:37:56.133221+00:00", "Kind": "Screenshot", "Detail": "29-human-queue-preview.png"}
+{"Utc": "2026-10-12T23:38:02.803180+00:00", "Kind": "Click", "Detail": {"x": 1387, "y": 1037}}
+{"Utc": "2026-10-12T23:38:05.662789+00:00", "Kind": "Click", "Detail": {"x": 302, "y": 452}}
+{"Utc": "2026-10-12T23:38:06.548149+00:00", "Kind": "Screenshot", "Detail": "30-human-queue-control.png"}
+{"Utc": "2026-10-12T23:38:13.179114+00:00", "Kind": "Click", "Detail": {"x": 650, "y": 495}}
+{"Utc": "2026-10-12T23:38:13.764400+00:00", "Kind": "Keyboard", "Detail": "Type introuvable"}
+{"Utc": "2026-10-12T23:38:14.641331+00:00", "Kind": "Screenshot", "Detail": "31-human-queue-filter.png"}
+{"Utc": "2026-10-12T23:38:20.860424+00:00", "Kind": "Keyboard", "Detail": "Ctrl+A; Backspace"}
+{"Utc": "2026-10-12T23:38:21.800965+00:00", "Kind": "Click", "Detail": {"x": 322, "y": 594}}
+{"Utc": "2026-10-12T23:38:22.706946+00:00", "Kind": "Click", "Detail": {"x": 648, "y": 452}}
+{"Utc": "2026-10-12T23:38:23.553562+00:00", "Kind": "Screenshot", "Detail": "32-human-queue-remove.png"}
+{"Utc": "2026-10-12T23:38:30.147732+00:00", "Kind": "Click", "Detail": {"x": 1376, "y": 1037}}
+{"Utc": "2026-10-12T23:38:31.059335+00:00", "Kind": "Screenshot", "Detail": "33-human-queue-empty.png"}
+{"Utc": "2026-10-12T23:38:32.037546+00:00", "Kind": "Click", "Detail": {"x": 82, "y": 147}}
+{"Utc": "2026-10-12T23:38:32.927055+00:00", "Kind": "Screenshot", "Detail": "34-human-dashboard.png"}
+{"Utc": "2026-10-12T23:38:41.428351+00:00", "Kind": "Click", "Detail": {"x": 1265, "y": 635}}
+{"Utc": "2026-10-12T23:38:42.295588+00:00", "Kind": "Screenshot", "Detail": "35-human-join.png"}
+{"Utc": "2026-10-12T23:38:49.440995+00:00", "Kind": "Click", "Detail": {"x": 94, "y": 371}}
+{"Utc": "2026-10-12T23:38:50.338307+00:00", "Kind": "Screenshot", "Detail": "36-human-names.png"}
+{"Utc": "2026-10-12T23:38:56.375004+00:00", "Kind": "Screenshot", "Detail": "37-human-names-loaded.png"}
+{"Utc": "2026-10-12T23:39:08.834891+00:00", "Kind": "Screenshot", "Detail": "38-human-names-ready.png"}
+{"Utc": "2026-10-12T23:39:16.724141+00:00", "Kind": "Click", "Detail": {"x": 579, "y": 649}}
+{"Utc": "2026-10-12T23:39:17.648218+00:00", "Kind": "Screenshot", "Detail": "39-human-names-next.png"}
+{"Utc": "2026-10-12T23:39:20.491823+00:00", "Kind": "Click", "Detail": {"x": 804, "y": 240}}
+{"Utc": "2026-10-12T23:39:21.103857+00:00", "Kind": "Keyboard", "Detail": "Type LYINF"}
+{"Utc": "2026-10-12T23:39:21.983050+00:00", "Kind": "Screenshot", "Detail": "40-human-names-filter.png"}
+{"Utc": "2026-10-12T23:39:36.085825+00:00", "Kind": "Screenshot", "Detail": "41-human-names-filter-ready.png"}
+{"Utc": "2026-10-12T23:39:37.035972+00:00", "Kind": "Click", "Detail": {"x": 1677, "y": 55}}
+{"Utc": "2026-10-12T23:39:37.941385+00:00", "Kind": "Screenshot", "Detail": "42-human-tools.png"}
+{"Utc": "2026-10-12T23:39:45.540112+00:00", "Kind": "Keyboard", "Detail": "Type zoom"}
+{"Utc": "2026-10-12T23:39:46.364776+00:00", "Kind": "Screenshot", "Detail": "43-human-tools-search.png"}
+{"Utc": "2026-10-12T23:39:47.363825+00:00", "Kind": "Click", "Detail": {"x": 671, "y": 235}}
+{"Utc": "2026-10-12T23:39:48.230947+00:00", "Kind": "Screenshot", "Detail": "44-human-tools-tab.png"}
+{"Utc": "2026-10-12T23:39:48.849943+00:00", "Kind": "Keyboard", "Detail": "Escape closes tools"}
+{"Utc": "2026-10-12T23:39:49.818375+00:00", "Kind": "Click", "Detail": {"x": 1833, "y": 55}}
+{"Utc": "2026-10-12T23:39:51.848436+00:00", "Kind": "Click", "Detail": {"x": 34, "y": 1074}}
+{"Utc": "2026-10-12T23:39:52.806052+00:00", "Kind": "Click", "Detail": {"x": 1893, "y": 1130}}
+{"Utc": "2026-10-12T23:39:53.690940+00:00", "Kind": "Screenshot", "Detail": "45-human-theme-sidebar-zoom.png"}
+{"Utc": "2026-10-12T23:40:03.598262+00:00", "Kind": "Click", "Detail": {"x": 1835, "y": 1130}}
+{"Utc": "2026-10-12T23:40:04.536258+00:00", "Kind": "Click", "Detail": {"x": 39, "y": 1070}}
+{"Utc": "2026-10-12T23:40:05.469477+00:00", "Kind": "Click", "Detail": {"x": 1833, "y": 55}}
+{"Utc": "2026-10-12T23:40:06.457334+00:00", "Kind": "Click", "Detail": {"x": 89, "y": 539}}
+{"Utc": "2026-10-12T23:40:07.315728+00:00", "Kind": "Screenshot", "Detail": "46-human-settings.png"}
+{"Utc": "2026-10-12T23:40:15.203234+00:00", "Kind": "Click", "Detail": {"x": 349, "y": 125}}
+{"Utc": "2026-10-12T23:40:16.029075+00:00", "Kind": "Screenshot", "Detail": "47-human-settings-domain.png"}
+{"Utc": "2026-10-12T23:40:26.752953+00:00", "Kind": "Click", "Detail": {"x": 275, "y": 383}}
+{"Utc": "2026-10-12T23:40:27.358943+00:00", "Kind": "Keyboard", "Detail": "Select all; type 11"}
+{"Utc": "2026-10-12T23:40:28.286644+00:00", "Kind": "Click", "Detail": {"x": 78, "y": 147}}
+{"Utc": "2026-10-12T23:40:29.110732+00:00", "Kind": "Screenshot", "Detail": "48-human-settings-dirty-guard.png"}
+{"Utc": "2026-10-12T23:40:37.535853+00:00", "Kind": "Click", "Detail": {"x": 89, "y": 539}}
+{"Utc": "2026-10-12T23:40:38.435791+00:00", "Kind": "Screenshot", "Detail": "49-human-settings-retained.png"}
+{"Utc": "2026-10-12T23:40:41.257242+00:00", "Kind": "Click", "Detail": {"x": 1895, "y": 10}}
+{"Utc": "2026-10-12T23:40:42.199219+00:00", "Kind": "Screenshot", "Detail": "50-human-close-dirty.png"}
+{"Utc": "2026-10-12T23:40:56.213616+00:00", "Kind": "Click", "Detail": {"x": 1259, "y": 1037}}
+{"Utc": "2026-10-12T23:40:57.312241+00:00", "Kind": "Screenshot", "Detail": "51-human-close-cancel.png"}
+{"Utc": "2026-10-12T23:40:58.597486+00:00", "Kind": "Click", "Detail": {"x": 1895, "y": 10}}
+{"Utc": "2026-10-12T23:40:59.551210+00:00", "Kind": "Click", "Detail": {"x": 1376, "y": 1037}}

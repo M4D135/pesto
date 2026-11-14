@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "recordedUtc": "2026-10-13T19:24:44.947710+00:00",
+  "scope": "Targeted Git byte-preservation fixtures and packaging contract checks on macOS; no Windows/GUI/AD execution",
+  "sourceSHA256": {
+    "DEV/.gitattributes": "e66615e4bcc61fdefa882c5af70b7b1dab54f28942a4d96ccbdab861845ce373",
+    "DEV/tools/package_distribution.py": "d1be8649da2c7a01d093f4aa54cbfdf86aebb2d21638ced33a707ac9355221fb",
+    "DEV/tools/New-PestoDistribution.ps1": "8d91d095219dc86569bb70f5dc18dff09c4687acf86256f9d5f36c9616825900",
+    "DEV/wad/support/DEBLOQUER_TOUT.cmd": "b562441225806fcb92ae4b7b5f86f1c169ed8f3bda20f61bd79fb9258b5cbd79",
+    "DEV/tests/test_checkout_bytes.py": "1c5ad3f0be1df10e05d90c6c21cf5ab08739ae46ed20bfc6251dfedf38cc5a82",
+    "DEV/tests/test_distribution.py": "5e43dc02efcbc2b8efd05f5438449fbbdb869817c7c5f336b119b8a9156c1f9e"
+  },
+  "runtimeExeSHA256": "4bd73854d6499f3ded5d5712bd5869b441a5641c7401129d947461137bc70cd8",
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s DEV/tests -p test_checkout_bytes.py -v",
+      "passed": 2,
+      "failed": 0,
+      "seconds": 0.106,
+      "observation": "core.autocrlf=true fixtures preserve LF, CRLF and BOM under repository and standalone DEV rules."
+    },
+    {
+      "command": "python3 -m unittest test_distribution.DistributionTests.test_10_dev_and_prod_share_the_same_runtime test_distribution.DistributionTests.test_23_unblock_filter_covers_pack_contract_not_live_folder test_distribution.DistributionTests.test_24_powershell_distribution_keeps_the_same_dev_contract -v",
+      "workingDirectory": "DEV/tests",
+      "passed": 3,
+      "failed": 0,
+      "seconds": 0.325,
+      "observation": "DEV copies .gitattributes byte-for-byte, PROD excludes it, closed unblock list and Python/PowerShell DEV contracts agree."
+    }
+  ],
+  "priorAttempt": {
+    "kind": "Invocation error, not a product failure",
+    "details": "The first combined command used the wrong working directory for the helper edit and a nonexistent test method name. No helper edit occurred in that attempt; two selected tests passed and unittest reported one loader error. The path and exact method name were corrected before the successful three-test run."
+  },
+  "unblockHelperOutsideRuntime": true,
+  "limitations": [
+    "Existing C2 ZIP audit is unchanged; final packs must be regenerated with these packaging-only changes.",
+    "No complete suite was rerun.",
+    "No real Windows checkout is claimed: Git core.autocrlf=true was exercised in isolated local repositories."
+  ]
+}

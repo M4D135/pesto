@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.e087bb1-independent-evidence-review",
+  "sourceCommit": "e087bb16aed175bc35906fa533e9cd172d2fdaca",
+  "reviewedOn": "2026-10-28",
+  "workflowRunId": 40513849690,
+  "success": true,
+  "checks": [
+    "downloadedEvidenceEnvelopeMatchesGitHubDigest",
+    "twoCandidateChannels",
+    "exactSourceAndPinnedSdk",
+    "native-welcome/proof.json",
+    "native-welcome/proof.json-uacSynthetic",
+    "native-login/proof.json",
+    "PROD-artifactIdentity",
+    "PROD-configurationIdentity",
+    "PROD-configurationCounts",
+    "PROD-configurationScope",
+    "PROD-configurationNoExternalEffects",
+    "PROD-demoIdentityAndRuntime",
+    "PROD-demoCoexistence",
+    "PROD-transactionIdentity",
+    "PROD-transactionScenarios",
+    "PROD-transactionPreservation",
+    "PROD-uiIdentity",
+    "PROD-uiCompletedAndCleaned",
+    "PROD-uiScope",
+    "PROD-uiHandoffIsNotFinalVerdict",
+    "PROD-uiConfirmedOneInstall",
+    "PROD-uiNativeSelection",
+    "PROD-uiFinalBinaryAndReceipt",
+    "DEV-artifactIdentity",
+    "DEV-configurationIdentity",
+    "DEV-configurationCounts",
+    "DEV-configurationScope",
+    "DEV-configurationNoExternalEffects",
+    "DEV-demoIdentityAndRuntime",
+    "DEV-demoCoexistence",
+    "DEV-transactionIdentity",
+    "DEV-transactionScenarios",
+    "DEV-transactionPreservation",
+    "DEV-uiIdentity",
+    "DEV-uiCompletedAndCleaned",
+    "DEV-uiScope",
+    "DEV-uiHandoffIsNotFinalVerdict",
+    "DEV-uiConfirmedOneInstall",
+    "DEV-uiNativeSelection",
+    "DEV-uiFinalBinaryAndReceipt",
+    "devRebuildFromExactDeliveredArchive",
+    "devRebuildUsesFreshInputs",
+    "devRebuildCountsSdkAndNativeResult"
+  ],
+  "scope": "Relecture indépendante de preuves déjà produites, aucune nouvelle exécution Windows/AD",
+  "evidenceEnvelope": {
+    "bytes": 4255406,
+    "sha256": "0a9a5a9cfb96405fbc904129fea7b2e03b4ef71ba69ec094bde3cf323b94fed6"
+  },
+  "copiedEvidence": [
+    {
+      "source": "artifacts.json",
+      "path": "candidate-packages.json",
+      "sourceSha256": "5ef492f7be7fbce24dc7f44a4954b6439c8b251633b616f416ffa543f3f553c6",
+      "copiedSha256": "e65b1978731b552a0584841335b130971e2e219da69930e2049866bb2891c792",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "runtime.json",
+      "path": "runtime.json",
+      "sourceSha256": "7dbc571fe189a2beba71fc609229d4bd8af98af0c0581b1eb17484bd7663458b",
+      "copiedSha256": "07085221c58f6a37f91ce724a8e44747f481d6d74f852b0056fa4ee08506b8ab",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "candidate-sdk.json",
+      "path": "candidate-sdk.json",
+      "sourceSha256": "0cac0e9ea9ee3e0d81d3ea42aa2b571b6299107545eef907dfa4aa38b4be89eb",
+      "copiedSha256": "85ee7f55424df30f96f2b17ae71b3653aac2206f860d5ae4c94e274aa13d1d4f",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-welcome/proof.json",
+      "path": "native-welcome.json",
+      "sourceSha256": "cf4670f6a55e422d0256cc54b3c6f7920f4bec5afea40e6d9ee7c8e00630e5c1",
+      "copiedSha256": "a078ccf6b8824acaf9836b6f8374a28e6b56d2a7df01eafca1e0fa2dcce39a3a",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-login/proof.json",
+      "path": "native-login.json",
+      "sourceSha256": "3a10b5a87847a0d17c4def6c0d8b61ba378e0ed5c7d910a04207e145eac508d0",
+      "copiedSha256": "9805bd414d3c26fbd2943bb6d69774c1df8af4c05c0a265e4117d0383c888910",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "dev-rebuild/proof.json",
+      "path": "dev-rebuild.json",
+      "sourceSha256": "bb56858ee7ca07fb1c6676998207f4d5c7ba22d708f4628bd77180e0d65859ca",
+      "copiedSha256": "2a23a2a582d689b16d283945a304209676c533ad93b615cbf317c73fee936b90",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "dev-rebuild/rebuilt-native-demo.json",
+      "path": "dev-rebuilt-native-demo.json",
+      "sourceSha256": "7f05590a3d28c789cd483eed8c2e43508eb826e06c6dbc29a140d0ffe85b3652",
+      "copiedSha256": "8fd9680f23deb44005056477b3bfb110ecb47d2222a1dfe73756561e0212f624",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "dev-rebuild/restored-projects.json",
+      "path": "dev-restored-projects.json",
+      "sourceSha256": "64deab9962a7a1efd4c2adab59e3df73281d0610993415e87c9052946cf46303",
+      "copiedSha256": "f56dc90cb1a81420c8a5434e60a313259031e3055cf52881573df82b0621b937",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-configuration-PROD.json",
+      "path": "native-configuration-PROD.json",
+      "sourceSha256": "e463f67a291b86f0582d7b1bfa7b5ab11df5802ad496f0ddce2e24bb71cc46d0",
+      "copiedSha256": "d35ba40ca7e99a4d5130a0496b8e983515dd60e6ddd715aea28171fb7069fc88",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-demo-PROD.json",
+      "path": "native-demo-PROD.json",
+      "sourceSha256": "7bf25759b5e7ec9f3bed198b5bf56fd9f540b8cc5735d9f9c1a947ba1de30843",
+      "copiedSha256": "dfcab20614f727e8ad634eb9219f73471ca6bd4a2f81470a178356051841c7ef",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-update-PROD/transaction-evidence/proof.json",
+      "path": "native-update-PROD.json",
+      "sourceSha256": "c6d943f7987e1c93fcb57e1b26684b5e10fdfa81d7ad35cf27658e64f4c6049c",
+      "copiedSha256": "3e67615aed24d9a2c4a756827791040aa7fdb9c9a3a13c3d2286192d3b0be9de",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-update-ui-PROD/transaction-evidence/ui-proof.json",
+      "path": "native-update-ui-PROD.json",
+      "sourceSha256": "40981bbd902e63c4620e72167d762e3efe779fa281d2ef4f899ef559c1b02ef3",
+      "copiedSha256": "41094f1a54df2179b3cf6df1bfe080cde3d03395d8bfca77df52365e4805d6d0",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-configuration-DEV.json",
+      "path": "native-configuration-DEV.json",
+      "sourceSha256": "02f7b857e475d09e287a0fc06822823b5fa82e9e5ac062c9ce1e742e274f427d",
+      "copiedSha256": "7e57f40925d7127ddc554a40880f12113bc8b20d6cf64b9dade03322a6da036a",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-demo-DEV.json",
+      "path": "native-demo-DEV.json",
+      "sourceSha256": "f3fc7be78dc4fe4b0cf3d6c4742f9efeb1e42408e03aeab1416ab487a2e6cc4e",
+      "copiedSha256": "d353bb3c27d01fec33ce29100e15a5d46effaa537f42de4f69a4bf6ac9cab9c5",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-update-DEV/transaction-evidence/proof.json",
+      "path": "native-update-DEV.json",
+      "sourceSha256": "4efbd0c72b8237cb434f8899ec5e8ca3a4ce4de8ffb04478bac025df79fb2e4a",
+      "copiedSha256": "afe1ad2aa27f54ad07f985dcc3862e85ced8e93a242b4460ddc6e3c85ec5b436",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "native-update-ui-DEV/transaction-evidence/ui-proof.json",
+      "path": "native-update-ui-DEV.json",
+      "sourceSha256": "b8a766ce933211393cabf0d2c44c446efe176eac41e8c7be4b1fef66eea50956",
+      "copiedSha256": "d4bdea07c3bc92642223ec03f0e2062e289f19caae0dc34313ed1b360e3ca3e6",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "PowerShell51-utf8.log",
+      "path": "logs/PowerShell51-utf8.log",
+      "sourceSha256": "e31157365e09ddce5bedd060a6ddb08add219e0f33ab1686b70545b905b7a220",
+      "copiedSha256": "2dd95922146e0c4574163645c2e962fd38b6ec1a1d0fe0e108a6506f994e11b8",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "Qualification-entrypoint-PS51.log",
+      "path": "logs/Qualification-entrypoint-PS51.log",
+      "sourceSha256": "26f4b4ffd556110c74ca6c4d996c93a73788b7431929381332813c4e8e1e11ed",
+      "copiedSha256": "7d7db708ab6fba108a650306e8aee271c9a1554db48cc9034a391bc8717f505b",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "bridge-lifecycle-check.log",
+      "path": "logs/bridge-lifecycle-check.log",
+      "sourceSha256": "fce17918c808b5f7a07411933b3fdd548814e73f144d713440d8d744872f136d",
+      "copiedSha256": "8387759c29cdaa4d9803afa6713d04954808a1bc5dae68cb3ae474da9e7ad616",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "web-maintenance-check.log",
+      "path": "logs/web-maintenance-check.log",
+      "sourceSha256": "082aebb52ec9f8e99c4af48afdc4c37639e400cc14010b800cd0a3398e11a334",
+      "copiedSha256": "4f8c652dd764cdbf280af394ca9ce6f912e66ef3f9505c6811cb38d94fbe9858",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "login-dom-check.log",
+      "path": "logs/login-dom-check.log",
+      "sourceSha256": "7e622cb575118867c969102b6ec04a47767b495f7cc0cb5c5a4ef4c399d00816",
+      "copiedSha256": "a49ab6f2275be96bea6a0d2c8d7ef629d159afa0bebeb54def4e7e320437a237",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "demo-check.log",
+      "path": "logs/demo-check.log",
+      "sourceSha256": "0967f4cca48d8156abad48083b4dbc4642367bc122d4c65ce8b3fed9a753ed26",
+      "copiedSha256": "e0debd8e5f0cb2997d80d425b95201fae9e7bdf6c9d01fec7007d4d807f4b5e9",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "PowerShell51-syntax.log",
+      "path": "logs/PowerShell51-syntax.log",
+      "sourceSha256": "5b932ad58e1ed94d562d54d43c13b3bdf77bb8f185472ee8e02eed18e12f193b",
+      "copiedSha256": "d0de6c2cd17c3421091ba19e48b9bbbd679e0e58d8252624f43a44ae1645d9df",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "web-layout-check.log",
+      "path": "logs/web-layout-check.log",
+      "sourceSha256": "b540a6b1430a7f03aa23f5b1b0b02c3870323cd0dfb1a412e9e24fda0e283c3b",
+      "copiedSha256": "0244c5e8d561f34c5989a7c2c52dc3c50e033cc56943971c8b9608bd8d187ec6",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "demo-dom-check.log",
+      "path": "logs/demo-dom-check.log",
+      "sourceSha256": "cec480dd26e84ccb33623ad518dbd3d8b075e607102ee439bed1204935856edd",
+      "copiedSha256": "3b43aa776beefc0c9038c2d7e3b33fba922afb5c4aae2164a4c0a8c42fc7cfbc",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "azerty-check.log",
+      "path": "logs/azerty-check.log",
+      "sourceSha256": "e65059adecf8b4101937364c61ac2aeec4fea328158dcdf000f63b4e46024822",
+      "copiedSha256": "2c5d3949a7080e59062ab79c50a2dffec099e4743f0a4a74c90b56a7811e2097",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "web-check.log",
+      "path": "logs/web-check.log",
+      "sourceSha256": "f4b43cf938109e459241ff6298c355ec5a2db3f1f3f27b82478532c006f39b8c",
+      "copiedSha256": "6ebd28928b90bc2ef7db1d354912640ad5c49606b665ad6a2115017895cfa01f",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "Bridge.log",
+      "path": "logs/Bridge.log",
+      "sourceSha256": "987d8e611555a03f5bc5f80ec20dbd905f4471c7800e41268eaff8cc43158aff",
+      "copiedSha256": "3e3d5c23227f061f09a798f93850f7c24ea87478bc2f18cbfd32a22d08fd9f43",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "operator-ui-check.log",
+      "path": "logs/operator-ui-check.log",
+      "sourceSha256": "620c885602f14708405d38ef19a5229e1c4b39fdf2b86e173e96d33366472373",
+      "copiedSha256": "ea51c1df3ffbeae12ef883eb6a6e50ad1a40cf45d5cb8484b67baf7cd606ad4e",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "web-recovery-check.log",
+      "path": "logs/web-recovery-check.log",
+      "sourceSha256": "0c3ad5328e48a8c89c8b92e689d74c14e948720df6dcd2defdeedf4711aacdf7",
+      "copiedSha256": "9bc9a5d18a0a5e9791b351d5119672018ac82c898db178b59ff3c2b7d7859d4b",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "Pack-Mechanics.log",
+      "path": "logs/Pack-Mechanics.log",
+      "sourceSha256": "8a8221028defa3cad61787ace6abb0d9011059053bdccf80755a2fe1c49a8f19",
+      "copiedSha256": "f2402e70b8dad02a06c22250ba3210e5df937c197a01af9f368f705857a21535",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "web-dom-check.log",
+      "path": "logs/web-dom-check.log",
+      "sourceSha256": "6835e84c2b1d04589023dc054f1300b194525ca4fa7b80d1bf9c813b043217ca",
+      "copiedSha256": "9b695e985a3c01687faf4c162c3b224c0c8d6c75dff6166776d79ac82022b496",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "policy-ui-check.log",
+      "path": "logs/policy-ui-check.log",
+      "sourceSha256": "dd2a03f1e466ddb5f549c6965f29ce71bfad69cc237b4cd46bd96f2a48139f0a",
+      "copiedSha256": "4b9c4ddbd8f51a43fcbfbd9a94855bd3dc62f9d42f42ba71706902b8a98d8c92",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "watcher-result-check.log",
+      "path": "logs/watcher-result-check.log",
+      "sourceSha256": "f7a6df79178e27b99e08d29e311c2a33547c922b7d438f1c1d0264c33112ad86",
+      "copiedSha256": "c77eebae0eacd9774d0f9e1164b4b4ee15bd93a39f7681f33d5f5865d995a7d3",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "web-business-check.log",
+      "path": "logs/web-business-check.log",
+      "sourceSha256": "99b570441592b51f3d8b1bb8ce98643e39c43602dfa52ff9d9c0c8a45ca049b7",
+      "copiedSha256": "2942607d4615031ce817b878bfe9235be688e15b0705b906f0215d5bc8eab418",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "NativeUpdateHarness-portable.log",
+      "path": "logs/NativeUpdateHarness-portable.log",
+      "sourceSha256": "7165a2b099c698fc37963f95ff3fba77772df2b7a6eaa49bfbe0f6d41c1eda2c",
+      "copiedSha256": "bfc571f0c0d1ddde71f9c6c12f0cbd41670be005ae437a289d335f58cee5f1a4",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "watch-check.log",
+      "path": "logs/watch-check.log",
+      "sourceSha256": "8e957a17be780b0460983ad4e2abf96cc4e98b08c844c6432312dab74f5fe197",
+      "copiedSha256": "7c31732c8c84c4d5f205fee9e1395bb567f1d4cc16269e1d4cff3482ea1121db",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "parity-ui-check.log",
+      "path": "logs/parity-ui-check.log",
+      "sourceSha256": "719bac5542ef1c738503c15af0e4d7e92b432c97f334d299535b740d93e82db0",
+      "copiedSha256": "4c856880a49ac37f94fb0d53b3acf489022aa0267bbd0ed0bee0975211297e68",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "Engine-All.log",
+      "path": "logs/Engine-All.log",
+      "sourceSha256": "a8b26e48bd0165b91d1554b5220844419e1502bd8c0b3e37f40114f6c78221f1",
+      "copiedSha256": "9e99c5a43530057c256012285709aee78e70ad8dfa0be56b3e784df60150ac4b",
+      "normalization": "CRLF to LF only"
+    },
+    {
+      "source": "AdRestoreGuards.log",
+      "path": "logs/AdRestoreGuards.log",
+      "sourceSha256": "1d98061ee362d766b37f290051b09f3a9e942cbf032949672ec0848a2239d640",
+      "copiedSha256": "15b44054ba71a6027f569a504a63920d5727ef3ed0dcccae16e9fd66f19b2f95",
+      "normalization": "CRLF to LF only"
+    }
+  ],
+  "binaryArtifactsDownloaded": false,
+  "unqualified": [
+    "AD réel",
+    "UAC réel",
+    "UNC/SMB réel",
+    "rollback depuis les boutons UI",
+    "profil ordinaire"
+  ],
+  "previousDevRollbackFailureRootCauseEstablished": false
+}

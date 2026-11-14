@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-28T12:05:43.4095183Z",
+  "commandClass": "CHKDSK online scan",
+  "exitCode": 3,
+  "corruptBasicFileStructures": 3,
+  "offlineRepairsQueued": 3,
+  "affectedCategory": "Windows WinSxS",
+  "repairSucceeded": false,
+  "postRepairVerificationAvailable": false
+}

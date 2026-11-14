@@ -1,0 +1,219 @@
+{
+  "LineEndingsAndVersionNormalized": true,
+  "Files": [
+    {
+      "Path": "wad/Pesto-Appearance.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "e6ed013ddcd5ad4df8c93d8ae1d5a2db11c0fd0f109a927515506cd27c7bee95",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Async.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "2671428d765030fb06e1b4c1e454c4e8eba2ae5657b5d52f26755b8183caff1a",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Authentication.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "d65a623bfe204605d55f8692e753ecae1a387a6106d1af0b997a9409ebf75777",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Configuration.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "960a85bbe327b06e6deea59e607ed3f3c0ef8e5067ab056659cdd1e55cca3af8",
+      "SmartQuoteHazardsBefore": 2
+    },
+    {
+      "Path": "wad/Pesto-Contracts.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "a056411ffb12c8c97cd39f6107b7716ee82e0535f9988877f1e99890a0558c84",
+      "SmartQuoteHazardsBefore": 1
+    },
+    {
+      "Path": "wad/Pesto-Core.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "ac76dc04ab38894bccefd78caa2afa8e1864b8c296818ff83945afc7775289b9",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Direct.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "2164724bf4fc8c9c33bea3f2b9c39ac084735694876e60464bd463d5f1a51078",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Directory.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "7cf27f1ae70ef6f7e2c6825a0ee1a84ad01cf1e20cab901ddfac94a2ea32c06b",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Inspection.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "ec3a52bf982ba2856447565e992bb3dcf07d3f83218db656aa64f2daed157079",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Integrity.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "6d9b41c332e975e65e5746eaee2cbfa9b8060f2b62f8d46f522a1564ff5e510d",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Interventions.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "966ccb8b3974230392793d0c04afea10cdd58776e367544d7ec6064bb35841e7",
+      "SmartQuoteHazardsBefore": 1
+    },
+    {
+      "Path": "wad/Pesto-Join.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "aea3aa76ada16feb0a33e45a00f42c5299be8cc6dbe980bcb27cf713eb797dd7",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Journal.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "68635017a159b6858029e4bef6396532bc079be21bc5bcc8d4f01407cc5ce77c",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Names.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "51535c45f94e5be3fd12ea890e3a3086b04500d9cc2f42594a23629effaed836",
+      "SmartQuoteHazardsBefore": 3
+    },
+    {
+      "Path": "wad/Pesto-Operations.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "95dea7fecea41229831308361eaeae7c04723c8b0b8db88546f68c5bd1ddeb76",
+      "SmartQuoteHazardsBefore": 1
+    },
+    {
+      "Path": "wad/Pesto-Policy.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "3d2bb638fe14a6e4cb27d993edb09afa6a35f036c967b9f5f8bdd330cc5b9d4f",
+      "SmartQuoteHazardsBefore": 1
+    },
+    {
+      "Path": "wad/Pesto-Preparation.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "16c91c8c01cb02d7bd0be3c9388ec1e0f4a9c08dd878ee151159406d4a1a5341",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Recovery.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "a3651d323e4e874fa4b81a4c0b6ecce20ce99659dd105d117d382582bc003224",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Review.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "60bcafc8c25c5e9dea00e530dace37b0088c7daff05194c58bb4b0cc84afc86b",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Safety.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "9b49a6714e0eb2f774c5474a2dcaeb311064871fd38243b36d80a50a51e5eb4b",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Startup.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "7ddb76294f4c2a7c9f14678dc3cd076afc5f3a7ca071699b06599acc26d45e61",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-SuiteUI.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "c9425d8952fa964da9b0e965ac8d45df18ff3bab1d66eb1160381adcb39ce6eb",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Support.ps1",
+      "ChangedBeyondVersion": false,
+      "SHA256": "7b42a237f47a2462ea673b05dd6f7b55284de417dc85e53c7f721d142be491b5",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Tables.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "d8daae256e86d69f21856ae4cd493a1562e0791242a814288fe225ac555868b6",
+      "SmartQuoteHazardsBefore": 0
+    },
+    {
+      "Path": "wad/Pesto-Workspace.ps1",
+      "ChangedBeyondVersion": true,
+      "SHA256": "12024543f5d7651a609871d922f401356152bc2ff666d02b164eb394c93e1f00",
+      "SmartQuoteHazardsBefore": 1
+    }
+  ],
+  "Added": [
+    "Apply-PestoSavedTables",
+    "Assert-PestoObservationSnapshot",
+    "Complete-PestoInventoryReview",
+    "ConvertTo-PestoObservationSnapshot",
+    "ConvertTo-PestoSearchText",
+    "ConvertTo-PestoTablePreferences",
+    "Find-PestoCommands",
+    "Get-PestoCapacityRows",
+    "Get-PestoObservationComparison",
+    "Get-PestoReviewSource",
+    "Get-PestoSavedTables",
+    "Get-PestoSiteReviewMap",
+    "Get-PestoTableKeys",
+    "Invoke-PestoPaletteSearch",
+    "Invoke-PestoReviewWorker",
+    "Register-PestoTable",
+    "Reset-PestoTables",
+    "Save-PestoCurrentStateReading",
+    "Save-PestoTables",
+    "Save-PestoUnverifiedObservation",
+    "Set-PestoInitialObservation",
+    "Show-PestoInventoryReview",
+    "Start-PestoInventoryReview"
+  ],
+  "Changed": [
+    "Assert-PestoRenameTarget",
+    "Complete-PestoDirectoryRefresh",
+    "Complete-PestoIntervention",
+    "Complete-PestoPendingDraft",
+    "Complete-PestoPostStateRead",
+    "Confirm-PestoInterventionObservation",
+    "ConvertTo-PestoPolicy",
+    "Get-NameParts",
+    "Get-PestoAppearanceValue",
+    "Get-PestoConformityRows",
+    "Get-PestoOutcome",
+    "Get-PestoPostconditionChecklist",
+    "Get-PestoRuntimeFiles",
+    "Get-PestoWorkspaceCommands",
+    "Initialize-PestoWorkspace",
+    "Invoke-PestoConfigWizard",
+    "Invoke-PestoInterventionCommand",
+    "Invoke-PestoNamesPageCommand",
+    "Invoke-PestoPanelButton",
+    "Invoke-PestoPanelKey",
+    "Invoke-PestoSchtasks",
+    "Invoke-PestoStateCommand",
+    "Invoke-PestoWorkspaceAction",
+    "MoveComputer",
+    "New-PestoComputerName",
+    "Read-PestoIntervention",
+    "Set-PestoAppearanceValue",
+    "Set-PestoAuthenticatedSnapshot",
+    "Show-PestoInterventions",
+    "Show-PestoPanel",
+    "Show-PestoPostState",
+    "Show-PestoWorkspace",
+    "Start-PestoIntervention",
+    "Start-PestoPostStateRead",
+    "Test-PestoPackage"
+  ],
+  "Removed": [],
+  "UnchangedCount": 477
+}

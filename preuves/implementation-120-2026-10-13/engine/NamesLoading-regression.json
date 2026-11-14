@@ -1,0 +1,179 @@
+{
+  "Version": "1.0",
+  "PowerShell": "7.4.20",
+  "WindowsWpfRequested": false,
+  "NoAD": true,
+  "Failed": 0,
+  "Checks": [
+    {
+      "Name": "Noms AD et réservations exclus des disponibles",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Utilisés distingue les noms occupés des réservations",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Tous conserve les statuts et le nombre de libres",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Recherche insensible à la casse",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Un filtre sans résultat rend un tableau vide",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Une collecte vide ne crée pas de site ou équipe arbitraire",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Noms mal formés, 000 et autres préfixes ignorés",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Jusqu'à 999 respecte exactement la borne",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Limite d'affichage explicite et comptage non trompeur",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Limite exacte sans résultat supplémentaire non tronquée",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Index AD sans réservation persistée par erreur",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Types indépendants pour le même site/service",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "VM : inventaire, reservation et generation restent distincts de P/S",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Progression partagée et génération restituée",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Entrées de calcul invalides refusées",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Tirage sur 001-999 indépendant de la marge et de la page",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Chaque bouton tire dans son type actif sur tous les sites et services",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Recherche éloignée trouve un candidat hors marge sans fausse ligne",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Statuts occupés et réservés ne proposent aucun nom",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Séquentiel propose les premiers candidats même avec marge nulle",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Propositions conservées entre pages puis remplacement seulement du nom devenu occupé",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Le cache AD est réutilisé et les nouvelles réservations restent séparées",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Après le dernier ignore les trous y compris pour les suggestions",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Domaine complet de candidats borné même avec marge nulle",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Annulation et indice aléatoire invalide échouent sans résultat partiel",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Chargement garde les anciennes lignes grisées et désactive les commandes",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Le compteur est une quantité réellement lue, sans pourcentage",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Erreur arrête l'indicateur et propose Réessayer",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Ancien résultat filtré jamais publié",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Copie refusée quand la vue n'est pas prête",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Inventaire partiel ne lance aucun calcul de libres",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Une collecte déjà active ne déclenche pas un deuxième calcul",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Cache changé en plein calcul : pas de chargement infini ni résultat obsolète",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Candidat hors marge reste utilisable même quand le tableau est vide",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

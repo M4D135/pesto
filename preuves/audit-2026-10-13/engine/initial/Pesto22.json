@@ -1,0 +1,171 @@
+﻿{
+    "Version":  "1.0",
+    "Utc":  "2026-10-12T23:10:39.5666158Z",
+    "PowerShell":  "5.1.26100.6584",
+    "Failed":  0,
+    "Skipped":  1,
+    "NoLiveAD":  true,
+    "NoUAC":  true,
+    "Checks":  [
+                   {
+                       "Name":  "Types et codes inconnus restent incertains",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Précontrôle après engagement ne devient pas un refus certain",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Générateur normalise aussi la lettre de type",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Analyse héritée refuse un nom arbitraire de quinze caractères",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Déplacement confirmé puis erreur conserve un effet partiel",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Code entier inconnu ne libère pas la coordination",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Snapshot ferme ses champs et ne conserve pas les erreurs brutes",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Snapshot refus des secrets ou champs inconnus",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Snapshot refus booléen sous forme de chaîne",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Canal sécurisé non lu reste inconnu, pas faux",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Snapshot dates et rôles malformés refusés",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Baseline initiale conservée pendant une seconde observation",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Baseline étrangère refusée avant écriture",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Comparaison garde Avant et Prévu distincts des observations",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Ancien reçu sans baseline ne fabrique pas une lecture Avant",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Protection false est une observation connue",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Palette recherche multi-mots insensible aux accents",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Palette filtre littéral et non expression régulière",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Palette vide conserve toutes les commandes",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Palette recherche trop longue refusée",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Capacité inclut les combinaisons vides déclarées seulement",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Capacité ne compte pas deux fois doublons et réservations occupées",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Capacité ignore les noms invalides et annule à la demande",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conformité respecte les virgules échappées et sous-OU",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conformité détecte une OU différente sans générer de mutation",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conformité sans métadonnées reste inconnue",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conformité ne choisit pas entre deux destinations ambiguës",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Conformité respecte la zone de préparation",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Préférences de colonnes acceptent le schéma fermé",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Préférences refusent sélection, ordre dupliqué et largeur invalide",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "Préférences refusent une clé de commande et les largeurs excessives",
+                       "State":  "PASS",
+                       "Error":  ""
+                   },
+                   {
+                       "Name":  "WPF RC22",
+                       "State":  "SKIP",
+                       "Error":  "Passer -Wpf sous Windows PowerShell -STA."
+                   }
+               ]
+}

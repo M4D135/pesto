@@ -1,0 +1,417 @@
+{
+  "Schema": 1,
+  "Section": "OfflineJoin109Blob",
+  "Point": 109,
+  "Utc": "2026-10-25T07:53:07Z",
+  "Platform": "Ubuntu 24.04.4 LTS",
+  "PowerShell": "7.6.7",
+  "CLR": ".NET 10.0.13",
+  "HostExecutable": "/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh",
+  "BuildHash": "e8cab9bda0e24dbd429a591bfc26d5e06abfda15",
+  "WindowsADExecuted": false,
+  "UIExecuted": false,
+  "VMExecuted": false,
+  "ProductRuntimeUsed": false,
+  "Limits": "Exécution locale sous PowerShell 7.6.7 (.NET 10.0.13), runtime non produit : le produit cible Windows PowerShell 5.1 x64 et .NET Framework 4.7.2. Aucun appel réseau, registre, DPAPI, djoin, machine virtuelle, labo, Windows réel ni annuaire réel : la règle permanente de la session les interdit et la mention « les tests VM sont désormais autorisés » du catalogue ne l'emporte pas sur elle. Ce que la suite exécute vraiment : le moteur scellé wad/Pesto.Engine.Runtime.ps1 est chargé par dot-sourcing et Invoke-PestoExtensionCommand -Action OfflineImport -Execute est réellement appelé, donc la politique AllowOfflineJoin, le verrou du mutex Global\\GP_PostMutation_v1, la lecture des octets du blob, Get-PestoBytesHash, Get-PestoOfflinePaths, New-PestoPortablePlan, le scellement du plan par Get-PestoStableHash et ConvertTo-PestoCanonicalValue, l'écriture durable du reçu par Write-PestoJoinReceipt et Write-PestoAtomicText, Assert-PestoPlainPath, Read-PestoAutomationJson et la relecture complète Read-PestoOfflineRecord sont joués par le produit, sur de vrais fichiers dans un sac temporaire. Ce qu'elle ne peut pas exécuter ici : Protect-PestoOfflineBytes et Unprotect-PestoOfflineBytes (DPAPI LocalMachine, absent de ce runtime), Get-PestoJoinLocalStatus (statut de la machine, registre et API de domaine), l'écriture ACL du reçu par Write-PestoJoinReceipt (Get-Acl et Set-Acl absents, DirectorySecurity, FileSystemAccessRule et SecurityIdentifier lèvent PlatformNotSupportedException), les magasins ProgramData de Get-PestoOfflineStore et Get-PestoAutomationStore, Assert-PestoAutomationPlatform, Test-PestoPackage et Initialize-PestoCommon. Un double qui imiterait DPAPI ou l'ACL n'attesterait que de l'imitation : ils sont nommés comme doublés, pas présentés comme vérifiés.",
+  "GapClosed": {
+    "Id": "import-du-blob-secret-joue-seulement-comme-mise-en-etat-et-recu-durable-double",
+    "Observed": "Le point 109 est annoncé implémenté et son énoncé catalogue compte « import DPAPI local sous ACL administrateur/SYSTEM, intention durable avant djoin, application unique » parmi les garanties. Aucune suite ne juge Import-PestoOfflineBlob condition par condition : Run-OfflineJoin109EntryTests.ps1 n'amène le blob à Imported qu'une seule fois et remplace Write-PestoJoinReceipt par un double (ConvertTo-Json -Depth 12 là où le produit écrit -Depth 8), Run-OfflineJoin109ObserveTests.ps1 importe pour préparer l'observation sans contrôler l'import, Run-OfflineJoin109NativeTests.ps1 juge le transport sur l'arbre syntaxique. Le reçu durable écrit à l'import et sa relecture complète n'ont donc jamais été joués par le produit lui-même.",
+    "Impact": "C'est à l'import qu'un fichier remis par l'opérateur devient un identifiant, un plan scellé et un secret protégé sur disque : ses gardes décident si un poste a le droit d'accueillir un secret, si un même blob peut être importé deux fois, si le matériel en clair touche le disque, et si le reçu relu est bien celui qui a été écrit. Un sondage (seize réécritures de ces gardes, chacune rejouée contre les trois suites existantes) sépare le couvert du non couvert : douze sont vues, presque toutes par la suite du point d'entrée ; quatre laissent les trois suites entièrement vertes.",
+    "Fix": "Nouvelle suite Run-OfflineJoin109BlobTests.ps1 : soixante-huit cas qui jouent chaque garde une par une par le point d'entrée public, exigent le message de la garde qui refuse et l'absence totale de trace (zéro appel DPAPI, zéro écriture de reçu, magasin vide). Nouveau harnais Run-OfflineJoin109BlobMutationTests.ps1 : quarante et une mutations de ces gardes sur copie hors sac du moteur, témoin passant.",
+    "Proof": "OfflineJoin109Blob: 68 passed, 0 failed (sortie 0) et OfflineJoin109BlobMutations : 168/168 PASS (sortie 0). Contre-sondage : les quatre réécritures que les trois suites existantes laissaient vertes font chacune échouer exactement un cas de la nouvelle suite."
+  },
+  "TautologyProbe": {
+    "Command": "python3 /tmp/p109b/probe.py (pilote hors dépôt, non commité : pour chaque réécriture, copie hors sac du moteur et des trois suites, réécriture appliquée au moteur copié, puis rejeu des trois suites existantes)",
+    "Purpose": "Mesurer, au lieu de l'affirmer, ce que les trois suites existantes du point voyaient réellement des gardes de l'import du blob secret.",
+    "Rewrites": [
+      {
+        "rewrite": "poste joint",
+        "verdict": "CAUGHT",
+        "suites": "Entry=11 passed, 37 failed | Observe=1 passed, 20 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "renommage en attente",
+        "verdict": "CAUGHT",
+        "suites": "Entry=8 passed, 40 failed | Observe=19 passed, 2 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "administration",
+        "verdict": "CAUGHT",
+        "suites": "Entry=24 passed, 24 failed | Observe=6 passed, 15 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "role de domaine",
+        "verdict": "CAUGHT",
+        "suites": "Entry=3 passed, 45 failed | Observe=0 passed, 21 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "GUID vide",
+        "verdict": "CAUGHT",
+        "suites": "Entry=30 passed, 18 failed | Observe=5 passed, 16 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "perimetre OU",
+        "verdict": "CAUGHT",
+        "suites": "Entry=5 passed, 43 failed | Observe=3 passed, 18 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "domaine de l OU",
+        "verdict": "CAUGHT",
+        "suites": "Entry=38 passed, 10 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "taille minimale",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "taille maximale",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "conteneur",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "rejeu cote secret",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "relecture du chemin clair du secret",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "empreinte du recu (Id)",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "empreinte du plan (BlobSHA256)",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "domaine du plan",
+        "verdict": "CAUGHT",
+        "suites": "Entry=24 passed, 24 failed | Observe=0 passed, 21 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "identite de machine du plan",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      }
+    ],
+    "Survived": [
+      {
+        "rewrite": "rejeu cote secret",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "relecture du chemin clair du secret",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "empreinte du recu (Id)",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "identite de machine du plan",
+        "verdict": "ALL3-GREEN",
+        "suites": "Entry=48 passed, 0 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      }
+    ],
+    "Caught": [
+      {
+        "rewrite": "poste joint",
+        "verdict": "CAUGHT",
+        "suites": "Entry=11 passed, 37 failed | Observe=1 passed, 20 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "renommage en attente",
+        "verdict": "CAUGHT",
+        "suites": "Entry=8 passed, 40 failed | Observe=19 passed, 2 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "administration",
+        "verdict": "CAUGHT",
+        "suites": "Entry=24 passed, 24 failed | Observe=6 passed, 15 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "role de domaine",
+        "verdict": "CAUGHT",
+        "suites": "Entry=3 passed, 45 failed | Observe=0 passed, 21 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "GUID vide",
+        "verdict": "CAUGHT",
+        "suites": "Entry=30 passed, 18 failed | Observe=5 passed, 16 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "perimetre OU",
+        "verdict": "CAUGHT",
+        "suites": "Entry=5 passed, 43 failed | Observe=3 passed, 18 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "domaine de l OU",
+        "verdict": "CAUGHT",
+        "suites": "Entry=38 passed, 10 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "taille minimale",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "taille maximale",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "conteneur",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "empreinte du plan (BlobSHA256)",
+        "verdict": "CAUGHT",
+        "suites": "Entry=47 passed, 1 failed | Observe=21 passed, 0 failed | Native=20 passed, 0 failed"
+      },
+      {
+        "rewrite": "domaine du plan",
+        "verdict": "CAUGHT",
+        "suites": "Entry=24 passed, 24 failed | Observe=0 passed, 21 failed | Native=20 passed, 0 failed"
+      }
+    ],
+    "Reading": "Sur seize réécritures rejouées contre les trois suites existantes, douze rendent au moins une suite rouge (la suite du point d'entrée absorbe presque tout le contrôle d'éligibilité locale, de compte provisionné et de forme du matériel) et quatre laissent Entry 48/48, Observe 21/21 et Native 20/20 : le rejeu qui ne regarde plus le côté secret, la relecture du chemin clair du secret avant son écriture, l'empreinte propre du reçu et l'identité de machine du plan. Ces quatre-là sont exactement celles que la nouvelle suite juge ; le harnais de mutations les frappe une par une.",
+    "CounterProbe": {
+      "Command": "python3 /tmp/p109b/probe2.py (mêmes quatre réécritures, rejouées contre Run-OfflineJoin109BlobTests.ps1 seule)",
+      "Rows": [
+        {
+          "rewrite": "rejeu cote secret",
+          "verdict": "CAUGHT",
+          "suites": "Blob=67 passed, 1 failed"
+        },
+        {
+          "rewrite": "relecture du chemin clair du secret",
+          "verdict": "CAUGHT",
+          "suites": "Blob=67 passed, 1 failed"
+        },
+        {
+          "rewrite": "empreinte du recu (Id)",
+          "verdict": "CAUGHT",
+          "suites": "Blob=67 passed, 1 failed"
+        },
+        {
+          "rewrite": "identite de machine du plan",
+          "verdict": "CAUGHT",
+          "suites": "Blob=67 passed, 1 failed"
+        }
+      ],
+      "Reading": "Les quatre réécritures survivantes font chacune échouer exactement un cas de la nouvelle suite (67 passed, 1 failed, sortie 1) : l'angle mesuré est bien fermé, et non seulement revendiqué."
+    }
+  },
+  "Suite": {
+    "File": "DEV/tests/Run-OfflineJoin109BlobTests.ps1",
+    "Command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109BlobTests.ps1",
+    "Result": "OfflineJoin109Blob: 68 passed, 0 failed (sortie 0), stable sur dix exécutions consécutives.",
+    "PreviousCount": "0 cas : l'import du blob secret n'était joué condition par condition par aucune suite ; son reçu durable était écrit par un double.",
+    "Method": "Chaque cas amène le poste à un état réellement eligible (poste autonome hors domaine, sans renommage en attente, opérateur administrateur, rôle 0 ou 2), ne viole qu'une seule condition, et exige le message exact de la garde visée — la même forme étant souvent refusée plus loin par une autre garde. Tout refus doit en plus ne laisser aucune trace : compteur DPAPI à zéro, compteur d'écritures de reçu à zéro, magasin vide.",
+    "Cases": [
+      "A machine already joined to a domain cannot import a secret blob",
+      "A machine with a pending rename cannot import a secret blob",
+      "An operator without local administration cannot import a secret blob",
+      "A domain controller role cannot import a secret blob",
+      "A backup controller role cannot import a secret blob",
+      "An interoperable role cannot import a secret blob",
+      "A standalone workstation is accepted as the import context",
+      "A member server is accepted as the import context",
+      "The all-zero provisioning account GUID is refused",
+      "The all-zero provisioning account GUID is refused beside an otherwise valid organisational unit",
+      "An organisational unit outside the configured scope is refused",
+      "An organisational unit of another forest is refused",
+      "A configuration whose organisational units leave the configured domain is refused before any import",
+      "A provisioning account GUID and an organisational unit of the configured domain are accepted",
+      "A directory handed over as the blob is refused",
+      "An empty blob is refused",
+      "A blob one byte over the megabyte ceiling is refused",
+      "A blob of exactly the megabyte ceiling is accepted",
+      "A single byte blob is accepted",
+      "A blob handed over through a symbolic link is refused before being read",
+      "A blob handed over from a directory replaced by a junction is refused before being read",
+      "The same blob cannot be imported a second time",
+      "A replay is still refused when only the protected secret is left on disk",
+      "A replay is still refused when only the state receipt is left on disk",
+      "A different blob is imported beside the first one without disturbing it",
+      "DPAPI is asked exactly once, over the bytes of the file and not its path",
+      "The protected file is the base64 of the protected material and decodes back to the blob",
+      "Nothing in the store carries the blob in the clear, nor the secret in the receipt",
+      "The product never deletes the operator source file",
+      "The result handed back to the operator never carries the secret material",
+      "When the protection fails, neither the receipt nor the secret is persisted",
+      "The import receipt carries exactly the closed durable schema",
+      "The import receipt records a request that has not been applied yet",
+      "The sealed plan of the receipt verifies independently of the product",
+      "The plan is an offline join plan for the configured domain and the planned organisational unit",
+      "The plan identity is the local machine that asked for the import",
+      "The three store paths of an imported blob are the receipt, the secret and the transient file",
+      "A blob identifier written in upper case is refused",
+      "A blob identifier one character short is refused",
+      "A blob identifier one character long is refused",
+      "A blob identifier carrying a non hexadecimal letter is refused",
+      "An empty blob identifier is refused",
+      "A blob identifier that walks out of the store is refused",
+      "A blob identifier naming another store file is refused",
+      "A well formed blob identifier yields the three paths of the store",
+      "An untouched import receipt reads back through the closed record reader",
+      "A receipt declaring another schema is refused",
+      "A receipt declaring another mode than offline join is refused",
+      "A receipt naming another blob than the one asked for is refused",
+      "A receipt carrying a state outside the closed set is refused",
+      "A receipt whose plan was sealed for another blob fingerprint is refused",
+      "A receipt carrying an extra field is refused",
+      "A receipt missing one of its mandatory fields is refused",
+      "A plan carrying an extra field is refused",
+      "A plan missing one of its mandatory fields is refused",
+      "A plan whose seal was altered is refused",
+      "A plan sealed for another action than offline join is refused even resealed",
+      "A plan sealed for another purpose than a prepared plan is refused even resealed",
+      "A plan sealed for another domain is refused even resealed",
+      "A plan sealed for another machine is refused even resealed",
+      "A plan naming an impossible computer name is refused",
+      "A plan that renames the machine behind the offline join is refused",
+      "A plan naming a container instead of an organisational unit is refused",
+      "A plan declaring another schema is refused",
+      "Both the clear material and the protected material are wiped when the import ends",
+      "The secret reaches disk only as the base64 of the protected material",
+      "The material is protected before anything is persisted and the secret path is re-checked before it is written",
+      "The blob is protected for the machine, not for the operator who imports it"
+    ],
+    "CaseCount": 68,
+    "NotCovered": "Le secret protégé lui-même : Protect-PestoOfflineBytes est un double à base d'octet de masque, donc la confidentialité réelle vis-à-vis de la machine (DPAPI LocalMachine) et l'ACL SYSTEM/Administrateurs sur le magasin ne sont pas attestées ici, seulement la forme (une seule protection, sur les octets du fichier et non son chemin, base64 du matériel protégé, rien de clair dans le magasin ni dans le reçu, matériel effacé dans le finally)."
+  },
+  "MutationHarness": {
+    "File": "DEV/tests/Run-OfflineJoin109BlobMutationTests.ps1",
+    "Command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OfflineJoin109BlobMutationTests.ps1",
+    "Result": "OfflineJoin109BlobMutations : 168/168 PASS (sortie 0) — quarante et un mutants et une copie témoin, cent soixante-huit assertions.",
+    "Copy": "Le harnais ne copie que wad/Pesto.Engine.Runtime.ps1, tools/cfg.modele-complet.json et la suite elle-même dans un dossier temporaire, vérifie que la copie ne dérive pas de la liste blanche, et établit l'enfant dans la copie pour que tout mutant qui accepterait un chemin relatif écrive dans le sac détruit et non dans le dépôt.",
+    "Rule": "Un mutant n'est tué que si la suite sort avec un code non nul ET fait entendre le message exact du contrôle de la garde visée ; la copie témoin doit passer et afficher la ligne de résumé.",
+    "Mutations": [
+      "Domain-joined machines are no longer refused at import",
+      "Pending renames are no longer refused at import",
+      "Non administrators are no longer refused at import",
+      "Controller roles are no longer refused at import",
+      "The all-zero provisioning account is no longer refused",
+      "Organisational units outside the configured scope are no longer refused",
+      "Empty blobs are no longer refused",
+      "Oversized blobs are no longer refused",
+      "A directory handed over as the blob is no longer refused",
+      "A replay is no longer refused when only the secret is left",
+      "A replay is no longer refused when only the receipt is left",
+      "A blob can be imported over and over",
+      "The clear path of the secret is no longer re-checked before it is written",
+      "The secret file is written from the clear material instead of the protected one",
+      "The receipt carries the blob material",
+      "The plan keeps the plain join action instead of the offline one",
+      "The plan no longer carries the blob fingerprint",
+      "The plan is no longer sealed on import",
+      "The blob is protected for the importing user instead of the machine",
+      "The clear material is left in memory when the import ends",
+      "The import claims the operator source was consumed",
+      "The receipt is written before the material is protected",
+      "Blob identifiers are matched without case sensitivity",
+      "Blob identifiers are no longer required to be a fingerprint",
+      "Blob identifiers are taken as they come",
+      "The receipt schema number is no longer checked",
+      "The receipt mode is no longer checked",
+      "The receipt is no longer required to name the blob asked for",
+      "The receipt accepts any state",
+      "The receipt is no longer required to match its plan fingerprint",
+      "The receipt is no longer required to be a closed object",
+      "The plan is no longer required to be a closed object",
+      "The plan action is no longer checked on reread",
+      "The plan purpose is no longer checked on reread",
+      "The plan seal is no longer recomputed on reread",
+      "The plan domain is no longer checked on reread",
+      "The plan machine identity is no longer checked on reread",
+      "The plan computer name is no longer validated on reread",
+      "The plan may rename the machine behind the offline join",
+      "The plan target organisational unit is no longer validated on reread",
+      "The plan schema number is no longer checked on reread"
+    ],
+    "MutationCount": 41,
+    "GuardFamilies": [
+      "Éligibilité locale : poste joint, renommage en attente, administration, rôle de domaine",
+      "Compte provisionné : GUID vide, périmètre d'OU, domaine de l'OU",
+      "Forme du matériel : conteneur, taille minimale, taille maximale",
+      "Rejeu : côté reçu et côté secret",
+      "Secret : relecture du chemin clair avant écriture, portée machine de la protection, matériel cité dans le reçu",
+      "Scellement : plan scellé à l'import, plan re-scellé (action, finalité, domaine, identité de machine)",
+      "Relecture du reçu : schéma, mode, identifiant, état, empreinte du plan, deux objets fermés, cible (nom, renommage, OU, schéma)"
+    ]
+  },
+  "Harness": {
+    "Command": "cd DEV && python3 tools/run_tests.py --root . --platform Portable --pwsh /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh --timeout 900",
+    "Counts": {
+      "PASS": 66,
+      "FAIL": 1,
+      "SKIP": 21
+    },
+    "SummaryFile": "/home/m4d135/pesto/autonomy-20261016/repository/DEV/tests/results/20261025_065558_710221/summary.json",
+    "SingleFailure": {
+      "suite": "AttributeEntry114Mutations (DEV/tests/Run-AttributeEntry114MutationTests.ps1)",
+      "point": 114,
+      "Mutant": "Plan dates left as converted objects",
+      "Diagnosis": "Mutant préexistant et non déterministe, sans rapport avec ce sous-lot : il retire la remise en UTC 'o' des dates relues en DateTime par ConvertFrom-Json, et le cas visé (« A plan file rewritten by an orchestrator still executes ») ne tombe que lorsque le rendu JSON du DateTime diverge de la chaîne ISO scellée, ce qui dépend des fractions de seconde de UtcNow tirées à l'exécution. Mesure : trois rejets filtrés du seul mutant, 1, 2 puis 3 cas en échec sur les trente-quatre ; deux campagnes vertes hier soir (22:49 et 01:52) et deux rouges ce matin (05:21 et 06:55). La suite comportementale AttributeEntry114 reste 34/34 sur les mêmes exécutions : le comportement du produit n'est pas en cause, c'est le critère de tuage de ce mutant qui est aléatoire.",
+      "NonInterference": "Le harnais d'attributs ne copie que wad/Pesto.Engine.Runtime.ps1, tools/cfg.modele-complet.json et sa propre suite : aucun de ces trois fichiers n'est touché par ce sous-lot (git status ne montre que deux suites nouvelles, deux fichiers d'enregistrement et deux documents). Le mutant est d'ailleurs tué par intermittence avant comme après l'ajout des suites du blob.",
+      "NotFixed": "Laissé en l'état : le rendre déterministe suppose de figer les horodatages du plan d'attributs, ce qui relève du point 114 et de son propre harnais, pas de la jonction hors connexion."
+    },
+    "NewSuites": [
+      {
+        "name": "OfflineJoin109Blob",
+        "status": "PASS",
+        "cases": 68
+      },
+      {
+        "name": "OfflineJoin109BlobMutations",
+        "status": "PASS",
+        "cases": 41
+      }
+    ],
+    "Note": "[SKIP] Pesto22 : Lancée séparément : TESTER.cmd et TEST_RC22.cmd (-Wpf)\n[SKIP] Pesto23 : Lancée séparément : TESTER.cmd et TEST_RC23.cmd (-Wpf)\n[SKIP] RC14Validation : Lancée séparément : validation historique RC14, lancement manuel\n[SKIP] Stabilisation : Lancée séparément : recette 1.5, lancement manuel documenté\n[SKIP] Acknowledgement : Plateforme Windows51 : Windows PowerShell 5.1 requis\n[PASS] RemotePreparation : OK\n[PASS] HeadlessAudit : OK\n[PASS] ReconciliationAudit : OK\n[PASS] SecretOutputs : OK\n[PASS] SessionMeasure : OK\n[SKIP] WpfSession : Plateforme Windows51 : Windows PowerShell 5.1 requis\n[PASS] BuildValidation : OK\n\n66 réussies, 1 en échec, 21 ignorées (une suite ignorée ne compte jamais comme réussie).\nRésultats : /home/m4d135/pesto/autonomy-20261016/repository/DEV/tests/results/20261025_052120_146596/summary.json"
+  },
+  "Validators": [
+    {
+      "command": "cd DEV && PATH=/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh:$PATH python3 tools/checks/validate_pesto.py",
+      "result": "OK real parser tools/Validate-PestoBuild.ps1\nOK real parser tools/Verify-Release.ps1\nOK real parser tools/Verify-StartupUac.ps1\nRESULT 672 passed 0 failed; parser PowerShell 7.6.7 Core; native Windows NOT executed"
+    },
+    {
+      "command": "cd DEV && python3 tools/refresh_manifest.py --root . --check",
+      "result": "Checked: 67 runtime components; no demos/tests/CMD/configuration. Not an author signature."
+    },
+    {
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tools/Build-PestoEngineModule.ps1 -Root . -Check",
+      "result": "\u001b[32;1mChecked\u001b[0m\u001b[32;1m Functions\u001b[0m\u001b[32;1m WorkerClosure\u001b[0m\u001b[32;1m RuntimeSHA256\u001b[0m\n\u001b[32;1m-------\u001b[0m \u001b[32;1m---------\u001b[0m \u001b[32;1m-------------\u001b[0m \u001b[32;1m-------------\u001b[0m\n   True       740           165 a948d92aa147f2566c2840305a2a0a47a03655b56e9fcb…"
+    }
+  ],
+  "PythonSuites": [
+    {
+      "command": "cd DEV && PESTO_PWSH=/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh python3 -m pytest tests -q",
+      "result": "................................................................ [ 87%]\n.......................................................................... [ 99%]\n...                                                            [100%]\n624 passed, 6 skipped, 535 subtests passed in 477.17s (0:07:57)"
+    }
+  ],
+  "Registration": "Les deux suites sont déclarées deux fois, comme toutes les autres : DEV/tests/suites.json (profils Portable et Complet) et la liste de DEV/tests/Run-AllTests.ps1.",
+  "Seal": "Aucun fichier scellé n'a été modifié : ni wad/Pesto-Extensions.ps1, ni aucun autre composant du manifeste. refresh_manifest.py --check et Build-PestoEngineModule.ps1 -Check sont rejoués pour le prouver, pas pour réparer.",
+  "Remaining": [
+    "Qualification spécifique de l'extension hors connexion sur Windows et annuaire réel : VM, labo, Windows réel et AD réel interdits par la règle de session, malgré la mention contraire du catalogue.",
+    "DPAPI LocalMachine, ACL SYSTEM/Administrateurs du magasin, magasins ProgramData, statut local du poste, plateforme, intégrité du paquet et socle commun restent des doubles locaux : leur comportement réel n'est pas attesté, seulement la façon dont l'import les appelle.",
+    "Contention du mutex Global\\GP_PostMutation_v1 non rejouable hors Windows : suite jouée strictement à la suite, jamais en parallèle.",
+    "Le contrat effectif de djoin et le découpage du transport en trois fonctions nommées restent à faire sur une machine outillée (clang et lld-link absents de Spark)."
+  ]
+}

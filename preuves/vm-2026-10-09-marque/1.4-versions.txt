@@ -1,0 +1,11 @@
+﻿Mesure 2026-10-09 sur la VM de labo - Pesto.exe de C:\PestoTest
+Date VM : 2026-10-09 16:52:01
+SHA256 exe : 83a33520068693f76bdbc0b521033cca29ee7d4fadc8b988fd4b3e2e0232e49a
+FileDescription = Pesto (launcher)
+ProductName = Pesto
+ProductVersion = 1.0
+FileVersion = 1.0.0.0
+CompanyName = Pesto Project
+OriginalFilename = Pesto.exe
+Pesto.exe --check --quiet CODE=0
+Pesto-Core.ps1 SHA256 : fa6b70303db09f3f340a8057d0fb460e18f80c8f9a1b5108db282ba0ebac2e4c

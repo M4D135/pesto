@@ -1,0 +1,16 @@
+{
+  "DEV": {
+    "files": 578,
+    "crc": "PASS",
+    "sourceBytes": "MATCH",
+    "config": "template",
+    "sha256": "60497cb68e4f52becfed78974ea696c8f49ad2ecddef4aed2b0f77a6b37c734c"
+  },
+  "PROD": {
+    "files": 66,
+    "crc": "PASS",
+    "sourceBytes": "MATCH",
+    "config": "template",
+    "sha256": "439cd1cf91161d1af9d930aecfc53b4641bd2fc04b4485e60ea5490c50b473ad"
+  }
+}

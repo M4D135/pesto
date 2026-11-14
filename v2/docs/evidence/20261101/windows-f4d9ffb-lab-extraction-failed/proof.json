@@ -1,0 +1,21 @@
+﻿{
+    "schemaVersion":  1,
+    "kind":  "pesto.dev-source-rebuild",
+    "success":  false,
+    "sourceCommit":  "f4d9ffbd21246d8c892b06f02667dcc858011a17",
+    "nativeRebuiltStartupQualified":  false,
+    "sourceOnlyRebuild":  false,
+    "freshNuGetCache":  false,
+    "originalPublishReused":  false,
+    "sameExecutableBytesRequired":  false,
+    "adQualification":  false,
+    "ordinaryProfileAccess":  false,
+    "workspace":  "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-dev-rebuild-61ae6a1b985648a08b0abf74f1b9b251",
+    "archiveSha256":  "f3b83284890e615b2997182278e2c598cd294e71e45f1be304ec6a0471f3f0e8",
+    "error":  "Exception lors de l\u0027appel de « Open » avec « 4 » argument(s) : « Impossible de trouver une partie du chemin d\u0027accès \u0027C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-dev-rebuild-61ae6a1b985648a08b0abf74f1b9b251\\delivered\\DEV\\wad\\dev\\docs\\evidence\\20261025\\windows-6d9329c\\native-update\\transaction-evidence\\health-failure\\health-4fee95f7930da325c726ab204e87188a53704bb152d11c747e545cbdd0bc1f87.json.txt\u0027. »",
+    "checks":  [
+
+               ],
+    "utc":  "2026-11-01T01:40:41.2218433+00:00",
+    "temporaryWorkspaceRemoved":  false
+}

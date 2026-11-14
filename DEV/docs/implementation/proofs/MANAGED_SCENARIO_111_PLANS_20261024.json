@@ -1,0 +1,183 @@
+{
+  "Schema": 1,
+  "Section": "ManagedScenario111Plans",
+  "Point": 111,
+  "Utc": "2026-10-24T07:20:31Z",
+  "Platform": "Linux 6.17.0-1026-nvidia",
+  "PowerShell": "7.4.6",
+  "CLR": "8.0.10",
+  "HostExecutable": "/tmp/opencode/pwsh7/pwsh",
+  "BuildHash": "8dcb698dcd0c3d544b17540dc519d2500235956d",
+  "WindowsADExecuted": false,
+  "UIExecuted": false,
+  "VMExecuted": false,
+  "ProductRuntimeUsed": false,
+  "Limits": "Exécution locale sous PowerShell 7.4.6 (CLR 8.0.10), runtime non produit : le produit cible Windows PowerShell 5.1 x64 et .NET Framework 4.7.2. Aucun appel AD, registre, réseau, GPO réelle ou machine virtuelle. La règle permanente de la session interdit tout test en machine virtuelle, labo, système réel ou annuaire réel ; le catalogue annonce pour ce reste que ces tests sont désormais autorisés : aucun n'a été lancé, la règle l'emporte. Les fixtures et doubles n'attestent que du comportement local.",
+  "SealedDefectFound": {
+    "Id": "Assert-PestoScenarioValues-aveugle-aux-valeurs-non-vides-invalables",
+    "File": "DEV/wad/Pesto-Policy.ps1",
+    "Function": "Assert-PestoScenarioValues (ligne 289)",
+    "Claimed": "Le champ obligatoire d'un scénario administré est contrôlé avant toute lecture AD et avant chaque effet, par Assert-PestoOperationPolicy qui dérive les champs du nom réellement demandé.",
+    "Observed": "Pour un champ figurant dans Required, la garde teste uniquement la valeur vide : TargetOU laisse trois espaces, porteur d'un caractere de controle, ou long de 5000 caracteres la traversent. Le validateur de l'integrateur Test-PestoScenarioInput refuse exactement ces trois formes (IsNullOrWhiteSpace, regex [\\x00-\\x1f\\x7f], longueur maximale 4096).",
+    "Impact": "Un scénario publié avec une telle valeur passe la garde du moteur à la préparation comme à chaque effet, puis part en écriture d'emplacement sur les postes visés : le refus attendu n'arrive jamais, ou arrive côté AD.",
+    "Fix": "Aucune correction du côté scellé : wad/Pesto-Policy.ps1 est scellé dans package.json (schema 2, 67 composants runtime) et son empreinte est embarquée dans Pesto.exe entre PESTO_BINDING_V1 et PESTO_BINDING_END. Le régénérer exige build_native.py, qui échoue sur Spark (clang et lld-link absents, aucun téléchargement automatique). Le défaut est consigné ici et dans DEV/integrations/README.md.",
+    "CompensatedBy": "Le point d'entrée d'évaluation, seul fichier non scellé concerné, consulte les deux gardes et refuse au désaccord : 'Garde du moteur affaiblie sur un plan candidat.', avec le champ en défaut listé dans PlanFields et le contenu du plan jamais recopié.",
+    "RegressionGuard": {
+      "File": "DEV/tests/Run-ManagedScenario111PlanMutationsTests.ps1",
+      "Case": "Obligatoire du formulaire rendu aveugle aux blancs : le trou de la garde scellée redevient publiable",
+      "Proof": "Mutation [string]::IsNullOrWhiteSpace -> IsNullOrEmpty dans le module copié hors sac : le plan a valeur obligatoire blanche ressort publiable (sortie 0) au lieu de 96. Sans la mutation, 96. La suite rend 170/170 avec le module intact."
+    }
+  },
+  "CoverageGapFound": {
+    "Id": "point-d-entree-jamais-consulte-la-garde-de-valeurs-du-moteur",
+    "File": "DEV/integrations/Test-PestoManagedScenario.ps1",
+    "Observed": "Le contrôle avant publication consultait Test-PestoScenarioInput et ConvertTo-PestoScenario (forme du scénario) ainsi que les valeurs recopiées à la main via -ValuesPath, mais jamais Assert-PestoOperationPolicy sur des plans réels. Or les valeurs du scénario à l'exécution ne sont pas saisies : elles sont dérivées du nom demandé par Get-PestoPlanScenarioValues puis ConvertTo-PestoNameParts.",
+    "Impact": "Un scénario déclaré publiable pouvait être refusé par le moteur au premier effet, ou accepté par lui sur une valeur que le formulaire refuse.",
+    "Fix": "Nouveau paramètre -PlanPath : tableau JSON de plans (Nom_du_PC, Nouveau_Nom, OU_Actuelle, OU_Destination, Objet_GUID), 1 à 200 plans, 65536 octets au plus, champs fermés et valeurs chaînes uniquement. Chaque plan est dérivé puis passé à Assert-PestoOperationPolicy et à Test-PestoScenarioInput ; désaccord = refus. Un plan porteur d'Objet_GUID est refusé avant tout appel AD. Messages fermés, aucune écriture de registre, aucune mutation."
+  },
+  "EntryPoint": {
+    "File": "DEV/integrations/Test-PestoManagedScenario.ps1",
+    "Parameters": [
+      "-Installation (absolu, obligatoire)",
+      "-ScenarioPath",
+      "-ValuesPath",
+      "-PlanPath (nouveau)",
+      "-FromRegistry",
+      "-AsJson",
+      "-ReportPath"
+    ],
+    "ExitCodes": {
+      "0": "Scénario publiable",
+      "96": "Refusé (message fermé)"
+    },
+    "NewReportKeys": [
+      "PlansChecked",
+      "PlansValid",
+      "PlanCount",
+      "PlanErrors",
+      "PlanFields"
+    ],
+    "ClosedPlanMessages": [
+      "Chemin des plans candidats invalide.",
+      "Plans candidats illisibles.",
+      "Un plan candidat ne doit pas porter d'identité AD.",
+      "Scénario refusé : plans non évalués.",
+      "Plan refusé par le moteur : champ obligatoire.",
+      "Plan refusé par le moteur : valeur interdite.",
+      "Plan refusé par le moteur : champ verrouillé.",
+      "Plan refusé par le moteur.",
+      "Garde du moteur affaiblie sur un plan candidat."
+    ],
+    "NotSealed": "DEV/integrations/** n'est pas scellé : ni Pesto.exe ni le manifeste de 67 composants runtime ne sont touchés."
+  },
+  "PlanSuite": {
+    "File": "DEV/tests/Run-ManagedScenario111PlanTests.ps1",
+    "Command": "cd DEV && /tmp/opencode/pwsh7/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-ManagedScenario111PlanTests.ps1",
+    "Result": "ManagedScenario111Plans 19 19 0 (sortie 0)",
+    "Method": "Le point d'entrée est joué comme vrai processus enfant sur un paquet reconstruit en dossier temporaire (wad/Pesto-Contracts.ps1, wad/Pesto-Policy.ps1, wad/Pesto-ManagedPolicy.ps1, integrations/Pesto.Optional.psm1, integrations/Test-PestoManagedScenario.ps1) ; seule Test-PestoPackage est doublée."
+  },
+  "PlanMutationHarness": {
+    "File": "DEV/tests/Run-ManagedScenario111PlanMutationTests.ps1",
+    "Command": "cd DEV && /tmp/opencode/pwsh7/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-ManagedScenario111PlanMutationTests.ps1",
+    "Result": "ManagedScenario111PlanMutations : 170/170 PASS",
+    "Mutations": [
+      "Jambe du moteur seule décrochée : le formulaire porte encore (sortie 96 attendue)",
+      "Jambe du moteur et liste autorisée éteintes : plus rien ne refuse (sortie 0)",
+      "Dérivation du nom seule décrochée : la garde du moteur porte encore (sortie 96)",
+      "Dérivation du nom et jambe du moteur éteintes : plus rien ne refuse (sortie 0)",
+      "Garde du moteur affaiblie éteinte : le plan à valeur obligatoire blanche est publié",
+      "Obligatoire du formulaire rendu aveugle aux blancs : le trou de la garde scellée redevient publiable",
+      "Contrôle des caractères de contrôle éteint : le plan fautif est publié",
+      "Forme des plans non vérifiée : un champ inconnu passe",
+      "Taille des plans non bornée : un volume refusé redevient publiable",
+      "Nombre de plans non borné",
+      "Garde d'identité éteinte : la branche AD de la garde est atteinte"
+    ],
+    "Differential": {
+      "Corpus": "5 scénarios x 4 noms (P111301PA765001, S111301PA765001, V111301PA765001, pasunnom) x 5 emplacements (valide, blanc, caractère de contrôle, 5000 caractères, vide) = 100 formes",
+      "Reference": "Assert-PestoOperationPolicy et Test-PestoScenarioInput appelés en direct sur les modules de la copie, verdict publié (Publishable, ExitCode) comparé forme par forme",
+      "Measured": {
+        "total": 100,
+        "refus_du_moteur": 58,
+        "accepte_par_le_moteur_refuse_par_le_formulaire": 22,
+        "acceptees_par_les_deux": 20,
+        "divergences": 0,
+        "fuites": 0
+      },
+      "NonVacuity": "La suite échoue sous 40 refus du moteur, 15 divergences moteur/formulaire ou 20 formes acceptées par les deux : un corpus qui ne exercerait plus l'aveuglement de la garde scellée ne serait pas une preuve."
+    }
+  },
+  "Harness": {
+    "Command": "python3 DEV/tools/run_tests.py --root DEV --platform Portable --pwsh /tmp/opencode/pwsh7/pwsh --timeout 300",
+    "Counts": {
+      "PASS": 54,
+      "FAIL": 0,
+      "SKIP": 21
+    },
+    "NewSuites": [
+      {
+        "name": "ManagedScenario111Plans",
+        "status": "PASS"
+      },
+      {
+        "name": "ManagedScenario111PlanMutations",
+        "status": "PASS"
+      }
+    ],
+    "SummaryFile": "DEV/tests/results/20261024_065341_514783/summary.json"
+  },
+  "TargetedSuites": [
+    {
+      "file": "tests/Run-ManagedScenario111PlanTests.ps1",
+      "result": "ManagedScenario111Plans 19 19 0"
+    },
+    {
+      "file": "tests/Run-ManagedScenario111PlanMutationTests.ps1",
+      "result": "ManagedScenario111PlanMutations : 170/170 PASS"
+    },
+    {
+      "file": "tests/Run-ManagedScenarioPreflight111Tests.ps1",
+      "result": "ManagedScenarioPreflight111 21 21 0"
+    },
+    {
+      "file": "tests/Run-ManagedScenario111FormMutationTests.ps1",
+      "result": "ManagedScenario111FormMutations : 134/134 PASS"
+    },
+    {
+      "file": "tests/Run-ManagedScenario111MutationTests.ps1",
+      "result": "ManagedScenario111Mutations : 39/39 PASS"
+    },
+    {
+      "file": "tests/Run-ManagedExtensionsTests.ps1",
+      "result": "ManagedExtensions: 14 passed, 0 failed"
+    },
+    {
+      "file": "tests/Run-OptionalIntegrationsTests.ps1",
+      "result": "OptionalIntegrations 9 9 0"
+    },
+    {
+      "file": "tests/Run-ExtensionEffectsTests.ps1",
+      "result": "ExtensionEffects: 21 passed, 0 failed"
+    }
+  ],
+  "Validators": [
+    {
+      "command": "cd DEV && PATH=/tmp/opencode/pwsh7:$PATH python3 tools/checks/validate_pesto.py",
+      "result": "RESULT 658 passed 0 failed; parser PowerShell 7.4.6 Core; native Windows NOT executed"
+    },
+    {
+      "command": "cd DEV && python3 tools/refresh_manifest.py --root . --check",
+      "result": "Checked: 67 runtime components; no demos/tests/CMD/configuration. Not an author signature."
+    },
+    {
+      "command": "cd DEV && pwsh -File tools/Build-PestoEngineModule.ps1 -Root . -Check",
+      "result": "Checked Functions 740 WorkerClosure 165 RuntimeSHA256 a948d92aa147f2566c2840305a2a0a47a03655b56e9fcb..."
+    }
+  ],
+  "Seal": "Aucun fichier scellé n'a été modifié : les changements vivent dans DEV/integrations et DEV/tests. Pesto.exe et package.json restent intacts, la régénération du moteur n'était ni requise ni possible ici (clang et lld-link absents).",
+  "Remaining": [
+    "Qualification spécifique de cette extension sur Windows et AD : la branche -FromRegistry n'a pu être jouée que jusqu'à son refus ferme hors Windows, et les valeurs dérivées des plans n'ont été confrontées à l'annuaire que par le refus de la garde.",
+    "Garde KeySize des approbations de campagne (wad/Pesto-Policy.ps1, lignes 348 et 368) toujours inopérante hors Windows.",
+    "Assert-PestoScenarioValues reste aveugle aux valeurs non vides invalables : le correctif touche le moteur scellé et exige de régénérer Pesto.exe, impossible sur Spark sans chaîne de compilation."
+  ]
+}

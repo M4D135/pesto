@@ -1,0 +1,8 @@
+{
+    "Date":  "2026-10-04T20:51:20.0213516+02:00",
+    "OU":  "OU=BETA-BB,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+    "User":  "S-1-5-21-2348118763-2306653211-1344436245-1158",
+    "Rule":  "Deny CreateChild computer retirÇ",
+    "SchemaGuid":  "bf967a86-0de6-11d0-a285-00aa003049e2",
+    "Purpose":  "Recette Pesto de reprise apräs renommage; retirer apräs constat"
+}

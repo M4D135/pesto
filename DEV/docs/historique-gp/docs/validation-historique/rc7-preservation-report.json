@@ -1,0 +1,70 @@
+{
+  "base_archive": "GP_17_WAD_RC6.zip",
+  "current_version": "17.0-RC7",
+  "source_sha256": "1bf4dad52c1dde92da211cf609ef62943e4dbcc7416bf1696d9b9a2ea467b32f",
+  "scope": "Normalized source comparison, not execution",
+  "unchanged_functions": 256,
+  "modified_functions": [
+    "Show-GPStartupWindow",
+    "Show-LoginWindow"
+  ],
+  "added_functions": [],
+  "removed_functions": [],
+  "wad_assets": [
+    {
+      "path": "wad/ActiveDirectory.Format.ps1xml",
+      "unchanged": true,
+      "sha256": "ffefd16b151f10ea80b603f3acba3c361055314bb6b54f8f8f3f0b21e2ae3996"
+    },
+    {
+      "path": "wad/ActiveDirectory.Types.ps1xml",
+      "unchanged": true,
+      "sha256": "3cb55021534ec67fa81d7981ee4b3364eea3ba79ebe61667ee44e14b7a668b3a"
+    },
+    {
+      "path": "wad/ActiveDirectory.psd1",
+      "unchanged": true,
+      "sha256": "96e41708524316cb13a0d71d36a905f5d530e57e1714a12c3e5b30189a4c83eb"
+    },
+    {
+      "path": "wad/ActiveDirectoryPowerShellResources.dll",
+      "unchanged": true,
+      "sha256": "e233d92238aa31ea1b3c60145d8811edb2e517e1b9b53f4bc496883ee5d9973b"
+    },
+    {
+      "path": "wad/Microsoft.ActiveDirectory.Management.dll",
+      "unchanged": true,
+      "sha256": "1a6af7b8f8bce5b35ff873e2528746480c980526d86e38ca5acd04c2e9037157"
+    },
+    {
+      "path": "wad/cfg.demo.json",
+      "unchanged": true,
+      "sha256": "f1b14cba8e4695463779f8a424ea82ced2b9dcc89a5c61c89a8a75cf17fb8564"
+    },
+    {
+      "path": "wad/cfg.example.json",
+      "unchanged": true,
+      "sha256": "dbc1927de12736192db1b89b2df9e29d7393dad769c32b0552a6d42b008342de"
+    },
+    {
+      "path": "wad/cfg.json",
+      "unchanged": true,
+      "sha256": "1c505d275250af385420efeb96ee05fce6bd389c55015d65c0da7dd675998e11"
+    },
+    {
+      "path": "wad/cfg.original.json",
+      "unchanged": true,
+      "sha256": "b2a5726f826391e637de25804fd22904b19cbdf7039db227f185086c18bb386c"
+    },
+    {
+      "path": "wad/fr-FR/ActiveDirectoryPowerShellResources.dll.mui",
+      "unchanged": true,
+      "sha256": "bee3c0b2beeb6d5e5600e840e57c7361ef77aabd44006fd7d82f7fcbbfb8541e"
+    },
+    {
+      "path": "wad/icone.ico",
+      "unchanged": true,
+      "sha256": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a"
+    }
+  ]
+}

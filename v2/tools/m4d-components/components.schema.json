@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:m4d:components:1",
+  "title": "M4D declared UI component integrity, not visual certification",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/canonical"
+    },
+    {
+      "$ref": "#/$defs/consumer"
+    }
+  ],
+  "$defs": {
+    "canonical": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "product",
+        "repository",
+        "commit",
+        "files"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "kind": {
+          "const": "canonical"
+        },
+        "product": {
+          "const": "domenia"
+        },
+        "repository": {
+          "const": "M4D135/domenia-d120"
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1024,
+          "items": {
+            "$ref": "#/$defs/canonicalFile"
+          }
+        }
+      }
+    },
+    "consumer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "kind",
+        "product",
+        "adoption",
+        "canonical",
+        "files"
+      ],
+      "properties": {
+        "schema": {
+          "const": 1
+        },
+        "kind": {
+          "const": "consumer"
+        },
+        "product": {
+          "enum": [
+            "domenia",
+            "pesto",
+            "filpro",
+            "glpi-pilot",
+            "dex-platform",
+            "m4d-admin-common"
+          ]
+        },
+        "adoption": {
+          "enum": [
+            "partial",
+            "full"
+          ],
+          "description": "Self-declared breadth, never proof of visual or engine conformity."
+        },
+        "canonical": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repository",
+            "commit"
+          ],
+          "properties": {
+            "repository": {
+              "const": "M4D135/domenia-d120"
+            },
+            "commit": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$"
+            }
+          }
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1024,
+          "items": {
+            "$ref": "#/$defs/consumerFile"
+          }
+        }
+      }
+    },
+    "canonicalFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400,
+          "pattern": "^(?!/)(?!.*\\\\)[^<>:\"|?*\\u0000-\\u001f]{1,400}$",
+          "description": "Runtime additionally rejects dot segments, empty segments, Windows reserved names, trailing dots/spaces, links and case collisions."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "consumerFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "upstreamPath",
+        "upstreamSha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400,
+          "pattern": "^(?!/)(?!.*\\\\)[^<>:\"|?*\\u0000-\\u001f]{1,400}$",
+          "description": "Runtime additionally rejects dot segments, empty segments, Windows reserved names, trailing dots/spaces, links and case collisions."
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "upstreamPath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 400,
+          "pattern": "^(?!/)(?!.*\\\\)[^<>:\"|?*\\u0000-\\u001f]{1,400}$",
+          "description": "Runtime additionally rejects dot segments, empty segments, Windows reserved names, trailing dots/spaces, links and case collisions."
+        },
+        "upstreamSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "adaptation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "description": "Nonblank explanation. Both local and upstream bytes must still verify."
+        }
+      }
+    }
+  }
+}

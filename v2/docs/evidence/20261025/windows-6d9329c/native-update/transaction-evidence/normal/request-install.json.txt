@@ -1,0 +1,6 @@
+{
+  "transactionDirectory": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-55da8937cab446cc844bc7ba8f6eef97\\cases\\normal\\.pesto-v2-update-7ca4fae9b1cb625d\\03e84d6934c7482ab4824402918e6a2d",
+  "helperExecutable": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\Pesto-native-update-55da8937cab446cc844bc7ba8f6eef97\\cases\\normal\\.pesto-v2-update-7ca4fae9b1cb625d\\03e84d6934c7482ab4824402918e6a2d\\helper\\Pesto.exe",
+  "transactionId": "03e84d6934c7482ab4824402918e6a2d",
+  "action": "install"
+}

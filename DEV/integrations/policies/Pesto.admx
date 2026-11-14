@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitions revision="1.0" schemaVersion="1.0" xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+  <policyNamespaces><target prefix="pesto" namespace="M4D.Pesto"/></policyNamespaces>
+  <resources minRequiredRevision="1.0"/>
+  <supportedOn><definitions><definition name="SupportedWindows" displayName="$(string.SupportedWindows)"/></definitions></supportedOn>
+  <categories><category name="Pesto" displayName="$(string.Pesto)"/></categories>
+  <policies>
+    <policy name="IncidentMode" class="Machine" displayName="$(string.IncidentMode)" explainText="$(string.Restrictions)" key="Software\Policies\M4D\Pesto" valueName="IncidentMode">
+      <parentCategory ref="Pesto"/><supportedOn ref="SupportedWindows"/>
+      <enabledValue><decimal value="1"/></enabledValue><disabledValue><decimal value="0"/></disabledValue>
+    </policy>
+    <policy name="DisableUnattendedJoin" class="Machine" displayName="$(string.DisableUnattendedJoin)" explainText="$(string.Restrictions)" key="Software\Policies\M4D\Pesto" valueName="DisableUnattendedJoin">
+      <parentCategory ref="Pesto"/><supportedOn ref="SupportedWindows"/>
+      <enabledValue><decimal value="1"/></enabledValue><disabledValue><decimal value="0"/></disabledValue>
+    </policy>
+    <policy name="DisableUnattendedOperations" class="Machine" displayName="$(string.DisableUnattendedOperations)" explainText="$(string.Restrictions)" key="Software\Policies\M4D\Pesto" valueName="DisableUnattendedOperations">
+      <parentCategory ref="Pesto"/><supportedOn ref="SupportedWindows"/>
+      <enabledValue><decimal value="1"/></enabledValue><disabledValue><decimal value="0"/></disabledValue>
+    </policy>
+    <policy name="MaxBatch" class="Machine" displayName="$(string.MaxBatch)" explainText="$(string.MaxBatchHelp)" presentation="$(presentation.MaxBatch)" key="Software\Policies\M4D\Pesto">
+      <parentCategory ref="Pesto"/><supportedOn ref="SupportedWindows"/>
+      <elements><decimal id="Limit" valueName="MaxBatch" minValue="1" maxValue="200" required="true"/></elements>
+    </policy>
+  </policies>
+</policyDefinitions>

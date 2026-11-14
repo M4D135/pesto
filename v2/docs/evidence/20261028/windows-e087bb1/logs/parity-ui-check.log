@@ -1,0 +1,62 @@
+OK Attributs : ouverture avec une seule inspection et aucune préparation implicite
+OK Brouillon attributs : annuler Relire conserve les valeurs et le diff préparé
+OK Brouillon attributs : Relire confirmé remet les valeurs lues sans envoyer le diff
+OK Brouillon attributs : navigation annulée conserve les champs puis accord explicite les abandonne
+OK Attributs : seuls champs cochés, espaces exacts et chaîne vide explicite
+OK Attributs : plan divergent refusé — GUID
+OK Attributs : plan divergent refusé — avant
+OK Attributs : plan divergent refusé — espaces altérés
+OK Attributs : plan divergent refusé — expiration
+OK Attributs : annulation après préparation sans écriture
+OK Attributs : contexte modifié pendant la confirmation — valeur
+OK Attributs : contexte modifié pendant la confirmation — lecture seule
+OK Attributs : contexte modifié pendant la confirmation — domaine
+OK Attributs : réponse de succès non prouvée sans vert — preuve absente
+OK Attributs : réponse de succès non prouvée sans vert — code incorrect
+OK Attributs : réponse de succès non prouvée sans vert — GUID observé étranger
+OK Attributs : réponse de succès non prouvée sans vert — diff incomplet
+OK Attributs : managedBy exige aussi le GUID de référence observé après écriture
+OK Attributs : DN managedBy canonique relu visible dans le diff avant confirmation
+OK Attributs : uncertain ne propose que la lecture, observe explicite sans rejeu
+OK Attributs : observation incomplète ne certifie rien — preuve absente
+OK Attributs : observation incomplète ne certifie rien — vérifié contradictoire
+OK Attributs : navigation pendant la préparation ne crée pas un contrôle tardif
+OK Historique attributs : listes locales puis observation explicite liée au reçu et au diff complet
+OK Historique attributs : observation divergente conserve le reçu incertain — GUID
+OK Historique attributs : observation divergente conserve le reçu incertain — domaine
+OK Historique attributs : observation divergente conserve le reçu incertain — contrôleur
+OK Historique attributs : observation divergente conserve le reçu incertain — OU
+OK Historique attributs : observation divergente conserve le reçu incertain — diff vide
+OK Historique attributs : observation divergente conserve le reçu incertain — diff partiel
+OK Historique attributs : observation divergente conserve le reçu incertain — GUID du responsable
+OK Historique attributs : nouveau reçu avec diff altéré ne remplace pas le résultat initial
+OK Historique attributs V1 : lecture du diff sans vérification V2 promise ni envoi implicite
+OK ODJ : démarrage local seulement et aucune observation AD implicite
+OK ODJ : import déclaré confirmé, aucun chemin ni blob dans les arguments web
+OK ODJ : annulation de confirmation sans ouverture du sélecteur natif
+OK ODJ : sélecteur natif annulé sans préparation ni application
+OK ODJ : préparation puis confirmation du nom actuel, PendingRestart reste sans succès vert
+OK ODJ : plan étranger ou expiré refusé — computer
+OK ODJ : plan étranger ou expiré refusé — expectedAdGuid
+OK ODJ : plan étranger ou expiré refusé — id
+OK ODJ : plan étranger ou expiré refusé — expiresAt
+OK ODJ : annulation de l’application conserve l’import sans envoi
+OK ODJ : contexte local relu pendant le dialogue invalide le plan
+OK ODJ : succès immédiat contradictoire à l’application refusé
+OK ODJ : observation contradictoire ne transforme pas une identité déclarée en succès
+OK Pilote : un seul plan confirmé, les autres lignes restent dans la file
+OK Pilote : changer la case invalide le lot déjà préparé
+OK Pilote : changement pendant confirmation sans exécution tardive
+OK Lot normal : pilot false et toutes les lignes affichées avant confirmation
+OK Pilote : le moteur ne peut pas rendre un lot normal sous une confirmation pilote
+OK Shell ODJ réel : session et liste locales seulement, bannière opération réelle permanente
+OK Aucune erreur JS ni requête extérieure au serveur de fixture
+{
+  "suite": "parity-ui",
+  "checks": 53,
+  "passed": 53,
+  "failed": 0,
+  "memoryOnly": true,
+  "nativeEffects": false,
+  "failures": []
+}

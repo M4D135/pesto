@@ -1,0 +1,10 @@
+﻿{
+    "Suite":  "Run-AllTests",
+    "PowerShell":  "5.1.26100.6584",
+    "Session":  0,
+    "ExitCode":  0,
+    "TimedOut":  false,
+    "Ms":  100964,
+    "ExeSHA256":  "22F8F5C49304F67D346DB72A687D216402E0C6AA86D8BB4E67A7D62878DFABAD",
+    "Utc":  "2026-10-12T23:22:02.7081412Z"
+}

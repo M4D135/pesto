@@ -1,0 +1,348 @@
+{
+  "Schema": 1,
+  "Suite": "AuditSink",
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "NativeEventLogExecuted": false,
+  "ADExecuted": false,
+  "WPFExecuted": false,
+  "Passed": 67,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "disabled: no pipeline output",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "disabled: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "disabled: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: no pipeline output",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: one EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: no automatic source creation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: closed projection fields",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: projection Schema 1",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: Product Pesto",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: OperationId preserved",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: Kind Intervention",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: State preserved",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: ResultCode 0",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: Sequence 1",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: UpdatedUtc preserved",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: Application log",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: Pesto source",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: Information entry",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: EventId 1000",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: LastSuccessUtc set",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central: no failures",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "direct: one EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "direct: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "direct: Kind Direct",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "join: one EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "join: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "join: Kind Join",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "join: missing code and sequence stay unknown",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "nonreceipt: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "nonreceipt: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed OperationId: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed OperationId: WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed OperationId: failure counted",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "error isolated: no exception",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "error isolated: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "error isolated: WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "error isolated: failure counted",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "error isolated: LastFailureUtc set",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "error isolated: no LastSuccessUtc",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "no secrets: one EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "no secrets: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "no secrets: no secret token",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "no secrets: no machine token",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "no secrets: no ResultMessage",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "no secrets: no Plan",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed ResultCode: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed ResultCode: WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed ResultCode: failure counted",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed UpdatedUtc: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed UpdatedUtc: WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed UpdatedUtc: failure counted",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed Sequence: no EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed Sequence: WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed Sequence: failure counted",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "observable phase: one EventLog",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "observable phase: no WARN",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "observable phase: State preserved",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "central schema 3 supported",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed Schema rejected",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed Phase rejected",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "malformed OperationId rejected",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "policy string cannot enable sink",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "direct observation timestamp preserved",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "direct missing sequence stays unknown",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "audit failure preserves durable writer result",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "failed durable write emits no audit event",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

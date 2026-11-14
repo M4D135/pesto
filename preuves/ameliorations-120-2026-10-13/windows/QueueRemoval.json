@@ -1,0 +1,135 @@
+﻿{
+    "Version":  "17.0-RC8",
+    "Utc":  "2026-10-13T19:16:02.3815515Z",
+    "PowerShell":  "5.1.26100.6584",
+    "Scope":  "Fonctions extraites du moteur, contrôles simulés, DataTable et fichiers temporaires réels. Aucun WPF ou AD connecté.",
+    "Passed":  25,
+    "Failed":  0,
+    "Tests":  [
+                  {
+                      "Name":  "Cas de la capture : retirer autorisé pendant la modification, exécuter reste bloqué",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Aucune ligne sélectionnée : retrait désactivé même si les cases sont cochées",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Ligne décochée mais surlignée : peut être retirée",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Exécution active : bouton et fonction refusent le retrait",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Précontrôle actif : retrait refusé même en édition",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Une DataRow provenant d une autre table est refusée",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Une ancienne ligne détachée est refusée",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Une ligne marquée Deleted est refusée",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Refuser la confirmation ne change ni la file ni l édition ni la sauvegarde",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retirer la ligne modifiée quitte son édition après confirmation",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Seule la ligne surlignée est retirée, pas les autres lignes cochées",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Tri décroissant : le retrait utilise la DataRow réelle",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Filtre : retirer la ligne visible ne retire pas une ligne masquée",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retirer avant une autre ligne en édition recalcule son index",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Retirer après une autre ligne en édition conserve son index",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "La sauvegarde JSON ne contient plus la ligne retirée",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Le cache du précontrôle retiré est invalidé sans vider les autres",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Échec de sauvegarde : même objet, mêmes données et même ordre restaurés",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Échec de sauvegarde : l édition et le cache sont conservés",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Échec avant écriture : ancien checkpoint intact",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Un traitement démarré pendant la confirmation est recontrôlé",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Le retrait ne modifie ni le journal historique ni le verrou existant",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "File devenue vide : le verrou Uncertain survit à une relecture du checkpoint",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Mode démo : retirer ne crée pas de checkpoint réel",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "File vide sans verrou : retrait désactivé et aucune exécution possible",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

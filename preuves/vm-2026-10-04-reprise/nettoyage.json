@@ -1,0 +1,14 @@
+﻿{
+    "Date":  "2026-10-04T18:29:56.9321015+02:00",
+    "Machine":  "PESTO-W11-TEST",
+    "Windows":  "10.0.26200",
+    "PSVersion":  "5.1.26100.6584",
+    "CompteTemporairePresent":  false,
+    "ProfilTemporairePresent":  false,
+    "AutoAdminLogon":  "0",
+    "ValeurMotDePasseEnClairPresente":  false,
+    "TachesPesto":  [
+
+                    ],
+    "ExeSHA256":  "8FD5BD8CF914058F1F0B84A95F43536FF91C4DC2718C6C67F411BB24B7FD7CA0"
+}

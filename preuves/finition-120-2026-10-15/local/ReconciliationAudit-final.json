@@ -1,0 +1,43 @@
+{
+  "PowerShell": "7.4.20",
+  "NoWindows": true,
+  "NoAD": true,
+  "Failed": 0,
+  "Checks": [
+    {
+      "Name": "Reconciliation audit persists a bounded closed event without changing outcome",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Audit export excludes arbitrary state text XML credentials and malformed dates",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Invalid audit parameters are rejected before persistence",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Actual reconciliation worker records READY code but never validates the operation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unknown task and missing original hash are recorded without a false finish",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Probe failure leaves durable unknown evidence and propagates failure",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Actual protection recovery persists requested confirmed and uncertain branches",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

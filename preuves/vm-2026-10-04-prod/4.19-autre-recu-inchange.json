@@ -1,0 +1,10 @@
+{
+  "Date": "2026-10-04T21:15:53.1772329+02:00",
+  "ParentBefore": "PendingRestart",
+  "ParentAfter": "Verified",
+  "OriginalCode": 97,
+  "OtherDirectOperationId": "cd74bb16-ed8a-49a8-af38-9bff280ac7c6",
+  "OtherDirectHashBefore": "BCE652D57DBFA9BB6CA53B7B8EB5804BD6C206C0E104EB37C74745801EE21A73",
+  "OtherDirectHashAfter": "BCE652D57DBFA9BB6CA53B7B8EB5804BD6C206C0E104EB37C74745801EE21A73",
+  "Unchanged": true
+}

@@ -1,0 +1,21 @@
+OK    UpdateTests.AlteredPreparedPackAndTransactionJournalCannotRedirectReplacement
+OK    UpdateTests.BooleanHealthWithoutMatchingProofIsNeverAccepted
+OK    UpdateTests.CandidateCanDiscoverOfficialReleaseAtTheSameVersion
+OK    UpdateTests.ClosedPackageRejectsChangedMissingExtraAndCaseAmbiguousFiles
+OK    UpdateTests.ClosedPackageRequiresThePinnedActiveDirectoryBundleEvenAfterRehash
+OK    UpdateTests.ConcurrentInstallerAndExternalModificationArePreserved
+OK    UpdateTests.DemoDirectApisRejectBeforeFileSystemAndNetwork
+OK    UpdateTests.DurableHealthReceiptsRejectUnknownFieldsAndWrongTypes
+OK    UpdateTests.FailedHealthRollsBackAndNeverReportsInstalled
+OK    UpdateTests.GitHubIgnoresV1AndRejectsRedirectToAnotherHost
+OK    UpdateTests.InterruptedHealthAttemptNeverBecomesPassedAndKeepsItsMatchingProof
+OK    UpdateTests.NegativeHealthProofSurvivesSuccessfulRollbackAsSeparateDurableAttempts
+OK    UpdateTests.OfficialAssetIsPreparedOnlyAfterDigestAndPackageValidation
+OK    UpdateTests.PreparationDoesNotInstallAndDetectsChangedSelection
+OK    UpdateTests.PublicExecutionRefusesRunningParentBeforeAnyReplacement
+OK    UpdateTests.RecoveryHandlesEveryReplacementInterruptionBoundary
+OK    UpdateTests.RecoverySurvivesInterruptionDuringRollbackItself
+OK    UpdateTests.SuccessfulInstallAndExplicitRollbackPreserveUserConfiguration
+OK    UpdateTests.SymlinkedTransactionJournalIsRejectedBeforeReplacement
+OK    UpdateTests.ZipTraversalLinksAndDuplicatePathsNeverEscapeExtraction
+20 réussis, 0 en échec, 20 au total.

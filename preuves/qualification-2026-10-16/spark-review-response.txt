@@ -1,0 +1,1069 @@
+
+
+Verdict ciblé : il reste des trous concrets côté persistance/reprise, surtout sur `install`, `uninstall`, `_replace_from`, `apply_update` et `recover_update`. Les tests actuels sont bons sur le rollback “in-process”, mais ils ne couvrent pas assez la suppression d’une destination existante, le crash d’un désinstall, le nettoyage des backups de préparation, et le kill externe aux frontières.
+
+Je ne qualifie pas AD/SMB/coupure secteur. Les propositions ci-dessous simulent un arrêt brutal du processus (`os._exit`, `proc.kill()`), pas une coupure physique.
+
+---
+
+## Bugs concrets à corriger
+
+### 1. `managed_install.install()` peut détruire une installation existante
+
+Fichier : `DEV/tools/managed_install.py`
+
+```python
+def install(source, destination):
+    destination = Path(destination)
+    build_directory(Path(source), destination, 'PROD')
+    try:
+        ...
+    except BaseException:
+        shutil.rmtree(destination)
+        raise
+```
+
+Problème :
+
+- `install()` ne refuse pas une destination déjà existante.
+- Si `build_directory()` échoue après avoir touché une destination existante, `shutil.rmtree(destination)` supprime tout.
+- Le commentaire “Only the directory created by this invocation can be removed here” n’est pas garanti par le code.
+
+Correctif :
+
+```python
+def install(source, destination):
+    destination = Path(destination)
+
+    if _is_link_or_junction(destination):
+        raise ValueError('Linked destination refused')
+    if destination.exists():
+        raise ValueError('Destination must not exist')
+
+    build_directory(Path(source), destination, 'PROD')
+    try:
+        receipt = make_receipt(
+            destination,
+            runtime_files(destination),
+            verify_runtime(destination)['Version'],
+        )
+        atomic_write_json(destination / RECEIPT, receipt)
+    except BaseException:
+        shutil.rmtree(destination, ignore_errors=True)
+        raise
+    return receipt
+```
+
+Il faut aussi rendre l’écriture du receipt atomique/durable.
+
+---
+
+### 2. Le receipt d’installation est écrit de façon non atomique
+
+Fichier : `DEV/tools/managed_install.py`
+
+```python
+(destination / RECEIPT).write_text(json.dumps(receipt, indent=2) + '\n', encoding='utf-8')
+```
+
+Problème :
+
+- Pas de fichier temporaire.
+- Pas de `os.replace`.
+- Pas de `fsync`.
+- Un arrêt brutal peut laisser un receipt partiel.
+- `detect()` peut alors lever une exception au lieu de retourner proprement `healthy: false`.
+
+Correctif : utiliser un helper atomique.
+
+Dans `DEV/tools/update_installation.py`, exposer :
+
+```python
+def atomic_write_json(path, value):
+    _write_json(Path(path), value)
+```
+
+Puis dans `managed_install.install()` :
+
+```python
+atomic_write_json(destination / RECEIPT, receipt)
+```
+
+---
+
+### 3. `changed_owned_files()` explose sur un fichier manquant
+
+Fichier : `DEV/tools/installation_receipt.py`
+
+```python
+def changed_owned_files(root, receipt):
+    return [path for path, digest in receipt['files'].items()
+            if file_hash(safe_file(root, path)) != digest]
+```
+
+Problème :
+
+- Si un fichier owned est manquant, `safe_file()` ou `file_hash()` peut lever une exception.
+- `detect()` devrait alors retourner `healthy: false` avec `changed` contenant le fichier manquant.
+- Actuellement, un état “partiellement supprimé” peut devenir une traceback au lieu d’un diagnostic propre.
+
+Correctif : introduire un digest tolérant aux fichiers absents.
+
+```python
+from refresh_manifest import validate_relative
+
+def _owned_digest(root, relative):
+    validate_relative(relative)
+    root = Path(root)
+    target = root / relative
+
+    for item in (target, *target.parents):
+        if item == root:
+            break
+        if _is_link_or_junction(item):
+            raise ValueError('Linked owned file refused: ' + relative)
+
+    try:
+        resolved = target.resolve(strict=False)
+    except OSError as exc:
+        raise ValueError('Cannot resolve owned file: ' + relative) from exc
+
+    if root not in resolved.parents and resolved != root:
+        raise ValueError('Owned file escapes root: ' + relative)
+
+    if not target.is_file():
+        return None
+
+    return file_hash(target)
+
+
+def changed_owned_files(root, receipt):
+    return [
+        path
+        for path, digest in receipt['files'].items()
+        if _owned_digest(root, path) != digest
+    ]
+```
+
+Avec ça :
+
+- fichier absent => digest `None`
+- digest attendu non `None` => fichier considéré comme changed
+- lien/jonction refusé => exception explicite
+- `detect()` peut retourner `healthy: false` proprement
+
+---
+
+### 4. `detect()` devrait retourner un état non sain au lieu de lever sur receipt invalide
+
+Fichier : `DEV/tools/managed_install.py`
+
+Actuellement :
+
+```python
+receipt = load_receipt(root, runtime_files(root), required=True)
+...
+if receipt['version'] != manifest['Version']:
+    raise ValueError('Installation receipt version differs')
+```
+
+Problème :
+
+- Un receipt partiel, invalide, ou une version incohérente peut lever une exception.
+- Pour un outil de management, `detect` devrait retourner `installed: true, healthy: false, reason: ...`.
+
+Correctif :
+
+```python
+def detect(destination):
+    root = Path(destination)
+
+    if not root.exists():
+        return {'installed': False, 'healthy': False, 'reason': 'absent'}
+
+    if _is_link_or_junction(root):
+        return {'installed': False, 'healthy': False, 'reason': 'linked root'}
+
+    receipt_path = root / RECEIPT
+    if not receipt_path.exists() and not _is_link_or_junction(receipt_path):
+        return {
+            'installed': False,
+            'healthy': False,
+            'reason': 'unmanaged or removed; data retained',
+        }
+
+    try:
+        receipt = load_receipt(root, runtime_files(root), required=True)
+    except ValueError as exc:
+        return {
+            'installed': True,
+            'healthy': False,
+            'reason': 'invalid receipt: ' + str(exc),
+            'changed': [],
+            'owned': [],
+        }
+
+    try:
+        changed = changed_owned_files(root, receipt)
+    except ValueError as exc:
+        return {
+            'installed': True,
+            'healthy': False,
+            'reason': 'invalid owned file: ' + str(exc),
+            'changed': [],
+            'owned': sorted(receipt['files']),
+        }
+
+    if not changed:
+        try:
+            manifest = verify_runtime(root)
+        except ValueError as exc:
+            return {
+                'installed': True,
+                'healthy': False,
+                'reason': 'invalid runtime: ' + str(exc),
+                'changed': [],
+                'owned': sorted(receipt['files']),
+            }
+
+        if receipt['version'] != manifest['Version']:
+            return {
+                'installed': True,
+                'healthy': False,
+                'reason': 'receipt/runtime version mismatch',
+                'changed': [],
+                'owned': sorted(receipt['files']),
+            }
+
+    return {
+        'installed': True,
+        'healthy': not changed,
+        'version': receipt['version'],
+        'changed': changed,
+        'owned': sorted(receipt['files']),
+    }
+```
+
+---
+
+### 5. `uninstall()` laisse un fence non récupérable après crash
+
+Fichier : `DEV/tools/managed_install.py`
+
+```python
+fence = root / '.pesto-update.lock'
+with fence.open('xb') as stream:
+    stream.write(b'{"Stage":"ManagedUninstall"}')
+```
+
+Problèmes concrets :
+
+1. Le fence est écrit sans `fsync`.
+2. En cas de crash pendant la suppression, le fence reste.
+3. `plan_recovery()` ne connaît que `Preparing` et `Copying`.
+4. Donc une mise à jour future est bloquée sur `.pesto-update.lock`.
+5. La suppression des fichiers n’est pas durable : pas de `fsync` des répertoires.
+
+Correctif :
+
+- écrire un fence `ManagedUninstall` durable ;
+- ajouter une récupération explicite dans `plan_recovery()` / `recover_update()` ;
+- fsync après chaque unlink.
+
+Dans `managed_install.uninstall()` :
+
+```python
+import os
+from update_installation import create_json_exclusive, _fsync_directory
+from refresh_manifest import file_hash
+
+
+def uninstall(destination, execute=False, *, _crash_after: int | None = None):
+    root = Path(destination).absolute()
+    result = detect(root)
+
+    if not result['installed']:
+        return result
+    if not result['healthy']:
+        raise ValueError('Modified installed code: nothing removed')
+
+    plan = {
+        'remove': result['owned'] + [RECEIPT],
+        'preserve': ['wad/cfg.json', 'all unowned files', 'all GP user/system profiles'],
+        'executed': False,
+    }
+
+    if not execute:
+        return plan
+
+    again = detect(root)
+    if not again['healthy'] or again['owned'] != result['owned']:
+        raise ValueError('Installation changed during preparation')
+
+    with mutation_guard():
+        check_local_states()
+
+        fence = root / '.pesto-update.lock'
+        fence_value = {
+            'Schema': 1,
+            'Stage': 'ManagedUninstall',
+            'Destination': str(root),
+            'Owned': plan['remove'],
+            'ReceiptSHA256': file_hash(root / RECEIPT),
+        }
+
+        create_json_exclusive(fence, fence_value)
+
+        try:
+            for index, relative in enumerate(plan['remove'], 1):
+                try:
+                    target = safe_file(root, relative)
+                except FileNotFoundError:
+                    pass
+                else:
+                    if target.exists():
+                        target.unlink()
+                        _fsync_directory(target.parent)
+
+                if _crash_after is not None and index == _crash_after:
+                    os._exit(96)
+        except BaseException:
+            raise
+        else:
+            fence.unlink(missing_ok=True)
+            _fsync_directory(root)
+
+    plan['executed'] = True
+    return plan
+```
+
+`_crash_after` est un hook de test, pas une option CLI.
+
+---
+
+### 6. `plan_recovery()` doit connaître `ManagedUninstall`
+
+Fichier : `DEV/tools/update_installation.py`
+
+Ajouter une branche avant `Preparing`.
+
+Il faut aussi augmenter la limite de lecture du lock, car un fence de désinstall contient une liste de fichiers.
+
+```python
+lock = _load_json(destination / '.pesto-update.lock', 262144)
+```
+
+Puis :
+
+```python
+uninstall_fields = {'Schema', 'Stage', 'Destination', 'Owned', 'ReceiptSHA256'}
+
+if (
+    type(lock.get('Schema')) is int
+    and lock.get('Schema') == 1
+    and lock.get('Stage') == 'ManagedUninstall'
+    and set(lock) == uninstall_fields
+):
+    if lock['Destination'] != str(destination):
+        raise ValueError('Wrong recovery target')
+
+    owned = lock['Owned']
+    if not isinstance(owned, list) or not all(isinstance(x, str) for x in owned):
+        raise ValueError('Invalid uninstall recovery list')
+
+    if (
+        not isinstance(lock['ReceiptSHA256'], str)
+        or not re.fullmatch(r'[a-f0-9]{64}', lock['ReceiptSHA256'])
+    ):
+        raise ValueError('Invalid uninstall receipt hash')
+
+    receipt_path = destination / RECEIPT
+    receipt_ok = (
+        receipt_path.is_file()
+        and not _is_link_or_junction(receipt_path)
+        and file_hash(receipt_path) == lock['ReceiptSHA256']
+    )
+
+    if receipt_ok:
+        owned_keys = receipt_owned_paths(destination)
+        if owned_keys is None or set(owned) != owned_keys | {RECEIPT}:
+            raise ValueError('Uninstall recovery list mismatch')
+
+        return {
+            'Destination': str(destination),
+            'Backup': None,
+            'Files': owned,
+            'Records': [],
+            'Conflicts': [],
+            'ConfigurationPreserved': True,
+            'Kind': 'CompleteManagedUninstall',
+        }
+
+    if not receipt_path.exists() and not _is_link_or_junction(receipt_path):
+        remaining = []
+        for rel in owned:
+            target = _plain_target(destination, rel)
+            if target.exists():
+                remaining.append(rel)
+
+        if not remaining:
+            return {
+                'Destination': str(destination),
+                'Backup': None,
+                'Files': [],
+                'Records': [],
+                'Conflicts': [],
+                'ConfigurationPreserved': True,
+                'Kind': 'ReleaseCompletedUninstall',
+            }
+
+        raise ValueError(
+            'Managed uninstall interrupted after receipt removal; manual inspection required'
+        )
+
+    raise ValueError(
+        'Managed uninstall fence present but receipt changed; manual inspection required'
+    )
+```
+
+Il faut exposer dans `installation_receipt.py` :
+
+```python
+def receipt_owned_paths(root):
+    target = Path(root) / RECEIPT
+
+    if _is_link_or_junction(target):
+        raise ValueError('Linked installation receipt refused')
+
+    if not target.is_file():
+        return None
+
+    with target.open('rb') as stream:
+        data = stream.read(RECEIPT_LIMIT + 1)
+
+    if len(data) > RECEIPT_LIMIT:
+        raise ValueError('Oversized install receipt')
+
+    try:
+        receipt = json.loads(data.decode('utf-8-sig'), object_pairs_hook=_unique_object)
+    except (UnicodeError, json.JSONDecodeError) as exc:
+        raise ValueError('Unreadable installation receipt') from exc
+
+    if (
+        not isinstance(receipt, dict)
+        or set(receipt) != {'schema', 'product', 'version', 'files', 'preserved'}
+        or type(receipt['schema']) is not int
+        or receipt['schema'] != 1
+        or receipt['product'] != 'Pesto'
+        or not isinstance(receipt['files'], dict)
+        or any(
+            not isinstance(digest, str) or not re.fullmatch(r'[a-f0-9]{64}', digest)
+            for digest in receipt['files'].values()
+        )
+    ):
+        raise ValueError('Invalid installation ownership')
+
+    return set(receipt['files'])
+```
+
+---
+
+### 7. `recover_update()` doit terminer un désinstall interrompu
+
+Dans `recover_update()` :
+
+```python
+if plan['Kind'] in (
+    'ReleaseInterruptedPreparation',
+    'ReleaseCompletedUpdate',
+    'ReleaseCompletedUninstall',
+):
+    root = Path(plan['Destination'])
+    (root / '.pesto-update.lock').unlink()
+    _fsync_directory(root)
+
+    if plan['Kind'] == 'ReleaseInterruptedPreparation' and plan.get('Backup'):
+        shutil.rmtree(plan['Backup'], ignore_errors=True)
+
+    note = {
+        'ReleaseInterruptedPreparation':
+            'Preparation interrupted before any replacement; installed code verified intact.',
+        'ReleaseCompletedUpdate':
+            'Update had completed; new code verified in place and kept.',
+        'ReleaseCompletedUninstall':
+            'Managed uninstall had completed; fence released.',
+    }[plan['Kind']]
+
+    return {
+        'Recovered': True,
+        'Destination': str(root),
+        'Backup': plan['Backup'],
+        'ConfigPreserved': True,
+        'Kind': plan['Kind'],
+        'Note': note,
+    }
+
+if plan['Kind'] == 'CompleteManagedUninstall':
+    root = Path(plan['Destination'])
+    failures = []
+
+    for rel in plan['Files']:
+        try:
+            target = _plain_target(root, rel)
+            if target.exists():
+                target.unlink()
+                _fsync_directory(target.parent)
+        except (OSError, ValueError) as exc:
+            failures.append(str(exc))
+
+    if failures:
+        raise RuntimeError(
+            'Managed uninstall recovery incomplete; lock retained: ' + str(failures)
+        )
+
+    (root / '.pesto-update.lock').unlink()
+    _fsync_directory(root)
+
+    return {
+        'Recovered': True,
+        'Destination': str(root),
+        'Backup': None,
+        'ConfigPreserved': True,
+        'Kind': 'CompleteManagedUninstall',
+        'Note': 'Owned files removed; configuration preserved.',
+    }
+```
+
+---
+
+### 8. `_replace_from()` ne fsync pas le répertoire après remplacement
+
+Fichier : `DEV/tools/update_installation.py`
+
+Actuellement :
+
+```python
+shutil.copyfileobj(stream,out);out.flush();os.fsync(out.fileno())
+...
+os.replace(name,target)
+```
+
+Problème :
+
+- Sur POSIX, `os.replace()` est atomique, mais la visibilité durable de l’entrée de répertoire nécessite un `fsync` du répertoire parent.
+- Sans ça, un arrêt brutal peut laisser un état ambigu entre ancien et nouveau fichier.
+
+Correctif :
+
+```python
+def _replace_from(source: Path, target: Path) -> None:
+    target.parent.mkdir(parents=True, exist_ok=True)
+    fd, name = tempfile.mkstemp(prefix='.pesto-copy-', suffix='.tmp', dir=target.parent)
+
+    try:
+        with os.fdopen(fd, 'wb') as out, source.open('rb') as stream:
+            shutil.copyfileobj(stream, out)
+            out.flush()
+            os.fsync(out.fileno())
+
+        if target.exists():
+            if os.name == 'nt':
+                _replace_windows_preserving_acl(name, target)
+            else:
+                os.chmod(name, stat.S_IMODE(target.stat().st_mode))
+                os.replace(name, target)
+        else:
+            if os.name != 'nt':
+                os.chmod(name, stat.S_IMODE(source.stat().st_mode))
+            os.replace(name, target)
+
+        _fsync_directory(target.parent)
+    finally:
+        if os.path.exists(name):
+            os.unlink(name)
+```
+
+Bonus : sur POSIX, les nouveaux fichiers créés par `mkstemp()` sont en `0600`. Il faut au moins préserver le mode de la source pour les nouveaux fichiers.
+
+---
+
+### 9. `apply_update()` peut laisser des backups orphelins en préparation
+
+Fichier : `DEV/tools/update_installation.py`
+
+Actuellement :
+
+- le backup est créé après le fence `Preparing` ;
+- si crash pendant la préparation, `plan_recovery()` ne connaît pas le backup ;
+- si exception avant journalisation, `finally` retire le lock mais pas le backup.
+
+Correctif :
+
+1. Créer un chemin de backup déterministe.
+2. Écrire le chemin dans le fence `Preparing`.
+3. Créer le backup après avoir persisté le fence.
+4. Nettoyer le backup si aucune copie vers la destination n’a commencé.
+
+Helper :
+
+```python
+def create_json_exclusive(path, value):
+    path = Path(path)
+    fd = os.open(path, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+
+    with os.fdopen(fd, 'wb') as stream:
+        stream.write(json.dumps(value, ensure_ascii=False, sort_keys=True).encode('utf-8'))
+        stream.flush()
+        os.fsync(stream.fileno())
+
+    _fsync_directory(path.parent)
+```
+
+`_preparation_fence()` :
+
+```python
+def _preparation_fence(destination: Path, plan: dict, backup: Path | None = None) -> dict:
+    fence = {
+        'Schema': 1,
+        'Stage': 'Preparing',
+        'Destination': str(destination),
+    }
+
+    if backup is not None:
+        fence['Backup'] = str(backup)
+
+    if plan['ManagedInstallation']:
+        fence['InstallationReceiptSHA256'] = plan['InstallationReceiptSHA256']
+
+    return fence
+```
+
+Dans `apply_update()` :
+
+```python
+backup = None
+journal_committed = False
+changed = []
+
+create_json_exclusive(lock, _preparation_fence(destination, plan))
+
+try:
+    plan = plan_update(source, destination, allow_downgrade=allow_downgrade)
+    _check_pesto_session_lock(destination)
+
+    candidate = destination.parent / (destination.name + '-code-backup-' + uuid.uuid4().hex)
+    if candidate.exists():
+        raise ValueError('Backup path collision')
+
+    backup = candidate
+    _write_json(lock, _preparation_fence(destination, plan, backup))
+    backup.mkdir(mode=0o700)
+
+    ...
+```
+
+Dans le `finally` :
+
+```python
+finally:
+    if can_remove:
+        lock.unlink(missing_ok=True)
+        _fsync_directory(destination)
+
+        if backup is not None and (not journal_committed or not changed):
+            shutil.rmtree(backup, ignore_errors=True)
+```
+
+Et après écriture du fence `Copying` :
+
+```python
+_write_json(lock, {
+    'Schema': 1,
+    'Stage': 'Copying',
+    'Backup': str(backup),
+    'Destination': str(destination),
+    'Id': journal['Id'],
+    'JournalSHA256': file_hash(backup / 'transaction.json'),
+})
+journal_committed = True
+```
+
+---
+
+### 10. `plan_recovery()` doit accepter `Backup` dans `Preparing`
+
+Dans `plan_recovery()` :
+
+```python
+preparing_fields = {'Schema', 'Stage', 'Destination'}
+allowed_preparing = (
+    preparing_fields,
+    preparing_fields | {'InstallationReceiptSHA256'},
+    preparing_fields | {'Backup'},
+    preparing_fields | {'InstallationReceiptSHA256', 'Backup'},
+)
+
+if (
+    type(lock.get('Schema')) is int
+    and lock.get('Schema') == 1
+    and lock.get('Stage') == 'Preparing'
+    and set(lock) in allowed_preparing
+):
+    if lock['Destination'] != str(destination):
+        raise ValueError('Wrong recovery target')
+
+    previous = old_components(destination)
+    managed = 'InstallationReceiptSHA256' in lock
+
+    if managed and (
+        not isinstance(lock['InstallationReceiptSHA256'], str)
+        or not re.fullmatch(r'[a-f0-9]{64}', lock['InstallationReceiptSHA256'])
+        or file_hash(safe_file(destination, RECEIPT)) != lock['InstallationReceiptSHA256']
+    ):
+        raise ValueError('Installation ownership changed after interrupted preparation')
+
+    _managed_receipt(destination, previous, required=managed)
+
+    backup_plan = None
+    if 'Backup' in lock:
+        backup = Path(lock['Backup'])
+
+        if (
+            _is_link_or_junction(backup)
+            or backup.parent != destination.parent
+            or not backup.name.startswith(destination.name + '-code-backup-')
+        ):
+            raise ValueError('Invalid preparation backup')
+
+        if backup.exists():
+            if not backup.is_dir():
+                raise ValueError('Preparation backup is not a directory')
+            backup_plan = str(backup)
+
+    return {
+        'Destination': str(destination),
+        'Backup': backup_plan,
+        'Files': [],
+        'Records': [],
+        'Conflicts': [],
+        'ConfigurationPreserved': True,
+        'Kind': 'ReleaseInterruptedPreparation',
+    }
+```
+
+---
+
+### 11. `recover_update()` écrit `recovery-result.json` avant de retirer le lock
+
+Fichier : `DEV/tools/update_installation.py`
+
+Actuellement :
+
+```python
+_write_json(backup/'recovery-result.json', ...)
+if failures: raise ...
+(root/'.pesto-update.lock').unlink()
+```
+
+Problème :
+
+- si `lock.unlink()` échoue, le résultat dit “Recovered: true” mais le fence reste.
+- état incohérent.
+
+Correctif : retirer le lock d’abord pour le succès.
+
+```python
+if failures:
+    _write_json(backup / 'recovery-result.json', {
+        'Recovered': False,
+        'Failures': failures,
+    })
+    raise RuntimeError('Recovery incomplete; lock retained. Inspect ' + str(backup))
+
+(root / '.pesto-update.lock').unlink()
+_fsyc_directory(root)
+
+try:
+    _write_json(backup / 'recovery-result.json', {
+        'Recovered': True,
+        'Failures': [],
+    })
+except OSError:
+    pass
+```
+
+---
+
+### 12. Les tests subprocess ne neutralisent pas `_check_pesto_session_lock`
+
+Fichier : `DEV/tests/test_managed_update.py`
+
+Dans `crash()` :
+
+```python
+'u.mutation_guard=contextlib.nullcontext;u.check_local_states=lambda:None;'
+```
+
+Problème :
+
+- `_check_pesto_session_lock()` n’est pas neutralisée.
+- Sur Windows, le test peut toucher le vrai mutex de session.
+- Ce n’est pas déterministe si Pesto est ouvert.
+
+Correctif :
+
+```python
+'u._check_pesto_session_lock=lambda p:None;'
+```
+
+Et dans `setUp()` :
+
+```python
+lock = mock.patch.object(update, '_check_pesto_session_lock', lambda p: None)
+lock.start()
+self.addCleanup(lock.stop)
+```
+
+---
+
+## Tests unittest déterministes à ajouter
+
+### A. Test : `install()` ne doit jamais supprimer une destination existante
+
+```python
+def test_install_refuses_existing_destination_and_preserves_it(self):
+    existing = self.base / 'existing'
+    existing.mkdir()
+    (existing / 'canary').write_text('keep', encoding='utf-8')
+
+    with self.assertRaises(ValueError):
+        managed.install(self.old, existing)
+
+    self.assertEqual((existing / 'canary').read_text(encoding='utf-8'), 'keep')
+```
+
+---
+
+### B. Test : fichier owned manquant = `changed`, pas exception
+
+```python
+def test_detect_missing_owned_file_is_changed_not_exception(self):
+    (self.dest / 'Pesto.exe').unlink()
+
+    result = managed.detect(self.dest)
+
+    self.assertTrue(result['installed'])
+    self.assertFalse(result['healthy'])
+    self.assertIn('Pesto.exe', result['changed'])
+```
+
+---
+
+### C. Test : crash de désinstall laisse un fence récupérable
+
+Ajouter dans `test_managed_update.py` :
+
+```python
+def test_uninstall_crash_leaves_fence_and_recovery_completes(self):
+    code = (
+        'import sys,contextlib;from pathlib import Path;'
+        'sys.path.insert(0,sys.argv[1]);import managed_install as m;'
+        'm.mutation_guard=contextlib.nullcontext;'
+        'm.check_local_states=lambda:None;'
+        'm.uninstall(Path(sys.argv[2]), True, _crash_after=int(sys.argv[3]))'
+    )
+
+    result = subprocess.run(
+        [sys.executable, '-c', code, str(ROOT / 'tools'), str(self.dest), '1'],
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+
+    self.assertEqual(result.returncode, 96, result.stderr)
+    self.assertTrue((self.dest / '.pesto-update.lock').is_file())
+
+    self.assertTrue(update.recover_update(self.dest, apply=True)['Recovered'])
+
+    self.assertFalse((self.dest / '.pesto-update.lock').exists())
+    self.assertFalse(managed.detect(self.dest)['installed'])
+    self.assertEqual(
+        (self.dest / 'wad/cfg.json').read_text(encoding='utf-8'),
+        'private configuration',
+    )
+```
+
+---
+
+### D. Test : crash de préparation nettoie le backup
+
+```python
+def test_preparation_crash_cleans_backup(self):
+    self.crash(stage='preparing')
+
+    backups = list(self.base.glob('installed-code-backup-*'))
+    self.assertEqual(len(backups), 1)
+
+    update.recover_update(self.dest, apply=True)
+
+    self.assertFalse(list(self.base.glob('installed-code-backup-*')))
+```
+
+---
+
+### E. Test : `_replace_from()` fsync le répertoire cible
+
+```python
+def test_replace_from_fsyncs_target_directory(self):
+    calls = []
+
+    with mock.patch.object(
+        update,
+        '_fsync_directory',
+        side_effect=lambda d: calls.append(Path(d)),
+    ):
+        update._replace_from(self.new / 'Pesto.exe', self.dest / 'Pesto.exe')
+
+    self.assertIn(self.dest, calls)
+```
+
+---
+
+### F. Test : kill externe aux frontières de copie
+
+Pour cela, ajouter un hook de test dans `apply_update()` :
+
+```python
+def apply_update(
+    source: Path,
+    destination: Path,
+    *,
+    allow_downgrade: bool = False,
+    _inject_after: int | None = None,
+    _crash_after: int | None = None,
+    _crash_stage: str | None = None,
+    _pause_after: int | None = None,
+    _pause_marker: str | None = None,
+) -> dict:
+```
+
+Dans la boucle de copie, après `_replace_from(...)` :
+
+```python
+if _pause_after is not None and len(changed) == _pause_after and _pause_marker:
+    marker = Path(_pause_marker)
+    marker.write_text(str(os.getpid()), encoding='utf-8')
+    while marker.exists():
+        time.sleep(0.01)
+```
+
+Puis test :
+
+```python
+def test_external_kill_at_each_copy_boundary(self):
+    for boundary in range(1, self.boundaries() + 1):
+        with self.subTest(boundary=boundary):
+            marker = self.base / f'pause-{boundary}'
+
+            code = (
+                'import sys,contextlib,json;from pathlib import Path;'
+                'sys.path.insert(0,sys.argv[1]);import update_installation as u;'
+                'u.mutation_guard=contextlib.nullcontext;'
+                'u.check_local_states=lambda:None;'
+                'u._check_pesto_session_lock=lambda p:None;'
+                'u.apply_update(Path(sys.argv[2]),Path(sys.argv[3]),**json.loads(sys.argv[4]))'
+            )
+
+            proc = subprocess.Popen(
+                [
+                    sys.executable,
+                    '-c',
+                    code,
+                    str(ROOT / 'tools'),
+                    str(self.new),
+                    str(self.dest),
+                    json.dumps({
+                        '_pause_after': boundary,
+                        '_pause_marker': str(marker),
+                    }),
+                ],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                text=True,
+            )
+
+            deadline = time.time() + 30
+            while not marker.exists():
+                if time.time() > deadline:
+                    proc.kill()
+                    proc.wait()
+                    self.fail('pause marker was not created')
+                time.sleep(0.01)
+
+            proc.kill()
+            proc.wait()
+            marker.unlink()
+
+            self.assertTrue((self.dest / '.pesto-update.lock').is_file())
+
+            preview = update.recover_update(self.dest)
+            self.assertEqual(preview['Kind'], 'RestorePreviousCodeOnly')
+            self.assertFalse(preview['Conflicts'])
+
+            self.assertTrue(update.recover_update(self.dest, apply=True)['Recovered'])
+            self.assert_old()
+
+            for backup in self.base.glob('installed-code-backup-*'):
+                shutil.rmtree(backup)
+```
+
+Ce test est déterministe parce que :
+
+- la frontière est fixe ;
+- l’enfant marque le point exact après remplacement ;
+- le parent ne tue qu’après apparition du marqueur ;
+- la reprise est vérifiée immédiatement.
+
+---
+
+## CI locale sans VM
+
+Commandes minimales :
+
+```bash
+python -m unittest DEV.tests.test_managed_update -v
+python -m unittest DEV.tests.test_installer -v
+```
+
+`test_installer.py` reste skip si `pwsh` n’est pas disponible.
+
+---
+
+## Fichiers à modifier pour le commit
+
+```text
+DEV/tools/managed_install.py
+DEV/tools/update_installation.py
+DEV/tools/installation_receipt.py
+DEV/tests/test_managed_update.py
+```
+
+Message de commit possible :
+
+```text
+fix(installer): durable receipt, uninstall recovery, fsync and backup cleanup
+```
+
+---
+
+## Limites assumées
+
+Ces correctifs ne prétendent pas :
+
+- qualifier AD/SMB ;
+- simuler une coupure électrique réelle ;
+- garantir une transaction OS atomique multi-fichiers ;
+- empêcher Pesto de se rouvrir juste après `_check_pesto_session_lock()` ;
+- résoudre les receipts d’opération concurrents hors du périmètre de ces outils.
+
+Ils réduisent les fenêtres de persistance/reprise entre effets filesystem, qui sont le point concret restant.

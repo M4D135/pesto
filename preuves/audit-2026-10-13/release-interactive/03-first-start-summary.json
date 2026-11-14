@@ -1,0 +1,34 @@
+﻿{
+    "ExeSHA256":  "E3B7790A75338E762CB67CDBB239AD67F7E34717DD0EC6A170C41FEBEB31ADAE",
+    "ConfigBefore":  "28D105C9B5B88AE505205832FD952FC2AB44855EA6D359DE179AC1EB0397227B",
+    "ConfigAfter":  "28D105C9B5B88AE505205832FD952FC2AB44855EA6D359DE179AC1EB0397227B",
+    "Mode":  "Neutral PROD first start, no credentials/import",
+    "Total":  6,
+    "Passed":  5,
+    "Checks":  [
+                   {
+                       "Name":  "Neutral pack opens local configuration before connection",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Wizard label has one apostrophe",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Neutral configuration cannot be saved as operational",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Malformed JSON leaves configuration unchanged",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Invalid JSON has an explicit error",
+                       "Passed":  true
+                   },
+                   {
+                       "Name":  "Configuration wizard opens",
+                       "Passed":  false
+                   }
+               ]
+}

@@ -1,0 +1,74 @@
+﻿[
+    {
+        "Profile":  "PestoProd",
+        "Path":  "C:\\Users\\PestoProd\\AppData\\Local\\GP\\State\\2039CF84C9D6D28E\\history-v1.json",
+        "Hash":  "426418A4229EC32E87448094AC9748FD35F8E191F69F9B43BBFA9B9E4E52FAF5",
+        "History":  {
+                        "Schema":  1,
+                        "Domain":  "labo.local",
+                        "Entries":  [
+                                        {
+                                            "RunId":  "2efe6815e02941b9a7c36ef277b8bba3",
+                                            "Mode":  "JONCTION RÉELLE",
+                                            "Utc":  "2026-10-04T17:48:08.1231222Z",
+                                            "Total":  1,
+                                            "Ok":  1,
+                                            "Failed":  0,
+                                            "NotStarted":  0,
+                                            "Locked":  true
+                                        }
+                                    ]
+                    }
+    },
+    {
+        "Profile":  "pesto-qualif",
+        "Path":  "C:\\Users\\pesto-qualif\\AppData\\Local\\GP\\State\\2039CF84C9D6D28E\\history-v1.json",
+        "Hash":  "BFDDBE9ED0528C993F5926755B2FE912DA429E65F7A931326D105675671B8045",
+        "History":  {
+                        "Schema":  1,
+                        "Domain":  "labo.local",
+                        "Entries":  [
+                                        {
+                                            "RunId":  "bb22ac7e-2da0-4358-a204-eb8ad93f2aee",
+                                            "Mode":  "RÉEL",
+                                            "Utc":  "2026-10-04T18:30:06.8897837Z",
+                                            "Total":  1,
+                                            "Ok":  1,
+                                            "Failed":  0,
+                                            "NotStarted":  0,
+                                            "Locked":  false
+                                        },
+                                        {
+                                            "RunId":  "df3e5d82-1d4b-45f5-bc5f-17d00401844e",
+                                            "Mode":  "RÉEL",
+                                            "Utc":  "2026-10-04T18:50:20.6888073Z",
+                                            "Total":  1,
+                                            "Ok":  0,
+                                            "Failed":  1,
+                                            "NotStarted":  0,
+                                            "Locked":  false
+                                        },
+                                        {
+                                            "RunId":  "cd74bb16-ed8a-49a8-af38-9bff280ac7c6",
+                                            "Mode":  "RÉEL",
+                                            "Utc":  "2026-10-04T18:57:07.6645060Z",
+                                            "Total":  1,
+                                            "Ok":  1,
+                                            "Failed":  0,
+                                            "NotStarted":  0,
+                                            "Locked":  false
+                                        },
+                                        {
+                                            "RunId":  "0171bd1c-c268-4bc9-aad3-05cdda24ee97",
+                                            "Mode":  "RÉEL",
+                                            "Utc":  "2026-10-04T19:23:05.1682011Z",
+                                            "Total":  1,
+                                            "Ok":  1,
+                                            "Failed":  0,
+                                            "NotStarted":  0,
+                                            "Locked":  false
+                                        }
+                                    ]
+                    }
+    }
+]

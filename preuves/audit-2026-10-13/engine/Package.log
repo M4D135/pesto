@@ -1,0 +1,28 @@
+OK  Parseur natif : wad\Pesto-Startup.ps1
+OK  Parseur natif : tests\Run-StartupTests.ps1
+OK  Parseur natif : wad\Pesto-Core.ps1
+OK  Parseur natif : tests\Run-EngineTests.ps1
+OK  Parseur natif : tests\Run-PackageTests.ps1
+OK  Parseur natif : tests\Run-AsyncTests.ps1
+OK  Parseur natif : tests\Async-ScopeFixture.ps1
+OK  Parseur natif : tests\Run-RC4Tests.ps1
+OK  Parseur natif : tests\Run-PilotageTests.ps1
+OK  Parseur natif : tests\Run-UxTests.ps1
+OK  Parseur natif : tests\Run-AllTests.ps1
+OK  Parseur natif : tests\Run-QueueRemovalTests.ps1
+OK  Parseur natif : tools\Build-Pesto.ps1
+OK  Parseur natif : wad\ActiveDirectory.psd1
+OK  Parseur natif : bloc de d‚blocage livr‚
+OK  DEV : manifeste complet valide, configuration hors empreinte
+OK  Lanceur natif x64 graphique et version 1.0
+OK  ModŠle neuf neutre disponible sans configuration obligatoire pr‚remplie
+OK  Ressources dans wad ; aucun dossier mod
+OK  Disposition PROD minimale : EXE et wad, mˆmes empreintes que DEV
+OK  Composant alt‚r‚ dans la copie PROD refus‚
+OK  Refus d'un dossier sans marqueurs Pesto
+OK  Deblocage recursif des flux Zone.Identifier (NTFS requis)
+OK  Contenu des fichiers preserve
+OK  Fichier voisin hors Pesto non touche
+OK  Deuxieme execution sans modification supplementaire
+OK  Jonction ignoree sans toucher la cible externe
+Tests de package reussis : 27. Rapport : C:\PestoAudit20261013\engine\reports\Package.json

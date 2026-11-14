@@ -1,0 +1,27 @@
+{
+  "Product": "Pesto 1.0",
+  "Platform": "macOS-26.4-arm64-arm-64bit-Mach-O",
+  "PowerShell": "7.4.20",
+  "PythonTests": {
+    "Passed": 329,
+    "Failed": 0,
+    "Report": "python-tests.txt"
+  },
+  "RuntimeFiles": 44,
+  "ExeSHA256": "ba43a8de4d303b4d09ff8831ba112c345adc8b776c31a1367bc5ec90da3a78b1",
+  "ManifestSHA256": "7526cf0b4f68c1900d25101415e64f10e2ed9b56f0d3ff513c6b4b9e58715e02",
+  "BuildReport": "rebuild.txt",
+  "PowerShellReports": "powershell-suites.json",
+  "WindowsExecutedByThisReport": false,
+  "ADExecutedByThisReport": false,
+  "WpfExecutedByThisReport": false,
+  "SeparateWindowsEvidence": "../../vm-2026-10-12/",
+  "Publication": "Delivery artifacts finalized separately after Windows validation",
+  "PowerShellSuiteCount": 17,
+  "BuildCandidate": "R7",
+  "Parser": {
+    "Files": 38,
+    "Errors": 0,
+    "Report": "parser.txt"
+  }
+}

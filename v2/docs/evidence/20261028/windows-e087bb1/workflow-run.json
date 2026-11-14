@@ -1,0 +1,14 @@
+{
+  "id": 40513849690,
+  "name": "Pesto V2 candidate and Windows isolation",
+  "head_sha": "e087bb16aed175bc35906fa533e9cd172d2fdaca",
+  "head_branch": "codex/pesto-v2-20261023",
+  "run_number": 39,
+  "event": "push",
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "created_at": "2026-10-27T13:38:41Z",
+  "updated_at": "2026-10-27T14:12:07Z",
+  "html_url": "https://github.com/M4D135/pesto/actions/runs/40513849690"
+}

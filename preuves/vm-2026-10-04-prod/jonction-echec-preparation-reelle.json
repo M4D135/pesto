@@ -1,0 +1,142 @@
+﻿{
+    "Date":  "2026-10-04T22:42:42.8670272+02:00",
+    "FaultInjection":  "Exception ajoutée après la photographie initiale persistée. Registre, Windows, AD et reçus réels ; aucune commande système remplacée.",
+    "Error":  "Recette : préparation interrompue après persistance, avant toute commande Windows.",
+    "LocalBefore":  {
+                        "Computer":  "PESTO-W11-TEST",
+                        "PartOfDomain":  false,
+                        "Domain":  "LABO",
+                        "ActiveName":  "PESTO-W11-TEST",
+                        "ConfiguredName":  "PESTO-W11-TEST",
+                        "PendingRename":  false,
+                        "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                        "BootUtc":  "2026-10-04T20:41:08.5000000Z",
+                        "Admin":  true,
+                        "SecureChannel":  null,
+                        "DomainRole":  0
+                    },
+    "LocalAfter":  {
+                       "Computer":  "PESTO-W11-TEST",
+                       "PartOfDomain":  false,
+                       "Domain":  "LABO",
+                       "ActiveName":  "PESTO-W11-TEST",
+                       "ConfiguredName":  "PESTO-W11-TEST",
+                       "PendingRename":  false,
+                       "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                       "BootUtc":  "2026-10-04T20:41:08.5000000Z",
+                       "Admin":  true,
+                       "SecureChannel":  null,
+                       "DomainRole":  0
+                   },
+    "JoinReceipt":  {
+                        "Schema":  1,
+                        "Version":  "1.0",
+                        "OperationId":  "7a31220e001e40a6a7e62e3ca8e8869b",
+                        "Phase":  "Failed",
+                        "Utc":  "2026-10-04T20:42:42.2202838Z",
+                        "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                        "BootUtc":  "2026-10-04T20:41:08.5000000Z",
+                        "Computer":  "PESTO-W11-TEST",
+                        "NewName":  "V999004AAQA1006",
+                        "Domain":  "labo.local",
+                        "OU":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                        "DC":  "dc01.labo.local",
+                        "Reference":  "Recette Pesto 20261004",
+                        "Account":  "LABO\\pesto-qualif",
+                        "Message":  "Préparation interrompue avant toute commande Windows : Recette : préparation interrompue après persistance, avant toute commande Windows."
+                    },
+    "Central":  {
+                    "Schema":  3,
+                    "Version":  "1.0",
+                    "OperationId":  "7a31220e001e40a6a7e62e3ca8e8869b",
+                    "Plan":  {
+                                 "Nom_du_PC":  "PESTO-W11-TEST",
+                                 "Nouveau_Nom":  "V999004AAQA1006",
+                                 "OU_Actuelle":  "",
+                                 "OU_Destination":  "OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+                                 "Objet_GUID":  "",
+                                 "Domain":  "labo.local",
+                                 "DC":  "dc01.labo.local",
+                                 "ConfigStamp":  "4928F1F81841BD7B338D178B1349BFCFDFCFE9CDB7D003D36DAABDC26C53233E",
+                                 "TargetOUGuid":  "02826a0f-e401-4934-850a-c9872a33b4ce",
+                                 "Renommer":  false,
+                                 "Deplacer":  false,
+                                 "Reboot":  false
+                             },
+                    "StartedUtc":  "2026-10-04T20:42:41.9312330Z",
+                    "UpdatedUtc":  "2026-10-04T20:42:42.1840741Z",
+                    "Phase":  "Failed",
+                    "InitialProtection":  null,
+                    "TargetMachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                    "TargetOUGuid":  "",
+                    "Entra":  "NotRequested",
+                    "Protection":  "NotChanged",
+                    "Rename":  "NotRequested",
+                    "Move":  "NotRequested",
+                    "ResultCode":  96,
+                    "ResultMessage":  "Préparation interrompue avant toute commande Windows : Recette : préparation interrompue après persistance, avant toute commande Windows.",
+                    "LastObservation":  null,
+                    "LastStage":  "TargetMachineId: 81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                    "VerifiedUtc":  "",
+                    "VerifiedBy":  "",
+                    "ResumeFrom":  "",
+                    "PlanFingerprint":  "9685c599634425520ef4f70337c1741faab3f0bcca17aac7c791e3d863d3e665",
+                    "Coordination":  {
+                                         "Enabled":  false,
+                                         "Keys":  [
+
+                                                  ],
+                                         "Owner":  "7a31220e001e40a6a7e62e3ca8e8869b"
+                                     },
+                    "Baseline":  {
+                                     "Schema":  1,
+                                     "CapturedUtc":  "2026-10-04T20:42:42.0295932Z",
+                                     "ADUtc":  "",
+                                     "WindowsUtc":  "2026-10-04T20:42:42.0295932Z",
+                                     "HealthUtc":  "",
+                                     "AD":  null,
+                                     "Windows":  {
+                                                     "ActiveName":  "PESTO-W11-TEST",
+                                                     "ConfiguredName":  "PESTO-W11-TEST",
+                                                     "Domain":  "LABO",
+                                                     "PartOfDomain":  false,
+                                                     "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                                     "BootUtc":  "2026-10-04T20:41:08.5000000Z",
+                                                     "DomainRole":  0
+                                                 },
+                                     "Health":  null
+                                 },
+                    "JoinEvidence":  {
+                                         "MachineId":  "81387449-2dd8-4bd9-8059-f868a5b8ec68",
+                                         "BeforeBootUtc":  "2026-10-04T20:41:08.5000000Z",
+                                         "PreparedUtc":  "2026-10-04T20:42:42.0295932Z",
+                                         "NativeStatus":  "Prepared",
+                                         "BoundObjectGuid":  ""
+                                     },
+                    "Sequence":  3,
+                    "Timeline":  [
+                                     {
+                                         "Sequence":  1,
+                                         "Utc":  "2026-10-04T20:42:41.9950560Z",
+                                         "Stage":  "TargetMachineId",
+                                         "State":  "81387449-2dd8-4bd9-8059-f868a5b8ec68"
+                                     },
+                                     {
+                                         "Sequence":  2,
+                                         "Utc":  "2026-10-04T20:42:42.1239337Z",
+                                         "Stage":  "JoinBaseline",
+                                         "State":  "RecordedBeforeCommand"
+                                     },
+                                     {
+                                         "Sequence":  3,
+                                         "Utc":  "2026-10-04T20:42:42.1780839Z",
+                                         "Stage":  "Result",
+                                         "State":  "Failed"
+                                     }
+                                 ]
+                },
+    "MonitorMutationStarted":  false,
+    "RetryPreflightValid":  true,
+    "ADUnchanged":  true,
+    "ExeSHA256":  "572BEEF39FB305B1EB83F09E4D1A00018475CADCC8190556DA3301455DC96411"
+}

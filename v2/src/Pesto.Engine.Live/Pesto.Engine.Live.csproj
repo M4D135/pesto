@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><RootNamespace>Pesto.Engine.Live</RootNamespace></PropertyGroup>
+  <!-- Adaptateur transitoire : seul projet autorisé à toucher l'intégration système (processus de lecture).
+       Pesto.Engine reste pur : aucun assembly directory, WMI, réseau, store ou WinForms n'entre dans l'engine. -->
+  <ItemGroup>
+    <ProjectReference Include="../Pesto.Core/Pesto.Core.csproj" />
+    <ProjectReference Include="../Pesto.Engine/Pesto.Engine.csproj" />
+  </ItemGroup>
+</Project>

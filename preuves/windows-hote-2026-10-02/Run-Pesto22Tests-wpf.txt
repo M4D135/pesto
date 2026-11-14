@@ -1,0 +1,35 @@
+PASS Types et codes inconnus restent incertains
+PASS Précontrôle après engagement ne devient pas un refus certain
+PASS Générateur normalise aussi la lettre de type
+PASS Analyse héritée refuse un nom arbitraire de quinze caractères
+PASS Déplacement confirmé puis erreur conserve un effet partiel
+PASS Code entier inconnu ne libère pas la coordination
+PASS Snapshot ferme ses champs et ne conserve pas les erreurs brutes
+PASS Snapshot refus des secrets ou champs inconnus
+PASS Snapshot refus booléen sous forme de chaîne
+PASS Canal sécurisé non lu reste inconnu, pas faux
+PASS Snapshot dates et rôles malformés refusés
+PASS Baseline initiale conservée pendant une seconde observation
+PASS Baseline étrangère refusée avant écriture
+PASS Comparaison garde Avant et Prévu distincts des observations
+PASS Ancien reçu sans baseline ne fabrique pas une lecture Avant
+PASS Protection false est une observation connue
+PASS Palette recherche multi-mots insensible aux accents
+PASS Palette filtre littéral et non expression régulière
+PASS Palette vide conserve toutes les commandes
+PASS Palette recherche trop longue refusée
+PASS Capacité inclut les combinaisons vides déclarées seulement
+PASS Capacité ne compte pas deux fois doublons et réservations occupées
+PASS Capacité ignore les noms invalides et annule à la demande
+PASS Conformité respecte les virgules échappées et sous-OU
+PASS Conformité détecte une OU différente sans générer de mutation
+PASS Conformité sans métadonnées reste inconnue
+PASS Conformité ne choisit pas entre deux destinations ambiguës
+PASS Conformité respecte la zone de préparation
+PASS Préférences de colonnes acceptent le schéma fermé
+PASS Préférences refusent sélection, ordre dupliqué et largeur invalide
+PASS Préférences refusent une clé de commande et les largeurs excessives
+PASS Tableaux WPF sauvegardés sans sélection ni changement de visibilité
+PASS Palette réelle filtre et ferme sans exécuter une action métier
+Rapport : C:\Users\degun\AppData\Local\Temp\Pesto-RC22-3f96cba45d6f42c08acffee1bc08cf96.json
+EXIT=0

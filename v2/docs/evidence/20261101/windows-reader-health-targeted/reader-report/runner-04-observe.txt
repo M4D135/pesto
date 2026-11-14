@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-observation",
+  "scenario": "health-failure",
+  "stage": "install",
+  "transactionId": "935d6ef678e54dc48410e1c0c0b0d9f2",
+  "helperProcessId": 26420,
+  "helperStartUtcTicks": "639290990196218411",
+  "helperExecutableSha256": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+  "candidateExecutableSha256": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+  "success": true,
+  "interrupted": false,
+  "dialogClosed": true,
+  "checkingObserved": false,
+  "healthChildObserved": false,
+  "webViewChildObserved": false,
+  "events": [
+    {
+      "utc": "2026-11-01T03:03:39.8638382\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "935d6ef678e54dc48410e1c0c0b0d9f2",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-009a9a15121140518df4df3002d87a84\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "install",
+        "status": "prepared",
+        "createdUtc": "2026-11-01T03:03:20.1272158\u002B00:00",
+        "parentProcessId": 1608,
+        "parentStartUtc": "2026-11-01T03:02:34.0788677\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-11-01T03:03:50.2969586\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "935d6ef678e54dc48410e1c0c0b0d9f2",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-009a9a15121140518df4df3002d87a84\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "install",
+        "status": "installed",
+        "createdUtc": "2026-11-01T03:03:20.1272158\u002B00:00",
+        "parentProcessId": 1608,
+        "parentStartUtc": "2026-11-01T03:02:34.0788677\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-11-01T03:03:51.3047303\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "935d6ef678e54dc48410e1c0c0b0d9f2",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-009a9a15121140518df4df3002d87a84\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "install",
+        "status": "checking",
+        "createdUtc": "2026-11-01T03:03:20.1272158\u002B00:00",
+        "parentProcessId": 1608,
+        "parentStartUtc": "2026-11-01T03:02:34.0788677\u002B00:00",
+        "failure": null
+      }
+    },
+    {
+      "utc": "2026-11-01T03:04:32.6873465\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "935d6ef678e54dc48410e1c0c0b0d9f2",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-009a9a15121140518df4df3002d87a84\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "recover",
+        "status": "restored",
+        "createdUtc": "2026-11-01T03:03:20.1272158\u002B00:00",
+        "parentProcessId": 1608,
+        "parentStartUtc": "2026-11-01T03:02:34.0788677\u002B00:00",
+        "failure": "update.health"
+      }
+    },
+    {
+      "utc": "2026-11-01T03:04:36.5070426\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "935d6ef678e54dc48410e1c0c0b0d9f2",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-009a9a15121140518df4df3002d87a84\\cases\\health-failure\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "60d741a349895dea8c7bbf73cc44c764e6672f020731bc6fbe3d14e305db1ede",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "257b832f6affa1001f6d33176dd61e9727d71ffd9ff9504f24d3e5d5aab838e7",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "recover",
+        "status": "rolledBack",
+        "createdUtc": "2026-11-01T03:03:20.1272158\u002B00:00",
+        "parentProcessId": 1608,
+        "parentStartUtc": "2026-11-01T03:02:34.0788677\u002B00:00",
+        "failure": "update.health"
+      }
+    }
+  ],
+  "descendantAttributionRefusals": [],
+  "helperHandleRetained": true,
+  "resultDialogCloseMethod": "WM_CLOSE",
+  "resultWindows": [
+    {
+      "handle": "985370",
+      "class": "#32770",
+      "title": "Pesto \u2014 Mise \u00E0 jour",
+      "hasIdOk": false
+    }
+  ],
+  "helperExitCode": 0,
+  "finalJournalStatus": "rolledBack",
+  "helperDiagnosticCollection": {
+    "helperProcessId": 26420,
+    "helperStartUtcTicks": "639290990196218411",
+    "maximumFiles": 8,
+    "maximumBytesPerFile": 65536,
+    "maximumCandidates": 64,
+    "files": [],
+    "refusals": [],
+    "completed": true,
+    "informationalOnly": true,
+    "scannedCandidates": 0,
+    "copiedFiles": 0
+  },
+  "finishedUtc": "2026-11-01T03:04:36.5707825\u002B00:00"
+}

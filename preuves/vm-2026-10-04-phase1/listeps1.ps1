@@ -1,0 +1,1 @@
+Get-ChildItem -LiteralPath C:\PestoTest -Recurse -File -Filter *.ps1 | ForEach-Object { $_.FullName.Substring(13).Replace('\','/') + ' | ' + $_.LastWriteTime.ToString('dd/MM HH:mm') + ' | ' + $_.Length }

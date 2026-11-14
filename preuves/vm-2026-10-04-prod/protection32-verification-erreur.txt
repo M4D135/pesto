@@ -1,0 +1,8 @@
+﻿Observation non conforme : 
+At C:\PestoTest-run\ui-protection32-verifier.ps1:9 char:89
++ ... ected+'*')){throw ('Observation non conforme : '+$advice.Current.Name ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Observation non conforme : :String) [], RuntimeException
+    + FullyQualifiedErrorId : Observation non conforme : 
+ 
+

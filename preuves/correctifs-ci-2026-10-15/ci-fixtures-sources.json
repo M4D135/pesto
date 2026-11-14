@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "baseCommit": "58d6ee1b2181e2e31077696f65ea2e5af8b8239d",
+  "buildSHA256": "add688198e38269f4d3d8084bba9bd3b3a5664f1336ec961677c130eb2d75e7f",
+  "sources": {
+    "DEV/tests/Run-CliOutputTests.ps1": "ac80fba5216d2b27989fdfcea2499331c0cd934acb233aa6426f16824bcecef3",
+    "DEV/tests/test_spark_h11.py": "46293e6433821212588916db6347a172a02e61573bb02818db2a81038e90e91a"
+  }
+}

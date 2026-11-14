@@ -1,0 +1,16 @@
+{
+  "Version": "17.0-RC16",
+  "Environment": "Linux Python; not native PowerShell execution",
+  "TestsRun": 14,
+  "Failures": 0,
+  "Errors": 0,
+  "Result": "PASS",
+  "Details": "test_01_runtime_only_needs_no_demo_or_helpers (test_distribution.DistributionTests.test_01_runtime_only_needs_no_demo_or_helpers) ... ok\ntest_02_optional_changes_do_not_modify_runtime_verification (test_distribution.DistributionTests.test_02_optional_changes_do_not_modify_runtime_verification) ... ok\ntest_03_each_missing_runtime_file_is_refused (test_distribution.DistributionTests.test_03_each_missing_runtime_file_is_refused) ... ok\ntest_04_each_modified_runtime_file_is_refused (test_distribution.DistributionTests.test_04_each_modified_runtime_file_is_refused) ... ok\ntest_05_invalid_manifest_is_refused (test_distribution.DistributionTests.test_05_invalid_manifest_is_refused) ... ok\ntest_06_linked_runtime_file_is_refused (test_distribution.DistributionTests.test_06_linked_runtime_file_is_refused) ... ok\ntest_07_linked_manifest_directory_is_refused (test_distribution.DistributionTests.test_07_linked_manifest_directory_is_refused) ... ok\ntest_08_generator_succeeds_without_dev_files (test_distribution.DistributionTests.test_08_generator_succeeds_without_dev_files) ... ok\ntest_09_prod_export_is_closed_and_preserves_configuration (test_distribution.DistributionTests.test_09_prod_export_is_closed_and_preserves_configuration) ... ok\ntest_10_dev_and_prod_share_the_same_runtime (test_distribution.DistributionTests.test_10_dev_and_prod_share_the_same_runtime) ... ok\ntest_11_existing_destination_is_never_overwritten (test_distribution.DistributionTests.test_11_existing_destination_is_never_overwritten) ... ok\ntest_12_unknown_and_state_files_not_exported (test_distribution.DistributionTests.test_12_unknown_and_state_files_not_exported) ... ok\ntest_13_manifest_ignores_new_optional_components_on_regeneration (test_distribution.DistributionTests.test_13_manifest_ignores_new_optional_components_on_regeneration) ... ok\ntest_14_partial_runtime_refuses_export (test_distribution.DistributionTests.test_14_partial_runtime_refuses_export) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.645s\n\nOK\n",
+  "Subcases": {
+    "OptionalFilesAddChangeRemove": 16,
+    "MissingRuntimeFiles": 26,
+    "ModifiedRuntimeFiles": 26,
+    "InvalidManifests": 11
+  },
+  "WindowsTestsExecuted": false
+}

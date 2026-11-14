@@ -1,0 +1,42 @@
+{
+  "diagnosticOnly": true,
+  "taskRemoved": true,
+  "helperStopped": true,
+  "files": {
+    "report/failure.json": "bb0223b1ea859c627a94d838a70678fe70b5564ca2569e5139665559d1dfe89b",
+    "report/runner-01-init.txt": "86948026e0a9d5060d42148fa7ce466fdad888f99ed1476aa3fd952e5f3227d9",
+    "report/runner-02-scenarios.txt": "a6d0e274e373ba184a3b0ef7a8aeda5124c3a79dd3cc16a21adfc5be945356c3",
+    "report/runner-03-prepare.txt": "bc460b4327393ab945f9a3b22f59a37f82c691156885eba87ff3f4828594ca33",
+    "report/runner-04-observe.txt": "b54face4e7d4d185443a11606bc61d9296ebf518a3cb7475704778234c582a57",
+    "report/transaction-evidence/suite.json": "8fda4ae5ba170bbe732bd03dfcc2f5f87a3a6795fd714f7744e3b6d575cade8a",
+    "report/transaction-evidence/health-failure/acquisition.json": "6ab934ad9392985c3754193a62d73266971af3be6c5ff3c69c4f7f61192b600d",
+    "report/transaction-evidence/health-failure/fixture.json": "7aa1880cabd6ebfbd9315e7b363a2c1a7e580b48b9a7a232e7b7ca0b53b2d960",
+    "report/transaction-evidence/health-failure/hook-first-chance.jsonl": "258bbfde55888bd806c2edf2cb86f3d67e87341863f28ec164835491136ddeb6",
+    "report/transaction-evidence/health-failure/launch-install.json": "a89b1a0b4eaaa6fe1b66ab1d08d1a58d56b98446acdbfc9b99b8ae947e5a8e48",
+    "report/transaction-evidence/health-failure/observation-install.json": "859797a04f598ae3d8c707e8e941e8f344140555f1b39654d34f75737a0e4d5e",
+    "report/transaction-evidence/health-failure/request-install.json": "c48cd111012de8179c2225713a481096a1648c226c9aa9e08a7f1991bb1193e9",
+    "result.json": "6e992a735e51034bf9794b16869559e13ab560b91ecf2cfbf2c55187cc990b8e",
+    "launch.json": "8558e4947ada756dc8835d30fd17720d0c8571f4f3831353f833bb5aa646502e",
+    "preflight-result.json": "7f752004a22e58c2aa2aadacada8b69361b0b57a848b1bb485449cd954efa717",
+    "probe-result.json": "204b75f090642c0f80d39cbf48d2ce9443b268ee5397d7ac491c5cc67c57aba4",
+    "probe-hook-evidence.jsonl": "d3489c7eabd6e4634f015d4e945fab48293baa452bae35a3090b765ce1716722",
+    "targeted.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sources/StartupHook.cs": "b90a340b6c520addbf0e6fc8c83aeb0f7ed5d015efa3249890292180eef39754",
+    "sources/PestoDiagHook.csproj": "167fe9d897023201f0f36f04e30edd523dbe6522ad3f5225b0a5cd589fc6e626",
+    "sources/Invoke-PestoTargetedHealthDiagnostic.ps1": "c81a79ce3181f250d4b66b7124dc6ae9b2aa6bf8f283abaf011896b8fd58b01c",
+    "sources/Start-PestoTargetedDiagnostic.ps1": "13945e174f7ab5bd753e99433a56d0e6cfbf8fff8af3d176ae07eb49e520b53a",
+    "sources/AtomicMoveProbe.cs": "34726dd4d3bd80ea3e25dbd1740cae62680101030a0b871c9e1fceafdb4b796c",
+    "sources/AtomicMoveProbe.csproj": "761428674131e721f682f9bdebe7db28513e67109a9ecd590947f38e20bc769c",
+    "atomic-move-probe-result.json": "83e27bbe8a8fe95fc2a838317c39d9db849fb85cbaec9c6d12b03ba112ae99e8"
+  },
+  "localDiagnosticSources": [
+    "sources/StartupHook.cs",
+    "sources/PestoDiagHook.csproj",
+    "sources/Invoke-PestoTargetedHealthDiagnostic.ps1",
+    "sources/Start-PestoTargetedDiagnostic.ps1",
+    "sources/AtomicMoveProbe.cs",
+    "sources/AtomicMoveProbe.csproj",
+    "atomic-move-probe-result.json"
+  ],
+  "releaseQualification": false
+}

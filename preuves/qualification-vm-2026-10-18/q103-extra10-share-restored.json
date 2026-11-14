@@ -1,0 +1,36 @@
+{
+    "Schema":  1,
+    "Action":  "Observe",
+    "Owner":  "RETURNED",
+    "ObserverOwner":  "RETURNED-OBS",
+    "Name":  "CRASH01",
+    "Domain":  "race-harness.invalid",
+    "Root":  "\\\\192.168.1.173\\PestoQual20261018\\extra10",
+    "Utc":  "2026-10-18T13:21:30.7830975Z",
+    "LeaseMinutes":  5,
+    "OthersCount":  3,
+    "Others":  [
+                   {
+                       "Name":  "CRASH01",
+                       "Station":  "P111301VA765158",
+                       "User":  "coordination-extra",
+                       "ExpiresUtc":  "2026-10-18T13:26:28.1983720Z"
+                   },
+                   {
+                       "Name":  "DIST0",
+                       "Station":  "P111301VA765158",
+                       "User":  "coordination-extra",
+                       "ExpiresUtc":  "2026-10-18T13:26:25.2375937Z"
+                   },
+                   {
+                       "Name":  "DIST1",
+                       "Station":  "PESTO-QCLIENT",
+                       "User":  "coordination-extra",
+                       "ExpiresUtc":  "2026-10-18T13:25:51.7823035Z"
+                   }
+               ],
+    "AttemptState":  "Held",
+    "AttemptHolder":  "P111301VA765158 · coordination-extra",
+    "AttemptHolderExpiresUtc":  "2026-10-18T13:26:28.1983720Z",
+    "Connected":  ""
+}

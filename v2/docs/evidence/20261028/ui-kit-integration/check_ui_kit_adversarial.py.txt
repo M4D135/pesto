@@ -1,0 +1,60 @@
+from pathlib import Path
+import hashlib, json, shutil, subprocess, sys, tempfile
+
+ROOT = Path('/Users/david/Documents/Codex/2026-10-26/rep/work/pesto-final-20261028')
+WORK = Path(__file__).parent
+manifest = json.loads((ROOT/'v2/web/ui-kit.lock.json').read_text())
+results = []
+
+def run_case(name, mutate, expected, expected_status, expected_code=None):
+    with tempfile.TemporaryDirectory(prefix='ui-kit-fixture-', dir=WORK) as temporary:
+        root = Path(temporary)
+        files = [entry['path'] for entry in manifest['files']] + [
+            'v2/web/ui-kit.lock.json', 'v2/tools/check-ui-kit.py',
+            'v2/tools/m4d-components/components.py',
+            'v2/tools/m4d-components/components.schema.json',
+            'v2/tools/m4d-components/m4d-components.lock.json']
+        for relative in files:
+            target = root/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT/relative, target)
+        mutate(root)
+        process = subprocess.run([sys.executable, '-I', '-S', str(root/'v2/tools/check-ui-kit.py')], capture_output=True, text=True, timeout=15)
+        report = json.loads(process.stdout)
+        codes = [item['code'] for item in report['findings']]
+        assert process.returncode == expected and report['status'] == expected_status, (name, process.returncode, report)
+        if expected_code: assert expected_code in codes, (name, codes)
+        results.append({'case': name, 'exitCode': process.returncode, 'status': report['status'], 'findingCodes': codes})
+
+def change_json(root, relative, mutate):
+    path = root/relative
+    value = json.loads(path.read_text())
+    mutate(value)
+    path.write_text(json.dumps(value))
+
+tool = 'v2/tools/m4d-components/components.py'
+lock = 'v2/tools/m4d-components/m4d-components.lock.json'
+consumer = 'v2/web/ui-kit.lock.json'
+run_case('valid-current-tree', lambda root: None, 0, 'consistent')
+run_case('changed-ui-bytes', lambda root: (root/manifest['files'][0]['path']).write_text('changed fixture'), 1, 'drift', 'file.changed')
+run_case('missing-ui-file', lambda root: (root/manifest['files'][0]['path']).unlink(), 1, 'drift', 'file.missing')
+run_case('game-product-refused', lambda root: change_json(root, consumer, lambda value: value.update(product='vroom-unreal')), 2, 'invalid', 'bootstrap.refused')
+run_case('undeclared-adaptation-refused', lambda root: change_json(root, consumer, lambda value: next(entry for entry in value['files'] if 'adaptation' in entry).pop('adaptation')), 2, 'invalid', 'schema.adaptation')
+run_case('altered-comparator-refused', lambda root: (root/tool).write_bytes((root/tool).read_bytes()+b'\n# altered fixture\n'), 2, 'invalid', 'bootstrap.refused')
+run_case('changed-tool-pin-refused', lambda root: change_json(root, lock, lambda value: value['files'][0].update(sha256='0'*64)), 2, 'invalid', 'bootstrap.refused')
+run_case('duplicate-lock-key-refused', lambda root: (root/lock).write_text((root/lock).read_text().replace('"schema": 1', '"schema": 1, "schema": 1', 1)), 2, 'invalid', 'bootstrap.refused')
+def linked_tool(root):
+    path = root/tool
+    path.unlink()
+    path.symlink_to(ROOT/tool)
+run_case('linked-comparator-refused', linked_tool, 2, 'invalid', 'bootstrap.refused')
+
+report = {'schemaVersion': 1, 'kind': 'pesto-ui-kit-bootstrap-review', 'sourceCommit': None,
+          'baseCommit': 'e18d0f89d5f7fd60be8ce022fdf243d103cd3c81',
+          'toolSourceCommit': '67ae057d3f46dbb9a72562b3f444a8fd069b10c5',
+          'scope': 'temporary local fixtures only; no network, no product runtime, no Windows or AD qualification',
+          'pythonVersion': sys.version, 'success': True, 'checks': results,
+          'localManifestSha256': hashlib.sha256((ROOT/consumer).read_bytes()).hexdigest(),
+          'bootstrapSha256': hashlib.sha256((ROOT/'v2/tools/check-ui-kit.py').read_bytes()).hexdigest()}
+(WORK/'ui-kit-bootstrap-review.json').write_text(json.dumps(report, indent=2)+'\n')
+print(json.dumps({'success': True, 'checks': len(results)}))

@@ -1,0 +1,22 @@
+WINDOW: Pesto | Deja ouvert
+Button "OK" #2
+Image "" #20
+Text "Pesto est deja ouvert depuis ce dossier.
+Revenez a la fenetre existante. Aucune nouvelle demande UAC ni operation lancee." #65535
+TitleBar "Pesto | Deja ouvert" #TitleBar
+  MenuBar "System Menu Bar" #SystemMenuBar [hors-ecran]
+    MenuItem "System" #Item 1
+  Button "Close" #Close
+WINDOW: Pesto 1.0 | Diagnostic
+Button "OK" #2
+Image "" #20
+Text "Pesto s'est termine avec une erreur.
+
+Consultez les journaux de wad\logs (Pesto-lanceur.log et Pesto-demarrage.log).
+
+Une fermeture ou une erreur ne prouve pas l'annulation d'une operation Windows deja engagee. Ne relancez pas une mutation sans en verifier l'etat." #65535
+TitleBar "Pesto 1.0 | Diagnostic" #TitleBar
+  MenuBar "System Menu Bar" #SystemMenuBar [hors-ecran]
+    MenuItem "System" #Item 1
+  Button "Close" #Close
+capture C:\PestoRecette20261012\preuves\06-dialogs.png 983x573

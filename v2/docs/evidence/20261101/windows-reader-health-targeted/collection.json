@@ -1,0 +1,37 @@
+{
+  "diagnosticOnly": true,
+  "fullSuite": false,
+  "startupHookUsed": false,
+  "success": true,
+  "taskRemoved": true,
+  "freeGiB": 25.79,
+  "files": {
+    "reader-report/runner-01-init.txt": "9210ab5e831d122ca04f55485771ae8eea88e88218c0ab7fac8b7edaa0116ddc",
+    "reader-report/runner-02-scenarios.txt": "a6d0e274e373ba184a3b0ef7a8aeda5124c3a79dd3cc16a21adfc5be945356c3",
+    "reader-report/runner-03-prepare.txt": "133164f1f41d919ded3c47b071feb457baf5af5a219f362563034d3252832f57",
+    "reader-report/runner-04-observe.txt": "e022c833704c049ea66fa7a479ea2e8748c44f7461d501d481c2e6ce6ad3e640",
+    "reader-report/runner-05-verify.txt": "7eb743d8097d81a5a75d3c245b29d92a307a29f545b48bcb5dcb3741bbcee48d",
+    "reader-report/runner-06-cleanup.txt": "4a1ec8106791f6a7032ba377bd360b049babfc051e18580238acb83aa50f8e79",
+    "reader-report/targeted-result.json": "afe156d44540d0dec429506b2db5bfdd1c4338d24e9e76dd85de50f12eb939ee",
+    "reader-report/transaction-evidence/suite.json": "9a995fd7924c2245df43bffa31dee2df799a8e21c3811c252d8b84f5282498b8",
+    "reader-report/transaction-evidence/health-failure/acquisition.json": "6ab934ad9392985c3754193a62d73266971af3be6c5ff3c69c4f7f61192b600d",
+    "reader-report/transaction-evidence/health-failure/fixture.json": "8ea2fd61548225ec7a20ff29a201bbf36694b6a6cc80e9cffba58f880ea7e0b4",
+    "reader-report/transaction-evidence/health-failure/health-0a2275303812a7aaa91030171e0ed3c9649dad7761e110ae9df91f447c524e17.json": "c1755b52bb6f12b42360eeafbf3f8a3d03a5da1ae17b9d465aab83c32b0f575c",
+    "reader-report/transaction-evidence/health-failure/health-91434614c2662c041442f6820b26fe709d33a82998bab1e9cc9e00d6d131e7b9.json": "5ed40a2af5ed66812306cbbcf356efb784163c437eec537bcdca68f005087629",
+    "reader-report/transaction-evidence/health-failure/journal-install.json": "acc3342c8b65ce4fba56c9333af27b527ef15a843117b3ca8a1b7ea74311fbd0",
+    "reader-report/transaction-evidence/health-failure/launch-install.json": "27817dfcdd063c91a924ba73c18f28fd47d0e2e525b8c0dcc34ff55770d9601f",
+    "reader-report/transaction-evidence/health-failure/observation-install.json": "c5e4dbba7a6f671eeff124de5c6978f098d4bc5ee4f3c69a21111dcc9a10474b",
+    "reader-report/transaction-evidence/health-failure/proof-install.json": "b251382012cce54d929e2a83c3811b11a6c71dcd1c9e9be433a43bcbc3f76cd9",
+    "reader-report/transaction-evidence/health-failure/request-install.json": "36fcf1044998a7434610d9ec33d2b35f3c35482df3d0d731e6c55c5dd780f8d1",
+    "reader-result.json": "fae2161b59e2395ff915931ad060182dec99bd2ecd65ecb8aeceb7ecede04b4c",
+    "reader-launch.json": "b45c400b10785961ab1bd188cbc82e6d9d1b3726cfb126ae686a7d4c7111e077",
+    "reader-targeted.log": "eca4b48ce979235948c23df3a1a0bd231eb02b526be2ed2cc92d713837af9df5",
+    "sources/Invoke-PestoReaderDiagnostic.ps1": "dccd7ed80de95a644a4d62d936817c8880969723473ca4d3d7ac9a180ebf847f",
+    "sources/Start-PestoReaderDiagnostic.ps1": "3bb6708859e39fa357ba05557305c3f69ca228931732ed7694495602dc057801"
+  },
+  "localDiagnosticSources": [
+    "sources/Invoke-PestoReaderDiagnostic.ps1",
+    "sources/Start-PestoReaderDiagnostic.ps1"
+  ],
+  "sourceOverlayReceipt": "../windows-atomic-write-targeted/source-overlay.json"
+}

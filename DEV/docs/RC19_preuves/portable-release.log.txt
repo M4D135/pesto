@@ -1,0 +1,267 @@
+OK lexical Pesto-Appearance.ps1
+OK lexical Pesto-Async.ps1
+OK lexical Pesto-Authentication.ps1
+OK lexical Pesto-Configuration.ps1
+OK lexical Pesto-Core.ps1
+OK lexical Pesto-Direct.ps1
+OK lexical Pesto-Directory.ps1
+OK lexical Pesto-Inspection.ps1
+OK lexical Pesto-Integrity.ps1
+OK lexical Pesto-Interventions.ps1
+OK lexical Pesto-Join.ps1
+OK lexical Pesto-Journal.ps1
+OK lexical Pesto-Operations.ps1
+OK lexical Pesto-Preparation.ps1
+OK lexical Pesto-Safety.ps1
+OK lexical Pesto-Startup.ps1
+OK lexical Pesto-SuiteUI.ps1
+OK lexical Pesto-Support.ps1
+OK lexical maintenance Regression-Join.ps1
+OK lexical maintenance Regression-Sso.ps1
+OK lexical maintenance Test-Pesto15.ps1
+OK lexical maintenance Test-Pesto16.ps1
+OK lexical maintenance Test-Pesto18.ps1
+OK lexical maintenance Test-Pesto19.ps1
+OK lexical maintenance Test-PestoDistribution.ps1
+OK lexical maintenance Test-PestoStartupLayout.ps1
+OK no duplicate functions across runtime
+OK shell XML
+OK join XML
+OK secondary window XML Pesto-Authentication.ps1 0
+OK secondary window XML Pesto-Authentication.ps1 1
+OK secondary window XML Pesto-Configuration.ps1 0
+OK secondary window XML Pesto-Core.ps1 0
+OK secondary window XML Pesto-Core.ps1 1
+OK secondary window XML Pesto-Core.ps1 2
+OK secondary window XML Pesto-Core.ps1 3
+OK secondary window XML Pesto-Inspection.ps1 0
+OK secondary window XML Pesto-Interventions.ps1 0
+OK secondary window XML Pesto-Support.ps1 0
+OK secondary window XML Pesto-Support.ps1 1
+OK shell non-template names unique
+OK join names unique
+OK shell resource references
+OK join resource references
+OK hover PART_EditableTextBox
+OK hover SuiteNavToggle
+OK hover NavHome
+OK hover NavRename
+OK hover NavBatch
+OK hover NavJoin
+OK hover NavNames
+OK hover NavHistory
+OK hover NavLogs
+OK hover NavSettings
+OK hover NavHelp
+OK hover BtnLog
+OK hover BtnTheme
+OK hover BtnHelp
+OK hover SuiteModeSingle
+OK hover SuiteModeBatch
+OK hover SuitePostState
+OK hover ChkRemote
+OK hover TxtPCName
+OK hover BtnReadComputer
+OK hover CbOrg
+OK hover SuiteSiteSearch
+OK hover CbSite
+OK hover CbService
+OK hover CbType
+OK hover CbName
+OK hover ChkRename
+OK hover ChkMove
+OK hover ChkReboot
+OK hover SuiteDirectRun
+OK hover PrepSave
+OK hover PrepRestore
+OK hover PrepClear
+OK hover SuiteDirectCheck
+OK hover BtnAdd
+OK hover BtnCopyNewName
+OK hover BtnInlineHelp
+OK hover SuiteDirectVerify
+OK hover SuiteDirectDetails
+OK hover SuiteDirectCancelRead
+OK hover BtnPreflight
+OK hover BtnPreview
+OK hover BtnDetails
+OK hover BtnDelete
+OK hover BtnBulk
+OK hover BtnCancelPreflight
+OK hover TxtQueueSearch
+OK hover CmbQueueFilter
+OK hover Grid
+OK hover BtnCheckAll
+OK hover BtnUncheckAll
+OK hover ChkTechnicalColumns
+OK hover BtnEdit
+OK hover BtnImport
+OK hover BtnExport
+OK hover BtnHtmlReport
+OK hover BtnHistory
+OK hover BtnRetryMove
+OK hover BtnClear
+OK hover BtnSafetyReset
+OK hover ChkConfirm
+OK hover BtnRun
+OK hover BtnStop
+OK hover NmBtnNextP
+OK hover NmBtnNextS
+OK hover NmBtnCopy
+OK hover NmBtnExport
+OK hover NmBtnRefresh
+OK hover NmCmbSite
+OK hover NmCmbEquipe
+OK hover NmCmbType
+OK hover NmCmbStatut
+OK hover NmTxtSearch
+OK hover NmChkAll
+OK hover NmGrid
+OK hover SetCmbDarkMode
+OK hover SuiteAppearanceNav
+OK hover SuiteAppearanceHelp
+OK hover SetTxtDomaine
+OK hover SetTxtADM
+OK hover SetTxtPrefixe
+OK hover SetTxtPreprod
+OK hover SetTxtBuffer
+OK hover SetChkDirectProd
+OK hover SetTxtOUScan
+OK hover SetBtnBrowseScan
+OK hover SetChkDsreg
+OK hover SetBtnTagAdd
+OK hover SetBtnTagDel
+OK hover SetGridTags
+OK hover SetBtnBaseBrowse
+OK hover SetBtnBaseAdd
+OK hover SetBtnBaseDel
+OK hover SetGridOUBase
+OK hover SetBtnSiteBrowse
+OK hover SetBtnSiteAdd
+OK hover SetBtnSiteDel
+OK hover SetGridOUSite
+OK hover SetChkGUI
+OK hover SetChkSim
+OK hover SetChkODM
+OK hover SetChkWOU
+OK hover SetChkBVA
+OK hover SetChkGOD
+OK hover SetBtnSave
+OK hover SetBtnReload
+OK hover SuiteLogSearch
+OK hover SuiteLogFollow
+OK hover SuiteLogWrap
+OK hover SuiteLogMinus
+OK hover SuiteLogPlus
+OK hover SuiteLogRefresh
+OK hover SuiteLogDiagnostic
+OK hover HomePrepare
+OK hover HomeQueue
+OK hover HomeNames
+OK hover HomeHistory
+OK hover BtnInterventions
+OK hover BtnHistoryRefresh
+OK hover UxHistoryGrid
+OK hover SuiteHelpClose
+OK hover SuiteHelpGuide
+OK hover SuiteHelpDiagnostic
+OK hover JnRefresh
+OK hover JnRename
+OK hover JnType
+OK hover JnOrg
+OK hover JnSite
+OK hover JnService
+OK hover JnName
+OK hover JnReference
+OK hover JnCopy
+OK hover JnChecks
+OK hover JnLog
+OK hover JnExport
+OK hover JnCancelRead
+OK hover JnCheck
+OK hover JnStart
+OK hover JnLater
+OK hover JnRestart
+OK eight routed pages
+OK single / batch / join navigation
+OK configuration section titles human
+OK theme labels not numeric
+OK no theme applied by cfg reload
+OK cfg save does not require empty queue
+OK business invalidation keeps rows
+OK unwanted login phrase removed
+OK login NoResize
+OK light directory login
+OK no network on hostname typing
+OK direct no queue insertion
+OK join no queue insertion
+OK join no Entra leave
+OK same site decision preserved
+OK no implicit reboot in direct
+OK direct receipt protected atomic
+OK machine-wide mutation guard
+OK late return fence direct
+OK resume compares operation and GUID
+OK CIM observation uses DCOM
+OK no write commands in observation worker
+OK origin SID appearance flow
+OK appearance no profile loading
+OK diagnostic excludes raw free text
+OK all named callback functions defined
+OK core worker exports defined
+OK worker dependency closure
+OK Get-PestoJoinWorkerSource definitions present
+OK Get-PestoDirectSupportSource definitions present
+OK component loaded Pesto-Appearance.ps1
+OK component loaded Pesto-Async.ps1
+OK component loaded Pesto-Authentication.ps1
+OK component loaded Pesto-Configuration.ps1
+OK component loaded Pesto-Direct.ps1
+OK component loaded Pesto-Directory.ps1
+OK component loaded Pesto-Inspection.ps1
+OK component loaded Pesto-Integrity.ps1
+OK component loaded Pesto-Interventions.ps1
+OK component loaded Pesto-Join.ps1
+OK component loaded Pesto-Journal.ps1
+OK component loaded Pesto-Operations.ps1
+OK component loaded Pesto-Preparation.ps1
+OK component loaded Pesto-Safety.ps1
+OK component loaded Pesto-SuiteUI.ps1
+OK component loaded Pesto-Support.ps1
+OK native PE32+ x64 GUI
+OK launcher only system Windows imports
+OK unsigned binary identified
+OK no native-launcher CLR dependency
+OK launcher manifest asInvoker
+OK EXE version RC19
+OK EXE embeds original icon
+OK package manifest version/count
+OK package hash Pesto.exe
+OK package hash wad/ActiveDirectory.Format.ps1xml
+OK package hash wad/ActiveDirectory.Types.ps1xml
+OK package hash wad/ActiveDirectory.psd1
+OK package hash wad/ActiveDirectoryPowerShellResources.dll
+OK package hash wad/Pesto-Appearance.ps1
+OK package hash wad/Pesto-Async.ps1
+OK package hash wad/Pesto-Authentication.ps1
+OK package hash wad/Pesto-Configuration.ps1
+OK package hash wad/Pesto-Core.ps1
+OK package hash wad/Pesto-Direct.ps1
+OK package hash wad/Pesto-Directory.ps1
+OK package hash wad/Pesto-Inspection.ps1
+OK package hash wad/Pesto-Integrity.ps1
+OK package hash wad/Pesto-Join.ps1
+OK package hash wad/Pesto-Join.xaml
+OK package hash wad/Pesto-Journal.ps1
+OK package hash wad/Pesto-Operations.ps1
+OK package hash wad/Pesto-Shell.xaml
+OK package hash wad/Pesto-Safety.ps1
+OK package hash wad/Pesto-Interventions.ps1
+OK package hash wad/Pesto-Preparation.ps1
+OK package hash wad/Pesto-Startup.ps1
+OK package hash wad/Pesto-SuiteUI.ps1
+OK package hash wad/Pesto-Support.ps1
+OK package hash wad/Microsoft.ActiveDirectory.Management.dll
+OK package hash wad/fr-FR/ActiveDirectoryPowerShellResources.dll.mui
+OK package hash wad/Pesto.ico
+RESULT 266 passed 0 failed; native Windows NOT executed

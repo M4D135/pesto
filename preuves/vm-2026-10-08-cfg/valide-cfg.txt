@@ -1,0 +1,13 @@
+PASS Lecture JSON par Windows PowerShell 5.1
+PASS Test-CfgValid : aucune erreur
+PASS Ancien fichier : aucune erreur non plus
+PASS Simulation = false (mode réel)
+PASS GUI = false
+PASS POLICY explicite = valeurs par défaut
+PASS Valeurs appliquées par le moteur identiques à l'ancien fichier (hors Simulation)
+PASS Ancien fichier : Simulation était true
+PASS Après « Enregistrer » : commentaires conservés (racine, CONF, DEBUG, POLICY)
+PASS Après « Enregistrer » : toujours valide
+PASS Après « Enregistrer » sans changement : pas de redémarrage (signature identique)
+PASS Contre-épreuve : un commentaire dans POLICY est refusé (schéma fermé)
+RESULTAT 12 reussis, 0 echecs

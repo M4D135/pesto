@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "requestId": "504135d063514b23b5c10f4f96ebbb62",
+  "transactionId": "bc29fd100f0847f1a0e0b1ff834b1248",
+  "parentProcessId": 2296,
+  "helperProcessId": 21160,
+  "nativeUpdateInstallFromUiQualified": false
+}

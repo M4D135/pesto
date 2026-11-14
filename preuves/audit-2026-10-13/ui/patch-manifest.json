@@ -1,0 +1,32 @@
+{
+  "Files": [
+    {
+      "Path": "DEV/wad/Pesto-Interventions.ps1",
+      "SHA256": "b3acf5cce723f054be9f922157516e3719525c4583b2e31db446b1d489f92f58"
+    },
+    {
+      "Path": "DEV/tests/Run-HomeDashboardTests.ps1",
+      "SHA256": "b4286101204d44f2662954ae7d6ec309aecc578b7f83c6744f8bf7681221ad13"
+    },
+    {
+      "Path": "DEV/tests/Run-InterventionViewTests.ps1",
+      "SHA256": "cdb0ba03eef6c2fb9277098a0207d582d9abc921a38cbf1573231e5fe23e78ef"
+    },
+    {
+      "Path": "DEV/tests/Run-QueueRemovalTests.ps1",
+      "SHA256": "0f2c9c532ec0642573e03ebfd9adc2ab5d323e86433df274eef2f710684dd6be"
+    },
+    {
+      "Path": "DEV/tests/Async-ScopeFixture.ps1",
+      "SHA256": "9d8f557131d1fd9d99567b5a8aa93fcb18a7a899c15a6c5eaab6c85acfc98bc8"
+    },
+    {
+      "Path": "DEV/tests/Run-ProgressTests.ps1",
+      "SHA256": "1c957370c5482972958a42f60ce00018adf73da33cafe524741d64f802d626f9"
+    },
+    {
+      "Path": "DEV/tests/Run-PilotageTests.ps1",
+      "SHA256": "666aa009cd74b77c06366e2d9091ad8eb45c3ef43ccf3379e1c599a1056eb334"
+    }
+  ]
+}

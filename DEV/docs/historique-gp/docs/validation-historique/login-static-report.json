@@ -1,0 +1,165 @@
+{
+  "version": "17.0-RC9",
+  "utc": "2026-09-30T12:22:29.896987+00:00",
+  "source_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "scope": "XAML contracts and lexical checks. No WPF rendering or PowerShell execution.",
+  "summary": {
+    "checks": 29,
+    "passed": 29,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "TextBox: implicit style is unique",
+      "status": "PASS"
+    },
+    {
+      "name": "TextBox: one standard ScrollViewer content host",
+      "status": "PASS"
+    },
+    {
+      "name": "TextBox: content host has no duplicate outer spacing",
+      "status": "PASS"
+    },
+    {
+      "name": "TextBox: no forced height or clipped maximum on host",
+      "status": "PASS"
+    },
+    {
+      "name": "TextBox: border does not duplicate padding",
+      "status": "PASS"
+    },
+    {
+      "name": "TextBox: theme text and caret colors supplied",
+      "status": "PASS"
+    },
+    {
+      "name": "TextBox: centered contents",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: implicit style is unique",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: one standard ScrollViewer content host",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: content host has no duplicate outer spacing",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: no forced height or clipped maximum on host",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: border does not duplicate padding",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: theme text and caret colors supplied",
+      "status": "PASS"
+    },
+    {
+      "name": "PasswordBox: centered contents",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtUser: correct native control",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtUser: height can grow",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtUser: adequate minimum size",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtUser: vertical alignment explicit",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtUser: hover help retained",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtPwd: correct native control",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtPwd: height can grow",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtPwd: adequate minimum size",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtPwd: vertical alignment explicit",
+      "status": "PASS"
+    },
+    {
+      "name": "TxtPwd: hover help retained",
+      "status": "PASS"
+    },
+    {
+      "name": "Login remains scrollable on a small display",
+      "status": "PASS"
+    },
+    {
+      "name": "No remaining doubled input margin in the source",
+      "status": "PASS"
+    },
+    {
+      "name": "Targeted Windows test lexical delimiters",
+      "status": "PASS",
+      "functions": 9
+    },
+    {
+      "name": "Targeted test extracts XAML without executing GP",
+      "status": "PASS"
+    },
+    {
+      "name": "Targeted test includes viewport measurement and negative control",
+      "status": "PASS"
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Reintroduce double padding in text and password templates",
+      "detected": true,
+      "failed_checks": [
+        "TextBox: content host has no duplicate outer spacing",
+        "PasswordBox: content host has no duplicate outer spacing",
+        "No remaining doubled input margin in the source"
+      ]
+    },
+    {
+      "name": "Force fixed login text height",
+      "detected": true,
+      "failed_checks": [
+        "TxtUser: height can grow",
+        "TxtUser: adequate minimum size"
+      ]
+    },
+    {
+      "name": "Force fixed password height",
+      "detected": true,
+      "failed_checks": [
+        "TxtPwd: height can grow",
+        "TxtPwd: adequate minimum size"
+      ]
+    },
+    {
+      "name": "Remove content host contract",
+      "detected": true,
+      "failed_checks": [
+        "TextBox: one standard ScrollViewer content host",
+        "PasswordBox: one standard ScrollViewer content host"
+      ]
+    }
+  ]
+}

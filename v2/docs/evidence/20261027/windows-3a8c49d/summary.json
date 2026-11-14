@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "3a8c49d85d5cc16dcab2d7c743be7fa445d05715",
+  "workflowRun": 40491875705,
+  "workflowUrl": "https://github.com/M4D135/pesto/actions/runs/40491875705",
+  "jobId": 122147549487,
+  "status": "completed",
+  "conclusion": "success",
+  "createdUtc": "2026-10-27T10:52:46Z",
+  "jobCompletedUtc": "2026-10-27T11:13:50Z",
+  "engineFixtureTests": {
+    "passed": 615,
+    "failed": 0,
+    "scope": "complete sequential runner with isolated providers"
+  },
+  "bridgeFixtureTests": {
+    "passed": 15,
+    "failed": 0
+  },
+  "updateHarnessPortableChecks": 30,
+  "adRestoreGuards": {
+    "passed": 70,
+    "history": 22,
+    "identity": 28,
+    "rawV1Barriers": 20,
+    "adExecuted": false
+  },
+  "powershell": {
+    "major": 5,
+    "minor": 1,
+    "parsedBusinessScriptVariants": 18,
+    "entrypointParsed": true,
+    "parseErrors": 0,
+    "utf8Checks": 2,
+    "adExecuted": false
+  },
+  "packageMechanics": {
+    "passed": 46,
+    "failed": 0,
+    "syntheticWebView2": true,
+    "devReassemblesSameProdWithSamePublication": true,
+    "devSourceRecompilation": false
+  },
+  "browser": {
+    "suiteCount": 16,
+    "allSucceeded": true,
+    "fixtures": true,
+    "checksBySuite": {
+      "web-maintenance-check": 35,
+      "operator-ui-check": 41,
+      "web-business-check": 48,
+      "parity-ui-check": 53,
+      "policy-ui-check": 17,
+      "web-recovery-check": 23,
+      "web-dom-check": 32,
+      "web-layout-check": 8,
+      "demo-dom-check": 9,
+      "login-dom-check": 28,
+      "web-check": 149,
+      "bridge-lifecycle-check": 21,
+      "demo-check": 11,
+      "azerty-check": 21,
+      "watch-check": 44,
+      "watcher-result-check": null
+    },
+    "playwright": "1.62.1",
+    "chromium": "151.0.7922.34",
+    "adExecuted": false,
+    "numberedChecksTotal": 540,
+    "watcherResultVerdictWithoutNumberedCount": true
+  },
+  "nativeSuccessfulStepGates": {
+    "welcomeChecks": 5,
+    "loginChecks": 16,
+    "demoRefusedDirectApisPerChannel": 44,
+    "demoUiTransitionsPerChannel": 6,
+    "configurationChecksPerChannel": 36,
+    "configurationDialogObservationsPerChannel": 9,
+    "positiveFolderSelectionsPerChannel": 2,
+    "configurationCapturesPerChannel": 6,
+    "configurationUiQualified": true,
+    "maintenanceInspectionPreparationUiQualified": true,
+    "maintenanceInstallUiQualified": false,
+    "distinctUpdateBuilds": true,
+    "prodUpdateScenarios": [
+      "normal",
+      "health-failure",
+      "interruption"
+    ],
+    "devUpdateScenarios": [
+      "normal"
+    ],
+    "healthAttemptCount": 8,
+    "adQualification": false,
+    "uncQualification": false,
+    "realUacQualification": false,
+    "webView2Version": "156.0.4314.42",
+    "selectedPathsObservedBeforeIoPerChannel": 6,
+    "folderEditControlId": 1152,
+    "sourceAndProfileSentinelUnchanged": true,
+    "ordinaryPestoProfileAccess": false
+  },
+  "evidenceArchiveVerification": {
+    "downloaded": true,
+    "sizeBytes": 3520579,
+    "sha256": "e4b250b6ebf8276e8955da7f11d3a23f4896a2459f0f49dcd8ace51c7d50cadb",
+    "matchesGithubEnvelopeDigest": true,
+    "candidateBinaryEnvelopesDownloadedLocally": false
+  },
+  "nativeProofJsonIndependentlyRead": [
+    "native-welcome/proof.json",
+    "native-login/proof.json",
+    "native-configuration-PROD.json",
+    "native-demo-PROD.json",
+    "native-update-PROD/transaction-evidence/proof.json",
+    "native-configuration-DEV.json",
+    "native-demo-DEV.json",
+    "native-update-DEV/transaction-evidence/proof.json"
+  ],
+  "candidatePackagesFromEvidence": [
+    {
+      "channel": "PROD",
+      "sourceCommit": "3a8c49d85d5cc16dcab2d7c743be7fa445d05715",
+      "archiveSha256": "6a10bf715390aaa4fa210cd1839ad1dad1e845d4d086bf0db96422f4645ab1cc",
+      "executableSha256": "0d8e8936060098fffc25f7b807e14546b25df7244775abe7a3dcdee4ebb4bba8",
+      "distribution": "candidate",
+      "adQualified": false,
+      "nativeStartupDemoQualified": true,
+      "nativeDemoCoexistenceQualified": true,
+      "nativeConfigurationQualified": true,
+      "nativeConfigurationUiQualified": true,
+      "nativeUpdatePreparationUiQualified": true,
+      "nativeUpdateInstallUiQualified": false,
+      "nativeUpdateQualified": true,
+      "distinctUpdateBuilds": true,
+      "updateBaselineSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+    },
+    {
+      "channel": "DEV",
+      "sourceCommit": "3a8c49d85d5cc16dcab2d7c743be7fa445d05715",
+      "archiveSha256": "aa33ec85b161216b61a89fd81746611903ddd9ead84abe0cf47ae415141a8710",
+      "executableSha256": "0d8e8936060098fffc25f7b807e14546b25df7244775abe7a3dcdee4ebb4bba8",
+      "distribution": "candidate",
+      "adQualified": false,
+      "nativeStartupDemoQualified": true,
+      "nativeDemoCoexistenceQualified": true,
+      "nativeConfigurationQualified": true,
+      "nativeConfigurationUiQualified": true,
+      "nativeUpdatePreparationUiQualified": true,
+      "nativeUpdateInstallUiQualified": false,
+      "nativeUpdateQualified": true,
+      "distinctUpdateBuilds": true,
+      "updateBaselineSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+    }
+  ],
+  "copiedFileProvenance": [
+    {
+      "savedAs": "native-welcome.json",
+      "artifactPath": "native-welcome/proof.json",
+      "artifactSha256": "e433b026e6611f82de6bf9f9e4e8c60e0c9bc8e749c8a5ada0ce5110c1e6318c",
+      "sha256": "19724359ccee785fa14f85869b654efcb8a9106fa56af166c47bc9e85d7c3770",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-login.json",
+      "artifactPath": "native-login/proof.json",
+      "artifactSha256": "0495c303e6c2905ace658a64fb35f638bd7e1def913108713ccd491754abe32e",
+      "sha256": "d0032e0f0ee187150cbefa5706baa9c5b9a5203c5cc75aa3bc20830524cfdd9e",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-configuration-PROD.json",
+      "artifactPath": "native-configuration-PROD.json",
+      "artifactSha256": "ffe3c3c38391778f51ca8fe0d130d17b8b8506343126624aec93e68588fa4c5c",
+      "sha256": "0cffca6b69bfdb3799ddfcb1e781e8b7ceb65400a275b753ec0ef93304397f7b",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-demo-PROD.json",
+      "artifactPath": "native-demo-PROD.json",
+      "artifactSha256": "aab78121dd205f1a33cbc2eed20bd16c3d6dec73b7a9d6c8c251975cb9a04416",
+      "sha256": "9ac4017ceeedc3f20c86d2afd7d2b52c130e3eb2418aae66c6b3594abb87ab2b",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-update-PROD.json",
+      "artifactPath": "native-update-PROD/transaction-evidence/proof.json",
+      "artifactSha256": "1157d2d10f145c1eb0e26dd13a5de089d01b20e29b7981d25bb3d5c6e6ed8dc5",
+      "sha256": "bc5ca80b34074edd385b0f7b54e51275059b8169e0c6538371dc934b9af08048",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-configuration-DEV.json",
+      "artifactPath": "native-configuration-DEV.json",
+      "artifactSha256": "5910457004c193fd0ce0b0da29e5aa763cd9f0c1341084b7fe794412af64077a",
+      "sha256": "9f1dda34cf61f71c0b00de3d3ee1ce6fcc318854290635eeefdf882604bc99dc",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-demo-DEV.json",
+      "artifactPath": "native-demo-DEV.json",
+      "artifactSha256": "402ada86a074f847b20d5d4e10af527d6ad91b37f0e9c23e9f1e38b81766994f",
+      "sha256": "bf80e88850b8f82cbfbef84fab7a2e984f8f8218503f1538aac1340342a21bf2",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "native-update-DEV.json",
+      "artifactPath": "native-update-DEV/transaction-evidence/proof.json",
+      "artifactSha256": "641fd8004f6229a3d57712f23b817b5193fcd0318def0f1eaa05bc85616673c6",
+      "sha256": "268e7c742afe406c6aca25cdfb6b17cb5737ffd285fd1e877775b48ce59468d7",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "candidate-packages.json",
+      "artifactPath": "artifacts.json",
+      "artifactSha256": "63cdef0cf17d79c47dab569c6d4fc9b46f2373a857d57c96c5fa696d02c63886",
+      "sha256": "915e313f574b118836e09daed73b1a17b0b96c2a17dbc5ec18f48e1564479f81",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "runtime.json",
+      "artifactPath": "runtime.json",
+      "artifactSha256": "7dbc571fe189a2beba71fc609229d4bd8af98af0c0581b1eb17484bd7663458b",
+      "sha256": "07085221c58f6a37f91ce724a8e44747f481d6d74f852b0056fa4ee08506b8ab",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/Engine-All.log",
+      "artifactPath": "Engine-All.log",
+      "artifactSha256": "a8b26e48bd0165b91d1554b5220844419e1502bd8c0b3e37f40114f6c78221f1",
+      "sha256": "9e99c5a43530057c256012285709aee78e70ad8dfa0be56b3e784df60150ac4b",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/Bridge.log",
+      "artifactPath": "Bridge.log",
+      "artifactSha256": "987d8e611555a03f5bc5f80ec20dbd905f4471c7800e41268eaff8cc43158aff",
+      "sha256": "3e3d5c23227f061f09a798f93850f7c24ea87478bc2f18cbfd32a22d08fd9f43",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/Pack-Mechanics.log",
+      "artifactPath": "Pack-Mechanics.log",
+      "artifactSha256": "8a8221028defa3cad61787ace6abb0d9011059053bdccf80755a2fe1c49a8f19",
+      "sha256": "f2402e70b8dad02a06c22250ba3210e5df937c197a01af9f368f705857a21535",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/NativeUpdateHarness-portable.log",
+      "artifactPath": "NativeUpdateHarness-portable.log",
+      "artifactSha256": "fdf33c352c5478c72fe84114ca7886f130fe12ed27496527c9159285c9d3e188",
+      "sha256": "ec56fde274ae1cc6d950e47e3bba87e225ce3e6dfea3bf5374370a81ed3b483f",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/AdRestoreGuards.log",
+      "artifactPath": "AdRestoreGuards.log",
+      "artifactSha256": "1d98061ee362d766b37f290051b09f3a9e942cbf032949672ec0848a2239d640",
+      "sha256": "15b44054ba71a6027f569a504a63920d5727ef3ed0dcccae16e9fd66f19b2f95",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/Qualification-entrypoint-PS51.log",
+      "artifactPath": "Qualification-entrypoint-PS51.log",
+      "artifactSha256": "8864c14097aaf614e5560204ab6bcce7ac838d828f6a206d7d7894810f075fa3",
+      "sha256": "4450b092804c74b8ee56402810051a5913c3af9b10c24b91336e721b260a704f",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/PowerShell51-syntax.log",
+      "artifactPath": "PowerShell51-syntax.log",
+      "artifactSha256": "5b932ad58e1ed94d562d54d43c13b3bdf77bb8f185472ee8e02eed18e12f193b",
+      "sha256": "d0de6c2cd17c3421091ba19e48b9bbbd679e0e58d8252624f43a44ae1645d9df",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/PowerShell51-utf8.log",
+      "artifactPath": "PowerShell51-utf8.log",
+      "artifactSha256": "e31157365e09ddce5bedd060a6ddb08add219e0f33ab1686b70545b905b7a220",
+      "sha256": "2dd95922146e0c4574163645c2e962fd38b6ec1a1d0fe0e108a6506f994e11b8",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/web-maintenance-check.log",
+      "artifactPath": "web-maintenance-check.log",
+      "artifactSha256": "02f7b8e685b7ee7a0c37ac615a2b2b953e61bdf5390b99c6775d714353502a5a",
+      "sha256": "da4d1f8087d7e33d1d269ad5310f5f5204b836af51b9e990d458452a9b882271",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/operator-ui-check.log",
+      "artifactPath": "operator-ui-check.log",
+      "artifactSha256": "620c885602f14708405d38ef19a5229e1c4b39fdf2b86e173e96d33366472373",
+      "sha256": "ea51c1df3ffbeae12ef883eb6a6e50ad1a40cf45d5cb8484b67baf7cd606ad4e",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/web-business-check.log",
+      "artifactPath": "web-business-check.log",
+      "artifactSha256": "99b570441592b51f3d8b1bb8ce98643e39c43602dfa52ff9d9c0c8a45ca049b7",
+      "sha256": "2942607d4615031ce817b878bfe9235be688e15b0705b906f0215d5bc8eab418",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/parity-ui-check.log",
+      "artifactPath": "parity-ui-check.log",
+      "artifactSha256": "719bac5542ef1c738503c15af0e4d7e92b432c97f334d299535b740d93e82db0",
+      "sha256": "4c856880a49ac37f94fb0d53b3acf489022aa0267bbd0ed0bee0975211297e68",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/policy-ui-check.log",
+      "artifactPath": "policy-ui-check.log",
+      "artifactSha256": "dd2a03f1e466ddb5f549c6965f29ce71bfad69cc237b4cd46bd96f2a48139f0a",
+      "sha256": "4b9c4ddbd8f51a43fcbfbd9a94855bd3dc62f9d42f42ba71706902b8a98d8c92",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/web-recovery-check.log",
+      "artifactPath": "web-recovery-check.log",
+      "artifactSha256": "0c3ad5328e48a8c89c8b92e689d74c14e948720df6dcd2defdeedf4711aacdf7",
+      "sha256": "9bc9a5d18a0a5e9791b351d5119672018ac82c898db178b59ff3c2b7d7859d4b",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/web-dom-check.log",
+      "artifactPath": "web-dom-check.log",
+      "artifactSha256": "6835e84c2b1d04589023dc054f1300b194525ca4fa7b80d1bf9c813b043217ca",
+      "sha256": "9b695e985a3c01687faf4c162c3b224c0c8d6c75dff6166776d79ac82022b496",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/web-layout-check.log",
+      "artifactPath": "web-layout-check.log",
+      "artifactSha256": "b540a6b1430a7f03aa23f5b1b0b02c3870323cd0dfb1a412e9e24fda0e283c3b",
+      "sha256": "0244c5e8d561f34c5989a7c2c52dc3c50e033cc56943971c8b9608bd8d187ec6",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/demo-dom-check.log",
+      "artifactPath": "demo-dom-check.log",
+      "artifactSha256": "cec480dd26e84ccb33623ad518dbd3d8b075e607102ee439bed1204935856edd",
+      "sha256": "3b43aa776beefc0c9038c2d7e3b33fba922afb5c4aae2164a4c0a8c42fc7cfbc",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/login-dom-check.log",
+      "artifactPath": "login-dom-check.log",
+      "artifactSha256": "7e622cb575118867c969102b6ec04a47767b495f7cc0cb5c5a4ef4c399d00816",
+      "sha256": "a49ab6f2275be96bea6a0d2c8d7ef629d159afa0bebeb54def4e7e320437a237",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/web-check.log",
+      "artifactPath": "web-check.log",
+      "artifactSha256": "f4b43cf938109e459241ff6298c355ec5a2db3f1f3f27b82478532c006f39b8c",
+      "sha256": "6ebd28928b90bc2ef7db1d354912640ad5c49606b665ad6a2115017895cfa01f",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/bridge-lifecycle-check.log",
+      "artifactPath": "bridge-lifecycle-check.log",
+      "artifactSha256": "fce17918c808b5f7a07411933b3fdd548814e73f144d713440d8d744872f136d",
+      "sha256": "8387759c29cdaa4d9803afa6713d04954808a1bc5dae68cb3ae474da9e7ad616",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/demo-check.log",
+      "artifactPath": "demo-check.log",
+      "artifactSha256": "0967f4cca48d8156abad48083b4dbc4642367bc122d4c65ce8b3fed9a753ed26",
+      "sha256": "e0debd8e5f0cb2997d80d425b95201fae9e7bdf6c9d01fec7007d4d807f4b5e9",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/azerty-check.log",
+      "artifactPath": "azerty-check.log",
+      "artifactSha256": "e65059adecf8b4101937364c61ac2aeec4fea328158dcdf000f63b4e46024822",
+      "sha256": "2c5d3949a7080e59062ab79c50a2dffec099e4743f0a4a74c90b56a7811e2097",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/watch-check.log",
+      "artifactPath": "watch-check.log",
+      "artifactSha256": "8e957a17be780b0460983ad4e2abf96cc4e98b08c844c6432312dab74f5fe197",
+      "sha256": "7c31732c8c84c4d5f205fee9e1395bb567f1d4cc16269e1d4cff3482ea1121db",
+      "lineEndings": "LF; all other source bytes preserved"
+    },
+    {
+      "savedAs": "logs/watcher-result-check.log",
+      "artifactPath": "watcher-result-check.log",
+      "artifactSha256": "f7a6df79178e27b99e08d29e311c2a33547c922b7d438f1c1d0264c33112ad86",
+      "sha256": "c77eebae0eacd9774d0f9e1164b4b4ee15bd93a39f7681f33d5f5865d995a7d3",
+      "lineEndings": "LF; all other source bytes preserved"
+    }
+  ],
+  "limitations": [
+    "No AD mutation, real UAC or UNC qualification in this campaign.",
+    "Native maintenance UI inspection and preparation passed; installation confirmation was cancelled.",
+    "Fresh and existing profile defaults are checked through the real service, separately from DOM actions.",
+    "Negative update scenarios inject faults into actual transactions between real distinct builds.",
+    "Local and Windows counts overlap; they must not be summed.",
+    "Candidate ZIP hashes are from CI native evidence; large GitHub binary envelopes were not downloaded locally."
+  ],
+  "windowsVersion": "Microsoft Windows NT 10.0.26100.0",
+  "artifacts": {
+    "count": 3,
+    "digestsAreGithubEnvelopeHashes": true
+  }
+}

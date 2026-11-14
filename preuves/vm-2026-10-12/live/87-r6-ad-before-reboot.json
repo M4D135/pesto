@@ -1,0 +1,18 @@
+﻿{
+    "Utc":  "2026-10-12T19:55:36.9172011Z",
+    "DC":  "dc01.labo.local",
+    "Objects":  [
+                    {
+                        "Name":  "P111301LY765128$",
+                        "DN":  "CN=P111301LY765128,OU=Lyon,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                        "Guid":  "b4797c9c-d790-4797-bf71-424a57acb36e",
+                        "Disabled":  false
+                    },
+                    {
+                        "Name":  "P111301VA765172$",
+                        "DN":  "CN=P111301VA765172,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local",
+                        "Guid":  "899e0a2e-1c9d-469a-8c47-92252ba3ed9c",
+                        "Disabled":  true
+                    }
+                ]
+}

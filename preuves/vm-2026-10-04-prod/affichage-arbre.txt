@@ -1,0 +1,401 @@
+﻿Window ""
+  ToolTip "Code service / équipe (3 caractères). Choisissez un code existant ou saisissez-en un nouveau. Indispensable pour générer le nouveau nom."
+    Text "Code service / équipe (3 caractères). Choisissez un code existant ou saisissez-en un nouveau. Indispensable pour générer le nouveau nom."
+Pane ""
+  Pane ""
+  Pane "" #40965
+    Pane "Running applications"
+  Pane ""
+    Pane "" #TaskbarFrame
+      Button "Widgets 22°C Pluie fine" #WidgetsButton
+        Image "" #BadgeAnchorLargeTicker
+        Text "21°C"
+        Text "Pluie fine"
+        Image "" #BadgeAnchorLargeTicker
+        Text "22°C"
+        Text "Pluie fine"
+      Button "Start" #StartButton
+      Button "Search" #SearchButton
+        Text "Search" #SearchBoxTextBlock
+      Button "Task View" #TaskViewButton
+      Button "File Explorer pinned" #Appid: Microsoft.Windows.Explorer
+      Button "Microsoft Edge pinned" #Appid: MSEdge
+      Button "Microsoft Store pinned" #Appid: Microsoft.WindowsStore_8wekyb3d8bbwe!App
+      Button "Terminal - 1 running window" #Appid: Microsoft.WindowsTerminal_8wekyb3d8bbwe!App
+      Button "Windows PowerShell - 1 running window" #Appid: Pesto.GestionDesPostes
+      Button "Settings - 1 running window" #Appid: windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel
+    Button "Show Hidden Icons" #SystemTrayIcon
+    Button " OneDrive - Personal
+Not signed in" #NotifyItemIcon
+      Image ""
+    Button "Network Network
+Internet access
+
+labo.local
+No internet access" #SystemTrayIcon
+    Button "Volume No audio device is installed" #SystemTrayIcon
+    Button "Power Battery status: 99% remaining" #SystemTrayIcon
+    Button "Clock 22:10
+‎04/‎10/‎2026" #SystemTrayIcon
+    Button "Show Desktop" #SystemTrayIcon
+Window "Pesto 1.0 | Gestion des Postes"
+  Text "P"
+  Text "Pesto" #SuiteBrandLabel
+  Text "Gestion des postes" #SuiteBrandHint
+  Button "Réduire ou déployer le menu" #SuiteNavToggle
+    Text "☰"
+  Pane ""
+    Button "Accueil" #NavHome
+      Text "⌂"
+      Text "Accueil" #NavHomeLabel
+    Button "Renommer" #NavRename
+      Text "✎"
+      Text "Un poste" #NavRenameLabel
+    Button "Plusieurs postes (file)" #NavBatch
+      Text "▦"
+      Text "Plusieurs postes" #NavBatchLabel
+    Button "Ajouter au domaine" #NavJoin
+      Text "+"
+      Text "Ajouter au domaine" #NavJoinLabel
+    Button "Noms disponibles" #NavNames
+      Text "▤"
+      Text "Noms disponibles" #NavNamesLabel
+    Button "Historique" #NavHistory
+      Text "◷"
+      Text "Historique" #NavHistoryLabel
+    Button "Journal" #NavLogs
+      Text "≡"
+      Text "Journal" #NavLogsLabel
+    Button "Paramètres" #NavSettings
+      Text "⚙"
+      Text "Paramètres" #NavSettingsLabel
+    ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+    ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+  Button "?   Aide et raccourcis" #NavHelp
+    Text "?   Aide et raccourcis"
+  Text "Pesto 1.0" #UxVersion
+  Text "Windows · PowerShell"
+  Text "V999004AAQA1004"
+  Text "labo.local"
+  Text "LABO\pesto-qualif"
+  Text "" [hors-ecran]
+  Text "" [hors-ecran]
+  Text "" [hors-ecran]
+  Button "Palette de commandes" #WorkspaceButton
+    Text "Actions · Ctrl+K"
+  Button "Audit" #BtnLog
+    Text "Audit"
+  Button "Changer de thème" #BtnTheme
+  Button "Aide" #BtnHelp
+    Text "?"
+  Tab "" #MainTabs
+    TabItem "Renommer" #TabRename [hors-ecran]
+      Pane "" #ActionScroll
+        Text "Modifier un poste" #UxPageTitle
+        Text "Lire, vérifier, confirmer. Une seule action, sans file." #UxPageSubtitle
+        Text "Cible et compte de l’intervention" #SuiteTargetPin
+        Button "Un seul poste" #SuiteModeSingle
+          Text "Un seul poste"
+        Button "Plusieurs postes" #SuiteModeBatch
+          Text "Plusieurs postes"
+        Button "État du poste" #SuitePostState
+          Text "État du poste"
+        Text "1" #Step1Text
+        Text "Choisir le poste"
+        Text "2" #Step2Text
+        Text "Nouveau nom"
+        Text "3" #Step3Text
+        Text "Vérifier"
+        Text "4" #Step4Text
+        Text "Exécuter"
+        Text "1. Choisir le poste"
+        Text "Utilisez ce PC ou saisissez le nom d'un autre poste."
+        CheckBox "Un autre poste du domaine" #ChkRemote
+          Text "Un autre poste du domaine"
+        Text "Nom du poste actuel  ⓘ"
+        Edit "Nom du poste actuel" #TxtPCName
+          ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+          ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+        Button "Lire le poste" #BtnReadComputer
+          Text "Lire le poste"
+        Text "" #LblPCInfo [hors-ecran]
+        Text "2. Définir le nouveau nom"
+        Text "Le nom est proposé selon votre convention à 15 caractères."
+        Text "Organisme  ⓘ"
+        ComboBox "Organisme" #CbOrg
+          Edit "" #PART_EditableTextBox [hors-ecran]
+            ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+            ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+          ListItem "PestoQualification" [hors-ecran]
+            Text "PestoQualification" [hors-ecran]
+        Text "Site  ⓘ"
+        Edit "Rechercher un site" #SuiteSiteSearch
+          ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+          ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+        ComboBox "Site" #CbSite
+          Edit "" #PART_EditableTextBox [hors-ecran]
+            ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+            ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+          ListItem "ALPHA-AA" [hors-ecran]
+            Text "ALPHA-AA" [hors-ecran]
+          ListItem "BETA-BB" [hors-ecran]
+            Text "BETA-BB" [hors-ecran]
+          ListItem "RECREATE-RR" [hors-ecran]
+            Text "RECREATE-RR" [hors-ecran]
+        Text "Service  ⓘ"
+        ComboBox "Code service" #CbService
+          Edit "" #PART_EditableTextBox
+            ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+            ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+        Text "Type  ⓘ"
+        ComboBox "Type de poste" #CbType
+          Edit "" #PART_EditableTextBox [hors-ecran]
+            ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+            ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+        Text "Nouveau nom  ⓘ"
+        ComboBox "Nouveau nom" #CbName
+          Edit "" #PART_EditableTextBox [hors-ecran]
+            ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+            ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+          ListItem "V999004AAQA1001" [hors-ecran]
+            Text "V999004AAQA1001" [hors-ecran]
+          ListItem "V999004AAQA1002" [hors-ecran]
+            Text "V999004AAQA1002" [hors-ecran]
+          ListItem "V999004AAQA1003" [hors-ecran]
+            Text "V999004AAQA1003" [hors-ecran]
+          ListItem "V999004AAQA1005" [hors-ecran]
+            Text "V999004AAQA1005" [hors-ecran]
+          ListItem "V999004AAQA1006" [hors-ecran]
+            Text "V999004AAQA1006" [hors-ecran]
+          ListItem "V999004AAQA1007" [hors-ecran]
+            Text "V999004AAQA1007" [hors-ecran]
+          ListItem "V999004AAQA1008" [hors-ecran]
+            Text "V999004AAQA1008" [hors-ecran]
+          ListItem "V999004AAQA1009" [hors-ecran]
+            Text "V999004AAQA1009" [hors-ecran]
+          ListItem "V999004AAQA1010" [hors-ecran]
+            Text "V999004AAQA1010" [hors-ecran]
+          ListItem "V999004AAQA1011" [hors-ecran]
+            Text "V999004AAQA1011" [hors-ecran]
+        Text "Ce nom est déjà utilisé dans l'AD" #LblNameTaken [hors-ecran]
+        Text "ⓘ  Déplacement automatique uniquement si le site change." #UxMoveRule
+        Group "Options : déplacement seul et redémarrage" #AdvancedOptions
+          Button "Options : déplacement seul et redémarrage" #HeaderSite
+            Text "Options : déplacement seul et redémarrage"
+        Button "Vérifier puis renommer" #SuiteDirectRun
+          Text "Vérifier puis renommer"
+        Group "Favoris de préparation"
+          Button "Favoris de préparation" #HeaderSite
+            Text "Favoris de préparation"
+        Button "Vérifier seulement" #SuiteDirectCheck
+          Text "Vérifier seulement"
+        Text "Le contrôle relit l'identité, le nom et l'OU. L'écriture ne commence qu'après votre confirmation." #SuiteDirectHint
+        Button "Ajouter à la file" #BtnAdd [hors-ecran]
+        Text "Ajoutez ce brouillon à la file. Aucun poste ne sera modifié à cette étape." #UxAddHint [hors-ecran]
+        Thumb "Séparation formulaire et aperçu" #FormSplitter
+        Text "Aperçu avant / après"
+        Text "Brouillon du formulaire, pas un résultat d'exécution."
+        Text "Nom actuel"
+        Text "V999004AAQA1004" #UxCurrentName
+        Text "Nouveau nom"
+        Text "V999004AAQA1005" #UxNewName
+        Button "Copier le nom proposé" #BtnCopyNewName
+          Text "Copier le nom proposé"
+        Text "Site conservé : AA" #UxSiteTransition
+        Text "OU actuelle  : ADCC-Lab › Pesto-20261004 › Computers › ALPHA-AA" #LblCurrentOU
+        Text "OU cible     : ADCC-Lab › Pesto-20261004 › Computers › ALPHA-AA" #LblTargetOU [hors-ecran]
+        Text "Après : ADCC-Lab › Pesto-20261004 › Computers › ALPHA-AA" #UxActualTargetOU
+        Text "Opération prévue"
+        Text "Renommer seulement" #UxOperation
+        Text "Redémarrage : aucun redémarrage automatique" #UxRebootSummary
+        Text "La prochaine étape"
+        Text "Le contrôle relit l'identité, le nom et l'OU. L'écriture ne commence qu'après votre confirmation." #UxNextStep
+        Text "Ajouter prépare. Contrôler lit AD. Seul Exécuter peut modifier les postes."
+        Button "Comprendre le parcours" #BtnInlineHelp
+          Text "Comprendre le parcours"
+        Text "Suivi de l’opération" #SuiteDirectTitle
+        Text "Confirmation annulée. Aucun changement lancé." #SuiteDirectStage
+        Text "LECTURE : Site AA conserve : renommage seul, aucun deplacement.
+LECTURE : Source AD unique, périmètre et OU source contrôlés.
+LECTURE : Nom cible libre sur le contrôleur interrogé au moment de cette lecture.
+LECTURE : Droits de mutation, canaux RPC/WMI et redémarrage : non certifiés par ce contrôle en lecture seule." #SuiteDirectAdvice
+        Button "Vérifier puis reprendre" #SuiteDirectVerify
+          Text "Vérifier puis reprendre"
+        Button "Détails" #SuiteDirectDetails
+          Text "Détails"
+        Button "Annuler la lecture" #SuiteDirectCancelRead [hors-ecran]
+          Text "Annuler la lecture" [hors-ecran]
+        Text "3. Vérifier la file" [hors-ecran]
+        Text "" #LblQueueCount [hors-ecran]
+        Text "Seules les lignes cochées seront exécutées. Les lignes masquées par un filtre restent cochées." [hors-ecran]
+        Button "Contrôler dans AD" #BtnPreflight [inactif] [hors-ecran]
+        Button "Prévisualiser la file" #BtnPreview [inactif] [hors-ecran]
+        Button "Détails" #BtnDetails [inactif] [hors-ecran]
+        Button "Retirer de la file" #BtnDelete [inactif] [hors-ecran]
+        Button "Préparer un lot" #BtnBulk [hors-ecran]
+        Button "Annuler le contrôle" #BtnCancelPreflight [hors-ecran]
+        Edit "Rechercher dans la file" #TxtQueueSearch [hors-ecran]
+        Text "⌕" [hors-ecran]
+        ComboBox "Filtrer la file" #CmbQueueFilter [hors-ecran]
+        Text "0 visible(s)" #LblFilterCount [hors-ecran]
+        Text "0 poste(s) | 0 coché(s) | 0 OK | 0 à examiner" #LblPilotage [hors-ecran]
+        DataGrid "File des opérations" #Grid [hors-ecran]
+        Text "Aucune action en file.
+Configurez un poste ou utilisez Préparer un lot." #LblEmpty [hors-ecran]
+        Button "Tout cocher (visible)" #BtnCheckAll [inactif] [hors-ecran]
+        Button "Tout décocher (visible)" #BtnUncheckAll [inactif] [hors-ecran]
+        CheckBox "Colonnes techniques" #ChkTechnicalColumns [hors-ecran]
+        Group "Plus d'outils : modifier, importer, exporter…" #QueueTools [hors-ecran]
+        Button "Lever le verrou" #BtnSafetyReset [hors-ecran]
+        ScrollBar "" #VerticalScrollBar
+          Button "" #PART_LineUpButton [inactif]
+          Button "" #PageUp [inactif]
+          Button "" #PageDown [inactif]
+          Thumb "" [inactif]
+          Button "" #PART_LineDownButton [inactif]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+      Text "MODE RÉEL : écritures après confirmation" #UxExecutionMode [hors-ecran]
+      Text "Prêt." #LblStatus [hors-ecran]
+      Text "Contrôler ne modifie aucun poste. Le rapport couvre toute la file." #LblQueueActivity [hors-ecran]
+      ProgressBar "Progression de la file" #Progress [hors-ecran]
+      CheckBox "Confirmer chaque action" #ChkConfirm [hors-ecran]
+      CheckBox "Poste pilote avant le reste du lot" #QueuePilot [hors-ecran]
+      Button "Exécuter la file" #BtnRun [inactif] [hors-ecran]
+      Button "Arrêter après cette action" #BtnStop [inactif] [hors-ecran]
+    TabItem "Noms disponibles" [hors-ecran]
+    TabItem "Paramètres" [hors-ecran]
+    TabItem "Journal" [hors-ecran]
+    TabItem "Accueil" [hors-ecran]
+    TabItem "Historique" [hors-ecran]
+    TabItem "Aide" [hors-ecran]
+    TabItem "Ajouter au domaine" #TabJoin [hors-ecran]
+  Button "›" #SuiteHelpClose [hors-ecran]
+  Text "À vos côtés" [hors-ecran]
+  Pane "" [hors-ecran]
+Window "Settings"
+  Window "Settings" #TitleBar
+    MenuBar "System" #SystemMenuBar
+      MenuItem "System"
+    Button "Minimize Settings" #Minimize
+    Button "Maximize Settings" #Maximize
+    Button "Close Settings" #Close
+  Window "Settings"
+    Text "Settings" #SettingsLabel
+    Edit "Search box, Find a setting" #CommandSearchTextBox
+    Custom "" #PermanentNavigationView
+      Button "Back" #NavigationViewBackButton [inactif]
+      Window "" #PaneRoot
+        Button "PestoProd Local Account" #UserProfileControlButton
+          Image "User profile picture"
+          Text "PestoProd" #UserName
+          Text "Local Account" #UserAccount
+        Pane "" #MenuItemsScrollViewer
+          Group "" #MenuItemsHost
+            ListItem "Home"
+              Image ""
+            ListItem "System"
+              Image ""
+            ListItem "Bluetooth & devices"
+              Image ""
+            ListItem "Network & internet"
+              Image ""
+            ListItem "Personalization"
+              Image ""
+            ListItem "Apps"
+              Image ""
+            ListItem "Accounts"
+              Image ""
+            ListItem "Time & language"
+              Image ""
+            ListItem "Gaming"
+              Image ""
+            ListItem "Accessibility"
+              Image ""
+            ListItem "Privacy & security"
+              Image ""
+            ListItem "Windows Update"
+              Image ""
+        Pane "" #FooterItemsScrollViewer [hors-ecran]
+          Group "" #FooterMenuItemsHost [hors-ecran]
+      Group "" #PermanentNavigationViewBreadcrumbBar
+        Button "System"
+          Text "System"
+        Button "Display"
+          Text "Display"
+      Group ""
+        Pane "" #ItemsControlScrollViewer
+          Group "Brightness & color"
+            Text "Brightness & color"
+            Group "Night light" #SystemSettings_Display_BlueLight_AutomaticOnScheduleWithTime_ButtonEntityItem
+              Text "Night light"
+              Text "Use warmer colors to help block blue light"
+              Button "Night light" #SystemSettings_Display_BlueLight_AutomaticOnScheduleWithTime_ToggleSwitch
+              Button "Night light" #EntityItemButton
+            Group "Color profile" #SystemSettings_Display_ColorProfileSetting_EntityItem
+              Text "Color profile"
+              Text "Determine how colors appear on your screen"
+              Button "Color profile" #EntityItemButton
+            Group "HDR"
+              Text "HDR"
+              Text "More about HDR "
+                Hyperlink "More about HDR"
+              Button "HDR" #EntityItemButton
+          Group "Scale & layout"
+            Text "Scale & layout"
+            Group "Scale" #SystemSettings_Display_Scaling_ItemSizeOverride_EntityItem
+              Text "Scale"
+              Text "Change the size of text, apps, and other items"
+              ComboBox "Scale" #SystemSettings_Display_Scaling_ItemSizeOverride_ComboBox
+                ListItem "100% (Recommended)" #ContentPresenter
+                  Text "100% (Recommended)"
+              Button "Scale" #EntityItemButton
+            Text "Display resolution"
+            Text "Adjust the resolution to fit your connected display"
+            ComboBox "Display resolution" #SystemSettings_Display_Resolution_ComboBox
+              ListItem "1920 × 1043" #ContentPresenter
+                Text "1920 × 1043"
+            Text "Display orientation"
+            ComboBox "Display orientation" #SystemSettings_Display_Orientation_ComboBox [inactif]
+              ListItem "Landscape" #ContentPresenter
+                Text "Landscape"
+            Group "Multiple displays"
+              Text "Multiple displays"
+              Text "Choose the presentation mode for your displays"
+              Button "Show more settings" #EntityItemButton
+          Group "Related settings"
+            Text "Related settings"
+            Group "Advanced display" #SystemSettings_Display_AdvancedDisplaySettings_ButtonEntityItem
+              Text "Advanced display"
+              Text "Display information, refresh rate"
+              Button "Advanced display" #EntityItemButton
+            Group "Graphics" #SettingsPageGpuPreferenceView2_ButtonEntityItem
+              Text "Graphics"
+              Button "Graphics" #EntityItemButton
+          Group "Get help" #BonusBarEntityContactSupportGroup
+            Hyperlink "Get help"
+              Text "Get help" #BonusBarContactSupportLink
+          Group "Give feedback" #BonusBarEntityGiveFeedbackGroup [hors-ecran]
+            Hyperlink "Give feedback" [hors-ecran]
+              Text "Give feedback" #BonusBarWindowsInsiderLink [hors-ecran]
+          ScrollBar "Vertical" #VerticalScrollBar [hors-ecran]
+  Pane ""
+Window "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+  Pane ""
+  Pane ""
+    Tab "" #TabView
+      List "" #TabListView
+        TabItem "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+          Image ""
+          Text "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe" #HeaderTextBlock
+          Button "Fermer l’onglet" #CloseButton
+      SplitButton "Nouvel onglet" #NewTabButton
+    Custom ""
+      Text "C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe"
+        ScrollBar "Vertical" #ScrollBar
+          Button "Légère diminution verticale" #VerticalSmallDecrease
+          Button "Diminution verticale importante" #VerticalLargeDecrease [hors-ecran]
+          Button "Augmentation verticale importante" #VerticalLargeIncrease
+          Button "Légère augmentation verticale" #VerticalSmallIncrease
+Pane "Program Manager"
+  Pane ""
+    Pane "FolderView" #1

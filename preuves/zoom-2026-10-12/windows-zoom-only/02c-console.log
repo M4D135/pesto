@@ -1,0 +1,8 @@
+Exception calling "CopyFromScreen" with "5" argument(s): "The handle is invalid"
+At C:\PestoRecette20261012\pilot\pilote.psm1:10 char:52
++ ... :FromImage($bmp); $g.CopyFromScreen($b.Left, $b.Top, 0, 0, $bmp.Size)
++                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [], MethodInvocationException
+    + FullyQualifiedErrorId : Win32Exception
+ 
+

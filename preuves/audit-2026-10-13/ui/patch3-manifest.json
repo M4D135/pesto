@@ -1,0 +1,16 @@
+{
+  "Files": [
+    {
+      "Path": "DEV/tests/Async-ScopeFixture.ps1",
+      "SHA256": "40ae8ae6d79fc6a4007cc420575807f5b35c1f3191f1903b9f4eff4d80fb7122"
+    },
+    {
+      "Path": "DEV/tests/Run-NamesLoadingTests.ps1",
+      "SHA256": "ba5e383a4f60224965ceb8a9a50c3e890b7a2e46859455a679a024b7262be4c4"
+    },
+    {
+      "Path": "DEV/tests/Run-Pesto21Tests.ps1",
+      "SHA256": "beb916e060587ac468bca5b7715af208ec7343bf28e1aee87025f1387348a1ee"
+    }
+  ]
+}

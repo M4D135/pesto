@@ -1,0 +1,26 @@
+{
+  "ObservedUtc": "2026-10-13T08:05:42.539274+00:00",
+  "Target": "PESTO-W11-TEST via existing VirtualBox host SSH",
+  "State": "UNAVAILABLE",
+  "Attempts": [
+    {
+      "Path": "Guest SSH through configured host jump",
+      "ExitCode": 255,
+      "Error": "Connection timed out during banner exchange"
+    },
+    {
+      "Path": "Host SSH port22",
+      "ExitCode": 255,
+      "Error": "Operation timed out"
+    }
+  ],
+  "WindowsExecution": "NOT_RUN",
+  "ChangesToHostOrVM": false,
+  "FinalHostProbe": {
+    "Utc": "2026-10-13T08:22:04.024420+00:00",
+    "Command": "ssh host hostname (read-only)",
+    "ExitCode": 255,
+    "Stdout": "",
+    "Stderr": "ssh: connect to host 192.168.1.173 port 22: Operation timed out\n"
+  }
+}

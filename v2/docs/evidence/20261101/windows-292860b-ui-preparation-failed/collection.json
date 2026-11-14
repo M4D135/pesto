@@ -1,0 +1,103 @@
+﻿{
+    "kind":  "pesto.isolated-native-update-ui-collection",
+    "fullReleaseQualification":  false,
+    "sourceCommit":  "292860b934bcdff0f1321b0839158bf38b58816e",
+    "success":  false,
+    "files":  [
+                  {
+                      "path":  "native-retry-inputs.json",
+                      "bytes":  1473,
+                      "sha256":  "f727e40596c5a9247d4f7294a7d5bc21bb56dcc7e373f8a06fb6b8240cf812ef"
+                  },
+                  {
+                      "path":  "Prepare-PestoUiRetry.ps1",
+                      "bytes":  4101,
+                      "sha256":  "97c01325f58924551ae1518d05efe2136b0008b640ab3b615ead3cbb175ecbff"
+                  },
+                  {
+                      "path":  "Start-UiRetry.ps1",
+                      "bytes":  4295,
+                      "sha256":  "252bf8b70cfccbdfc15fcb3b7b8f52f49d965548704667c008301f17b19c8c67"
+                  },
+                  {
+                      "path":  "ui-retry-preparation-start.json",
+                      "bytes":  421,
+                      "sha256":  "b2a0a80b78b97a5570f4ee7ca6e6f7248dcc530d6f2513c283871217b3eaacac"
+                  },
+                  {
+                      "path":  "ui-retry-PROD.log",
+                      "bytes":  807,
+                      "sha256":  "e6b7313facc77af0101b7a6830fc70b2ebcd1863f969e992e940a2db266f7fd6"
+                  },
+                  {
+                      "path":  "ui-retry-progress.json",
+                      "bytes":  545,
+                      "sha256":  "33284d06e961255500298d6b6f0e0ca06913f122f742f58c99a53651d8e93381"
+                  },
+                  {
+                      "path":  "ui-retry-result.json",
+                      "bytes":  662,
+                      "sha256":  "72d9b537175dc8ec22bc60a6ada16038f39c237016d43263673a440fbe42b391"
+                  },
+                  {
+                      "path":  "ui-retry-start.json",
+                      "bytes":  421,
+                      "sha256":  "b2a0a80b78b97a5570f4ee7ca6e6f7248dcc530d6f2513c283871217b3eaacac"
+                  },
+                  {
+                      "path":  "prepared-inputs/prepared.json",
+                      "bytes":  904,
+                      "sha256":  "37c7947c90885ece4ed91b6c986a5586bb2819780aa567cebf362b78f357b87b"
+                  },
+                  {
+                      "path":  "prepared-inputs/verify-log-DEV.txt",
+                      "bytes":  101,
+                      "sha256":  "ebf562a61f36c85ef5eb644d70d2aa630594ae311d978fe2b32e51dbf6621ccc"
+                  },
+                  {
+                      "path":  "prepared-inputs/verify-log-PROD.txt",
+                      "bytes":  101,
+                      "sha256":  "7666bb4bcaf4d206b49bbd04b61250b183e99b5447554dcf8617c6eb7c2a928e"
+                  },
+                  {
+                      "path":  "ui-retry-private-download-failed/Prepare-PestoUiRetry.ps1",
+                      "bytes":  3998,
+                      "sha256":  "17cb3d2ff9307581d1046101aef09e9a45e6ce4e3fd0572f8735b82c3fe88c26"
+                  },
+                  {
+                      "path":  "ui-retry-private-download-failed/Start-UiRetry.ps1",
+                      "bytes":  4295,
+                      "sha256":  "252bf8b70cfccbdfc15fcb3b7b8f52f49d965548704667c008301f17b19c8c67"
+                  },
+                  {
+                      "path":  "ui-retry-private-download-failed/ui-retry-preparation-start.json",
+                      "bytes":  421,
+                      "sha256":  "c3e9d42054d6cfb0bdec1634ddf953c175da90f66e0190b6a04ae0f2bcc04e9a"
+                  },
+                  {
+                      "path":  "ui-retry-private-download-failed/ui-retry-result.json",
+                      "bytes":  556,
+                      "sha256":  "af658408e8ea605652d418175065ecab2b336725f62c3efe00a5b072fd937219"
+                  },
+                  {
+                      "path":  "ui-retry-PROD/failure.json",
+                      "bytes":  382,
+                      "sha256":  "75ba48c719a8f6a7028542548f18fb460a0643049961941f92845819053e69f8"
+                  },
+                  {
+                      "path":  "ui-retry-PROD/runner-01-ui-init.txt",
+                      "bytes":  1255,
+                      "sha256":  "91b734930d0ddcbf8999e713913399253961046d834bf9f94c799e586786ce14"
+                  },
+                  {
+                      "path":  "ui-retry-PROD/ui-request.json",
+                      "bytes":  1253,
+                      "sha256":  "89041087e6e113f8aa8328abb9a252760f68370ef9b54758ac66b7fa56df520d"
+                  },
+                  {
+                      "path":  "ui-retry-PROD/transaction-evidence/suite.json",
+                      "bytes":  1420,
+                      "sha256":  "1b88e8eb2e344a40f5a461001226d4d3cf4ddfaf0d5566c560314493ab8d7648"
+                  }
+              ]
+}

@@ -1,0 +1,22 @@
+test_broken_receipt_link_is_refused_not_treated_as_portable (test_managed_update.ManagedUpdateTests.test_broken_receipt_link_is_refused_not_treated_as_portable) ... ok
+test_completed_crash_keeps_new_healthy_ownership_and_allows_uninstall (test_managed_update.ManagedUpdateTests.test_completed_crash_keeps_new_healthy_ownership_and_allows_uninstall) ... ok
+test_concurrent_receipt_change_refuses_recovery_without_writes (test_managed_update.ManagedUpdateTests.test_concurrent_receipt_change_refuses_recovery_without_writes) ... ok
+test_corrupt_receipt_backup_keeps_fence (test_managed_update.ManagedUpdateTests.test_corrupt_receipt_backup_keeps_fence) ... ok
+test_crash_recovery_at_every_replacement_boundary (test_managed_update.ManagedUpdateTests.test_crash_recovery_at_every_replacement_boundary) ... ok
+test_incomplete_receipt_rollback_is_recoverable_and_never_releases_fence (test_managed_update.ManagedUpdateTests.test_incomplete_receipt_rollback_is_recoverable_and_never_releases_fence) ... ok
+test_invalid_ownership_is_refused_before_any_destination_write (test_managed_update.ManagedUpdateTests.test_invalid_ownership_is_refused_before_any_destination_write) ... ok
+test_modified_owned_helper_is_not_silently_rebaseline (test_managed_update.ManagedUpdateTests.test_modified_owned_helper_is_not_silently_rebaseline) ... ok
+test_ownership_paths_require_explicit_boolean_managed_flag (test_managed_update.ManagedUpdateTests.test_ownership_paths_require_explicit_boolean_managed_flag) ... ok
+test_portable_installation_is_never_adopted_from_source (test_managed_update.ManagedUpdateTests.test_portable_installation_is_never_adopted_from_source) ... ok
+test_preparation_crash_keeps_original_receipt (test_managed_update.ManagedUpdateTests.test_preparation_crash_keeps_original_receipt) ... ok
+test_preparation_crash_missing_receipt_keeps_fence (test_managed_update.ManagedUpdateTests.test_preparation_crash_missing_receipt_keeps_fence) ... ok
+test_recovery_cannot_add_configuration_to_owned_paths_even_with_rehashed_journal (test_managed_update.ManagedUpdateTests.test_recovery_cannot_add_configuration_to_owned_paths_even_with_rehashed_journal) ... ok
+test_recovery_requires_preexisting_receipt_ownership (test_managed_update.ManagedUpdateTests.test_recovery_requires_preexisting_receipt_ownership) ... ok
+test_rollback_at_every_boundary_restores_original_receipt (test_managed_update.ManagedUpdateTests.test_rollback_at_every_boundary_restores_original_receipt) ... ok
+test_second_process_crash_during_recovery_is_itself_recoverable (test_managed_update.ManagedUpdateTests.test_second_process_crash_during_recovery_is_itself_recoverable) ... ok
+test_upgrade_detect_and_uninstall_preserve_private_and_retired_files (test_managed_update.ManagedUpdateTests.test_upgrade_detect_and_uninstall_preserve_private_and_retired_files) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 109.345s
+
+OK

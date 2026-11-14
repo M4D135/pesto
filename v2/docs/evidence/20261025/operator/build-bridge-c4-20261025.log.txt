@@ -1,0 +1,12 @@
+  Determining projects to restore...
+  Restored /workspace/scratch/bc61a0d0a686/pesto/v2/src/Pesto.Bridge/Pesto.Bridge.csproj (in 128 ms).
+  2 of 3 projects are up-to-date for restore.
+  Pesto.Core -> /workspace/scratch/bc61a0d0a686/pesto/v2/src/Pesto.Core/bin/Release/net10.0/Pesto.Core.dll
+  Pesto.Bridge -> /workspace/scratch/bc61a0d0a686/pesto/v2/src/Pesto.Bridge/bin/Release/net10.0/Pesto.Bridge.dll
+  Pesto.Bridge.Tests -> /workspace/scratch/bc61a0d0a686/pesto/v2/tests/Pesto.Bridge.Tests/bin/Release/net10.0/Pesto.Bridge.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:06.44

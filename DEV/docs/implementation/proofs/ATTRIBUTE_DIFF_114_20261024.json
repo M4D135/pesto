@@ -1,0 +1,191 @@
+{
+  "Schema": 1,
+  "Section": "AttributeDiff114Preflight",
+  "Point": 114,
+  "Utc": "2026-10-24T14:50:51Z",
+  "Platform": "Linux 6.17.0-1026-nvidia",
+  "PowerShell": "7.6.7",
+  "CLR": ".NET 10.0.13",
+  "HostExecutable": "/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh",
+  "BuildHash": "386201798003bc123551e149050e4c30b61c9c43",
+  "WindowsADExecuted": false,
+  "UIExecuted": false,
+  "VMExecuted": false,
+  "ProductRuntimeUsed": false,
+  "Limits": "Exécution locale sous PowerShell 7.6.7 (.NET 10.0.13), runtime non produit : le produit cible Windows PowerShell 5.1 x64 et .NET Framework 4.7.2. Aucun appel AD, registre, réseau ou machine virtuelle. Seule Test-PestoPackage (wad/Pesto-Integrity.ps1) est doublée, dans un paquet recopié hors sac, sans quoi aucun contrôle ne serait jouable hors Windows : Pesto.exe est factice dans ce sac. Get-PestoAttributeChanges, Assert-PestoAttributeChanges, New-PestoAttributeProposal, New-PestoAuditExport et New-PestoIntegrationResult sont les fonctions réelles du produit, chargées depuis wad/Pesto-Contracts.ps1, wad/Pesto-Extensions.ps1, wad/Pesto-Enterprise.ps1, wad/Pesto-Journal.ps1 et integrations/Pesto.Optional.psm1. La règle permanente de la session interdit tout test en machine virtuelle ou labo : aucun n'a été lancé, la mention « les tests VM sont désormais autorisés » du catalogue ne l'emporte pas sur la règle.",
+  "GapClosed": {
+    "Id": "evaluation-du-diff-sans-consommateur-et-gardes-plus-faibles-que-le-moteur",
+    "Observed": "Le catalogue annonçait le point 114 implémenté et validé, et l'évaluation du diff d'attributs reposait sur New-PestoAttributeProposal (integrations/Pesto.Optional.psm1). Cette fonction n'avait aucun consommateur dans le produit : aucune suite, aucun script, aucune commande ne l'appelait, et rien ne confrontait jamais son aperçu aux gardes du moteur. Vérification faite, ses gardes étaient plus faibles que celles du moteur sur trois points : un diff vide était accepté (le moteur refuse « Diff vide. »), deux demandes homonymes se fondaient en une seule ligne sans refus, et les lignes produites n'avaient pas le champ ReferenceGuid que Assert-PestoAttributeChanges exige, donc le plan aurait refusé ce que l'opérateur avait approuvé. New-PestoAuditExport refusait en outre Mode='Attributes', le mode que le moteur rend lui-même : le résultat de l'extension ne pouvait être exporté.",
+    "Impact": "L'opérateur approuvait un aperçu que le plan refuserait après remise du fichier : le refus tombait sur la cible, plus tard, et non avant la remise. Et le résultat d'une exécution attributs ne pouvait être remis au collecteur d'audit de l'organisation.",
+    "Fix": "New-PestoAttributeProposal rend désormais la forme fermée que le moteur exige (quatre champs dont ReferenceGuid), refuse le diff vide par « Un à trois changements attendus. », refuse un membre demandé deux fois, et New-PestoAuditExport accepte le mode Attributes du moteur. Nouveau consommateur integrations/Test-PestoAttributeDiff.ps1 : il charge les gardes réelles du moteur, produit l'aperçu et le diff du moteur, les compare ligne à ligne, fait juger les deux jeux de lignes par Assert-PestoAttributeChanges lui-même, et refuse si les deux jambes divergent ; la référence managedBy reste à épingler par l'étape du plan, seule autorisée à lire le répertoire. Nouvelle suite Run-AttributeDiff114PreflightTests.ps1 (vingt et un cas, consommateur lancé en processus enfant) et nouveau harnais Run-AttributeDiff114PreflightMutationTests.ps1 (quinze mutations, soixante-quatre assertions). Run-OptionalIntegrationsTests.ps1 passe de neuf à douze cas et joue l'aperçu contre la garde du moteur, et l'export d'audit sur un résultat réellement construit par New-PestoIntegrationResult."
+  },
+  "Suite": {
+    "File": "DEV/tests/Run-AttributeDiff114PreflightTests.ps1",
+    "Command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-AttributeDiff114PreflightTests.ps1",
+    "Result": "AttributeDiff114Preflight: 21 passed, 0 failed. Real integrator consumer, engine guards and preview compared; no AD call. (sortie 0)",
+    "PreviousCount": "0 cas : l'aperçu de l'intégrateur n'était joué par aucune suite et n'avait aucun consommateur",
+    "Method": "Le consommateur est lancé comme un vrai processus enfant (pwsh séparé) contre un paquet recopié hors sac contenant les fichiers réels du moteur ; seule Test-PestoPackage est doublée. Chaque cas vérifie le code de sortie du processus, la cohérence du ExitCode du rapport, l'absence de tout caractère non ASCII en sortie (les messages sont échappés en \\uXXXX), les drapeaux WindowsExecuted/ADExecuted/RegistryWritten/PolicyChanged à faux, et qu'aucune valeur candidate ne fuite ni dans la sortie ni dans le rapport (canari unique par cas).",
+    "Cases": [
+      "Accepted diff names the attributes the operator is about to hand over",
+      "A managedBy reference stays pending for the plan step that alone may read AD",
+      "A request equal to the current state is refused before the handover",
+      "A fourth change is refused by the preview guard",
+      "A duplicated member in the request document is refused on the text",
+      "An attribute outside the three allowed is refused without echoing its name",
+      "A managedBy value without a distinguished name is refused by both legs",
+      "An oversized value is refused before any plan is written",
+      "A control character in a value never reaches the report",
+      "A preview that drops the reference field is refused as divergent",
+      "A preview that rewrites the value it claims to replace is refused as divergent",
+      "A preview that no longer counts changes is caught by the engine guard",
+      "A relative candidate path is refused before any read",
+      "An empty candidate document is refused",
+      "An oversized candidate document is refused",
+      "A candidate document that is not a structured object is refused",
+      "A relative installation path is refused",
+      "An unverified package is refused before any evaluation",
+      "A missing or malformed object identity is refused",
+      "The report is never silently overwritten",
+      "The report never carries the candidate values"
+    ],
+    "CaseCount": 21,
+    "NotCovered": "La garde « attribut demandé deux fois » de l'aperçu n'est pas atteignable localement : PowerShell 7 dédoublonne les membres homonymes à la désérialisation et PSObject.Properties.Add ignore le doublon. Elle reste une défense en profondeur pour Windows PowerShell 5.1, qui les conserve ; le consommateur refuse lui-même les membres homonymes sur le texte du document, ce que le cas correspondant vérifie."
+  },
+  "VacuousCasesFound": {
+    "Id": "rapport-de-controle-qui-ne-verifiait-rien-et-tableau-vectorise",
+    "File": "DEV/tests/Run-AttributeDiff114PreflightTests.ps1",
+    "Observed": "Deux leurres ont été corrigés au premier passage. La jambe du moteur produisait une seule ligne vectorielle (ChangeCount 1, Attributes « description location ») parce que Get-PestoAttributeChanges rend son tableau par « return ,$changes » : l'entourer de @() comptait le tableau pour une ligne, et le contrôle aurait déclaré divergent un diff conforme. Un cas utilisait ensuite Require-Diff sur une propriété inexistante du rapport, donc toujours vraie, et Add-Member laissait l'objet fuir dans la sortie de l'auxiliaire.",
+    "Impact": "Le contrôle aurait pu comparer le diff de l'aperçu à une ligne factice et se déclarer d'accord avec le moteur ; un cas qui ne vérifie rien passe même quand la garde est supprimée.",
+    "Fix": "Les lignes du moteur sont rendues élément par élément (pipeline ForEach-Object) avant comparaison, l'assertion porte sur la sortie brute réellement capturé (RawText), et Add-Member est suivi de Out-Null.",
+    "Proof": "Les mutants 'Row by row comparison no longer performed' et 'Engine guard no longer judges the preview rows' meurent désormais sur les cas nommés ; sans la mutation, le témoin passe."
+  },
+  "MutationHarness": {
+    "File": "DEV/tests/Run-AttributeDiff114PreflightMutationTests.ps1",
+    "Command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-AttributeDiff114PreflightMutationTests.ps1",
+    "Result": "AttributeDiff114PreflightMutations : 64/64 PASS (sortie 0)",
+    "Copy": "Le harnais ne copie que wad/Pesto-Contracts.ps1, wad/Pesto-Extensions.ps1, integrations/Pesto.Optional.psm1, integrations/Test-PestoAttributeDiff.ps1 et la suite elle-même dans un dossier temporaire, et vérifie que l'arborescence obtenue ne dérive pas de cette liste blanche. cfg.json n'est jamais copié ni lu.",
+    "Rule": "Un mutant est tué seulement si la suite sort avec un code non nul ET fait entendre le message du cas attendu : un échec venu d'ailleurs ne compte pas.",
+    "Mutations": [
+      "Both legs no longer confronted",
+      "Engine guard no longer judges the engine rows",
+      "Engine guard no longer judges the preview rows",
+      "Row by row comparison no longer performed",
+      "Refusals no longer closed before leaving the control",
+      "Duplicated members no longer refused on the text",
+      "Oversized candidate document accepted",
+      "Package integrity no longer required",
+      "Object identity no longer validated",
+      "Handed-over report silently overwritten",
+      "Exit code no longer follows the verdict",
+      "Preview whitelist widened",
+      "Preview no longer requires a distinguished name",
+      "Preview no longer counts changes",
+      "Preview rows no longer carry the reference field"
+    ],
+    "GuardFamilies": [
+      "Confrontation : accord des deux jambes, comparaison ligne à ligne, garde du moteur appliquée aux lignes de l'aperçu comme à celles du moteur",
+      "Fermeture de la sortie : texte des refus limité aux formes que les gardes émettent elles-mêmes, aucun nom d'attribut ni valeur candidate hors du contrôle",
+      "Lecture des documents : membres homonymes refusés sur le texte, taille lue, identité de l'objet, paquet vérifié",
+      "Remise : rapport en CreateNew jamais remplacé en silence, code de sortie cohérent avec le verdict",
+      "Aperçu intégrateur : liste fermée des trois attributs, DN exigé pour managedBy, décompte un à trois, champ ReferenceGuid porté par chaque ligne"
+    ],
+    "SurvivorsExamined": "La garde de longueur de valeur de l'aperçu n'a pas de mutant propre : le moteur refuse la même valeur de son côté et le cas resterait vert, ce qui est le comportement attendu (défense en profondeur), pas une garde inopérante. Il en va de même du refus des membres homonymes côté aperçu, non atteignable sous PowerShell 7."
+  },
+  "TargetedSuites": [
+    {
+      "file": "tests/Run-AttributeDiff114PreflightTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-AttributeDiff114PreflightTests.ps1",
+      "result": "AttributeDiff114Preflight: 21 passed, 0 failed. (sortie 0)"
+    },
+    {
+      "file": "tests/Run-AttributeDiff114PreflightMutationTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-AttributeDiff114PreflightMutationTests.ps1",
+      "result": "AttributeDiff114PreflightMutations : 64/64 PASS (sortie 0)"
+    },
+    {
+      "file": "tests/Run-OptionalIntegrationsTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-OptionalIntegrationsTests.ps1",
+      "result": "OptionalIntegrations: 12 passed, 0 failed (sortie 0) ; neuf cas avant, trois ajoutés sur l'aperçu confronté au moteur et l'export d'audit du résultat attributs"
+    },
+    {
+      "file": "tests/Run-AttributeEntry114Tests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-AttributeEntry114Tests.ps1",
+      "result": "AttributeEntry114: 34 passed, 0 failed. (sortie 0)"
+    },
+    {
+      "file": "tests/Run-ExtensionEffectsTests.ps1",
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tests/Run-ExtensionEffectsTests.ps1",
+      "result": "ExtensionEffects: 57 passed, 0 failed. (sortie 0)"
+    }
+  ],
+  "Harness": {
+    "Command": "cd DEV && python3 tools/run_tests.py --root . --platform Portable --pwsh /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh --timeout 300",
+    "Counts": {
+      "PASS": 59,
+      "FAIL": 0,
+      "SKIP": 21
+    },
+    "PreviousCounts": {
+      "PASS": 57,
+      "FAIL": 0,
+      "SKIP": 21
+    },
+    "NewSuites": [
+      {
+        "name": "AttributeDiff114Preflight",
+        "status": "PASS"
+      },
+      {
+        "name": "AttributeDiff114PreflightMutations",
+        "status": "PASS"
+      }
+    ],
+    "ReusedSuites": [
+      {
+        "name": "OptionalIntegrations",
+        "status": "PASS",
+        "cases": 12
+      },
+      {
+        "name": "AttributeEntry114",
+        "status": "PASS",
+        "cases": 34
+      },
+      {
+        "name": "ExtensionEffects",
+        "status": "PASS",
+        "cases": 57
+      }
+    ],
+    "SummaryFile": "DEV/tests/results/20261024_143145_363225/summary.json",
+    "Note": "57 suites vertes avant, 59 après : les deux nouvelles suites s'y ajoutent. Les 21 ignorées sont les suites Windows51 ou Wpf, jamais comptées comme réussies."
+  },
+  "Validators": [
+    {
+      "command": "cd DEV && PATH=/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh:$PATH python3 tools/checks/validate_pesto.py",
+      "result": "RESULT 664 passed 0 failed; parser PowerShell 7.6.7 Core; native Windows NOT executed (661 avant : le consommateur et les deux suites sont passés au vrai parseur ; DEV/tests/pesto-portable-validation.json régénéré et engagé)"
+    },
+    {
+      "command": "cd DEV && python3 tools/refresh_manifest.py --root . --check",
+      "result": "Checked: 67 runtime components; no demos/tests/CMD/configuration. Not an author signature."
+    },
+    {
+      "command": "cd DEV && /home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh -NoProfile -NonInteractive -ExecutionPolicy Bypass -File tools/Build-PestoEngineModule.ps1 -Root . -Check",
+      "result": "tableau 'Checked Functions WorkerClosure RuntimeSHA256' = 'True 740 165 a948d92aa147f2566c2840305a2a0a47a03655b56e9fcb…' (sortie 0, empreinte identique au sceau engagé)"
+    }
+  ],
+  "Registration": "Les deux suites sont déclarées deux fois, comme toutes les autres : DEV/tests/suites.json (plateforme Portable, profil Complet) et la liste $suites de DEV/tests/Run-AllTests.ps1. test_spark_h01.py vérifie que les deux listes restent identiques (9 passed), et le lanceur natif refuse toute Run-*.ps1 absente de sa liste.",
+  "Seal": "Aucun fichier scellé n'a été modifié : les changements vivent dans DEV/integrations, DEV/tests et DEV/docs. Le moteur généré wad/Pesto.Engine.Runtime.ps1, package.json et Pesto.exe sont intacts (Build-PestoEngineModule.ps1 -Check : True, même RuntimeSHA256) ; integrations/ n'est pas dans Get-PestoRuntimeFiles, donc le manifeste n'avait pas à être régénéré.",
+  "Remaining": [
+    "Qualification spécifique de cette évaluation sur Windows et AD réel : ce que le moteur refuse réellement sur la cible quand l'aperçu a été approuvé, droits réels d'écriture sur les trois attributs, résolution effective de la référence managedBy par le répertoire au moment du plan.",
+    "Portes qui exigent Windows et restent doublées ici : garde de plateforme, intégrité du paquet (Pesto.exe factice dans le sac de test), import du module ActiveDirectory, ACL du dossier de reçus, MachineGuid du registre et magasins ProgramData.",
+    "Garde « attribut demandé deux fois » de l'aperçu non atteignable sous PowerShell 7 (dédoublonnage à la désérialisation) : défense en profondeur pour Windows PowerShell 5.1, à confirmer sur la plateforme cible ; le consommateur refuse déjà les membres homonymes sur le texte.",
+    "Les tests VM et labo n'ont pas été lancés : la règle permanente de la session les interdit, la mention du catalogue ne les autorise pas ici."
+  ],
+  "PythonSuites": [
+    {
+      "command": "cd DEV && PESTO_PWSH=/home/m4d135/pesto/autonomy-20261016/tools-local/pwsh/pwsh python3 -m pytest tests -q",
+      "result": "624 passed, 6 skipped, 535 subtests passed in 474.43s"
+    }
+  ]
+}

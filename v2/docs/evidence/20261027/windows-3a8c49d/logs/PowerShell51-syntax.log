@@ -1,0 +1,21 @@
+{"schema":1,"powershellMajor":5,"powershellMinor":1,"scripts":[{"name":"directory","errors":[]},{"name":"mutation","errors":[]},{"name":"mutation-bootstrap","errors":[]},{"name":"reservation","errors":[]},{"name":"receipt-evidence","errors":[]},{"name":"remote-windows","errors":[]},{"name":"entra-diagnostic","errors":[]},{"name":"entra-leave","errors":[]},{"name":"entra-inspection","errors":[]},{"name":"restart-local","errors":[]},{"name":"restart-remote","errors":[]},{"name":"rename-fallback","errors":[]},{"name":"audit","errors":[]},{"name":"attributes","errors":[]},{"name":"offline-local","errors":[]},{"name":"offline-apply","errors":[]},{"name":"offline-observe","errors":[]},{"name":"acknowledgement-activity","errors":[]}],"scriptsExecuted":false,"adQualified":false,"success":true}
+{"parserExitCode":0,"stderrCharacters":0,"scriptCount":18,"expectedScriptCount":18,"namesMatch":true,"stderr":""}
+SYNTAXE directory : 10768 caractères ; SHA256 UTF8 05a858810e9b0bd41f513d71ed53e64fc5bcc26456da713de606bc30d2fe6ed4
+SYNTAXE mutation : 38198 caractères ; SHA256 UTF8 e2451bba5bf084326a5ee2a74808e95e40a178c51ba1feadc72596ab760266b8
+SYNTAXE mutation-bootstrap : 692 caractères ; SHA256 UTF8 318155fa6977476a8e84dac2f8aff2b046d842f561359ab3e74405c3ba0ac306
+SYNTAXE reservation : 16473 caractères ; SHA256 UTF8 36ee4838bce5dfd5490bd1255e4e0973f36b69406801fff103dd288dec34fc7e
+SYNTAXE receipt-evidence : 6220 caractères ; SHA256 UTF8 7cb03d14bd9e0d3f1b941fa929ec76f592036474e7b8c0fb4783ebba6920d1d3
+SYNTAXE remote-windows : 5580 caractères ; SHA256 UTF8 44cfec1c6248f8f4f44d9e0fe4d38f83b1e914790f4f0c402dd19ae9392e0137
+SYNTAXE entra-diagnostic : 1837 caractères ; SHA256 UTF8 25d3f7a995f3cfddb18a133e624c0e19de4c1f53c469fdd830eb559b20c74d4b
+SYNTAXE entra-leave : 10553 caractères ; SHA256 UTF8 781b187ba3619c5a5e95dc195fe66bf166bab6fe1871e539db5d88c86c87349c
+SYNTAXE entra-inspection : 10552 caractères ; SHA256 UTF8 e034c86ec2664cc908697d24d6c12e951559ec1315cfffd3097fd0f491cbf0c4
+SYNTAXE restart-local : 3384 caractères ; SHA256 UTF8 f4fe79c9b6b57213d9104ddec3597e6dfa9ecc1e6d38fa878f8f661b538d94a1
+SYNTAXE restart-remote : 4335 caractères ; SHA256 UTF8 1a893957558081a139d96ee220dd06ce1a90cc9e681a5f2a751310b25f530493
+SYNTAXE rename-fallback : 1737 caractères ; SHA256 UTF8 bce3420c2c5b33aff41a11d5985bc12fe9ee8dbd1f309cff0de8ac983db31f91
+SYNTAXE audit : 1158 caractères ; SHA256 UTF8 7ce1f91e2bb3f27687e22edb148d13b5317825e9ceabc9eca21e82d019b8fe5d
+SYNTAXE attributes : 12874 caractères ; SHA256 UTF8 cf598b564f2aa96715d10adc1355fedb477fb5991e60c336288c9abb65a470e0
+SYNTAXE offline-local : 4648 caractères ; SHA256 UTF8 2017a90a8bb9aa1cd443a8482f20684f949a8ecd577e05238dfef0ad648103cb
+SYNTAXE offline-apply : 10777 caractères ; SHA256 UTF8 7163abf71297f27ad41e5612f11b15b66cce2b901371731df98432f63e24b37b
+SYNTAXE offline-observe : 7230 caractères ; SHA256 UTF8 cd1ad509230aabbb44fff5ec192f8b797060d2e50fe32cbd4fe478d04fed9a28
+SYNTAXE acknowledgement-activity : 1072 caractères ; SHA256 UTF8 4cbc74b51065c91f5040c7fe97b79ad2403dfa378ac1debd8dda8e92e5c90905
+18/18 scripts compilés analysés par Windows PowerShell 5.1 ; aucune exécution de script métier, aucune qualification AD.

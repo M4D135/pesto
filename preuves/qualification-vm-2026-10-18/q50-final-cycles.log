@@ -1,0 +1,58 @@
+clic : Fermer
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+clic : #NavHome (Accueil)
+clic : #NavHistory (Historique)
+clic : #NavLogs (Journal)
+clic : #NavSettings (Paramètres)
+clic : #NavHome (Accueil)
+clic : #NavRename (Renommer)
+clic : #BtnReadComputer (Lire le poste)
+Recette GUI bloquée : écran de connexion présent dans cette session. Déverrouiller la console.
+At C:\PestoQual_20261018\pilot\pilote.psm1:13 char:105
++ ... ession }) { throw 'Recette GUI bloquée : écran de connexion présent d ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Recette GUI blo...ler la console.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Recette GUI bloquée : écran de connexion présent dans cette session. Déverrouiller la co 
+   nsole.
+ 
+
+

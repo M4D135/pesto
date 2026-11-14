@@ -1,0 +1,10 @@
+& : The term 'C:\PestoAudit20261013\ui-final\tests\Run-HomeDashboardTests.ps1' is not recognized 
+as the name of a cmdlet, function, script file, or operable program. Check the spelling of the 
+name, or if a path was included, verify that the path is correct and try again.
+At C:\PestoAudit20261013\ui-final\run-isolated.ps1:17 char:3
++ & ($PSScriptRoot+'\tests\Run-'+$Suite+'Tests.ps1') @arguments
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\PestoAudit20...hboardTests.ps1:String) [], Pare 
+   ntContainsErrorRecordException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 

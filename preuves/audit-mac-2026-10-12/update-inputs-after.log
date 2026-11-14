@@ -1,0 +1,13 @@
+test_cli_refuses_invalid_manifest_without_traceback_or_changes (__main__.UpdateInputTests.test_cli_refuses_invalid_manifest_without_traceback_or_changes) ... ok
+test_downgrade_check_rejects_nonobject_manifest (__main__.UpdateInputTests.test_downgrade_check_rejects_nonobject_manifest) ... ok
+test_installed_entries_must_be_objects (__main__.UpdateInputTests.test_installed_entries_must_be_objects) ... ok
+test_installed_hash_must_be_string (__main__.UpdateInputTests.test_installed_hash_must_be_string) ... ok
+test_installed_manifest_must_be_object (__main__.UpdateInputTests.test_installed_manifest_must_be_object) ... ok
+test_installed_version_must_be_string (__main__.UpdateInputTests.test_installed_version_must_be_string) ... ok
+test_local_receipt_must_be_object_and_is_preserved (__main__.UpdateInputTests.test_local_receipt_must_be_object_and_is_preserved) ... ok
+test_source_manifest_and_entries_must_be_objects (__main__.UpdateInputTests.test_source_manifest_and_entries_must_be_objects) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.173s
+
+OK

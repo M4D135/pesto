@@ -1,0 +1,52 @@
+{
+  "version": "2.0.9",
+  "sourceCommit": "ee40af18458ae0bb604f02665a6f4e2df57d7378",
+  "runId": "41284549253",
+  "runAttempt": "1",
+  "assets": {
+    "Pesto_V2_DEV_2.0.9.zip": {
+      "bytes": 386593486,
+      "sha256": "f58cee11f9f3232540bb075342194f888ecc3f82c78571b889a9e0f66091672a"
+    },
+    "Pesto_V2_PROD_2.0.9.zip": {
+      "bytes": 370532742,
+      "sha256": "605052194e31db5dc48af50384a0596034ab55fb6397662be73804f8ec94eb34"
+    },
+    "Pesto_V2_Windows_evidence_2.0.9.zip": {
+      "bytes": 4121087,
+      "sha256": "33f979dfb569750356e57c90c1106d77fc57d1192deab4e144072bf670a634ae"
+    },
+    "release-manifest.json": {
+      "bytes": 3240,
+      "sha256": "bc6dcb83a1bc6cb0ee5f80362208c1b84dc2929530e1d494e4da4acdf4738a20"
+    },
+    "SHA256SUMS": {
+      "bytes": 369,
+      "sha256": "02812ed8354b5038fa9cbb66382912b9684e0bdaa60ecf65a08ada7dd77d3ad0"
+    }
+  },
+  "channels": {
+    "PROD": {
+      "executableSha256": "885c693cd863008a96aa31d4835d863aecf6f412210664faafc6bf5d13833b44",
+      "packVerified": true,
+      "noDistributedCfgJson": true,
+      "committedSourceFilesCompared": 65,
+      "sourceFilesByteIdentical": 65,
+      "sourceFilesOnlyLineEndingsDiffer": 0
+    },
+    "DEV": {
+      "executableSha256": "885c693cd863008a96aa31d4835d863aecf6f412210664faafc6bf5d13833b44",
+      "packVerified": true,
+      "noDistributedCfgJson": true,
+      "committedSourceFilesCompared": 515,
+      "sourceFilesByteIdentical": 141,
+      "sourceFilesOnlyLineEndingsDiffer": 374
+    }
+  },
+  "adQualified": false,
+  "labHandoff": {
+    "manifestSha256": "a319c4cc83f46c20cbd66605cf540404225011ad37a90b601734f0869e86a571",
+    "fileCount": 234,
+    "allDownloadedInputsMatch": true
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "Result": "PASS",
+  "Cases": 20,
+  "Scope": "Pesto loader and pure primitives on Mac PowerShell 7.4.20; real Common0.2 DLLs in an isolated fixture",
+  "LockProvenance": "Synthetic fixture lock with placeholder commit, not a reviewed release lock",
+  "WindowsExecuted": false,
+  "WpfExecuted": false,
+  "FinalConsumerIntegration": "Pending the canonical reviewed commit and exact release lock"
+}

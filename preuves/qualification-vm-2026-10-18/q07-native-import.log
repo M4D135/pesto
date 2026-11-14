@@ -1,0 +1,8 @@
+clic : #Import (Importer une configuration)
+Filename control class ComboBoxEx32
+Filename control class ComboBox
+Filename control class Edit
+Import message : Configuration importée et syntaxiquement valide. Vérifiez les valeurs, puis cliquez sur Valider, sauvegarder et continuer. Aucun accès AD réalisé.
+Open dialogs remaining 1
+capture C:\PestoQual_20261018\preuves\q07-native-import.png 1730x960
+

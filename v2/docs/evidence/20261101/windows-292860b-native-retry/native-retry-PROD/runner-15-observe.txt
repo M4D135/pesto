@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.native-update-observation",
+  "scenario": "interruption",
+  "stage": "install",
+  "transactionId": "907dbc2f566e4a91b8856801f8b357dd",
+  "helperProcessId": 25048,
+  "helperStartUtcTicks": "639291041229530419",
+  "helperExecutableSha256": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+  "candidateExecutableSha256": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+  "journalReadPolicy": "owned-dialog-exit-or-attributed-checking-child",
+  "dialogDeadlinePolicy": "30s-from-owned-dialog-observation-through-helper-exit",
+  "success": true,
+  "interrupted": true,
+  "dialogClosed": false,
+  "checkingObserved": true,
+  "healthChildObserved": true,
+  "webViewChildObserved": true,
+  "events": [
+    {
+      "utc": "2026-11-01T04:29:04.5156420\u002B00:00",
+      "journal": {
+        "schemaVersion": 1,
+        "id": "907dbc2f566e4a91b8856801f8b357dd",
+        "installation": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\interruption\\installation",
+        "channel": "PROD",
+        "currentFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+        "nextFingerprint": "f7444b532a8c5abbb8eecfbd3d3e0f041b9eb0d70bdcb5858cc28589afe31060",
+        "currentExecutableHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "nextExecutableHash": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+        "helperHash": "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5",
+        "currentVersion": "2.0.0",
+        "nextVersion": "2.0.9",
+        "action": "install",
+        "status": "checking",
+        "createdUtc": "2026-11-01T04:28:26.2513896\u002B00:00",
+        "parentProcessId": 23676,
+        "parentStartUtc": "2026-11-01T04:26:58.0386603\u002B00:00",
+        "failure": null
+      }
+    }
+  ],
+  "descendantAttributionRefusals": [],
+  "helperHandleRetained": true,
+  "healthExecutableSha256": "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268",
+  "ownedTreeAtInterruption": [
+    {
+      "id": 13480,
+      "parentId": 25048,
+      "startUtcTicks": 639291041391248135,
+      "executable": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\interruption\\installation\\Pesto.exe"
+    },
+    {
+      "id": 7328,
+      "parentId": 13480,
+      "startUtcTicks": 639291041444977903,
+      "executable": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\interruption\\installation\\wad\\runtime\\webview2\\msedgewebview2.exe"
+    },
+    {
+      "id": 26040,
+      "parentId": 7328,
+      "startUtcTicks": 639291041445175555,
+      "executable": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\interruption\\installation\\wad\\runtime\\webview2\\msedgewebview2.exe"
+    },
+    {
+      "id": 26984,
+      "parentId": 26040,
+      "startUtcTicks": 639291041445334795,
+      "executable": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\interruption\\installation\\wad\\runtime\\webview2\\msedgewebview2.exe"
+    }
+  ],
+  "helperExitCode": -1,
+  "finalJournalStatus": "checking",
+  "helperDiagnosticCollection": {
+    "helperProcessId": 25048,
+    "helperStartUtcTicks": "639291041229530419",
+    "maximumFiles": 8,
+    "maximumBytesPerFile": 65536,
+    "maximumCandidates": 64,
+    "files": [],
+    "refusals": [],
+    "completed": true,
+    "informationalOnly": true,
+    "scannedCandidates": 0,
+    "copiedFiles": 0
+  },
+  "finishedUtc": "2026-11-01T04:29:06.2049154\u002B00:00"
+}

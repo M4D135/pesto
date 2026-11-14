@@ -1,0 +1,172 @@
+﻿Text "P" [inactif]
+Text "Pesto" #SuiteBrandLabel [inactif]
+Text "Active Directory" #SuiteBrandHint [inactif]
+Pane "" [inactif]
+  Button "Accueil" #NavHome [inactif]
+    Text "⌂" [inactif]
+    Text "Accueil" #NavHomeLabel [inactif]
+  Button "Renommer" #NavRename [inactif]
+    Text "✎" [inactif]
+    Text "Un seul poste" #NavRenameLabel [inactif]
+  Button "Plusieurs postes (file)" #NavBatch [inactif]
+    Text "▦" [inactif]
+    Text "Plusieurs postes" #NavBatchLabel [inactif]
+  Button "Ajouter au domaine" #NavJoin [inactif]
+    Text "+" [inactif]
+    Text "Ajouter au domaine" #NavJoinLabel [inactif]
+  Button "Noms disponibles" #NavNames [inactif]
+    Text "▤" [inactif]
+    Text "Noms disponibles" #NavNamesLabel [inactif]
+  Button "Historique" #NavHistory [inactif]
+    Text "◷" [inactif]
+    Text "Historique" #NavHistoryLabel [inactif]
+  Button "Journal" #NavLogs [inactif]
+    Text "≡" [inactif]
+    Text "Journal" #NavLogsLabel [inactif]
+  Button "Paramètres" #NavSettings [inactif]
+    Text "⚙" [inactif]
+    Text "Paramètres" #NavSettingsLabel [inactif]
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+    Button "" #PART_LineUpButton [inactif] [hors-ecran]
+    Button "" #PageUp [inactif] [hors-ecran]
+    Button "" #PageDown [inactif] [hors-ecran]
+    Thumb "" [inactif] [hors-ecran]
+    Button "" #PART_LineDownButton [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Button "?   Aide et raccourcis" #NavHelp [inactif] [hors-ecran]
+Text "Pesto 1.0" #UxVersion [inactif]
+Text "Windows · PowerShell" [inactif]
+Button "Réduire le menu : conserver uniquement les icônes." #SuiteNavToggle [inactif]
+Text "" #PestoPersistenceWarning [inactif] [hors-ecran]
+Text "P111301LY765002" [inactif]
+Text "labo.local" [inactif]
+Text "LABO\tech.pesto" [inactif]
+Text "" [inactif] [hors-ecran]
+Text "" [inactif] [hors-ecran]
+Text "" [inactif] [hors-ecran]
+Button "Palette de commandes" #WorkspaceButton [inactif]
+  Text "Actions · Ctrl+K" [inactif]
+Button "Audit" #BtnLog [inactif]
+  Text "Audit" [inactif]
+Button "Changer de thème" #BtnTheme [inactif]
+Button "Aide" #BtnHelp [inactif]
+  Text "?" [inactif]
+Tab "" #MainTabs [inactif]
+  TabItem "Renommer" #TabRename [inactif] [hors-ecran]
+  TabItem "Noms disponibles" [inactif] [hors-ecran]
+  TabItem "Paramètres" [inactif] [hors-ecran]
+  TabItem "Journal" [inactif] [hors-ecran]
+  TabItem "Accueil" [inactif] [hors-ecran]
+  TabItem "Historique" [inactif] [hors-ecran]
+  TabItem "Aide" [inactif] [hors-ecran]
+  TabItem "Ajouter au domaine" #TabJoin [inactif] [hors-ecran]
+Button "›" #SuiteHelpClose [inactif] [hors-ecran]
+Text "À vos côtés" [inactif] [hors-ecran]
+Pane "" [inactif] [hors-ecran]
+Text "Interventions à suivre"
+Text "3 reçu(s) valide(s), 0 illisible(s). Données locales à ce poste ; la vérification Entra reste distincte." #LedgerHint
+Edit "Rechercher une intervention" #LedgerSearch
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+ComboBox "Filtrer les interventions" #LedgerState
+  Edit "" #PART_EditableTextBox [hors-ecran]
+    ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+    ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Button "Actualiser" #LedgerRefresh
+  Text "Actualiser"
+Button "Exporter le filtre" #LedgerExport
+  Text "Exporter le filtre"
+DataGrid "Interventions enregistrées" #LedgerGrid
+  Header "" #PART_ColumnHeadersPresenter
+    HeaderItem "Date locale"
+      Text "Date locale"
+      Thumb "" #PART_LeftHeaderGripper [hors-ecran]
+      Thumb "" #PART_RightHeaderGripper
+    HeaderItem "Poste"
+      Text "Poste"
+      Thumb "" #PART_LeftHeaderGripper
+      Thumb "" #PART_RightHeaderGripper
+    HeaderItem "Nom prévu"
+      Text "Nom prévu"
+      Thumb "" #PART_LeftHeaderGripper
+      Thumb "" #PART_RightHeaderGripper
+    HeaderItem "État"
+      Text "État"
+      Thumb "" #PART_LeftHeaderGripper
+      Thumb "" #PART_RightHeaderGripper
+    HeaderItem "Entra"
+      Text "Entra"
+      Thumb "" #PART_LeftHeaderGripper
+      Thumb "" #PART_RightHeaderGripper
+    HeaderItem "Étape"
+      Text "Étape"
+      Thumb "" #PART_LeftHeaderGripper
+      Thumb "" #PART_RightHeaderGripper
+  DataItem "@{RowId=9b09f68c53c14e9c9a5eabbb622d2045; UpdatedUtc=08/10/2026 17:41:09 +00:00; UpdatedLocal=08/10/2026 19:41:09 +02:00; Computer=P111301VA765004; NewName=P111301LY765002; StatusCode=Verified; StatusLabel=✓ Windows / AD vérifié; StageLabel=État du poste vérifié; EntraLabel=Non nécessaire; Readable=True; Unresolved=False; NextAction=Contrôlez séparément l'inscription Entra si elle est concernée.; Receipt=; SearchText=P111301VA765004 P111301LY765002 ✓ Windows / AD vérifié 9b09f68c53c14e9c9a5eabbb622d2045}"
+    HeaderItem "" [hors-ecran]
+      Thumb "" #PART_TopHeaderGripper [hors-ecran]
+      Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+    Custom "08/10/2026 19:41:09 +02:00"
+      Text "08/10/2026 19:41:09 +02:00"
+    Custom "P111301VA765004"
+      Text "P111301VA765004"
+    Custom "P111301LY765002"
+      Text "P111301LY765002"
+    Custom "✓ Windows / AD vérifié"
+      Text "✓ Windows / AD vérifié"
+    Custom "Non nécessaire"
+      Text "Non nécessaire"
+    Custom "État du poste vérifié"
+      Text "État du poste vérifié"
+    Custom "" [hors-ecran]
+  DataItem "@{RowId=cea5a9018ec64d7db7b98d64611c2c78; UpdatedUtc=08/10/2026 17:35:30 +00:00; UpdatedLocal=08/10/2026 19:35:30 +02:00; Computer=P111301VA765003; NewName=P111301VA765004; StatusCode=Verified; StatusLabel=✓ Windows / AD vérifié; StageLabel=État du poste vérifié; EntraLabel=Non nécessaire; Readable=True; Unresolved=False; NextAction=Contrôlez séparément l'inscription Entra si elle est concernée.; Receipt=; SearchText=P111301VA765003 P111301VA765004 ✓ Windows / AD vérifié cea5a9018ec64d7db7b98d64611c2c78}"
+    HeaderItem "" [hors-ecran]
+      Thumb "" #PART_TopHeaderGripper [hors-ecran]
+      Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+    Custom "08/10/2026 19:35:30 +02:00"
+      Text "08/10/2026 19:35:30 +02:00"
+    Custom "P111301VA765003"
+      Text "P111301VA765003"
+    Custom "P111301VA765004"
+      Text "P111301VA765004"
+    Custom "✓ Windows / AD vérifié"
+      Text "✓ Windows / AD vérifié"
+    Custom "Non nécessaire"
+      Text "Non nécessaire"
+    Custom "État du poste vérifié"
+      Text "État du poste vérifié"
+    Custom "" [hors-ecran]
+  DataItem "@{RowId=7a31220e001e40a6a7e62e3ca8e8869b; UpdatedUtc=04/10/2026 20:42:42 +00:00; UpdatedLocal=04/10/2026 22:42:42 +02:00; Computer=PESTO-W11-TEST; NewName=V999004AAQA1006; StatusCode=Failed; StatusLabel=○ Non lancé; StageLabel=Détails dans le reçu; EntraLabel=Non demandé; Readable=True; Unresolved=False; NextAction=Aucune écriture engagée. Corrigez le contrôle puis préparez à nouveau.; Receipt=; SearchText=PESTO-W11-TEST V999004AAQA1006 ○ Non lancé 7a31220e001e40a6a7e62e3ca8e8869b}"
+    HeaderItem "" [hors-ecran]
+      Thumb "" #PART_TopHeaderGripper [hors-ecran]
+      Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+    Custom "04/10/2026 22:42:42 +02:00"
+      Text "04/10/2026 22:42:42 +02:00"
+    Custom "PESTO-W11-TEST"
+      Text "PESTO-W11-TEST"
+    Custom "V999004AAQA1006"
+      Text "V999004AAQA1006"
+    Custom "○ Non lancé"
+      Text "○ Non lancé"
+    Custom "Non demandé"
+      Text "Non demandé"
+    Custom "Détails dans le reçu"
+      Text "Détails dans le reçu"
+    Custom "" [hors-ecran]
+Button "Précédent" #LedgerPrevious [inactif]
+  Text "Précédent" [inactif]
+Button "Suivant" #LedgerNext [inactif]
+  Text "Suivant" [inactif]
+Text "1–3 sur 3 résultats filtrés / 3 reçus lus" #LedgerPage
+Text "Sélectionnez une intervention pour connaître la prochaine action." #LedgerActionHint
+Group "Détails et outils avancés"
+  Button "Détails et outils avancés" #HeaderSite
+    Text "Détails et outils avancés"
+Button "Vérifier l’état du poste" #LedgerObserve [inactif]
+  Text "Vérifier l’état du poste" [inactif]
+Button "Compte rendu" #LedgerTicket [inactif]
+  Text "Compte rendu" [inactif]
+CheckBox "Masquer poste et domaine" #LedgerRedact
+  Text "Masquer poste et domaine"
+Button "Fermer" #LedgerClose
+  Text "Fermer"

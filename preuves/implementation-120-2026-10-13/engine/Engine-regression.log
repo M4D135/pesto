@@ -1,0 +1,118 @@
+OK  PS 5.1 : parsing natif du script complet
+OK  Booléen vrai : true
+OK  Booléen vrai : TRUE
+OK  Booléen vrai : oui
+OK  Booléen vrai : 1
+OK  Booléen vrai : on
+OK  Booléen vrai : True
+OK  Booléen faux : false
+OK  Booléen faux : FALSE
+OK  Booléen faux : non
+OK  Booléen faux : 0
+OK  Booléen faux : off
+OK  Booléen faux : False
+OK  Booléen inconnu strict refusé
+OK  Booléen inconnu non strict reste faux
+OK  DNS valide
+OK  DNS sans label vide
+OK  DNS label trop long refusé
+OK  Nom source court autorisé
+OK  Nom source injectable refusé
+OK  Nom source >15 refusé
+OK  Nom généré conforme
+OK  Numéro 000 refusé
+OK  Mauvais préfixe refusé
+OK  DN OU valide
+OK  DC avant OU refusé
+OK  CN racine non OU refusé
+OK  Virgule échappée préservée dans le parent
+OK  DN malformé refusé
+OK  RDN multivalué refusé
+OK  Extraction domaine DN
+OK  Suffixe par composants autorisé
+OK  Faux suffixe DN refusé
+OK  Virgule échappée ne crée pas un faux parent
+OK  Échappement de valeur OU
+OK  Confirmation HasSucceeded=True booléen
+OK  Confirmation chaîne true refusée
+OK  Confirmation absente refusée
+OK  Confirmation multiple refusée
+OK  Masquage du champ password dans le journal
+OK  Formule CSV neutralisée
+OK  Texte CSV ordinaire conservé
+OK  Transport sans mot de passe en argument
+OK  Ancien transport secret bloqué avant COM
+OK  Résultat tâche 0 en RUNNING pas encore réussi
+OK  XML tâche à la demande sans trigger
+OK  Table : métadonnées et booléens par défaut
+OK  Ligne sans action refusée
+OK  Ligne déplacement seul valide
+OK  Hors domaine interdit un autre poste
+OK  Porte d'observation consultee avant toute mutation
+OK  Porte d'observation refusee : 96 et aucun appel de mutation
+OK  Renommage résultat none => indéterminé sans repli
+OK  Renommage résultat missing => indéterminé sans repli
+OK  Renommage résultat string => indéterminé sans repli
+OK  Renommage HasSucceeded=False => échec
+OK  Renommage confirmé
+OK  Compte de domaine du login reutilise sans nouveau prompt
+OK  Ordre preserve : preparation Entra puis renommage
+OK  Preparation Entra echouee : pas de renommage
+OK  Preparation Entra incertaine : verrou, pas de renommage
+OK  Renommage distant sans credential : refus avant dsregcmd, aucun prompt natif
+OK  Perte des droits locaux : aucun helper UAC pendant action
+OK  Jonction non elevee : code 96 sans nouveau UAC
+OK  Renommage RPC ambigu => arrêt sans repli
+OK  Refus Entra apres preparation ne provoque pas de deuxieme tentative
+OK  Simulation renommage aucune mutation
+OK  Renommage source hors périmètre interdit
+OK  Renommage local sans ComputerName ni LocalCredential
+OK  GUID source remplace : aucun renommage
+OK  OU source derivee : aucun renommage
+OK  GUID source remplace : aucun deplacement ni protection
+OK  OU source derivee : aucun deplacement
+OK  Déplacement utilise GUID et restaure protection
+OK  Déplacement déjà dans OU => sans écriture
+OK  Déplacement engagé puis refusé : 97 et protection restaurée
+OK  Déplacement RPC non confirmé => code 97 sans relance
+OK  Échec reprotection => code 32 et non succès
+OK  Déplacement protégé sans autorisation => refus
+OK  Simulation déplacement aucune écriture
+OK  OU cible hors périmètre refusée
+OK  Jonction résultat none => code 97
+OK  Jonction résultat missing => code 97
+OK  Jonction HasSucceeded=False après nom préparé => code 97
+OK  Jonction confirmée => code 10
+OK  Jonction serveur égal domaine refusée
+OK  Jonction prépare le nom local puis utilise JoinWithNewName sans ancien compte AD
+OK  Jonction nom déjà actif ne lance pas de renommage
+OK  Jonction refusée sans renommage reste refus confirmé
+OK  Préparation locale false bloque tout ajout AD
+OK  Préparation locale none bloque tout ajout AD
+OK  Préparation locale missing bloque tout ajout AD
+OK  Préparation locale string bloque tout ajout AD
+OK  Exception du renommage ne lance jamais Add-Computer
+OK  État préalable PartOfDomain bloque les deux mutations
+OK  État préalable PendingRename bloque les deux mutations
+OK  Dérive MachineId après préparation bloque la jonction
+OK  Dérive BootUtc après préparation bloque la jonction
+OK  Dérive ConfiguredName après préparation bloque la jonction
+OK  Dérive ActiveName après préparation bloque la jonction
+OK  Dérive PartOfDomain après préparation bloque la jonction
+OK  Dérive Computer après préparation bloque la jonction
+OK  Nom CIM nouveau accepté si registres et identité concordent
+OK  Reçu de préparation indisponible empêche les deux mutations
+OK  Annulation pendant reçu initial empêche la première commande
+OK  Reçu après nom préparé indisponible bloque ajout AD et reste incertain
+OK  Annulation après préparation conserve le nom et bloque ajout AD
+OK  Refus natif 5 après renommage reste partiel 97
+OK  Refus natif 1326 après renommage reste partiel 97
+OK  Refus natif 2732 après renommage reste partiel 97
+OK  Helper élevé refuse jonction avant tout effet
+OK  Configuration exemple cohérente
+OK  Domaine / DN incohérents refusés
+OK  Buffer énorme refusé sans exception de conversion
+OK  Faux mode hors domaine interdit en réel
+OK  Écriture atomique et sauvegarde du précédent
+OK  Ecriture atomique repetee sans backup (regression RC3 File.Replace)
+117/117 cas réussis. Rapport : /Users/david/Projects/pesto/preuves/implementation-120-2026-10-13/engine/Engine-regression.json

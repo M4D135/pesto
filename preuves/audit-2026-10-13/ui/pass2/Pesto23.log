@@ -1,0 +1,67 @@
+PASS Re‡u historique exact accept‚
+PASS Sch‚ma textuel refus‚
+PASS Champ secret inattendu refus‚
+PASS Identifiant de re‡u vide refus‚
+PASS Champ date sans fuseau refus‚
+PASS Chronologie impossible refus‚e
+PASS OU dans un autre domaine refus‚e
+PASS Nom futur invalide refus‚
+PASS Re‡u d'un autre pr‚fixe accept‚ (cfg.json chang‚ depuis)
+PASS Message trop volumineux refus‚
+PASS Import jonction sans inventer succŠs ou baseline
+PASS Les trois phases historiques non r‚solues sont importables
+PASS Historique d‚j… r‚solu non r‚import‚ comme en cours
+PASS Import autre PC refus‚
+PASS Import autre domaine refus‚
+PASS Import hash tronqu‚ refus‚
+PASS L import ne modifie pas sa source
+PASS Baseline locale durable avant commande
+PASS Photographie de jonction immuable
+PASS Pr‚paration ‚choue quand ‚criture durable ‚choue
+PASS Machine d‚j… dans un domaine refus‚e avant baseline
+PASS Jeton non ‚lev‚ refus‚ avant baseline
+PASS Bool‚ens sous forme de chaŒnes refus‚s avant baseline
+PASS Demande native est persist‚e et ne peut ˆtre r‚p‚t‚e
+PASS Acceptation native ne permet pas une seconde commande
+PASS Acceptation sans demande native pr‚alable refus‚e
+PASS Retour tardif de jonction ne libŠre pas la coordination
+PASS Postconditions complŠtes v‚rifiables mais pas de r‚inscription Entra suppos‚e
+PASS Ancien re‡u sans preuve de d‚marrage reste ind‚termin‚
+PASS Identit‚ du PC local diff‚rente refus‚e
+PASS Identit‚ Windows diff‚rente refus‚e
+PASS Contr“leur de domaine non certifi‚ par le test membre
+PASS Domaine Windows diff‚rent non v‚rifi‚
+PASS Nom actif pr‚c‚dent attend red‚marrage
+PASS Pas de nouveau boot d‚duit d une simple chaŒne diff‚rente
+PASS Boot ant‚rieur au re‡u refus‚
+PASS Boot avant la date de pr‚paration ne r‚sout pas la jonction
+PASS Boot sans fuseau ne r‚sout pas la jonction
+PASS Absence AD conserve l incertitude
+PASS Emplacement AD diff‚rent refuse la r‚solution
+PASS OU supprim‚e recr‚‚e de mˆme nom est rejet‚e
+PASS Compte pr‚cr‚‚ remplac‚ est rejet‚
+PASS Compte d‚j… li‚ remplac‚ est rejet‚
+PASS ChaŒne false du canal ne devient pas vraie
+PASS Canal bool‚en false reste non conforme
+PASS Sources p‚rim‚es refus‚es s‚par‚ment
+PASS Date de lecture future refus‚e
+PASS Plan de jonction reste immuable pendant d‚cision
+PASS Avant pr‚vu observ‚ montre aussi la cible de jonction
+PASS Une lecture de statut seule ne valide plus AD
+PASS Tous les nouveaux exports ‚cartent le secret sentinelle
+PASS Parcours primaire commence par lire une cible valide
+PASS Parcours primaire refuse un nom vide
+PASS Parcours primaire pr‚pare sans mutation un formulaire incomplet
+PASS Parcours primaire conserve le contr“le puis confirmation
+PASS Reprise primaire annonce uniquement le d‚placement restant
+PASS Busy ou verrou restent prioritaires devant un plan prˆt
+PASS Consultation permet la lecture mais pas ex‚cution
+PASS Instrumentation born‚e … 200 ‚chantillons
+PASS Instrumentation refuse les noms de cible et valeurs n‚gatives
+PASS R‚sum‚ calcule moyenne et percentile sans pr‚tendre au succŠs m‚tier
+PASS D‚lais erreurs et annulations restent distincts
+PASS Mesures worker et calcul ne sont pas m‚lang‚es
+PASS Lecture r‚elle du sch‚ma 3 dans un fichier fixture
+PASS Vrais XAML incluent le bouton de jonction accessible
+PASS Vrai bouton primaire conserve sa zone tactile et absence de d‚faut Entr‚e
+Rapport : C:\PestoAudit20261013\ui\reports\Pesto23.json

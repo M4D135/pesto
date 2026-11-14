@@ -1,0 +1,56 @@
+{
+  "attestation": "UNSIGNED_STATEMENT",
+  "buildSHA256": "7ba3e7d3b8d4b75a10c4eb6dd60fb68ee2b0f562eb540d16b2f17e3c40e72230",
+  "evidence": [
+    {
+      "bytes": 13788,
+      "name": "campaign.json",
+      "sha256": "91780deafd12df7e3bc28dc9ca3e11330f5f945a4f23564cc542a76589eb8e28"
+    }
+  ],
+  "guides": {
+    "docs/Pesto-1.0-Guide-administrateur.docx": "5a9c6f89a0dd5db2651dd2969f6e00cd8b272c8117cbabebc899fa19d411280f",
+    "docs/Pesto-1.0-Guide-administrateur.pdf": "ad90c9595419e1b0a6d5b01f32764c5df6de75f7d1ada8f5811d6d745690d865",
+    "docs/Pesto-1.0-Guide-technicien.docx": "3b8ee59cc8bb930e3561010290bddbcebb93cb249390e169b95a232faecc0e54",
+    "docs/Pesto-1.0-Guide-technicien.pdf": "d03aa2e57bd3fdd45008707dee616277a3fdc974f84b9209a042d3877f6c31a2"
+  },
+  "packs": [
+    {
+      "bytes": 7607164,
+      "name": "Pesto_DEV.zip",
+      "sha256": "6442ca490623a3684f7e17c75817b60b813f958f334266b450e619075cbb3cfe"
+    },
+    {
+      "bytes": 1412040,
+      "name": "Pesto_PROD.zip",
+      "sha256": "7848d5429b5ec4634507dc65c07a75bb40d1928b79a6a55f78fca46b55c46184"
+    }
+  ],
+  "provenanceKind": "inspection of supplied build and recorded compiler inputs",
+  "qualifications": {
+    "AD": "NOT_INFERRED",
+    "WPF": "NOT_INFERRED",
+    "Windows": "NOT_INFERRED"
+  },
+  "schema": 1,
+  "signature": "NOT_VERIFIED",
+  "source": {
+    "commit": "f21aede20f847a8e774ded93d9a4812a0151a471",
+    "dirty": false
+  },
+  "toolchain": {
+    "Clang": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "Inputs": {
+      "tools/launcher/Pesto-launcher.c": "93b1d9f310f6075b9e2f70fa804f33ebe47cfc9b1f3d64c841d70e2a1a21a836",
+      "tools/launcher/Pesto.manifest": "79213be8dcb79ae4859a1d9aa61ce262e018af327ded7139f52cd7e42f34999f",
+      "tools/launcher/pesto_runtime.h": "0e73a3143da8f09ff4df25b6f7abfb794b11d6b3c86c67a03f23ab45ad12d0e5",
+      "tools/launcher/pesto_sha256.h": "23dee663ebf2aad88ee45002c9c71abe87ff2fc4621b8a1610466d471bc233b8",
+      "tools/launcher/pesto_verify.h": "4583e08d7d0e39dd21e2ecd7ae64d981bc4d5f8f913eb016a348a67ac2942241",
+      "tools/version.json": "e5bd73d68dce560d34edec2efe8628b81ebcd546717bae19c871e48b677304f2",
+      "wad/Pesto.ico": "e1d9fa9e2f557138fa8076b5b04dfb39f0b208e4bb788f8f725be027ba06c47a"
+    },
+    "Lld": "Homebrew LLD 23.1.2",
+    "SHA256": "7ba3e7d3b8d4b75a10c4eb6dd60fb68ee2b0f562eb540d16b2f17e3c40e72230"
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,45 @@
+﻿{
+    "Utc":  "2026-10-18T18:10:38.6794146Z",
+    "Cycles":  60,
+    "Source":  "Production hosted window and choice table functions, genuine WPF windows/search DispatcherTimers; partial pending search on every close",
+    "AllClosedSearchTimersStopped":  true,
+    "Samples":  [
+                    {
+                        "Cycle":  10,
+                        "PrivateBytes":  136675328,
+                        "Handles":  710,
+                        "LiveWindows":  1,
+                        "LiveTimers":  1,
+                        "LiveSearches":  1,
+                        "PanelDepth":  0
+                    },
+                    {
+                        "Cycle":  20,
+                        "PrivateBytes":  133013504,
+                        "Handles":  711,
+                        "LiveWindows":  1,
+                        "LiveTimers":  1,
+                        "LiveSearches":  1,
+                        "PanelDepth":  0
+                    },
+                    {
+                        "Cycle":  40,
+                        "PrivateBytes":  133533696,
+                        "Handles":  710,
+                        "LiveWindows":  1,
+                        "LiveTimers":  1,
+                        "LiveSearches":  1,
+                        "PanelDepth":  0
+                    },
+                    {
+                        "Cycle":  60,
+                        "PrivateBytes":  133742592,
+                        "Handles":  710,
+                        "LiveWindows":  1,
+                        "LiveTimers":  1,
+                        "LiveSearches":  1,
+                        "PanelDepth":  0
+                    }
+                ],
+    "PowerShell":  "5.1.26100.6584"
+}

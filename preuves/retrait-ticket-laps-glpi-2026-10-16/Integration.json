@@ -1,0 +1,135 @@
+{
+  "Schema": 1,
+  "Suite": "Integration",
+  "HostOS": "Unix 26.4.0",
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "WPFExecuted": false,
+  "Scope": "Fonctions réelles, identité et écriture des reçus remplacées par doubles",
+  "Total": 24,
+  "Passed": 24,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "Metadata liste fermée et limite",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Plan exportable fermé et non secret",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Plan altéré, configuration et machine différents refusés",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Plan expiré refusé même avec empreinte recalculée",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Schéma plan entier uniquement même avec empreinte recalculée",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Export exclusif et UTF8 strict",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Clé idempotente restitue résultat sans deuxième appel",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Rejeu jonction conserve PreparedPlan et refuse schéma marqueur texte",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Refus96 mémorisé exige une nouvelle clé après correction explicite",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Même clé autre payload refusée sans mutation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Même clé autre machine refusée",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Interruption après marqueur interdit rejeu",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Disque refusé avant action interdit mutation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Disque refusé après action devient incertain sans rejeu",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Consultation et clés invalides refusées sans écriture",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Résultat ambigu non marqué Completed",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "T010 orchestrateur réel : Init",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "T010 orchestrateur réel : InvalidMetadata",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "T010 orchestrateur réel : Preflight",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "T010 orchestrateur réel : BeforeMutation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "T010 orchestrateur réel : AfterMutation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "CLI préparation puis plan réutilisé et clé sans masquage variable Action",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "CLI arguments différents du plan refusés avant moteur",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "CLI refus export avec exécution et lecture avec Execute",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "Suite": "Package",
+    "ExitCode": 0,
+    "TimedOut": false,
+    "Ms": 5696,
+    "Report": true
+  },
+  {
+    "Suite": "UiPresentation",
+    "ExitCode": 0,
+    "TimedOut": false,
+    "Ms": 1431,
+    "Report": true
+  }
+]

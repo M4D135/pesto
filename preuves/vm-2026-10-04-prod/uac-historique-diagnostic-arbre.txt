@@ -1,0 +1,7 @@
+﻿Pane "OK" #2
+Pane "" #20
+Pane "Pesto s'est termine avec une erreur.
+
+Consultez les journaux de wad\logs (Pesto-lanceur.log et Pesto-demarrage.log).
+
+Une fermeture ou une erreur ne prouve pas l'annulation d'une operation Windows deja engagee. Ne relancez pas une mutation sans en verifier l'etat." #65535

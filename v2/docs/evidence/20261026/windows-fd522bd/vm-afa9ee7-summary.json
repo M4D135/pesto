@@ -1,0 +1,102 @@
+{
+  "sourceCommit": "afa9ee7619ce111265bb8a0515cca44e9c6886cd",
+  "compiler": "10.0.401 macOS arm64 self-contained win-x64",
+  "executableSha256": "4b4e90f678724965d39139bd4f4bd9dd4db7121e75dd4ef1857458d921df171d",
+  "interactiveSession": true,
+  "effectiveAdmin": false,
+  "overallSuccess": false,
+  "adExecuted": false,
+  "cases": [
+    {
+      "scenario": "demo",
+      "exitCode": 0,
+      "proofSha256": "9b455b6513c95213a1be1c28be2439813a3bc180081826a370d81faa334b9ca5",
+      "success": true
+    },
+    {
+      "scenario": "configuration",
+      "exitCode": 2,
+      "proofSha256": "f3f79120a30f471325193f4e4d1586a1125b95be0412c73458d4be778f0de0cb",
+      "success": false
+    }
+  ],
+  "configuration": {
+    "success": true,
+    "checks": [
+      "parentReady",
+      "nativeExportExact",
+      "noExportTemporaryFile",
+      "nativeImportExact",
+      "importRoundTrip",
+      "invalidEncodingRejected",
+      "importCancelled",
+      "exportCancelled",
+      "packDestinationCancelled",
+      "customPackValidated",
+      "customExecutableUnchanged",
+      "freshProfileImportsDefaults",
+      "existingProfilePreserved",
+      "sourcePackUnchanged"
+    ],
+    "stage": "custom-pack",
+    "parentClosed": true,
+    "temporaryDataRemoved": true,
+    "dialogObservations": [
+      {
+        "title": "Exporter les paramètres partageables",
+        "pathRequired": true,
+        "writeAttempts": 1,
+        "stableReads": 3,
+        "clicked": true,
+        "observedLength": 113,
+        "writeAccepted": true,
+        "elapsedMs": 13916
+      },
+      {
+        "title": "Importer une configuration Pesto",
+        "pathRequired": true,
+        "writeAttempts": 1,
+        "stableReads": 3,
+        "clicked": true,
+        "observedLength": 113,
+        "writeAccepted": true,
+        "elapsedMs": 4963
+      },
+      {
+        "title": "Importer une configuration Pesto",
+        "pathRequired": true,
+        "writeAttempts": 1,
+        "stableReads": 3,
+        "clicked": true,
+        "observedLength": 116,
+        "writeAccepted": true,
+        "elapsedMs": 2051
+      },
+      {
+        "title": "Importer une configuration Pesto",
+        "pathRequired": false,
+        "writeAttempts": 0,
+        "stableReads": 0,
+        "clicked": true,
+        "elapsedMs": 1780
+      },
+      {
+        "title": "Exporter les paramètres partageables",
+        "pathRequired": false,
+        "writeAttempts": 0,
+        "stableReads": 0,
+        "clicked": true,
+        "elapsedMs": 903
+      },
+      {
+        "title": "Choisir le dossier parent : Pesto y créera un nouveau pack personnalisé complet, prêt à diffuser.",
+        "pathRequired": false,
+        "writeAttempts": 0,
+        "stableReads": 0,
+        "clicked": true,
+        "elapsedMs": 1566
+      }
+    ]
+  },
+  "limitation": "Configuration proof reported success after 14 checks, but actual exit code was 2. This campaign is not qualified. Source fd522bd makes UI thread failures invalidate that proof and records sanitized exception diagnostics."
+}

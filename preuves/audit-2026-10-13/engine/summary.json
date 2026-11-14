@@ -1,0 +1,99 @@
+{
+  "Status": "PASS",
+  "BaseCommit": "b6678c4a51749516e275835a37112c1ac3e83977",
+  "Scope": "Windows PowerShell5.1 Desktop x64, PESTO-W11-TEST, SSH session0. Isolated C:\\PestoAudit20261013\\engine copy, temporary NTFS files, local AD/CIM/registry/command doubles. No real AD read or mutation, no UAC/session GUI activation, no real preferences written. WPF controls may be parsed/instantiated by historical suites without showing application.",
+  "RuntimeExeSHA256": "e3b7790a75338e762cb67cdbb239ad67f7e34717dd0ec6a170c41febeb31adae",
+  "Environment": "environment.json",
+  "SourceManifest": "final-source-manifest.json",
+  "SuiteIndex": "suite-index.json",
+  "IndividualSuites": 23,
+  "Passed": 754,
+  "Failed": 0,
+  "Skipped": 3,
+  "SkippedDetails": [
+    "One WPF optional case each in Pesto21/22/23 without -Wpf; complementary WPF runs are in sibling ui proofs."
+  ],
+  "Notes": [
+    "Historical report fields WindowsExecuted=false/NoWindows=true describe the original local-double scope and are not accurate host metadata. environment.json and report PowerShell versions document the actual Windows5.1 execution.",
+    "Initial Start-Process records contain null ExitCode because Process.Handle was not captured before WaitForExit; individual assertions are preserved, the aggregate final runner captures its handle and exit code correctly.",
+    "Aggregate execution repeats suites already represented in the individual index; it is reported separately and not added to the754-case total."
+  ],
+  "ConfirmedFixes": [
+    {
+      "Component": "DEV/wad/Pesto-Names.ps1",
+      "Issue": "Release could delete a new owner reservation claimed between owner read and delete.",
+      "Before": "shared-release-before.json",
+      "After": "SharedNameReservation.json",
+      "Tests": 14,
+      "Mechanism": "Hold the same FileStream until deletion; FileShare.Delete prevents another read/write takeover while allowing Windows deletion under the held handle. Failed deletion never appends the name to released results."
+    },
+    {
+      "Component": "DEV/wad/support/DEBLOQUER_TOUT.cmd",
+      "Issue": "Get-Item -Stream without -Force misses Hidden files, preventing their Zone.Identifier removal.",
+      "Before": "initial/Package-unblock-before.json",
+      "After": "Package.json",
+      "Tests": 27,
+      "Owner": "silent_join"
+    }
+  ],
+  "TestHarnessRepairs": [
+    "Pesto21 and PesterRC21 initialize the verified common DLL; historical ordinal suggestion expectations explicitly select nonrandom mode.",
+    "Run-PackageTests now exercises classic native DEV/PROD layout and the shipped support block against temporary NTFS fixtures; removed expectations for obsolete Pesto.ps1/cfg.original/DEBLOQUER root paths.",
+    "Run-AllTests includes SharedNameReservation."
+  ],
+  "NotRun": [
+    {
+      "Suite": "Run-RC14Validation.ps1",
+      "Reason": "Obsolete standalone17.0.0.14 executable and inline-shell assumptions; no current cmd/CI reference found. Its parser/native/package coverage is replaced by current Package and parent native checks."
+    }
+  ],
+  "Limits": [
+    "No live SMB share contention was tested: the real shared-name worker and Windows file-sharing flags were exercised on local NTFS.",
+    "No additional AD join/rename/move was executed by this agent.",
+    "No claim about production domain rights, EDR/signature or unattended deployment outside the isolated fixtures."
+  ],
+  "Aggregate": {
+    "Build": "22F8F5C49304F67D346DB72A687D216402E0C6AA86D8BB4E67A7D62878DFABAD",
+    "SourceManifest": "source-manifest-22f8.json",
+    "SuiteCount": 31,
+    "ExitCode": 0,
+    "TimedOut": false,
+    "DurationMs": 100964,
+    "Report": "All.json",
+    "Stdout": "All.log",
+    "Stderr": "All.err",
+    "StderrBytes": 0
+  },
+  "IndividualBaseline": "Baseline b6678c4 plus corrected harnesses and shared-reservation fix; repeat aggregate22f8 and final UI-only targeted checks are separately attributed below.",
+  "FinalTargeted": {
+    "ExeSHA256": "e3b7790a75338e762cb67cdbb239ad67f7e34717dd0ec6a170c41febeb31adae",
+    "SourceManifest": "final-source-manifest.json",
+    "Passed": 70,
+    "Failed": 0,
+    "Suites": [
+      {
+        "Suite": "Package",
+        "Passed": 27,
+        "Failed": 0,
+        "Report": "Package.json",
+        "SHA256": "43f1142dd3b95b5cea113cf73df6592e381b225acea07aec98d7608762dd41d2"
+      },
+      {
+        "Suite": "UiPresentation",
+        "Passed": 43,
+        "Failed": 0,
+        "Report": "UiPresentation.json",
+        "SHA256": "80796790ca8197cdd35c5083c0bac55b0bc3a349556ac37ac80fd1182bd28476"
+      }
+    ],
+    "Runner": "runner.json"
+  },
+  "ChangedFilesByThisAgent": [
+    "DEV/wad/Pesto-Names.ps1",
+    "DEV/tests/Run-SharedNameReservationTests.ps1",
+    "DEV/tests/Run-Pesto21Tests.ps1",
+    "DEV/tests/Pesto.RC21.Tests.ps1",
+    "DEV/tests/Run-PackageTests.ps1",
+    "DEV/tests/Run-AllTests.ps1"
+  ]
+}

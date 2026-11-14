@@ -1,0 +1,67 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Collisions de noms</title><style>
+:root{--bg:#f7f7f5;--card:#fff;--fg:#1d1d1b;--muted:#6b6b66;--ok:#1f7a3f;--okbg:#e5f4ea;--ko:#b3261e;--kobg:#fbe7e5;--line:#e4e3de}
+@media (prefers-color-scheme:dark){:root{--bg:#161615;--card:#1f1f1d;--fg:#ecebe6;--muted:#a3a29b;--ok:#6fd28f;--okbg:#18301f;--ko:#ff8a80;--kobg:#3a1b19;--line:#33322f}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1000px;margin:0 auto;padding:24px 16px}
+h1{font-size:24px;margin:0 0 4px}p.sub{color:var(--muted);margin:0 0 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px}
+.card h2{font-size:15px;margin:0 0 2px}.card small{color:var(--muted)}
+.big{font-size:28px;font-weight:700;margin-top:8px}.ok{color:var(--ok)}.ko{color:var(--ko)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:22px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;font-variant-numeric:tabular-nums}
+th{font-size:13px;color:var(--muted);font-weight:600}
+td.y{background:var(--kobg);color:var(--ko);font-weight:600}td.n{background:var(--okbg);color:var(--ok);font-weight:600}
+code{font-family:ui-monospace,Consolas,monospace}
+.wrap{overflow-x:auto}
+</style></head><body><main>
+<h1>Collisions de noms entre techniciens</h1>
+<p class="sub">Banc du 8 octobre 2026 sur PESTO-W11-TEST (Windows PowerShell 5.1). À chaque tour, 4 techniciens (4 processus séparés) demandent un nom au même instant, le confirment après un court délai, puis le créent dans un AD simulé (dossier partagé : un nom ne peut être créé qu'une fois). Même départ pour chaque réglage : 001 à 004 et 006 déjà pris. Collision = au moins deux techniciens se sont vu proposer le même nom.</p>
+<div class="grid">
+<div class="card"><h2>Sans protection</h2><small>premier numéro libre (avant)</small><div class="big ko">8/8</div><small>tours avec collision · 46 essai(s) supplémentaire(s)</small></div>
+<div class="card"><h2>Hasard</h2><small>tiré parmi les 5 premiers libres</small><div class="big ko">8/8</div><small>tours avec collision · 13 essai(s) supplémentaire(s)</small></div>
+<div class="card"><h2>Registre</h2><small>registre partagé des réservations</small><div class="big ok">0/8</div><small>tours avec collision · 0 essai(s) supplémentaire(s)</small></div>
+<div class="card"><h2>Registre + hasard</h2><small>registre + tirage</small><div class="big ok">0/8</div><small>tours avec collision · 0 essai(s) supplémentaire(s)</small></div>
+</div>
+<h2 style="font-size:17px;margin:18px 0 8px">Sans protection <small style="color:var(--muted);font-weight:400">— premier numéro libre (avant)</small></h2><div class="wrap"><table><tr><th>Tour</th><th>Noms proposés (numéros)</th><th>Noms créés</th><th>Collision</th><th>Essais en plus</th></tr>
+<tr><td>1</td><td><code>005 005 005 005</code></td><td><code>009 008 007 005</code></td><td class="y">OUI · 005</td><td>6</td></tr>
+<tr><td>2</td><td><code>010 010 010 010</code></td><td><code>010 013 012 011</code></td><td class="y">OUI · 010</td><td>6</td></tr>
+<tr><td>3</td><td><code>014 014 014 014</code></td><td><code>016 017 015 014</code></td><td class="y">OUI · 014</td><td>6</td></tr>
+<tr><td>4</td><td><code>018 018 018 018</code></td><td><code>021 018 020 019</code></td><td class="y">OUI · 018</td><td>6</td></tr>
+<tr><td>5</td><td><code>022 022 022 022</code></td><td><code>025 022 024 023</code></td><td class="y">OUI · 022</td><td>6</td></tr>
+<tr><td>6</td><td><code>026 026 026 026</code></td><td><code>026 028 027 029</code></td><td class="y">OUI · 026</td><td>5</td></tr>
+<tr><td>7</td><td><code>030 030 030 030</code></td><td><code>030 033 031 032</code></td><td class="y">OUI · 030</td><td>6</td></tr>
+<tr><td>8</td><td><code>034 034 034 034</code></td><td><code>036 037 034 035</code></td><td class="y">OUI · 034</td><td>5</td></tr>
+</table></div>
+<h2 style="font-size:17px;margin:18px 0 8px">Hasard <small style="color:var(--muted);font-weight:400">— tiré parmi les 5 premiers libres</small></h2><div class="wrap"><table><tr><th>Tour</th><th>Noms proposés (numéros)</th><th>Noms créés</th><th>Collision</th><th>Essais en plus</th></tr>
+<tr><td>1</td><td><code>007 009 005 009</code></td><td><code>007 010 005 009</code></td><td class="y">OUI · 009</td><td>1</td></tr>
+<tr><td>2</td><td><code>014 014 014 011</code></td><td><code>014 016 012 011</code></td><td class="y">OUI · 014</td><td>2</td></tr>
+<tr><td>3</td><td><code>008 008 017 017</code></td><td><code>008 020 017 021</code></td><td class="y">OUI · 008 017</td><td>3</td></tr>
+<tr><td>4</td><td><code>013 018 015 013</code></td><td><code>013 018 015 023</code></td><td class="y">OUI · 013</td><td>1</td></tr>
+<tr><td>5</td><td><code>026 022 022 024</code></td><td><code>026 019 022 024</code></td><td class="y">OUI · 022</td><td>1</td></tr>
+<tr><td>6</td><td><code>030 030 025 028</code></td><td><code>030 031 025 028</code></td><td class="y">OUI · 030</td><td>1</td></tr>
+<tr><td>7</td><td><code>033 029 033 034</code></td><td><code>033 029 036 034</code></td><td class="y">OUI · 033</td><td>2</td></tr>
+<tr><td>8</td><td><code>035 038 035 035</code></td><td><code>032 038 035 040</code></td><td class="y">OUI · 035</td><td>2</td></tr>
+</table></div>
+<h2 style="font-size:17px;margin:18px 0 8px">Registre <small style="color:var(--muted);font-weight:400">— registre partagé des réservations</small></h2><div class="wrap"><table><tr><th>Tour</th><th>Noms proposés (numéros)</th><th>Noms créés</th><th>Collision</th><th>Essais en plus</th></tr>
+<tr><td>1</td><td><code>005 008 007 009</code></td><td><code>005 008 007 009</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>2</td><td><code>012 011 010 013</code></td><td><code>012 011 010 013</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>3</td><td><code>016 017 014 015</code></td><td><code>016 017 014 015</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>4</td><td><code>018 021 020 019</code></td><td><code>018 021 020 019</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>5</td><td><code>023 025 024 022</code></td><td><code>023 025 024 022</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>6</td><td><code>028 027 026 029</code></td><td><code>028 027 026 029</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>7</td><td><code>031 030 032 033</code></td><td><code>031 030 032 033</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>8</td><td><code>036 034 037 035</code></td><td><code>036 034 037 035</code></td><td class="n">non</td><td>0</td></tr>
+</table></div>
+<h2 style="font-size:17px;margin:18px 0 8px">Registre + hasard <small style="color:var(--muted);font-weight:400">— registre + tirage</small></h2><div class="wrap"><table><tr><th>Tour</th><th>Noms proposés (numéros)</th><th>Noms créés</th><th>Collision</th><th>Essais en plus</th></tr>
+<tr><td>1</td><td><code>010 009 007 011</code></td><td><code>010 009 007 011</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>2</td><td><code>013 014 008 012</code></td><td><code>013 014 008 012</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>3</td><td><code>018 015 017 016</code></td><td><code>018 015 017 016</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>4</td><td><code>023 024 022 020</code></td><td><code>023 024 022 020</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>5</td><td><code>019 025 005 026</code></td><td><code>019 025 005 026</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>6</td><td><code>028 029 027 021</code></td><td><code>028 029 027 021</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>7</td><td><code>035 033 032 034</code></td><td><code>035 033 032 034</code></td><td class="n">non</td><td>0</td></tr>
+<tr><td>8</td><td><code>036 038 037 030</code></td><td><code>036 038 037 030</code></td><td class="n">non</td><td>0</td></tr>
+</table></div>
+<p class="sub">Lecture : sans protection, les 4 techniciens reçoivent toujours le même nom et 3 doivent recommencer. Le tirage au hasard réduit les nouveaux essais (46 → 13) sans supprimer les collisions à 4 techniciens. Le registre partagé les supprime : chaque technicien reçoit tout de suite un nom différent. Aucun nom n'a été créé deux fois dans aucun réglage. Sources : <code>preuves/vm-2026-10-08-reservations/collisions.ps1</code>, <code>collision-tech.ps1</code>, <code>collisions.json</code>.</p>
+</main></body></html>

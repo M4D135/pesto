@@ -1,0 +1,16 @@
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #NavHistory (Historique)
+clic : #BtnInterventions (Interventions et reprises)
+capture C:\PestoZoom20261012\preuves-release-final\08-small-footer-150.png 760x560
+Footer close not in actual viewport after scroll
+At C:\PestoZoom20261012\pilot\08-small-footer-final.ps1:10 char:17
++ ... not$within){throw 'Footer close not in actual viewport after scroll'} ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Footer close no...rt after scroll:String) [], RuntimeException
+    + FullyQualifiedErrorId : Footer close not in actual viewport after scroll
+ 
+

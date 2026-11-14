@@ -1,0 +1,608 @@
+{
+  "Passed": 100,
+  "Failed": 0,
+  "WindowsExecuted": false,
+  "Scope": "Real writer with temporary deleted-file fixture; close synchronizes terminal counters",
+  "Checks": [
+    {
+      "Iteration": 0,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-685efaf5b07344e88108a564d10b97d7.log'."
+    },
+    {
+      "Iteration": 1,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-4c23c03c26a34815960228aa10875321.log'."
+    },
+    {
+      "Iteration": 2,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-efc649bc94f9453d901bb2f457d3cc3b.log'."
+    },
+    {
+      "Iteration": 3,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-ea8b263ae0814bf4a5e292546f0d4d5e.log'."
+    },
+    {
+      "Iteration": 4,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-99ad8867d3444756bc3627414e2d1277.log'."
+    },
+    {
+      "Iteration": 5,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-ae2936cbc2e14619a179b11db50deade.log'."
+    },
+    {
+      "Iteration": 6,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-28e455480696478c94dd596d1a59a2e3.log'."
+    },
+    {
+      "Iteration": 7,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-4e15f41456bd44b2b3a94f8f9fa3be4b.log'."
+    },
+    {
+      "Iteration": 8,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-128fec09a8b440eebec499863d73e10f.log'."
+    },
+    {
+      "Iteration": 9,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-b602dfe087fc4936ba1ea5b27d015699.log'."
+    },
+    {
+      "Iteration": 10,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-7984f2d855534f03ae78433ba48d2d57.log'."
+    },
+    {
+      "Iteration": 11,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-641b14e918414ec88e2e3c2bf7c1e477.log'."
+    },
+    {
+      "Iteration": 12,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-9fb2909909be403aa7fa5416fbedd5d0.log'."
+    },
+    {
+      "Iteration": 13,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2f56395a2a3f49dfaace3149bdcb4655.log'."
+    },
+    {
+      "Iteration": 14,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-8433480857bc423aaea46c19c573a124.log'."
+    },
+    {
+      "Iteration": 15,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-470f198c1da440c0b755482b73c55585.log'."
+    },
+    {
+      "Iteration": 16,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-d310942a579b4b3297baeb44f8ab34c9.log'."
+    },
+    {
+      "Iteration": 17,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-5faa8547ce3a4bd6afebeda33d69b4a2.log'."
+    },
+    {
+      "Iteration": 18,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-1d5bcad640934a86baa191c5c7fb4786.log'."
+    },
+    {
+      "Iteration": 19,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-574f2415741a478db4edeaa82e4664c1.log'."
+    },
+    {
+      "Iteration": 20,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-66d2a18df8524b17940ce4713e880c10.log'."
+    },
+    {
+      "Iteration": 21,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-26bbf45f4f9c457cb1028008f0578124.log'."
+    },
+    {
+      "Iteration": 22,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-b9dfb1ee971e4695aeb3e1de4c7dd49d.log'."
+    },
+    {
+      "Iteration": 23,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-d67a988fe0b5409b890de3114edf76b9.log'."
+    },
+    {
+      "Iteration": 24,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-e2fa2b5f33dc4defb042815847da2d9b.log'."
+    },
+    {
+      "Iteration": 25,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2ec4a6e7d0764d518a61dc6447ab8f56.log'."
+    },
+    {
+      "Iteration": 26,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-c157ae7010b842d19e0f95f6b5223fea.log'."
+    },
+    {
+      "Iteration": 27,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-a6360fc2cd2541218b786d3b77a537f9.log'."
+    },
+    {
+      "Iteration": 28,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2e2b4d7f5562457b94b121c1e7451460.log'."
+    },
+    {
+      "Iteration": 29,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-69bbdd0dd7664771b64706ea634f165e.log'."
+    },
+    {
+      "Iteration": 30,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-6297e24848cd430d98dd4c3212e2fcb5.log'."
+    },
+    {
+      "Iteration": 31,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-7ab2078002114c9ca10abb59bc4ea63f.log'."
+    },
+    {
+      "Iteration": 32,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-3cbf465469524b52bef6969f61db848c.log'."
+    },
+    {
+      "Iteration": 33,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-1c3b3cf449b643b3a3d58a1aa4c4722e.log'."
+    },
+    {
+      "Iteration": 34,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-e533a2a1b0eb497aa75b0d10da1b3805.log'."
+    },
+    {
+      "Iteration": 35,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-fcd58408895c466bb0f74bac5f8f5432.log'."
+    },
+    {
+      "Iteration": 36,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-353691a43e34453ebeca7479f668dba8.log'."
+    },
+    {
+      "Iteration": 37,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-8cc79ced35db417daab32d15059605db.log'."
+    },
+    {
+      "Iteration": 38,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-6a720eda640c4656a2c41dbc0753cf21.log'."
+    },
+    {
+      "Iteration": 39,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2e9f1f26d43544ec9c8d18f84362eb94.log'."
+    },
+    {
+      "Iteration": 40,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-819ad73e14534f67aba59c3172c89f50.log'."
+    },
+    {
+      "Iteration": 41,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-3584a3e2b87143d1bf1112ca060e9f61.log'."
+    },
+    {
+      "Iteration": 42,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-8331b39b9c3143f38feab217a9973b13.log'."
+    },
+    {
+      "Iteration": 43,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-a3ba38979ef4477787a5d31425aa859e.log'."
+    },
+    {
+      "Iteration": 44,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-d94efd157abc469981a928e1f3204647.log'."
+    },
+    {
+      "Iteration": 45,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-230c9c99a797421d891056e5c8db7f2e.log'."
+    },
+    {
+      "Iteration": 46,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-d9005b9afe1b4af794deb17cda11bca5.log'."
+    },
+    {
+      "Iteration": 47,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-612d69a87c204336a0e22cc9879c6625.log'."
+    },
+    {
+      "Iteration": 48,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2e9ee628ece9453f80f6a212a25d7e85.log'."
+    },
+    {
+      "Iteration": 49,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2852d3be019b45709471ce82a3420b6f.log'."
+    },
+    {
+      "Iteration": 50,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-6bc9772b186049158a450226a96ca36f.log'."
+    },
+    {
+      "Iteration": 51,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-7aebd98d43de48efab17b2c19deb6c95.log'."
+    },
+    {
+      "Iteration": 52,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-f0d5c5d6f6c64fe3867155399b17ad50.log'."
+    },
+    {
+      "Iteration": 53,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-3675167353b8423fbace944c5d27f163.log'."
+    },
+    {
+      "Iteration": 54,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-59493821b0304939acee46ecf316cd57.log'."
+    },
+    {
+      "Iteration": 55,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-ee74786ffd5f4bf88c4e070a1d81829d.log'."
+    },
+    {
+      "Iteration": 56,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-1b179bd9f51842b49f2d4fb8496f4b54.log'."
+    },
+    {
+      "Iteration": 57,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-d6885f92e4124746b53b90101380d35f.log'."
+    },
+    {
+      "Iteration": 58,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-a18b78370ca24c7eae25606bc4f44908.log'."
+    },
+    {
+      "Iteration": 59,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-295d3caeb29d4371b82f4a0514e0b187.log'."
+    },
+    {
+      "Iteration": 60,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-e3124612948e42efae139f80ab7da803.log'."
+    },
+    {
+      "Iteration": 61,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-f6d7d35048a24baf849667c0b7593077.log'."
+    },
+    {
+      "Iteration": 62,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-5ae717fcb60e4e3b957847f115e17aff.log'."
+    },
+    {
+      "Iteration": 63,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-8816d83b357048b7bc2a6075c7ef4a66.log'."
+    },
+    {
+      "Iteration": 64,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-841132694443404fa7752235bc2189f9.log'."
+    },
+    {
+      "Iteration": 65,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-cffe54476799464294561974da01d485.log'."
+    },
+    {
+      "Iteration": 66,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-99268b08a266426b878a22cd96054607.log'."
+    },
+    {
+      "Iteration": 67,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-ad3a457186ca4f76b3eaaf0eff426d6e.log'."
+    },
+    {
+      "Iteration": 68,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-d45c5d60c63b439a9a5f1b27e8d75685.log'."
+    },
+    {
+      "Iteration": 69,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-104ff61c101a47bd8fa6f6474fc68b9c.log'."
+    },
+    {
+      "Iteration": 70,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-4c7894dfc0f24264b9a861303dcdaab3.log'."
+    },
+    {
+      "Iteration": 71,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-65e6dde226cb495e94c1e2428af75902.log'."
+    },
+    {
+      "Iteration": 72,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-de37c9ba52504d1595a49f45d96f1977.log'."
+    },
+    {
+      "Iteration": 73,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-bd2e7f74d579400aa952214df0990539.log'."
+    },
+    {
+      "Iteration": 74,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-0de8ac7c9d0c41b5b9b87d09c2d9255c.log'."
+    },
+    {
+      "Iteration": 75,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-2cc786af85784ac197cc962d92b3593b.log'."
+    },
+    {
+      "Iteration": 76,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-a949dbaffaa649faa7fab05f4bdb68a0.log'."
+    },
+    {
+      "Iteration": 77,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-519c7998c9b140d28898e321fa26500c.log'."
+    },
+    {
+      "Iteration": 78,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-8f22c9debf86420fa1da9c9d4b27093a.log'."
+    },
+    {
+      "Iteration": 79,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-545b321fc52a400795cf3bca70827cf1.log'."
+    },
+    {
+      "Iteration": 80,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-e7f807188141472197085c2770604f66.log'."
+    },
+    {
+      "Iteration": 81,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-e285d98b258b4707a7bd6a92ed5557a3.log'."
+    },
+    {
+      "Iteration": 82,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-cc0284012914440cb93dfd1fa77f2d81.log'."
+    },
+    {
+      "Iteration": 83,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-1b3788b7477e47739578b21638919f98.log'."
+    },
+    {
+      "Iteration": 84,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-b7fd8dd23ef9486bb33ccceae4b3d615.log'."
+    },
+    {
+      "Iteration": 85,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-b4361cf44e194351980b6c2d51c05c82.log'."
+    },
+    {
+      "Iteration": 86,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-3b881eb68e974572b62397fa9eedf4c4.log'."
+    },
+    {
+      "Iteration": 87,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-399ed6cb37344c058a9d487f0bbb48cb.log'."
+    },
+    {
+      "Iteration": 88,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-36b5bd99046d41bf9a645777bf460575.log'."
+    },
+    {
+      "Iteration": 89,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-a1548d5559f04126afd0f70020af05d9.log'."
+    },
+    {
+      "Iteration": 90,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-19c6a540347a426cb53983e029303640.log'."
+    },
+    {
+      "Iteration": 91,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-950266ed5c5d454286dc2f498bd5b0ce.log'."
+    },
+    {
+      "Iteration": 92,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-05b95acb41e245218420262e29ee268f.log'."
+    },
+    {
+      "Iteration": 93,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-a359ab633504403eaabf00784c87b82d.log'."
+    },
+    {
+      "Iteration": 94,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-af44ad1075564632aa60ddf477f419ea.log'."
+    },
+    {
+      "Iteration": 95,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-b9599736c416408898a1406bed4bf19f.log'."
+    },
+    {
+      "Iteration": 96,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-9a9231e234c548b29f4ef5a0ba18d69a.log'."
+    },
+    {
+      "Iteration": 97,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-0c8f881fb3444794b4be92a187ec3241.log'."
+    },
+    {
+      "Iteration": 98,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-ca15880e917e4d31aba7a3f8334d4142.log'."
+    },
+    {
+      "Iteration": 99,
+      "Passed": true,
+      "Dropped": 1,
+      "Error": "FileNotFoundException: Could not find file '/var/folders/xc/v6v5dly119l9sy64nyj2460m0000gn/T/pesto-writer-30aa4f5d2d5c45058282e1afb78cca23.log'."
+    }
+  ]
+}

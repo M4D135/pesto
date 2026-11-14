@@ -1,0 +1,13 @@
+  ok   Native compiled Snapshot observes the real local configuration page
+  ok   Compiled input and Export use the real version field/button/bridge handler
+  ok   Compiled settings save waits for its exact confirmation and rejects another dialog action
+  ok   Compiled Import cancellation never applies the preview
+  ok   Compiled Import confirmation applies the exact preview once
+  ok   Compiled default cancellation never selects a native destination
+  ok   Compiled positive default executes the existing confirmed button handler
+  ok   Compiled maintenance folder selection displays one actual candidate and no preparation
+  ok   Compiled Prepare chooses its candidate and paints the prepared action
+  ok   Compiled install opens the real confirmation and cancellation prevents handoff
+  ok   Compiled status uses the real state button and preserves the route
+  ok   No script/console errors and no external requests
+12/12 compiled native qualification DOM checks passed; 0 failures. Native Windows dialogs are not executed here.

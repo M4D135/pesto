@@ -1,0 +1,9 @@
+Method invocation failed because [System.Windows.Automation.SelectionPattern] does not contain a method named 
+'GetCurrentSelection'.
+At C:\PestoZoom20261012\pilot\25-uia-diagnostic.ps1:5 char:1
++ $selection.GetCurrentSelection() | ForEach-Object {[pscustomobject]@{ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : MethodNotFound
+ 
+

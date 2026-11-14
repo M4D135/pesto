@@ -1,0 +1,109 @@
+﻿Window ""
+  ToolTip "Afficher le résumé local et les accès rapides. Aucune opération sur les postes."
+    Text "Afficher le résumé local et les accès rapides. Aucune opération sur les postes."
+Pane "" #PestoZoomViewport
+  Text "P"
+  Text "Pesto" #SuiteBrandLabel
+  Text "Active Directory" #SuiteBrandHint
+  Pane ""
+    Button "Accueil" #NavHome
+      Text "⌂"
+      Text "Accueil" #NavHomeLabel
+    Button "Renommer" #NavRename
+      Text "✎"
+      Text "Un seul poste" #NavRenameLabel
+    Button "Plusieurs postes (file)" #NavBatch
+      Text "▦"
+      Text "Plusieurs postes" #NavBatchLabel
+    Button "Ajouter au domaine" #NavJoin
+      Text "+"
+      Text "Ajouter au domaine" #NavJoinLabel
+    Button "Noms disponibles" #NavNames
+      Text "▤"
+      Text "Noms disponibles" #NavNamesLabel
+    Button "Historique" #NavHistory
+      Text "◷"
+      Text "Historique" #NavHistoryLabel
+    Button "Journal" #NavLogs
+      Text "≡"
+      Text "Journal" #NavLogsLabel
+    Button "Paramètres" #NavSettings
+      Text "⚙"
+      Text "Paramètres" #NavSettingsLabel
+    ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+      Button "" #PART_LineUpButton [inactif] [hors-ecran]
+      Button "" #PageUp [inactif] [hors-ecran]
+      Button "" #PageDown [inactif] [hors-ecran]
+      Thumb "" [inactif] [hors-ecran]
+      Button "" #PART_LineDownButton [inactif] [hors-ecran]
+    ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+  Button "?   Aide et raccourcis" #NavHelp [hors-ecran]
+  Text "Pesto 1.0" #UxVersion
+  Text "Windows · PowerShell"
+  Button "Réduire le menu : conserver uniquement les icônes." #SuiteNavToggle
+  Text "" #PestoPersistenceWarning [hors-ecran]
+  Text "P111301LY765128"
+  Text "example.local"
+  Text "Compte : démonstration"
+  Text "" [hors-ecran]
+  Text "SIMULATION"
+  Text "démo · sans AD"
+  Button "Palette de commandes" #WorkspaceButton
+    Text "Actions · Ctrl+K"
+  Button "Audit" #BtnLog
+    Text "Audit"
+  Button "Changer de thème" #BtnTheme
+  Button "Aide" #BtnHelp
+    Text "?"
+  Tab "" #MainTabs
+    TabItem "Renommer" #TabRename [hors-ecran]
+    TabItem "Noms disponibles" [hors-ecran]
+    TabItem "Paramètres" [hors-ecran]
+    TabItem "Journal" [hors-ecran]
+    TabItem "Accueil" [hors-ecran]
+      Pane ""
+        Text "Accueil"
+        Text "Démonstration · aucune opération réelle" #UxHomeContext
+        Text "" #UxCacheCount [hors-ecran]
+        Text "" #UxQueueTotal [hors-ecran]
+        Text "" #UxReviewTotal [hors-ecran]
+        Button "Actualiser les informations locales" #HomeRefresh [inactif]
+        Text "Ce poste"
+        Text "Nom Windows non lu" #HomeLocalComputer
+        Text "Domaine Windows non lu" #HomeLocalDomain
+        Text "" #HomeLocalLocation
+        Text "Informations Windows réelles non lues dans ce mode." #HomeLocalRead
+        Text "" #HomeReadIssue [hors-ecran]
+        Text "État de la session" [hors-ecran]
+        Text "" #HomeActivityText [hors-ecran]
+        Text "Interventions à vérifier" [hors-ecran]
+        Text "" #HomeInterventionSummary [hors-ecran]
+        Button "Interventions à vérifier" #HomeInterventions [hors-ecran]
+        Text "Dernières interventions enregistrées"
+        Text "Résultats consignés localement, y compris pour les postes distants. Sélectionnez une ligne pour consulter son reçu."
+        Text "Les reçus réels ne sont pas chargés dans ce mode." #HomeRecentEmpty
+        List "Trois dernières interventions locales" #HomeRecentList [hors-ecran]
+        Button "Ouvrir le reçu sélectionné" #HomeOpenReceipt [inactif]
+        Button "Historique des lots" #HomeHistory
+        Text "Préparer une intervention"
+        Button "Un seul poste" #HomePrepare
+        Button "Plusieurs postes" #HomeQueue
+        Button "Ajouter au domaine" #HomeJoin
+        Button "Noms disponibles" #HomeNames
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    TabItem "Historique" [hors-ecran]
+    TabItem "Aide" [hors-ecran]
+    TabItem "Ajouter au domaine" #TabJoin [hors-ecran]
+  Button "›" #SuiteHelpClose [hors-ecran]
+  Text "À vos côtés" [hors-ecran]
+  Pane "" [hors-ecran]
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Text "Zoom"
+Button "Réduire le zoom" #PestoZoomOut
+  Text "−"
+Button "Zoom 100 pour cent. Rétablir 100 pour cent." #PestoZoomReset
+  Text "100 %"
+Button "Agrandir le zoom" #PestoZoomIn
+  Text "+"

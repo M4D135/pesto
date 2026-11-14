@@ -1,0 +1,149 @@
+{
+  "version": "17.0-RC13",
+  "utc": "2026-09-30T12:22:30.924890+00:00",
+  "source_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "scope": "Source/XML contracts only. Neither native PowerShell parser nor Windows/WPF/AD execution.",
+  "summary": {
+    "checks": 21,
+    "passed": 21,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Explicit label Retirer de la file",
+      "status": "PASS"
+    },
+    {
+      "name": "Removal visible outside advanced expander",
+      "status": "PASS"
+    },
+    {
+      "name": "Disabled tooltips retained",
+      "status": "PASS"
+    },
+    {
+      "name": "Native DataGrid deletion stays disabled",
+      "status": "PASS"
+    },
+    {
+      "name": "Button uses shared removal policy, without editing lock",
+      "status": "PASS"
+    },
+    {
+      "name": "Policy retains worker and preflight locks",
+      "status": "PASS"
+    },
+    {
+      "name": "Policy validates exact table membership",
+      "status": "PASS"
+    },
+    {
+      "name": "Selected DataRowView, never checked rows or view index",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit confirmation before removal",
+      "status": "PASS"
+    },
+    {
+      "name": "Editing discard explicitly explained",
+      "status": "PASS"
+    },
+    {
+      "name": "Remove revalidates policy after modal",
+      "status": "PASS"
+    },
+    {
+      "name": "Persist removal before reporting success",
+      "status": "PASS"
+    },
+    {
+      "name": "Restore same row and data after checkpoint failure",
+      "status": "PASS"
+    },
+    {
+      "name": "Preserve another editing target by identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Remove only deleted plan cache",
+      "status": "PASS"
+    },
+    {
+      "name": "Restore safety lock before empty queue return",
+      "status": "PASS"
+    },
+    {
+      "name": "Removal path has no AD or safety-unlock calls",
+      "status": "PASS"
+    },
+    {
+      "name": "Edit cancellation has an explicit label",
+      "status": "PASS"
+    },
+    {
+      "name": "Isolated test lexical structure and required function dependencies",
+      "status": "PASS",
+      "detail": {},
+      "lexical_tokens": 1627
+    },
+    {
+      "name": "Test launcher and master suite packaged",
+      "status": "PASS"
+    },
+    {
+      "name": "RC10 queue removal/recovery preserved outside declared startup/login/SSO changes",
+      "status": "PASS",
+      "intentional_changes": [
+        "AddToDomain",
+        "RenameComputer",
+        "Show-GPStartupWindow",
+        "Run-Queue",
+        "Set-GPLoginBusy",
+        "Complete-GPLoginError",
+        "Complete-GPLoginSuccess",
+        "Start-GPLoginAttempt",
+        "Show-LoginWindow"
+      ]
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Reintroduce edit-mode block",
+      "detected": true,
+      "failed_checks": [
+        "Button uses shared removal policy, without editing lock"
+      ]
+    },
+    {
+      "name": "Drop persistence",
+      "detected": true,
+      "failed_checks": [
+        "Persist removal before reporting success"
+      ]
+    },
+    {
+      "name": "Use view index instead of row identity",
+      "detected": true,
+      "failed_checks": [
+        "Selected DataRowView, never checked rows or view index"
+      ]
+    },
+    {
+      "name": "Lose rollback values",
+      "detected": true,
+      "failed_checks": [
+        "Restore same row and data after checkpoint failure"
+      ]
+    },
+    {
+      "name": "Bypass confirmation",
+      "detected": true,
+      "failed_checks": [
+        "Explicit confirmation before removal"
+      ]
+    }
+  ],
+  "windows_cases_supplied": 25,
+  "windows_cases_executed": false
+}

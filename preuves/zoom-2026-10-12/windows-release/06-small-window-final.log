@@ -1,0 +1,14 @@
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #PestoZoomIn (Agrandir le zoom)
+clic : #NavNames (Noms disponibles)
+capture C:\PestoZoom20261012\preuves-release-final\06-noms-small-150.png 760x560
+clic : #NavHistory (Historique)
+clic : #BtnInterventions (Interventions et reprises)
+capture C:\PestoZoom20261012\preuves-release-final\07-interventions-small-150.png 760x560
+clic : #LedgerClose (Fermer)
+clic : #PestoZoomReset (Zoom 100 pour cent. Rétablir 100 pour cent.)
+clic : #NavHome (Accueil)

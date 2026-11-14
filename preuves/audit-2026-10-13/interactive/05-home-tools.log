@@ -1,0 +1,10 @@
+clic : #NavHome (Accueil)
+capture C:\PestoAudit20261013\interactive\preuves\05-home.png 1920x1160
+élément introuvable : #BtnTools
+At C:\PestoRecette20261012\pilot\demo-commun.ps1:23 char:239
++ ...  -lt $fin); if (-not $e) { throw "élément introuvable : #$Id" }; if ( ...
++                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (élément introuvable : #BtnTools:String) [], RuntimeException
+    + FullyQualifiedErrorId : élément introuvable : #BtnTools
+ 
+

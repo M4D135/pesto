@@ -1,0 +1,73 @@
+{
+  "Scope": "Local functions and UI doubles only",
+  "PowerShell": "7.4.20",
+  "Passed": 13,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "Consultation refuses saving before reading UI or writing any file",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Restoring loaded configuration clears only its restart flag and refreshes commands",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Palette routes join through page controller",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Palette routes names through page controller",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Palette routes settings through page controller",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Palette routes help through page controller",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Palette preserves mode controller decision for single",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Palette preserves mode controller decision for batch",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "ICMP failure leaves services and rename available for the real preflight",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Computer snapshots deduplicate without losing names seen on the same GUID",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Nested scope filters at DN boundaries including escaped commas",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Site cache freshness expires on monotonic time and refuses incomplete entries",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Diagnostic covers the canonical runtime and reports modified or missing components independently",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+﻿Window "Settings" #TitleBar
+  MenuBar "System" #SystemMenuBar
+    MenuItem "System"
+  Button "Minimize Settings" #Minimize
+  Button "Restore Settings" #Maximize
+  Button "Close Settings" #Close
+Window "Settings"
+  Text "Settings" #SettingsLabel
+  Edit "Search box, Find a setting" #CommandSearchTextBox
+  Custom "" #PermanentNavigationView
+    Button "Back" #NavigationViewBackButton [inactif]
+    Window "" #PaneRoot
+      Button "PestoProd Local Account" #UserProfileControlButton
+        Image "User profile picture"
+        Text "PestoProd" #UserName
+        Text "Local Account" #UserAccount
+      Pane "" #MenuItemsScrollViewer
+        Group "" #MenuItemsHost
+          ListItem "Home"
+            Image ""
+          ListItem "System"
+            Image ""
+          ListItem "Bluetooth & devices"
+            Image ""
+          ListItem "Network & internet"
+            Image ""
+          ListItem "Personalization"
+            Image ""
+          ListItem "Apps"
+            Image ""
+          ListItem "Accounts"
+            Image ""
+          ListItem "Time & language"
+            Image ""
+          ListItem "Gaming"
+            Image ""
+          ListItem "Accessibility"
+            Image ""
+          ListItem "Privacy & security"
+            Image ""
+          ListItem "Windows Update"
+            Image ""
+      Pane "" #FooterItemsScrollViewer [hors-ecran]
+        Group "" #FooterMenuItemsHost [hors-ecran]
+    Group "" #PermanentNavigationViewBreadcrumbBar
+      Button "System"
+        Text "System"
+      Button "Display"
+        Text "Display"
+    Group ""
+      Pane "" #ItemsControlScrollViewer
+        Group "Brightness & color"
+          Text "Brightness & color"
+          Group "Night light" #SystemSettings_Display_BlueLight_AutomaticOnScheduleWithTime_ButtonEntityItem
+            Text "Night light"
+            Text "Use warmer colors to help block blue light"
+            Button "Night light" #SystemSettings_Display_BlueLight_AutomaticOnScheduleWithTime_ToggleSwitch
+            Button "Night light" #EntityItemButton
+          Group "Color profile" #SystemSettings_Display_ColorProfileSetting_EntityItem
+            Text "Color profile"
+            Text "Determine how colors appear on your screen"
+            Button "Color profile" #EntityItemButton
+          Group "HDR"
+            Text "HDR"
+            Text "More about HDR "
+              Hyperlink "More about HDR"
+            Button "HDR" #EntityItemButton
+        Group "Scale & layout"
+          Text "Scale & layout"
+          Group "Scale" #SystemSettings_Display_Scaling_ItemSizeOverride_EntityItem
+            Text "Scale"
+            Text "Change the size of text, apps, and other items"
+            ComboBox "Scale" #SystemSettings_Display_Scaling_ItemSizeOverride_ComboBox
+              ListItem "100% (Recommended)"
+                Text "100% (Recommended)"
+              ListItem "125%"
+                Text "125%"
+              ListItem "150%"
+                Text "150%"
+              ListItem "175%"
+                Text "175%"
+              ListItem "200%"
+                Text "200%"
+              ListItem "225%"
+                Text "225%"
+              Button "Close" #Light Dismiss
+            Button "Scale" #EntityItemButton
+          Text "Display resolution"
+          Text "Adjust the resolution to fit your connected display"
+          ComboBox "Display resolution" #SystemSettings_Display_Resolution_ComboBox
+            ListItem "2560 × 1440" #ContentPresenter
+              Text "2560 × 1440"
+          Text "Display orientation"
+          ComboBox "Display orientation" #SystemSettings_Display_Orientation_ComboBox [inactif]
+            ListItem "Landscape" #ContentPresenter
+              Text "Landscape"
+          Group "Multiple displays"
+            Text "Multiple displays"
+            Text "Choose the presentation mode for your displays"
+            Button "Show more settings" #EntityItemButton
+        Group "Related settings"
+          Text "Related settings"
+          Group "Advanced display" #SystemSettings_Display_AdvancedDisplaySettings_ButtonEntityItem
+            Text "Advanced display"
+            Text "Display information, refresh rate"
+            Button "Advanced display" #EntityItemButton
+          Group "Graphics" #SettingsPageGpuPreferenceView2_ButtonEntityItem
+            Text "Graphics"
+            Button "Graphics" #EntityItemButton
+        Group "Related support" [hors-ecran]
+          Text "Related support" [hors-ecran]
+          Group "Help with Display" [hors-ecran]
+            Text "Help with Display" [hors-ecran]
+            Button "Show more settings" #EntityItemButton [hors-ecran]
+            Hyperlink "Adjusting display brightness settings easily" [hors-ecran]
+              Text "Adjusting display brightness settings easily" [hors-ecran]
+            Hyperlink "Syncing refresh rates for smooth playback" [hors-ecran]
+              Text "Syncing refresh rates for smooth playback" [hors-ecran]
+            Hyperlink "Setting up dual monitors easily" [hors-ecran]
+              Text "Setting up dual monitors easily" [hors-ecran]
+            Hyperlink "Setting up multiple monitors" [hors-ecran]
+              Text "Setting up multiple monitors" [hors-ecran]
+        Group "Get help" #BonusBarEntityContactSupportGroup [hors-ecran]
+          Hyperlink "Get help" [hors-ecran]
+            Text "Get help" #BonusBarContactSupportLink [hors-ecran]
+        Group "Give feedback" #BonusBarEntityGiveFeedbackGroup [hors-ecran]
+          Hyperlink "Give feedback" [hors-ecran]
+            Text "Give feedback" #BonusBarWindowsInsiderLink [hors-ecran]
+        ScrollBar "Vertical" #VerticalScrollBar [hors-ecran]
+Pane ""

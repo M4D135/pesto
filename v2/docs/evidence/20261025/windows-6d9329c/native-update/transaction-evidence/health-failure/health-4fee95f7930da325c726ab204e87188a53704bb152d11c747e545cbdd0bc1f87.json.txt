@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "transactionId": "b7aa0f0a421f4d7e82ef5a7f8f29f943",
+  "nonce": "4fee95f7930da325c726ab204e87188a53704bb152d11c747e545cbdd0bc1f87",
+  "target": "rollback",
+  "expectedVersion": "2.0.0",
+  "expectedExecutableSha256": "bf91f1d132415efeb1794164306dc9626ff775a4568cacf8e9a56b0e90f12710",
+  "status": "passed",
+  "startedUtc": "2026-10-25T18:24:43.7546291\u002B00:00",
+  "finishedUtc": "2026-10-25T18:24:48.5754353\u002B00:00",
+  "reportedSuccess": true,
+  "accepted": true,
+  "failureCode": null,
+  "proof": {
+    "schemaVersion": 1,
+    "transactionId": "b7aa0f0a421f4d7e82ef5a7f8f29f943",
+    "nonce": "4fee95f7930da325c726ab204e87188a53704bb152d11c747e545cbdd0bc1f87",
+    "version": "2.0.0",
+    "executableSha256": "bf91f1d132415efeb1794164306dc9626ff775a4568cacf8e9a56b0e90f12710",
+    "webViewReady": true,
+    "success": true,
+    "closeReturned": true,
+    "failureCode": null
+  }
+}

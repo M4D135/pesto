@@ -1,0 +1,62 @@
+{
+  "version": "17.0-RC2",
+  "scope": "Textual comparison only against delivered RC1, not execution",
+  "functions_verified": 11,
+  "results": [
+    {
+      "function": "RenameComputer",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "047c8ebd61432c16a90d92d56dff70675f57475a568379f0f156559f0f4edff5"
+    },
+    {
+      "function": "AddToDomain",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "6803a8ab306c7c9d89dece8b7ae008e3af4ba5e3a945b13c1693c7d32c060939"
+    },
+    {
+      "function": "MoveComputer",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "d56e953160454dcb85d59b0082511e3093a578e1d2aa339508683011c1b0885b"
+    },
+    {
+      "function": "Run-Queue",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "fd4c6ccedeaad34b5bb8d9abd515a81f50e4714fb697db0c3890340a6731cf70"
+    },
+    {
+      "function": "Reset-GPSafetyLock",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "6a52d7fe65b752dd243e819ab38b6b2879a3e3b3e7aba9f653d16236fed3f04b"
+    },
+    {
+      "function": "Test-GPPipeClient",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "75f436b04fd825d289c7ebfb0659c515ea5dc49e214fd41539d7481f65107843"
+    },
+    {
+      "function": "Invoke-GPElevatedLocalChange",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "3ae8c6b72410979bb83384fe3ee9229f26cce361b574c6156b821338489f523b"
+    },
+    {
+      "function": "Complete-GPQueueItem",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "87b71eb5f228aefd18fc5940d4ef38905921f4a0c81152dd11ad294f54f4e46e"
+    },
+    {
+      "function": "Invoke-GPHybridRenameRepair",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "fd6191539877c578d1fd5204606f58cfc3714947e4ecb81b57ce972533ee08d5"
+    },
+    {
+      "function": "Get-GPStateDirectory",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "090e4df6218b2cd2aeaea41516599307b46a43b2916bf4196d4aa548f9f1022f"
+    },
+    {
+      "function": "Save-GPQueueCheckpoint",
+      "identical_after_line_ending_normalization": true,
+      "sha256_utf8": "3c31b5bec1102ab3e657318c7e268aec6549d567741e96bd1604eceaef31579a"
+    }
+  ]
+}

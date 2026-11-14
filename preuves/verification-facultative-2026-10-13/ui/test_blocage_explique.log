@@ -1,0 +1,8 @@
+test_blocked_button_opens_the_review (test_blocage_explique.BlockedStateTests.test_blocked_button_opens_the_review) ... ok
+test_each_cause_has_its_text (test_blocage_explique.BlockedStateTests.test_each_cause_has_its_text) ... ok
+test_save_without_change_no_restart (test_blocage_explique.BlockedStateTests.test_save_without_change_no_restart) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

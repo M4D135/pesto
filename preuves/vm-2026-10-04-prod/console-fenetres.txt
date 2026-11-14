@@ -1,0 +1,9 @@
+﻿
+Nom                              Pid Classe        Rect           
+---                              --- ------        ----           
+                               10124 Popup         960;538;361;54 
+                                4724 Shell_TrayWnd 0;995;1920;48  
+Pesto 1.0 | Gestion des Postes 10124 Window        230;28;1460;940
+Program Manager                 4724 Progman       0;0;1920;1043  
+
+

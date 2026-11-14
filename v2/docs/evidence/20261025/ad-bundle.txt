@@ -1,0 +1,3 @@
+OK    ActiveDirectoryBundleTests.ApplicationBundleWorksWithAFreshProfileAndPrecedesLegacyConfiguration
+OK    ActiveDirectoryBundleTests.EveryBundledFileIsPinnedAndMissingOrAlteredContentCannotFallBack
+2 réussis, 0 en échec, 2 au total.

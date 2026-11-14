@@ -1,0 +1,128 @@
+{
+  "Files": 30,
+  "Failed": 0,
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "Results": [
+    {
+      "File": "Invoke-PestoAutoJoin.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Appearance.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Async.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Authentication.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Automation.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Common.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Configuration.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Contracts.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Core.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Direct.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Directory.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Inspection.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Integrity.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Interventions.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Join.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-JoinRecovery.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Journal.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Names.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Operations.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Policy.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Preparation.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Recovery.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Review.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Safety.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Startup.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-SuiteUI.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Support.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Tables.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-UXFlow.ps1",
+      "Errors": []
+    },
+    {
+      "File": "Pesto-Workspace.ps1",
+      "Errors": []
+    }
+  ]
+}

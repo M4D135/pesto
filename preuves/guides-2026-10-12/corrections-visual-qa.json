@@ -1,0 +1,40 @@
+{
+  "Schema": 1,
+  "Agent": "/root/engine_finish",
+  "Method": "Ouverture individuelle des quatre pages avec view_image après correction. Relecture visuelle réelle ; aucun débordement, mot cassé, titre isolé ni chemin coupé observé.",
+  "Pages": [
+    {
+      "Document": "technicien",
+      "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/technicien-final-label",
+      "Page": 5,
+      "ImageSHA256": "f737752e05a56e137efb48df04a4a6b18f44c3dbaa043db5d1852a38ccb320ed",
+      "VisualReview": "PASS",
+      "Review": "Libellé exact « Vérifier l’état » ; tableau relu sans débordement."
+    },
+    {
+      "Document": "administrateur",
+      "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/administrateur-final-label-paths",
+      "Page": 20,
+      "ImageSHA256": "7d9d7d25886acfe618ab835024ca3b4dc36c80fd65afa7bb37654110326daa4a",
+      "VisualReview": "PASS",
+      "Review": "Chemin UNC complet, libellé « Vérifier l’état » et destination DEV/docs corrigés ; tableaux, code et pagination relus sans défaut."
+    },
+    {
+      "Document": "administrateur",
+      "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/administrateur-final-label-paths",
+      "Page": 21,
+      "ImageSHA256": "9172634df22435f2ee3d00175d0cc4087e040710389049bd679a0130f37a603d",
+      "VisualReview": "PASS",
+      "Review": "Chemin UNC complet, libellé « Vérifier l’état » et destination DEV/docs corrigés ; tableaux, code et pagination relus sans défaut."
+    },
+    {
+      "Document": "administrateur",
+      "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-final/administrateur-final-label-paths",
+      "Page": 28,
+      "ImageSHA256": "224271951f8e340bde0a85a9fe7faa879f68ac033c7518298cdac2da53a568b3",
+      "VisualReview": "PASS",
+      "Review": "Chemin UNC complet, libellé « Vérifier l’état » et destination DEV/docs corrigés ; tableaux, code et pagination relus sans défaut."
+    }
+  ],
+  "Pending": "Les sources R6 ne sont pas encore rendues ; cette QA différentielle ne remplace pas la relecture de leurs pages finales."
+}

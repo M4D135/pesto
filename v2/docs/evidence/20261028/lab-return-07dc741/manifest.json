@@ -1,0 +1,152 @@
+{
+  "schema": "Pesto.C18.LabEvidence.v1",
+  "preparedUtc": "2026-10-28T11:47:18.637022+00:00",
+  "evidenceCutoffUtc": "2026-10-28T11:25:23.1276439Z",
+  "status": "Historical evidence cutoff: LY715 in Paris; original-name restoration and new-account join not performed. Campaign subsequently closed after old VM removal; rebuild deferred.",
+  "qualificationHarnessSourceCommit": "07dc74116478f1dd28d5f54ab6e2f11b1b4ee472",
+  "files": [
+    {
+      "file": "credential-format-refusal.json",
+      "kind": "exact-copy",
+      "sha256": "dadf0a0ad4572f7cd57608452b6da70dbbce992038b458a62af5050dedf7df1c",
+      "source": {
+        "capture": "return-prepare-failure.json",
+        "sha256": "dadf0a0ad4572f7cd57608452b6da70dbbce992038b458a62af5050dedf7df1c"
+      }
+    },
+    {
+      "file": "preparation2.json",
+      "kind": "selected-fields-projection",
+      "sha256": "f351c24367095d6f66513f6d8265e80985ac940b404d8b1daea6c6a95681f572",
+      "sources": [
+        {
+          "capture": "001-request.json",
+          "sha256": "e77dc0cc2fd9018046b5ec7a741121e350fd23dfd06bc16030d24d86aee47549"
+        },
+        {
+          "capture": "002-identity.json",
+          "sha256": "1578570aff438b63e75fe960f0df5ec5ea693a08381d20b2cf4c38b4495b26c9"
+        },
+        {
+          "capture": "003-session-info.json",
+          "sha256": "a4fc664eeb28849603d78e36f228b6944473e8702bdda5e2ba7f281f1b680036"
+        },
+        {
+          "capture": "004-config-hash.json",
+          "sha256": "c6db0fd7540eb5181a6341f19b2f58e5525a64a38af20d8ec0de41ac3c24a01a"
+        },
+        {
+          "capture": "012-operation-prepare.json",
+          "sha256": "5338c189dc5bf9429a9606f0a894fcabc918785b6d619d3b66d4e9e48640a587"
+        },
+        {
+          "capture": "014-result.json",
+          "sha256": "8a5c5ce1eb1eb1ab4ec00e5605793a912e884d28c4e7281d3d3c3a337ba11c93"
+        },
+        {
+          "capture": "pesto-c18-prepare2-result.json",
+          "sha256": "424308b9f9c4a0435d255187edd5406b57004d203abef1d9a54eab5c15bf682f"
+        }
+      ],
+      "transformation": "Selected preparation result, identity, plan and digest fields; no configuration contents or filesystem inventory copied."
+    },
+    {
+      "file": "move-durable-receipt-wrapper.json",
+      "kind": "exact-copy",
+      "sha256": "423590332b047054b77d31083ab32fa200b1287558f108b96688b39198259f5f",
+      "source": {
+        "capture": "017-durable-receipt.json",
+        "sha256": "423590332b047054b77d31083ab32fa200b1287558f108b96688b39198259f5f"
+      }
+    },
+    {
+      "file": "move-independent-after.json",
+      "kind": "exact-copy",
+      "sha256": "c63ecfc694033dcabe53c9c4dd3aaa0e8b405661bb2e18addd5bbcdd68e19b2b",
+      "source": {
+        "capture": "018-independent-after.json",
+        "sha256": "c63ecfc694033dcabe53c9c4dd3aaa0e8b405661bb2e18addd5bbcdd68e19b2b"
+      }
+    },
+    {
+      "file": "move-local-result.json",
+      "kind": "selected-fields-projection",
+      "sha256": "1ca4fb72ff9357927ec030af93a0b14e18760e146f59fe4aa7794963d8807144",
+      "sources": [
+        {
+          "capture": "019-local-after.json",
+          "sha256": "1578570aff438b63e75fe960f0df5ec5ea693a08381d20b2cf4c38b4495b26c9"
+        },
+        {
+          "capture": "11b-return-lyon-to-paris-execute.finished.json",
+          "sha256": "40276a329504ab2d852dfb1c87085620dfab1fe44daf265405ca2c4991299980"
+        }
+      ],
+      "transformation": "Kept execution result and local Windows state; omitted hardware identifiers."
+    },
+    {
+      "file": "independent-domain-after-move.json",
+      "kind": "selected-fields-projection",
+      "sha256": "c0c4ad1ec0070e6a31d4da08c001322b193cdf88f2f9bbb255d233c78c374c46",
+      "sources": [
+        {
+          "capture": "c18-domain-after-move.json",
+          "sha256": "7e3d6736e9aa4c13ded74dd850c52b99331e4118dacff6aecef63e72e53a4cde"
+        }
+      ],
+      "transformation": "Kept dated AD objects, GUID/SID, naming and secure channel; removed account/session metadata, VM hardware identifiers and public-file inventory."
+    },
+    {
+      "file": "backup-and-transfer-cleanup.json",
+      "kind": "selected-fields-projection",
+      "sha256": "ff1e369a5c614bfafbe0a7f2245fb120348ce5866bc0c2bfe450b4af83d06ed0",
+      "sources": [
+        {
+          "capture": "cold-state-after-guest-shutdown.json",
+          "sha256": "92b718b52f1b131a15e0c3cb63c834c8ef20a86bf2c7a972fca4f393e4422573"
+        },
+        {
+          "capture": "cold-snapshot-and-boot-confirmed.json",
+          "sha256": "8d6358da9a11bf8c15c863b44bb144f7df85cbe703b1d966dd5ac6507b6bc09a"
+        },
+        {
+          "capture": "cold-state-after-snapshot-attempt.json",
+          "sha256": "b49cee6c8c93a49bbb4859d1ac67635b475afda57233186f785ecd5febd99a22"
+        },
+        {
+          "capture": "host-cleanup-applied.json",
+          "sha256": "6582663a56dacab959b98417c63aa7ba279634e5ae1169c7d22b12e0c5eeb7b9"
+        },
+        {
+          "capture": "host-temp-local-matches.json",
+          "sha256": "92689a8325e74ddd960f87938d736b490e73d620108d43ec4eaab0c101fadc0f"
+        }
+      ],
+      "transformation": "Selected shutdown/snapshot/cleanup outcomes only; omitted host hardware, SSH, temporary-file list and local archive paths."
+    },
+    {
+      "file": "harness-provenance.json",
+      "kind": "selected-fields-projection",
+      "sha256": "3936f6cf559f12b26b75ff9e90a33c03de6bd74345994aa510b088e087b25e1e",
+      "sources": [
+        {
+          "capture": "ad-return-stage-manifest.json",
+          "sha256": "0d47955c54748d3a1e5d7b5a5e54e948c9709bbce1f1eff9f86d142d893464a8"
+        },
+        {
+          "capture": "build-provenance.json",
+          "sha256": "c47a8adc327a62d63f020cdfc9f837c36433f590b57b96204b66ab3fe59aeb03"
+        },
+        {
+          "capture": "ad-return-installed.json",
+          "sha256": "51f91f70c5da48ff3ec6360eb7a29668eb852929efe4108e6cfb872decebc7cc"
+        }
+      ],
+      "transformation": "Selected build/install identity and source distinction; no configuration contents copied."
+    }
+  ],
+  "privateOriginalCapturesRetained": true,
+  "noPasswordsOrConfigurationContentsIncluded": true,
+  "noHardwareOrSshInventoryIncluded": true,
+  "subsequentIncidentReport": "../../../INCIDENT-C18-DISK-20261028.md"
+}

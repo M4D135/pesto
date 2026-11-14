@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 2,
+  "scenario": "normal",
+  "initialFingerprint": "6f2d96bda5d1ecb1095085cfd535d8c2071843ee2ef1d66b0df9dcc5290fff5e",
+  "candidateFingerprint": "a2f740aababc938848053322e53cbdccf5734d9f46f5bbf5649a180f529ab48c",
+  "candidateVersion": "2.0.9",
+  "acquisition": "zip",
+  "syntheticFault": false,
+  "transactionDirectory": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\normal\\.pesto-v2-update-7764cebbf324883d\\2beb206ff4b74102b30507ef5b7a0e08",
+  "helperExecutable": "C:\\Users\\degun\\AppData\\Local\\Temp\\Pesto-native-update-e7f36441e56e409c9dd301c1ee5b6580\\cases\\normal\\.pesto-v2-update-7764cebbf324883d\\2beb206ff4b74102b30507ef5b7a0e08\\helper\\Pesto.exe",
+  "transactionId": "2beb206ff4b74102b30507ef5b7a0e08"
+}

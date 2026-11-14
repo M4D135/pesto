@@ -1,0 +1,233 @@
+{
+  "version": "17.0-RC13",
+  "utc": "2026-09-30T12:22:35.178042+00:00",
+  "scope": "Source/XML checks only. Not a PowerShell parser; no Windows, WPF execution, AD, UAC or real mutation.",
+  "core_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "passed": 50,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Domaine : choix Windows automatique sauf demande explicite",
+      "passed": true
+    },
+    {
+      "name": "Démonstration séparée et mode explicite conservé",
+      "passed": true
+    },
+    {
+      "name": "Identité lue du véritable jeton Windows",
+      "passed": true
+    },
+    {
+      "name": "Compte local/système rejeté",
+      "passed": true
+    },
+    {
+      "name": "Domaine et administrateur contrôlés avant snapshot",
+      "passed": true
+    },
+    {
+      "name": "Snapshot courant sans paramètre Credential",
+      "passed": true
+    },
+    {
+      "name": "Connexion asynchrone bornée à 180 s",
+      "passed": true
+    },
+    {
+      "name": "Callbacks nommés et contexte de requête vérifié",
+      "passed": true
+    },
+    {
+      "name": "Annulation invalide la réponse avant fermeture",
+      "passed": true
+    },
+    {
+      "name": "Erreur sans formulaire ni mutation automatique",
+      "passed": true
+    },
+    {
+      "name": "Le formulaire nécessite un choix explicite en mode domaine",
+      "passed": true
+    },
+    {
+      "name": "Snapshot compare domaine et identité du worker",
+      "passed": true
+    },
+    {
+      "name": "Aucun credential en succès intégré",
+      "passed": true
+    },
+    {
+      "name": "Gabarit de connexion Windows présent",
+      "passed": true
+    },
+    {
+      "name": "Attente sans champ de mot de passe",
+      "passed": true
+    },
+    {
+      "name": "Attente non maximisable et hauteur adaptative",
+      "passed": true
+    },
+    {
+      "name": "Aide sur les boutons y compris désactivés",
+      "passed": true
+    },
+    {
+      "name": "Paramètre facultatif propagé avant et après UAC",
+      "passed": true
+    },
+    {
+      "name": "Lanceur normal ne force pas le second login",
+      "passed": true
+    },
+    {
+      "name": "Lanceur autre compte est explicitement nommé",
+      "passed": true
+    },
+    {
+      "name": "File bloque tout le lot distant sans credential avant confirmation",
+      "passed": true
+    },
+    {
+      "name": "Précontrôle distant avant dsregcmd dans moteur",
+      "passed": true
+    },
+    {
+      "name": "Chemin local intégré remplace seulement absence de credential",
+      "passed": true
+    },
+    {
+      "name": "Chemin avec credential explicite conservé",
+      "passed": true
+    },
+    {
+      "name": "Précontrôle WMI local, rôle membre et domaine avant retrait Entra",
+      "passed": true
+    },
+    {
+      "name": "Cible locale uniquement",
+      "passed": true
+    },
+    {
+      "name": "Méthode Rename sur instance, pas de méthode statique",
+      "passed": true
+    },
+    {
+      "name": "Appel COM local : aucune cible distante ni session explicite",
+      "passed": true
+    },
+    {
+      "name": "Arguments natifs limités au nouveau nom",
+      "passed": true
+    },
+    {
+      "name": "Retrait Entra confirmé avant unique appel Rename",
+      "passed": true
+    },
+    {
+      "name": "Réponse unique typée et zéro uniquement",
+      "passed": true
+    },
+    {
+      "name": "Exception ou résultat incomplet conserve code97",
+      "passed": true
+    },
+    {
+      "name": "Pas de nouvel UAC, retry ou reboot dans helper local",
+      "passed": true
+    },
+    {
+      "name": "Helpers locaux exportés dans le worker de mutation",
+      "passed": true
+    },
+    {
+      "name": "Compte actif affiché sans secret",
+      "passed": true
+    },
+    {
+      "name": "Quatre fonctions existantes modifiées, déclarées",
+      "passed": true
+    },
+    {
+      "name": "Neuf fonctions ajoutées, aucune fonction supprimée",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : Invoke-GPDsregLeaveLocal",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : Invoke-GPDsregLeaveBeforeRename",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : Invoke-GPSystemTaskScript",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : AddToDomain",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : GoRenameOnly",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : GoRenameAndMove",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : MoveComputer",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : Get-GPRenameMoveDecision",
+      "passed": true
+    },
+    {
+      "name": "RC12 inchangé : Restore-GPQueueCheckpoint",
+      "passed": true
+    },
+    {
+      "name": "Délimiteurs lexicaux, BOM UTF8 et CRLF : GP.ps1",
+      "passed": true
+    },
+    {
+      "name": "Délimiteurs lexicaux, BOM UTF8 et CRLF : wad/GP-Core.ps1",
+      "passed": true
+    },
+    {
+      "name": "Délimiteurs lexicaux, BOM UTF8 et CRLF : wad/GP-Startup.ps1",
+      "passed": true
+    },
+    {
+      "name": "Délimiteurs lexicaux, BOM UTF8 et CRLF : tests/Run-SsoTests.ps1",
+      "passed": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "name": "Domaine ne prend plus le compte Windows",
+      "detected": true
+    },
+    {
+      "name": "Credential réintroduit dans la requête automatique",
+      "detected": true
+    },
+    {
+      "name": "Renommage local change en appel distant",
+      "detected": true
+    },
+    {
+      "name": "Faux succès WMI non nul",
+      "detected": true
+    },
+    {
+      "name": "Comparaison identité de worker supprimée",
+      "detected": true
+    }
+  ],
+  "windows_tests_executed": false
+}

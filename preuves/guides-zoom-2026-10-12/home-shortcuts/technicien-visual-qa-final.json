@@ -1,0 +1,87 @@
+{
+  "Result": "PASS",
+  "ReviewedUtc": "2026-10-12T22:22:18.674180+00:00",
+  "Reviewer": "Codex /root/silent_join",
+  "Scope": "QA visuelle différentielle après intégration des captures Accueil à quatre boutons du build 540c. Aucune édition des sources.",
+  "RenderDirectory": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final",
+  "DOCX": "/Users/david/Projects/pesto/outils/guides/build/Pesto-1.0-Guide-technicien.docx",
+  "DOCXSHA256": "d92c22ee65a5b20eba792afcb764ac45e240e44f4d8fb50c2338aa3885932955",
+  "PDF": "/Users/david/Documents/Codex/2026-10-12/tu-x20/work/guides-qa-zoom/technicien-home-final/Pesto-1.0-Guide-technicien.pdf",
+  "PDFSHA256": "da75268d7040431a53718ef7328b20c1bc90a889016323e7065908ef56cd6eee",
+  "ArtifactAuditSHA256": "ee68ae4a69c5410bd215a8f8789471cac576c804201b8e7f99640d856fb76bcf",
+  "PixelDiffSHA256": "6c08718815dd4bb02bbeb243fa8c417d6ec6d67be081efb83f5104ea4eec6673",
+  "PageCount": 25,
+  "OpenedIndividuallyAtOriginalResolution": [
+    1,
+    24
+  ],
+  "PageFindings": [
+    {
+      "Page": 1,
+      "Result": "PASS",
+      "Observation": "Couverture : capture native propre, quatre boutons alignés et ordonnés Un seul poste / Plusieurs postes / Ajouter au domaine / Noms disponibles. Aucun tooltip masquant, débordement ou rupture de mise en page. Texte de couverture inchangé et lisible."
+    },
+    {
+      "Page": 24,
+      "Result": "PASS",
+      "Observation": "Illustration Zoom à120% avec menu réduit : quatre boutons alignés, commandes de zoom visibles en bas à droite. Légende conforme ; tableau des raccourcis et rappels sans débordement ni orphelin."
+    }
+  ],
+  "ExactPngByteMatchToPreviousFinalPages": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    25
+  ],
+  "UnchangedPageCount": 23,
+  "PreviousReport": {
+    "Path": "preuves/guides-zoom-2026-10-12/technicien-visual-qa-final.json",
+    "SHA256": "1c7c159e3d0718bbe5841c50e710b7358d4636ca0556f20bc8cf9d075e311a09"
+  },
+  "Coverage": "25 pages couvertes par la QA précédente complète et cette passe : seules1/24 changent ; les23 autres PNG sont strictement identiques octet pour octet.",
+  "SourceImages": [
+    {
+      "Id": "accueil",
+      "Path": "outils/guides/images/ui-2026-10-12/accueil.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "2920cde9a46a6cffd69c9fcc34c8e6cadaa824ce057448f32c32ec70445c8ca0",
+      "NativeHD": true
+    },
+    {
+      "Id": "zoom-interface",
+      "Path": "outils/guides/images/ui-2026-10-12/zoom-interface.png",
+      "Pixels": [
+        1920,
+        1160
+      ],
+      "SHA256": "7935099898b1ef1b6f6f09da509d4555f535ae71cc8aba31305d5b328a9f498b",
+      "NativeHD": true
+    }
+  ],
+  "SourceRuntimeExeSHA256": "540c64442f19d246fcbd67c34f387e501e104f45514687d1db31a67739e253b6",
+  "OpenFindings": [],
+  "PublicationReady": true,
+  "FinalFreezeConfirmed": true
+}

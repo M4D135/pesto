@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "sourceContentCommit": "1dbdda1020cf21ea2c65fc69b5572bbfc857095e",
+  "gitHeadDuringLocalBuild": "d803d72ed1084d631364a1830d6211d841e02813",
+  "sourceFilesSha256": {
+    "v2/src/Pesto.App/NativeHostActions.cs": "40d2bd72594036496320e54efb86a9be4323d07302ec6cdab7536f2a6bc537bb",
+    "v2/src/Pesto.App/NativeConfigurationQualification.cs": "0ce807c7317b6a7e76b24d93c9ab2047278dedb54bd7ad3461c23c206fa35454",
+    "v2/src/Pesto.App/ConfigurationQualificationObservation.cs": "d1d32b4ddf9f95c6a6cbf94f699304fd28d0431acffcc24d3938b05ccc7ced10"
+  },
+  "sdk": "10.0.302",
+  "platform": "Linux cross-publication for net10.0-windows/win-x64",
+  "publishExitCode": 0,
+  "executableSha256": "0aeb03b312cf733ffd8b140d65de7e56ba1dee18b98abeac6c2756612d616874",
+  "packageMechanics": {
+    "passed": 46,
+    "failed": 0,
+    "syntheticWebView2": true,
+    "devReassemblesSameProdWithSamePublication": true,
+    "devSourceRecompilation": false,
+    "documentationInputs": 299,
+    "documentationUnchangedDuringFinalCheck": true,
+    "documentationInputsMatchPublishedCommit": true
+  },
+  "initialPackageAttempt": {
+    "passed": 45,
+    "failed": 1,
+    "failedCheck": "assemblage déterministe",
+    "documentMetadataWasBeingEditedConcurrently": true,
+    "notFinalVerdict": true
+  },
+  "windowsExecuted": false,
+  "adExecuted": false
+}

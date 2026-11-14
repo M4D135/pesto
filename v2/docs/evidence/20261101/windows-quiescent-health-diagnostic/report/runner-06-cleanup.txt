@@ -1,0 +1,5 @@
+{
+  "success": true,
+  "scenario": "health-failure",
+  "ownedFixtureRemoved": true
+}

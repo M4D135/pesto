@@ -1,0 +1,105 @@
+{
+    "Schema":  1,
+    "Suite":  "CliOutput",
+    "HostOS":  "Microsoft Windows NT 10.0.26200.0",
+    "PowerShell":  "5.1.26100.6584",
+    "WindowsExecuted":  true,
+    "ADExecuted":  false,
+    "WPFExecuted":  false,
+    "Scope":  "Scripts CLI réels copiés ; intégrité et moteur remplacés par fixtures ; vrais processus enfants et fonctions diagnostic avec doubles TCP/DNS.",
+    "Total":  18,
+    "Passed":  18,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "Diagnostic Join : LDAP389 et ADWS9389 distincts sans nouveau transport",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Diagnostic Rename : LDAP389 et ADWS9389 distincts sans nouveau transport",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Diagnostic Move : LDAP389 et ADWS9389 distincts sans nouveau transport",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Diagnostic Observe : LDAP389 et ADWS9389 distincts sans nouveau transport",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-Pesto.ps1 : retour objet inchangé et aucun encodage global modifié",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-Pesto.ps1 : JSON in-process capturable, ASCII et Unicode réversible",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-Pesto.ps1 : vrai stdout sous OEM850 reste UTF8 valide sans perte",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-Pesto.ps1 : refus96 JSON ASCII conserve message Unicode",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoAutoJoin.ps1 : retour objet inchangé et aucun encodage global modifié",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoAutoJoin.ps1 : JSON in-process capturable, ASCII et Unicode réversible",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoAutoJoin.ps1 : vrai stdout sous OEM850 reste UTF8 valide sans perte",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoAutoJoin.ps1 : refus96 JSON ASCII conserve message Unicode",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoDeployment.ps1 : succès JSON ASCII et Unicode réversible",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoDeployment.ps1 : refus précoce (chemin relatif) en JSON ASCII valide",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Real Inspect producer is accepted by deployment adapter as read-only Observed0",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Real Diagnose producer declares no mutation in successful CLI result",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoDeployment.ps1 : résultat moteur invalide en JSON fermé sans détail brut",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Invoke-PestoDeployment.ps1 : refus après CliHost en JSON ASCII avec message fermé",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

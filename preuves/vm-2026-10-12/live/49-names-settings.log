@@ -1,0 +1,8 @@
+clic : #NavNames (Noms disponibles)
+#NmCmbSite = VA
+#NmCmbEquipe = 765
+#NmCmbType = Portable
+capture C:\PestoRecette20261012\preuves\49-noms-filtres-hd.png 1920x1160
+clic : #NavSettings (Paramètres)
+capture C:\PestoRecette20261012\preuves\49-parametres-apparence-hd.png 1920x1160
+capture C:\PestoRecette20261012\preuves\49-parametres-noms-hd.png 1920x1160

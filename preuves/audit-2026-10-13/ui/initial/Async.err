@@ -1,0 +1,8 @@
+Fonction absente : New-PestoQueueMonitor
+At C:\PestoAudit20261013\ui\tests\Async-ScopeFixture.ps1:17 char:39
++ ...   if(-not $defs.ContainsKey($name)){throw "Fonction absente : $name"}
++                                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Fonction absente : New-PestoQueueMonitor:String) 
+    [], RuntimeException
+    + FullyQualifiedErrorId : Fonction absente : New-PestoQueueMonitor
+ 

@@ -1,0 +1,17 @@
+{
+  "From": "R5",
+  "To": "R6",
+  "RuntimeChanges": [
+    "Pesto-Operations.ps1",
+    "Pesto-Authentication.ps1",
+    "package.json",
+    "Pesto-Join.ps1"
+  ],
+  "ExeSHA256": "5c561531b0811b2947c89d11ddc344c625792a5d0b6b44789a0729502d079bc4",
+  "Reasons": [
+    "Jonction directe avec nouveau nom local confirmé",
+    "Démarrage Windows lu depuis événement12 stable",
+    "Libellé Vérifier l’état aligné",
+    "Connexions au premier plan demandées par utilisateur"
+  ]
+}

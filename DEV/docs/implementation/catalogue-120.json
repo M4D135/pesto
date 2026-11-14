@@ -1,0 +1,2311 @@
+{
+  "schema": 1,
+  "baseline": "b5d5f34b390eedca6916a754114238e49523a0a4",
+  "authorized": "2026-10-13",
+  "items": [
+    {
+      "id": 1,
+      "requirement": "Confirmation dimensionnée au contenu",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workspace · Get-PestoPanelLayout/Show-PestoPanel. Carte centrée calculée sur contenu et espace disponible ; rapports à contenu long bornés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 2,
+      "requirement": "Confirmation avant/après et bouton explicite",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Core · Confirm-YesNo ; Workspace · SummaryRows. Résumé avant/après typé, valeurs changées accentuées, texte du bouton fourni par Direct/Join.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 3,
+      "requirement": "Alléger le formulaire unitaire",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Shell · formulaire unitaire. Retrait des sous-titres/étapes redondants ; sections Poste à modifier et Avant/après ; actions détaillées dans les outils.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 4,
+      "requirement": "Petite fenêtre avec un seul axe de défilement",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Appearance/SuiteUI · viewport et responsive. Largeur logique liée au zoom, navigation compacte automatique ; défilement horizontal global désactivé.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 5,
+      "requirement": "Préparer une autre opération après résultat en gardant reçu et suivi facultatif",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench · PestoNextOperation. Bouton Préparer une autre opération ; focus sur le poste, anciens contrôles et demande de reboot effacés. Reçus intacts.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 6,
+      "requirement": "Volet latéral de détails",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench · Show-PestoDetailsPane ; Core · résultat sélectionné. Volet droit non modal, texte sélectionnable/copier/fermer et retour du focus.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 7,
+      "requirement": "Interventions récentes compactes à l’accueil",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Shell · HomeRecent. Prochaine action détaillée seulement pour la ligne sélectionnée ; trois derniers reçus et quatre boutons conservés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 8,
+      "requirement": "Hiérarchie visuelle sémantique sobre",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Shell · SectionTitle et nom segmenté. Titres de section communs ; changement de nom lisible par segment sans multiplier les cartes de statut.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 9,
+      "requirement": "F6/Maj+F6 entre grandes zones",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workspace/Workbench · Invoke-PestoFocusZone. F6 et Maj+F6 parcourent navigation, contenu, action et zoom ; aucun passage hors panneau modal.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 10,
+      "requirement": "Annonces Narrator utiles et regroupées",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench · Set-PestoAccessibleStatus ; SuiteUI/Core. Région live polie ; déduplication des annonces de résultat et de fin de lot, uniquement sur pair existant.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 11,
+      "requirement": "Palette avec synonymes et classement",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench/Workspace · palette. Recherche globale avec synonymes ; ordre exact, début, contenu, puis alias. Accents normalisés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 12,
+      "requirement": "Notification facultative de fin de lot",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Shell/Workbench · PestoNotifyBatch ; Core · fin de lot. Option personnelle désactivée par défaut ; son système seulement à la fin du lot lorsque la fenêtre est inactive.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 13,
+      "requirement": "Recherche exacte de nom candidat ; aléatoire conservé",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench · PestoExactName. Recherche explicite d’un nom complet dans les candidats du filtre en cours ; le tirage aléatoire demeure par défaut.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 14,
+      "requirement": "Segments visuels du nom et différences",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/wad/Pesto-SuiteUI.ps1",
+        "DEV/wad/Pesto-Shell.xaml",
+        "DEV/tests/Run-Workbench120Tests.ps1",
+        "DEV/tests/Run-UiPresentationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench/Core · PestoNameSegments. Type, préfixe, site, service et numéro séparés, comparaison au nom chargé, zéros conservés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 15,
+      "requirement": "Tableau de capacité interactif avec seuils",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-NameWorkbench.ps1",
+        "DEV/wad/Pesto-Names.ps1",
+        "DEV/wad/Pesto-Review.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "NameWorkbench/Review · NmCapacity. Tableau triable/recherchable ; seuil libre 0–999 conservé pour la session, niveaux épuisé/critique/à anticiper.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 16,
+      "requirement": "Provenance et âge des exclusions de noms",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-NameWorkbench.ps1",
+        "DEV/wad/Pesto-Names.ps1",
+        "DEV/wad/Pesto-Review.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1",
+        "preuves/finition-120-2026-10-15/local/NamesLoading-final.json",
+        "DEV/tests/Run-NamesLoadingTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Origine et âge des exclusions ; vue asynchrone en lecture seule du registre partagé, bornes de lecture, schémas/UTF8 stricts, refus de liens et résultat périmé ignoré.",
+      "validation": "Rapports locaux du 15 octobre : NamesLoading 45/45. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Code et contrats locaux terminés ; recette Windows/AD/WPF du candidat final à réaliser manuellement."
+    },
+    {
+      "id": 17,
+      "requirement": "Suggestions matérielles modifiables",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-NameWorkbench.ps1",
+        "DEV/wad/Pesto-Names.ps1",
+        "DEV/wad/Pesto-Review.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "NameWorkbench · PrepHardware. Lecture CIM locale explicite et bornée ; suggestion Fixe/Portable/Virtuel, aperçu avant application modifiable.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 18,
+      "requirement": "Vue réutilisable des anomalies de convention",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-NameWorkbench.ps1",
+        "DEV/wad/Pesto-Names.ps1",
+        "DEV/wad/Pesto-Review.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "NameWorkbench/Review · NmConformity. Vue d’anomalies de convention avec recherche et tri local, réouverte depuis Noms disponibles ; aucune réparation automatique.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 19,
+      "requirement": "Planificateur de lot autonome",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-BatchTools.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1",
+        "preuves/finition-120-2026-10-15/local/BulkPlanning-final.json",
+        "preuves/finition-120-2026-10-15/local/BatchNames120-final.json",
+        "DEV/tests/Run-BulkPlanningTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Planificateur autonome avec lecture asynchrone ciblée des sources et conflits de noms/SPN sur le même DC et avec les mêmes credentials ; aucune attente d’inventaire complet, refus des réponses partielles et invalidation des aperçus périmés.",
+      "validation": "Rapports locaux du 15 octobre : BulkPlanning 31/31, BatchNames120 30/30. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Code et contrats locaux terminés ; recette Windows/AD/WPF du candidat final à réaliser manuellement."
+    },
+    {
+      "id": 20,
+      "requirement": "Import CSV/tableau collé avec mapping des colonnes",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-BatchTools.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1",
+        "preuves/finition-120-2026-10-15/local/BatchNames120-final.json"
+      ],
+      "nature": "function",
+      "implementation": "BatchTools · QueueMappedImport. Import UTF8 CSV ou tableau Excel collé, séparateur détecté, colonnes nommées et mapping explicite ; aperçu avant publication. Import classique validé par New-PestoCsvQueueCandidate, avec index sources/cibles insensibles à la casse construits une fois par aperçu.",
+      "validation": "Rapports locaux du 15 octobre : BatchNames120 30/30. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 21,
+      "requirement": "Toutes les erreurs par ligne dans grille éditable",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-BatchTools.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1",
+        "preuves/finition-120-2026-10-15/local/BatchNames120-final.json"
+      ],
+      "nature": "function",
+      "implementation": "BatchTools · Show-PestoQueueEditor. Grille éditable, toutes les erreurs regroupées par ligne ; Valider doit réussir avant ajout ; nouvelle édition invalide la validation.",
+      "validation": "Rapports locaux du 15 octobre : BatchNames120 30/30. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 22,
+      "requirement": "Édition groupée des lignes préparées avec aperçu et invalidation",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-BatchTools.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1",
+        "preuves/finition-120-2026-10-15/local/BatchNames120-final.json"
+      ],
+      "nature": "function",
+      "implementation": "BatchTools · QueueMultiEdit. Sélection de lignes encore préparées, édition dans le même aperçu ; ordre original préservé, contrôles et accords invalidés.",
+      "validation": "Rapports locaux du 15 octobre : BatchNames120 30/30. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 23,
+      "requirement": "Annuler les changements locaux de file, jamais une mutation AD",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-BatchTools.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-BatchNames120Tests.ps1",
+        "preuves/finition-120-2026-10-15/local/BatchNames120-final.json"
+      ],
+      "nature": "function",
+      "implementation": "BatchTools/Core · QueueUndo. Dix instantanés locaux maximum ; contrôle génération/configuration, restauration sans cases Traiter/Reboot ; pile vidée au début de Run-Queue.",
+      "validation": "Rapports locaux du 15 octobre : BatchNames120 30/30. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 24,
+      "requirement": "Regroupement visuel sans changer ordre exécution",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Collections · vue regroupée de file. Regroupement seulement dans une projection de consultation ; numéro d’ordre réel affiché, table exécutante inchangée.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 25,
+      "requirement": "Préréglages colonnes Essentiel/Diagnostic",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Collections · Essentiel/Diagnostic. Préréglages accessibles par Vues sur file, noms et interventions ; colonnes d’identité fixes conservées.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 26,
+      "requirement": "Vues filtrage/tri enregistrées sans consentement ni sélection exécutante",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Collections · vues enregistrées. Filtres/tri par tableau, nommer/rappeler/supprimer ; tri des noms réappliqué après projection asynchrone.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 27,
+      "requirement": "Collections dynamiques enregistrées",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Collections · NmSaveCollection. Collection dynamique nommée du filtre de noms, domaine/configuration liés, règles et membres observés par GUID conservés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 28,
+      "requirement": "Delta collection puis instantané de lot",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Collections · QueueCollection. Réévaluation, delta ajout/absence/nom/OU, confirmation d’un instantané puis planificateur ; revalidation génération et MaxBatch.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 29,
+      "requirement": "Recherche dans paramètres",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor · SetSearchSettings. Tableau recherchable des réglages avec rubrique/effet, retour au champ/onglet sélectionné.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 30,
+      "requirement": "Diff config lisible, JSON avancé",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor/Configuration · prévisualisation. Diff libellé Avant/Après/Effet ; JSON conservé dans les outils avancés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 31,
+      "requirement": "Sélecteur OU avec recherche et DN manuel",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor · SetBrowseOU. Choisir la cible, lecture AD asynchrone explicite des OU sous racines configurées, recherche et report du DN ; saisie manuelle conservée.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 32,
+      "requirement": "Erreurs validation AD reliées aux réglages",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor/Configuration · validation AD. Chaque observation porte le contrôle d’origine ; sélection ouvre OUBase/OUSite/OUScan/Tags correspondant.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 33,
+      "requirement": "Rétablir champ ou rubrique",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor · Rétablir champ/rubrique. Choix du champ ou groupe, confirmation et remplacement des seules valeurs depuis version chargée.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 34,
+      "requirement": "Conflit modification externe cfg.json",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Configuration/ConfigEditor · sauvegarde. Empreinte cfg.json au chargement et comparaison immédiatement avant écriture ; conflit externe expliqué.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 35,
+      "requirement": "Exemples de noms/OU sur brouillon config",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor · SetConfigNames. Exemples calculés depuis le brouillon, noms P/S/V et destination préproduction ou règle de site qualifiée.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 36,
+      "requirement": "Effets immédiats/redémarrage/invalidation avant sauvegarde",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/tests/Run-ConfigEditor120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ConfigEditor/Configuration · effets de changement. Diff et message de sauvegarde distinguent effet immédiat, invalidation des contrôles et redémarrage ; source administrée visible et champs imposés désactivés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 37,
+      "requirement": "Plusieurs brouillons nommés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Workbench.ps1",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/tests/Run-Workbench120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Workbench/Workspace · brouillons nommés. Jusqu’à 20 brouillons, nommer/remplacer explicitement/choisir/supprimer ; reprise réacquiert le poste.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 38,
+      "requirement": "Partager collections favoris/modèles avec aperçu compatibilité",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Preparation.ps1",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Preparation · importer/exporter préparations. Bundle favoris+brouillons, aperçu puis compatibilité domaine/configuration et confirmation des remplacements ; incompatibles laissés dans fichier.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 39,
+      "requirement": "Diagnostic DNS suffixes SRV découverte DC Windows",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Diagnostic du suffixe DNS local, des enregistrements SRV et du DC fourni ou découvert par Windows.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 40,
+      "requirement": "Diagnostic incohérences DNS/SPN pertinentes sans nettoyage",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/wad/Pesto-Operations.ps1",
+        "DEV/wad/Pesto-Safety.ps1",
+        "DEV/wad/Pesto-Inspection.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-RemotePreparationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Observation DNSHostName et SPN HOST de l’objet machine ; écarts explicitement signalés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 41,
+      "requirement": "Tests transport adaptés à action, ping indicatif",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/wad/Pesto-Operations.ps1",
+        "DEV/wad/Pesto-Safety.ps1",
+        "DEV/wad/Pesto-Inspection.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-RemotePreparationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Ports TCP adaptés à Join, Rename, Move ou Observe ; délai borné par endpoint.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 42,
+      "requirement": "Décalage horloge observé sans correction automatique",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/wad/Pesto-Join.ps1",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-RemotePreparationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Lecture bornée de w32tm /stripchart et décalage observé quand la réponse est interprétable.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 43,
+      "requirement": "Diagnostic réutilisation compte précréé Netjoin",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Diagnostic explicite du compte précréé et des refus Netjoin 2224/2732.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 44,
+      "requirement": "Capacités compte par action : connu/refusé/non certifiable",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Contrat de capacité par action : lecture observée/refusée/inconnue ; écriture refusée ou non certifiable.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 45,
+      "requirement": "Raisons redémarrage et conséquence",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Raisons observables de redémarrage : nom configuré/actif, CBS, Windows Update et renommages de fichiers en attente.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 46,
+      "requirement": "NetSetup corrélé intervalle/noms/codes opération",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Parseur NetSetup borné avec intervalle, noms, codes natifs et identifiant d’opération facultatif validé.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 47,
+      "requirement": "États AD/Entra observés ou inconnus",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "État AD observé séparé de l’état Entra.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 48,
+      "requirement": "Actions de diagnostic guidées lecture seule",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Diagnostics.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Catalogue de diagnostics en lecture seule et commande CLI Diagnose raccordée par le module d’intégration.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 49,
+      "requirement": "Libellé/filtre suivi facultatif cohérent",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-Interventions.ps1",
+        "DEV/tests/Run-InterventionViewTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Interventions · filtres. Suivi facultatif séparé des interventions nécessitant une action ; libellés cohérents et archives distinguées.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 50,
+      "requirement": "Chronologie par identité stable malgré renommages",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ReceiptTools.ps1",
+        "DEV/wad/Pesto-Interventions.ps1",
+        "DEV/tests/Run-ReceiptTools120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ReceiptTools · Chronologie du poste. Rapprochement par identité Windows ou GUID AD, jamais par seul nom ; ordre daté et noms avant/après.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 51,
+      "requirement": "Référence ticket en unitaire",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/tests/Run-RetiredFeaturesTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Fonction retirée du produit à la demande de David le 16 octobre 2026.",
+      "validation": "Sources retirées ; Run-RetiredFeaturesTests vérifie les contrats de suppression et la lecture des anciens reçus. Qualification finale du candidat à compléter.",
+      "remaining": "Aucune réintroduction prévue. Les reçus historiques restent conservés.",
+      "requested_delivery": "removed"
+    },
+    {
+      "id": 52,
+      "requirement": "Comparaison explicite deux reçus",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ReceiptTools.ps1",
+        "DEV/wad/Pesto-Interventions.ps1",
+        "DEV/tests/Run-ReceiptTools120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ReceiptTools · Comparer. Choix explicite de deux reçus lisibles avant tableau des différences ; dates et identifiants affichés.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 53,
+      "requirement": "Archivage consultable des reçus terminés, préserver non résolus",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ReceiptTools.ps1",
+        "DEV/wad/Pesto-Interventions.ps1",
+        "DEV/tests/Run-ReceiptTools120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "ReceiptTools/Interventions · Archiver/Consulter archives. Archivage explicite de résultats clos admissibles sous mutex ; octets originaux déplacés sans écrasement, SHA256 conservé et vue consultable.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 54,
+      "requirement": "Dossier support par opération aperçu/masquage",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/UI_120.md",
+        "DEV/wad/Pesto-ReceiptTools.ps1",
+        "DEV/wad/Pesto-Interventions.ps1",
+        "DEV/wad/Pesto-Safety.ps1",
+        "DEV/tests/Run-ReceiptTools120Tests.ps1",
+        "DEV/tests/Run-ReconciliationAuditTests.ps1",
+        "preuves/finition-120-2026-10-15/local/ReconciliationAudit-final.json"
+      ],
+      "nature": "function",
+      "implementation": "ReceiptTools · Support de cette opération. Aperçu masqué par défaut, export dans nouveau dossier avec opération+diagnostic+manifeste SHA256 ; aucun envoi. Projection fermée de l’audit de réconciliation incluse dans operation.json.",
+      "validation": "Rapports locaux du 15 octobre : ReconciliationAudit 7/7. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 55,
+      "requirement": "Benchmark froid/chaud/volumes/latence/mémoire/UI reproductible",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Référence versionnée, froid/chaud, 100/1 000/10 000 noms, latence injectée 0/5 ms, mémoire GC ; 100/1 000 reçus complets.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 56,
+      "requirement": "Évaluer pool runspaces lectures isolé auth",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/wad/Pesto-Async.ps1",
+        "DEV/tests/Run-ReadPool56Tests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json",
+        "DEV/tests/test_spark_t056.py"
+      ],
+      "nature": "evaluation",
+      "implementation": "Pool borne de runspaces de lecture MTA, reutilises uniquement apres nettoyage des modules, fonctions, alias, lecteurs et variables. Les mutations gardent leur runspace distinct. Un changement de credential, domaine ou DC retire le pool sans interrompre ses lecteurs actifs. Le lease est rendu dans le finally de fin d operation comme au demarrage en echec, et la suite du moteur rejoue ces deux chemins depuis les sources livrees.",
+      "validation": "23 octobre 2026, execute sur Spark (Linux aarch64, PowerShell 7.4.6 comme hôte, hors VM) : Run-ReadPool56Tests.ps1 45 cas sur 45 et Run-Engine120Tests.ps1 100 cas sur 100, exit 0. Les cinq cas POOL de la suite du moteur relisent par analyse syntaxique le chemin livre de Start-PestoAsyncOperation et le finally de Invoke-PestoAsyncTimerTick, puis les rejouent sur de vrais runspaces et un vrai pool : la lecture emprunte le pool avec le credential, le domaine et le DC courants, la mutation garde son runspace propre, le lease revient au pool a chaque issue et au demarrage en echec, une lecture refusee ne cree aucun runspace de repli. La suite tient en outre le plafond sous concurrence reelle : des workers paralleles reveilles au meme instant par une barriere empruntent un pool a trois creneaux, un runspace prete ne sert jamais deux lecteurs a la fois (pic de prts par runspace egal a 1), le pic de runspaces en cours ne depasse jamais le maximum, un pool deja plein refuse chacun des quatre demandeurs reveilles ensemble, et une lecture en cours garde son runspace et son etat quand le compte ou le DC change sous elle. Les neuf mutations livrees deja rejouees en worktree, auxquelles s'ajoutent cinq mutations supplementaires visees sur la concurrence (vague rendue sequentielle par un tourniquet, comptabilite par runspace forcee sur une cle fixe, runspace rendu dans un pool retire conserve, plafond de saturation neutralise, comparaison du credential neutralisee), font chacune echouer exactement leur garde — respectivement « 8 borrowers on 3 slots never met one refusal », « Two concurrent readers shared one borrowed runspace », « Retired reader retained », « Pool admitted a third reader », « Credential switch retained the old pool » —, la branche de reference tenant 45 cas sur 45. Measure-Engine120.ps1 publie ReadPool sur runspaces reels et corps de lecture synthetique : 19,97 ms par lecture hors pool contre 57,61 ms par lecture empruntée, 91,9 ms pour le premier creneau (ouverture et releve de l etat initial), 147,1 ms pour un changement de compte ou de DC, PoolCheaperThanFresh=false. Il publie aussi ReadPoolConcurrency : la vague de huit lecteurs reveilles au meme instant sur un pool a trois creneaux, chronometree a l ouverture de la barriere hors creation des workers et hors import du module, coute 545 ms (68,1 ms par lecture) avec neuf refus et 355 ms d attente maximale, contre 104 ms (13,0 ms par lecture) pour la meme vague sur huit runspaces neufs, a pic de trois runspaces et pic d un seul lecteur par runspace prete sur les trois passages. L isolation d identite et d etat est donc demontree et gardee ; ni le gain de cout en sequentiel ni le gain sous rafale ne sont etablis localement, le nettoyage livre et la serialization des emprunts coutant davantage que l ouverture de runspaces neufs.",
+      "remaining": "Qualification Windows PowerShell 5.1 et WPF sur poste cible non executee : a rejouer sous CI Windows (Run-AsyncTests.ps1 et Run-ProgressTests.ps1 refusent de tourner hors Windows PowerShell 5.1), avec Get-ADComputer reel et le DispatcherTimer du produit. Le cout par lecture empruntee mesure sur le banc local vaut de deux a quatre fois celui d une lecture hors pool selon l echantillon, et la vague concurrente de huit lecteurs sur trois creneaux coute cinq fois la meme vague sur runspaces neufs (545 ms contre 104 ms) : a confirmer sous 5.1 avant d elargir le maximum au-dela de sa valeur par defaut, douze.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 57,
+      "requirement": "Coalescer lectures identiques",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Catalogue.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Coordinateur de lectures simultanées identiques, attente bornée, erreurs partagées, nettoyage et isolation par instance.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 58,
+      "requirement": "Évaluer traitement progressif inventaire borné avec complétude",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-DirectoryCacheTests.ps1",
+        "preuves/implementation-complete-2026-10-16/InventoryProgress.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Collecte paginée bornée à 200000 lignes par périmètre, rang supplémentaire pour détecter la troncature, annulation coopérative et compteurs de lignes réellement reçues. Publication refusée sur snapshot incomplet ou périmé.",
+      "validation": "29 contrôles DirectoryCache réussis avec cmdlets AD et identité doublées ; dépassement, EOF exact, annulation et erreur après émission, snapshot précédent préservé. Pas de nouvelle recette VM.",
+      "remaining": "Validation Windows PowerShell 5.1/AD du candidat assemblé distincte des contrôles locaux.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 59,
+      "requirement": "Évaluer index inventaire C# compact",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/test_spark_t059.py",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Index compact C# integre au parcours inventaire et a ses consommateurs ByBase/BySite/Entries. Le type est desormais livre dans Pesto.Runtime.dll net472 verifiee (point 63), sans compilation C# au demarrage. Repli table PowerShell de meme semantique, normalisation et comparateurs.",
+      "validation": "18 octobre 2026 : Engine120 95/95, CompiledHelpers63 10/10 et controles Python du point 59 reussis. Comparaison compact/table sur noms mixtes et parcours consommateurs. Les mesures historiques Linux sont conservees dans ENGINE_120.md ; aucune mesure AD reelle ajoutee.",
+      "remaining": "Qualification Windows PowerShell 5.1 et conversion des objets AD reels non executees ; aucun test VM.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 60,
+      "requirement": "Évaluer cache AD incrémental complet/invalidation/suppressions/DC",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/wad/Pesto-Directory.ps1",
+        "DEV/tests/Run-DirectoryDelta60Tests.ps1",
+        "DEV/tests/Run-DirectoryDelta60MutationTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Inventaire DirSync borne, cookie et lignes publies ensemble, identite GUID, DC et invocationId verifies, perimetre et session authentifiee lies au curseur. Les suppressions sont incluses, les mouvements de parent OU invalident le delta. Sans droits de replication, avec cookie invalide ou erreur, repli vers le scan complet existant ; aucune permission accordee par le logiciel.",
+      "validation": "18 octobre 2026, rejoue le 23 octobre 2026 sous pwsh 7.4.6 (hote non produit) : Run-DirectoryDelta60Tests.ps1 31/31 hors VM, fusion par GUID, renommage, suppression, sortie de perimetre, changement de DC/instance/identite, expiration, publication atomique et repli complet. Onze cas neufs branchent les consommateurs reels : le worker d'inventaire livre le delta sans rescan, le cookie vu par le transport est publie avec les lignes, le refresh persiste le curseur, la releve suivante le rejoue, un autre compte l'annule, le refus DirSync retombe sur le scan complet du worker sans curseur peage. Le harnais Run-DirectoryDelta60MutationTests.ps1 rejoue copie temoin plus sept mutations (worker ignorant le delta, refresh perdant le curseur, rotation de credential conservant le curseur, etat publiant l'ancien cookie, suppression ignoree, curseur ignorant le DC, sortie de perimetre conservee), chacune faisant echouer exactement son controle (31/31). Run-DirectoryCacheTests.ps1 38/38 et Run-Engine120Tests.ps1 100/100 rejoues le meme jour.",
+      "remaining": "Protocole LDAP reel et droits DirSync a qualifier sur cible Windows ; aucun test AD/VM effectue.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 61,
+      "requirement": "Évaluer mises à jour WPF seulement lignes modifiées",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/wad/Pesto-Collections.ps1",
+        "DEV/wad/Pesto-Interventions.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-Collections120Tests.ps1",
+        "DEV/tests/test_spark_t061.py",
+        "DEV/tools/Measure-PestoWpfProjection.ps1",
+        "DEV/tools/PestoWpfBench.Common.ps1",
+        "DEV/tests/Run-WpfProjectionBenchTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Update-PestoGridRows met à jour la collection déjà liée au tableau : comparaison d’abord par référence, puis par empreinte canonique du rendu, une seule notification Replace par ligne réellement modifiée, sélection rendue par identité et tri porté par la vue restitué après liaison. Le cache d'empreintes est posé sur la collection liée par Add-Member -InputObject, et non par le pipeline : pipé, il partait sur chaque ligne, remontait en tableau par énumération de membres, n'était jamais réutilisé, et faisait remplacer et notifier toute la page reprojetée. Il est aussi posé en chemin en place quand la liaison a été faite hors du helper, sans quoi chaque projection repartait d'une empreinte par ligne affichée. Branché sur deux consommateurs réels : le registre des interventions (Update-PestoInterventionPage, identité RowId) et la page des noms (Complete-PestoNamesProjection, identité Nom, le tri demandé par une vue enregistrée gardant la priorité). Repli sur une liaison unique au-delà de 256 opérations structurelles, ce qui couvre le changement de page de 250 noms. La file d’actions garde sa liaison DataView : elle notifie déjà cellule par cellule (filtre par RowFilter, statut écrit sur la DataRow) et ne se relit en entier qu’aux vrais changements de file. Le banc qui doit en répondre, tools/Measure-PestoWpfProjection.ps1, a été rattrapé le 17 octobre : il ne comparait qu’une reprise complète de DataView à une notification cellule par cellule de cette même DataView, deux mécanismes qui ne sont pas Update-PestoGridRows. Une troisième stratégie ObservableInPlace lie désormais une ObservableCollection à un vrai DataGrid et passe par le helper livré, relu par analyse syntaxique dans wad/Pesto-Collections.ps1 et wad/Pesto-Contracts.ps1 (Get-PestoBenchGridHelperDefinitions : aucune copie locale, aucun chargement de module, aucune exécution de Pesto), le tri porté par la vue et la sélection étant relevés à chaque itération. Le banc exerce le helper sous Set-StrictMode -Off, comme le produit (wad/Invoke-Pesto.ps1), la propriété facultative PestoRowFingerprints en dépendant. Le 18 octobre, le cout du chemin lui-meme est corrige : l'identite de ligne etait relue a chaque phase, sept fois par ligne affichee, et chaque suppression corrigeait les index de position en relisant toute la page. Elle n'est plus lue qu'une fois de chaque cote et conservee dans un tableau parallele aux lignes, les index sont rebatis une seule fois apres les suppressions, et la selection est rendue par la position deja connue au lieu de relire la page. Get-PestoGridRowId lit desormais la propriete par indexeur plutot qu'en enumerant toutes les proprietes de la ligne, le nom restant compare a l'ordinal pres, donc une propriete dont seule la casse differe est toujours refusee. Le 18 octobre, la derniere liaison qui forcait encore un rafraichissement complet a ete corrigee : le Sync-Grid de la file appelait Items.Refresh() sur chaque ligne traitee par le pump, recreant tous les conteneurs de ligne alors que la file n'est jamais liee qu'a sa DataView, qui publie par ListChanged la cellule de toute DataRow ecrite. Le rafraichissement complet ne reste que le repli des liaisons muettes ; le contrat du pump est asserte par trois cas portables (44 dans la suite), rejoues contre le Sync-Grid precedent deux d'entre eux echouent et la suite sort exit 1, donc la garde n'est pas tautologique. Le 18 octobre, second sous-lot : les deux fichiers que le catalogue nomme comme preuves du point, tests/Run-Engine120Tests.ps1 et tests/Measure-Engine120.ps1, n'en disaient rien (aucune occurrence de GridRow, Update-PestoGridRows ou Fingerprint dans l'un comme dans l'autre) ; une preuve nommée qui ne porte pas son objet se relit verte alors que la mesure n'existe pas. Measure-Engine120.ps1 mesure désormais le chemin en place par échantillons répétés (médiane et p95), sur les deux profils branchés (ReusedInstances pour le registre, FreshInstances pour la page de noms), à 1 000 et 4 000 lignes avec 1 et 100 changements, le helper étant relu des sources livrées par Get-PestoBenchGridHelperDefinitions et jamais copié dans le banc ; la mesure est refusée si le passage est tombé sur le repli de liaison complète. Run-Engine120Tests.ps1 répond de la surface livrée : le produit chargé atteint le helper (wad/Pesto-Core.ps1 dot-source toujours wad/Pesto-Collections.ps1, les trois helpers définis au niveau racine de la source livrée, ce fichier sous garde d'intégrité), et la règle d'empreinte est insensible à l'ordre de déclaration des propriétés, sensible à un champ de reçu, et identique d'un runspace à l'autre, sans quoi le cache posé par une projection serait rejeté par la suivante.",
+      "validation": "Vingt-six contrôles Python de la source livrée exécutés le 18 octobre 2026 : analyse lexicale équilibrée, BOM et fins de ligne conservés, branchement réel du registre et de la page des noms, reconstruction octet à octet de Pesto.Engine.Runtime.ps1 à partir des seules sources du moteur, cohérence des totaux publiés du catalogue, fraîcheur du header de réépinglage pesto_runtime.h (régénéré ce jour par generate_binding.py, 0 empreinte périmée sur 63), et garde sur la pose du cache d'empreintes et sur l'unique abonnement de la suite portable. Les suites PowerShell du point sont exécutées pour la première fois ce jour : pwsh 7.4.6 est présent sur ce poste (/tmp/opencode/pwsh7, installé par un lot antérieur et déclaré absent par les quatre sous-lots précédents) et Run-Collections120Tests.ps1 est portable, grille factice et aucun WPF. À la tête 1db2881 elle comptait 20 échecs sur 40 cas et sortait exit 1 — 18 cas sur Add-Member -Set, paramètre qui n'existe ni dans 5.1 ni dans 7, donc setter de grille factice ignoré, et 2 cas sur Get-PestoNamingLayout, ajouté à la fermeture par la convention de nommage du point 119 (ac9e657) sans être ajouté aux fonctions chargées par la suite. Harnais réparé (-SecondValue, getter émettant la collection par l'opérateur virgule, désabonnement du handler CollectionChanged qui se cumulait et doublait les notifications relevées, fermeture de dépendances calculée par point fixe), un défaut du produit est apparu et est corrigé ici : la note PestoRowFingerprints était pipée aux lignes, le test -is [hashtable] échouait, le cache ne servait jamais et les lignes rendues portant la note, leur empreinte ne correspondait plus à celle d'une ligne neuve — toute la page reprojetée était remplacée et notifiée, le contraire du contrat. Le registre y échappait par ReferenceEquals, la page des noms, qui fabrique des instances neuves, pas. Résultat exécuté ce jour : Run-Collections120Tests.ps1 40 cas sur 40, exit 0 ; Run-Engine120Tests.ps1 77 cas sur 77, exit 0 ; Measure-Engine120.ps1 exit 0 ; Run-WpfProjectionBenchTests.ps1 refuse de jouer par sa propre garde « Windows PowerShell 5.1 requis (WPF) ». Ces exécutions n'attestent que du comportement local sous un runtime non produit (pwsh 7.4.6, CLR 8.0.10, Linux aarch64) : la porte PowerShell 5.1 reste la CI Windows, où l'étape Run-AllTests.ps1 était rouge sur cette suite depuis son écriture, ce qui n'était lu par personne. Coût mesuré du helper seul, sans rendu WPF : à 1 000 lignes, 198 ms pour 1 changement et 202 ms pour 100, contre 0,5 ms pour construire une collection neuve ; à 250 lignes, 49 ms et 80 ms contre 0,2 ms. Le calcul PowerShell du chemin est linéaire en lignes affichées quel que soit le nombre de changements (environ trois appels à Get-PestoGridRowId par ligne) ; son gain est le nombre de notifications WPF, 1 contre 1 000 conteneurs recréés, et non le temps processeur. Avant la correction du cache, 100 changements à 1 000 lignes coûtaient 1 181 ms contre 202 ms après. Deux faits de coût consignés par lecture des consommateurs branchés : le registre des interventions rend les instances déjà affichées (Get-PestoInterventionQuery s'appuie sur $byId et ne clone rien), donc une ligne inchangée n'y coûte aucune empreinte ; la page des noms sort au contraire du moteur avec des instances neuves à chaque calcul (Invoke-PestoBuildNamesView fabrique chaque ligne par $makeRow). La cellule ObservableInPlace n'a jamais tourné d'ici : aucun Windows PowerShell 5.1 en STA sur ce poste. Suite Python complète rejouée : 153 échecs, 497 réussites, 13 sauts, 371 sous-tests — ensemble d'identifiants identique à la référence avant ce sous-lot, aucun ajouté, aucun réparé. Le 18 octobre, le contrat de cout est rendu executable et non plus consigne : un cas de plus dans Run-Collections120Tests.ps1 (41 cas) compte les appels a Get-PestoGridRowId et asserte qu'une projection d'une seule ligne changee a 1 000 lignes n'en fait que 2 000, une par ligne de chaque cote ; rejoue contre l'implementation de la tete precedente il releve 7 000 appels et sort exit 1, donc la garde n'est pas tautologique. Mesure du helper seul, sans rendu WPF (pwsh 7.4.6, Linux aarch64), profil du registre, ou la requete rend les instances deja affichees : 1 000 lignes et 1 changement passent de 181,7 ms a 54,0 ms, 1 000 lignes et 100 changements de 247,9 ms a 96,5 ms, 4 000 lignes et 1 changement de 430,0 ms a 220,9 ms, 250 lignes et 1 changement de 43,7 ms a 13,9 ms. Profil de la page des noms, qui fabrique des instances neuves : 1 000 lignes et 1 changement de 571 ms a 414 ms, 4 000 lignes de 1 644 ms a 1 245 ms, le reste du cout etant l'empreinte canonique, une par ligne projetee a nouveau, inevitable tant que le consommateur ne relit pas sans reprojeter. Le nombre d'appels d'identite passe de 7 a 2 par ligne affichee, verifie par sonde. La suite rapport desormais les deux profils dans GridRowUpdate. Reexecute le 18 octobre apres ce sous-lot : Run-Collections120Tests.ps1 44/44, exit 0 ; Run-Engine120Tests.ps1 77/77, exit 0 ; Measure-Engine120.ps1 exit 0 ; test_spark_t061.py 28 controles et 8 sous-controles, exit 0 ; suite Python complete 153 echecs, 502 reussites, 13 sauts, 371 sous-tests, ensemble d'echecs identique a la reference et +2 reussites exactement egales aux 2 controles ajoutes. Les cas de la file ont ete rejoues dans un worktree a la tete precedente : 2 echecs, exit 1. Module Engine reconstruit (690 fonctions, -Check exit 0), package.json et pesto_runtime.h regeneres, refresh_manifest --check garde le motif preexistant de 8 composants divergents sur 63. Reexécuté le 18 octobre après le second sous-lot : Run-Engine120Tests.ps1 79 cas sur 79 (77 avant ; les 2 cas neufs portent sur la surface livrée et sur la règle d'empreinte), exit 0 ; Measure-Engine120.ps1 exit 0, clé GridRowUpdate au rapport et 16 échantillons ; Run-Collections120Tests.ps1 44/44, exit 0 ; test_spark_t061.py 30 contrôles et 8 sous-contrôles, exit 0 ; module Engine -Check exit 0 (690 fonctions) ; suite Python complète 153 échecs, 504 réussites, 13 sauts, 371 sous-tests — même nombre d'échecs que la référence et +2 réussites exactement égales aux 2 contrôles ajoutés, aucun échec sur un fichier touché. Non-tautologie vérifiée dans un worktree à la tête 89b9a75 : retirer de wad/Pesto-Core.ps1 la ligne qui dot-source wad/Pesto-Collections.ps1 fait échouer le seul cas de surface livrée et sortir la suite exit 1 ; retirer le tri ordinal des clés dans Get-PestoStableHash (wad/Pesto-Contracts.ps1, module régénéré) fait échouer le seul cas d'empreinte et sortir exit 1. Mesure du helper seul, sans rendu WPF (pwsh 7.4.6, CLR 8.0.10, Linux aarch64, 2 échantillons par cellule) — profil du registre : 1 000 lignes et 1 changement 58,5 ms de médiane, 1 000 lignes et 100 changements 56,8 ms, 4 000 lignes et 1 changement 115,5 ms, 4 000 lignes et 100 changements 203,3 ms ; profil de la page des noms : 217,2 ms et 215,3 ms à 1 000 lignes, 932,4 ms et 1 048,3 ms à 4 000 lignes. Le coût suit les lignes affichées et non les changements, et les notifications rendues restent exactement égales aux changements (1, 100). Verification solo finale du 18 octobre : suites Engine120 et Collections120 portables reussies ; module regenere, lanceur recompile, controle de distribution reussi. Aucun banc WPF ni VM execute.",
+      "remaining": "Banc tools/Measure-PestoWpfProjection.ps1 : Qualification WPF Windows PowerShell 5.1 STA du rendu, du tri, de la selection et des couts a 100/1 000/10 000 lignes non executee. Le lanceur a ete recompile et son integralite validee le 18 octobre ; la dette de liaison native est resolue.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 62,
+      "requirement": "Index reçus incrémental et projections réutilisées",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Catalogue.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Index des reçus par chemin, taille et date ; éviction des suppressions, revalidation bornée à cinq secondes, -Force, version pour les projections UI.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 63,
+      "requirement": "Évaluer précompilation des Add-Type C#",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tools/Build-PestoRuntimeTypes.ps1",
+        "DEV/tests/Run-CompiledHelpers63Tests.ps1",
+        "DEV/tests/Run-CompiledHelpers63MutationTests.ps1",
+        "DEV/tests/test_spark_t063_native.py",
+        "DEV/wad/Pesto.Runtime.dll",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json",
+        "DEV/docs/implementation/proofs/COMPILED_HELPERS_63_20261023.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Les quatre helpers C# sont livres dans Pesto.Runtime.dll net472, compilee de maniere deterministe ; chargement apres verification SHA256, identite et provenance. L'evaluation est mesuree par le banc tests/Measure-Engine120.ps1, qui joue les deux modes de livraison des quatre sources du build tool sur le meme ouvrage (2 000 lignes indexees, journal d'audit, surface native) : Add-Type a froid 407,8 ms puis 406,7 ms puis 322,2 ms de mediane (558,0 puis 528,9 puis 486,2 ms au p95) avec quatre assemblies, contre 85,0 ms puis 72,2 ms puis 65,5 ms (90,0 puis 79,9 puis 71,0 ms au p95) avec une seule assembly par le chargeur verifie, soit un facteur d'environ cinq a chacune des trois passes du 23 octobre, pour un rendu identique ; les couts sont publies, pas imposes. Aucun Add-Type C# dans les parcours du produit : inventaire rejoue le 23 octobre 2026 (Measure-PestoAddType.ps1), 11 sites dans wad/, tous en -AssemblyName, 0 ms de compilation C# au demarrage. Le bloc publie du banc (CompiledHelpers et CompiledHelpersSamples) est branché a un consommateur executable depuis le 23 octobre : Measure-Engine120.ps1 joue le meme code dans le rapport complet et dans un mode evaluation seule (-CompiledHelpersOnly), les deux passant par l'unique fonction Measure-PestoCompiledHelpers, et Run-CompiledHelpers63Tests.ps1 relit le rapport publie pour en assertre la conclusion (six echantillons joues, deux modes, une assembly livree contre quatre compilées, quatre entrees natives de chaque cote, empreinte d'ouvrage unique, p95 superieure ou egale a la mediane, chemin livre strictement moins couteux que la compilation a froid puis au moins deux fois moins couteux ; seuil large, c'est la conclusion de l'evaluation et non un reglage de performance). La passe consigne est deposee en artefact relisible (proofs/COMPILED_HELPERS_63_20261023.json) : Add-Type 466,4 ms de mediane et 540,3 ms au p95 contre 85,7 ms et 103,3 ms au chargement verifie, ratio 5,4, empreinte d'ouvrage unique b32b06796840…, relu par tests/test_spark_t063_native.py.",
+      "validation": "23 octobre 2026 : Run-CompiledHelpers63Tests.ps1 61/61 (10 cas historiques, 33 de garde, 18 de consommation du banc) ; la suite est le consommateur branche du banc : elle pilote les deux modes de tests/Measure-Engine120.ps1, exige l'egalite stricte des rendus, la provenance du cote precompile (assembly Pesto.Runtime chargee depuis wad/Pesto.Runtime.dll par Initialize-PestoRuntimeTypes) et la compilation reelle des quatre sources que compile deja tools/Build-PestoRuntimeTypes.ps1 ; surface native epinglee a quatre entrees DllImport (kernel32!GetNamedPipeClientProcessId, shell32!SetCurrentProcessExplicitAppUserModelID, user32!SendMessage, user32!DestroyIcon) ; porte du canal eleve en defaillance securisante avant lecture du secret et chemin icone souple, verifies sur le produit livre et le module Engine genere ; le harnais Run-CompiledHelpers63MutationTests.ps1 (branche dans Run-AllTests.ps1 et tests/suites.json) rejoue la copie temoin plus quatorze mutations (derive de la liste epinglee, throw de la porte retire, porte deplacee apres le secret, appel d'icone sorti du try, payload du journal d'audit modifie du seul cote compile, contournement du chargeur verifie, source perdue du cote Add-Type, appel du chargeur retire de la porte, negation de l'appel natif retiree, throw de la porte retire du module Engine genere, porte deplacee apres le secret dans le module, appel d'icone sorti du try dans le module, gardes anti-falsification du chargeur livre neutralisees, source perdue du cote outil de build), chacune faisant echouer exactement son controle (exit 1), les trois gardes assertees deux fois etant frappees separement cote produit livre et cote module Engine genere : 71/71 ; Engine120 100/100, AuditPath, HeadlessAudit, DirectoryCache, SecretOutputs exit 0 ; dix-huit controles Python (test_spark_t063_native.py, douze avant le second sous-lot) ; banc rejoue une troisieme fois le 23 octobre (AddType 322,2 ms contre Precompiled 65,5 ms de mediane, ratio 4,9, empreinte d'ouvrage identique b32b0679…, quatre entrees natives des deux cotes) et inventaire Add-Type rejoue (11 sites, tous -AssemblyName, 0 ms au demarrage). Second sous-lot du 23 octobre : la suite 63 est passee de 61 a 76 controles en relisant le bloc publie du banc (mode evaluation seule, 15 controles de plus) ; le harnais de mutations, de 71 a 83 controles avec trois mutations nouvelles (chemin livre qui recompile les quatre sources a froid, rapport publie qui gonfle la mediane precompilee d'un facteur trois, rapport publie qui perd ses echantillons), chacune faisant echouer exactement son controle et sortant exit 1 ; 18 controles Python de test_spark_t063_native.py rejoues, dont la relecture de l'artefat de mesure (auto-coherence du ratio, six echantillons, empreinte commune des deux modes, raccrochage a l'empreinte citee dans ENGINE_120.md) ; banc complet rejoue apres l'extraction (3 min 01, 186 mesures, bloc CompiledHelpers et ses lignes de resume presents) ; Engine120 100/100, AuditPath, HeadlessAudit, DirectoryCache, SecretOutputs exit 0.",
+      "remaining": "Aucun reste local. Reste cible et CI uniquement : execution des quatre entrees natives epinglees a qualifier sur Windows reel (checklist consignee dans ENGINE_120.md), aucun test VM autorise ; Build-PestoRuntimeTypes.ps1 -Check exige le pack de references net472 (absent) et le reseau (interdit), determinisme atteste sur la machine de build de reference ; porte PowerShell 5.1 de Run-AllTests : CI Windows.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 64,
+      "requirement": "Évaluer pagination/top-k Common.Query",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/test_spark_t064.py",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Pagination branchée du registre sur Common.Query (Offset/Limit, tri Updated décroissant, retour à la dernière page), comparée le 18 octobre 2026 à un oracle de tri complet indépendant : pages identiques sur cinq scénarios dont recherche et état combinés, recouvrement des pages sans doublon ni omission, dates inconnues en clôture dans l'ordre d'entrée. Prototype SortedSet top-k consigné et rejeté : 4,175 ms contre 2,398 ms de tri complet à 10 000 noms / 100 retenus ; aucun changement de Common.Query.",
+      "validation": "Exécuté le 18 octobre 2026 sous pwsh 7.4.6 (CLR 8.0.10, Linux aarch64), runtime non produit : Run-Engine120Tests.ps1 82 cas sur 82, exit 0 — trois cas neufs relisent Get-PestoInterventionQuery dans la source livrée et la comparent à l'oracle ; Measure-Engine120.ps1 exit 0, clé QueryPaging au rapport et 12 échantillons, mesure refusée si les pages divergent ; test_spark_t064.py 4 contrôles, exit 0. Non-tautologie vérifiée en worktree : SortField='Search' à la place de 'Updated' dans la source livrée fait échouer trois cas de la suite (exit 1) et sortir le banc exit 1 ; désactiver le retour à la dernière page fait échouer le cas de recouvrement. Coût mesuré (médiane, 2 échantillons, page de 100) : à 10 000 lignes sans filtre, chemin intégré 63,5 ms contre 109,1 ms au tri complet PowerShell ; à 1 000 lignes 9,8 ms contre 16,2 ms ; à 100 lignes 28,0 ms contre 18,6 ms, la conversion en QueryRecord étant payée à chaque appel.",
+      "remaining": "Qualification Windows PowerShell 5.1 non executee. Le top-k reste ecarte selon les mesures historiques ; Common.Query inchange. Lanceur recompile et integrite du paquet validee le 18 octobre.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 65,
+      "requirement": "Module moteur importable indépendant WPF",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tools/Build-PestoEngineModule.ps1",
+        "DEV/wad/Pesto.Engine.psd1",
+        "DEV/wad/Pesto.Engine.psm1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-WorkerContractTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Module Pesto.Engine.psd1 importable sans WPF, AD, configuration utilisateur ou réseau à l’import.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 66,
+      "requirement": "Générer/valider fermeture dépendances workers par AST",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tools/Build-PestoEngineModule.ps1",
+        "DEV/wad/Pesto.Engine.psd1",
+        "DEV/wad/Pesto.Engine.psm1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-WorkerContractTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Génération des définitions et fermeture des appels produit par AST au build ; vérification des noms manquants et de la liste GUI.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 67,
+      "requirement": "Contrats typés plans/résultats/contextes",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-EngineContracts.ps1",
+        "DEV/wad/Pesto-Contracts.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Types PowerShell nommés pour plan, résultat natif, contexte et erreur ; validation des booléens, GUID, hash et référence courte.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 68,
+      "requirement": "Transitions et invariants états formalisés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-EngineContracts.ps1",
+        "DEV/wad/Pesto-Contracts.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Graphe explicite des transitions et règles d’observation ; matrice négative vérifiée.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 69,
+      "requirement": "Migrations schémas cfg/brouillons/reçus sauvegardant original",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-EngineContracts.ps1",
+        "DEV/wad/Pesto-Contracts.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Migration explicite Policy/cfg/brouillon ; conservation de l’original exact et sortie neuve par fichier temporaire puis Move.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 70,
+      "requirement": "Codes erreurs natifs typés plutôt que messages localisés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-EngineContracts.ps1",
+        "DEV/wad/Pesto-Contracts.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Erreurs natives typées, phase et caractère rejouable d’une lecture explicités.",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 71,
+      "requirement": "Journal structuré corrélé opération/worker/étape/build",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/wad/Pesto-Journal.ps1",
+        "DEV/wad/Pesto-Async.ps1",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/wad/Pesto-Safety.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-HeadlessAuditTests.ps1",
+        "DEV/tests/Run-ReconciliationAuditTests.ps1",
+        "preuves/finition-120-2026-10-15/local/HeadlessAudit-final.json",
+        "preuves/finition-120-2026-10-15/local/ReconciliationAudit-final.json"
+      ],
+      "nature": "function",
+      "implementation": "Événements JSON corrélés par opération, worker, étape et empreinte de build observée. Écriture headless au fil de l’eau, secours borné et signalement des pertes ; réconciliation des tâches/protections/nettoyage corrélée au reçu.",
+      "validation": "Rapports locaux du 15 octobre : HeadlessAudit 10/10, ReconciliationAudit 7/7. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 72,
+      "requirement": "Évaluer surcharge/reprises lectures bornées, jamais mutation auto",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/test_spark_t072.py",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Admission a 12 lectures en vol, MaxReaders creneaux reseau avec voie interactive reservee, attente bornee. Reprises de lectures natives transitoires bornees a trois, backoff exponentiel, annulation et elimination des sorties partielles. Les mutations ne traversent pas ce retry. Évalué le 23 octobre 2026 : l'admission livrée plafonne à douze lectures actives (refus immédiat, aucun worker enregistré au-delà), ne refuse jamais les sept noms de mutation et les garde hors créneau comme hors reprise, répartit les créneaux selon POLICY.MaxReaders (MaxReaders-1 en fond, au moins un, un interactif, partagé à MaxReaders=1) et borne l'attente du wrapper à 30 secondes en ne relâchant que le créneau obtenu ; la reprise livrée borne les tentatives (1 à 3), le délai (0 à 2 000 ms) et le sommeil (4 000 ms), ne publie qu'une lecture complète et conserve l'annulation ; le seul appel livré de Invoke-PestoReadRetry entoure Get-ADComputer dans Find-ADComputerByName.",
+      "validation": "18 octobre 2026 : Run-Engine120Tests.ps1 95/95 hors VM, dont huit controles supplementaires sur la surface livree : admission, repartition, concurrence reelle des runspaces, conservation du creneau pendant retry, backoff et absence de retry mutation. Reexécuté et complété le 23 octobre 2026 sous pwsh 7.4.6 (Linux aarch64), runtime non produit : Run-Engine120Tests.ps1 95 cas sur 95, exit 0 — les huit cas neufs relisent l'admission, la dérivation du drapeau mutation, le choix de créneau et le wrapper dans wad/Pesto-Async.ps1 par analyse syntaxique et les rejouent tels quels dans de vrais runspaces sur de vrais SemaphoreSlim : treizième lecture refusée sans worker enregistré, sept noms de mutation jamais refusés et jamais branchés sur le créneau ni sur une reprise, répartition tenue (MaxReaders=4 → 3 fond + 1 interactif, =1 → créneau partagé, =8 → 7+1), douze lectures en surcharge sans jamais dépasser les créneaux, backoff imputé au lecteur qui détient son créneau (seconde attente ≥ 400 ms pour 450 ms de sommeil), contrat de reprise relu (ValidateRange 1–3 tentatives et 0–2 000 ms, plafond de sommeil 4 000 ms, doublement Pow(2)) et scan AST limitant tout appel livré de Invoke-PestoReadRetry aux fonctions de lecture entourant Get-ADComputer ; Measure-Engine120.ps1 exit 0, clés ReadAdmission et ReadAdmissionSamples au rapport, 17 échantillons, mesure refusée si la concurrence dépasse les créneaux, si un backoff sort de ses bornes ou si le refus borné ne tombe pas dans la fenêtre 30 000–31 500 ms ; test_spark_t072.py 6 contrôles, exit 0. Non-tautologie vérifiée en worktree sur l'arbre rebasé : cinq mutations livrées font chacune échouer exactement leur garde — plafond d'admission porté de 12 à 13 (deux cas ADMISSION), retrait de JoinStatus de la liste interactive (cas classification), créneaux de fond portés à MaxReaders au lieu de MaxReaders-1 (cas répartition), plafond de sommeil porté de 4 000 à 9 000 ms (cas REPRISE), relâchement inconditionnel du créneau par le wrapper (banc exit 1 sur le chemin refusé). Coûts mesurés sur l'arbre rebasé (médiane, 3 échantillons par cellule) : vague de douze lectures 602,0 ms à MaxReaders=1 (pic 1, attente maximale 462 ms), 239,2 ms à 4 (pic 3, 94 ms), 185,2 ms à 8 (pic 7, 49 ms) ; refus d'admission immédiat 2,2 ms ; backoff cumulé 213,5 ms pour 2×200 ms, 614,8 ms pour 3×200 ms, 6 089,5 ms pour 3×2 000 ms ; refus borné 30 077,6 ms, worker non exécuté (WorkMs 0) et créneau non relâché. Suite Python complète 603 tests : 25 échecs, ensemble d'identifiants identique à la référence de la tête b227864 rejouée en worktree (dette de liaison native consignée au point 61), 13 sauts, +6 réussites exactement égales aux six contrôles neufs, aucun échec sur test_spark_t072.py.",
+      "remaining": "Qualification Windows/AD et performance reseau reelle non executees. Exécutions locales sous pwsh 7.4.6, runtime non produit : la porte PowerShell 5.1 reste la CI Windows. Le DispatcherTimer WPF du produit, l'appel Get-ADComputer réel et le réseau restent hors mesure locale. L'adaptation de la concurrence AD au-delà des bornes livrées reste différée jusqu'à courbe latence/erreurs selon charge et classe de requête, consignée à la fiche ENGINE_120 ; à MaxReaders=1 le backoff imputé au créneau peut affamer les autres lectures jusqu'au refus borné à 30 secondes — contrat livré, aucun réglage automatique à compenser.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 73,
+      "requirement": "Primitives communes validation/résultat/sérialisation",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/vendor/M4D.Admin.Common/src/Core/Contracts.cs",
+        "DEV/tests/Run-CommonTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Common.Core : validation bornée, résultat typé, sérialisation JSON UTF-8 bornée",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 74,
+      "requirement": "Instrumentation commune bornée événements/journal async",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/vendor/M4D.Admin.Common/src/Diagnostics/BoundedJournal.cs",
+        "DEV/tests/Run-CommonTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Common.Diagnostics : tampon borné, évictions visibles, journal asynchrone borné, échecs/fermeture explicites et masquage défensif",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 75,
+      "requirement": "Composants WPF communs séparés du Core générique",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/vendor/M4D.Admin.Common/src/Wpf/Presentation.cs",
+        "DEV/vendor/M4D.Admin.Common/tests/Wpf/Run-WpfContracts.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Common.Wpf séparé : géométrie bornée, coalescence Dispatcher, actualisation de pairs existants",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 76,
+      "requirement": "Primitives communes IO atomique et sauvegarde",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/vendor/M4D.Admin.Common/src/IO/AtomicFile.cs",
+        "DEV/wad/Pesto-Workspace.ps1",
+        "DEV/vendor/M4D.Admin.Common/tests/IO/FileIOTests.cs",
+        "DEV/tests/Run-ReceiptTools120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Common.IO : écriture temporaire, flush, remplacement avec sauvegarde, refus de liens et aucun fallback de suppression",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 77,
+      "requirement": "Tests compatibilité consommateurs/versions/downgrade",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/vendor/M4D.Admin.Common/tools/public_api.ps1",
+        "DEV/vendor/M4D.Admin.Common/docs/COMPATIBILITY.md",
+        "DEV/vendor/M4D.Admin.Common/validation/catalogue-120/compatibility.json",
+        "DEV/vendor/M4D.Admin.Common/validation/catalogue-120/binary-compatibility.json"
+      ],
+      "nature": "function",
+      "implementation": "Surface publique 0.1.1 préservée, version de fichier 0.2.0 additive, refus de downgrade dans pipeline",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 78,
+      "requirement": "Pipeline release commune build/hash/locks consommateurs",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/vendor/M4D.Admin.Common/tools/release.py",
+        "DEV/vendor/M4D.Admin.Common/source-commit.txt",
+        "DEV/vendor/M4D.Admin.Common/tests/test_release.py"
+      ],
+      "nature": "function",
+      "implementation": "Build, manifeste, vérification SHA256 et génération de locks par consommateur dans dépôt canonique",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 79,
+      "requirement": "CLI préparation/rename/move avec moteur et protections",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1",
+        "preuves/finition-120-2026-10-15/local/Automation-final.json"
+      ],
+      "nature": "function",
+      "implementation": "Invoke-Pesto.ps1, Invoke-PestoUnattendedOperation : préparation, Rename, Move, RenameMove ; workers, policy et reçus du moteur existant ; opt-in distinct",
+      "validation": "Rapports locaux du 15 octobre : Automation 38/38. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 80,
+      "requirement": "CLI inspection lecture seule JSON",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1",
+        "preuves/finition-120-2026-10-15/local/Automation-final.json"
+      ],
+      "nature": "function",
+      "implementation": "Actions Inspect et Diagnose, JSON, observation sans clôture de reçu",
+      "validation": "Rapports locaux du 15 octobre : Automation 38/38. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 81,
+      "requirement": "Exporter/importer plan exécutable après revalidation",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Plan fermé exportable, durée 24 h, empreinte de cohérence, contexte et identités relus, aucune réservation implicite",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 82,
+      "requirement": "Clé idempotence externe et rejet payload différent",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Clé idempotente locale, marqueur durable avant action, restitution de résultat, conservation des incertains, payload différent refusé",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 83,
+      "requirement": "Adaptateurs ConfigMgr/PSADT/PDQ/DeployR",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Adaptateur commun ConfigMgr/PSADT/PDQ/DeployR, code retour conservé, clé requise, paramètres explicites",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification dans les orchestrateurs réels et le contexte SYSTEM à réaliser."
+    },
+    {
+      "id": 84,
+      "requirement": "Kit premier boot SYSTEM avec contexte réseau et credentials",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1",
+        "preuves/finition-120-2026-10-15/local/Automation-final.json"
+      ],
+      "nature": "function",
+      "implementation": "Adaptateur FirstBoot réservé à SYSTEM, documentation du réseau/compte, aucun service/tâche/autologon créé",
+      "validation": "Rapports locaux du 15 octobre : Automation 38/38. Portée et SHA256 dans validation_reports ; aucune qualification Windows/AD/WPF déduite.",
+      "remaining": "Qualification dans les orchestrateurs réels et le contexte SYSTEM à réaliser."
+    },
+    {
+      "id": 85,
+      "requirement": "Métadonnées séquence/campagne/étape/build autorisées",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Métadonnées fermées Campaign/Sequence/Stage/DeploymentBuild/Orchestrator, propagées aux résultats et reçus",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 86,
+      "requirement": "Contrats JSON et codes retour stables documentés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Automation.ps1",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-AutomationTests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "Contrat JSON et codes documentés dans integrations/README.md ; ancien AutoJoin conservé",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 87,
+      "requirement": "CI racine réellement active et chemins DEV corrigés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        ".github/workflows/validate.yml",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": ".github/workflows/validate.yml à la racine, push master/PR/manuelle, chemins DEV, actions épinglées",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Workflow configuré pour master/PR ; exécution GitHub après publication à vérifier séparément."
+    },
+    {
+      "id": 88,
+      "requirement": "Signature réelle outillée EXE/scripts/DLL confiance/horodatage",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Sign-PestoRelease.ps1",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "qualification",
+      "implementation": "Retiré de la livraison courante par décision explicite de David le 18 octobre 2026 (« oublie cette signature »). Le script reste documenté comme option hors périmètre.",
+      "validation": "Retrait notifié le 18 octobre 2026. Les contrôles SHA256 et la vérification des identités sont maintenus. Aucune signature réelle ni certificat n'est produit.",
+      "remaining": "Hors périmètre de cette livraison non signée. Les qualifications externes (dont point 95) restent distinctes et non acquises."
+    },
+    {
+      "id": 89,
+      "requirement": "Toolchain épinglée et builds reproductibles comparés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/toolchain.lock.json",
+        "DEV/tools/check_toolchain.py",
+        "DEV/tools/reproducible_build.py",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": "Profil de versions compilateur épinglé, contrôle et deux builds indépendants comparés",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 90,
+      "requirement": "SBOM standard",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/release_assurance.py",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": "SBOM CycloneDX 1.6 du runtime fermé avec SHA256",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 91,
+      "requirement": "Attestations provenance artefacts",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/release_assurance.py",
+        ".github/workflows/release-evidence.yml",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": "Statement in-toto/SLSA non signé + workflow manuel d’attestation GitHub des rapports générés",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Statement local non signé ; attestation distante GitHub non exécutée dans cette passe."
+    },
+    {
+      "id": 92,
+      "requirement": "Qualification App Control/WDAC et diagnostic compatibilité",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Test-PestoEnvironment.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Inventaire en lecture seule signatures/langage/politiques et protocole App Control audit/imposé",
+      "validation": "Audit WDAC réel : lancement autorisé et événement 3076. Mode imposé : EXE de laboratoire refusé et événement 3077. Politique temporaire retirée ; les treize politiques initiales sont rétablies à l’identique.",
+      "remaining": "Portée : refus ciblé de l’empreinte 7ba3e7d3 sur la cliente Windows 11 ; aucune généralisation aux politiques d’entreprise."
+    },
+    {
+      "id": 93,
+      "requirement": "Installation/désinstallation/détection gérée optionnelle préservant données",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/managed_install.py",
+        "DEV/tests/test_managed_update.py",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": "Installation gérée optionnelle, détection, aperçu de désinstallation ; configuration et profils GP conservés",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 94,
+      "requirement": "Canaux pilote/général sur updater sûr",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/update_channels.py",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": "Sélection pilote/général par version + hash EXE + hash manifeste ; updater existant seul effectue la transaction",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 95,
+      "requirement": "Provenance versions/signature/droits redistribution DLL Microsoft",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Test-PestoEnvironment.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-2026-10-16/README.md",
+        "DEV/tools/microsoft_components.py",
+        "DEV/docs/implementation/MICROSOFT_COMPONENTS.md",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Inventaire Microsoft conservé comme information technique ; dossier de signature, provenance et redistribution retiré du périmètre demandé pour usage personnel.",
+      "validation": "Décision explicite de David le 18 octobre 2026 : « tout sauf ce qui concerne signature osef c du perso ». Aucune qualification juridique ou signature n’est revendiquée.",
+      "remaining": "Hors périmètre de cette campagne personnelle ; les contrôles SHA256 et les qualifications techniques sont conservés."
+    },
+    {
+      "id": 96,
+      "requirement": "Dossier release unique versions/packs/guides/tests/limites",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/release_assurance.py",
+        "DEV/tests/test_release_120.py",
+        "preuves/finition-120-2026-10-15/local/python-final.log",
+        "preuves/finition-120-2026-10-15/local/pesto-portable-validation.json",
+        "preuves/finition-120-2026-10-15/local/native-portable.json",
+        "preuves/finition-120-2026-10-15/local/native-final.log",
+        "preuves/finition-120-2026-10-15/local/build-engine-final.log",
+        "preuves/finition-120-2026-10-15/local/build-native-final.log",
+        "preuves/finition-120-2026-10-15/guides-qa.json"
+      ],
+      "nature": "function",
+      "implementation": "Générateur du dossier release et preuves locales raccordés ; moteur/lanceur/manifeste reconstruits, assemblage DEV/PROD neutre réalisé et guides définitifs présents.",
+      "validation": "Assemblage local contrôlé : 63 fichiers runtime, configuration template, EXE 5ff886587b627a2e4b946cda47a58c17f69c05d2ab66658c57870542587ce2b6. Contrôles Python, source/XML/PE et lanceur C consignés séparément ; aucune exécution Windows revendiquée.",
+      "remaining": "Qualifications externes et publication Git/CI restent des preuves distinctes ; la réalisation locale est terminée."
+    },
+    {
+      "id": 97,
+      "requirement": "Rapports test distinguant plateforme/doubles/WPF/app/AD/build",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/qualification.py",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py"
+      ],
+      "nature": "function",
+      "implementation": "Enveloppe de preuve avec plateforme, périmètre, build, hash de rapport brut et exécution déclarée",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Réalisation locale terminée ; qualification et publication restent distinctes des contrats locaux."
+    },
+    {
+      "id": 98,
+      "requirement": "Matrice Windows/langues/.NET/comptes/politiques",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/qualification.py",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-2026-10-16/README.md",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md",
+        "preuves/correctifs-qualification-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md",
+        "preuves/qualifications-restantes-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Matrice CI Windows 2022 et 2025 avec culture utilisateur demandée en-US/fr-FR ; inventaire PS/.NET/CLR/culture et politique en lecture seule.",
+      "validation": "Application réelle sur Windows 11 build 26200, interface Windows en-US, culture fr-FR, .NET 4.8.1, Windows PowerShell 5.1.26100.6584 x64 ; SSO et compte AD explicite. Cliente généralisée puis jointe par GUI sous V111301VA765542 ; canal sécurisé et objet AD Paris confirmés après reboot (client-final.json). Inspection CLI réelle sous SYSTEM (SID S-1-5-18, session 0) : observation Windows/AD réussie, exit 0 et reçus inchangés. Correctif du contrat de lecture réassemblé : FirstBoot sous SYSTEM retourne Observed/exit 0, sans erreur ni modification des cinq reçus (paquet 15552325). Complément Server 2025 fr-FR/.NET 4.8.1 administrateur : lecture AD réelle réussie, observation Windows distante en timeout. CLM dans un enfant isolé : exit 1 et reçus inchangés. Complément du même build 15552325 : GUI Server 2025 fr-FR sous Administrateur AD intégré, sept passages de navigation, processus répondant, fermeture normale. Nouvelle politique WDAC temporaire : lancement natif autorisé en audit (événement 3076), refusé en mode imposé (3077), nouvelle console réellement ConstrainedLanguage. Treize politiques initiales exactement restaurées, cinq reçus inchangés, même processus GUI client préservé.",
+      "remaining": ""
+    },
+    {
+      "id": 99,
+      "requirement": "Tests GUI end-to-end complets",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Capture-PestoQualification.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-2026-10-16/README.md",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md",
+        "preuves/correctifs-qualification-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Bancs WPF isolés et pilotes GUI livrés. David a réautorisé les essais VM le 16 octobre après le développement.",
+      "validation": "Compléments réels : import de deux préparations, correction d’une cellule invalide, précontrôle AD sans mutation, refus de sauvegarde sur conflit externe sans remplacement, suivi de jonction consigné Verified après concordance Windows/AD. Fermeture sans altération des cinq reçus. Annulation immédiate après import (2→3→2 lignes), annulation après modification effective d’une cellule sur deux lignes sélectionnées, fermeture de la vue pendant lecture explicitement active : application conservée et cinq reçus inchangés. Échap corrigé puis vérifié dans le paquet 15552325 : aperçu fermé, brouillon conservé, aucun dialogue d’abandon ni écriture de configuration ; 50/50 contrôles WPF isolés. Complément du même candidat : croix physique et fermeture native ferment l’aperçu en conservant brouillon, configuration et processus. Lot réel interrompu pendant la première action : un déplacement Verified, une ligne non lancée, un seul nouveau reçu ; second objet inchangé sur deux DC.",
+      "remaining": "Aucun pour les parcours documentés des campagnes ; couverture limitée aux scénarios et builds identifiés. La cause du précédent constat de croix non réactive n’est pas établie ; le défaut n’est pas reproduit avec les nouveaux pilotes."
+    },
+    {
+      "id": 100,
+      "requirement": "Régressions visuelles DPI/résolutions/zoom/thèmes/petites fenêtres",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Capture-PestoQualification.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-2026-10-16/README.md",
+        "DEV/tests/Run-UxTests.ps1",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Banc de disposition du véritable XAML à 1460/1100/1460 DIP et petite fenêtre native ; navigation répétée et zoom.",
+      "validation": "Candidat 7ba3e7d3 : zoom Pesto 80/100/150, clair/sombre et petite fenêtre antérieurs ; Windows 150% avec DPI fenêtre 144, passage à 200% avec mise à l’échelle système, contraste élevé en mode Suivre Windows, déplacement entre moniteur 1920x1440 à 200% et 1024x768 à 100%. Navigation et pied d’action accessibles, captures relues ; contraste système restauré.",
+      "remaining": "Périmètre des parcours capturés, sans comparaison exhaustive de chaque page. Pesto reste conscient du DPI système : le passage à 200% utilise la mise à l’échelle Windows, pas une promesse de rendu natif par moniteur."
+    },
+    {
+      "id": 101,
+      "requirement": "Recette clavier/Narrator complète",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Capture-PestoQualification.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Parcours clavier/F6/Narrator documenté avec retour de focus et annonces",
+      "validation": "Narrator actif : Tab/Maj+Tab, F6/Maj+F6, Entrée/Échap et retour au bouton d’origine. Historique réel de parole conservé : noms, aides et erreur MaxBatch lus. Décision David du 18 octobre 2026 : qualification Narrator retirée du périmètre. Qualification limitée aux parcours clavier effectivement observés ; aucune annonce vocale exhaustive certifiée.",
+      "remaining": ""
+    },
+    {
+      "id": 102,
+      "requirement": "Injection pannes frontières persistance/effets natifs",
+      "state": "pending_qualification",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_packaging_edges.py",
+        "DEV/tests/test_managed_update.py",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "preuves/qualification-2026-10-16/README.md",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Arrêt brutal du sous-processus à chaque remplacement de la mise à jour gérée, puis second arrêt pendant la reprise ; reçu et anciens fichiers vérifiés.",
+      "validation": "Coupure SMB antérieure conservée. Nouvelle extinction brutale de la cliente après trois remplacements réellement effectués sur NTFS par la mise à jour gérée : reprise native réussie, fichiers originaux et configuration préservés, verrou de mise à jour retiré, cinq reçus inchangés et canal sécurisé valide.",
+      "remaining": "Frontières natives Windows/AD encore ouvertes. Le pilote demandé au Spark n’a pas été rendu avant la demande d’abrègement ; aucune nouvelle preuve de panne native AD."
+    },
+    {
+      "id": 103,
+      "requirement": "Concurrence deux opérateurs SMB réel",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Measure-PestoCoordinationRace.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-vm-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Scénarios deux machines/deux opérateurs SMB et refus de vol de réservation",
+      "validation": "Worker Pesto-Names réel, SHA256 70461a6d03fa3624f941a8f8c441a6e5120389c5a825d8cbe117b3ad4f99eccc : 20 tours, 4 processus sur 2 VM, un propriétaire par tour. Candidats distincts, propriétaire arrêté, partage coupé/restauré et expiration naturelle vérifiés. Le banc conserve les baux pour éviter une réacquisition tardive artificielle.",
+      "remaining": "Qualifié pour le worker réel sur SMB 3.1.1 signé du laboratoire, avec deux identités serveur dédiées. Ne certifie pas tous les serveurs SMB ni un parcours GUI simultané."
+    },
+    {
+      "id": 104,
+      "requirement": "Tests délai réplication réel sans changer DC automatiquement",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Observe-PestoReplication.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Scénarios deux DC sans bascule ou réplication forcée",
+      "validation": "DC02 temporaire autorisé, installé puis promu. Même GUID lu sur DC01 et DC02 après déplacement GUI : environ 16,26 s entre premières observations conformes, état Stale conservé jusque-là. Reçu exécuté sur dc01 ; aucune réplication forcée ni bascule PDC. Poste revenu à Paris ; DC02 rétrogradé puis retiré.",
+      "remaining": "Qualifié pour cette réplication intra-site à deux DC ; aucune garantie de délai universel ni qualification inter-sites."
+    },
+    {
+      "id": 105,
+      "requirement": "Tests génératifs contrats Unicode/DN/JSON/limites/états",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/wad/Pesto-EngineContracts.ps1",
+        "DEV/vendor/M4D.Admin.Common/src/Core/Contracts.cs",
+        "DEV/tests/Run-Engine120Tests.ps1",
+        "DEV/tests/Run-CommonTests.ps1",
+        "preuves/correctifs-ci-2026-10-15/local/Engine120-generative.json"
+      ],
+      "nature": "qualification",
+      "implementation": "Corpus génératif Unicode/JSON/bornes Common et contrats moteur DN/états",
+      "validation": "Contrats purs locaux qualifiés : Engine120 77/77 sur PS 7.4.20, seed 1052026, 256 textes Unicode, 1536 contrôles JSON, 8 JSON/UTF8 invalides, 78 DN, 6 bornes texte et 576 combinaisons d’état. Hashes corpus/runtime/DLL/test dans le rapport ; aucune qualification Windows/AD déduite.",
+      "remaining": "Aucun pour ce corpus local de contrats purs. Windows/AD/WPF restent des qualifications distinctes."
+    },
+    {
+      "id": 106,
+      "requirement": "Tests fuite secrets logs/erreurs/exports/captures/adaptateurs",
+      "state": "qualified",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/scan_evidence.py",
+        "DEV/wad/Pesto-Journal.ps1",
+        "DEV/tests/test_release_120.py",
+        "DEV/tests/Run-HeadlessAuditTests.ps1",
+        "DEV/tests/test_spark_t014.py",
+        "preuves/correctifs-ci-2026-10-15/README.md",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "preuves/qualification-2026-10-16/README.md",
+        "DEV/tests/Run-SecretOutputsTests.ps1",
+        "preuves/qualification-2026-10-16/secret-scan.json",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md",
+        "preuves/correctifs-qualification-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md"
+      ],
+      "nature": "qualification",
+      "implementation": "Huit cas de sorties textuelles réelles : writer, HTML, diagnostics, support, ticket et erreurs. Trois fuites de référence/étape corrigées ; scanner séparé sur dix fichiers produits.",
+      "validation": "Fuite CSV reproduite avec marqueur synthétique puis corrigée : 9/9 sorties et 16/16 contrats CLI passent sur Windows PowerShell 5.1. Scanner indépendant : neuf fichiers de sortie examinés, aucun marqueur. Masquage du mot de passe et refus de connexion factice observés en GUI. Six étiquettes d’adaptateur exercées sur leur frontière commune. Correctif CSV inclus dans le paquet 15552325 : neuf contrôles de sorties et scanner indépendant de neuf fichiers réussis ; CLI 18/18. Six adaptateurs sous SYSTEM : douze refus sûrs sur métadonnée ou AD réel, reçus inchangés ; scanner de seize textes sans marqueur. Douze stderr vides. Les codes JSON sont observés ; les codes natifs manquent au pilote.",
+      "remaining": "Périmètre des sorties et frontière commune des adaptateurs qualifié. Plateformes tierces absentes du labo, binaires non inspectés et secrets inconnus non certifiés."
+    },
+    {
+      "id": 107,
+      "requirement": "Évaluer longues sessions mémoire/handles/abonnements WPF",
+      "state": "evaluated",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/tools/Measure-PestoSession.ps1",
+        "DEV/docs/implementation/QUALIFICATION_120.md",
+        "DEV/tests/test_release_120.py",
+        "preuves/qualification-2026-10-16/README.md",
+        "DEV/tools/Measure-PestoWpfSession.ps1",
+        "DEV/tools/PestoWpfSessionProbe.cs",
+        "DEV/tests/Run-WpfSessionTests.ps1",
+        "DEV/tests/Run-SessionMeasureTests.ps1",
+        "preuves/qualification-2026-10-16/ci-38822908737/summary.json",
+        "preuves/qualification-vm-2026-10-18/README.md",
+        "preuves/qualification-personnelle-2026-10-18/README.md",
+        "preuves/cloture-qualifications-2026-10-18/README.md",
+        "preuves/qualifications-restantes-2026-10-18/README.md"
+      ],
+      "nature": "evaluation",
+      "implementation": "Mesure robuste de processus réel et banc de création/navigation/fermeture du XAML avec références faibles, mémoire, handles et threads après échauffement.",
+      "validation": "Même processus réel : trois séries de 240,120,120 échantillons à cinq secondes ; 20 puis 10 cycles de navigation/lecture en cache, puis 10 cycles avec actualisation AD forcée et données récentes vérifiées. Aucun verrouillage ni erreur du pilote. Reflux observé pendant la deuxième série (maximum 455946240 octets, fin 370233344) ; troisième série en croissance jusqu’à 441085952 octets. Même candidat final, 60 fermetures WPF : timers arrêtés, pile vide et références faibles stables. Dix cycles avec fraîcheur AD vérifiée et 72 échantillons sur le même PID : mémoire privée 424845312→483885056 octets, handles 1270→1516. Diagnostic ciblé du même code Async : 35 vraies lectures AD par mode, deux processus distincts. Pool réutilisé : 92,9→97,3 Mo puis 86,9 Mo après fermeture/GC, handles 658→662→622 ; source SHA256 identique au produit. Nouvelle série dans la même GUI PID6020, toujours démarrée à17:32:27Z : 72 échantillons, dix lectures AD fraîches vérifiées, 417562624→453308416 octets (pic460644352), handles867→1075 (pic1088), inférieur au précédent pic484765696/1516. Aucun GC forcé dans la GUI. Décision : conserver le pool ; les mesures ne justifient pas le recyclage arbitraire proposé par Spark. Portée bornée au laboratoire, sans garantie d’absence de fuite sur une durée illimitée.",
+      "remaining": ""
+    },
+    {
+      "id": 108,
+      "requirement": "Guide court par tâches/aide contextuelle/manuels",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/RELEASE_120.md",
+        "DEV/docs/implementation/GUIDE_TACHES_120.md",
+        "outils/guides/technicien.md",
+        "outils/guides/administrateur.md",
+        "DEV/docs/Pesto-1.0-Guide-technicien.docx",
+        "DEV/docs/Pesto-1.0-Guide-technicien.pdf",
+        "DEV/docs/Pesto-1.0-Guide-administrateur.docx",
+        "DEV/docs/Pesto-1.0-Guide-administrateur.pdf",
+        "preuves/finition-120-2026-10-15/guides-qa.json",
+        "DEV/docs/implementation/proofs/FINALISATION_20261018.json"
+      ],
+      "nature": "function",
+      "implementation": "Guide court par tâches, aide contextuelle et deux manuels Pesto 1.0 en DOCX/PDF : technicien 24 pages, administrateur 66 pages.",
+      "validation": "Finalisation du 18 octobre : rendu DOCX/PDF, contrôle des pages et empreintes des quatre guides dans FINALISATION_20261018.json ; remplace la pagination du 15 octobre.",
+      "remaining": "Documentation produite et contrôlée localement ; les captures existantes ne qualifient pas le candidat final sur Windows."
+    },
+    {
+      "id": 109,
+      "requirement": "Évaluer jonction hors connexion : blob secret",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/integrations/Pesto.Optional.psm1",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1",
+        "DEV/wad/Pesto-Extensions.ps1",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/tests/Run-ManagedExtensionsTests.ps1",
+        "DEV/tests/Run-ExtensionEffectsTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json",
+        "DEV/tests/Run-OfflineJoin109EntryTests.ps1",
+        "DEV/tests/Run-OfflineJoin109EntryMutationTests.ps1",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_20261024.json",
+        "DEV/tests/Run-OfflineJoin109NativeTests.ps1",
+        "DEV/tests/Run-OfflineJoin109NativeMutationTests.ps1",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_NATIVE_20261025.json",
+        "DEV/tests/Run-OfflineJoin109ObserveTests.ps1",
+        "DEV/tests/Run-OfflineJoin109ObserveMutationTests.ps1",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_OBSERVE_20261025.json",
+        "DEV/tests/Run-OfflineJoin109BlobTests.ps1",
+        "DEV/tests/Run-OfflineJoin109BlobMutationTests.ps1",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_BLOB_20261025.json",
+        "DEV/tests/Run-OfflineJoin109NativeLineTests.ps1",
+        "DEV/tests/Run-OfflineJoin109NativeLineMutationTests.ps1",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_NATIVE_LINE_20261025.json",
+        "DEV/tests/Run-OfflineJoin109ApplyTests.ps1",
+        "DEV/tests/Run-OfflineJoin109ApplyMutationTests.ps1",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_APPLY_20261025.json",
+        "DEV/docs/implementation/proofs/OFFLINE_JOIN_109_SECRET_20261025.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Parcours ODJ distinct : import DPAPI local sous ACL administrateur/SYSTEM, intention durable avant djoin, application unique, observation du redemarrage, GUID, domaine et canal securise. Aucun ajout en ligne de secours.",
+      "validation": "24-25 octobre 2026 : Run-ExtensionEffectsTests.ps1 57/57 ; Run-OfflineJoin109EntryTests.ps1 48/48, ou seul Invoke-PestoExtensionCommand est joue (OfflineImport, OfflineApply, OfflineObserve) : politique AllowOfflineJoin, mode incident, session en consultation, drapeaux DEBUG, coordination et exclusions de groupes incompatibles, exigence -Execute de l'import et de l'application, refus d'observer en execution, aiguillage du switch, empreinte SHA256 du blob, scellement du plan, intention durable avant l'appel natif, Assert-PestoOperationPolicy, approbation de campagne et cloture du recu d'intervention ; Run-OfflineJoin109EntryMutationTests.ps1 148/148, trente-deux mutations du moteur scelle copie hors sac, temoin passant, dont une paire sur la session en consultation. Sous-lot du 25 octobre sur le transport lui-meme du blob secret : nouveau Run-OfflineJoin109NativeTests.ps1 20/20, ou les gardes d'Invoke-PestoOfflineNative sont lues dans l'arbre syntaxique du moteur scelle parse par le vrai analyseur PowerShell (quatre switches et leur ordre, citation des deux chemins, binaire sous System32, deux relectures de chemin avant toute creation de processus, garde d'injection, absence de coquille et de fenetre, redirection et non-publication des deux sorties natives, delai qui borne et tue, code de sortie rendu, liberation dans le finally, unicite du lancement, unique parametre) et ou Assert-PestoPlainPath est reellement executee sur les formes de chemin remises par le transport (blob sous lien, System32 sous lien, chemins clairs acceptes), l'echec du transport reel sur plateforme sans racine Windows etant verifie ; nouveau Run-OfflineJoin109NativeMutationTests.ps1 94/94, vingt-deux mutations du transport, temoin passant. Un sondage consigne dans la preuve montre que les trois .Contains de la suite du point d'entree ne voyaient que neuf de ces dix reecritures. Vraies fonctions du cycle et du schema des recus, doubles AD/Windows/DPAPI/djoin/ACL, pas de VM. Produit non modifie par ce sous-lot : refresh_manifest.py --check vert sur 67 composants, Build-PestoEngineModule.ps1 -Check True 740 165 a948d92a..., validate_pesto.py 668/668, pytest 624 passed 6 skipped, campagne portable 63 passed 0 failed 21 skipped. Sous-lot du 25 octobre sur la jambe d'observation : nouveau Run-OfflineJoin109ObserveTests.ps1 21/21, ou chaque condition de Get-PestoOfflineObservation est jouee une par une par le point d'entree Invoke-PestoExtensionCommand -Action OfflineObserve et ou le recu est reellement ecrit, relu et clos par les vraies fonctions durables (Write-PestoJoinReceipt, Write-PestoAtomicText, Read-PestoAutomationJson, Read-PestoOfflineRecord, Start-PestoIntervention, Write-PestoIntervention, Read-PestoIntervention, Complete-PestoIntervention) : poste non joint, joint a un autre domaine, nom different du plan, identite de machine changee, renommage en attente, demarrage identique puis anterieur au demarrage enregistre, objet d'annuaire au GUID different, renomme ou sorti de l'OU planifiee, canal securise non verifie, controleur decouvert pour le domaine planifie et adresse aux deux controles, recu nommant un autre poste ou un autre domaine ou sans intention hors connexion, blob encore a Imported, session en consultation qui ne clos rien, seconde observation qui ne rappelle pas l'appel natif, non-publication du materiel du blob ; chaque cas incertain exige Uncertain, le code 97, les deux drapeaux a faux, la lecture seule, le refus de rejeu et zero appel AD, controleur, canal ou import. Nouveau Run-OfflineJoin109ObserveMutationTests.ps1 127/127, trente et une mutations de ces gardes, temoin passant. Un sondage consigne dans la preuve montre que 22 des 24 reecritures des gardes d'observation laissaient les deux suites existantes vertes. Campagne portable 65 passed 0 failed 21 skipped, validateur 670/0, pytest 624 passed 6 skipped, sceau inchange. Sous-lot du 25 octobre sur l'import du blob secret lui-meme : nouveau Run-OfflineJoin109BlobTests.ps1 68/68, ou chaque garde de Import-PestoOfflineBlob et de Read-PestoOfflineRecord est jouee une par une par le point d'entree Invoke-PestoExtensionCommand -Action OfflineImport -Execute, le recu durable etant reellement ecrit par Write-PestoJoinReceipt et relu par Read-PestoOfflineRecord (eligibilite locale : poste joint, renommage en attente, administration, role de domaine ; compte provisionne : GUID vide, perimetre d'OU, domaine de l'OU ; forme du materiel : conteneur, taille minimale, plafond d'un megaoctet, lien symbolique et jonction ; rejeu cote recu et cote secret ; secret : une seule protection sur les octets du fichier, base64 du materiel protege, rien de clair dans le magasin ni dans le recu, source de l'operateur jamais supprimee, echec de protection sans recu ni secret persistes ; recu et plan scelles ; identifiant : empreinte hexadecimale minuscule de soixante-quatre, evasion hors du magasin ; relecture : schema, mode, identifiant, etat, empreinte, champ en trop ou manquant, scellement altere, action, finalite, domaine, identite de machine, nom de poste, renommage cache, conteneur), chaque refus devant en plus ne laisser aucune trace : zero appel DPAPI, zero ecriture de recu, magasin vide. Nouveau Run-OfflineJoin109BlobMutationTests.ps1 168/168, quarante et une mutations de ces gardes, temoin passant. Un sondage consigne dans la preuve montre que douze des seize reecritures de ces gardes etaient vues par les trois suites existantes et que quatre les laissaient a 48/48, 21/21 et 20/20 (rejeu ne regardant plus le cote secret, relecture du chemin clair du secret avant ecriture, empreinte propre du recu, identite de machine du plan) ; rejouees contre la nouvelle suite, ces quatre-la la font rougir d'un cas chacune. Campagne portable 66 passed 1 failed 21 skipped (l'unique echec est le mutant non deterministe « Plan dates left as converted objects » de Run-AttributeEntry114MutationTests.ps1, point 114, preexistant et sans rapport : le harnais d'attributs ne copie que le moteur, le modele neutre et sa propre suite, et ses trois rejets filtres rendent 1, 2 puis 3 cas en echec sur trente-quatre, la suite comportementale AttributeEntry114 restant 34/34), validateur 672/0, pytest 624 passed 6 skipped, sceau inchange. Sous-lot du 25 octobre sur la ligne d'arguments remise a djoin : un sondage mesure que Run-OfflineJoin109NativeTests.ps1 ne jugeait cette ligne que par ses chaines litterales et que deux reecritures du transport la laissent a 20/20, alors qu'elles permutent les deux operands de la concatenation (le blob clair part sous /windowspath et la racine systeme sous /loadfile) ou remettent a djoin le chemin de djoin.exe a la place du blob ; seule l'apparition d'un cinquieme switch est vue. Nouveau Run-OfflineJoin109NativeLineTests.ps1 24/24, ou l'expression de concatenation est retiree de l'arbre syntaxique scelle et executee par le vrai interpreteur PowerShell avec pour seules entrees les deux chemins remis par le produit (le texte juge est celui du produit, la suite ne reecrit aucune chaine djoin) : forme de l'expression (cinq operands en alternance, quatre concatenations, aucun noeud inattendu, ce qui refuse qu'une chaine interpolable remplace la concatenation), resultat exact (les quatre switches dans l'ordre, les deux chemins cites chacun des deux cotes), aiguillage (blob sous /loadfile et jamais sous /windowspath, racine sous /windowspath et jamais sous /loadfile, chacun interpolate une seule fois), six champs et pas un de plus sur cinquante-deux formes de chemins acceptees, absence d'identite et de mot de passe, independance de tout etat ambiant ; les quatre refus de la garde d'injection sont reellement executes, statement complet avec condition et throw, sur citation double, retour chariot et saut de ligne, et la garde est montree portante (contournee, une citation dans le chemin du blob detruit la ligne et /localos ne parvient plus a djoin). Nouveau Run-OfflineJoin109NativeLineMutationTests.ps1 75/75, dix-huit mutations de cette ligne, temoin passant ; les vingt-deux mutations du harnais de transport existant ne frappaient aucune de ces gardes. Les deux mutants survivants rejoues contre la nouvelle suite la font rougir de sept et neuf cas. Campagne portable 68 passed 1 failed 21 skipped, validateur 674/0, pytest 624 passed 6 skipped, sceau inchange. Sous-lot du 25 octobre sur la jambe d'application du blob secret : un sondage (dix-huit reecritures des gardes d'application, chacune rejouee contre les trois suites qui jouent deja cette jambe) mesure que six laissent les trois suites a 57/57, 48/48 et 21/21 (poste joint depuis l'import, renommage en attente, administration perdue, role de domaine apparu, porte du registre local des operations en cours, effacement des tampons clairs) et que les douze autres ne sont vues que par Run-OfflineJoin109EntryTests.ps1, Run-ExtensionEffectsTests.ps1 restant a 57/57 sur sept d'entre elles. Nouveau Run-OfflineJoin109ApplyTests.ps1 51/51, ou chaque condition est jouee une par une par Invoke-PestoExtensionCommand -Action OfflineApply -Execute, le recu durable et le registre d'intervention etant ecrits, relus et clotures par les vraies fonctions du produit : refus de rejeu sur les quatre etats non Imported et sur la seconde application reelle d'un blob fraichement applique, huit conditions du contexte reverifiees a l'application, trois portes (politique d'operation, registre local des operations en cours, approbation de campagne et objet d'approbation non structure), quatre controles du secret (chemin clair sous lien, plafond de deux megaoctets, deprotection unique sur les octets du fichier, empreinte contre le plan scelle), recu a Requested et OfflineJoin a Requested relus sur disque a l'instant ou le transport natif est appele, contenu octet a octet du fichier remis a djoin, destruction des deux fichiers, effacement des deux tampons, decision rendue selon le code natif (0 -> 3010 et PendingRestart, tout autre code -> 97 et Uncertain, 3010 rendu par djoin lui-meme non confondu avec un succes, delai natif -> Uncertain sans rejeu), et aucun refus qui laisse une trace (zero appel natif, zero deprotection, zero appel AD, controleur ou canal, registre d'intervention vide, magasin a deux fichiers, secret intact, recu encore a Imported) ; nouveau Run-OfflineJoin109ApplyMutationTests.ps1 136/136, trente-trois mutations du moteur scelle copie hors sac, temoin passant, la reecriture qui retirait Assert-PestoPlainPath $paths.Plain avant l'ouverture etant mesuree equivalente (CreateNew refuse deja l'ouverture d'un lien, suite a 51/51) et remplacee par deux mutants observables sur la meme ligne. Contre-sondage : les dix-huit reecritures du sondage font chacune rougir la nouvelle suite, de un a sept cas, sortie non nulle a chaque fois. Campagne portable 70 passed 1 failed 21 skipped (l'unique echec est AttributeEntry114Mutations du point 114, mutant non deterministe preexistant et sans rapport : rejouee seule immediatement apres la campagne elle rend 131/131 et la suite comportementale AttributeEntry114 est restee verte dans la campagne), validateur 676/0, pytest 624 passed 6 skipped, manifeste 67 composants, sceau inchange (True 740 165 a948d92a...). Sous-lot du 25 octobre sur la protection du blob secret elle-meme : les deux fonctions DPAPI du moteur (Protect-PestoOfflineBytes, Unprotect-PestoOfflineBytes) etaient remplacees par un double qui xor les octets avec une cle de fixture dans les quatre suites qui jouent ce parcours (Run-OfflineJoin109BlobTests.ps1 lignes 122 et 134) et ne sont jouees par aucune ; leur seul jugement etait un cas sur l'arbre scelle de Protect seul et deux comparaisons de chaines de Run-OfflineJoin109EntryTests.ps1. Un sondage (onze reecritures de cette jambe, chacune appliquee a une copie hors sac du moteur et rejouee contre les quatre suites, copie temoin verte 48/48, 68/68, 51/51 et 57/57) mesure que neuf des onze laissent les quatre suites vertes (entropie ajoutee a la protection ou a la deprotection, tableau rendu sans la virgule d'un cote ou de l'autre, assemblage System.Security non charge d'un cote ou de l'autre, materiel remplace par une constante a la protection ou a la deprotection, deprotection qui re-protege au lieu de dechiffrer) et que seules les deux portees sont vues (proteger pour l'operateur fait rougir BlobTests 67/1 et EntryTests 47/1 ; dechiffrer pour l'operateur n'est vu que par EntryTests, et seulement parce que le mot LocalMachine disparait de la definition). Nouveau Run-OfflineJoin109SecretTests.ps1 30/30, ou les deux fonctions sont lues noeud par noeud dans l'arbre du moteur scelle parse par le vrai analyseur PowerShell (receveur TypeExpressionAst sur [Security.Cryptography.ProtectedData], methode, trois arguments dans l'ordre, portee, entropie, enonce Add-Type avant l'appel, virgule ArrayLiteralAst portant le resultat, absence de seconde commande, contrainte [byte[]] du parametre, absence de la methode de l'autre moitie comptee en InvokeMemberExpressionAst) et ou ce qui peut l'etre est reellement execute par l'interpreteur : le noeud de portee ecrit par le produit vaut 1 la ou CurrentUser vaut 0, le noeud d'entropie ne rend rien, l'argument materiel rend les quatre octets remis, l'enonce Add-Type charge l'assemblage, la virgule est montee portante, et les deux fonctions scellees refusent reellement sur cette plateforme avec « not supported on this platform » au lieu de rendre un faux secret, la disponibilite de DPAPI etant mesuree et non supposee ; les sept usages que le produit fait de la jambe sont juges (protection unique a l'import sur $bytes et jamais de deprotection, deprotection unique a l'application sur $secret et jamais de re-protection, empreinte calculee apres le dechiffrement et sur le materiel dechiffre). Nouveau Run-OfflineJoin109SecretMutationTests.ps1 222/222, vingt-sept mutations de ces gardes sur copie hors sac du moteur, temoin passant. Contre-sondage : les onze reecritures du sondage font chacune rougir la nouvelle suite, sortie non nulle a chaque fois, de 29/1 a 22/8, temoin a 30/30. Deux defauts du banc trouves et corriges en route : trois controles comparaient une collection a une chaine avec -cne (la collection vide ne rendant rien, le test passait sans rien juger) et neuf scenarios du harnais parenthesaient mal leur concatenation (la virgule liant plus fort que +, Mutate-Runtime recevait quatre elements au lieu de deux) ; le harnais refuse desormais une liste qui ne tombe pas par paires, une reecriture sans effet sur le moteur et un mutant que l'analyseur ne lit plus. DPAPI, djoin, ACL, AD, magasins et statut du poste restent des doubles : aucun DPAPI rejoue, aucune VM, aucun Windows reel, aucun AD reel.",
+      "remaining": "Qualification specifique de cette extension sur Windows et annuaire reel : non faite, et non faisable dans cette session, qui interdit VM, labo, Windows reel et AD reel (la mention « les tests VM sont désormais autorisés » du catalogue ne l'emporte pas sur cette regle de session). Rien de local ne reste ouvert sur ce point : les quatorze suites de la jonction hors connexion (point d'entree, transport, ligne d'arguments, observation, import du blob, application du blob, protection du blob, et leurs harnais de mutations) sont vertes et enregistrees. Restent non attestees faute d'hote Windows, donc doublees : DPAPI LocalMachine (la portee n'est attestee que comme valeur de l'enumere et comme texte du noeud juge dans l'arbre scelle, non comme le fait que la clef machine du SYSTEM dechiffrera le blob sur la cible), djoin.exe et son contrat effectif, ACL SYSTEM/Administrateurs du magasin, magasins ProgramData, statut local du poste, plateforme, integrite du paquet, socle commun, module ActiveDirectory, controleur decouvert, Get-ADComputer, canal securise, registre local des operations en cours, MachineGuid du registre ; la contention du mutex Global\\GP_PostMutation_v1 n'est pas rejouable hors Windows. Ce que la suite de la protection atteste est borne et dit : ce que le produit demande reellement a DPAPI (portee machine, aucune entropie, le materiel remis tel quel), que rien ne filtre hors de la fonction, et que les deux moities de la jambe s'accordent ; non la confidentialite reelle du secret, qui ne s'observe que sur la plateforme cible.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 110,
+      "requirement": "Évaluer profils multi-domaines/environnements isolés",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/integrations/Pesto.Optional.psm1",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1"
+      ],
+      "nature": "evaluation",
+      "implementation": "Retiré sur demande explicite de David le 16 octobre 2026.",
+      "validation": "Prototypes de profils supprimés ; cible produit Windows PowerShell 5.1 conservée.",
+      "remaining": "Hors périmètre ; aucune implémentation à poursuivre.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 111,
+      "requirement": "Évaluer scénarios administrés champs autorisés/obligatoires/verrouillés",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/integrations/Pesto.Optional.psm1",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1",
+        "DEV/wad/Pesto-Extensions.ps1",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/tests/Run-ManagedExtensionsTests.ps1",
+        "DEV/tests/Run-ExtensionEffectsTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json",
+        "DEV/tests/Run-ManagedScenario111MutationTests.ps1",
+        "DEV/tests/Run-CampaignApproval117Tests.ps1",
+        "DEV/docs/implementation/proofs/MANAGED_SCENARIO_111_20261024.json",
+        "DEV/integrations/Test-PestoManagedScenario.ps1",
+        "DEV/tests/Run-ManagedScenarioPreflight111Tests.ps1",
+        "DEV/tests/Run-ManagedScenario111FormMutationTests.ps1",
+        "DEV/docs/implementation/proofs/MANAGED_SCENARIO_PREFLIGHT_111_20261024.json",
+        "DEV/integrations/README.md",
+        "DEV/tests/Run-ManagedScenario111PlanTests.ps1",
+        "DEV/tests/Run-ManagedScenario111PlanMutationTests.ps1",
+        "DEV/docs/implementation/proofs/MANAGED_SCENARIO_111_PLANS_20261024.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Scenario configure dans POLICY.Scenario ou impose par HKLM ScenarioJson ; champs obligatoires, autorises et verrouilles affiches par Show-PestoScenarioFields, controles par Assert-PestoScenarioValues pendant la preparation et par Assert-PestoOperationPolicy avant toute lecture AD et avant chaque effet. Le validateur de l'integrateur Test-PestoScenarioInput est branche a un consommateur reel, integrations/Test-PestoManagedScenario.ps1, qui confirme l'integrite du paquet, evalue le candidat avec le validateur puis avec ConvertTo-PestoScenario, et refuse tant que les deux ne concordent pas ; sortie 0 publiable, 96 refuse, aucune ecriture de registre ni mutation. Le meme point d'entree accepte des plans candidats reels par -PlanPath : les valeurs du scénario n'y sont pas recopiees a la main, elles sont derivees du nom reellement demande par Get-PestoPlanScenarioValues, exactement comme le moteur le fera a l'execution, et chaque plan est passe a la garde Assert-PestoOperationPolicy du moteur puis au validateur de l'integrateur ; le desaccord est un refus (Garde du moteur affaiblie sur un plan candidat.), un plan porteur d'Objet_GUID est refuse avant tout appel AD, et ni le nom du scenario ni le contenu d'un plan ne sortent du rapport.",
+      "validation": "24 octobre 2026 : Run-ManagedExtensionsTests.ps1 14/14 et Run-ManagedScenario111MutationTests.ps1 39/39 (neuf mutations tuees, temoin passant) ; Run-ManagedScenarioPreflight111Tests.ps1 21/21 et Run-ManagedScenario111FormMutationTests.ps1 134/134, le point d'entree etant joue comme vrai processus enfant sur un paquet reconstruit, modules reels du moteur et du validateur, seule l'integrite du paquet etant doublee ; Run-OptionalIntegrationsTests.ps1 9/9 avec le test differentiel rendu systematique (8 064 formes croisees) et non vide. Deux defauts reels trouves ce jour sur la jambe plans : la garde de valeurs du moteur, Assert-PestoScenarioValues (wad/Pesto-Policy.ps1, ligne 289), ne regarde que le vide pour un champ obligatoire, de sorte qu'une valeur laissee blanche, porteuse d'un caractere de controle ou longue de 5 000 caracteres la traverse alors que le validateur de l'integrateur la refuse ; et le point d'entree ne consultait pas cette garde, un scenario publiable au regard du formulaire pouvant etre refuse par le moteur au premier effet. Le second est corrige dans le fichier non scelle, le premier est consigne : wad/Pesto-Policy.ps1 est scelle et sa correction exige de regerener Pesto.exe. Nouveau Run-ManagedScenario111PlanTests.ps1 19/19 (plans conformes publies, valeur interdite derivee du nom, champ obligatoire blanc, caractere de controle, valeur trop longue, verrou, champ de plan non admis sans fuite de son nom, Objet_GUID refuse, fichier de plans vide, illisible, surdimensionne ou surabondant) ; nouveau Run-ManagedScenario111PlanMutations.ps1 170/170, onze mutations tuees de la jambe plans, frappees seches quand l'autre jambe ne les masque pas et en paire quand aucune ne doit rester, plus un test differentiel de 100 formes (5 scenarios x 4 noms x 5 emplacements) qui confronte le verdict publie du point d'entree au verdict des deux gardes appelees en direct : 58 refus du moteur, 22 formes que le moteur accepte et que le formulaire refuse, 20 acceptees par les deux, 0 divergence, 0 fuite, avec controle de non-vacuite. Defaut trouve et corrige le 24 octobre au matin : 444 des 8 064 formes passaient Test-PestoScenarioInput et etaient refusees par ConvertTo-PestoScenario. Harnais portable complet 54 reussies, 0 en echec, 21 ignorees (les deux nouvelles suites comprises) ; validateur reel 658 passes 0 en echec ; sceau 67 composants intacts, aucun fichier scelle modifie ; les trois suites 111 precedentes rejoues vertes. pwsh 7.4.6 : runtime non produit. Aucun appel Windows, AD, registre ou VM.",
+      "remaining": "Qualification specifique de cette extension sur Windows et AD encore ouverte : la branche -FromRegistry n'a pu etre jouee que jusqu'a son refus ferme hors Windows, et les valeurs derivees des plans candidats n'ont ete confrontees a l'annuaire que par le refus de la garde, jamais par une lecture reelle. Aucun test VM, labo, Windows reel ou AD reel lance sur Spark : la regle permanente de la session l'interdit, quand bien meme le reste annonce du catalogue mentionne que les tests VM sont desormais autorises. Deux gardes scellees restent inoperantes et consignees, leur correction touchant le moteur et exigeant de regerener Pesto.exe, impossible sur Spark sans chaine de compilation : Assert-PestoScenarioValues (wad/Pesto-Policy.ps1, ligne 289), aveugle aux valeurs non vides invalables d'un champ obligatoire, et la garde de taille de cle des approbations (lignes 348 et 368). Le point d'entree d'evaluation compense la premiere en refusant au desaccord des deux gardes.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 112,
+      "requirement": "Évaluer canal ADMX/GPO et priorité visible",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/wad/Pesto-ManagedPolicy.ps1",
+        "DEV/integrations/policies/Pesto.admx",
+        "DEV/integrations/policies/fr-FR/Pesto.adml",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/wad/Pesto-ConfigEditor.ps1",
+        "preuves/implementation-complete-2026-10-16/optional-baseline.json",
+        "preuves/implementation-complete-2026-10-16/config-editor-baseline.json"
+      ],
+      "nature": "function",
+      "implementation": "Canal ordinateur HKLM Policies actif : mode incident, interdiction des deux modes silencieux et MaxBatch. ConvertTo-PestoPolicy fusionne les restrictions côté moteur ; la GUI affiche la source et verrouille les contrôles administrés. ADMX/ADML livrés.",
+      "validation": "Revue des raccordements runtime/GUI et bancs ciblés du 16 octobre : OptionalIntegrations 11/11, ConfigEditor120 26/26 sur PS7.4.20 Mac. Fusion restrictive et sérialisation locale contrôlées ; aucune GPO réellement appliquée.",
+      "remaining": "Qualification sur Windows avec GPO réellement appliquée, changement de stratégie pendant une session et contrôle GUI/CLI. Le code du canal administré est déjà raccordé.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 113,
+      "requirement": "Évaluer fournisseur facultatif identifiants Windows LAPS",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/tests/Run-RetiredFeaturesTests.ps1"
+      ],
+      "nature": "evaluation",
+      "implementation": "Fonction retirée du produit à la demande de David le 16 octobre 2026.",
+      "validation": "Sources retirées ; Run-RetiredFeaturesTests vérifie les contrats de suppression et la lecture des anciens reçus. Qualification finale du candidat à compléter.",
+      "remaining": "Aucune réintroduction prévue. Les reçus historiques restent conservés.",
+      "requested_delivery": "removed"
+    },
+    {
+      "id": 114,
+      "requirement": "Évaluer attributs AD complémentaires limités avec diff/reçu",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/integrations/Pesto.Optional.psm1",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1",
+        "DEV/wad/Pesto-Extensions.ps1",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/tests/Run-ManagedExtensionsTests.ps1",
+        "DEV/tests/Run-ExtensionEffectsTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json",
+        "DEV/tests/Run-AttributeEffects114MutationTests.ps1",
+        "DEV/docs/implementation/proofs/ATTRIBUTE_EFFECTS_114_20261024.json",
+        "DEV/tests/Run-AttributeEntry114Tests.ps1",
+        "DEV/tests/Run-AttributeEntry114MutationTests.ps1",
+        "DEV/docs/implementation/proofs/ATTRIBUTE_ENTRY_114_20261024.json",
+        "DEV/integrations/Test-PestoAttributeDiff.ps1",
+        "DEV/tests/Run-AttributeDiff114PreflightTests.ps1",
+        "DEV/tests/Run-AttributeDiff114PreflightMutationTests.ps1",
+        "DEV/docs/implementation/proofs/ATTRIBUTE_DIFF_114_20261024.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Commande Attributes avec plan diff avant/apres, GUID et reference managedBy figes, une ecriture Set-ADObject, intention distincte, relecture et reprise par observation sans rejeu.",
+      "validation": "24 octobre 2026 : Run-ExtensionEffectsTests.ps1 57/57 et Run-AttributeEffects114MutationTests.ps1 131/131, plus les deux suites qui jouent le point d'entree public Invoke-PestoExtensionCommand lui-meme : Run-AttributeEntry114Tests.ps1 34/34 (mutex d'entree, cfg par defaut pose a cote du runtime, refus de combiner plan et changements directs, exigence PlanPath + IdempotencyKey sans OutPlanPath, aller-retour reel du plan sur disque CreateNew puis relecture et garde de plan, registre idempotent reel avec grammaire de cle, empreinte de charge, machine, rejeu marque et enregistrement avant la premiere ecriture, gardes de contexte DEBUG, politique, hors domaine, credential, controleur decouvert, consultation) et Run-AttributeEntry114MutationTests.ps1 130/130 (trente mutations du moteur scelle copie hors sac, temoin passant, dont une paire sur la session en consultation). L'evaluation du diff avant remise est jouee par un consommateur reel depuis le 24 octobre 2026 : integrations/Test-PestoAttributeDiff.ps1 confronte l'apercu de l'integrateur (New-PestoAttributeProposal) aux gardes du moteur lui-meme (Get-PestoAttributeChanges et Assert-PestoAttributeChanges) et refuse si les deux jambes ne rendent pas le meme diff juge identiquement ; Run-AttributeDiff114PreflightTests.ps1 21/21 (diff accepte avec les attributs nommes, reference managedBy laissee a epingler par l'etape du plan, diff vide refuse, quatrieme changement, membre homonyme refuse sur le texte, attribut hors des trois autorises refuse sans que son nom sorte du controle, managedBy sans DN, valeur trop longue, caractere de controle, apercu qui omet le champ de reference ou reecrit la valeur avant, documents relatif, vide, trop gros ou non structure, installation relative, paquet non verifie, identite absente ou nulle, rapport jamais remplace en silence et jamais porteur des valeurs candidates) et Run-AttributeDiff114PreflightMutationTests.ps1 64/64 (quinze mutations du consommateur et de son apercu, temoin passant). Run-OptionalIntegrationsTests.ps1 passe de neuf a douze cas : lignes de l'apercu acceptees par la garde du moteur, apercu vide ou hors liste refuse, export d'audit d'un resultat reellement construit par New-PestoIntegrationResult en mode Attributes et refus des modes et etats inconnus. Suites portables 59 reussies 0 en echec 21 ignorees, validateur reel 664 passes 0 en echec, sceau 67 composants intact, module Engine genere identique, aucun fichier scelle modifie. Vraies fonctions du cycle des recus, du plan, du registre idempotent et des gardes du diff, doubles AD/DPAPI/djoin/ACL/plateforme/magasins, aucun test VM lance.",
+      "remaining": "Qualification specifique de cette evaluation sur Windows et AD reel encore ouverte : ce que le moteur refuse reellement sur la cible apres une revue approuvee, droits reels d'ecriture sur les trois attributs, resolution effective de la reference managedBy par le repertoire au moment du plan. Portes qui exigent Windows et restent doublees ici : garde de plateforme, integrity du paquet (Pesto.exe factice dans le sac de test), import du module ActiveDirectory, ACL du dossier de recus, MachineGuid du registre et magasins ProgramData. Garde « attribut demande deux fois » de l'apercu non atteignable sous PowerShell 7 (dedoublonnage a la deserialisation) : defense en profondeur pour Windows PowerShell 5.1, a confirmer sur la plateforme cible, le consommateur refusant deja les membres homonymes sur le texte. Contention du mutex nomme Global\\GP_PostMutation_v1 non rejouable hors Windows, donc volontairement sans fixture ni mutant. Les tests VM et labo n'ont pas ete lances : la regle permanente de la session les interdit, la mention du catalogue ne les autorise pas ici.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 115,
+      "requirement": "Évaluer Event Log ou collecteur audit externe",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/integrations/Pesto.Optional.psm1",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1",
+        "DEV/wad/Pesto-AuditSink.ps1",
+        "DEV/docs/implementation/AUDIT_EVENTLOG.md",
+        "DEV/tests/Run-AuditSinkTests.ps1",
+        "preuves/implementation-complete-2026-10-16/AuditSink.json"
+      ],
+      "nature": "function",
+      "implementation": "Transport Event Log Application/Pesto activable par politique, raccordé après écriture durable des reçus centraux, directs et de jonction. Projection fermée, schéma 1 ; absence de code distincte de succès ; échecs journalisés sans annuler le reçu.",
+      "validation": "67 contrôles isolés réussis ; configuration, contrats workers et audit headless sans échec. Aucune mutation AD ou VM.",
+      "remaining": "Qualification de la source et du collecteur Windows administré ; aucun test natif Event Log effectué sur Mac.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 116,
+      "requirement": "Évaluer liaison ticket/GLPI/CMDB",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/tests/Run-RetiredFeaturesTests.ps1"
+      ],
+      "nature": "evaluation",
+      "implementation": "Fonction retirée du produit à la demande de David le 16 octobre 2026.",
+      "validation": "Sources retirées ; Run-RetiredFeaturesTests vérifie les contrats de suppression et la lecture des anciens reçus. Qualification finale du candidat à compléter.",
+      "remaining": "Aucune réintroduction prévue. Les reçus historiques restent conservés.",
+      "requested_delivery": "removed"
+    },
+    {
+      "id": 117,
+      "requirement": "Évaluer approbation séparée campagnes sélectionnées",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/integrations/Pesto.Optional.psm1",
+        "DEV/tests/Run-OptionalIntegrationsTests.ps1",
+        "DEV/wad/Pesto-Extensions.ps1",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/tests/Run-ManagedExtensionsTests.ps1",
+        "DEV/tests/Run-ExtensionEffectsTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json",
+        "DEV/tests/Run-CampaignApproval117Tests.ps1",
+        "DEV/docs/implementation/proofs/CAMPAIGN_APPROVAL_117_KEYSIZE_20261026.json",
+        "DEV/tests/Run-CampaignApproval117WeakKeyTests.ps1",
+        "DEV/tests/Run-CampaignApproval117MutationTests.ps1",
+        "DEV/docs/implementation/proofs/CAMPAIGN_APPROVAL_117_SPARK_QUALIFICATION_20261026.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Approbation RSA SHA-256 de campagnes choisies, certificats et SID epingles exclusivement dans HKLM, refus auto-approbation, expiration et plan modifie, verification au passage aux effets.",
+      "validation": "18 octobre 2026 : Run-ManagedExtensionsTests.ps1 : 21/21 ; vraies signatures RSA, confiance simulee, aucun appel Windows. 24 octobre 2026 : ces quatorze cas d'approbation vivent desormais dans Run-CampaignApproval117Tests.ps1, declaree Windows51 et donc jamais jouee sur Spark, ou la garde de taille de cle de wad/Pesto-Policy.ps1 (lignes 348 et 368) leve 'Cannot get property value because \"KeySize\" is a write-only property.' au lieu de refuser une cle de 1024 bits. 26 octobre 2026 : le defaut est rejoue et caracterise (proofs/CAMPAIGN_APPROVAL_117_KEYSIZE_20261026.json). Il est ferme : rien n'est jamais accepte, le script avorte des New-PestoCampaignApproval, donc 0 des quatorze cas n'est joue sur Spark, y compris ceux qui ne touchent pas la taille de cle. Aucune preparation de cle cote fixture n'y echappe (RSA.Create, RSACryptoServiceProvider, import PFX, CopyWithPrivateKey sondes) : la jambe de verification reconstruit le certificat depuis RawData avant GetRSAPublicKey, qui rend toujours un RSAOpenSsl hors Windows. Le correctif propose (Get-PestoRsaKeyBits mesurant ExportParameters($false).Modulus, aux deux bouts pour absorber le sens de lecture CAPI contre Cng/OpenSSL) a ete valide hors depot : les deux fichiers corriges, Build-PestoEngineModule.ps1 passe (740 a 741 fonctions, fermeture 165 a 166) et les quatorze cas passent 14/14. Il n'est pas applique au depot : wad/Pesto-Policy.ps1 est un des 66 composants scelles dont l'empreinte est compilee dans Pesto.exe, et le rebâtir exige clang, lld-link et llvm-rc, absents de Spark (last-build.json atteste un outillage Homebrew macOS) ; sans lui, verify_native_binding passe au rouge sur 23 tests Python. En attendant, Run-CampaignApproval117WeakKeyTests.ps1 (portable, 5/5 sur Spark) joue l'invariant de securite independamment de l'etat de la garde : une cle de 1024 bits ne produit et ne fait jamais accepter une approbation, meme signee valablement avec la bonne empreinte de plan, sur les deux jambes. Banc de mutations sur copie apres correctif : retirer la taille des gardes et figer le mesureur a 2048 sont tues (3/2 chacun). 26 octobre 2026 (suite) : les quatorze cas sont joues sur Spark. Run-CampaignApproval117Tests.ps1, declaree Portable, rend 15/15 (sortie 0). La taille de cle y est mesuree par un adaptateur de fixture installe seulement quand l'hote rend KeySize en ecriture seule (ScriptProperty sur System.Security.Cryptography.RSAOpenSsl mesurant ExportParameters($false).Modulus), retire en finally, qui ne fige aucune taille et ne remplace pas la garde : la decision reste prise par wad/Pesto-Policy.ps1. Le quinzieme cas, 'Key size is measured from the modulus, never frozen', lit la taille par l'accesseur meme de la garde, sur les deux jambes, pour 2048 et 1024 bits, et exige qu'elle suive le module. La branche sans adaptateur, celle de Windows PowerShell 5.1, est rejouee sur Spark en installant un mesureur veridique avant la suite : 15/15 et 'key size measured by host KeySize'. Run-CampaignApproval117MutationTests.ps1 (portable, 20/20) tue quatre mutants sur copie hors sac des cinq modules pointes par la suite et de la suite elle-meme : garde de taille retiree de la jambe de signature, garde retiree de la jambe de verification, mesureur de fixture fige au plancher, mesureur fige sous le plancher ; le temoin passe, cfg.json n'est jamais copie et l'original scelle n'est jamais touche. Aucun composant scelle modifie : refresh_manifest --check rend 67 composants et verify_native_binding 66. Banc portable complet : 76 reussies, 0 en echec, 20 ignorees sur 96 suites declarees (tests/results/20261026_050054_033581/summary.json), les trois suites 117 etant vertes ; etat avant le point : 74/0/21 sur 95, CampaignApproval117 etant SKIP.",
+      "remaining": "Qualification specifique de cette extension sur Windows et annuaire reel encore ouverte : VM, labo, Windows reel et AD reel interdits par la regle de session. Le correctif de la garde KeySize (Get-PestoRsaKeyBits mesurant ExportParameters($false).Modulus, ajoute a PestoWorkerCoreNames) reste ecrit, verifie hors depot (14/14 apres regeneration du module) et consigne dans proofs/CAMPAIGN_APPROVAL_117_KEYSIZE_20261026.json, mais non applique au depot : wad/Pesto-Policy.ps1 est un des 66 composants scelles dont l'empreinte est compilee dans Pesto.exe, et le rebatir exige clang et lld-link, absents de Spark (PATH vide, /usr/lib/llvm-18 ne contient que lib/, gh absent, aucune voie CI exploitable). Sans EXE rebati, verify_native_binding passe au rouge sur 23 tests Python et le lanceur refuse PowerShell. Reste a faire sur une machine dotee de la chaine LLVM : appliquer les deux gardes et PestoWorkerCoreNames, puis Build-PestoEngineModule.ps1, generate_binding.py, build_native.py et refresh_manifest.py --root DEV, et rejouer les quinze cas sous Windows PowerShell 5.1. Le mutant qui ignore le sens de lecture du module y sera tue ; il survit tant que la garde du produit lit KeySize.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 118,
+      "requirement": "Mode incident explicite suspendant nouvelles mutations",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/AUTOMATION_120.md",
+        "DEV/wad/Pesto-Policy.ps1",
+        "DEV/wad/Pesto-Enterprise.ps1",
+        "DEV/wad/Pesto-Join.ps1",
+        "DEV/tests/Run-IntegrationTests.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "function",
+      "implementation": "IncidentMode booléen strict ; blocage avant mutation dans moteur et CLI ; commandes de lecture disponibles",
+      "validation": "Références de code, de protocole ou de tests ; une définition de test ne vaut pas preuve de son exécution. Voir le rapprochement daté pour la portée des rapports.",
+      "remaining": "Qualification Windows/AD/WPF du candidat final à distinguer des contrats locaux."
+    },
+    {
+      "id": 119,
+      "requirement": "Évaluer conventions de nommage supplémentaires",
+      "state": "implemented",
+      "evidence": [
+        "DEV/docs/implementation/EXTENSIONS_120.md",
+        "DEV/wad/Pesto-Configuration.ps1",
+        "DEV/wad/Pesto-Contracts.ps1",
+        "DEV/wad/Pesto-Core.ps1",
+        "DEV/tests/Run-NamingConvention119Tests.ps1",
+        "DEV/tests/Run-AllTests.ps1",
+        "DEV/tests/suites.json",
+        "DEV/docs/implementation/NAMING_119.md",
+        "DEV/tests/Run-NamingFlows119Tests.ps1",
+        "DEV/tests/Run-WorkerContractTests.ps1",
+        "DEV/docs/implementation/proofs/SOLO_COMPLETION_20261018.json"
+      ],
+      "nature": "evaluation",
+      "implementation": "Convention definissable dans la configuration : ordre, largeurs et types ; parsing, generation, recherche LDAP, noms disponibles, capacites, preparation et execution. Copie revalidee dans les workers, invalidation des caches lors du changement.",
+      "validation": "18 octobre 2026 : NamingConvention119 15/15 ; NamingFlows119 11/11 dont runspaces vierges et numero au milieu ; WorkerContract 20/20. Qualification Windows/AD non effectuee.",
+      "remaining": "Qualification sur poste cible sous Windows PowerShell 5.1 : exécution des 15 cas sous powershell.exe 5.1, rendu WPF de l'éditeur de paramètres et convention administrée lue depuis un cfg.json réel du domaine. Le format par défaut P000001AA001001 reste le seul attesté en production.",
+      "requested_delivery": "implementation"
+    },
+    {
+      "id": 120,
+      "requirement": "Prototype/mesures migration .NET moderne/PowerShell7",
+      "state": "withdrawn",
+      "evidence": [
+        "DEV/docs/implementation/ENGINE_120.md",
+        "DEV/tests/Measure-Engine120.ps1",
+        "DEV/tests/Run-Engine120Tests.ps1"
+      ],
+      "nature": "evaluation",
+      "implementation": "Retiré sur demande explicite de David le 16 octobre 2026.",
+      "validation": "Prototypes de profils supprimés ; cible produit Windows PowerShell 5.1 conservée.",
+      "remaining": "Hors périmètre ; aucune implémentation à poursuivre.",
+      "requested_delivery": "implementation"
+    }
+  ],
+  "tracking_updated": "2026-10-25",
+  "tracking_note": "98 qualifié dans la matrice observée ; 101 limité au clavier (Narrator retiré) ; évaluation107 conclue en conservant le pool après diagnostic réel. Reste102, panne native AD, en qualification. Point 56 évalue et garde sur Spark : pool branche et mesure, gain de cout non etabli localement.",
+  "state_definitions": {
+    "implemented": "Code raccordé présent ; ne signifie ni livré ni qualifié sur Windows/AD.",
+    "evaluated": "Étude et décision documentées ; peut conclure à conserver l’existant.",
+    "in_progress": "Complément ou assemblage final encore ouvert.",
+    "pending_qualification": "Protocole ou tests disponibles ; preuve complète requise non acquise.",
+    "pending_measurement": "Banc et protocole livrés ; mesure réelle non exécutée, résultat non acquis.",
+    "qualified": "Preuve acquise pour le périmètre explicitement décrit dans validation ; aucune portée externe déduite.",
+    "pending_scope": "Extension facultative mise de côté pendant clarification du besoin ; aucune intégration ni activation engagée.",
+    "withdrawn": "Point retiré à la demande explicite de David (16 octobre, signature de livraison le 18 octobre) ; ne compte pas comme implémentation."
+  },
+  "counts": {
+    "function": 90,
+    "evaluation": 18,
+    "qualification": 12,
+    "states": {
+      "implemented": 102,
+      "withdrawn": 7,
+      "qualified": 9,
+      "pending_qualification": 1,
+      "evaluated": 1
+    }
+  },
+  "validation_reports": [
+    {
+      "path": "preuves/finition-120-2026-10-15/local/NamesLoading-final.json",
+      "sha256": "b251de00e9d05937435a80287e4d4d174d732ced26f3543fa34a02ccfb3b712b",
+      "passed": 45,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; fonctions réelles avec doubles Windows/AD, sans WPF ni VM."
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/BulkPlanning-final.json",
+      "sha256": "3a69471b9f6d93fb01dbf6a8d56f1f294b650fbfc9f40fb641e4c55182058335",
+      "passed": 31,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; fonctions réelles avec doubles Windows/AD, sans WPF ni VM."
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/HeadlessAudit-final.json",
+      "sha256": "111e10115a000ea61d0f4fd0f9a7bc56a60afd2cf99017a2dc12815a34ba66e1",
+      "passed": 10,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; vrai writer C# sur fichiers temporaires et doubles de workers, sans Windows/AD/VM."
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/ReconciliationAudit-final.json",
+      "sha256": "e479064a9eeebc82b24a7206f0adc93538813fd7635e2539712a3b3b35333b62",
+      "passed": 7,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; fonctions réelles avec doubles Windows/AD, sans WPF ni VM."
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/BatchNames120-final.json",
+      "sha256": "265b6891909282c5d328bb9efed848e6d18a4227cfc3530ff19154992b12f75e",
+      "passed": 30,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; fonctions réelles avec doubles Windows/AD, sans WPF ni VM."
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/Automation-final.json",
+      "sha256": "46a8b07c56480b4f5b915db50f9a1a21f30573f0531618eb370df4808fc47cea",
+      "passed": 38,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; fonctions réelles avec doubles Windows/AD, sans WPF ni VM."
+    },
+    {
+      "path": "preuves/correctifs-ci-2026-10-15/local/Engine120-generative.json",
+      "sha256": "16f594177f72be81b5691af1bf54b523f37b0a0dd78114e4c0d16e4f5f1c2239",
+      "passed": 77,
+      "failed": 0,
+      "scope": "Contrats purs du module et DLL Common, PS7.4.20 Mac, sans Windows/AD/WPF."
+    },
+    {
+      "path": "preuves/correctifs-ci-2026-10-15/local/HomeDashboard-fixed.json",
+      "sha256": "6fe37e4fbbcb1a40dd672089ba5dbb3ace2010d29591af9435332f9174c6bd40",
+      "passed": 46,
+      "failed": 0,
+      "scope": "Vrais helpers et fenêtre mémoire, sans WPF."
+    },
+    {
+      "path": "preuves/correctifs-ci-2026-10-15/local/headless.json",
+      "sha256": "453dc0e8b180ffff051084246556e944b5ee59bdf327c3a03c3299f0825f0b89",
+      "passed": 12,
+      "failed": 0,
+      "scope": "Writer C# réel local, workers doublés, sans AD/VM."
+    },
+    {
+      "path": "preuves/correctifs-ci-2026-10-15/local/automation.json",
+      "sha256": "46a8b07c56480b4f5b915db50f9a1a21f30573f0531618eb370df4808fc47cea",
+      "passed": 38,
+      "failed": 0,
+      "scope": "Doubles locaux, sans Windows/AD/VM."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/Engine120.json",
+      "sha256": "766f7d30f0a5f15a9a1029c6802176649c47479b1e371c1f86ec38c6f5bc60e8",
+      "passed": 77,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; voir le rapport pour les doubles Windows/AD et les sorties réellement écrites. Aucun WPF/AD réel."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/SecretOutputs.json",
+      "sha256": "8f0ba938aa9631e389ba18fb16962f10dea6598278eac311b7f270af478c1f0c",
+      "passed": 8,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; voir le rapport pour les doubles Windows/AD et les sorties réellement écrites. Aucun WPF/AD réel."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/SessionMeasure.json",
+      "sha256": "7179a8065e8996e3484a9f0d478121abab2f0986897dbe3bf60181105c23e714",
+      "passed": 8,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; voir le rapport pour les doubles Windows/AD et les sorties réellement écrites. Aucun WPF/AD réel."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/ReceiptTools120.json",
+      "sha256": "7b5f4e08a90ba29944af48bed67a0f159481460deb57fe7a161638a60d966dfa",
+      "passed": 26,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; voir le rapport pour les doubles Windows/AD et les sorties réellement écrites. Aucun WPF/AD réel."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/InterventionView.json",
+      "sha256": "df32e9086f3ff3a8cc4f89cf4cf0a093a72a09ebed0f212b6952c3a690303321",
+      "passed": 24,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; voir le rapport pour les doubles Windows/AD et les sorties réellement écrites. Aucun WPF/AD réel."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/HeadlessAudit.json",
+      "sha256": "453dc0e8b180ffff051084246556e944b5ee59bdf327c3a03c3299f0825f0b89",
+      "passed": 12,
+      "failed": 0,
+      "scope": "PowerShell 7.4.20 sur Mac ; voir le rapport pour les doubles Windows/AD et les sorties réellement écrites. Aucun WPF/AD réel."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/ci-38822908737/windows-2022-en-US/Ux.json",
+      "sha256": "e57aff6a656768a40ec9efadb8c23b150e4a7d34f1b3bb109146a52391b6a3c4",
+      "passed": 52,
+      "failed": 0,
+      "scope": "Windows PowerShell 5.1 sur runner windows-2022-en-US ; WPF isolé ou sorties textuelles synthétiques, sans AD."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/ci-38822908737/windows-2022-en-US/SecretOutputs.json",
+      "sha256": "3e43146bbbfb7ff2cde74223bf681763ad259d036236eccb465d9d60b3b70031",
+      "passed": 8,
+      "failed": 0,
+      "scope": "Windows PowerShell 5.1 sur runner windows-2022-en-US ; WPF isolé ou sorties textuelles synthétiques, sans AD."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/ci-38822908737/windows-2025-fr-FR/Ux.json",
+      "sha256": "efb51291f00663e54d53e7a333a010301a886e839587aaa0f159faf3724265a5",
+      "passed": 52,
+      "failed": 0,
+      "scope": "Windows PowerShell 5.1 sur runner windows-2025-fr-FR ; WPF isolé ou sorties textuelles synthétiques, sans AD."
+    },
+    {
+      "path": "preuves/qualification-2026-10-16/ci-38822908737/windows-2025-fr-FR/SecretOutputs.json",
+      "sha256": "2a6f5ade9ed33a562774b5349e63f1ea92a2d2fe680721fbf585e18defca4376",
+      "passed": 8,
+      "failed": 0,
+      "scope": "Windows PowerShell 5.1 sur runner windows-2025-fr-FR ; WPF isolé ou sorties textuelles synthétiques, sans AD."
+    },
+    {
+      "path": "DEV/docs/implementation/proofs/FINALISATION_20261018.json",
+      "sha256": "ef9b51c73e86fabb66ce312f5763865e5341e51f673ba419c74126f2e442c9be",
+      "scope": "CI/build repairs and guide delivery; isolated Windows tests, not full Windows/AD deployment qualification"
+    },
+    {
+      "path": "preuves/qualification-vm-2026-10-18/campaign.json",
+      "sha256": "91780deafd12df7e3bc28dc9ca3e11330f5f945a4f23564cc542a76589eb8e28",
+      "scope": "VM Windows 11 réelles : GUI, mutations AD, jonction après Sysprep, canal sécurisé après reboot, worker SMB. Qualification partielle, limites explicites."
+    }
+  ],
+  "delivery_artifacts": [
+    {
+      "path": "DEV/docs/Pesto-1.0-Guide-technicien.docx",
+      "sha256": "3b8ee59cc8bb930e3561010290bddbcebb93cb249390e169b95a232faecc0e54"
+    },
+    {
+      "path": "DEV/docs/Pesto-1.0-Guide-technicien.pdf",
+      "sha256": "d03aa2e57bd3fdd45008707dee616277a3fdc974f84b9209a042d3877f6c31a2"
+    },
+    {
+      "path": "DEV/docs/Pesto-1.0-Guide-administrateur.docx",
+      "sha256": "5a9c6f89a0dd5db2651dd2969f6e00cd8b272c8117cbabebc899fa19d411280f"
+    },
+    {
+      "path": "DEV/docs/Pesto-1.0-Guide-administrateur.pdf",
+      "sha256": "ad90c9595419e1b0a6d5b01f32764c5df6de75f7d1ada8f5811d6d745690d865"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/guides-qa.json",
+      "sha256": "2a425a3b6fb43f6287a69959066160f6ae8cf41c09eb0f559688d842776f1276"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/python-final.log",
+      "sha256": "d64a971d73bcb4b5bbb39eb18885f8964eecee17efc6c6b6d4c2fd7af5ebb669"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/pesto-portable-validation.json",
+      "sha256": "c33d13aabaae940c81a70c16c19f9c5afeca5d3cde572897ac710f087e169522"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/native-portable.json",
+      "sha256": "6b36809dc543c00b135cb482dae631a67a42f743140cefb0a2f7735108e4117e"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/native-final.log",
+      "sha256": "52c224f230c210a4bd99eba363d22980de12eb76eecfcd85876ef8e09604ca10"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/build-engine-final.log",
+      "sha256": "5263800e608be6b1adbf395e0187287d69c12f2a3fca063b4c386120d542e7af"
+    },
+    {
+      "path": "preuves/finition-120-2026-10-15/local/build-native-final.log",
+      "sha256": "62288d857e62e14f4b33650a52f6e29dbead0c54e688010a6a08264c5cab4299"
+    },
+    {
+      "path": "DEV/docs/implementation/proofs/FINALISATION_20261018.json",
+      "sha256": "ef9b51c73e86fabb66ce312f5763865e5341e51f673ba419c74126f2e442c9be"
+    }
+  ],
+  "delivery_request": {
+    "date": "2026-10-18",
+    "scope": "Implémentation des points retenus, hors 51,88,110,113,116,120 retirés explicitement ; nommage définissable par l’administrateur.",
+    "constraints": [
+      "Spark préféré ; David autorise le 18 octobre les petits correctifs directs après blocage du Spark. Intégration et vérification indépendantes.",
+      "Contrôles ciblés ; essais VM autorisés de nouveau le 18 octobre. Ne déclarer que les exécutions constatées.",
+      "Aucune sauvegarde de VM sur le Mac ; FILPRO hors périmètre.",
+      "Qualifications et dépendances externes ne peuvent pas être déclarées acquises par du code.",
+      "Décision du 18 octobre, usage personnel : signature et dossier de provenance/redistribution Microsoft (88,95) hors périmètre ; qualification technique demandée pour les neuf points restants."
+    ],
+    "excluded_by_user_2026_10_16": [
+      "Gestion de tickets et référence associée",
+      "Fournisseur LAPS",
+      "Liaison GLPI/CMDB",
+      "Profils multi-domaines",
+      "Migration PowerShell 7/.NET moderne"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+{
+    "Name":  "WPF: join uses available width and service status stays below its field at every viewport",
+    "Passed":  false,
+    "Error":  "Join body leaves side margins: 1920x1200 / 80% body=960 viewport=2154"
+}

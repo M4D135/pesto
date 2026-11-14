@@ -1,0 +1,106 @@
+{
+  "evidenceSchemaVersion": 1,
+  "collectedAtUtc": "2026-10-28T10:13:34.773809+00:00",
+  "scope": "Portable workflow reliability evidence collected from existing local logs; no test rerun by collector.",
+  "baseCommit": "e087bb16aed175bc35906fa533e9cd172d2fdaca",
+  "sourceCommit": null,
+  "sourceIdentityStatus": "Uncommitted working-tree candidate; final commit to be identified before Windows CI. Base commit is not the identity of the changed source tested here.",
+  "windowsC18Status": "awaiting final-source CI",
+  "lastWindowsVerifiedCandidate": "C17 e087bb16aed175bc35906fa533e9cd172d2fdaca",
+  "adRestorationHarnessStatus": "under review; not executed at this evidence collection",
+  "productionQualified": false,
+  "sourceSnapshotCaveat": "Logs and the originating summary record portable runs. No immutable source snapshot was attached to these runs; this collection does not retrospectively invent one.",
+  "files": [
+    {
+      "source": "work/reprise-20261028/workflow-reliability-summary.json",
+      "path": "workflow-reliability-summary.json",
+      "bytes": 4368,
+      "sha256": "37110d1f70d7d00ac5bfa047bc7aff58efe19343860c72fb0c1da845e8e0adb8",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/web-business-check-final-identity.log",
+      "path": "logs/web-business-check-final-identity.log",
+      "bytes": 4820,
+      "sha256": "1c1b6d03358d0d9393e82a682e4c729c0fe1750fb4885bc3c221d263c3f986ee",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/operator-ui-check-final.log",
+      "path": "logs/operator-ui-check-final.log",
+      "bytes": 3028,
+      "sha256": "24a272347d0cd79351df17378400be2fd1b9e27f0952c3c9d324a1333152971d",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/parity-ui-check.log",
+      "path": "logs/parity-ui-check.log",
+      "bytes": 4226,
+      "sha256": "4c856880a49ac37f94fb0d53b3acf489022aa0267bbd0ed0bee0975211297e68",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/policy-ui-check.log",
+      "path": "logs/policy-ui-check.log",
+      "bytes": 1189,
+      "sha256": "4b9c4ddbd8f51a43fcbfbd9a94855bd3dc62f9d42f42ba71706902b8a98d8c92",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/demo-dom-final-simulation.log",
+      "path": "logs/demo-dom-final-simulation.log",
+      "bytes": 911,
+      "sha256": "83213d54b4c78d73b01a08fc51f3f2b5f7fb9e211248d0946377a31c52332b81",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/web-check-final.log",
+      "path": "logs/web-check-final.log",
+      "bytes": 9795,
+      "sha256": "07899f66a84b6519c3f249558bcfe5ed7bc341a2e832832bee6b7631af265218",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/demo-engine-js-final.log",
+      "path": "logs/demo-engine-js-final.log",
+      "bytes": 865,
+      "sha256": "e0debd8e5f0cb2997d80d425b95201fae9e7bdf6c9d01fec7007d4d807f4b5e9",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/engine-all-sdk401-final.log",
+      "path": "logs/engine-all-sdk401-final.log",
+      "bytes": 50030,
+      "sha256": "7f98c50f91cdb6bc08f499374ada635c5ab99b0cb4c23e7d3519ac0ae059b50b",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/engine-build-sdk401-final.log",
+      "path": "logs/engine-build-sdk401-final.log",
+      "bytes": 948,
+      "sha256": "edd3b1d2194f3d650397a5786d95bc35009ef5f79219d5bf7c1b76ccad565326",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/single-receipt-before.log",
+      "path": "logs/single-receipt-before.log",
+      "bytes": 1299,
+      "sha256": "ade243ee6ce8d1fae40de6e9cecec28c100cde88e4950dca1df803300434e021",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/engine-simulation-before.log",
+      "path": "logs/engine-simulation-before.log",
+      "bytes": 306,
+      "sha256": "05144d6de0b635ef4ebbfb0b1c2e5e3c61e69a067309f3947f48527fc3e009d0",
+      "transformation": "none"
+    },
+    {
+      "source": "work/reprise-20261028/demo-simulation-before.log",
+      "path": "logs/demo-simulation-before.log",
+      "bytes": 1303,
+      "sha256": "a43b1ae20fe03e70fb1b94c43bdeb2e5883ae63c06a44e85124ad540800fd061",
+      "transformation": "none"
+    }
+  ]
+}

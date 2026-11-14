@@ -1,0 +1,60 @@
+﻿{
+    "TemporaryComputerRemoved":  true,
+    "Controllers":  [
+                        {
+                            "HostName":  "dc01.labo.local",
+                            "IPv4Address":  "10.77.0.10"
+                        }
+                    ],
+    "Demotion":  "Normal Uninstall-ADDSDomainController succeeded; DomainRole 3 after reboot; temporary VM shut down",
+    "DNSRemoved":  [
+                       {
+                           "Name":  "12",
+                           "Zone":  "0.77.10.in-addr.arpa",
+                           "Type":  "PTR",
+                           "Data":  [
+                                        "LABO-DC02.labo.local."
+                                    ]
+                       },
+                       {
+                           "Name":  "LABO-DC02",
+                           "Zone":  "labo.local",
+                           "Type":  "A",
+                           "Data":  [
+                                        "10.77.0.12"
+                                    ]
+                       },
+                       {
+                           "Name":  "DomainDnsZones",
+                           "Zone":  "labo.local",
+                           "Type":  "A",
+                           "Data":  [
+                                        "10.77.0.12"
+                                    ]
+                       },
+                       {
+                           "Name":  "_ldap._tcp.Default-First-Site-Name._sites.DomainDnsZones",
+                           "Zone":  "labo.local",
+                           "Type":  "SRV",
+                           "Data":  [
+                                        "labo-dc02.labo.local.",
+                                        "389",
+                                        "0",
+                                        "100"
+                                    ]
+                       },
+                       {
+                           "Name":  "_ldap._tcp.DomainDnsZones",
+                           "Zone":  "labo.local",
+                           "Type":  "SRV",
+                           "Data":  [
+                                        "labo-dc02.labo.local.",
+                                        "389",
+                                        "0",
+                                        "100"
+                                    ]
+                       }
+                   ],
+    "Utc":  "2026-10-18T19:01:04.1957970Z",
+    "ServerObjectRemoved":  true
+}

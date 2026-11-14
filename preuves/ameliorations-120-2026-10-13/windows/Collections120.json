@@ -1,0 +1,112 @@
+{
+    "Suite":  "Collections120",
+    "Passed":  21,
+    "Failed":  0,
+    "Cases":  [
+                  {
+                      "Name":  "Views accept filter and sort only",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "View payload rejects execution consent and arbitrary expressions",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Duplicate views in same table rejected but same name across tables allowed",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Demo views persist only in memory with unchanged sort",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Essential preset preserves fixed identity columns and diagnostic restores all",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Grouping preserves actual queue order and selections",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Collection schema rejects stored commands and identity-less baseline",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Dynamic collection ANDs type site service and text",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Missing AD identity refuses the whole collection instead of matching by name",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Member evaluation never reads AD and every saved member has stable identity",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Delta distinguishes rename same GUID from removal and addition",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Collections memory storage roundtrips exact query and domain",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Collection freeze checks both inventory and config generation before planner",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Shared preparation bundle rejects arbitrary extra root or favorite fields",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Sharing compatibility is explicit and never rebases foreign config",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Bundle import requires preview and confirmation before writing and does not apply form",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Share buttons are initialized once, not on every save",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Saved name sorting is reapplied after asynchronous projection",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Every collection/view/share action is exposed in XAML",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Favorite storage roundtrips JSON integer schema without using registry",
+                      "Passed":  true,
+                      "Error":  ""
+                  },
+                  {
+                      "Name":  "Preparation schema rejects coerced strings and booleans",
+                      "Passed":  true,
+                      "Error":  ""
+                  }
+              ]
+}

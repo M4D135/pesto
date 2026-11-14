@@ -1,0 +1,32 @@
+﻿[
+    {
+        "Nom":  "",
+        "Pid":  872,
+        "Classe":  "Shell_TrayWnd",
+        "Rect":  "0;995;1920;48"
+    },
+    {
+        "Nom":  "Microsoft account",
+        "Pid":  872,
+        "Classe":  "Shell_OOBEProxy",
+        "Rect":  "0;0;1920;1043"
+    },
+    {
+        "Nom":  "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Pid":  2504,
+        "Classe":  "CASCADIA_HOSTING_WINDOW_CLASS",
+        "Rect":  "Empty"
+    },
+    {
+        "Nom":  "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "Pid":  2504,
+        "Classe":  "CASCADIA_HOSTING_WINDOW_CLASS",
+        "Rect":  "Empty"
+    },
+    {
+        "Nom":  "Program Manager",
+        "Pid":  872,
+        "Classe":  "Progman",
+        "Rect":  "0;0;1920;1043"
+    }
+]

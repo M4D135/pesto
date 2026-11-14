@@ -1,0 +1,269 @@
+{
+  "PowerShell": "7.4.20",
+  "NoWindows": true,
+  "NoWpf": true,
+  "NoAD": true,
+  "Failed": 0,
+  "Checks": [
+    {
+      "Name": "Normal desktop aligns the four home actions in one row",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Intermediate desktop uses two columns for the four home actions",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Small display stacks fields and dashboard cards",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Collapsed navigation gives space back without changing user preference",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Docked help reduces available content only on wide screens",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Layout calculation is bounded before window measurement",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Layout handler never assigns read-only PowerShell automatic variables",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Narrow join form preserves label and input order without overlaps",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Wide form restores original positions exactly",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Single primary action stays outside page scrolling",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Batch primary action stays outside page scrolling",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Global zoom viewport is unique and wraps the complete application root",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Join primary action stays outside page scrolling",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "No duplicate named XAML controls after toolbar move",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Domaine and advanced settings scroll on short screens",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Appearance contains density and column tools",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Remote credentials are explained near source choice",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Policy validation errors map to their field and clear after correction",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Precise errors are adjacent to common inputs and announced politely",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Error reset restores help rather than leaving stale message",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Missing name cannot launch mutation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unread valid target offers read-only primary action",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Missing fields offer focus guidance without mutation",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Read-only mode never offers execution",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Blocked operation routes to verification instead of execution",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Busy operations do not offer another launch",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Complete preparation offers explicit confirmation flow",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unattended opt-in is distinct from simulation settings",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "All two-file layouts remain valid XML without WPF execution",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "First-start repair wizard uses one apostrophe in its visible label",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "First-start repair JSON and errors begin at the top of their editors",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Both login dialogs stay topmost and visible in the taskbar",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Login activation and focus occur once on opening without a focus timer",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Main window does not inherit always-on-top login behavior",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Late inventory keeps submitted name for Running",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Late inventory keeps submitted name for PendingRestart",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Late inventory keeps submitted name for Uncertain",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Verified joined computer keeps its recorded name after inventory refresh",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Joined computer without receipt displays current name without proposing another",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Workgroup with resolved Verified receipt can prepare a fresh draft",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Workgroup with resolved Failed receipt can prepare a fresh draft",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Busy or locked operation without a receipt retains its submitted selection",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Recorded editable name is restored while preserving event suspension",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Primary action matrix covers all boolean combinations and blocked routes",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Mode labels distinguish real readonly simulation and demonstration",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Common block banner explains existing blockers without inventing one",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Site status never labels failed or partial results complete",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Worker stage history retains actual transitions and no progress percentage",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Log level combines with literal query and keeps original event references",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Log dates and controls expose full timestamps and error copying",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Local hardware reuses ComputerSystem query and is explicitly unavailable without result",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Unit form tab order follows source naming and confirmation",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

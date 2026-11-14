@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "kind": "pesto.windows-demo-qualification",
+  "utc": "2026-10-27T09:25:22.2843011\u002B00:00",
+  "version": "2.0.0",
+  "channel": "PROD",
+  "distribution": "candidate",
+  "executableSha256": "981e67c8b3a3fc8a95ef3dd19a51d204a80e71348d075b2616ec842db0af7094",
+  "runtimePath": "D:\\a\\pesto\\pesto\\v2\\out\\PROD\\wad\\runtime\\webview2",
+  "runtimeSha256": "337a496fffec9940ef7142e67162f80e40c878cb8fc2af66e5bd9aa75ffcdbae",
+  "windowsVersion": "Microsoft Windows NT 10.0.26100.0",
+  "ready": true,
+  "closeReturned": true,
+  "blockedDirectApis": 44,
+  "hostInvocations": 0,
+  "realProfileCreated": false,
+  "coexistence": {
+    "success": true,
+    "timeoutSeconds": 180,
+    "parentKind": "configuration-only-no-adapter",
+    "parentReady": true,
+    "demoOpenedFromUi": true,
+    "profilesDistinct": true,
+    "parentDraftPreserved": true,
+    "parentRoutePreserved": true,
+    "parentPreferencesPreserved": true,
+    "permanentBannerConfirmed": true,
+    "scenarioConfirmed": true,
+    "resetConfirmed": true,
+    "fictitiousRestartConfirmed": true,
+    "idsDistinctAfterReset": true,
+    "idsDistinctAcrossWindows": true,
+    "idsDistinct": true,
+    "childClosed": true,
+    "parentClosedWithChild": true,
+    "freshUiTransitions": true,
+    "failureCode": null,
+    "captures": [
+      "coexistence/parent-draft.png",
+      "coexistence/demo-pending.png",
+      "coexistence/demo-restarted.png",
+      "coexistence/parent-preserved.png"
+    ],
+    "adQualification": false,
+    "uiTransitions": [
+      {
+        "action": "SelectPendingRestart",
+        "instanceId": "eeba5f72ecb44339bb7ad399aa65eb63",
+        "scenario": "pendingRestart",
+        "beforeMount": 3,
+        "afterMount": 4,
+        "beforeRoute": "#/parametres",
+        "afterRoute": "#/interventions",
+        "readyRoute": "interventions",
+        "receiptCards": [
+          {
+            "id": "receipt-eeba5f72ecb44339bb7ad399aa65eb63-1",
+            "mode": "simulation",
+            "status": "pendingRestart"
+          }
+        ]
+      },
+      {
+        "action": "Restart",
+        "instanceId": "eeba5f72ecb44339bb7ad399aa65eb63",
+        "scenario": "pendingRestart",
+        "beforeMount": 5,
+        "afterMount": 6,
+        "beforeRoute": "#/parametres",
+        "afterRoute": "#/interventions",
+        "readyRoute": "interventions",
+        "receiptCards": [
+          {
+            "id": "receipt-eeba5f72ecb44339bb7ad399aa65eb63-1",
+            "mode": "simulation",
+            "status": "simulated"
+          }
+        ]
+      },
+      {
+        "action": "SelectJoined",
+        "instanceId": "eeba5f72ecb44339bb7ad399aa65eb63",
+        "scenario": "joined",
+        "beforeMount": 7,
+        "afterMount": 8,
+        "beforeRoute": "#/parametres",
+        "afterRoute": "#/unposte",
+        "readyRoute": "unposte",
+        "receiptCards": []
+      },
+      {
+        "action": "Reset",
+        "instanceId": "eeba5f72ecb44339bb7ad399aa65eb63",
+        "scenario": "standard",
+        "beforeMount": 9,
+        "afterMount": 10,
+        "beforeRoute": "#/parametres",
+        "afterRoute": "#/ajouter",
+        "readyRoute": "ajouter",
+        "receiptCards": []
+      },
+      {
+        "action": "SelectPendingRestart",
+        "instanceId": "eeba5f72ecb44339bb7ad399aa65eb63",
+        "scenario": "pendingRestart",
+        "beforeMount": 11,
+        "afterMount": 12,
+        "beforeRoute": "#/parametres",
+        "afterRoute": "#/interventions",
+        "readyRoute": "interventions",
+        "receiptCards": [
+          {
+            "id": "receipt-eeba5f72ecb44339bb7ad399aa65eb63-6",
+            "mode": "simulation",
+            "status": "pendingRestart"
+          }
+        ]
+      },
+      {
+        "action": "SelectPendingRestart",
+        "instanceId": "8a0db8561e4849d4b208f0d2a3e1eca0",
+        "scenario": "pendingRestart",
+        "beforeMount": 3,
+        "afterMount": 4,
+        "beforeRoute": "#/parametres",
+        "afterRoute": "#/interventions",
+        "readyRoute": "interventions",
+        "receiptCards": [
+          {
+            "id": "receipt-8a0db8561e4849d4b208f0d2a3e1eca0-1",
+            "mode": "simulation",
+            "status": "pendingRestart"
+          }
+        ]
+      }
+    ],
+    "generationAfterReset": 3,
+    "stage": "parent-close-with-child",
+    "parentClosed": true,
+    "demoOpenInvocations": 2,
+    "forbiddenHostInvocations": 0,
+    "coordinationInvocations": 0,
+    "configurationCreated": false,
+    "distinctProfileCount": 3,
+    "distinctInstanceCount": 2,
+    "distinctReceiptCount": 3,
+    "instanceIds": [
+      "eeba5f72ecb44339bb7ad399aa65eb63",
+      "8a0db8561e4849d4b208f0d2a3e1eca0"
+    ],
+    "receiptIds": [
+      "receipt-eeba5f72ecb44339bb7ad399aa65eb63-1",
+      "receipt-eeba5f72ecb44339bb7ad399aa65eb63-6",
+      "receipt-8a0db8561e4849d4b208f0d2a3e1eca0-1"
+    ],
+    "profiles": [
+      "LocalData/Pesto/v2/PROD/Live/WebView2",
+      "LocalData/Pesto/v2/PROD/Simulation/c11f830d536c40baa3c462badab729d2/WebView2",
+      "LocalData/Pesto/v2/PROD/Simulation/f84ce19db9154c8fba002eab04139d6b/WebView2"
+    ],
+    "elapsedMilliseconds": 38561
+  },
+  "temporaryProfilesRemoved": true,
+  "failureCode": null,
+  "success": true,
+  "adQualification": false,
+  "binaryUpdateQualification": false
+}

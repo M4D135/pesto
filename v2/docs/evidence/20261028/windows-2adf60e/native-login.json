@@ -1,0 +1,33 @@
+{
+  "kind": "pesto.native-login-qualification",
+  "schemaVersion": 1,
+  "success": true,
+  "adExecuted": false,
+  "ordinaryProfileAccess": false,
+  "checks": [
+    "domainAutoLogin",
+    "workgroupRequiresLogin",
+    "explicitAccountChoice",
+    "explicitNativeForm",
+    "maskedBoundedPassword",
+    "explicitFormFitsWithoutScrolling",
+    "invalidAccountStaysOpen",
+    "emptyPasswordStaysOpen",
+    "submitAndClear",
+    "protectedEnvelope",
+    "unicodeDpapiRoundTrip",
+    "windowsDefaultOnExplicitChooser",
+    "accountChoiceFitsWithoutScrolling",
+    "windowsChoiceClearsPassword",
+    "cancelClearsPassword",
+    "noUiException"
+  ],
+  "utc": "2026-10-28T11:10:50.4003674\u002B00:00",
+  "captures": [
+    "login-ad.png",
+    "login-account-choice.png",
+    "login-validation.png"
+  ],
+  "deviceDpi": 96,
+  "executableSha256": "b8361c8b0185ab5c528eb182639ca5bf81fbb456c647f68db410382190b33e24"
+}

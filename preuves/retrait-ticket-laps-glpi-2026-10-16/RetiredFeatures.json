@@ -1,0 +1,47 @@
+{
+  "Schema": 1,
+  "Suite": "RetiredFeatures",
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "WPFExecuted": false,
+  "Passed": 7,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "Providers removed from the optional module",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "New metadata rejects ticket and asset identifiers",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Legacy metadata is readable but excluded from normalized output",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Existing join receipt keeps its phase and identity",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Execution plan does not carry retired reference data",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "CLI entry points no longer expose the removed argument",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Real XAML no longer offers reference input or a reference column",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

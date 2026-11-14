@@ -1,0 +1,16 @@
+OK    BridgeDispatcherTests.AcknowledgementReasonIsBoundedAndHasNoControlCharacters
+OK    BridgeDispatcherTests.DuplicateRequestIdIsRejected
+OK    BridgeDispatcherTests.EntraConsentAndPrecreatedSelectionCannotInjectNativeAuthority
+OK    BridgeDispatcherTests.MutationsAreSerialized
+OK    BridgeDispatcherTests.PolicySettingsRejectMalformedDuplicateAndUnboundedGroups
+OK    BridgeDispatcherTests.ReadsMayRunConcurrently
+OK    BridgeDispatcherTests.ReceiptDecisionsAndNativePreparationsAreClosedAndSerialized
+OK    BridgeDispatcherTests.ReceiptReconciliationIsSerializedWithMutationsAndHasClosedArguments
+OK    BridgeDispatcherTests.RemainingMovePreparationIsSerializedAndOnlyAcceptsReceiptId
+OK    BridgeDispatcherTests.ReservationAndCoordinationActionsAreClosedAndSerialized
+OK    BridgeDispatcherTests.UnknownOperationIsRejected
+OK    ParityBridgeTests.AttributesRejectUnknownDuplicateNullControlAndOversizedValuesBeforeBackend
+OK    ParityBridgeTests.AttributeValuesPreserveExactWhitespaceAndExplicitEmptyValues
+OK    ParityBridgeTests.OfflineAndAttributesRejectForgedAuthoritiesPathsAndSecrets
+OK    ParityBridgeTests.PilotChoiceIsAStrictBooleanBoundOnlyAtPreparation
+15 réussis, 0 en échec, 15 au total.

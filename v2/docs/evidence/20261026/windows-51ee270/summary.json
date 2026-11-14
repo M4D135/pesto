@@ -1,0 +1,330 @@
+{
+  "schema": 2,
+  "sourceCommit": "51ee27058c74c27b237bff2e6250aa384198b345",
+  "workflowRun": 40294452798,
+  "workflowConclusion": "success",
+  "distribution": "candidate",
+  "official": false,
+  "adQualified": false,
+  "windowsVersion": "Microsoft Windows NT 10.0.26100.0",
+  "webView2Version": "156.0.4314.42",
+  "executableSha256": "b196f141d83a043c1f81a42da29fdc0f9d68fe6b72219aafd1236fda902a858f",
+  "packs": [
+    {
+      "channel": "PROD",
+      "sourceCommit": "51ee27058c74c27b237bff2e6250aa384198b345",
+      "archiveSha256": "b1365d338ca8d75efda352d8939983c3ce3ac51f38cea3c4c6b98e960a8b2813",
+      "executableSha256": "b196f141d83a043c1f81a42da29fdc0f9d68fe6b72219aafd1236fda902a858f",
+      "distribution": "candidate",
+      "adQualified": false,
+      "nativeStartupDemoQualified": true,
+      "nativeDemoCoexistenceQualified": true,
+      "nativeUpdateQualified": true,
+      "distinctUpdateBuilds": true,
+      "updateBaselineSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+    },
+    {
+      "channel": "DEV",
+      "sourceCommit": "51ee27058c74c27b237bff2e6250aa384198b345",
+      "archiveSha256": "506cce5eeb0d216ced2acf976a227d1bcec2ba74d39b59c20d8c8f23abc8f3ff",
+      "executableSha256": "b196f141d83a043c1f81a42da29fdc0f9d68fe6b72219aafd1236fda902a858f",
+      "distribution": "candidate",
+      "adQualified": false,
+      "nativeStartupDemoQualified": true,
+      "nativeDemoCoexistenceQualified": true,
+      "nativeUpdateQualified": true,
+      "distinctUpdateBuilds": true,
+      "updateBaselineSourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+    }
+  ],
+  "powerShell51": {
+    "parsed": 18,
+    "errors": 0,
+    "businessScriptsExecuted": false,
+    "qualificationEntrypoint": {
+      "schemaVersion": 1,
+      "kind": "pesto.qualification-entrypoint-syntax",
+      "powershellMajor": 5,
+      "powershellMinor": 1,
+      "fileSha256": "84daf8aae5e6943221b5ce95d860a39731e228f4c1688fae33176c69834c5634",
+      "errorCount": 0,
+      "success": true
+    }
+  },
+  "targetedEngineFixtureTestsOnWindows": {
+    "passed": 200,
+    "failed": 0,
+    "bySuite": {
+      "ApplicationServicesTests": 7,
+      "DemonstrationTests": 12,
+      "ProfileConfigurationTests": 28,
+      "ConfigurationOnlyTests": 3,
+      "HostWiringTests": 18,
+      "ReferenceImportTests": 7,
+      "UpdateTests": 22,
+      "ActiveDirectoryBundleTests": 2,
+      "PolicyReceiptHistoryTests": 4,
+      "Attribute": 20,
+      "AutomationTests": 22,
+      "ConsultationGuardTests": 5,
+      "OfflineJoin": 22,
+      "LiveQueueTests": 28
+    }
+  },
+  "bridgeFixtureTestsOnWindows": {
+    "passed": 15,
+    "failed": 0
+  },
+  "portableUpdateHarnessChecksOnWindows": 30,
+  "nativeDemo": {
+    "PROD": {
+      "success": true,
+      "ready": true,
+      "closeReturned": true,
+      "blockedDirectApis": 44,
+      "hostInvocations": 0,
+      "realProfileCreated": false,
+      "temporaryProfilesRemoved": true,
+      "coexistence": {
+        "success": true,
+        "parentKind": "configuration-only-no-adapter",
+        "elapsedMilliseconds": 35446,
+        "parentDraftPreserved": true,
+        "parentRoutePreserved": true,
+        "parentPreferencesPreserved": true,
+        "profilesDistinct": true,
+        "distinctProfileCount": 3,
+        "distinctInstanceCount": 2,
+        "distinctReceiptCount": 3,
+        "permanentBannerConfirmed": true,
+        "scenarioConfirmed": true,
+        "resetConfirmed": true,
+        "fictitiousRestartConfirmed": true,
+        "idsDistinct": true,
+        "idsDistinctAfterReset": true,
+        "idsDistinctAcrossWindows": true,
+        "childClosed": true,
+        "parentClosed": true,
+        "parentClosedWithChild": true,
+        "freshUiTransitions": true,
+        "forbiddenHostInvocations": 0,
+        "coordinationInvocations": 0,
+        "configurationCreated": false
+      },
+      "freshUiTransitionCount": 6,
+      "captureCount": 4
+    },
+    "DEV": {
+      "success": true,
+      "ready": true,
+      "closeReturned": true,
+      "blockedDirectApis": 44,
+      "hostInvocations": 0,
+      "realProfileCreated": false,
+      "temporaryProfilesRemoved": true,
+      "coexistence": {
+        "success": true,
+        "parentKind": "configuration-only-no-adapter",
+        "elapsedMilliseconds": 35515,
+        "parentDraftPreserved": true,
+        "parentRoutePreserved": true,
+        "parentPreferencesPreserved": true,
+        "profilesDistinct": true,
+        "distinctProfileCount": 3,
+        "distinctInstanceCount": 2,
+        "distinctReceiptCount": 3,
+        "permanentBannerConfirmed": true,
+        "scenarioConfirmed": true,
+        "resetConfirmed": true,
+        "fictitiousRestartConfirmed": true,
+        "idsDistinct": true,
+        "idsDistinctAfterReset": true,
+        "idsDistinctAcrossWindows": true,
+        "childClosed": true,
+        "parentClosed": true,
+        "parentClosedWithChild": true,
+        "freshUiTransitions": true,
+        "forbiddenHostInvocations": 0,
+        "coordinationInvocations": 0,
+        "configurationCreated": false
+      },
+      "freshUiTransitionCount": 6,
+      "captureCount": 4
+    }
+  },
+  "nativeUpdate": {
+    "PROD": {
+      "schemaVersion": 2,
+      "channel": "PROD",
+      "success": true,
+      "candidateZipSha256": "b1365d338ca8d75efda352d8939983c3ce3ac51f38cea3c4c6b98e960a8b2813",
+      "sourceUnchanged": true,
+      "baseUnchanged": true,
+      "candidateUnchanged": true,
+      "archiveUnchanged": true,
+      "profileSentinelUnchanged": true,
+      "distinctBuilds": true,
+      "syntheticVersions": false,
+      "zipAcquisitionQualified": true,
+      "uncQualification": false,
+      "nativeBinaryUpdateQualification": true,
+      "adQualification": false,
+      "base": {
+        "fingerprint": "3ffbf11232aacee30fdfece084bcccc5fb261389b280023eda2d164a46da675e",
+        "version": "2.0.0",
+        "channel": "PROD",
+        "executableSha256": "62c1786a7ec3b5321520943740699ceece6c4a39ceae11c9d1c93bcb170d4a6c",
+        "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+        "sourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+      },
+      "candidate": {
+        "fingerprint": "2f50bcd7e460edf0b555e74b025cda8ef15e3d642be89b6a213212d2fd22af54",
+        "version": "2.0.0",
+        "channel": "PROD",
+        "executableSha256": "b196f141d83a043c1f81a42da29fdc0f9d68fe6b72219aafd1236fda902a858f",
+        "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+        "sourceCommit": "51ee27058c74c27b237bff2e6250aa384198b345"
+      },
+      "scenarios": [
+        {
+          "scenario": "normal",
+          "stage": "rollback",
+          "success": true,
+          "status": "rolledBack",
+          "healthAttemptCount": 2,
+          "acquisition": "zip",
+          "syntheticFault": false,
+          "syntheticVersions": false,
+          "zipAcquisitionQualified": true,
+          "sourceUnchanged": true,
+          "profileSentinelUnchanged": true
+        },
+        {
+          "scenario": "health-failure",
+          "stage": "install",
+          "success": true,
+          "status": "rolledBack",
+          "healthAttemptCount": 2,
+          "acquisition": "directory",
+          "syntheticFault": true,
+          "syntheticVersions": false,
+          "zipAcquisitionQualified": false,
+          "sourceUnchanged": true,
+          "profileSentinelUnchanged": true
+        },
+        {
+          "scenario": "interruption",
+          "stage": "recovery",
+          "success": true,
+          "status": "rolledBack",
+          "healthAttemptCount": 2,
+          "acquisition": "directory",
+          "syntheticFault": true,
+          "syntheticVersions": false,
+          "zipAcquisitionQualified": false,
+          "sourceUnchanged": true,
+          "profileSentinelUnchanged": true
+        }
+      ],
+      "interruptionObservation": {
+        "success": true,
+        "interrupted": true,
+        "checkingObserved": true,
+        "healthChildObserved": true,
+        "webViewChildObserved": true,
+        "helperExitCode": -1,
+        "finalJournalStatus": "checking",
+        "helperExecutableSha256": "62c1786a7ec3b5321520943740699ceece6c4a39ceae11c9d1c93bcb170d4a6c",
+        "healthExecutableSha256": "b196f141d83a043c1f81a42da29fdc0f9d68fe6b72219aafd1236fda902a858f",
+        "ownedDescendantCount": 3,
+        "attributionRefusalCount": 0
+      }
+    },
+    "DEV": {
+      "schemaVersion": 2,
+      "channel": "DEV",
+      "success": true,
+      "candidateZipSha256": "506cce5eeb0d216ced2acf976a227d1bcec2ba74d39b59c20d8c8f23abc8f3ff",
+      "sourceUnchanged": true,
+      "baseUnchanged": true,
+      "candidateUnchanged": true,
+      "archiveUnchanged": true,
+      "profileSentinelUnchanged": true,
+      "distinctBuilds": true,
+      "syntheticVersions": false,
+      "zipAcquisitionQualified": true,
+      "uncQualification": false,
+      "nativeBinaryUpdateQualification": true,
+      "adQualification": false,
+      "base": {
+        "fingerprint": "95cafeb67b743c022f5cc07774e959a1187c2ed9d6de418c7f319f21c472c7f4",
+        "version": "2.0.0",
+        "channel": "DEV",
+        "executableSha256": "62c1786a7ec3b5321520943740699ceece6c4a39ceae11c9d1c93bcb170d4a6c",
+        "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+        "sourceCommit": "de527313b98f30d52802ec6abd51804e12f8c298"
+      },
+      "candidate": {
+        "fingerprint": "cc3bac3beb6c5bce39da2d6d60eee8bcafeab49bbe86dbabc58ddf75ebc2e8a8",
+        "version": "2.0.0",
+        "channel": "DEV",
+        "executableSha256": "b196f141d83a043c1f81a42da29fdc0f9d68fe6b72219aafd1236fda902a858f",
+        "runtimeFingerprint": "d58a8ea7fa738af0f7f60dfeaeb38e02c55954b0e03f848dd675e63df4850970",
+        "sourceCommit": "51ee27058c74c27b237bff2e6250aa384198b345"
+      },
+      "scenarios": [
+        {
+          "scenario": "normal",
+          "stage": "rollback",
+          "success": true,
+          "status": "rolledBack",
+          "healthAttemptCount": 2,
+          "acquisition": "zip",
+          "syntheticFault": false,
+          "syntheticVersions": false,
+          "zipAcquisitionQualified": true,
+          "sourceUnchanged": true,
+          "profileSentinelUnchanged": true
+        }
+      ]
+    }
+  },
+  "artifacts": [
+    {
+      "id": 12638410766,
+      "name": "Pesto-V2-DEV-candidate-51ee27058c74c27b237bff2e6250aa384198b345",
+      "size_in_bytes": 383906185,
+      "expires_at": "2026-11-25T08:56:59Z",
+      "sha256": "44b0c6d52340d75bcc3e011cb48a69b0f6ee27e8a43de3d853608a15149c57fc",
+      "downloadedAndVerified": false
+    },
+    {
+      "id": 12638181271,
+      "name": "Pesto-V2-PROD-candidate-51ee27058c74c27b237bff2e6250aa384198b345",
+      "size_in_bytes": 369772715,
+      "expires_at": "2026-11-25T08:56:55Z",
+      "sha256": "99cc7fa72f096963532f1ff7af9247bb0049e41b47e0d726be124106962a4e35",
+      "downloadedAndVerified": false
+    },
+    {
+      "id": 12638096574,
+      "name": "Pesto-V2-Windows-evidence-51ee27058c74c27b237bff2e6250aa384198b345",
+      "size_in_bytes": 1175668,
+      "expires_at": "2026-11-25T08:56:53Z",
+      "sha256": "cc6c71d4056257d42b07a3efa9a69592582ad07524e9c408046171dadba333f4",
+      "downloadedAndVerified": true
+    }
+  ],
+  "limitations": [
+    "local parent without an AD adapter; no authenticated AD session",
+    "native scenarios pendingRestart and joined, reset to standard; not all eight scenarios",
+    "no independent network capture",
+    "no AD mutation or real reboot performed",
+    "DEV normal installation and explicit rollback only; no DEV failure or interrupted recovery",
+    "native interruption at checking only; other interruption boundaries covered by fixtures",
+    "no native acquisition of an official GitHub release over HTTP",
+    "no real UNC, Program Files, operator configuration or alternate-account UAC qualification",
+    "no native configuration import/export/recovery/custom-pack dialog qualification",
+    "laboratory access refused; read-only check exit 255"
+  ]
+}

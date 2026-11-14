@@ -1,0 +1,23 @@
+OK Noms AD et réservations exclus des disponibles
+OK Utilisés distingue les noms occupés des réservations
+OK Tous conserve les statuts et le nombre de libres
+OK Recherche insensible à la casse
+OK Un filtre sans résultat rend un tableau vide
+OK Une collecte vide ne crée pas de site ou équipe arbitraire
+OK Noms mal formés, 000 et autres préfixes ignorés
+OK Jusqu'à 999 respecte exactement la borne
+OK Limite d'affichage explicite et comptage non trompeur
+OK Limite exacte sans résultat supplémentaire non tronquée
+OK Index AD sans réservation persistée par erreur
+OK Types indépendants pour le même site/service
+OK Progression partagée et génération restituée
+OK Entrées de calcul invalides refusées
+OK Chargement garde les anciennes lignes grisées et désactive les commandes
+OK Le compteur est une quantité réellement lue, sans pourcentage
+OK Erreur arrête l'indicateur et propose Réessayer
+OK Ancien résultat filtré jamais publié
+OK Copie refusée quand la vue n'est pas prête
+OK Inventaire partiel ne lance aucun calcul de libres
+OK Une collecte déjà active ne déclenche pas un deuxième calcul
+OK Cache changé en plein calcul : pas de chargement infini ni résultat obsolète
+Rapport : /tmp/Pesto-Names-f50043bde8ef4ee0af60bfded38b889a.json

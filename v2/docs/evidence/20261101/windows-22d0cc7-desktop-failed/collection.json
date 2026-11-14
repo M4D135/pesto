@@ -1,0 +1,16 @@
+{
+  "repository": "M4D135/pesto",
+  "sourceCommit": "22d0cc7cad8aa22a36860c77cfb7f4f90cd4d79a",
+  "runId": 41265148251,
+  "runAttempt": 1,
+  "conclusion": "failure",
+  "artifactId": 13066669781,
+  "artifactBytes": 49064,
+  "artifactDigest": "sha256:7c53a53ba375e36318829276158376ce61aca9b68ac82a28a6f800918007880b",
+  "files": {
+    "windows-desktop.json": "416809118b92fc7cc2ed594d1dcccba4966dccbd05734e7a28acddc2c5f2bbd0",
+    "proof.json": "e76f745062ee6b42e743e906d341ea450ae791289d6c2b73cabef9a98275ac0c"
+  },
+  "nativeProofAvailable": false,
+  "nativeFailure": "outer 240 second timeout; no rebuilt-native-demo.json in artifact"
+}

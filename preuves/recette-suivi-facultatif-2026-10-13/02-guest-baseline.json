@@ -1,0 +1,12 @@
+{
+    "Utc":  "2026-10-13T16:26:53.2307536Z",
+    "Name":  "P111301LY765128",
+    "Domain":  "labo.local",
+    "Joined":  true,
+    "User":  "LABO\\tech.pesto",
+    "Boot":  "2026-10-13T16:25:31.5000000Z",
+    "PS":  "5.1.26100.6584",
+    "Pilot":  true,
+    "Launcher":  true,
+    "DC":  false
+}

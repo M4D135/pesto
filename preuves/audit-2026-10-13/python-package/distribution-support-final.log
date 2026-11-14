@@ -1,0 +1,31 @@
+test_01_runtime_only_needs_no_demo_or_helpers (test_distribution.DistributionTests.test_01_runtime_only_needs_no_demo_or_helpers) ... ok
+test_02_optional_changes_do_not_modify_runtime_verification (test_distribution.DistributionTests.test_02_optional_changes_do_not_modify_runtime_verification) ... ok
+test_03_each_missing_runtime_file_is_refused (test_distribution.DistributionTests.test_03_each_missing_runtime_file_is_refused) ... ok
+test_04_each_modified_runtime_file_is_refused (test_distribution.DistributionTests.test_04_each_modified_runtime_file_is_refused) ... ok
+test_05_invalid_manifest_is_refused (test_distribution.DistributionTests.test_05_invalid_manifest_is_refused) ... ok
+test_06_linked_runtime_file_is_refused (test_distribution.DistributionTests.test_06_linked_runtime_file_is_refused) ... ok
+test_07_linked_manifest_directory_is_refused (test_distribution.DistributionTests.test_07_linked_manifest_directory_is_refused) ... ok
+test_08_generator_succeeds_without_dev_files (test_distribution.DistributionTests.test_08_generator_succeeds_without_dev_files) ... ok
+test_09_prod_export_is_closed_and_preserves_configuration (test_distribution.DistributionTests.test_09_prod_export_is_closed_and_preserves_configuration) ... ok
+test_10_dev_and_prod_share_the_same_runtime (test_distribution.DistributionTests.test_10_dev_and_prod_share_the_same_runtime) ... ok
+test_11_existing_destination_is_never_overwritten (test_distribution.DistributionTests.test_11_existing_destination_is_never_overwritten) ... ok
+test_12_unknown_and_state_files_not_exported (test_distribution.DistributionTests.test_12_unknown_and_state_files_not_exported) ... ok
+test_13_manifest_ignores_new_optional_components_on_regeneration (test_distribution.DistributionTests.test_13_manifest_ignores_new_optional_components_on_regeneration) ... ok
+test_14_partial_runtime_refuses_export (test_distribution.DistributionTests.test_14_partial_runtime_refuses_export) ... ok
+test_15_old_root_script_is_not_required_or_exported (test_distribution.DistributionTests.test_15_old_root_script_is_not_required_or_exported) ... ok
+test_16_no_production_script_launches_a_root_pesto_ps1 (test_distribution.DistributionTests.test_16_no_production_script_launches_a_root_pesto_ps1) ... ok
+test_17_unblock_is_required_for_shipping_not_for_runtime (test_distribution.DistributionTests.test_17_unblock_is_required_for_shipping_not_for_runtime) ... ok
+test_18_archives_have_distinct_named_roots (test_distribution.DistributionTests.test_18_archives_have_distinct_named_roots) ... ok
+test_19_unblock_recognizes_exe_wad_without_root_ps1 (test_distribution.DistributionTests.test_19_unblock_recognizes_exe_wad_without_root_ps1) ... ok
+test_20_wrong_zip_root_name_is_refused (test_distribution.DistributionTests.test_20_wrong_zip_root_name_is_refused) ... ok
+test_21_real_configuration_never_packed_by_default (test_distribution.DistributionTests.test_21_real_configuration_never_packed_by_default) ... ok
+test_22_static_reports_never_in_dev_pack (test_distribution.DistributionTests.test_22_static_reports_never_in_dev_pack) ... ok
+test_23_unblock_filter_covers_pack_contract_not_live_folder (test_distribution.DistributionTests.test_23_unblock_filter_covers_pack_contract_not_live_folder) ... ok
+test_24_powershell_distribution_keeps_the_same_dev_contract (test_distribution.DistributionTests.test_24_powershell_distribution_keeps_the_same_dev_contract) ... ok
+test_25_output_alias_cannot_write_inside_source (test_distribution.DistributionTests.test_25_output_alias_cannot_write_inside_source) ... ok
+test_26_pack_entrypoint_rejects_alias_before_creating_config (test_distribution.DistributionTests.test_26_pack_entrypoint_rejects_alias_before_creating_config) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 2.450s
+
+OK

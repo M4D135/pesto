@@ -1,0 +1,40 @@
+test_plain_target_missing_allowed (test_path_security.ConfinementTests.test_plain_target_missing_allowed) ... ok
+test_plain_target_normal (test_path_security.ConfinementTests.test_plain_target_normal) ... ok
+test_plain_target_refuses_directory (test_path_security.ConfinementTests.test_plain_target_refuses_directory) ... ok
+test_plain_target_refuses_resolved_escape (test_path_security.ConfinementTests.test_plain_target_refuses_resolved_escape) ... ok
+test_plain_target_refuses_resolved_escape_if_detector_false (test_path_security.ConfinementTests.test_plain_target_refuses_resolved_escape_if_detector_false) ... ok
+test_plain_target_refuses_symlink_inside (test_path_security.ConfinementTests.test_plain_target_refuses_symlink_inside) ... ok
+test_plain_target_refuses_symlink_outside (test_path_security.ConfinementTests.test_plain_target_refuses_symlink_outside) ... ok
+test_plain_target_uses_link_detector (test_path_security.ConfinementTests.test_plain_target_uses_link_detector) ... ok
+test_plan_update_refuses_linked_root (test_path_security.ConfinementTests.test_plan_update_refuses_linked_root) ... ok
+test_safe_file_missing (test_path_security.ConfinementTests.test_safe_file_missing) ... ok
+test_safe_file_normal (test_path_security.ConfinementTests.test_safe_file_normal) ... ok
+test_safe_file_refuses_symlink_inside (test_path_security.ConfinementTests.test_safe_file_refuses_symlink_inside) ... ok
+test_safe_file_refuses_symlink_outside (test_path_security.ConfinementTests.test_safe_file_refuses_symlink_outside) ... ok
+test_safe_file_uses_link_detector (test_path_security.ConfinementTests.test_safe_file_uses_link_detector) ... ok
+test_update_imports_link_detector (test_path_security.ConfinementTests.test_update_imports_link_detector) ... ok
+test_is_junction_absent_normal_false (test_path_security.IsLinkOrJunctionTests.test_is_junction_absent_normal_false) ... ok
+test_is_junction_error_then_windows_fallback (test_path_security.IsLinkOrJunctionTests.test_is_junction_error_then_windows_fallback) ... ok
+test_is_junction_false (test_path_security.IsLinkOrJunctionTests.test_is_junction_false) ... ok
+test_is_junction_true (test_path_security.IsLinkOrJunctionTests.test_is_junction_true) ... ok
+test_normal_false (test_path_security.IsLinkOrJunctionTests.test_normal_false) ... ok
+test_symlink_error_then_fallback (test_path_security.IsLinkOrJunctionTests.test_symlink_error_then_fallback) ... ok
+test_symlink_true (test_path_security.IsLinkOrJunctionTests.test_symlink_true) ... ok
+test_symlink_true_without_is_junction (test_path_security.IsLinkOrJunctionTests.test_symlink_true_without_is_junction) ... ok
+test_windows_lstat_error_fallback (test_path_security.IsLinkOrJunctionTests.test_windows_lstat_error_fallback) ... ok
+test_windows_missing_attributes_fallback (test_path_security.IsLinkOrJunctionTests.test_windows_missing_attributes_fallback) ... ok
+test_windows_normal_fallback (test_path_security.IsLinkOrJunctionTests.test_windows_normal_fallback) ... ok
+test_windows_reparse_fallback (test_path_security.IsLinkOrJunctionTests.test_windows_reparse_fallback) ... ok
+test_dangerous_names_refused (test_path_security.RuntimeFilesTests.test_dangerous_names_refused) ... ok
+test_json_and_log_refused (test_path_security.RuntimeFilesTests.test_json_and_log_refused) ... ok
+test_valid (test_path_security.RuntimeFilesTests.test_valid) ... ok
+test_alternate_data_stream (test_path_security.ValidateRelativeTests.test_alternate_data_stream) ... ok
+test_invalid_and_traversal (test_path_security.ValidateRelativeTests.test_invalid_and_traversal) ... ok
+test_reserved_windows_names (test_path_security.ValidateRelativeTests.test_reserved_windows_names) ... ok
+test_trailing_dot_or_space (test_path_security.ValidateRelativeTests.test_trailing_dot_or_space) ... ok
+test_valid (test_path_security.ValidateRelativeTests.test_valid) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.014s
+
+OK

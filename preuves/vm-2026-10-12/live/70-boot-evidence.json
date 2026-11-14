@@ -1,0 +1,31 @@
+{
+    "Utc":  "2026-10-12T19:14:50.1612963Z",
+    "CimBootUtc":  "2026-10-12T18:59:12.6245780Z",
+    "WmiBootRaw":  "20261012205912.624578+120",
+    "WmiBootUtc":  "2026-10-12T18:59:12.6245780Z",
+    "TickCountMilliseconds":  934109,
+    "BootEvents":  [
+                       {
+                           "Id":  12,
+                           "Provider":  "Microsoft-Windows-Kernel-General",
+                           "RecordId":  8596,
+                           "Utc":  "2026-10-12T18:59:10.8458606Z",
+                           "Message":  "The operating system started at system time ‎2026‎-‎10‎-‎12T18:59:10.500000000Z."
+                       },
+                       {
+                           "Id":  12,
+                           "Provider":  "Microsoft-Windows-Kernel-General",
+                           "RecordId":  8484,
+                           "Utc":  "2026-10-12T18:45:43.9361734Z",
+                           "Message":  "The operating system started at system time ‎2026‎-‎10‎-‎12T18:45:43.500000000Z."
+                       },
+                       {
+                           "Id":  12,
+                           "Provider":  "Microsoft-Windows-Kernel-General",
+                           "RecordId":  8342,
+                           "Utc":  "2026-10-12T18:02:00.9105348Z",
+                           "Message":  "The operating system started at system time ‎2026‎-‎10‎-‎12T18:02:00.500000000Z."
+                       }
+                   ],
+    "Observation":  "Read-only evidence; no restart command was issued after 18:59 cold boot."
+}

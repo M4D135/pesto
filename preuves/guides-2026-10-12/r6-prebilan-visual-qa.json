@@ -1,0 +1,500 @@
+{
+  "Schema": 1,
+  "Agent": "/root/engine_finish",
+  "Method": "Tous les PNG comparés par SHA-256 au rendu initial, puis chaque page nouvelle relue individuellement avec view_image ; les pages20,21,28 admin sont identiques au rendu paths déjà relu.",
+  "Documents": [
+    {
+      "Document": "technicien",
+      "DOCXSHA256": "af4c72ca79613e190b50c2755bb344f8512202f3eeb83845f410ce791ce2330b",
+      "PDFSHA256": "a310f04cc006e20596788f544ddbd0017237eabe2aec383b58f0a44a97c36f15",
+      "PageCount": 24,
+      "Pages": [
+        {
+          "Page": 1,
+          "ImageSHA256": "8373db7323aab01a5ce41c159de2e6aa5eb099f39c4e9ebbbef1270f0ac58950",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 2,
+          "ImageSHA256": "0ad2974fb6cd4ee43cc525a423c0e927f902a2d3775a0d6d78fde04adae7d4d5",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 3,
+          "ImageSHA256": "226e10261e78d5fc8303c55632dc54fa6959b391b82af3c4d4b6d344170c02e7",
+          "Review": "Visually re-read",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 4,
+          "ImageSHA256": "196ef5d8a3b32aebd27c6f45f5a4cb8c1945734db7537121027124f7175f68f0",
+          "Review": "Visually re-read",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 5,
+          "ImageSHA256": "a42b94968bd4f36caaacbf6d9b9db5f07d3c07718a3681b701f66ddbb4da226a",
+          "Review": "Visually re-read",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 6,
+          "ImageSHA256": "ab2ec0222950a944c0e058184b35a981b605e7baf6e611594b2397be18a2c649",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 7,
+          "ImageSHA256": "86b62e3935277b1f7e52f8f440d4ba864a65dcde01d54fae1e24c9323310bae4",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 8,
+          "ImageSHA256": "82b2e6372d0b3f24e5a3c0796f6ac74011558ec8d975a6ee067db5c44e005407",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 9,
+          "ImageSHA256": "69fd4ca814baa4ec625c2e60f0523830a96c056608a8c3ef9407071fcc0fdf6b",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 10,
+          "ImageSHA256": "5fe9aecdc094df64193295a5f6f7a446587ce8c0c088b57f4c7c1b8f1f290a21",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 11,
+          "ImageSHA256": "5ba61d6ff0ba80f5c9783b380aceeb9949e8cf425c69eaf1ec66b792ea6984b9",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 12,
+          "ImageSHA256": "dc7983727e7379bda40b65b4a01e20eb1e874e21f101a02c2d4daf2fb8e3f569",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 13,
+          "ImageSHA256": "a25010085930fb642a3d7db09e8ee4f9379021fa4b4d73b2abacd14c14385982",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 14,
+          "ImageSHA256": "6cc95a0c28ca6b435a64adb8f65fde0d736e722fb80e1659de24e3d4cada1015",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 15,
+          "ImageSHA256": "d6cde76be7b616abb5a014f18e54d5611789f9df1e2914238113dd4f20be3c00",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 16,
+          "ImageSHA256": "1dc567d6d2daf087ac83da9a67e3c6b45e28349407acc69b32b0e0802157baf8",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 17,
+          "ImageSHA256": "8a4f09d621fce5e725ac32c5ade17d9ee66665ca9b8fc0da107178e4eb0c139d",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 18,
+          "ImageSHA256": "dd9e35d52bfe34c3e44d4bd89215c99c04fa5877c6d3a711b757696cd604a185",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 19,
+          "ImageSHA256": "10a57434e6e9ad05641b15224eec2c374cfd16ebb232b2213e5477125457cf9d",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 20,
+          "ImageSHA256": "3b60b9c74d74c612d3a206a0ba7e7d3243c6925e9c190cd530a356c4e77cc95a",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 21,
+          "ImageSHA256": "fe7eb6193f67b55049626ad40d97d30c5117461e1824db16950f02f0a30d0abf",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 22,
+          "ImageSHA256": "496f5cade87b8327189b37aba4efb9150555b6d055aca8d1f5b067d117999a38",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 23,
+          "ImageSHA256": "023c0c6ca6e0571517dccbb4244014b143ece1a67f452c819505883c05818a30",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 24,
+          "ImageSHA256": "187c0200a3a42586de1065b19ff96713d6a991885fbc9f9b9bc5592d4e9a7325",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        }
+      ],
+      "OutsidePageCharacters": 0
+    },
+    {
+      "Document": "administrateur",
+      "DOCXSHA256": "69494cc07aa21c4daab61d5ba514285d4908b28ed09f7d940721d34c880ea8dd",
+      "PDFSHA256": "077aee163fe86833d2f511d9d900767e525c5d48fff5e406b8535796ba1d8aae",
+      "PageCount": 55,
+      "Pages": [
+        {
+          "Page": 1,
+          "ImageSHA256": "ed82326dd344b625f88a6fe7458d3ac6ead016927d24cc6868f672569677f132",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 2,
+          "ImageSHA256": "4075883113d4d4897b1ba3cc0d121b545cffd876b0a94fdae6c25b2916b1ced6",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 3,
+          "ImageSHA256": "925fd431c8cbd1744f7b38864d8cc43299dc3f5d942da37b2983bea8d0acb13e",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 4,
+          "ImageSHA256": "95e58a7696d6febd7efcc580c2e97ff2b8ce401596945e4489b9396c5c9d0e27",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 5,
+          "ImageSHA256": "67e9ee32bacb67f8a7e41de72fcf7309923f892409aa26c7927e6b064673ae8c",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 6,
+          "ImageSHA256": "14db8efd1690588c5ec2c27e396119f98b22a865e982d7c62ca44b52203dec0f",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 7,
+          "ImageSHA256": "5ca4067af0c1d617785cb4ded46b4667d662d38340bfbb2689fc598c44712512",
+          "Review": "Visually re-read",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 8,
+          "ImageSHA256": "99549328ecebb3ff15807665be8c840e8c8975fd9940132e74cd331334fffa6e",
+          "Review": "Visually re-read",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 9,
+          "ImageSHA256": "58e08103b73102993c3118b1ef85bf4e043eff55cda01a72dc0d8cfbc37a8ea8",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 10,
+          "ImageSHA256": "d1821050376bf09e3373f58cdb59e7bef5ae5bd56ac8ee29cf70df4195473504",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 11,
+          "ImageSHA256": "33daa3ce59b8075c922af1d78d9b57d2b4e0f230ed1d176b161238bba93ae66c",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 12,
+          "ImageSHA256": "3fd84a6cfababd51a6f2173e225496e4257f4ca7ca04634582b0f72fa0a2b9e5",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 13,
+          "ImageSHA256": "f3078ab69db857e1cbb834b17b948d0f153201b2865f388114a31e9c88317f2a",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 14,
+          "ImageSHA256": "37ca8030658f03a594c3b74adf72f0ed206e3f258013e41f6af35921e9f829d5",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 15,
+          "ImageSHA256": "950e012f64fcb9bd15351b8c809980099460ed55b293dd082b1c2a4dd118e940",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 16,
+          "ImageSHA256": "fd4250fcdcb8b4fb960ce80106c38201e2646e796e3b8d0da83dcc556a92b2c7",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 17,
+          "ImageSHA256": "bb414d097b3267f5626dc78bf1dbdb0b16fa2f726e0bf265b1087a008701bab7",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 18,
+          "ImageSHA256": "84b91f10a913e4a6b803b5b0f7c5c890d28fde6a47d996a45493365c5d179c98",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 19,
+          "ImageSHA256": "3533a41578c873d2e4e760b9c5c3b50ea85f03cf552f224fdee566bd3440ffc4",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 20,
+          "ImageSHA256": "7d9d7d25886acfe618ab835024ca3b4dc36c80fd65afa7bb37654110326daa4a",
+          "Review": "Byte-identical to visually reviewed path/label correction",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 21,
+          "ImageSHA256": "9172634df22435f2ee3d00175d0cc4087e040710389049bd679a0130f37a603d",
+          "Review": "Byte-identical to visually reviewed path/label correction",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 22,
+          "ImageSHA256": "007da405733da10c45e1d772812fc149c3ad58130295a40b68c1705e34f56e34",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 23,
+          "ImageSHA256": "16396042db353c10384266b0bd3b11c141e470cca432825e0d21fa6feae13c56",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 24,
+          "ImageSHA256": "6b32c30132fcb5f0d860556bbb30db8b4c2b81b66cc53162c6d3893472b59142",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 25,
+          "ImageSHA256": "78256e2894f643362f9226239316d39dc833297a8cd72bbb6deef19540657d27",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 26,
+          "ImageSHA256": "c96f5f60bea1064c3f5c41434c8fcea1d9116d50a0a09c4c4c9766241c368f1b",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 27,
+          "ImageSHA256": "5a2f696907f99d0e924e264f0c24eafcad2916f99a1ed4422a2fe7ae5f0afccf",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 28,
+          "ImageSHA256": "224271951f8e340bde0a85a9fe7faa879f68ac033c7518298cdac2da53a568b3",
+          "Review": "Byte-identical to visually reviewed path/label correction",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 29,
+          "ImageSHA256": "1842c9b80babd525deff22bf1c4a94ff6c00bf9ea7aa0902b8329774f685b4d9",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 30,
+          "ImageSHA256": "df899d10140d6669ce49e8a4d4bea5c41c976c55a9ef242da1ee223d579be67b",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 31,
+          "ImageSHA256": "3d93a5dcd8fe7e932a9c2157f43afeef5830620568a518375ef7b22f0b1d8811",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 32,
+          "ImageSHA256": "5a211861cd48d3604a41460fc3ea99897e084db85ac9a72fc9bb85cc87b51ba4",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 33,
+          "ImageSHA256": "f9d48c05562babc25b4f28eb43d0567933804ee47e3106ad8a544208a8860ebb",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 34,
+          "ImageSHA256": "75e05c3fdb3bc2128c55a641ec644965dccbc1d520b6e60dd7c29682b844481b",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 35,
+          "ImageSHA256": "2564fba4681ffac587eb56b2379bb30cec6a98085ad0f9878c9ad8f8e06199f4",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 36,
+          "ImageSHA256": "25cb6cb7c3e62daec365d2b7893db0aa764cb1ac7d5c04fc106e72ea2f7d6f5d",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 37,
+          "ImageSHA256": "98e26596ec275a70f84665a2ee5b57e10849a34605850bf89aca8532031163ca",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 38,
+          "ImageSHA256": "1d91ea8b90920e975e09c8094dddbb5a9226beccaeee8b69d84c52ff15b851a9",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 39,
+          "ImageSHA256": "1200b62f6f9c98407f19306a6961a2b8c589b5f4a96ab5edc6ca280dc3e46cf0",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 40,
+          "ImageSHA256": "8f02f1ebe1315f0e84e1fbac73cdcf78f657b2aba563700e39986360f0e23518",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 41,
+          "ImageSHA256": "07f2e4cddd3143325aaea6e266e201f83fbdb396a0f49064ad65dfcf418902c4",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 42,
+          "ImageSHA256": "866721ac844a6be4f6447729f7e696f61f40a0c5bac5fa8e1749a9e2932ad56a",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 43,
+          "ImageSHA256": "4b43fd715b5f41d6d6876264b1c87dceff9fe1f4590f85a7e9c80469e9e6a897",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 44,
+          "ImageSHA256": "6fa728b3434616220f4a2f825843b72fb1b619fa353eddff6e838abdd864eb52",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 45,
+          "ImageSHA256": "21f8363289ee0b6407f5261cccb3f7cf6a27adde0227c39762badfede35da8ad",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 46,
+          "ImageSHA256": "16361bec513526682ce44250e94bb68e8c73f2bb242897604d855e500d0f79ad",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 47,
+          "ImageSHA256": "05d6ba3693a66e1ed708d09cd39106e9f258b3fb14b729ad391df0016da84b8c",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 48,
+          "ImageSHA256": "f688c48c1682c312fe15d98f26080ad752501a8d033313292b2f5dff1dd3b10e",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 49,
+          "ImageSHA256": "57890aeadfa51063473290872f21d7a665c6b44125fae7983afea5176b894ca7",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 50,
+          "ImageSHA256": "07e92fa514b579c5ae1c90f55304b9f82d243dd65d48c9e127e4af40a57be896",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 51,
+          "ImageSHA256": "9b357cdc6d1a0adf9509ce8328890c3ceb1a2deee3ee56fdc71833195e3b253f",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 52,
+          "ImageSHA256": "51d6196c2c20c01bd2fe47cfe4b2723811887497ea6b371c3006a9dfda6817c0",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 53,
+          "ImageSHA256": "bdb996a3d5e372c923295e2b794bce1a4f5baeab5559c079dab343a6166b5dd1",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 54,
+          "ImageSHA256": "ecc3d0fbd09442a9a430759639bc6136bd8a0150514b37a2db3967395bb51698",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        },
+        {
+          "Page": 55,
+          "ImageSHA256": "eebfaba06185aa3938a7ae54b1099f8103bbbe0d5192c304466a8cf70cec0adf",
+          "Review": "Byte-identical to visually reviewed baseline",
+          "VisualReview": "PASS"
+        }
+      ],
+      "OutsidePageCharacters": 0
+    }
+  ],
+  "Pending": "Capture finale de jonction réelle et dernière correction sémantique du code96 admin à intégrer avant livraison."
+}

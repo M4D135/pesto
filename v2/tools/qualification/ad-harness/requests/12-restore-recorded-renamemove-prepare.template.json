@@ -1,0 +1,19 @@
+{
+  "v1Root": "C:\\PestoQual_20261018\\candidate-final\\PROD\\wad",
+  "outputRoot": "C:\\Users\\Public\\pesto-v2-ad-native",
+  "expectedComputer": "P111301LY765715",
+  "action": "restoreName",
+  "computer": "P111301LY765715",
+  "expectedGuid": "b4797c9c-d790-4797-bf71-424a57acb36e",
+  "expectedSourceOu": "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,@LABO_DN@",
+  "targetOu": "OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,@LABO_DN@",
+  "site": "VA",
+  "service": "765",
+  "type": "P",
+  "execute": false,
+  "explicitCredential": true,
+  "confirmation": "RESTORE ORIGINAL NAME P111301VA765158",
+  "returnPlan": "Preparation sans reservation ni mutation. Le retour Lyon vers Paris doit etre prouve par le nouveau recu move ci-dessous avant le renommage local borne, puis reboot manuel et inspection finale.",
+  "receiptId": "receipt-50a635a9b3ee46138c9fc231bcff83af",
+  "returnMoveReceiptId": "REPLACE_WITH_NEW_VERIFIED_RETURN_MOVE_RECEIPT_ID"
+}

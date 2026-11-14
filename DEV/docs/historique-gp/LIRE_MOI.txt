@@ -1,0 +1,13 @@
+GP 17.0-RC17 - PACK DEV - REVISION DE DISTRIBUTION R1
+
+PROD : GP.exe + DEBLOQUER_TOUT.cmd + wad.
+DEV : la meme application, avec demos, tests, sources et compilation.
+Chaque archive contient son dossier PROD ou DEV, sans sous-dossier GP.
+
+DEBLOCAGE : DEBLOQUER_TOUT.cmd, apres verification de provenance.
+DEMARRAGE : GP.exe
+TESTS DE DISTRIBUTION : TEST_DISTRIBUTION.cmd
+FABRICATION : FABRIQUER_PACKS.cmd
+
+Conserver votre configuration operationnelle et les etats existants.
+Voir README.md et docs/RC17_R1_VALIDATION.md.

@@ -1,0 +1,10 @@
+{
+  "Version": "1.0",
+  "RuntimeFiles": 44,
+  "ExeSHA256": "4592e6464fb2e120632d1ead9faf145d1c01c990e295eebc863e0c5255a32b80",
+  "RuntimeVerification": "PASS",
+  "WindowsExecutedByBuild": false,
+  "ADExecutedByBuild": false,
+  "SourceWad": "DEV/wad",
+  "Candidate": "pesto-vm-candidate-r5-20261012"
+}

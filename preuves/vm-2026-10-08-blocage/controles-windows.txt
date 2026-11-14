@@ -1,0 +1,63 @@
+PS 5.1.26100.6584 | STA
+ancien C:\PestoTest -> C:\PestoTest-avant-blq-154926
+cfg.json conservé
+EXE DEV EF0CC654666D5100 / PROD EF0CC654666D5100
+--- parseur 5.1
+FICHIERS=66 ERREURS=0 PARSEUR=PowerShell 5.1.26100.6584 (Desktop)
+check-json C:\PestoTest : code 0
+check-json C:\PestoProd-test : code 0
+--- RC23
+PASS Mesures worker et calcul ne sont pas mélangées
+PASS Lecture réelle du schéma 3 dans un fichier fixture
+Rapport : C:\Users\labadmin\AppData\Local\Temp\Pesto-RC23-22ffb7a73ac44feeb87d35c5dd99150f.json
+--- stabilisation
+RESULTAT 27 reussis, 0 echecs | moteur : PowerShell 5.1.26100.6584 (Desktop) | doubles AD/Windows, aucune operation reelle
+--- banc WPF noms (08/10)
+PASS Nom proposé au départ
+PASS Contrôle : nom suivant sélectionné
+PASS Contrôle : nom pris jamais reproposé
+PASS Contrôle : message clair (nom pris et nom proposé)
+PASS Contrôle : relance prévue, rien lancé
+PASS Contrôle : revérification du nom suivant, puis confirmation
+PASS Exécution : nom suivant sélectionné
+PASS Exécution : pas de bilan final, relance avec confirmation
+PASS Borne : sixième bascule refusée
+PASS Autre refus : bilan affiché, nom inchangé
+PASS Série : départ sans inventaire sur 001
+PASS Série : premier numéro libre proposé directement (007)
+PASS Série : aucun numéro pris reproposé
+PASS Série : 009 pris sauté plus loin, 008 puis 010 proposés ensuite
+PASS Série : une seule bascule comptée
+PASS Série : 007 revérifié automatiquement puis confirmation
+PASS Inventaire : sélection recalculée (010)
+PASS Inventaire : pas d'abandon (« Contrôle périmé » évité)
+PASS Inventaire : nom vérifié annoncé
+PASS Inventaire : 007 écarté pour la session
+PASS Inventaire : relance automatique sur 010, confirmation conservée
+PASS Valide mais périmé : relance sur 011, aucune confirmation
+PASS Borne : quatrième relance refusée, message
+PASS Saisie du technicien : contrôle périmé, pas de relance
+PASS Exécution : série relue écartée (012 pris, 013 pris, 014 proposé)
+RESULTAT 25 reussis, 0 echecs
+--- banc services rapides (08/10)
+PASS Avant : aucun service connu sans inventaire
+PASS Avant : nom proposé 001 (pris dans l'AD)
+LOG Lecture ciblée du site : 5 poste(s) en 656 ms.
+INFO recherche ciblée (runspace + 2 requêtes simulées à 300 ms, 3 005 postes dans l'AD simulé) : 1127 ms, worker 702 ms
+PASS Recherche lancée une fois
+PASS Services du site affichés : CPT, INF, RH0 (nom du site + OU du site)
+PASS Saisie du service conservée
+PASS Nom proposé : premier numéro libre (003), 001, 002 et 004 écartés
+PASS Moins de 5 s pour afficher les services (AD simulé)
+PASS Cache rempli pour la clé du site
+PASS Même site : pas de nouvelle requête
+PASS Site vide : aucune requête
+PASS Démonstration : aucune requête
+LOG Lecture ciblée du site impossible ; la liste sera complétée par l'inventaire : Exception calling "Invoke" with "0" argument(s): "Serveur injoignable"
+PASS Échec AD : listes conservées
+PASS Un poste : le texte dit ce qui manque
+PASS Un poste : texte d'origine sans information
+RESULTAT 14 reussis, 0 echecs
+--- UX
+KO  Mise en page réelle à 1460 x 940 : Attendu : '2', obtenu : '0'.
+KO  Retour à la disposition large sans recréer le formulaire : Attendu : '2', obtenu : '0'.

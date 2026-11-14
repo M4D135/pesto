@@ -1,0 +1,5 @@
+Wine wine-9.0 (Ubuntu 9.0~repack-4build3) — exécution réelle du PE (pas Windows) ; powershell.exe = stub Wine
+pack intact --check --quiet : exit=0
+composant modifié : exit=1
+verrou de mise à jour : exit=32
+paramètre inconnu : exit=1

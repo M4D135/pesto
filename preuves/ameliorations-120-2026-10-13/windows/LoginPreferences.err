@@ -1,0 +1,10 @@
+Fonction absente ou dupliquee : Write-PestoAtomicText (2 definition(s) 
+Pesto.Engine.Runtime.ps1:13, Pesto-Core.ps1:160)
+At C:\Pesto120_20261013\tests\Run-LoginPreferencesTests.ps1:66 char:9
++         throw ('Fonction absente ou dupliquee : '+$Name+' ('+$hits.Co ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Fonction absent...o-Core.ps1:160):String) [], Ru 
+   ntimeException
+    + FullyQualifiedErrorId : Fonction absente ou dupliquee : Write-PestoAtomicText (2 definition 
+   (s) Pesto.Engine.Runtime.ps1:13, Pesto-Core.ps1:160)
+ 

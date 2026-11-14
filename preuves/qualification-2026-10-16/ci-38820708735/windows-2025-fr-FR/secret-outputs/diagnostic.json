@@ -1,0 +1,59 @@
+{
+    "Schema":  1,
+    "Application":  "Pesto",
+    "Version":  "1.0",
+    "CollectedUtc":  "2026-10-15T23:06:13.2326484Z",
+    "IdentitiesMasked":  true,
+    "Notice":  "Aucun texte brut du journal, commande, mot de passe, PSCredential ou configuration complète collecté. Relire avant partage.",
+    "Environment":  {
+                        "PowerShell":  "5.1.26100.33438",
+                        "Edition":  "Desktop",
+                        "OS":  "10.0.26100.0",
+                        "Process64Bit":  true,
+                        "Admin":  false
+                    },
+    "Session":  {
+                    "Computer":  "[POSTE MASQUÉ]",
+                    "Account":  "[COMPTE MASQUÉ]",
+                    "AuthMode":  "",
+                    "Domain":  "[DOMAINE MASQUÉ]",
+                    "DC":  "[DC MASQUÉ]",
+                    "InDomain":  false,
+                    "Demo":  false,
+                    "Simulation":  false
+                },
+    "Presentation":  {
+                         "ThemeMode":  "",
+                         "EffectiveTheme":  "",
+                         "Saved":  null,
+                         "NavigationCollapsed":  false,
+                         "HelpVisible":  false
+                     },
+    "Configuration":  {
+                          "Path":  "[CHEMIN MASQUÉ]",
+                          "SiteGroups":  0,
+                          "InventoryLoaded":  false,
+                          "InventoryUtc":  "",
+                          "RestartRequired":  false
+                      },
+    "Operations":  {
+                       "QueueRows":  0,
+                       "QueueRunning":  false,
+                       "QueueLocked":  false,
+                       "DirectBusy":  false,
+                       "DirectLocked":  false,
+                       "JoinBusy":  false,
+                       "JoinLocked":  false,
+                       "Direct":  null
+                   },
+    "Components":  [
+
+                   ],
+    "RecentEventCategories":  [
+                                  {
+                                      "Time":  "12:00",
+                                      "Severity":  "err",
+                                      "Category":  "Événement applicatif"
+                                  }
+                              ]
+}

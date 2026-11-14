@@ -1,0 +1,628 @@
+{
+  "Schema": 1,
+  "Utc": "2026-10-13T18:07:34.6693180Z",
+  "Platform": "Unix 26.4.0",
+  "PowerShell": "7.4.20",
+  "CLR": "8.0.31",
+  "RuntimeModuleSHA256": "4381ba4e425874a27f2221a42d87523f590a275c3adddd17d27d600c9a25388d",
+  "Dataset": "Synthetic unique names, deterministic descending order",
+  "Iterations": 3,
+  "Measurements": [
+    {
+      "Name": "AddType.Prototype",
+      "Volume": 1,
+      "Temperature": "Cold",
+      "Milliseconds": 131.0166,
+      "ManagedDeltaBytes": null,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 100,
+      "Temperature": "Cold",
+      "Milliseconds": 1.764,
+      "ManagedDeltaBytes": 336800,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 100,
+      "Temperature": "Cold",
+      "Milliseconds": 0.7778,
+      "ManagedDeltaBytes": 106824,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 100,
+      "Temperature": "Cold",
+      "Milliseconds": 1.1056,
+      "ManagedDeltaBytes": 90408,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 100,
+      "Temperature": "Cold",
+      "Milliseconds": 0.5896,
+      "ManagedDeltaBytes": 82168,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 100,
+      "Temperature": "Cold",
+      "Milliseconds": 0.373,
+      "ManagedDeltaBytes": 90440,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 100,
+      "Temperature": "Cold",
+      "Milliseconds": 6.9015,
+      "ManagedDeltaBytes": 147968,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.1105,
+      "ManagedDeltaBytes": 73952,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0497,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0656,
+      "ManagedDeltaBytes": 41056,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.067,
+      "ManagedDeltaBytes": 41056,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0417,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 6.3449,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0638,
+      "ManagedDeltaBytes": 65728,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0502,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0534,
+      "ManagedDeltaBytes": 41056,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0609,
+      "ManagedDeltaBytes": 41056,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0372,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 100,
+      "Temperature": "Warm",
+      "Milliseconds": 6.3374,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 1000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.3445,
+      "ManagedDeltaBytes": 383112,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 1000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.0485,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 1000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.0895,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 1000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.2284,
+      "ManagedDeltaBytes": 90400,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 1000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.0457,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 1000,
+      "Temperature": "Cold",
+      "Milliseconds": 6.3872,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.346,
+      "ManagedDeltaBytes": 383112,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0465,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0853,
+      "ManagedDeltaBytes": 49280,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.201,
+      "ManagedDeltaBytes": 90400,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.0536,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 6.3795,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.5175,
+      "ManagedDeltaBytes": 383112,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.1343,
+      "ManagedDeltaBytes": 136392,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.1772,
+      "ManagedDeltaBytes": 57504,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.2905,
+      "ManagedDeltaBytes": 130992,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.1129,
+      "ManagedDeltaBytes": 151368,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 1000,
+      "Temperature": "Warm",
+      "Milliseconds": 6.4428,
+      "ManagedDeltaBytes": 190336,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 10000,
+      "Temperature": "Cold",
+      "Milliseconds": 4.479,
+      "ManagedDeltaBytes": 3413616,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 10000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.3765,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 10000,
+      "Temperature": "Cold",
+      "Milliseconds": 1.0007,
+      "ManagedDeltaBytes": 121128,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 10000,
+      "Temperature": "Cold",
+      "Milliseconds": 1.8338,
+      "ManagedDeltaBytes": 518072,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 10000,
+      "Temperature": "Cold",
+      "Milliseconds": 0.3172,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 10000,
+      "Temperature": "Cold",
+      "Milliseconds": 6.6598,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 4.107,
+      "ManagedDeltaBytes": 3413840,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.2943,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.9864,
+      "ManagedDeltaBytes": 121128,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 1.8942,
+      "ManagedDeltaBytes": 518072,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.3068,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 6.5039,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 7.6516,
+      "ManagedDeltaBytes": 3413840,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.208,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.8121,
+      "ManagedDeltaBytes": 121128,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 1.6599,
+      "ManagedDeltaBytes": 518072,
+      "ResultCount": 100
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 0.2267,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 10000,
+      "Temperature": "Warm",
+      "Milliseconds": 6.5597,
+      "ManagedDeltaBytes": 976280,
+      "ResultCount": 1
+    },
+    {
+      "Name": "Runspace.Separate",
+      "Volume": 12,
+      "Temperature": "Cold",
+      "Milliseconds": 40.9886,
+      "ManagedDeltaBytes": 10073960,
+      "ResultCount": 12
+    },
+    {
+      "Name": "Runspace.Pool",
+      "Volume": 12,
+      "Temperature": "Warm",
+      "Milliseconds": 3.5862,
+      "ManagedDeltaBytes": 754632,
+      "ResultCount": 12
+    }
+  ],
+  "Summary": [
+    {
+      "Name": "AddType.Prototype",
+      "Volume": 1,
+      "Samples": 1,
+      "MedianMs": 131.0166,
+      "P95Ms": 131.0166
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 100,
+      "Samples": 3,
+      "MedianMs": 0.0502,
+      "P95Ms": 0.7778
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 1000,
+      "Samples": 3,
+      "MedianMs": 0.0485,
+      "P95Ms": 0.1343
+    },
+    {
+      "Name": "Inventory.CSharpDictionary",
+      "Volume": 10000,
+      "Samples": 3,
+      "MedianMs": 0.2943,
+      "P95Ms": 0.3765
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 100,
+      "Samples": 3,
+      "MedianMs": 0.1105,
+      "P95Ms": 1.764
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 1000,
+      "Samples": 3,
+      "MedianMs": 0.346,
+      "P95Ms": 0.5175
+    },
+    {
+      "Name": "Inventory.PowerShellHashtable",
+      "Volume": 10000,
+      "Samples": 3,
+      "MedianMs": 4.479,
+      "P95Ms": 7.6516
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 100,
+      "Samples": 3,
+      "MedianMs": 0.0417,
+      "P95Ms": 0.373
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 1000,
+      "Samples": 3,
+      "MedianMs": 0.0536,
+      "P95Ms": 0.1129
+    },
+    {
+      "Name": "Latency.Synthetic.0ms",
+      "Volume": 10000,
+      "Samples": 3,
+      "MedianMs": 0.3068,
+      "P95Ms": 0.3172
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 100,
+      "Samples": 3,
+      "MedianMs": 6.3449,
+      "P95Ms": 6.9015
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 1000,
+      "Samples": 3,
+      "MedianMs": 6.3872,
+      "P95Ms": 6.4428
+    },
+    {
+      "Name": "Latency.Synthetic.5ms",
+      "Volume": 10000,
+      "Samples": 3,
+      "MedianMs": 6.5597,
+      "P95Ms": 6.6598
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 100,
+      "Samples": 3,
+      "MedianMs": 0.0656,
+      "P95Ms": 1.1056
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 1000,
+      "Samples": 3,
+      "MedianMs": 0.0895,
+      "P95Ms": 0.1772
+    },
+    {
+      "Name": "Query.FullSort.Prototype",
+      "Volume": 10000,
+      "Samples": 3,
+      "MedianMs": 0.9864,
+      "P95Ms": 1.0007
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 100,
+      "Samples": 3,
+      "MedianMs": 0.067,
+      "P95Ms": 0.5896
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 1000,
+      "Samples": 3,
+      "MedianMs": 0.2284,
+      "P95Ms": 0.2905
+    },
+    {
+      "Name": "Query.TopK.Prototype",
+      "Volume": 10000,
+      "Samples": 3,
+      "MedianMs": 1.8338,
+      "P95Ms": 1.8942
+    },
+    {
+      "Name": "Runspace.Pool",
+      "Volume": 12,
+      "Samples": 1,
+      "MedianMs": 3.5862,
+      "P95Ms": 3.5862
+    },
+    {
+      "Name": "Runspace.Separate",
+      "Volume": 12,
+      "Samples": 1,
+      "MedianMs": 40.9886,
+      "P95Ms": 40.9886
+    }
+  ],
+  "PoolScriptScopePersisted": true,
+  "WindowsADExecuted": false,
+  "UIExecuted": false,
+  "ProductionAlgorithmChanged": false,
+  "Limits": [
+    "Temps locaux incluant frontière PowerShell/.NET ; aucune extrapolation réseau AD.",
+    "Delta mémoire approximatif du GC, pas mémoire maximale de travail.",
+    "Top-k ne couvre pas les filtres/valeurs inconnues/tri stable Common.Query.",
+    "Un pool réutilise le contexte ; isolation identités à qualifier avant activation.",
+    "PowerShell7 est un hôte de prototype, pas la cible Windows5.1 certifiée."
+  ]
+}

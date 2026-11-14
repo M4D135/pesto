@@ -1,0 +1,14 @@
+{
+  "id": 12032712710,
+  "name": "windows-isolated-evidence-windows-2025-fr-FR",
+  "size_in_bytes": 59984,
+  "digest": "sha256:e65d28dc14de30d7f24d916e89a3aece522b82517c88a21e00cb4e43981bb7da",
+  "created_at": "2026-10-16T08:00:23Z",
+  "workflow_run": {
+    "id": 38869819782,
+    "repository_id": 1402106184,
+    "head_repository_id": 1402106184,
+    "head_branch": "ci/pesto-layout-20261016",
+    "head_sha": "f8a531e38f69ae218bf9ef9b1934fdf942e43aaf"
+  }
+}

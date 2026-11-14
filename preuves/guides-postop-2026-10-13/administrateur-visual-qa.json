@@ -1,0 +1,76 @@
+{
+  "Result": "PASS",
+  "Guide": "administrateur",
+  "Pages": 57,
+  "DOCXSHA256": "6dcd8ae3a00f86b5e01eba1fdd4efb81444ff30e6bdb3bc53ea2caf38721fc0d",
+  "PDFSHA256": "7cd9d060d1205fd5a08caaa7b46b29220cc0694a6c43be9f4f29e16c89860b7e",
+  "Method": "Relecture visuelle à résolution originale des pages modifiées ; transfert des pages inchangées par identité des pixels du corps, pied de page contrôlé séparément.",
+  "Baseline": "../guides-zoom-2026-10-12/home-shortcuts/administrateur-visual-qa-final.json",
+  "Stages": [
+    {
+      "Render": "administrateur-v2",
+      "OpenedAtOriginalResolution": [
+        3,
+        8,
+        11,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        22,
+        23,
+        26,
+        32,
+        34,
+        39,
+        42,
+        43,
+        44,
+        45,
+        46,
+        52
+      ],
+      "PixelDiff": "administrateur-diff-v2.json",
+      "Result": "PASS"
+    },
+    {
+      "Render": "administrateur-livraison",
+      "OpenedAtOriginalResolution": [
+        26,
+        27,
+        32,
+        34,
+        39,
+        45,
+        46,
+        47,
+        53
+      ],
+      "PixelDiff": "administrateur-diff-livraison.json",
+      "Result": "PASS"
+    },
+    {
+      "Render": "administrateur-final",
+      "OpenedAtOriginalResolution": [
+        46
+      ],
+      "PixelDiff": "administrateur-diff-final.json",
+      "Result": "PASS"
+    }
+  ],
+  "AllFinalBodiesCovered": true,
+  "OutsidePageCharacters": 0,
+  "CorrectPageFooters": "Toutes les pages sauf la couverture, volontairement sans numéro.",
+  "Findings": [],
+  "ResolvedFindings": [
+    "Référence à la capture de bilan imposant un suivi obligatoire retirée.",
+    "Resserrement de formulations pour éviter des renvois isolés.",
+    "Référence à la capture hors domaine présentant un ancien accueil retirée.",
+    "Encadré final du chapitre 19 réintégré sur la même page que les codes."
+  ],
+  "IndependentReview": "../verification-facultative-2026-10-13/guides/administrateur-visual-qa-engine.json"
+}

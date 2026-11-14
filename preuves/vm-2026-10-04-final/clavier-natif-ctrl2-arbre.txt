@@ -1,0 +1,414 @@
+﻿Text "P"
+Text "Pesto" #SuiteBrandLabel
+Text "Gestion des postes" #SuiteBrandHint
+Button "Réduire ou déployer le menu" #SuiteNavToggle
+  Text "☰"
+Pane ""
+  Button "Accueil" #NavHome
+    Text "⌂"
+    Text "Accueil" #NavHomeLabel
+  Button "Renommer" #NavRename
+    Text "✎"
+    Text "Un poste" #NavRenameLabel
+  Button "Plusieurs postes (file)" #NavBatch
+    Text "▦"
+    Text "Plusieurs postes" #NavBatchLabel
+  Button "Ajouter au domaine" #NavJoin
+    Text "+"
+    Text "Ajouter au domaine" #NavJoinLabel
+  Button "Noms disponibles" #NavNames
+    Text "▤"
+    Text "Noms disponibles" #NavNamesLabel
+  Button "Historique" #NavHistory
+    Text "◷"
+    Text "Historique" #NavHistoryLabel
+  Button "Journal" #NavLogs
+    Text "≡"
+    Text "Journal" #NavLogsLabel
+  Button "Paramètres" #NavSettings
+    Text "⚙"
+    Text "Paramètres" #NavSettingsLabel
+  ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+  ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+Button "?   Aide et raccourcis" #NavHelp
+  Text "?   Aide et raccourcis"
+Text "Pesto 1.0" #UxVersion
+Text "Windows · PowerShell"
+Text "PESTO-W11-TEST"
+Text "example.local"
+Text "Compte : démonstration"
+Text "" [hors-ecran]
+Text "SIMULATION"
+Text "démo · sans AD"
+Button "Palette de commandes" #WorkspaceButton
+  Text "Actions · Ctrl+K"
+Button "Audit" #BtnLog
+  Text "Audit"
+Button "Changer de thème" #BtnTheme
+Button "Aide" #BtnHelp
+  Text "?"
+Tab "" #MainTabs
+  TabItem "Renommer" #TabRename [hors-ecran]
+  TabItem "Noms disponibles" [hors-ecran]
+    Text "Noms disponibles"
+    Text "250 affichés / 360 correspondants · 360 libres · 0 AD · 0 préparés" #NmLblCount
+    Button "Portable : (filtrer site + équipe)" #NmBtnNextP [inactif]
+      Text "Portable : (filtrer site + équipe)" [inactif]
+    Button "Fixe : (filtrer site + équipe)" #NmBtnNextS [inactif]
+      Text "Fixe : (filtrer site + équipe)" [inactif]
+    Button "Copier" #NmBtnCopy
+      Text "Copier"
+    Button "Exporter" #NmBtnExport
+      Text "Exporter"
+    Button "Actualiser" #NmBtnRefresh
+      Text "Actualiser"
+    Text "Site"
+    ComboBox "Filtre par site" #NmCmbSite
+      Edit "" #PART_EditableTextBox [hors-ecran]
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Text "Équipe"
+    ComboBox "Filtre par service" #NmCmbEquipe
+      Edit "" #PART_EditableTextBox [hors-ecran]
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Text "Type"
+    ComboBox "Filtre Portable ou Fixe" #NmCmbType
+      Edit "" #PART_EditableTextBox [hors-ecran]
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Text "Statut"
+    ComboBox "Filtre par statut des noms" #NmCmbStatut
+      Edit "" #PART_EditableTextBox [hors-ecran]
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Text "Recherche"
+    Edit "Rechercher dans les noms" #NmTxtSearch
+      ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+      ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    CheckBox "jusqu'à 999" #NmChkAll
+      Text "jusqu'à 999"
+    DataGrid "Noms du cache AD" #NmGrid
+      Header "" #PART_ColumnHeadersPresenter
+        HeaderItem "Nom"
+          Text "Nom"
+          Thumb "" #PART_LeftHeaderGripper [hors-ecran]
+          Thumb "" #PART_RightHeaderGripper
+        HeaderItem "Type"
+          Text "Type"
+          Thumb "" #PART_LeftHeaderGripper
+          Thumb "" #PART_RightHeaderGripper
+        HeaderItem "Site"
+          Text "Site"
+          Thumb "" #PART_LeftHeaderGripper
+          Thumb "" #PART_RightHeaderGripper
+        HeaderItem "Équipe"
+          Text "Équipe"
+          Thumb "" #PART_LeftHeaderGripper
+          Thumb "" #PART_RightHeaderGripper
+        HeaderItem "N°"
+          Text "N°"
+          Thumb "" #PART_LeftHeaderGripper
+          Thumb "" #PART_RightHeaderGripper
+        HeaderItem "État au dernier inventaire"
+          Text "État au dernier inventaire"
+          Thumb "" #PART_LeftHeaderGripper
+          Thumb "" #PART_RightHeaderGripper
+      DataItem "@{Nom=P111301AAADM007; Type=Portable; Site=AA; Equipe=ADM; Num=007; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM007"
+          Text "P111301AAADM007"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "007"
+          Text "007"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM008; Type=Portable; Site=AA; Equipe=ADM; Num=008; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM008"
+          Text "P111301AAADM008"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "008"
+          Text "008"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM009; Type=Portable; Site=AA; Equipe=ADM; Num=009; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM009"
+          Text "P111301AAADM009"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "009"
+          Text "009"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM010; Type=Portable; Site=AA; Equipe=ADM; Num=010; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM010"
+          Text "P111301AAADM010"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "010"
+          Text "010"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM011; Type=Portable; Site=AA; Equipe=ADM; Num=011; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM011"
+          Text "P111301AAADM011"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "011"
+          Text "011"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM012; Type=Portable; Site=AA; Equipe=ADM; Num=012; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM012"
+          Text "P111301AAADM012"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "012"
+          Text "012"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM013; Type=Portable; Site=AA; Equipe=ADM; Num=013; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM013"
+          Text "P111301AAADM013"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "013"
+          Text "013"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM014; Type=Portable; Site=AA; Equipe=ADM; Num=014; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM014"
+          Text "P111301AAADM014"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "014"
+          Text "014"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM015; Type=Portable; Site=AA; Equipe=ADM; Num=015; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM015"
+          Text "P111301AAADM015"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "015"
+          Text "015"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAADM016; Type=Portable; Site=AA; Equipe=ADM; Num=016; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAADM016"
+          Text "P111301AAADM016"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "ADM"
+          Text "ADM"
+        Custom "016"
+          Text "016"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAINF003; Type=Portable; Site=AA; Equipe=INF; Num=003; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAINF003"
+          Text "P111301AAINF003"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "INF"
+          Text "INF"
+        Custom "003"
+          Text "003"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAINF004; Type=Portable; Site=AA; Equipe=INF; Num=004; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAINF004"
+          Text "P111301AAINF004"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "INF"
+          Text "INF"
+        Custom "004"
+          Text "004"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAINF005; Type=Portable; Site=AA; Equipe=INF; Num=005; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAINF005"
+          Text "P111301AAINF005"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "INF"
+          Text "INF"
+        Custom "005"
+          Text "005"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAINF006; Type=Portable; Site=AA; Equipe=INF; Num=006; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}"
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAINF006"
+          Text "P111301AAINF006"
+        Custom "Portable"
+          Text "Portable"
+        Custom "AA"
+          Text "AA"
+        Custom "INF"
+          Text "INF"
+        Custom "006"
+          Text "006"
+        Custom "Libre dans l'inventaire"
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+      DataItem "@{Nom=P111301AAINF007; Type=Portable; Site=AA; Equipe=INF; Num=007; Statut=Libre dans l'inventaire; RowKind=Hit; InAD=False; Reserved=False; OwnReservation=False; CheckedUtc=; SourceUtc=}" [hors-ecran]
+        HeaderItem "" [hors-ecran]
+          Thumb "" #PART_TopHeaderGripper [hors-ecran]
+          Thumb "" #PART_BottomHeaderGripper [hors-ecran]
+        Custom "P111301AAINF007" [hors-ecran]
+          Text "P111301AAINF007"
+        Custom "Portable" [hors-ecran]
+          Text "Portable"
+        Custom "AA" [hors-ecran]
+          Text "AA"
+        Custom "INF" [hors-ecran]
+          Text "INF"
+        Custom "007" [hors-ecran]
+          Text "007"
+        Custom "Libre dans l'inventaire" [hors-ecran]
+          Text "Libre dans l'inventaire"
+        Custom "" [hors-ecran]
+    Button "Précédente" #NmPrevPage [inactif]
+      Text "Précédente" [inactif]
+    Text "Page 1 / 2 · 250 lignes maximum" #NmPageLabel
+    Button "Suivante" #NmNextPage
+      Text "Suivante"
+    ComboBox "Stratégie d'attribution des numéros" #NmStrategy
+      Edit "" #PART_EditableTextBox [hors-ecran]
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Edit "Code de service à préparer" #NmServiceInput
+      ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+      ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Button "Service vide" #NmAddService
+      Text "Service vide"
+    Text "Prochains candidats"
+    ComboBox "Noms proposés" #NmSuggestions
+      Edit "" #PART_EditableTextBox [hors-ecran]
+        ScrollBar "" #VerticalScrollBar [inactif] [hors-ecran]
+        ScrollBar "" #HorizontalScrollBar [inactif] [hors-ecran]
+    Button "Vérifier dans le domaine" #NmVerifyCandidate
+      Text "Vérifier dans le domaine"
+    Button "Utiliser dans Un poste" #NmUseCandidate
+      Text "Utiliser dans Un poste"
+    Button "Retenir les 5 propositions" #NmHoldCandidates
+      Text "Retenir les 5 propositions"
+    Button "Libérer mon choix" #NmReleaseCandidate
+      Text "Libérer mon choix"
+    Text "Choisissez un nom, puis vérifiez-le sur le contrôleur du domaine." #NmCheckResult
+    Text "Inventaire : données de démonstration. Disponibilité dans le périmètre configuré, sans réservation AD. Export limité à la page affichée. Vérifier un candidat avant utilisation." #NmViewNote
+    Text "" #NmLoadingTitle [hors-ecran]
+    ProgressBar "Chargement des noms disponibles" #NmLoadingBar [hors-ecran]
+    Text "" #NmLoadingDetail [hors-ecran]
+    Text "" #NmLoadingElapsed [hors-ecran]
+    Button "Réessayer le chargement des noms" #NmBtnRetryNames [hors-ecran]
+  TabItem "Paramètres" [hors-ecran]
+  TabItem "Journal" [hors-ecran]
+  TabItem "Accueil" [hors-ecran]
+  TabItem "Historique" [hors-ecran]
+  TabItem "Aide" [hors-ecran]
+  TabItem "Ajouter au domaine" #TabJoin [hors-ecran]
+Button "›" #SuiteHelpClose [hors-ecran]
+Text "À vos côtés" [hors-ecran]
+Pane "" [hors-ecran]

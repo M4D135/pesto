@@ -1,0 +1,89 @@
+{
+  "p02": {
+    "Count": 240,
+    "ElapsedSeconds": 1197.596,
+    "StopReason": "SamplesCollected",
+    "Verdict": "MEASURED_ONLY",
+    "First": {
+      "Utc": "2026-10-18T15:47:23.6890812Z",
+      "ElapsedSeconds": 0.127,
+      "PrivateBytes": 299073536,
+      "WorkingSet": 284635136,
+      "Handles": 1006,
+      "Threads": 32,
+      "CpuSeconds": 25.171875
+    },
+    "Last": {
+      "Utc": "2026-10-18T16:07:22.2388867Z",
+      "ElapsedSeconds": 1197.587,
+      "PrivateBytes": 367542272,
+      "WorkingSet": 138547200,
+      "Handles": 1092,
+      "Threads": 20,
+      "CpuSeconds": 91.890625
+    },
+    "MinPrivate": 290091008,
+    "MaxPrivate": 367542272,
+    "First60MeanPrivate": 310348937,
+    "Last60MeanPrivate": 352978466,
+    "Last60MeanHandles": 1065.6
+  },
+  "p23": {
+    "Count": 120,
+    "ElapsedSeconds": 596.402,
+    "StopReason": "SamplesCollected",
+    "Verdict": "MEASURED_ONLY",
+    "First": {
+      "Utc": "2026-10-18T16:10:50.8631627Z",
+      "ElapsedSeconds": 0.086,
+      "PrivateBytes": 391319552,
+      "WorkingSet": 169218048,
+      "Handles": 1158,
+      "Threads": 23,
+      "CpuSeconds": 102.640625
+    },
+    "Last": {
+      "Utc": "2026-10-18T16:20:49.8907020Z",
+      "ElapsedSeconds": 596.39,
+      "PrivateBytes": 370233344,
+      "WorkingSet": 222384128,
+      "Handles": 811,
+      "Threads": 20,
+      "CpuSeconds": 138.546875
+    },
+    "MinPrivate": 364007424,
+    "MaxPrivate": 455946240,
+    "First60MeanPrivate": 410605022,
+    "Last60MeanPrivate": 414538820,
+    "Last60MeanHandles": 1106.3
+  },
+  "p38": {
+    "Count": 120,
+    "ElapsedSeconds": 596.369,
+    "StopReason": "SamplesCollected",
+    "Verdict": "MEASURED_ONLY",
+    "First": {
+      "Utc": "2026-10-18T16:23:00.3272206Z",
+      "ElapsedSeconds": 0.079,
+      "PrivateBytes": 383938560,
+      "WorkingSet": 180572160,
+      "Handles": 895,
+      "Threads": 25,
+      "CpuSeconds": 147.359375
+    },
+    "Last": {
+      "Utc": "2026-10-18T16:32:51.0335586Z",
+      "ElapsedSeconds": 596.352,
+      "PrivateBytes": 441085952,
+      "WorkingSet": 158937088,
+      "Handles": 1161,
+      "Threads": 23,
+      "CpuSeconds": 184.078125
+    },
+    "MinPrivate": 383938560,
+    "MaxPrivate": 448606208,
+    "First60MeanPrivate": 403522219,
+    "Last60MeanPrivate": 430767787,
+    "Last60MeanHandles": 1108.7
+  }
+}

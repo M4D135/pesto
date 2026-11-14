@@ -1,0 +1,34 @@
+PASS D1 deplacement reussi + protection non retablie : code 32 ET effet Move conserve
+PASS D1 deplacement seul : une protection non retablie ne devient pas un echec du deplacement
+PASS D1 deplacement reussi + protection retablie : code 30, Move confirme une seule fois
+PASS D1 erreur apres la demande de deplacement : 97 incertain, aucun effet Move confirme
+PASS D2 resultat TARDIF d'une reprise : l'intervention parente n'est pas resolue
+PASS D2 resultat a temps et verifie : le parent est mis a jour
+PASS D3 nom actuel = nom demande : jamais un succes de renommage
+PASS D4 Get-SiteTag : exact, motif unique, motif ambigu
+PASS F7 groupes exclus : GUID binaires et DN alternatif, noms speciaux sans interpolation
+PASS F7 appartenance au groupe exclu : refus avant mutation
+PASS E file : un poste deja termine dans ce lot garde son resultat apres une erreur de pilotage
+PASS E file : le poste en cours sans resultat passe en 98
+PASS E formulaire : nouvelle saisie efface aussi le GUID de l'OU de destination
+PASS 36 site du nom actuel : identique a la reference sur 6 000 noms (P, S, V, 000, casse, espaces, hors convention)
+PASS 36 machine virtuelle V : renommage meme site seul, nouveau site deplacement ; generation autorisee
+PASS 36 noms disponibles : generateur unique, resultat identique a la reference
+PASS 36 code ville du nom : seulement un nom conforme (P, S, V), jamais devine par position
+PASS 79 contraste eleve : chaque couleur reelle des themes clair et sombre a un role systeme
+PASS 79 contraste eleve : seulement en mode Suivre Windows, repli au moindre doute
+PASS 79 aucun blanc en dur sur le fond d'action
+PASS 01 Planificateur : seul un HRESULT Win32 donne un code Windows ; Run sans refus certain = indetermine
+PASS DEBLOQUER_TOUT : entrees du pack DEV et PROD reconnues, fichiers voisins ignores
+PASS Mode demo : jeu fictif construit, aucune liste generique par New-Object dans wad
+PASS O7 sonde UAC : jeton strict ; variable lue avant l'UAC seulement ; jamais ignoree si invalide
+PASS O7 sonde UAC : jeton transmis au relais eleve, rien sans sonde, jeton forge refuse
+PASS O7 sonde UAC : seul le relais eleve administrateur conclut UAC_OK ; recu jamais remplace
+PASS Services du site : OU du site ou code site du nom, saisie libre conservee ailleurs
+PASS Identite domaine : rien a signaler quand l identite porte deja le domaine
+PASS Identite domaine : compte local en mode integre, signale avant l appel AD
+PASS Identite domaine : une identite absente ou illisible ne vaut pas un compte du domaine
+PASS Identite domaine : le worker nomme la cause dans l exception, sans inventer d echec
+PASS Identite domaine : hors cause identifiee, l erreur d origine est rendue intacte
+PASS Identite explicite ou inconnue : ne pas inventer une cause locale
+RESULTAT 33 reussis, 0 echecs | moteur : PowerShell 7.4.20 (Core) | doubles AD/Windows, aucune operation reelle

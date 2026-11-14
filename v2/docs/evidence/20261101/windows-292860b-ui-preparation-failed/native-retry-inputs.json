@@ -1,0 +1,30 @@
+{
+    "head":  "292860b934bcdff0f1321b0839158bf38b58816e",
+    "files":  [
+                  {
+                      "path":  "v2\\tools\\qualification\\Pesto.UpdateQualification\\bin\\Release\\net10.0\\Pesto.UpdateQualification.dll",
+                      "sha256":  "2cda73a3e0a72ee8f2d5f73f87b89ea6451fcb716f9bc5ed2a024dcb660eedfc"
+                  },
+                  {
+                      "path":  "v2\\tools\\qualification\\Invoke-NativeUpdateQualification.ps1",
+                      "sha256":  "024e66a7d4b1e716ceeb308ecb86da55f0220e9869eb85048e4df609cd62b203"
+                  },
+                  {
+                      "path":  "v2\\out\\baseline-PROD\\Pesto.exe",
+                      "sha256":  "e4627b726b425e53c3f9949cb0460013fd582bd1c305efca02548c05ce6f04f5"
+                  },
+                  {
+                      "path":  "v2\\out\\PROD\\Pesto.exe",
+                      "sha256":  "9fc18bea30b56811f503e3255cff4486f37706a58c0c76e698ee40199cc32268"
+                  },
+                  {
+                      "path":  "v2\\out\\Pesto_V2_PROD_candidate.zip",
+                      "sha256":  "44fb313198dc8818c63005877f654b826f30170397a35c930ca5e6f2056a65f8"
+                  },
+                  {
+                      "path":  "v2\\out\\Pesto_V2_DEV_candidate.zip",
+                      "sha256":  "46f87375acc670a11163593bad9c16476076ec13bdf61d7a4a135293ce73d627"
+                  }
+              ]
+}
+

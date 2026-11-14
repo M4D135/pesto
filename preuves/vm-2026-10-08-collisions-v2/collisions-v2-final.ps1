@@ -1,0 +1,2 @@
+﻿# Banc v2, contrôle du code final (revue du 08/10) : réglages avec registre, départ simultané, 6 tours.
+& { try{ & C:\PestoTest-run\collisions-v2.ps1 -Rounds 6 -Profiles "Simultané" -OnlyModes "Registre;Registre + hasard;Registre + réservation AD;Tout (registre, hasard, AD)" -Out C:\PestoTest-preuves\collisions-v2-final }catch{ 'ARRÊT : '+($_|Out-String) } } *> C:\PestoTest-preuves\collisions-v2-final.log

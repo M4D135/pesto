@@ -1,0 +1,22 @@
+[
+  {
+    "channel": "PROD",
+    "sourceCommit": "b7e781f474eb2ce2a9103445ce0169f87f1fbbf0",
+    "archiveSha256": "715240cc9c4ea2f461a1bf97d2e3c767ef4b2c45f7aae726b8f6b808fc19da48",
+    "executableSha256": "b1c27d677a6a302abeabf5ebec31a513a0bffb39cbb0a8b648f6dba2d3a877af",
+    "distribution": "candidate",
+    "adQualified": false,
+    "nativeStartupDemoQualified": true,
+    "nativeUpdateQualified": true
+  },
+  {
+    "channel": "DEV",
+    "sourceCommit": "b7e781f474eb2ce2a9103445ce0169f87f1fbbf0",
+    "archiveSha256": "0e003f5c8c7c05d2bd6a4c4a9f90b15699d9ecb09b8cd0bba1fb275038e56a24",
+    "executableSha256": "b1c27d677a6a302abeabf5ebec31a513a0bffb39cbb0a8b648f6dba2d3a877af",
+    "distribution": "candidate",
+    "adQualified": false,
+    "nativeStartupDemoQualified": true,
+    "nativeUpdateQualified": false
+  }
+]

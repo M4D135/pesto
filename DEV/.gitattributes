@@ -1,0 +1,3 @@
+# Standalone DEV repository: keep exact bytes bound into the launcher and Common lock.
+wad/** -text
+vendor/M4D.Admin.Common/** -text

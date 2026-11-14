@@ -1,0 +1,12 @@
+﻿{
+    "Phase":  "enforced",
+    "Started":  false,
+    "Refused":  true,
+    "NativeError":  null,
+    "ExitCode":  null,
+    "LanguageMode":  "ConstrainedLanguage",
+    "Build":  "155523258FCE24E506E1F13E4552F234C2D906485D690573BF5631489A04739A",
+    "NativeDialog":  "Pesto 1.0 | Démarrage",
+    "Arguments":  "Invalid qualification-only parameter; no operational command requested",
+    "Utc":  "2026-10-18T19:24:45.7774317Z"
+}

@@ -1,0 +1,25 @@
+PASS Metadata liste ferm‚e et limite
+PASS Plan exportable ferm‚ et non secret
+PASS Plan alt‚r‚, configuration et machine diff‚rents refus‚s
+PASS Plan expir‚ refus‚ mˆme avec empreinte recalcul‚e
+PASS Sch‚ma plan entier uniquement mˆme avec empreinte recalcul‚e
+PASS Export exclusif et UTF8 strict
+PASS Cl‚ idempotente restitue r‚sultat sans deuxiŠme appel
+PASS Rejeu jonction conserve PreparedPlan et refuse sch‚ma marqueur texte
+PASS Refus96 m‚moris‚ exige une nouvelle cl‚ aprŠs correction explicite
+PASS Mˆme cl‚ autre payload refus‚e sans mutation
+PASS Mˆme cl‚ autre machine refus‚e
+PASS Interruption aprŠs marqueur interdit rejeu
+PASS Disque refus‚ avant action interdit mutation
+PASS Disque refus‚ aprŠs action devient incertain sans rejeu
+PASS Consultation et cl‚s invalides refus‚es sans ‚criture
+PASS R‚sultat ambigu non marqu‚ Completed
+PASS CLI pr‚paration puis plan r‚utilis‚ et cl‚ sans masquage variable Action
+PASS CLI arguments diff‚rents du plan refus‚s avant moteur
+PASS CLI refus export avec ex‚cution et lecture avec Execute
+
+Suite       Total Passed Failed
+-----       ----- ------ ------
+Integration    19     19      0
+
+

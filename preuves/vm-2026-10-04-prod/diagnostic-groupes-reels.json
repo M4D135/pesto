@@ -1,0 +1,167 @@
+﻿[
+    {
+        "Name":  "Pesto normal",
+        "DN":  "CN=Pesto normal,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Member":  [
+                       "CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                   ],
+        "MemberOf":  [
+                         "CN=Pesto normal,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                     ],
+        "Filter":  "(\u0026(distinguishedName=CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto normal,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local))",
+        "Count":  1,
+        "Policy":  {
+                       "Schema":  1,
+                       "ExcludedNames":  [
+
+                                         ],
+                       "ExcludedOUs":  [
+
+                                       ],
+                       "ExcludedGroupGuids":  [
+                                                  "185a3826-40b6-4931-af73-251c1cabd0a1"
+                                              ],
+                       "CoordinationRoot":  "",
+                       "CoordinationRequired":  false,
+                       "AllowPasswordTaskFallback":  false,
+                       "AllowPrecreatedJoin":  false,
+                       "AllowOfflineJoin":  false,
+                       "MaxReaders":  4,
+                       "ReadAttempts":  2,
+                       "MaxBatch":  200
+                   },
+        "Refusal":  "Le poste appartient à un groupe exclu, directement ou par imbrication."
+    },
+    {
+        "Name":  "Pesto (test)",
+        "DN":  "CN=Pesto (test),OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Member":  [
+                       "CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                   ],
+        "MemberOf":  [
+                         "CN=Pesto (test),OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                     ],
+        "Filter":  "(\u0026(distinguishedName=CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\28test\\29,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local))",
+        "Count":  1,
+        "Policy":  {
+                       "Schema":  1,
+                       "ExcludedNames":  [
+
+                                         ],
+                       "ExcludedOUs":  [
+
+                                       ],
+                       "ExcludedGroupGuids":  [
+                                                  "56deb198-f510-4a08-b7d0-0125f7160e0c"
+                                              ],
+                       "CoordinationRoot":  "",
+                       "CoordinationRequired":  false,
+                       "AllowPasswordTaskFallback":  false,
+                       "AllowPrecreatedJoin":  false,
+                       "AllowOfflineJoin":  false,
+                       "MaxReaders":  4,
+                       "ReadAttempts":  2,
+                       "MaxBatch":  200
+                   },
+        "Refusal":  "Le poste appartient à un groupe exclu, directement ou par imbrication."
+    },
+    {
+        "Name":  "Pesto * test",
+        "DN":  "CN=Pesto * test,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Member":  [
+                       "CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                   ],
+        "MemberOf":  [
+                         "CN=Pesto * test,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                     ],
+        "Filter":  "(\u0026(distinguishedName=CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\2a test,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local))",
+        "Count":  1,
+        "Policy":  {
+                       "Schema":  1,
+                       "ExcludedNames":  [
+
+                                         ],
+                       "ExcludedOUs":  [
+
+                                       ],
+                       "ExcludedGroupGuids":  [
+                                                  "585e53f2-3c40-491b-bff4-f18096c99509"
+                                              ],
+                       "CoordinationRoot":  "",
+                       "CoordinationRequired":  false,
+                       "AllowPasswordTaskFallback":  false,
+                       "AllowPrecreatedJoin":  false,
+                       "AllowOfflineJoin":  false,
+                       "MaxReaders":  4,
+                       "ReadAttempts":  2,
+                       "MaxBatch":  200
+                   },
+        "Refusal":  "Le poste appartient à un groupe exclu, directement ou par imbrication."
+    },
+    {
+        "Name":  "Pesto \\ groupe",
+        "DN":  "CN=Pesto \\\\ groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Member":  [
+                       "CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                   ],
+        "MemberOf":  [
+                         "CN=Pesto \\\\ groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                     ],
+        "Filter":  "(\u0026(distinguishedName=CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\5c\\5c groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local))",
+        "Count":  0,
+        "Policy":  {
+                       "Schema":  1,
+                       "ExcludedNames":  [
+
+                                         ],
+                       "ExcludedOUs":  [
+
+                                       ],
+                       "ExcludedGroupGuids":  [
+                                                  "aca9a58c-2cfb-4b7f-a7d4-68a0164da4d1"
+                                              ],
+                       "CoordinationRoot":  "",
+                       "CoordinationRequired":  false,
+                       "AllowPasswordTaskFallback":  false,
+                       "AllowPrecreatedJoin":  false,
+                       "AllowOfflineJoin":  false,
+                       "MaxReaders":  4,
+                       "ReadAttempts":  2,
+                       "MaxBatch":  200
+                   },
+        "Refusal":  ""
+    },
+    {
+        "Name":  "Pesto (test)*\\groupe",
+        "DN":  "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local",
+        "Member":  [
+                       "CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                   ],
+        "MemberOf":  [
+                         "CN=Pesto (test)*\\\\groupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local"
+                     ],
+        "Filter":  "(\u0026(distinguishedName=CN=V999004AAQA1002,OU=ALPHA-AA,OU=Computers,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local)(memberOf:1.2.840.113556.1.4.1941:=CN=Pesto \\28test\\29\\2a\\5c\\5cgroupe,OU=Accounts,OU=Pesto-20261004,OU=ADCC-Lab,DC=labo,DC=local))",
+        "Count":  0,
+        "Policy":  {
+                       "Schema":  1,
+                       "ExcludedNames":  [
+
+                                         ],
+                       "ExcludedOUs":  [
+
+                                       ],
+                       "ExcludedGroupGuids":  [
+                                                  "1e79d134-af13-4253-b9fb-a7c5d34bb118"
+                                              ],
+                       "CoordinationRoot":  "",
+                       "CoordinationRequired":  false,
+                       "AllowPasswordTaskFallback":  false,
+                       "AllowPrecreatedJoin":  false,
+                       "AllowOfflineJoin":  false,
+                       "MaxReaders":  4,
+                       "ReadAttempts":  2,
+                       "MaxBatch":  200
+                   },
+        "Refusal":  ""
+    }
+]

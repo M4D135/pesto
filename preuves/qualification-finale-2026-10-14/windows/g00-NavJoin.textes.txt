@@ -1,0 +1,64 @@
+﻿Motif de disponibilité ou de blocage du bouton principal.
+P
+Pesto
+Active Directory
+⌂
+Accueil
+✎
+Un seul poste
+▦
+Plusieurs postes
++
+Ajouter au domaine
+▤
+Noms disponibles
+◷
+Historique
+≡
+Journal
+⚙
+Paramètres
+Pesto 1.0
+Windows · PowerShell
+P111301VA765345
+labo.local
+LABO\tech.pesto
+Actions · Ctrl+K
+Audit
+?
+Ajouter ce PC au domaine
+Un poste, une opération. Choisissez son nom, vérifiez le récapitulatif, puis confirmez.
+Vérifier l’état
+Vérifier dans AD
+1. Ce PC
+Nom actuel
+P111301VA765345
+Domaine cible
+labo.local
+Membre de labo.local
+Compte utilisé pour AD
+LABO\tech.pesto
+Ouvrir Renommer / déplacer
+2. Son nom et son emplacement
+Demande enregistrée. Utilisez Vérifier dans AD pour relire son résultat.
+Copier
+APRÈS LA JONCTION
+P111301LY765128
+Emplacement demandé dans Active Directory
+ADCC-Lab › Departement 111301 › Postes › SITES › Lyon
+3. Vérifier et ajouter
+Résultat de la jonction
+Jonction vérifiée précédemment. Cette mention ne remplace pas une nouvelle lecture AD.
+Vérification
+État
+Détail
+Voir le journal
+Exporter le compte rendu
+Ce PC est déjà dans le domaine. Utilisez « Ouvrir Renommer / déplacer ».
+Vérifier sans ajouter
+Ajouter ce PC au domaine
+Zoom
+−
+État de l’intervention
+100 %
++

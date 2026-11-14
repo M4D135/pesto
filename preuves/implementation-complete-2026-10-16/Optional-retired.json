@@ -1,0 +1,51 @@
+{
+  "Schema": 1,
+  "Suite": "OptionalIntegrations",
+  "HostOS": "Unix 26.4.0",
+  "PowerShell": "7.4.20",
+  "WindowsExecuted": false,
+  "ADExecuted": false,
+  "WPFExecuted": false,
+  "GPOApplied": false,
+  "Scope": "Contrats et modèles XML locaux ; aucune lecture secret ni écriture réseau/registre",
+  "Total": 7,
+  "Passed": 7,
+  "Failed": 0,
+  "Cases": [
+    {
+      "Name": "Scénario requis autorisé et verrouillé",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Attributs complémentaires : aperçu non exécutable fermé",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Export audit fermé sans détails sensibles",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "GPO seulement restrictive et sans mutation du config objet",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "GPO désactivée ne force pas activation locale",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "GPO valeurs mal typées bloquent",
+      "Passed": true,
+      "Error": ""
+    },
+    {
+      "Name": "Modèles GPO XML lisibles et références cohérentes",
+      "Passed": true,
+      "Error": ""
+    }
+  ]
+}

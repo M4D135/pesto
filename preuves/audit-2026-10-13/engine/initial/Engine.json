@@ -1,0 +1,714 @@
+﻿{
+    "Suite":  "Pesto 17 Engine",
+    "Utc":  "2026-10-12T23:09:12.6770850Z",
+    "PowerShell":  "5.1.26100.6584",
+    "SourceHash":  "DCA92115069642964BA0A7B593AB9F1B4715258FA48AF36B6EF071043015E20C",
+    "Total":  117,
+    "Passed":  117,
+    "Failed":  0,
+    "Tests":  [
+                  {
+                      "Name":  "PS 5.1 : parsing natif du script complet",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  6
+                  },
+                  {
+                      "Name":  "Booléen vrai : true",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  27
+                  },
+                  {
+                      "Name":  "Booléen vrai : TRUE",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen vrai : oui",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen vrai : 1",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen vrai : on",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen vrai : True",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  1
+                  },
+                  {
+                      "Name":  "Booléen faux : false",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "Booléen faux : FALSE",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen faux : non",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen faux : 0",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen faux : off",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen faux : False",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  0
+                  },
+                  {
+                      "Name":  "Booléen inconnu strict refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  39
+                  },
+                  {
+                      "Name":  "Booléen inconnu non strict reste faux",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  12
+                  },
+                  {
+                      "Name":  "DNS valide",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  8
+                  },
+                  {
+                      "Name":  "DNS sans label vide",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  3
+                  },
+                  {
+                      "Name":  "DNS label trop long refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "Nom source court autorisé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  3
+                  },
+                  {
+                      "Name":  "Nom source injectable refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "Nom source \u003e15 refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "Nom généré conforme",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  43
+                  },
+                  {
+                      "Name":  "Numéro 000 refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  7
+                  },
+                  {
+                      "Name":  "Mauvais préfixe refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  11
+                  },
+                  {
+                      "Name":  "DN OU valide",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  43
+                  },
+                  {
+                      "Name":  "DC avant OU refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "CN racine non OU refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  3
+                  },
+                  {
+                      "Name":  "Virgule échappée préservée dans le parent",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "DN malformé refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "RDN multivalué refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  3
+                  },
+                  {
+                      "Name":  "Extraction domaine DN",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Suffixe par composants autorisé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  10
+                  },
+                  {
+                      "Name":  "Faux suffixe DN refusé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Virgule échappée ne crée pas un faux parent",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Échappement de valeur OU",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  12
+                  },
+                  {
+                      "Name":  "Confirmation HasSucceeded=True booléen",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  5
+                  },
+                  {
+                      "Name":  "Confirmation chaîne true refusée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "Confirmation absente refusée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  12
+                  },
+                  {
+                      "Name":  "Confirmation multiple refusée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  2
+                  },
+                  {
+                      "Name":  "Masquage du champ password dans le journal",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  6
+                  },
+                  {
+                      "Name":  "Formule CSV neutralisée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  17
+                  },
+                  {
+                      "Name":  "Texte CSV ordinaire conservé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  3
+                  },
+                  {
+                      "Name":  "Transport sans mot de passe en argument",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Ancien transport secret bloqué avant COM",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  37
+                  },
+                  {
+                      "Name":  "Résultat tâche 0 en RUNNING pas encore réussi",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  616
+                  },
+                  {
+                      "Name":  "XML tâche à la demande sans trigger",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  26
+                  },
+                  {
+                      "Name":  "Table : métadonnées et booléens par défaut",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  34
+                  },
+                  {
+                      "Name":  "Ligne sans action refusée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Ligne déplacement seul valide",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  36
+                  },
+                  {
+                      "Name":  "Hors domaine interdit un autre poste",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  24
+                  },
+                  {
+                      "Name":  "Porte d\u0027observation consultee avant toute mutation",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  119
+                  },
+                  {
+                      "Name":  "Porte d\u0027observation refusee : 96 et aucun appel de mutation",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Renommage résultat none =\u003e indéterminé sans repli",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "Renommage résultat missing =\u003e indéterminé sans repli",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Renommage résultat string =\u003e indéterminé sans repli",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Renommage HasSucceeded=False =\u003e échec",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  17
+                  },
+                  {
+                      "Name":  "Renommage confirmé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  59
+                  },
+                  {
+                      "Name":  "Compte de domaine du login reutilise sans nouveau prompt",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Ordre preserve : preparation Entra puis renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  11
+                  },
+                  {
+                      "Name":  "Preparation Entra echouee : pas de renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  22
+                  },
+                  {
+                      "Name":  "Preparation Entra incertaine : verrou, pas de renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  25
+                  },
+                  {
+                      "Name":  "Renommage distant sans credential : refus avant dsregcmd, aucun prompt natif",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  28
+                  },
+                  {
+                      "Name":  "Perte des droits locaux : aucun helper UAC pendant action",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  26
+                  },
+                  {
+                      "Name":  "Jonction non elevee : code 96 sans nouveau UAC",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  49
+                  },
+                  {
+                      "Name":  "Renommage RPC ambigu =\u003e arrêt sans repli",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  30
+                  },
+                  {
+                      "Name":  "Refus Entra apres preparation ne provoque pas de deuxieme tentative",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  30
+                  },
+                  {
+                      "Name":  "Simulation renommage aucune mutation",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  21
+                  },
+                  {
+                      "Name":  "Renommage source hors périmètre interdit",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  24
+                  },
+                  {
+                      "Name":  "Renommage local sans ComputerName ni LocalCredential",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  25
+                  },
+                  {
+                      "Name":  "GUID source remplace : aucun renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "OU source derivee : aucun renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  27
+                  },
+                  {
+                      "Name":  "GUID source remplace : aucun deplacement ni protection",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  28
+                  },
+                  {
+                      "Name":  "OU source derivee : aucun deplacement",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  34
+                  },
+                  {
+                      "Name":  "Déplacement utilise GUID et restaure protection",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  95
+                  },
+                  {
+                      "Name":  "Déplacement déjà dans OU =\u003e sans écriture",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  23
+                  },
+                  {
+                      "Name":  "Déplacement engagé puis refusé : 97 et protection restaurée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  32
+                  },
+                  {
+                      "Name":  "Déplacement RPC non confirmé =\u003e code 97 sans relance",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  30
+                  },
+                  {
+                      "Name":  "Échec reprotection =\u003e code 32 et non succès",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  62
+                  },
+                  {
+                      "Name":  "Déplacement protégé sans autorisation =\u003e refus",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  33
+                  },
+                  {
+                      "Name":  "Simulation déplacement aucune écriture",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  10
+                  },
+                  {
+                      "Name":  "OU cible hors périmètre refusée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  26
+                  },
+                  {
+                      "Name":  "Jonction résultat none =\u003e code 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  36
+                  },
+                  {
+                      "Name":  "Jonction résultat missing =\u003e code 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Jonction HasSucceeded=False après nom préparé =\u003e code 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  21
+                  },
+                  {
+                      "Name":  "Jonction confirmée =\u003e code 10",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  28
+                  },
+                  {
+                      "Name":  "Jonction serveur égal domaine refusée",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  10
+                  },
+                  {
+                      "Name":  "Jonction prépare le nom local puis utilise JoinWithNewName sans ancien compte AD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  22
+                  },
+                  {
+                      "Name":  "Jonction nom déjà actif ne lance pas de renommage",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  27
+                  },
+                  {
+                      "Name":  "Jonction refusée sans renommage reste refus confirmé",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  34
+                  },
+                  {
+                      "Name":  "Préparation locale false bloque tout ajout AD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  11
+                  },
+                  {
+                      "Name":  "Préparation locale none bloque tout ajout AD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  11
+                  },
+                  {
+                      "Name":  "Préparation locale missing bloque tout ajout AD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "Préparation locale string bloque tout ajout AD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  14
+                  },
+                  {
+                      "Name":  "Exception du renommage ne lance jamais Add-Computer",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  22
+                  },
+                  {
+                      "Name":  "État préalable PartOfDomain bloque les deux mutations",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  35
+                  },
+                  {
+                      "Name":  "État préalable PendingRename bloque les deux mutations",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  8
+                  },
+                  {
+                      "Name":  "Dérive MachineId après préparation bloque la jonction",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  25
+                  },
+                  {
+                      "Name":  "Dérive BootUtc après préparation bloque la jonction",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  13
+                  },
+                  {
+                      "Name":  "Dérive ConfiguredName après préparation bloque la jonction",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  15
+                  },
+                  {
+                      "Name":  "Dérive ActiveName après préparation bloque la jonction",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  11
+                  },
+                  {
+                      "Name":  "Dérive PartOfDomain après préparation bloque la jonction",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  16
+                  },
+                  {
+                      "Name":  "Dérive Computer après préparation bloque la jonction",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  10
+                  },
+                  {
+                      "Name":  "Nom CIM nouveau accepté si registres et identité concordent",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  28
+                  },
+                  {
+                      "Name":  "Reçu de préparation indisponible empêche les deux mutations",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  17
+                  },
+                  {
+                      "Name":  "Annulation pendant reçu initial empêche la première commande",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  24
+                  },
+                  {
+                      "Name":  "Reçu après nom préparé indisponible bloque ajout AD et reste incertain",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  26
+                  },
+                  {
+                      "Name":  "Annulation après préparation conserve le nom et bloque ajout AD",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  17
+                  },
+                  {
+                      "Name":  "Refus natif 5 après renommage reste partiel 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  26
+                  },
+                  {
+                      "Name":  "Refus natif 1326 après renommage reste partiel 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  21
+                  },
+                  {
+                      "Name":  "Refus natif 2732 après renommage reste partiel 97",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  19
+                  },
+                  {
+                      "Name":  "Helper élevé refuse jonction avant tout effet",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  128
+                  },
+                  {
+                      "Name":  "Configuration exemple cohérente",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  93
+                  },
+                  {
+                      "Name":  "Domaine / DN incohérents refusés",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  22
+                  },
+                  {
+                      "Name":  "Buffer énorme refusé sans exception de conversion",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  33
+                  },
+                  {
+                      "Name":  "Faux mode hors domaine interdit en réel",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  23
+                  },
+                  {
+                      "Name":  "Écriture atomique et sauvegarde du précédent",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  72
+                  },
+                  {
+                      "Name":  "Ecriture atomique repetee sans backup (regression RC3 File.Replace)",
+                      "Passed":  true,
+                      "Error":  "",
+                      "Ms":  33
+                  }
+              ],
+    "Scope":  "Fonctions extraites + mocks ; pas de validation AD/WPF/UAC réelle."
+}

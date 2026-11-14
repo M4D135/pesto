@@ -1,0 +1,20 @@
+﻿{
+    "Schema":  1,
+    "RecordedUtc":  "2026-10-18T14:34:11.1920887Z",
+    "Name":  "V111301VA765542",
+    "Domain":  "labo.local",
+    "Joined":  true,
+    "Active":  "V111301VA765542",
+    "Configured":  "V111301VA765542",
+    "BootUtc":  "2026-10-18T14:33:55.5000000Z",
+    "LocalSid":  "S-1-5-21-2319835047-749961104-1734977362-1000",
+    "SecureChannel":  true,
+    "AutoAdminLogon":  "0",
+    "PlaintextDefaultPasswordPresent":  false,
+    "ADObject":  {
+                     "Name":  "V111301VA765542",
+                     "ObjectGUID":  "fc6f4538-2fb8-43fa-812b-5c9b07b454a7",
+                     "DistinguishedName":  "CN=V111301VA765542,OU=Paris,OU=SITES,OU=Postes,OU=Departement 111301,OU=ADCC-Lab,DC=labo,DC=local"
+                 },
+    "Result":  "PASS"
+}

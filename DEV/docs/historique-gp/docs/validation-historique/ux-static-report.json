@@ -1,0 +1,307 @@
+{
+  "version": "17.0-RC13",
+  "utc": "2026-09-30T12:22:29.246666+00:00",
+  "source_sha256": "2e178a620a3737f357e867ca5d767793342a4988d0e5d7d811b06e72b7b121d3",
+  "scope": "STATIC SOURCE ONLY. No native PowerShell parsing, WPF loading, screenshots, Windows testing or AD execution.",
+  "totals": {
+    "checks": 49,
+    "passed": 49,
+    "failed": 0
+  },
+  "metrics": {
+    "public_names": 161,
+    "ui_functions": 23,
+    "xml_templates": 7,
+    "interactive_elements_with_help": 136,
+    "queue_columns": 17,
+    "unchanged_functions_since_rc10": 260
+  },
+  "checks": [
+    {
+      "name": "RC13 engine version",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Seven XML templates are present and well formed",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Public XAML names are unique",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Every public element is bound, without template-part confusion",
+      "status": "PASS",
+      "detail": {
+        "bound": 161
+      }
+    },
+    {
+      "name": "All referenced explicit style and brush keys exist",
+      "status": "PASS",
+      "detail": {
+        "explicit_keys": 65
+      }
+    },
+    {
+      "name": "No forward StaticResource lookup in the resource dictionary",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Explicit styles match their target element types",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Interactive elements in all XML dialogs have tooltips, HelpText and disabled help",
+      "status": "PASS",
+      "detail": {
+        "controls": 136,
+        "scope": "Explicit source metadata, not runtime accessibility certification"
+      }
+    },
+    {
+      "name": "Tooltip style wraps and lasts 30 seconds on controls",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract ComboBox/PART_Popup",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract ComboBox/PART_EditableTextBox",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract TextBox/PART_ContentHost",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract PasswordBox/PART_ContentHost",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "WPF named part contract TabControl/PART_SelectedContentHost",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Editable ComboBox retains its textbox visibility trigger",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "ComboBox and queue retain virtualization settings",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Both complete color palettes match the core and resources",
+      "status": "PASS",
+      "detail": {
+        "colors_per_theme": 47
+      }
+    },
+    {
+      "name": "Theme preference is loaded before the login call",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Login and programmatic OU dialog inherit the main theme resources",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Login error and progress have flexible heights",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "OU tree and selection buttons expose explicit help",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Interface projection calls the canonical rename/site rule",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Same-site preview keeps current OU instead of proposed OU",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Preview distinguishes draft from execution results",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Operation mode and reboot intent are explicit",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "UI projection never writes safety flags or enables execution",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "New presentation functions do not call mutation entry points",
+      "status": "PASS",
+      "detail": {
+        "functions_audited": 23,
+        "scope": "Direct lexical calls only, not a runtime information-flow proof"
+      }
+    },
+    {
+      "name": "UI timers use named script-bound delegates",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "No private closure module in the new UI functions",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "All named UI event delegates exist",
+      "status": "PASS",
+      "detail": {
+        "delegate_references": 15
+      }
+    },
+    {
+      "name": "Source identity invalidated before delayed lookup",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Lookup immediately disables adding and cancels stale probe generation",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Enter reads a computer, never executes or adds",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "TextChanged is wired to delayed source lookup",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "F1/Ctrl navigation shortcuts never execute a queue",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Closing the main window stops both UI timers",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Compact/wide layout reuses existing controls",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Original four navigation indexes preserved",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Queue starts with six columns and retains the technical columns",
+      "status": "PASS",
+      "detail": {
+        "visible": 6,
+        "retained": 17
+      }
+    },
+    {
+      "name": "Technical column toggle changes visibility, not queue contents",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "History read is local, bounded and domain-scoped",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "History page cannot relaunch a completed action",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Core preserved from RC10 outside declared startup, credential and login changes",
+      "status": "PASS",
+      "detail": {
+        "unchanged": 260,
+        "intentional_changes": [
+          "AddToDomain",
+          "Complete-GPLoginError",
+          "Complete-GPLoginSuccess",
+          "RenameComputer",
+          "Run-Queue",
+          "Set-GPLoginBusy",
+          "Show-GPStartupWindow",
+          "Show-LoginWindow",
+          "Start-GPLoginAttempt"
+        ],
+        "scope": "Exact equality against the user RC10, not runtime validation"
+      }
+    },
+    {
+      "name": "tests/Run-UxTests.ps1 encoding and conservative lexical structure",
+      "status": "PASS",
+      "detail": {
+        "lexical_tokens": 1898,
+        "native_execution": false
+      }
+    },
+    {
+      "name": "tests/Run-AllTests.ps1 encoding and conservative lexical structure",
+      "status": "PASS",
+      "detail": {
+        "lexical_tokens": 120,
+        "native_execution": false
+      }
+    },
+    {
+      "name": "Native UI fixture has complete lexical function dependencies",
+      "status": "PASS",
+      "detail": {
+        "loaded_core_functions": 42,
+        "windows_test_cases": 38,
+        "executed": false
+      }
+    },
+    {
+      "name": "UI test runner launches STA and preserves failure status",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Master runner includes the new isolated UI suite",
+      "status": "PASS",
+      "detail": null
+    },
+    {
+      "name": "Build script includes the UI suite and test launcher",
+      "status": "PASS",
+      "detail": null
+    }
+  ]
+}

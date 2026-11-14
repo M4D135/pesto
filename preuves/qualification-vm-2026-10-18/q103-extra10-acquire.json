@@ -1,0 +1,15 @@
+{
+    "Schema":  1,
+    "Action":  "Acquire",
+    "ProcessId":  8776,
+    "Owner":  "CRASH-A",
+    "Name":  "CRASH01",
+    "Domain":  "race-harness.invalid",
+    "Root":  "\\\\192.168.1.173\\PestoQual20261018\\extra10",
+    "Utc":  "2026-10-18T13:21:28.1615896Z",
+    "LeaseMinutes":  5,
+    "State":  "Reserved",
+    "Holder":  "",
+    "HolderExpiresUtc":  "",
+    "Connected":  ""
+}

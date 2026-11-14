@@ -1,0 +1,73 @@
+{
+  "Result": "PASS_NO_DOCUMENT_REGENERATION_NEEDED",
+  "Utc": "2026-10-12T23:23:24.494271+00:00",
+  "RuntimeExeSHA256": "e3b7790a75338e762cb67cdbb239ad67f7e34717dd0ec6a170c41febeb31adae",
+  "PreviousReview": {
+    "Path": "docs-compatibility.json",
+    "SHA256": "fb1a1fe5e99c63cf936e5d776c3e1aa4f9231c1c4e938a3fd590bfea5be8d0c2"
+  },
+  "Documents": [
+    {
+      "Path": "README.md",
+      "SHA256": "e53bbe983250aba89d8a12583c8434df3c6b7ea53c75366baf367f1cf9b7a5d1",
+      "Unchanged": true
+    },
+    {
+      "Path": "DEV/README.md",
+      "SHA256": "79f3231b0f7eb53db4440054462b3ef4ee2d867f3cfdef3b0656af0e215b1194",
+      "Unchanged": true
+    },
+    {
+      "Path": "packs/README.md",
+      "SHA256": "2d10f5188078bfa6d49721200f7c4a551c59bc4f337ac5a4259476a0d78ac316",
+      "Unchanged": true
+    },
+    {
+      "Path": "DEV/docs/FABRIQUER_PROD.md",
+      "SHA256": "5eb78c765670ff161bd73f8965fdf439cadca49b0bc687e21b5edc22b80be404",
+      "Unchanged": true
+    },
+    {
+      "Path": "outils/guides/administrateur.md",
+      "SHA256": "a30cee55425d1bd66903cbf693f5b4e0767037b0f180c221f2208289b619043e",
+      "Unchanged": true
+    },
+    {
+      "Path": "outils/guides/technicien.md",
+      "SHA256": "88a26381e7cfc89c38cbd4488c6ab9967b5896de5f228f3e3c76973c0693e669",
+      "Unchanged": true
+    }
+  ],
+  "DeliveredArtifacts": [
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-administrateur.docx",
+      "SHA256": "92e60fca4cfcd1e013db827ddc441200cc55dc3080cfd2288ea3290b05e94689",
+      "Unchanged": true
+    },
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-administrateur.pdf",
+      "SHA256": "087545512c7cda342565e08f1bf7e9b16e7c3b07b930bd9c2514b964d3ccac42",
+      "Unchanged": true
+    },
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-technicien.docx",
+      "SHA256": "d92c22ee65a5b20eba792afcb764ac45e240e44f4d8fb50c2338aa3885932955",
+      "Unchanged": true
+    },
+    {
+      "Path": "DEV/docs/Pesto-1.0-Guide-technicien.pdf",
+      "SHA256": "da75268d7040431a53718ef7328b20c1bc90a889016323e7065908ef56cd6eee",
+      "Unchanged": true
+    }
+  ],
+  "AdditionalReview": {
+    "RuntimeChange": "Pesto-Configuration.ps1 : bouton Créer avec l’assistant avec une apostrophe, contenu Errors et Json aligné en haut.",
+    "GuideContract": "Chapitre 12 administrateur emploie déjà Créer avec l’assistant, Importer une configuration, Valider, sauvegarder et continuer. Aucune capture de cette fenêtre dans ce chapitre. Les étapes, les contrôles et la sauvegarde explicite restent identiques.",
+    "SupportChange": "Quatre -Force sur Get-Item -Stream permettent de retirer la marque de téléchargement des fichiers Hidden comme déjà annoncé. Commandes et procédure de déblocage inchangées.",
+    "PackagingChange": "Arguments, noms des deux packs et structure EXE + wad inchangés ; refus des liens et reprise stricte renforcent les conditions existantes.",
+    "Scope": "Revue de cohérence du texte et des empreintes ; pas de nouveau rendu des documents ni de nouvelle qualification visuelle."
+  },
+  "GuidesChanged": false,
+  "GuidesRegenerated": false,
+  "OpenFindings": []
+}

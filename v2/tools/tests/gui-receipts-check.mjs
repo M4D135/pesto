@@ -108,8 +108,8 @@ try {
     await go('ajouter');
     const join = page.locator('form[data-form="join"]');
     await join.locator('[name="site"]').selectOption('paris');
-    await join.locator('[name="service"] option[value="INF"]').waitFor({ state: 'attached' });
-    await join.locator('[name="service"]').selectOption('INF');
+    await join.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
+    await join.locator('[name="service"]').fill('INF');
     await join.locator('button[type="submit"]').click();
     await page.locator('main .name-preview .name').waitFor();
     await page.locator('[data-act="add"]').click();

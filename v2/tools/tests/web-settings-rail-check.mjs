@@ -676,7 +676,7 @@ try {
       await page.locator('main [data-section-panel="interface"]:not([hidden])').waitFor();
       assert.equal(await focused(page), 'pr-panel-interface');
       assert.equal(await head(), true);
-      assert.match(await outline(page, 'main [data-section-panel="interface"]'), /^solid 3px /);
+      assert.match(await outline(page, 'main [data-section-panel="interface"]'), /^solid 2px .+ 4px$/);
       // In a wide window the panel is already in view: nothing scrolls.
       await page.setViewportSize({ width: 1440, height: 1000 });
       await openSection(page, 'annuaire');

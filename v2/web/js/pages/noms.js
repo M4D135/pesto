@@ -123,6 +123,7 @@ export function render(main, ctx) {
       const { items } = await ctx.call('directory.services', { site });
       if (!alive || services !== servicesToken) return;
       select.innerHTML = (items ?? []).map((s) => `<option value="${esc(s.code)}">${esc(s.name === s.code || !s.name ? s.code : s.name + ' (' + s.code + ')')}</option>`).join('') || '<option value="">Aucun service trouvé</option>';
+      if (!(items ?? []).length) form.setMessage('service', 'Aucun service connu pour ce site : vérifiez le catalogue AD.', 'warn');
       if (calculate && select.value) await compute(form.values(), false);
     } catch (err) {
       if (!alive || services !== servicesToken) return;

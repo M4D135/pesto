@@ -68,6 +68,13 @@ public interface IMutationGateway
 }
 
 /// <summary>
+/// L'adaptateur natif de renommage relit lui-même, au dernier point avant envoi, l'identité source et les
+/// exclusions de groupes. Le moteur peut mutualiser ces deux lectures, mais conserve ses propres contrôles
+/// de disponibilité du nouveau nom et de GUID de destination. La relecture finale après mutation reste obligatoire.
+/// </summary>
+public interface IMutationGatewayFinalReadback { }
+
+/// <summary>
 /// Divulgation d'état pour l'aperçu du plan — port du « control summary » V1 (Pesto-Core.ps1:4035 pour la confirmation
 /// de file, Pesto-Direct.ps1:345 pour la confirmation unitaire) : avant de confirmer, V1 affichait la politique de repli
 /// réellement lue. Un adaptateur de qualification qui lit réellement <c>POLICY.AllowPasswordTaskFallback</c> et observe

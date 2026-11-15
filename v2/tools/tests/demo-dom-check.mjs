@@ -294,8 +294,8 @@ try {
     await page.locator(`[data-pick="${computer}"]`).click();
     const form = page.locator('[data-form="rename"]');
     await form.locator('[name="site"]').selectOption('lyon');
-    await form.locator('[name="service"] option[value="INF"]').waitFor({ state: 'attached' });
-    await form.locator('[name="service"]').selectOption('INF');
+    await form.locator('[name="service"] + datalist option[value="INF"]').waitFor({ state: 'attached' });
+    await form.locator('[name="service"]').fill('INF');
     await form.locator('button[type="submit"]').click();
     await page.locator('[data-zone="rpreview"] .name').waitFor();
     await page.locator('[data-act="apply"]').click();

@@ -481,7 +481,7 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         var adapter = RequireGateway();
         var locked = ForJoin(args) && !read.Production;
         var sites = locked ? [PreprodDestination(read, adapter)] : ResolveSites(read, adapter);
-        return Resp.Obj(("locked", locked), ("items", Resp.Arr(sites, s =>
+        return Resp.Obj(("locked", locked), ("serviceWidth", read.Convention.ServiceWidth), ("items", Resp.Arr(sites, s =>
             Resp.Obj(("id", s.Id), ("name", s.Name), ("code", s.Code), ("ou", s.Ou), ("selector", s.Ou)))));
     }
 
@@ -497,9 +497,10 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
         var convention = GetConvention(read);
         var patterns = convention.Types.Select(type => convention.SitePattern(type.ToString(), resolved.Code)).ToArray();
+        var organismPatterns = convention.Types.Select(type => convention.OrganismPattern(type.ToString())).ToArray();
         var names = selection is null
-            ? adapter.ReadSiteComputerNames(read.Domain, DcOrNull(), resolved.Ou, patterns, InventoryHardLimit)
-            : adapter.ReadSelectedSiteComputerNames(read.Domain, DcOrNull(), selection, patterns, InventoryHardLimit);
+            ? adapter.ReadSiteComputerNames(read.Domain, DcOrNull(), resolved.Ou, patterns, organismPatterns, InventoryHardLimit)
+            : adapter.ReadSelectedSiteComputerNames(read.Domain, DcOrNull(), selection, patterns, organismPatterns, InventoryHardLimit);
         if (!names.InOu.Complete || !names.WithTag.Complete)
             throw new PestoException("directory.incomplete", "La lecture des postes du site est incomplète. Relancez la lecture pour obtenir ses services.");
         var codes = new SortedSet<string>(StringComparer.Ordinal);
@@ -555,11 +556,14 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
 
     private List<ResolvedSite> ResolveSites(V1Config read, IDirectoryGateway adapter)
     {
+        // Site discovery is always refreshed: OU creation/removal and policy changes must be visible immediately.
+        // LDAP batching in the gateway removes the former per-pattern round-trips without serving stale OU data.
+        var dc = DcOrNull();
         var list = new List<ResolvedSite>();
         var seenIds = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var added = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         var parents = read.OrganismOus.Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
-        var listing = adapter.ReadSiteOus(read.Domain, DcOrNull(), read.ExplicitSites.Select(site => site.Ou).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(), parents);
+        var listing = adapter.ReadSiteOus(read.Domain, dc, read.ExplicitSites.Select(site => site.Ou).Distinct(StringComparer.OrdinalIgnoreCase).ToArray(), parents);
         foreach (var site in read.ExplicitSites)
         {
             // The batched LDAP read can miss a DN that the exact OU lookup used up to 2.0.9 still confirms.
@@ -1096,11 +1100,17 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
         }
         ValidatePrecreatedJoinPlan(plan, read, policy);
         policy.AssertPlan(plan.Kind, plan.Computer, plan.NewName, plan.SourceOu, plan.TargetOu, GetConvention(read));
-        if (plan.PrecreatedJoin is null) VerifyPreviewName(read, policy, plan.Kind, plan.NewName, plan.NameReservation, plan.ConfigurationSha256);
+        var gatewayOwnsFinalReadback = mutation is IMutationGatewayFinalReadback
+            && plan.Kind is ("rename" or "renameMove");
+        // La disponibilité du nom reste vérifiée par le moteur : le gateway natif relit l'identité
+        // source et les exclusions de groupes, mais ne remplace pas le contrôle de collision du moteur.
+        if (plan.PrecreatedJoin is null)
+            VerifyPreviewName(read, policy, plan.Kind, plan.NewName, plan.NameReservation, plan.ConfigurationSha256);
         var adapter = RequireGateway();
 
-        // Juste avant envoi : identité et disponibilité sont relues (port v1 « l'état a changé pendant le contrôle → aucun envoi »).
-        if (plan.Kind != "join")
+        // Seules les lectures réellement reprises par Invoke-PestoRename sont mutualisées.
+        // La destination et la disponibilité du nouveau nom restent contrôlées par le moteur.
+        if (!gatewayOwnsFinalReadback && plan.Kind != "join")
         {
             var found = adapter.FindComputer(read.Domain, DcOrNull(), plan.Computer)
                 ?? throw new PestoException("identity.changed", "Le poste n’a plus été relu avant l’envoi. Rien n’a été appliqué.");
@@ -1118,8 +1128,8 @@ internal sealed partial class LiveBackend(string? v1InstallationPath, IDirectory
             if (taken is not null && !string.Equals(taken.Guid, plan.Guid, StringComparison.OrdinalIgnoreCase))
                 throw new PestoException("name.taken", "Le nom vient d’être pris. Aucun ajout automatique : nouvel aperçu, nouveau clic.");
         }
-
-        RequireGroupExclusions(read, policy, plan.Guid, plan.PrecreatedJoin?.Name ?? plan.Computer, plan.SourceOu);
+        if (!gatewayOwnsFinalReadback)
+            RequireGroupExclusions(read, policy, plan.Guid, plan.PrecreatedJoin?.Name ?? plan.Computer, plan.SourceOu);
         var joinClock = CheckJoinClock(policy, plan.Kind);
         if (joinClock is { State: "warning" }) Log(joinClock.Message);
 

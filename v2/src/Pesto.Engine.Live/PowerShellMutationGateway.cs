@@ -43,7 +43,7 @@ namespace Pesto.Engine.Live;
 /// Hors Windows ou sans PowerShell 5.1 vérifié, chaque demande est refusée avant tout envoi (Failed, rien d'écrit) :
 /// aucun fait n'est simulé et aucune commande n'est inventée.
 /// </summary>
-public sealed partial class PowerShellMutationGateway : IMutationGateway, IMutationFallbackDisclosure, IMutationAvailability, IMutationReceiptFinalizer, IMutationReceiptReconciler, IMutationMoveContinuation
+public sealed partial class PowerShellMutationGateway : IMutationGateway, IMutationGatewayFinalReadback, IMutationFallbackDisclosure, IMutationAvailability, IMutationReceiptFinalizer, IMutationReceiptReconciler, IMutationMoveContinuation
 {
     private const int TimeoutSeconds = 180;
     private const long MaximumResponseBytes = 64 * 1024;

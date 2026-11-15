@@ -81,6 +81,31 @@ internal sealed class NamingTests
     }
 
     [Test]
+    public void ServiceInventoryPatternsFollowAllConfiguredFacets()
+    {
+        var historical = new NamingConvention(PestoSettings.DefaultPattern, "111301");
+        Check.Equal("P111301*", historical.OrganismPattern("P"), "Tous les tags du même organisme restent lus dans l’OU");
+        Check.Equal("P111301PA*", historical.SitePattern("P", "PA"), "Le tag sélectionné reste cherché dans tout le domaine");
+        var reordered = new NamingConvention("{service:4}{number:2}{type}{prefix}{site}", "123");
+        Check.Equal("*P123*", reordered.OrganismPattern("P"), "Aucune découpe d’un suffixe de deux caractères");
+        Check.Equal("*P123PA", reordered.SitePattern("P", "PA"), "Jokers en début, site en fin et préfixe court conservés");
+        var wideSite = new NamingConvention("{type}{prefix}{site:4}{service:1}{number:1}", "1");
+        Check.Equal("P1*", wideSite.OrganismPattern("P"), "Site à quatre caractères et trois facettes consécutives regroupés");
+        Check.Equal("P1PARI*", wideSite.SitePattern("P", "PARI"), "Aucun tag tronqué à deux caractères");
+        var separated = new NamingConvention("{service:2}-{type:S}{prefix}{site:1}{number:1}", "12");
+        Check.Equal("*-S12*", separated.OrganismPattern("S"), "Séparateur et type explicites préservés");
+        Check.Equal("*-S12A*", separated.SitePattern("S", "A"), "Les jokers internes restent valides");
+        Check.Pesto(() => separated.OrganismPattern("P"), "invalid_name", "Un type exclu de la convention ne produit aucun motif");
+    }
+
+    [Test]
+    public void SimulationSiteCatalogueDisclosesItsServiceWidth()
+    {
+        Check.Equal(3, Harness.Int(Harness.Call(Harness.Simulation(), "directory.sites"), "serviceWidth"),
+            "La simulation fournit le même contrat de largeur que le catalogue réel");
+    }
+
+    [Test]
     public void NumberWidthSixIsTheV1Ceiling()
     {
         var wide = new NamingConvention("{type}{prefix}{site}{service}{number:6}", "111");
